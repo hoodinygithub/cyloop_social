@@ -1,0 +1,33 @@
+defaults: &defaults
+  appid: 0000000044018ADD
+  secret: Zgz2AOyvRUVPhcRk4WnixgvDhZPjkzHP
+  securityalgorithm: wsignin1.0
+  login_port: 8081
+  
+test:
+  <<: *defaults 
+  debug: true
+  
+development:
+  <<: *defaults
+  debug: true
+  
+dc:
+  <<: *defaults
+  debug: true
+  
+uat:
+  <<: *defaults
+  debug: true
+  
+staging:
+  <<: *defaults
+  debug: true
+
+ec2_production:
+  <<: *defaults
+  debug: false
+  
+production:
+  <<: *defaults
+  debug: false

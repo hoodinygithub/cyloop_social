@@ -1,0 +1,11 @@
+- unless top_station.station.nil?
+  %li
+    - if top_station.station.artist_id.nil?
+      = avatar_for(nil, :small)
+    - else
+      = link_to avatar_for(top_station.station.artist, :small), top_station.station.artist 
+    %h4
+      = link_to_function top_station.station.name, "createStation(\"#{top_station.station.name}\")"
+    .artist.including
+      == #{t('basics.includes')}:
+      = top_station.station.includes.map {|artist| link_to artist.name, artist, :target => '_blank'}.join(", ")

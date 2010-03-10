@@ -1,0 +1,58 @@
+#msn_header.clearfix
+  .wrapper
+    .msn_main
+      %ul.msn_navigation
+        %li= link_to "entretenimiento", "http://entretenimiento.latino.msn.com/"
+        %li= link_to "video", "http://video.msn.com/video.aspx?mkt=es-us&brand=latino%C2%A0"
+        %li.active= link_to "música", "/"
+        %li= link_to "horóscopos", "http://astrologia.latino.msn.com/msnlt/"
+        %li.more
+          - link_to do
+            %span.more_wrapper= "más"
+      %ul.msn_sisters
+        %li.first= link_to "Página principal", "http://latino.msn.com/"
+        %li= link_to "Hotmail", "http://www.hotmail.com/?mkt=es-us"
+        %li= link_to "Messenger", "http://download.live.com/?sku=messenger&mkt=es-us"
+
+        - if logged_in?
+          %li.last= link_to t("sessions.destroy.sign_out"), site_logout_url        
+        - else
+          %li.last= link_to "Iniciar sesión", site_login_url
+    .portal.clearfix{:style => 'display: none; padding-top:5px'}
+      %ul.msn_sisters
+        %li.hotmail= link_to "Correo", "http://www.hotmail.com/?mkt=es-us"
+        %li.messenger= link_to "Messenger", "http://download.live.com/?sku=messenger&amp;mkt=es-us"
+        %li.my= link_to "My MSN", "http://latino.my.msn.com/"
+
+      %ul.msn_sections
+        %li= link_to "Astrología",  "http://astrologia.latino.msn.com " 
+        %li= link_to "Clima",  "http://clima.msn.com/" 
+        %li= link_to "Foros",  "http://boards.msn.com/LatinoNoticiasboards/forum.aspx?ForumID=8" 
+        %li= link_to "Música",  "http://latino.msn.cyloop.com/" 
+        %li= link_to "Telemundo",  "http://msnlatino.telemundo.com/" 
+        
+        %li= link_to "Autos",  "http://autos.latino.msn.com/default.aspx" 
+        %li= link_to "Deportes",  "http://foxsportsla.msn.com/" 
+        %li= link_to "Inmigración",  "http://noticias.latino.msn.com/inmigracion/default.aspx" 
+        %li= link_to "Noticias",  "http://noticias.latino.msn.com/default.aspx" 
+        %li= link_to "Traductor", "http://www.windowslivetranslator.com/Default.aspx?mkt=es-us"
+        
+        %li= link_to "Busca Pareja",  "http://pareja.latino.msn.com/landing/cplanding.aspx?cpp=esu/root/editorial/editorial01.html&amp;trackingid=1057549" 
+        %li= link_to "Entretenimiento",  "http://entretenimiento.latino.msn.com/default.aspx" 
+        %li= link_to "Internet Explorer 8",  "http://ie8.msn.com/microsoft/internet-explorer-8/es-us/ie8.aspx" 
+        %li= link_to "Radio",  "http://latino.msn.cyloop.com/radio" 
+        %li= link_to "Viajes" , "http://viajes.latino.msn.com/default.aspx" 
+        
+        %li= link_to "Busca Trabajo",  "http://msn.empleoscb.com/?siteid=cbmsnLHome" 
+        %li= link_to "Estilo de vida",  "http://msnlatino.telemundo.com/Mujer_De_Hoy" 
+        %li= link_to "Mapas",  "http://www.bing.com/maps/?scope=web&amp;mkt=es-US&amp;form=MSNLTG" 
+        %li= link_to "Shopping",  "http://www.bing.com/shopping?FORM=SHOPLA" 
+        %li= link_to "Video" , "http://video.msn.com/video.aspx?mkt=es-us&amp;brand=latino" 
+
+    .sub
+      %ul.msn_navigation
+        %li{:style => "padding-left:20px"}= link_to "Principal", "/"
+        %li= link_to "Noticias", "http://musica.latino.msn.com/noticias.aspx"
+        %li= link_to "Galerías de fotos", "http://musica.latino.msn.com/archivofotos.aspx"
+        %li= link_to "Videos", "http://musica.latino.msn.com/videos.aspx"
+        %li.last= link_to "Foros", "http://boards.msn.com/latinoentretenimientoboards/forum.aspx?ForumID=5" 

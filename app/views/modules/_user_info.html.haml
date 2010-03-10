@@ -1,0 +1,19 @@
+%h3== #{t('modules.user_info.title')}
+#information{:style => "margin-bottom:10px"}
+  %p.name== <span>#{t('activerecord.attributes.user.name')}:</span> #{profile_user.name}
+  - if !profile_user.location.blank?
+    %p.location== <span>#{t('activerecord.attributes.user.location')}:</span> #{profile_user.location}
+  - if !profile_user.age.blank?
+    %p.age== <span>#{t('activerecord.attributes.user.age')}:</span> #{profile_user.age}
+  - if !profile_user.websites.blank?
+    %p.websites
+      %strong 
+        == #{t('activerecord.attributes.user.websites')}:
+      %span
+        - profile_user.websites.each do |website|
+          = link_to(website, full_url(website))
+          %br
+      %div{:style => "clear:both"}
+  - if !profile_user.short_bio.blank?
+    %p.bio== <span>#{t('activerecord.attributes.user.bio')}:</span> #{profile_user.short_bio}
+  %br.fix

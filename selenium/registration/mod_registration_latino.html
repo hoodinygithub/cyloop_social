@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="" />
+<title>mod_registration_latino</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">mod_registration_latino</td></tr>
+</thead><tbody>
+<!--WILD Registration-->
+<!--Step2 - Import Cyloop Login Credentials-->
+<tr>
+	<td>open</td>
+	<td>http://staging.latino.hoodiny.com/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//div[@id='nav_aux']/a[@class='facebox']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='nav_aux']/a[@class='facebox']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//div[@class='registration_layer']/div[@class='bottom']/h2/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//div[@class='registration_layer']/div[@class='bottom']/h2/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>i0010</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>i0010</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeEval</td>
+	<td>prompt(&quot;Fill with new WILD ID:&quot;)</td>
+	<td>email</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>imembernamelive</td>
+	<td>${email}</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>SID_PASSWORD</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>SID_PASSWORD</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>SID_PASSWORD</td>
+	<td>abc123</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>SID_RETYPEPASSWORD</td>
+	<td>abc123</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>SID_SECRETQUESTION</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>SID_SECRETQUESTION</td>
+	<td>label=Local de nascimento da mãe</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//option[@value='Local de nascimento da mãe']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>SID_SECRETANSWER</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>SID_SECRETANSWER</td>
+	<td>test test test</td>
+</tr>
+<tr>
+	<td>storeEval</td>
+	<td>prompt(&quot;Fill with Captcha value:&quot;)</td>
+	<td>captcha</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>SID_HIP</td>
+	<td>${captcha}</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>btnSubmit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForLocation</td>
+	<td>http://staging.latino.hoodiny.com/users/new</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertLocation</td>
+	<td>http://staging.latino.hoodiny.com/users/new</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>user_submit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>user_submit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertElementPresent</td>
+	<td>document.getElementsByClassName(&quot;formError&quot;)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//div[@id='nav_aux']/a[@class='facebox']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//div[@id='nav_aux']/a[@class='facebox']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//h2[@class='channel_headline']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//h2[@class='channel_headline']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForLocation</td>
+	<td>http://staging.latino.hoodiny.com/users/new</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertLocation</td>
+	<td>http://staging.latino.hoodiny.com/users/new</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>user_gender_male</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>user_name</td>
+	<td>${email}</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>user_email</td>
+	<td>${email}@hotmail.com</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>user_slug</td>
+	<td>${email}</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>user_born_on_1i</td>
+	<td>label=1980</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>user_born_on_2i</td>
+	<td>label=1</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>user_born_on_3i</td>
+	<td>label=1</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>user_terms_and_privacy</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>user_submit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForLocation</td>
+	<td>http://staging.latino.hoodiny.com/my/dashboard</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertLocation</td>
+	<td>http://staging.latino.hoodiny.com/my/dashboard</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td></td>
+	<td>${email}</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//a[@href=&quot;/my/settings&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@class='cancel_my_account']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//a[@rel=&quot;facebox&quot; and @href=&quot;/my/cancellation/feedback&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//input[@class='no_thanks']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@class='no_thanks']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForLocation</td>
+	<td>http://staging.latino.hoodiny.com/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertLocation</td>
+	<td>http://staging.latino.hoodiny.com/</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+</body>
+</html>

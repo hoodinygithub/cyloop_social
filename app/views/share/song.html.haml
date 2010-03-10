@@ -1,0 +1,74 @@
+.share_song
+  %h3= t('actions.share_with_a_friend')
+  .cover_art.clearfix
+    .song_avatar
+      = avatar_for(@item, :small, {:alt => "#{@item.artist.name} - #{@item.album.name}"})
+      %span.cover_case
+    .info
+      .title
+        %h4== "#{@item.title}"
+      .artist
+        %div
+          == #{t('basics.by')}:
+          %span== #{@item.artist.name}
+      .album
+        %div
+          == #{t('basics.album')}:
+          %span== #{@item.album.name}
+  .form
+    :javascript
+      var error_codes = {
+                          user_name_blank:"#{t('share.errors.message.user_name_blank')} \n",
+                          user_email_blank:"#{t('share.errors.message.user_email_blank')}",
+                          user_email_invalid:"#{t('share.errors.message.user_email_invalid')}",
+                          friend_email_blank:"#{t('share.errors.message.friend_email_blank')}",
+                          friend_email_invalid:"#{t('share.errors.message.friend_email_invalid')}"
+                        };
+    %ul.error
+    - form_tag share_with_friend_path(:media => 'song'), :method => :post do |f|
+      = hidden_field_tag 'item_id', @item.id
+      = hidden_field_tag 'item_author', @item.artist.name
+      = hidden_field_tag 'item_title', @item.title
+      - if logged_in?
+        = hidden_field_tag 'user_name', current_user.name
+        = hidden_field_tag 'user_email', current_user.email
+      - else
+        .row.clearfix
+          .label
+            %label
+              = t('share.name')
+          .field
+            - name = logged_in? ? current_user.name : ""
+            = text_field_tag 'user_name', name
+        .row.clearfix
+          .label
+            %label
+              = t('share.email')
+          .field
+            - email = logged_in? ? current_user.email : ""
+            = text_field_tag 'user_email', email
+      .row.mailto_info.clearfix
+        .label
+          %label
+        .field
+          = t('share.multiple_emails')
+      .row.clearfix
+        .label
+          %label
+            = t('share.friend_email')
+        .field
+          = text_field_tag 'friend_email'
+      .row.clearfix.message
+        .label
+          %label
+            = t('share.message')
+        .field
+          = text_area_tag 'message', t('share.song.message')
+      %div.create_actions.clearfix
+        %div{:style => "float:left;padding-right:10px;padding-top:5px"}
+          = link_to t('actions.cancel'), "#", :class => "close"
+        .pill_button{:style => "float:right"}
+          .left
+          = tag :input, :type => :submit, :value => t("share.song.submit"), :class => :pill_button, :style => "width:#{t("share.song.submit").size}em"
+          .right
+

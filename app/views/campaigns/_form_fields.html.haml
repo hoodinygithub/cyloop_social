@@ -1,0 +1,61 @@
+- content_for :append_to_head do
+  = javascript_include_tag 'colorpicker'
+  = javascript_include_tag 'campaigns'
+
+- if campaign.errors.size > 0
+  = error_messages_for :campaign
+
+%p
+  %label Name
+  = f.text_field :name
+
+%p
+  %label Campaign Code
+  = f.text_field :code
+
+%p
+  %label Start
+  = f.date_select :start, :use_month_numbers => true
+
+%p
+  %label End
+  = f.date_select :end, :use_month_numbers => true
+
+%p
+  %label Site
+  = f.select :site_id, @sites, :prompt => "Choose one"
+  
+%p
+  %label Player
+  = f.select :player_id, @players, :prompt => "Choose one"
+
+%p
+  %label Hexcolor
+  = f.text_field :hexcolor
+  
+%p
+  %label Main image
+  - if campaign.main_image.file?
+    = image_tag campaign.main_image.url(:tiny)
+    %br
+  = f.file_field :main_image
+
+%p
+  %label Footer image
+  - if campaign.footer_logo.file?
+    = image_tag campaign.footer_logo.url(:tiny)
+    %br
+  = f.file_field :footer_logo
+
+%p
+  %label OpenX code or Ad
+  = f.text_area :adcode, :rows => 6
+  
+%p
+  %label Notes
+  = f.text_area :notes, :rows => 6
+
+
+%p
+  = f.check_box :active
+  Active

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<channel>
+ <title/>
+ <link>http://cm-msnbr.cyloop.com/cms/view/msnbr_home_featured</link>
+ <description>msnbr home featured</description>
+ <language>en</language>
+<item>
+ <title>Eric Clapton</title>
+ <link>http://cm-msnbr.cyloop.com/cms/node/9216</link>
+ <description><drupal_id>9216</drupal_id>
+<body><![CDATA[Some details here]]></body>
+<link><![CDATA[/ericclapton]]></link>
+<image>/drupal/files/ScreenHunter_77_2.jpg</image>
+<publishing_site>MSN BR</publishing_site>
+<publishing_section>Home - Featured Artists</publishing_section>
+</description>
+ <authored>Thu, 12 Mar 2009 12:47:07 -0400</authored>
+ <author>admin</author>
+ <updated>Thu, 02 Apr 2009 13:40:02 -0400</updated>
+</item>
+<item>
+ <title>Nickelback</title>
+ <link>http://cm-msnbr.cyloop.com/cms/node/9219</link>
+ <description><drupal_id>9219</drupal_id>
+<body><![CDATA[Some description goes here]]></body>
+<link><![CDATA[/nickelback]]></link>
+<image>/drupal/files/ScreenHunter_77.jpg</image>
+<publishing_site>MSN BR</publishing_site>
+<publishing_section>Home - Featured Artists</publishing_section>
+</description>
+ <authored>Thu, 12 Mar 2009 12:51:57 -0400</authored>
+ <author>admin</author>
+ <updated>Wed, 01 Apr 2009 10:36:00 -0400</updated>
+</item>
+<item>
+ <title>Pearl Jam</title>
+ <link>http://cm-msnbr.cyloop.com/cms/node/9218</link>
+ <description><drupal_id>9218</drupal_id>
+<body><![CDATA[Some description here]]></body>
+<link><![CDATA[/pearljam]]></link>
+<image>/drupal/files/mxbr_test_1.jpg</image>
+<publishing_site>MSN BR</publishing_site>
+<publishing_section>Home - Featured Artists</publishing_section>
+</description>
+ <authored>Thu, 12 Mar 2009 12:49:46 -0400</authored>
+ <author>admin</author>
+ <updated>Sun, 19 Apr 2009 21:56:58 -0400</updated>
+</item>
+<item>
+ <title>My Chemical Romance</title>
+ <link>http://cm-msnbr.cyloop.com/cms/node/9217</link>
+ <description><drupal_id>9217</drupal_id>
+<body><![CDATA[]]></body>
+<link><![CDATA[/mychemicalromance]]></link>
+<image>/drupal/files/ScreenHunter_77_1.jpg</image>
+<publishing_site>MSN BR</publishing_site>
+<publishing_section>Home - Featured Artists</publishing_section>
+</description>
+ <authored>Thu, 12 Mar 2009 12:48:26 -0400</authored>
+ <author>admin</author>
+ <updated>Wed, 01 Apr 2009 10:35:30 -0400</updated>
+</item>
+<item>
+ <title>Alice in Chains</title>
+ <link>http://cm-msnbr.cyloop.com/cms/node/9220</link>
+ <description><drupal_id>9220</drupal_id>
+<body><![CDATA[Some details here]]></body>
+<link><![CDATA[/aliceinchains]]></link>
+<image>/drupal/files/mxbr_test_0.jpg</image>
+<publishing_site>MSN BR</publishing_site>
+<publishing_section>Home - Featured Artists</publishing_section>
+</description>
+ <authored>Wed, 01 Apr 2009 10:44:05 -0400</authored>
+ <author>admin</author>
+ <updated>Sun, 19 Apr 2009 21:48:37 -0400</updated>
+</item>
+<item>
+ <title>Pink</title>
+ <link>http://cm-msnbr.cyloop.com/cms/node/9221</link>
+ <description><drupal_id>9221</drupal_id>
+<body><![CDATA[Pink details here]]></body>
+<link><![CDATA[/pink]]></link>
+<image>/drupal/files/mxbr_test.jpg</image>
+<publishing_site>MSN BR</publishing_site>
+<publishing_section>Home - Featured Artists</publishing_section>
+</description>
+ <authored>Wed, 01 Apr 2009 10:45:15 -0400</authored>
+ <author>admin</author>
+ <updated>Sun, 19 Apr 2009 21:48:09 -0400</updated>
+</item>
+</channel>

@@ -1,0 +1,33 @@
+:javascript
+  $(document).ready(function() {
+    $('.scopes a').click(function() {
+      $('.scopes a').removeClass('active');
+      scope = $(this).attr('class').match(/([^\ ]*)/);
+      $('input[name=scope]').attr('value', scope);
+      $(this).addClass('active');
+      return false;
+    })
+    
+    $('.search_box input[type=text]').focus(function() {
+      if (!$(this).attr('touched')) {
+        $(this).attr('value', '');
+        $(this).attr('touched', true);
+      }
+    })
+    
+    link = $('.scopes a.' + $('input[name=scope]').attr('value'))
+    link.css('font-weight', 'bold');
+  })
+#content
+  %h2.alternate 
+    == #{t('search.search_title')}
+  .filters
+    %span.label
+      == #{t('search.search_results_for')} “#{h params[:q]}”
+
+  %ul#search_results.search
+    = render :collection => @results, :partial => "#{@scope.to_s.underscore}"
+  = will_paginate @results, pagination_args
+
+#secondary_content
+  = banner_ad("square_banner")

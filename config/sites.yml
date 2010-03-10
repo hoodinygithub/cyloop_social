@@ -1,0 +1,82 @@
+MSN Mexico:
+  name: MSN Mexico
+  deploy_name: mexico
+  code: msnmx
+  domains:
+    - ms.msn.cyloop.com
+    - production.ms.hoodiny.com
+    - prodigy.msn.cyloop.com
+    - staging.mx.hoodiny.com
+
+MSN Brazil:
+  name: MSN Brazil
+  deploy_name: brazil
+  code: msnbr
+  domains:
+    - br.msn.cyloop.com
+    - production.br.hoodiny.com
+    - staging.br.hoodiny.com
+
+MSN US Latin:
+  name: MSN US Latin
+  deploy_name: latino
+  code: msnlatino
+  domains:
+    - latino.msn.cyloop.com
+    - production.latino.hoodiny.com
+    - staging.latino.hoodiny.com
+
+MSN Latam:
+  name: MSN Latam
+  deploy_name: latam
+  code: msnlatam
+  domains:
+    - latam.msn.cyloop.com
+    - production.latam.hoodiny.com
+    - staging.latam.hoodiny.com
+
+MSN Canada EN:
+  name: MSN Canada EN
+  deploy_name: canada_en 
+  code: msncaen
+  domains:
+    - ca.en.msn.cyloop.com
+    - music.ca.msn.cyloop.com
+    - staging.ca.en.hoodiny.com
+
+MSN Canada FR:
+  name: MSN Canada FR
+  deploy_name: canada_fr
+  code: msncafr
+  domains:
+    - ca.fr.msn.cyloop.com
+    - musique.ca.msn.cyloop.com
+    - staging.ca.fr.hoodiny.com
+
+Cyloop:
+  name: Cyloop
+  deploy_name: cyloop
+  code: cyloop
+  domains:
+    - cyloop.com
+    - www.cyloop.com
+    - ey.cyloop.com
+    - us.cyloop.com
+    - cyloop.local:3000
+    
+Cyloop ES:
+  name: Cyloop ES
+  deploy_name: cyloopes
+  code: cyloopes
+  domains:
+    - cyloop.es
+    - staging.es.hoodiny.com
+    
+MSN Argentina:
+  name: MSN Argentina
+  deploy_name: argentina
+  code: msnar
+  domains:
+    - ar.msn.cyloop.com
+    - production.ar.hoodiny.com
+    - staging.ar.hoodiny.com    

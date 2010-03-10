@@ -1,0 +1,20 @@
+%h3
+  == Chats #{pill_link_to("Add New Chat", new_admin_chat_path)}
+
+%ul.chats
+  - @chats.each do |chat|
+    - unless chat.blank?
+      %li.chat{:class => cycle("even", "odd")}
+        .info
+          %h4== #{chat.artist.name} - #{chat.status} 
+          .meta
+            == Chat date: #{chat.chat_date.to_s(:date)}
+          .actions
+            = pill_link_to "Edit", edit_admin_chat_path(chat)
+            = pill_link_to "Remove", confirm_remove_admin_chat_path(chat), {:class => 'facebox'}
+            - if chat.pre? || chat.live? || chat.down?
+              = pill_link_to "Moderator", admin_moderator_path(chat)
+              = pill_link_to "Interviewee", admin_interviewee_path(chat)
+
+= will_paginate @chats, pagination_args
+

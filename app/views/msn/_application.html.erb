@@ -1,0 +1,11 @@
+<!-- Initialize the application -->
+<msgr:app
+  privacy-url="<%= privacy_policy_url %>"
+  channel-url="<%= msn_channel_url %>"
+  application-logo="http://<%= request.host %>/images/messenger/cyloop_logo_blue.png"
+  application-verifier-token="<%= msn_app_verifier %>"
+  token-url="<%= msn_refresh_url  %>">
+</msgr:app>
+
+<!-- Show the bar -->
+<msgr:bar></msgr:bar>

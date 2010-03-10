@@ -1,0 +1,10 @@
+#primary-links-wrapper
+  %ul#primary-links
+    %li.link
+      = link_to(t("navigation.dashboard"), my_dashboard_path)
+    %li.link
+      = link_to(t("navigation.radio"), radio_path)
+    = render :partial => 'shared/nav_search'
+%ul#secondary-links
+  %li.link
+    = link_to t("sessions.destroy.sign_out"), site_logout_url

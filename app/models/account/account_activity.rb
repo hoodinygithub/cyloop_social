@@ -1,0 +1,4 @@
+module Account::AccountActivity
+
+
+end

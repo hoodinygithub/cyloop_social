@@ -1,0 +1,52 @@
+/* @override http://localhost/html/errors/css/errors.css */
+
+.errors #error_box {
+	margin: 0 auto;
+	width: 892px;
+	height: 377px;
+	font-size: 1.2em;
+	background: white url(/images/background_errors.png);
+}
+
+.errors .error_message {
+	width: 600px;
+}
+
+.errors #error_box h2 {
+	color: #004061;
+	font-size: 1.8em;
+	text-transform: capitalize;
+	padding-top: 40px;
+	margin-left: 30px;
+	border-bottom: 1px solid #CECECE;
+	padding-bottom: 20px;
+}
+
+.errors #error_box .fr {
+	color: #004061;
+  font-size: 1.3em;
+	text-transform:none !important;
+	padding-top: 40px;
+	margin-left: 30px;
+	border-bottom: 1px solid #CECECE;
+	padding-bottom: 20px;
+}
+.errors #error_box p {
+	margin-left: 30px;
+	padding: 20px 60px 20px 0;
+	font-size: 1.1em;
+	line-height: 1.33em;
+}
+
+.errors #error_box ul {
+	margin-left: 30px;
+	padding: 0 93px 0 0;
+}
+
+.errors #error_box ul li {
+	padding: 5px 0;
+	color: #666;
+	line-height: 1.33em;
+	font-size: .8em;
+	/*border-bottom: 1px dotted #CCC;*/
+}

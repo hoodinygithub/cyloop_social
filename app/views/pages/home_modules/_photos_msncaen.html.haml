@@ -1,0 +1,19 @@
+- if @feed_photos && !@feed_photos.empty?
+  .blue.headline.clearfix
+    %h2
+      %span
+        =t 'modules.photos.title'
+
+  .infiniteCarousel      
+    .wrapper      
+      %ul
+        - @feed_photos.each do |feed|
+          %li
+            %span= link_to(image_tag("#{feed.image}", :alt => feed.title), feed.link, :title => feed.title)
+            %div{:style=>"width:125px;height:47px;overflow:hidden"}
+              = link_to(feed.title, feed.link, :title => feed.title)
+  
+  :javascript
+    $(document).ready(function () {
+      $('.infiniteCarousel').infiniteCarousel();
+    });

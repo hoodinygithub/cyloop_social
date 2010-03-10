@@ -1,0 +1,5 @@
+%ul#messages
+  - @messages.each do |message|
+    %li{:class => @messages.first == message ? "first" : "", :id => "message_#{message.id}"}
+      = message.question
+      %span== por #{message.name} de #{message.location}

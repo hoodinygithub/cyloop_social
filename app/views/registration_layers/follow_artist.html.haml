@@ -1,0 +1,5 @@
+.registration_layer{:onclick => onclick_to_with_gat_code(site_login_url, @code)}
+  .top{:style => "background-image: url(/images/layers/#{layer_background_image});"}
+    %h2.channel_headline= t('registration.layers.follow_artist', :name => @account.name, :link => link_to(t("registration.layers.click_here"), site_login_url, :onclick => gat_code(@code)))
+    = render :partial => 'stats'
+  = render :partial => 'bottom'

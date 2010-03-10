@@ -1,0 +1,41 @@
+- require_javascript 'media_manager'
+- if session[:display_layer] & logged_in?
+  = render :partial => "shared/lightbox_show"
+
+-content_for :album_info do
+  .module.album_info.first.cover_art
+    %h3= t('albums.show.about_this_album')
+    = avatar_for(@album, :album, {:alt => "#{profile_artist.name} - #{@album.music_label}"})
+    %span.cover_case_large
+    .album_details
+      - unless @album.blank?
+        %span
+          == <strong>#{t('albums.label')}:</strong> #{@album.music_label}
+        %span
+          == <strong>#{t('albums.release_date')}:</strong> #{@album.localized_release_date}
+        %span
+          == <strong>#{t('albums.total_plays')}:</strong> #{@album.total_listens}
+
+.clearfix#list_header
+  .title
+    %h3= possessive :albums
+    .sub== #{link_to t('basics.albums'), albums_path} >> #{@album.name}
+  .count
+    - unless @album.blank?
+      %span.count= pluralize(@album.songs.length, t("basics.song"), t("basics.songs"))
+      %span.item== #{t('playlists.total_time')}: #{length_of_time_from_seconds @album.total_time}
+
+= render :partial => 'heading'
+
+%script
+  - if params.has_key?(:autoplay)
+    == autoplay = true
+  - if params[:song_id] != nil
+    == song_id = #{perma_id(params[:song_id])};
+    == autoplay = true
+  == count = #{@album.songs.size - 1};
+
+= render 'songs/songs', :songs => @songs
+
+= will_paginate @songs, pagination_args
+

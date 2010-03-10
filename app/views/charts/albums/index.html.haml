@@ -1,0 +1,4 @@
+= render :partial => 'charts/heading'
+
+%ol.chart= render @albums
+= will_paginate @albums, pagination_args

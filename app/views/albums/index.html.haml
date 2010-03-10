@@ -1,0 +1,44 @@
+- if session[:display_layer] & logged_in?
+  = render :partial => "shared/lightbox_show"
+.clearfix#list_header
+  .title
+    %h3= possessive :albums
+    .sub= t('basics.albums')
+
+  .count
+    %span.count= @all_albums.count
+    %span.item=t 'basics.albums'
+
+= render :partial => 'heading'
+
+%ul.playlists.activities
+  - @albums.each do |album|
+    - unless album.songs_count and album.songs_count < 1 
+      %li.cover_art.clearfix[album]
+        .avatar
+          = link_to avatar_for(album, :small, {:alt => "#{profile_artist.name} - #{album.music_label}"}), album_path(album)
+          = link_to '', album_path(album), :class =>"cover_case"
+          %span.cover_case
+        .info
+          //%h4= link_to album.music_label, album_path(album)
+          %h4= link_to album.name, album_path(album)
+          .meta
+            == #{t('albums.year')}: #{album.year} #{t('albums.label')}: #{album.music_label}
+          .additional_meta
+            %span.songs
+              %span.count= album.songs_count
+              =t 'basics.songs'
+            %span.time
+              %span.count= length_of_time_from_seconds album.total_time
+              =t 'playlists.total_time'
+          .tools
+            = link_to '', album_path(album.to_param, :autoplay => true), :class => "play", :title => t('actions.play')
+            - if has_buylink?( album )
+              .buy
+                = link_to '', album_buylink_path(album), :class => "facebox buy", :title => t('actions.buy_album')
+            - if current_user == profile_account
+              = pill_link_to :edit, edit_my_album_path(album)
+              = button_to :delete, my_album_path(album), :method => :delete
+
+= will_paginate @albums, pagination_args
+

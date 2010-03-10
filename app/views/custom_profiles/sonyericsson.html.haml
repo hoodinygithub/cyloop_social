@@ -1,0 +1,50 @@
+- content_for :head do
+  - if site_includes(:msnbr)
+    = stylesheet_link_tag 'custom_profiles/sonyericssonbr'
+  - else
+    = stylesheet_link_tag 'custom_profiles/sonyericsson'
+#profile_header.clearfix
+  #profile_label
+    = image_tag( 'sonyericsson/ericsson_logo.png' )
+  #stats.clearfix
+    .stat
+      %span.count= number_with_delimiter(profile_account.follower_count)
+      %span.label=t 'users.stats.followers'
+      .follow_actions
+        = follow_button(profile_account)
+    .stat
+      %span.count#stats_visits_count= number_with_delimiter(profile_account.visit_count)
+      %span.label= t 'users.stats.visits'
+
+#content
+  :javascript
+    var flashvars = {
+      LOGGEDIN:"#{logged_in?}",
+      QUEUE:"#{params[:station_id]}",
+      LOCALE:"#{site_includes(:msnbr) ? 'pt_BR' : 'es'}",
+      PLID:"#{profile_account.playlists[0].try(:id)}"
+    };
+    var params = {wmode:"transparent"};
+    var attributes = {id:"radio_engine", name:"radio_engine"};
+    swfobject.embedSWF("flash/radio_engine_ericsson.swf", "radio_player", "620", "329", "9", false, flashvars, params, attributes);
+  #radio_player
+
+  - if site_includes(:msnbr)
+    :javascript
+      var flashvars = {};
+      var params = {wmode:"transparent"};
+      var attributes = {id:"ericsson_ad", name:"ericsson_ad"};
+      swfobject.embedSWF('flash/sony_ad.swf', 'ericsson_ad', '610', '285', '9', false, flashvars, params, attributes);
+  - else
+    :javascript
+      var flashvars = {};
+      var params = {wmode:"transparent"};
+      var attributes = {id:"ericsson_ad", name:"ericsson_ad"};
+      swfobject.embedSWF('flash/610x285_SE_YAO.swf', 'ericsson_ad', '620', '285', '9', false, flashvars, params, attributes);
+  #ericsson_ad
+    
+  #tm
+    = t('custom_profiles.sony_disclaimer')
+
+#secondary_content
+  = render 'custom_artists/sidebar'

@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://staging.mx.hoodiny.com/mana" />
+<title>dashboard_mx</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">dashboard_mx</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>http://staging.mx.hoodiny.com/mana</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertElementPresent</td>
+	<td>//div[@id=&quot;profile_label&quot;]/img[@class=&quot;avatar small&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Guadalajara, Estado de Baja California, Mexico</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//a[contains(@href, '/registration_layers/follow_artist?account_id=9417&amp;follow_profile=9417&amp;return_to=%2Fmana')]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//h2[@class='channel_headline']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//h2[@class='channel_headline']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>i0116</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>i0116</td>
+	<td>cyloop_selenium_test@hotmail.com</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>i0118</td>
+	<td>abc123</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>idSIButton9</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForLocation</td>
+	<td>http://staging.mx.hoodiny.com/mana</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value=&quot;Siguiendo&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertElementPresent</td>
+	<td>//input[@value=&quot;Seguir&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value=&quot;Seguir&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertElementPresent</td>
+	<td>//input[@value=&quot;Siguiendo&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertElementPresent</td>
+	<td>//ol[@class=&quot;chart songs&quot;]/li</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertElementPresent</td>
+	<td>//ol[@class=&quot;chart songs&quot;]/li[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertElementPresent</td>
+	<td>//ol[@class=&quot;chart songs&quot;]/li[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertElementPresent</td>
+	<td>//ol[@class=&quot;chart songs&quot;]/li[4]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertElementPresent</td>
+	<td>//ol[@class=&quot;chart songs&quot;]/li[5]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertElementNotPresent</td>
+	<td>//ol[@class=&quot;chart songs&quot;]/li[6]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='charts_tabs']/a[2]/span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertElementPresent</td>
+	<td>//div[@id=&quot;charts_tabs&quot;]/a[@class=&quot;filter active&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertElementPresent</td>
+	<td>//ol[@class=&quot;chart albums&quot;]/li</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertElementPresent</td>
+	<td>//ol[@class=&quot;chart albums&quot;]/li[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertElementPresent</td>
+	<td>//ol[@class=&quot;chart albums&quot;]/li[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertElementPresent</td>
+	<td>//ol[@class=&quot;chart albums&quot;]/li[4]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertElementPresent</td>
+	<td>//ol[@class=&quot;chart albums&quot;]/li[5]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertElementNotPresent</td>
+	<td>//ol[@class=&quot;chart albums&quot;]/li[6]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertElementPresent</td>
+	<td>//div[@class=&quot;module albums clearfix&quot;]/ul/li</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertElementPresent</td>
+	<td>//div[@class=&quot;module albums clearfix&quot;]/ul/li[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertElementPresent</td>
+	<td>//div[@class=&quot;module albums clearfix&quot;]/ul/li[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertElementPresent</td>
+	<td>//div[@class=&quot;module albums clearfix&quot;]/ul/li[4]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertElementPresent</td>
+	<td>//div[@class=&quot;module albums clearfix&quot;]/ul/li[5]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertElementPresent</td>
+	<td>link=Mostrar Más</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertElementPresent</td>
+	<td>//div[@class=&quot;module albums clearfix&quot;]/ul/li[6]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertElementNotPresent</td>
+	<td>//div[@class=&quot;module albums clearfix&quot;]/ul/li[7]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertElementPresent</td>
+	<td>//a[@class=&quot;album_view_more&quot; and @href=&quot;/mana/albums&quot;]</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+</body>
+</html>

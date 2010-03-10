@@ -1,0 +1,826 @@
+/*++++++++++++++++++++++++++++++++++++++++++++++++++*/
+/* Misc Styles*/
+/*++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+body {
+  behavior: url("/javascripts/csshover.htc");
+}
+
+div#profile_label {
+	width: 59%;
+	float: left;
+}
+
+#secondary_content_radio {
+	float: right;
+	margin-top:-826px;
+	width:300px;
+}
+
+
+input {
+  color: #666;
+  font-size: 1.6em;
+  padding: 4px 4px;
+  border: 1px solid #999; }
+
+input#create_station {
+  cursor: hand; }
+
+a.view_more {
+  padding-top: 0 !important;
+}
+
+* html .ClearFix{
+	height:1%;
+}
+
+/*++++++++++++++++++++++++++++++++++++++++++++++++++*/
+/* Homepage */
+/*++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+#mast_head {
+  background-image: none;
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale, src='/images/background_header.png');
+}
+
+.home .featured_artist .meta a {
+  background-image: none;
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale, src='/images/background_featured_trans_light.png');
+}
+
+.home .featured_artist .meta span {
+  background-image: none;
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale, src='/images/background_featured_trans_dark.png');
+}
+
+.home .module.small_ad {
+	padding-top: 20px;
+	height: 173px;
+}
+
+.home .module.br_small_ad {
+	padding-top: 20px;
+	height:175px;
+}
+
+
+#msn_footer .copyright_info {
+	float: right;
+	position: relative;
+	top: 10px;
+	right: 5px;
+}
+
+.home .module.create_station form input.radio_create {
+	width: 321px;
+}
+
+.home .featured_artist ul li {
+	width: none;
+}
+
+.home .featured_artist ul li .artist_name {
+  top: 7px!important;
+	font-size: 9px !important;
+}
+
+.home .featured_artist #featured_large_image {
+	height: 250px;
+	width: 455px;
+}
+
+.home .featured_artist .meta {
+	position: absolute;
+	left: 0;
+	top: 183px;
+	width: 100%;
+
+}
+
+.home.msnbr .baladas ul, .home .concerts ul {
+	background-color: white;
+}
+
+.module.ad.first {
+	margin-top: 0 !important;
+}
+
+.home .module.msn_video {
+	margin-top: 20px;
+}
+
+/*++++++++++++++++++++++++++++++++++++++++++++++++++*/
+/* */
+/*++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+div.form_marketing {
+  z-index: -1;
+}
+
+#profile_header { z-index: -1 }
+
+#featured #artists ul#featured_wide {
+  padding-bottom: 2px;
+}
+
+.users .signup_section, .demographics .signup_section {
+  margin-left: 135px;
+}
+
+.users #content, .demographics #content {
+  margin-left: 10px;
+}
+
+.artist_recommendations .artist {
+  padding: 20px 20px 0 20px;
+}
+
+.dashboards #profile_header, .dashboards ul#nav_menu, .dashboards .recommended_artists ul {
+  height: 1%;
+}
+
+.dashboards #profile_header #stats div,   .dashboards ul#nav_menu #stats div,   .dashboards .recommended_artists ul #stats div {
+  display: inline;
+}
+
+.dashboards ul#nav_menu li.current {
+  z-index: 2;
+  position: relative;
+}
+
+.dashboards ul#nav_menu li a {
+  z-index: 2;
+  position: relative;
+}
+
+.dashboards .recommended_artists {
+  overflow: hidden;
+}
+
+.dashboards .recommended_artists ul {
+  padding-right: 20px;
+  width: 100%;
+  position: relative;
+}
+
+
+div.recommended_artists {
+	margin-bottom: 150px !important;
+}
+
+div.recommended_artists h3{
+	display: block;
+}
+
+div.recommended_artists h3{
+	display: block;
+}
+
+div.recommended_artists ul li {
+	float: left;
+	font-size: 0.9em;
+	margin-bottom: 10px !important;
+	margin-right: 3px !important;
+	overflow: hidden;
+	width: 91px;
+}
+
+div.recommended_artists ul li {
+	float: left;
+	font-size: 0.9em;
+	margin-bottom: 10px !important;
+	margin-right: 3px !important;
+	overflow: hidden;
+	width: 91px;
+}
+
+div#stats span.count {
+	line-height:1.0em !important;
+}
+div#stats span.label {
+	margin-top: -5px !important;
+}
+
+ul.navigation {
+	height: 27px;
+}
+
+div#start_listening input {
+	float: left;
+}
+div#start_listening .button {
+	float: left;
+}
+
+div#results {
+	clear: both;
+}
+
+div#start_listening form#artist_search {
+	background-color: #ECECEC;
+	height: 40px;
+}
+
+.users div#profile_header, .songs div#profile_header, .artists div#profile_header, .follow_requests div#profile_header, .followers div#profile_header, .followees div#profile_header, .user_stations div#profile_header, .playlists div#profile_header {
+	margin-bottom:15px;
+}
+
+div#list_header div.count span.count {
+	line-height: 1.0em;
+}
+
+div#list_header div.count span.counted {
+	margin-top: -7px;
+
+}
+div.module, div.recommended_artist {
+	margin-bottom: 0px !important;
+}
+
+ol.chart div.bar span {
+	display: block;
+	height: 27px;
+	top: 0;
+}
+
+ol.chart.songs *,
+ol.chart.albums * {
+	margin: 0; padding: 0;
+}
+
+div.top_artists li div.listens {
+	margin-top: -15px;
+}
+
+div.form_actions button {
+	width: auto;
+}
+
+ol.chart div.bar_right {
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale src=/images/background_charts_right.png);
+	background: #2496BC !important;
+	height: 28px !important;
+}
+
+ol.chart li {
+	padding: 12px 0px 12px 0px !important;
+	width: 576px;
+}
+
+ol.chart li div.avatar img {
+	margin-left: 8px !important;
+}
+
+ol.chart li { height: 60px; }
+
+ol.chart li div.avatar {
+	float: left;
+	padding: 2px;
+}
+
+ol.chart div.tools {
+	height: 20px;
+	float: left;
+}
+ol.chart span.title {
+	float: left;
+}
+li div.info div.title span{
+	margin-left: 5px;
+}
+.module.charts .clearfix {
+	margin: 0; padding: 0;
+}
+ol.chart div.chart_bar div.bar span {
+	overflow: hidden;
+}
+
+ol.chart div.chart_actions {
+	height: 20px !important;
+}
+
+ol.chart div.info {
+	margin-left: 5px;
+	float: left;
+}
+
+ol.chart li.artist div.navigation {
+	margin-left: 5px;
+}
+.module.albums ul {
+/*	margin-bottom:40px;
+*/	margin-left: 0px;
+}
+.module.albums ul li {
+	margin-left: 0px;
+	margin-right: 7px;
+}
+.module.albums ul li a {
+/*	margin-left: 3px;*/
+}
+
+#customizer .customize_buttons {
+	padding-bottom: 15px;
+	margin-left: 155px !important;
+	margin-right: 0px !important;
+	width: 450px!important;
+}
+
+#customizer li.bg.color.last {
+	margin-right: 0px !important;
+}
+
+.module.biography, .module.ad {
+	margin-top: 30px;
+}
+
+div.form_marketing span.header {
+	margin-top: 9px;
+	width: 305px !important;
+	height: 15px;
+}
+
+div.form_marketing div.vignette_actions div.button_wrapper {
+	margin-right: 0px !important;
+}
+
+li div.tools input.pill_button {
+	height: 24px !important;
+}
+
+li div.info div.song span.song_by {
+	margin-left: 5px;
+}
+
+li div.tools div.edit {
+	margin: 0px !important;
+}
+
+ul.similar_artists li {
+	margin-right: 5px !important;
+}
+
+div.form_actions div.row {
+	width: auto;
+}
+
+div#start_listening div.go_button {
+	margin-left: 5px;
+}
+div#start_listening div.go_button input {
+	padding: 0px 4px !important;
+}
+
+div#results .artist_name {
+	width: 96%;
+}
+
+.home .module.create_station div.pill_button input {
+	height: 22px !important;
+}
+
+.colorpicker_color div {
+	background-image: none;
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale, src='/images/colorpicker/colorpicker_overlay.png');
+}
+
+.colorpicker_color div div {
+	background-image: none;
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale, src='/images/colorpicker/colorpicker_select.gif');
+}
+
+.home .cover_case {
+	background-image: none;
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale, src='/images/case.png');
+}
+
+.cover_case {
+  background-image: none;
+  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale, src='/images/case.png');
+	margin-top: 0px !important;
+  margin-left: -76px !important;
+}
+
+.cover_case_medium {
+  background-image: none;
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale, src='/images/case_medium.png');
+	margin-top: 0px !important;
+  margin-left: -93px !important;
+}
+
+.cover_case_large {
+  background-image: none;
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale, src='/images/case_large.png');
+  margin-top: 25px !important;
+  margin-left: -301px !important;
+}
+
+.cover_art img.album {
+	padding:30px 0 30px 30px !important;
+}
+
+.cover_art img.album {
+	padding:30px 0 30px 30px !important;
+}
+.info{
+  margin-bottom: 0px
+}
+ul#activity_filters {
+  background-image: none!important;
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale, src='/images/background_header_divider.png');
+}
+ul#activity_type_filters li a#listen {
+  background: #FFF url('/images/ie/activity_songs.gif') no-repeat 8px 8px!important;
+}
+ul#activity_type_filters li a#listen.active {
+  background: #025D8C url('/images/ie/activity_songs_active.gif') no-repeat 8px 8px!important;
+}
+ul#activity_type_filters li a:hover#listen{
+  background: #025D8C url('/images/ie/activity_songs_active.gif') no-repeat 8px 8px!important;
+}
+ul#activity_type_filters li a#playlist {
+  background: #FFF url('/images/ie/activity_playlists.gif') no-repeat 8px 5px!important;
+}
+ul#activity_type_filters li a#playlist.active {
+  background: #025D8C url('/images/ie/activity_playlists_active.gif') no-repeat 8px 5px!important;
+}
+ul#activity_type_filters li a:hover#playlist {
+  background: #025D8C url('/images/ie/activity_playlists_active.gif') no-repeat 8px 5px!important;
+}
+ul#activity_type_filters li a#playlist.loading {
+  background: #025D8C url('/images/ie/activity_playlists_loading.gif') no-repeat 8px 5px!important;
+}
+ul#activity_type_filters li a#station {
+  background: #FFF url('/images/ie/activity_stations.gif') no-repeat 8px 4px!important;
+}
+ul#activity_type_filters li a#station.active {
+  background: #025D8C url('/images/ie/activity_stations_active.gif') no-repeat 8px 4px!important;
+}
+ul#activity_type_filters li a:hover#station {
+  background: #025D8C url('/images/ie/activity_stations_active.gif') no-repeat 8px 4px!important;
+}
+ul#activity_type_filters li a#twitter {
+  width: auto!important;
+  background: #FFF url('/images/ie/activity_twitter.gif') no-repeat 7px 5px!important;
+}
+ul#activity_type_filters li a#twitter.active {
+  background: #025D8C url('/images/ie/activity_twitter_active.gif') no-repeat 7px 5px!important;
+}
+ul#activity_type_filters li a:hover#twitter {
+  background: #025D8C url('/images/ie/activity_twitter_active.gif') no-repeat 7px 5px!important;
+}
+ul.activities li.listen{
+	background: transparent url('/images/ie/activity_songs.gif') no-repeat 97% 15% !important;
+}
+ul.activities li.station{
+	background: transparent url('/images/ie/activity_stations.gif') no-repeat 97% 15% !important;
+}
+ul.activities li.playlist{
+	background: transparent url('/images/ie/activity_playlists.gif') no-repeat 97% 15% !important;
+}
+ul.activities li.twitter{
+	background: transparent url('/images/ie/activity_twitter.gif') no-repeat 97% 15% !important;
+}
+
+ul.activities li:hover{
+	background-color: #FEFFE3 !important;
+	display:block;
+}
+
+ul.playlists li div.tools div.delete,
+{
+	float: left;
+	width: 70px;
+}
+
+
+.sample_flag {
+	display: block;
+  float: left;
+  margin-left: 10px !important;
+}
+div#chart_actions a.sample_flag {
+  margin-left: 13px !important;
+}
+ul#search_results a.sample_flag {
+  margin-left: 13px !important;
+}
+.searches  .filters.title {
+	position: static;
+	width: auto;
+	float: none;
+	margin: 0;
+	background: none;
+	border: 0;
+}
+
+.home .tops .title {
+    padding-top: 6px;
+    width: 145px;
+}
+
+.home.msncaen .reviews li, .home.msncafr .reviews li {
+	float: left;
+	width: 80px;
+	margin: 0 26px 0 0;
+  padding-right: 0px;
+	overflow: hidden;
+}
+.home.msncafr .reviews li {
+
+}
+.home.msncaen .reviews li.last, .home.msncafr .reviews li.last {
+	background-color: #fff;
+	margin:0px;
+	padding: 0px;
+}
+.home.msncaen .reviews li img, .home.msncafr .reviews li img{
+	margin: 0px;
+  padding-right: 0px
+}
+
+/* --- */
+
+.home.msncaen .reviews, .home.msncaen .blogs {
+	background-color: #fff;
+	width: 48%;
+	float: left;
+}
+.home.msncaen .blogs {
+	float: right;
+  padding-right: 0px;
+}
+.home.msncaen .blogs li {
+	background-color: #fff;
+	float: left;
+	display: block;
+	margin: 0;
+}
+.home.msncaen .blogs li a.title {
+	background-color: #fff;
+	color: #555 !important;
+	font-size: 1.25em;
+	display: block;
+	text-transform: uppercase !important;
+	margin: 0;
+	padding: 0 0 5px 0;
+}
+.home.msncaen .blogs li a.description {
+	background-color: #fff;
+  font-size: 1em !important;
+	display: block;
+	color: #555 !important;
+	text-transform: none !important;
+	margin: 0;
+	padding: 0 0 5px 0;
+}
+
+.home.msncafr .news ul li .text a {
+  display:block;
+  float:left;
+  width:210px;
+  overflow:hidden;
+  position:relative;
+  z-index:1;
+  left:3px;
+}
+
+div.recommended_artists ul li div.name_box{
+  overflow:hidden;
+  width:84px;
+  height:13px;
+}
+
+
+/* Cyloop.com */
+body.cyloop_home #cyloop_footer {
+  width: 1000px;
+	background-color: #111;
+	padding: 20px;
+}
+body.cyloop_home .module.create_station {
+	width: 957px;
+	height: 280px;
+	background: white url(/images/background_cyloop_create_station.gif);
+	margin-top: 0px;
+	position: static!important;
+}
+body.cyloop_home .module.create_station h3 {
+	display: none;
+}
+body.cyloop_home .module.create_station form {
+	margin:0 auto;
+	padding:0 25px;
+	width: 907px;
+	height: 60px;
+	padding-top: 220px;
+	position: static!important;
+	text-align: center;
+}
+body.cyloop_home .module.create_station form input {
+	width: 710px!important;
+	height: 30px;
+	font-weight: bolder;
+	font-size: 1.7em;
+	top: 0;
+	margin-top: 5px;
+	margin-left: 8px;
+}
+body.cyloop_home .module.create_station form .pill_button {
+	display: block;
+	float: left;
+	margin: 0;
+	top: -4px;
+	position: relative;
+	width: 160px;
+	height: 50px;
+	background: transparent url(../images/background_btn_create_station.gif) no-repeat right;
+}
+body.cyloop_home .module.create_station form .pill_button input {
+	width: 160px!important;
+	height: 50px!important;
+}
+
+body.cyloop_home .interviews,
+body.cyloop_home .photo_galleries,
+body.cyloop_home .featured_artist { display: none; }
+
+body.cyloop_home #content {
+  float: left;
+}
+body.cyloop_home #secondary_content {
+  position:relative;
+  float: right;
+  margin-top:0px;
+}
+body.cyloop_home #content .headline,
+body.cyloop_home #secondary_content .headline {
+	font-size: 0.9em;
+}
+body.cyloop_home .top_artists, body.cyloop_home .top_songs {
+  width: 32%;
+}
+body.cyloop_home .tops {
+  width: 955px;
+}
+body.cyloop_home .top_songs {
+  float: left;
+  padding-left: 23px
+}
+
+
+div.large_form_button input {width: 260px !important;}
+
+.module.top_artists_profile .listens {
+	float: right;
+	color: #666;
+	font-size: .8em;
+	margin-top: -15px;
+}
+
+div#top_songs table tr td span.duration_time{
+  margin-left: 20px;
+}
+.home.msnbr div.baladas {
+  padding-top:30px;
+}
+
+ul.error
+{
+  display: none;
+  background: #FFEDED none repeat scroll 0 0;
+  border: 1px solid #D88485;
+  color: #7D0000;
+  font-size: 12px;
+  margin-bottom: 2em;
+  padding: 1.4em;
+}
+
+/* Registration Layers */
+.registration_layer .stats ul {
+  background-image: none;
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale, src='/images/layers/transparency.png');  
+}
+.registration_layer .stats li.listen span {
+  background-image: url(../images/layers/listen.gif);
+}
+.registration_layer .stats li.discover span {
+  background-image: url(../images/layers/discover.gif);
+}
+.registration_layer .stats li.know span {
+  background-image: url(../images/layers/know.gif);
+}
+.registration_layer .stats li.share span {
+  background: transparent url(../images/layers/share.gif) no-repeat top center;
+}
+.registration_layer .close { 
+  background-image: url(../images/layers/close.gif); 
+  margin-top: -236px;
+  height: 14px;
+}
+.registration_layer .top h2 { 
+  background: transparent url(../images/layers/cyloop_powered.gif) no-repeat top 465px;
+  height: 200px;
+  margin-left: 10px;
+}
+.registration_layer .bottom {
+  margin: 0;
+  padding-bottom: 0;
+}
+.registration_layer .bottom p {
+  margin-top: 10px;
+}
+/* Registration Form */
+body.users_new #page_wrapper,
+body.users_create #page_wrapper { 
+  margin: 0!important;
+  width: 100%;
+}
+
+body.users_new #page_wrapper h2,
+body.users_create #page_wrapper h2 {
+  padding: 30px 40px!important;
+}
+
+body.users_new #page_wrapper #content,
+body.users_create #page_wrapper #content {
+  border-right: 1px solid #ddd;
+  width: 435px !important;
+  padding: 0px 30px !important;
+  float: left;  
+}
+body.users_new .new_user .row,
+body.users_create .new_user .row {
+  width: 400px;
+}
+body.users_new .new_user .user_url,
+body.users_create .new_user .user_url {
+  width: 90px;
+  font-size: 24px;
+}
+body.users_new .new_user .slug_block,
+body.users_create .new_user .slug_block {
+  width: 255px !important;    
+}
+body.users_new .new_user .slug_block .field,
+body.users_create .new_user .slug_block .field {
+  width: 250px;
+}
+body.users_new .new_user .slug_block .input_wrapper,
+body.users_create .new_user .slug_block .input_wrapper {
+  width: 250px;  
+}
+body.users_new .new_user .slug_block .formError,
+body.users_create .new_user .slug_block .formError{
+  width: 245px!important;
+}
+body.users_new .slug_block .available,
+body.users_create .slug_block .available {
+  width: 245px!important;
+}
+body.users_new #page_wrapper #sidebar,
+body.users_create #page_wrapper #sidebar {
+  padding: 50px;
+  float: right;
+  width: 380px;
+}
+body.users #sidebar ul .discover { 
+  background-image:  url(../images/registration/discover.gif);
+}
+body.users #sidebar ul .radio { 
+  background-image:  url(../images/registration/radio.gif);
+}
+body.users #sidebar ul .playlist { 
+  background-image:  url(../images/registration/playlist.gif);
+}
+body.users #sidebar ul .follow { 
+  background-image:  url(../images/registration/follow.gif);
+}
+body.users #sidebar ul .chat { 
+  background-image: url(../images/registration/chat.gif);
+}
+body.users_new .new_user .registration_complete span,
+body.users_create .new_user .registration_complete span {
+  line-height: 43px; display: block; width: 270px;
+  float: left; margin: 0;
+}
+body.users_new .new_user .registration_complete button,
+body.users_create .new_user .registration_complete button {
+  margin-left: 0;
+  margin-right: 30px;
+}
+body.users_new .new_user .checkbox .right,
+body.users_create .new_user .checkbox .right {
+  width: 360px;
+}
+
+/* Facebox fix */
+#facebox .b,
+#facebox .tl,
+#facebox .tr,
+#facebox .bl,
+#facebox .br {
+  background-image: none;
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale, src='/images/layers/transparency.png');  
+}

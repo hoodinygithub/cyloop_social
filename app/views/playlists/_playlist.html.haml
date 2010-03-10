@@ -1,0 +1,22 @@
+.avatar{:onclick => 'do_toggle(this)'}
+  = avatar_for(playlist, :small)
+.info
+  %h4= link_to playlist.name, playlist_path(playlist)
+  .meta{:onclick => 'do_toggle(this)'}
+    == #{t('basics.created_at', :when => distance_of_time_in_words_to_now(playlist.created_at))}
+    %span.contains== #{t('basics.contains')}: #{h playlist.artists_contained(:random => true, :limit => 4).join(', ')}
+  .additional_meta{:onclick => 'do_toggle(this)'}
+    %span.songs
+      %span.count= playlist.songs_count
+      =t 'basics.songs'
+    %span.time
+      %span.count= length_of_time_from_seconds playlist.total_time
+      =t 'playlists.total_time'
+  .tools
+    .play
+      = link_to '', playlist_path(playlist, :autoplay => true), :class => "play", :title => t('actions.play')
+    - if current_user == profile_account
+      .delete
+        =pill_link_to :delete, delete_confirmation_my_playlist_path(playlist), :class => "facebox"
+      .edit
+        = pill_link_to :edit, edit_my_playlist_path(playlist), :class => "facebox"

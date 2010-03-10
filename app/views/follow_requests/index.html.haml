@@ -1,0 +1,26 @@
+.clearfix#list_header
+  .title
+    %h3= possessive :follow_requests
+  
+.filters
+  %p.label= t('actions.filter_by') + ':'
+  %a.filter{:href => following_index_path}
+    %span= t('followings.following')
+  %a.filter{:href => followers_path}
+    %span= t('followings.followers')
+  %a.filter.active{:href => "javascript:void(0)"}
+    %span= t('followings.follow_requests')
+
+%ul.following#follow_requests
+  - current_user.follow_requests.each do |follower|
+    %li.clearfix[follower]
+      .avatar
+        = link_to avatar_for(follower.follower, "small"), follower.follower
+      .info
+        .item
+          %h4= link_to follower.follower, follower.follower
+        .tools
+          .approve
+            = button_to t('actions.approve'), follow_request_path(follower), :method => :put
+          .deny
+            = button_to t('actions.deny'), follow_request_path(follower), :method => :delete

@@ -1,0 +1,15 @@
+#player
+  .play-container.control
+    =link_to t("actions.play"), '#', :class => 'play'
+  .volume-container.control
+    =link_to t('actions.stop'), '#', :class => 'volume on'
+  .progress
+    .current_progress
+    .track_time
+      %span.position 0:00
+      \/
+      %span.duration 0:00
+  .track_info.clear
+    %strong.title
+    %span.artist.quiet
+  .clear

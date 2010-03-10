@@ -1,0 +1,21 @@
+.clearfix#list_header    
+  .title
+    %h3= possessive :followees
+      
+= render :partial => '/followings/heading'
+
+%ul.following#followees
+  - @followees.each do |followee|
+    %li.clearfix[followee]
+      .avatar
+        = link_to avatar_for(followee, :small), followee
+      .info
+        .item
+          %h4
+            = link_to followee, followee
+        .meta
+          = followee.location
+        .tools
+          = follow_button(followee)
+
+= will_paginate @followees, pagination_args

@@ -1,0 +1,76 @@
+- content_for :head do
+  = render :partial => 'shared/logged_in_callback'
+  
+.feedback
+  %h3 
+    =t "contact_us.form.welcome"
+  - unless params[:only_form]
+    %p= t('contact_us.form.header')
+    .contact_text
+      %h4= t('contact_us.form.resources')
+      %p
+        %strong= t('contact_us.form.new_cyloop')
+        = t('contact_us.form.new_cyloop_text', :link => link_to( t('contact_us.form.faq'), faq_url) ,:link2 => link_to( t('footer.support'), contact_us_url(:only_form => true) ))
+    .contact_text     
+      %p
+        %strong= t('contact_us.form.privacy')
+        = t('contact_us.form.privacy_text')
+      %ul
+        %li= link_to( t('footer.safety_tips'), safety_tips_url)
+        %li= link_to( t('footer.privacy_policy'), privacy_policy_url)
+        %li= link_to( t('footer.terms_and_conditions'), terms_and_conditions_url)
+    .contact_text
+      %p
+        %strong= t('contact_us.form.business_inquires')
+        = "#{t('contact_us.form.business_inquires_text')}: #{link_to( "info@hoodiny.com", "mailto:info@hoodiny.com")}"
+    .contact_text
+      %h4 
+        = t('contact_us.form.support_form')
+      %p= t('contact_us.form.support_form_text', :link => link_to( t('footer.faq'), faq_url))
+  .contact_text  
+    %p
+      %em= t('contact_us.form.information')
+  .contact_form   
+    -form_for  :contact_us, @contact_us, :url => contact_us_url(:only_form =>params[:only_form])do |f|
+      = error_messages_for(:contact_us, :header_message => "")
+      = f.hidden_field :browser
+      = f.hidden_field :os
+      = f.hidden_field :country
+      - if logged_in?
+        = f.hidden_field :address
+      .row.clearfix
+        .label
+          = f.label :category, "*#{t('contact_us.form.category')}"
+        .field  
+          = f.select :category, options_for_contact_us_categories
+      .row.clearfix
+        .label
+          = f.label :address, "*#{t("contact_us.form.email")}"
+        .field    
+          = f.text_field :address, :disabled => logged_in?
+      .row.clearfix
+        .label
+          = f.label :message, "*#{t("contact_us.form.feedback")}"
+        .field  
+          = f.text_area :message
+      .row.clearfix
+        .label
+          = f.label :os, t("contact_us.form.os")
+        .field
+          = f.text_field :os, :disabled => true
+      .row.clearfix
+        .label
+          = f.label :browser, t("contact_us.form.browser")
+        .field
+          = f.text_field :browser, :disabled => true
+      .row.clearfix
+        .label
+          = f.label :country, t("contact_us.form.country")
+        .field
+          = f.text_field :country , :disabled => true
+      %div.create_actions.clearfix  
+        %p.submit_button
+          .pill_button
+            .left
+            = tag :input, :type => :submit, :value => t("contact_us.form.submit"), :class => :pill_button
+            .right  

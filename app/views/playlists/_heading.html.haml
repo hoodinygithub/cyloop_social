@@ -1,0 +1,8 @@
+.filters
+  %p.label== #{t('actions.view')}:
+  = filter filter_args_playlists
+  .header_tools
+    = link_to '', playlist_path(@playlist, :autoplay => true), :class => "shuffle_off", :title => 'Shuffle' unless @playlist.nil?
+
+  .clear
+

@@ -1,0 +1,48 @@
+- require_javascript 'playlist'
+- require_javascript 'media_manager'
+
+.clearfix#list_header
+  .title
+    %h3= h(@playlist.name)
+    %span.created
+      = t("basics.created_at", :when => distance_of_time_in_words_to_now(@playlist.created_at))
+  .count
+    %span.count= pluralize(@playlist.songs_count, t("basics.song"), t("basics.songs"))
+    %div.time== #{t('playlists.total_time')}: #{length_of_time_from_seconds(@playlist.total_time)}
+
+= render :partial => 'heading'
+
+%script
+  == autoplay = #{(params.has_key?(:autoplay))? true : false};
+  == count = #{@playlist.items.length - 1};
+
+#saving_notifier{:style => 'background: #CECECE; color: #666; font-weight: bold; font-style: italic; font-size: 1.2em; padding: 10px; font-family: "arial"; border-top: 1px solid #999; border-bottom: 1px solid #999; display: none'}
+  = image_tag '/images/ajax-loader.gif'
+  %span.saving_order
+    =t 'playlists.saving_order'
+
+%ul.playlists#songs{:playlist_id => "#{@playlist.id}", :class => (page_owner?)? 'songs_private' : 'songs_public'  }
+  - @playlist.items.each do |item|
+    - unless item.artist.blank? || item.song.blank?
+      %li.listen.clearfix{:artist_id => "#{item.artist.id}",:song_id => "#{item.song.id}" ,:song_file => "#{item.song.file_name}", :id => "#{item.id}", :genre => "#{item.song.genre_name}", :label => "#{item.artist.label_name}"}
+        #playlist_mv
+          .avatar
+            = avatar_for(item, :small, {:alt => "#{item.song.artist} - #{item.song.album}"})
+          .info
+            .song
+              %h4= link_to item.title, queue_song_path(:slug => item.artist.slug, :id => item.song.album.id, :song_id =>item.song.id), :class => 'song'
+              %span.song_by
+                == #{t('basics.by')} #{link_to item.artist.name, item.artist, :class => 'artist_name'}
+            .meta.clearfix
+              %span.duration== #{t('playlists.duration')}:
+              = show_duration(item.song)
+            .tools
+              .play
+                = link_to '', "#", :class => "play", :title => t('actions.play')
+              = add_to_playlist_button(item.song)
+              .media_player
+              .share
+                = link_to '', "/share/song/#{item.song.id}", :class => "facebox share", :title => t('actions.share')
+              .delete
+                = pill_link_to :delete, delete_confirmation_my_playlist_item_path(item), :class => "facebox" if page_owner?
+

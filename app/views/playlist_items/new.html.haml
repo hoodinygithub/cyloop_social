@@ -1,0 +1,34 @@
+.playlists_list
+  %h3= t('actions.add_to_playlist')
+  - form_for @song[0], :url => artist_song_playlist_items_path(@song[0].artist, @song[0]), :html => {:method => :post} do |f|
+    %p.song_info
+      %q= h @song[0].title
+      == #{t('basics.by')}:
+      %cite= h @song[0].artist
+    %p.label
+      = t('actions.select_playlist')
+    - if @error
+      %p.error= @error
+    .playlist_items
+      %fieldset
+        %legend== #{t('actions.add_this_song_into_the_following_playlists')}:
+        =# hidden_field_tag :song_id, @song.id
+        - current_user && current_user.playlists.each do |playlist|
+          %div
+            = check_box_tag "playlist_ids[]", playlist.id, nil, :id => "song_playlist_ids_#{playlist.id}"
+            = label_tag "song_playlist_ids_#{playlist.id}", playlist.name
+    .create_playlist
+      %div
+        = check_box_tag "new_playlist", 1, nil
+        = label_tag "new_playlist", t('actions.add_into_a_new_playlist')
+
+      .creation
+        = label_tag "new_playlist_name", t('playlists.playlist_name')
+        = text_field_tag "new_playlist_name"
+    %div.create_actions.clearfix
+      %p.submit_button
+        .pill_button
+          .left
+          = tag :input, :type => :submit, :value => t('actions.add_song'), :class => :pill_button
+          .right
+      = link_to t('actions.cancel'), [@song[0].artist, @song[0].album], :class => "close"

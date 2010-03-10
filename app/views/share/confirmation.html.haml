@@ -1,0 +1,7 @@
+:javascript
+  $(document).ready(function(){
+    setTimeout(function() { jQuery(document).trigger('close.facebox'); }, 4000);
+  });
+%h3= t('basics.message_sent')
+= link_to t('actions.close'), "#", :class => "close"
+

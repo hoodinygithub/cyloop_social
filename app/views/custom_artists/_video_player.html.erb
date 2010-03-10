@@ -1,0 +1,22 @@
+  <div class="videogallery_top videogallery_grey" style="width:640px;">
+    <div class="videogallery_player">
+      <div>
+        <script type="text/javascript">
+            <%= custom_artist_video( @profile_account.slug ) %>
+        </script>
+      </div>
+    </div>
+    <div class="videogallery_list_wrap">
+      <div class="videogallery_list">
+        <div class="videogallery_paging_lt">
+          <div class="videogallery_paging_rt" id="hot_widget">
+            <div>
+              <%= @profile_account.slug.titleize %>
+            </div><a onclick="return Msn.Navigation.OpenNew(event,this)" href="http://www.adobe.com/go/getflashplayer"></a>
+          </div><script type="text/javascript">
+            <%= custom_artist_gallery( @profile_account.slug ) %>
+          </script>
+        </div>
+      </div>
+    </div>
+  </div>

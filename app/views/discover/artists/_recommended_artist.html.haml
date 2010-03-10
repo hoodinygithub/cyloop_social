@@ -1,0 +1,5 @@
+%li
+  .small_artist
+    = link_to(image_tag("#{ENV['ASSETS_URL']}#{recommended_artist.image}", :style => "width: 84px; height: 84px; padding-right: 14px"), user_path(recommended_artist.profile_url.gsub(/\//,'')))
+    %span.name
+      = link_to(recommended_artist.nick_name, user_path(recommended_artist.profile_url.gsub(/\//,'')))

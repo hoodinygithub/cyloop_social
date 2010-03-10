@@ -1,0 +1,41 @@
+%h3.toggle
+  #messages_number
+    0 More Questions
+  #toggleMessageChecker.enabled
+    %span
+      on
+      /= t("message.on")
+  /= t("chat.moderator.title")
+  #messages_flow
+    Message Flow
+  Moderator Module
+%ul
+  - @messages.each do |message|
+    - unless message.blank?
+      - if message.status == 'approved'
+        %li.approved.clearfix[message]
+          .info_chat
+            == #{message.name} from #{message.location}
+            - if message.pre_submitted?
+              %em.pre_submitted (pre-submitted)            
+            .meta_chat
+              ==  #{message.question}
+            .tools_right
+              = link_to '', unapprove_admin_message_path(message.id), :class => "unapprove", :id =>"btnunapprove_#{message.id}",  :onclick=>"return false;"
+      -else
+        %li.clearfix[message]
+          .info_chat
+            == #{message.name} from #{message.location}
+            - if message.pre_submitted?
+              %em.pre_submitted (pre-submitted)            
+            .meta_chat
+              ==  #{message.question}
+            .tools_right
+              = link_to '', approve_admin_message_path(message.id), :class => "approve", :id =>"btnapprove_#{message.id}", :onclick=>"return false;"
+
+
+%script
+  == var chat_id    = #{params[:id]};
+  == var toggle_on  = "on" //"#{t('chat.moderator.toggle_on')}";
+  == var toggle_off = "off" //"#{t('chat.moderator.toggle_off')}";
+  $("#toggleMessageChecker").messageChecker();

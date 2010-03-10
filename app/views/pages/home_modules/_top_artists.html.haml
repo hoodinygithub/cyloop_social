@@ -1,0 +1,20 @@
+.top_artists.clearfix
+  - if @top_artists && !@top_artists.empty?
+    .blue.headline.clearfix
+      %h2
+        %span
+          =t 'modules.top_artists.title'
+    %ul
+      - @top_artists.each do |top_artist|
+        %li.clearfix
+          = link_to avatar_for(top_artist.artist, :small), top_artist.artist, {:class => "top_image"}
+          .title
+            = link_to truncate(top_artist.artist.name, :length => 18), top_artist.artist
+          %span.count
+            = number_with_delimiter(top_artist.total_listens)
+            %span
+              =t 'basics.plays'
+    - if site_includes(:msnlatino)
+      %div.top_artists_advertisement
+        = banner_ad("top_artists_banner")
+

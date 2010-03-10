@@ -1,0 +1,45 @@
+- content_for :head do
+  = stylesheet_link_tag 'custom_radio'
+
+- if !logged_in? && @station_obj
+  - content_for :head do
+    %script
+      = "station_obj = {type:'99',station_url:'/radio/#{@station_obj.id}.xml',idpl:'#{@station_obj.id}',nom:'#{@station_obj.name}'};"
+
+#content
+  -if params[:queue] == "true"
+    - queue = "&QUEUE=#{params[:station_id]}"
+  :javascript
+    $(document).ready(function() {
+      var artistSearch = $("input[name='station_name']");
+      artistSearch.autocomplete("/stations.txt");
+    })
+  #create_station
+    - form_for :station, :url => search_radio_path do |f|
+      = f.label :artist, t('radio.create_new_station')
+      = f.text_field :artist, :name => :station_name
+      = f.submit t("actions.create_station"), :type => :submit
+
+  :javascript
+    var flashvars = {
+      LOGGEDIN:"#{logged_in?}",
+      QUEUE:"#{params[:station_id]}",
+      LOCALE:"#{current_site.default_locale}"
+    };
+    var params = {wmode:"transparent"};
+    var attributes = {id:"radio_engine", name:"radio_engine"};
+    swfobject.embedSWF("flash/radio_engine_ericsson2.swf", "radio_player", "620", "329", "9", false, flashvars, params, attributes);
+
+  #radio_player
+
+  .artist_radio_info
+    = render :partial => "default_artist_info"
+
+#secondary_content
+  = banner_ad("square_banner")
+  #top_stations
+    %h3
+      =t 'modules.top_stations.title'
+    = render 'shared/top_stations', :top_stations => @top_stations
+  = banner_ad("pixel_banner")
+

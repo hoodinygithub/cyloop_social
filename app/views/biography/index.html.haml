@@ -1,0 +1,4 @@
+#biography
+  %h3= t('biography.biography')
+  - cache("#{site_cache_key}/#{profile_artist.slug}/bio", :expires_in => EXPIRATION_TIMES['artist_bio']) do
+    = profile_artist.biography(current_site.bio_locale)

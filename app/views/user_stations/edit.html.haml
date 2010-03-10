@@ -1,0 +1,12 @@
+#edit_station
+  %h3= t('stations.edit.edit_your_station')    
+  - form_for @user_station, :url => my_station_path, :html => { :name => 'edit_station' } do |f|
+    .field.clearfix
+      .input_wrapper
+        = f.text_field :name, :class => 'text'
+    .actions
+      .pill_button
+        .left
+        = tag :input, :type => :submit, :value => t('actions.save'), :class => :pill_button
+        .right
+      = pill_link_to :cancel, "#", :class => "close"

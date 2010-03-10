@@ -1,0 +1,16 @@
+development:
+  adapter: mysql
+  encoding: utf8
+  database: cyloop_development
+  username: root
+  password: 
+  socket: /tmp/mysql.sock
+
+
+test:
+  adapter: mysql
+  encoding: utf8
+  database: cyloop_test
+  username: root
+  password: 
+  socket: /tmp/mysql.sock

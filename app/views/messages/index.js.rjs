@@ -1,0 +1,12 @@
+if @chat.down? && (params[:justin_tv].to_i > 0 || params[:ustream].to_i > 0)
+  page.replace_html "livestream_frame", :partial => "custom_profiles/chat_down"
+elsif @chat.live? && params[:justin_tv].to_i == 0
+  page.replace_html "livestream_frame", :partial => "chats/justin_tv"
+elsif @chat.ustream? && params[:ustream].to_i == 0
+  page.replace_html "livestream_frame", :partial => "chats/ustream"  
+elsif @chat.finished?
+  page.replace_html "livestream_frame", ""
+  page.replace_html "chat_form", :partial => "custom_profiles/#{@chat.artist.slug}_chat_ended"
+  page << "$(\"#questions\").stopTime();"
+end
+

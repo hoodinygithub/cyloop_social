@@ -1,0 +1,40 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+gem 'activesupport'
+require 'active_support'
+
+require 'beanstalk-client/connection'
+
+RAILS_ENV = ENV['RAILS_ENV'] || 'development'
+RAILS_ROOT = File.join( File.dirname( __FILE__ ), '..' )
+
+config = YAML.load_file( File.join( RAILS_ROOT, 'config', 'beanstalk.yml' ) )
+unless config[RAILS_ENV].blank?
+
+  puts '==== loading information about beanstalk services ===='
+
+  config[RAILS_ENV].each do |address|
+    begin
+      connection = Beanstalk::Connection.new( address )
+      puts "\n=== connection **#{address}** ==="
+      connection.stats.each do |key, value|
+        puts "\t-- #{key} - #{value}"
+      end
+      puts "== tubes =="
+      connection.list_tubes.each do |tube|
+        puts "= tube - #{tube} ="
+        connection.stats_tube( tube ).each do |key,value|
+          puts "\t-- #{key} - #{value}"
+        end
+      end
+      connection.close
+      puts ''
+    rescue => e
+      puts e.inspect
+      puts e.backtrace.join( "\n" )
+    end
+  end
+else
+  puts "There are no beanstalk servers configured for the **#{RAILS_ENV}** environment"
+end

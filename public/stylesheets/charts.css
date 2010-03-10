@@ -1,0 +1,117 @@
+/* @override http://localhost:3000/stylesheets/charts.css */
+
+/* @override http://localhost:3000/stylesheets/charts.css */
+
+/* @override http://localhost:3000/stylesheets/charts.css */
+
+/* @override http://localhost:3000/stylesheets/charts.css */
+
+/* @override http://localhost:3000/stylesheets/charts.css */
+
+/* @override http://localhost:3000/stylesheets/charts.css */
+ol.chart li {
+	/*padding-left: 64px !important;*/
+/*	min-height: 60px !important;*/
+}
+
+ol.chart div.position {
+	color: #666;
+	font-size: 2.7em;
+	text-align: center;
+	line-height: 64px;
+	font-family: "lucida grade";
+	width: 64px !important;
+	margin-left: -64px !important;
+	border: none !important;
+	float: left;
+}
+
+ol.chart span {
+	font-size: 1.3em;
+}
+
+ol.chart div.bar span {
+	font-size: 1em;
+/*	position: inherit;*/
+	padding-left: 8px;
+}
+
+
+ol.chart .navigation, ol.chart .item {
+	height: 30px;
+}
+
+ol.chart .navigation .button span {
+	font-size: inherit;
+	position: relative;
+	top: 0px;
+}
+
+
+ol.chart .navigation .follow_button {
+	float: right;
+}
+ol.chart .navigation .artist {
+	float: left;
+}
+ol.chart .navigation .create_station {
+	float: right;
+}
+
+
+ol.chart .navigation button.button.pill_button {
+padding-right: 15px;}
+
+ol.chart div.bar {
+	background: #2496BC;
+	color: white;
+	height: 27px;
+	line-height: 28px;
+	float: left;
+	margin-top: 0px;
+}
+
+ol.chart div.bar div {
+	width: auto !important;
+	padding-left: 8px;
+	font-size: inherit;
+	position: inherit;
+}
+
+ol.chart .navigation a {
+	font-size: 1.3em;
+	position: relative;
+	top: 3px;
+}
+
+ol.chart li span span {
+	position: relative;
+	top: 0px;
+	font-size: .8em;
+}
+
+ol.chart div#chart_bar{
+	height: 27px;
+	margin-top: 15px;
+}
+
+ol.chart div#chart_actions span.tools {
+	margin-left: 10px;
+}
+ol.chart div#chart_actions span.title {
+	line-height: 21px;
+	margin-left: 6px;
+}
+
+ol.chart div.bar_right {
+	background: #2496BC url(/images/background_charts_right.png) no-repeat scroll top right;
+	height: 27px;
+	width: 12px;
+	float: left;
+	margin-top:	0px;
+}
+
+ol.chart li h4{
+	float: left;
+	margin: 3px 0 0 3px;
+}

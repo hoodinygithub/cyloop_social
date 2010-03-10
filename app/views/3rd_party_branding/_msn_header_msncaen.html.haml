@@ -1,0 +1,77 @@
+#msn_header.clearfix
+  .wrapper
+    .msn_main
+      %ul.msn_navigation
+        %li= link_to "Autos", "http://autos.ca.msn.com/"
+        %li= link_to "Money", "http://money.ca.msn.com/"
+        %li= link_to "Entertainment", "http://entertainment.ca.msn.com/"
+        %li= link_to "Lifestyle", "http://lifestyle.ca.msn.com/"                            
+        %li.more
+          - link_to do
+            %span.more_wrapper= "more"
+      %ul.msn_sisters
+        %li= link_to "MSN home", "http://ca.msn.com/?lang=en-ca"
+        %li= link_to "Hotmail", "http://www.hotmail.com/"
+        %li.last= link_to "Video", "http://video.msn.com/video.aspx?mkt=en-ca"
+    .portal.clearfix{:style => 'display: none'}
+      %ul.msn_sisters
+        %li.hotmail_ca= link_to "Hotmail", "http://go.microsoft.com/?linkid=9670787"
+        %li.messenger_ca= link_to "Messenger", "http://go.microsoft.com/?linkid=9652686"
+        %li.my= link_to "My MSN", "http://ca.my.msn.com/?lang=en-ca"        
+        %li.repertoire= link_to "MSN Directory", "http://ca.msn.com/directory.aspx"
+      %ul.msn_sections
+        %li= link_to "Autos", "http://autos.ca.msn.com/"
+        %li= link_to "Games", "http://games.ca.zone.msn.com/"
+        %li= link_to "Lifestyle", "http://lifestyle.ca.msn.com/"
+        %li= link_to "News", "http://news.ca.msn.com/"
+        %li= link_to "Travel", "http://travel.ca.msn.com/"
+
+        %li= link_to "Celebs", "http://entertainment.ca.msn.com/celebs/"
+        %li= link_to "Green", "http://green.ca.msn.com/"
+        %li= link_to "Money", "http://money.ca.msn.com/"
+        %li= link_to "Shopping", "http://shopping.ca.msn.com/"
+        %li= link_to "Video", "http://video.msn.com/video.aspx?mkt=en-ca"
+
+        %li= link_to "Dating", "http://dating.ca.msn.com/"
+        %li= link_to "Health &amp; Fitness", "http://lifestyle.ca.msn.com/health-fitness/"
+        %li= link_to "Movies", "http://entertainment.ca.msn.com/movies/"
+        %li= link_to "Sports", "http://sports.ca.msn.com/"
+        %li= link_to "Weather", "http://weather.ca.msn.com/"          
+
+        %li= link_to "Entertainment", "http://entertainment.ca.msn.com/"
+        %li= link_to "Horoscopes", "http://astrology.ca.msn.com/"          
+        %li= link_to "Music", "http://music.ca.msn.cyloop.com/"
+        %li= link_to "Tech &amp; Gadgets", "http://tech.ca.msn.com/"
+        %li= link_to "<strong>MORE…</strong>", "http://ca.msn.com/directory.aspx"
+        
+    .sub
+      %ul.msn_navigation
+        %li= link_to "Home", "http://entertainment.ca.msn.com/"
+        %li= link_to "Movies", "http://entertainment.ca.msn.com/movies/"
+        %li= link_to "TV", "http://entertainment.ca.msn.com/tv/"
+        %li.before_active= link_to "Celebs", "http://entertainment.ca.msn.com/celebs/"
+        %li.active= link_to "Music", "/"
+        %li= link_to "Message boards", "http://entertainment.ca.msn.com/messageboards/"
+        %li.last= link_to "Music Store", "http://musicstore.ca.msn.com/"
+         
+#msn_nav_extension               
+  .ca_msn_nav_language
+    =link_to "Français", "http://musique.ca.msn.cyloop.com"
+  %ul
+    - if params[:controller] != "radio"
+      %li
+        %strong= link_to "Music Home", "#"
+    - else
+      %li= link_to "Music Home", "/"  
+    %li= link_to "Features", "http://entertainment.ca.msn.com/music/features/"
+    %li= link_to "Reviews", "http://entertainment.ca.msn.com/music/reviews/"
+    - if params[:controller] == "radio"
+      %li
+        %strong= link_to "Cyloop Radio", "#"
+    - else
+      %li= link_to "Cyloop Radio", "/radio"
+    %li= link_to "Photos", "http://entertainment.ca.msn.com/music/photos/"
+    %li= link_to "Video", "http://entertainment.ca.msn.com/music/video/"
+    %li= link_to "Blog", "http://blogs.music.msn.ca"
+    %li= link_to "Music Store", "http://musicstore.ca.msn.com/"
+

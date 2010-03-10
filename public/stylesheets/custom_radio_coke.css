@@ -1,0 +1,63 @@
+/* @override http://cyloop.local/stylesheets/custom_artists.css */
+
+/* @override http://cyloop.local/stylesheets/custom_artists.css */
+body.radio {
+  background-color: #000;
+}
+
+body.radio #mast_head {
+  background-color: #FF0000;
+}
+
+body.radio #custom_header {
+  height: 101px;
+  width: 1000px;
+  background: black url(/images/radiocoke_header.png) top center no-repeat;
+}
+
+.radio #main_content {
+  background-color: black;
+  border: 0px;
+}
+
+.radio #create_station_form {
+  background-image: url(/images/custom_create_station.gif)
+}
+
+.radio .artist_radio_info {
+  background-color: #252525;
+}
+
+.radio #square_banner {
+  border: 1px solid #FFFFFF;
+}
+
+.radio #top_stations h3 {
+  border-bottom: 1px solid #252525;
+  color: #FFF;
+}
+
+.radio #top_stations ul {
+  border-left: 1px solid #252525;
+  border-right: 1px solid #252525;
+}
+
+.radio #top_stations ul li {
+  border-bottom: 1px solid #252525;
+}
+
+.radio #top_stations ul li h4 a {
+  color: #FF0000;
+}
+
+.radio #top_stations .including a {
+  color: #FFF;
+}
+
+body.radio #custom_footer {
+  display: block;
+  float: left;
+  height: 201px;
+  width: 1000px;
+  background-image: url(/images/radiocoke_footer.jpg);
+}

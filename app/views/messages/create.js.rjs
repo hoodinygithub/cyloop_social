@@ -1,0 +1,13 @@
+# TODO: Add translate keys here
+page.show "return_post_message"
+if @errors && @errors.size > 0
+  page.replace_html "return_post_message", @errors.first
+else
+  page.replace_html "return_post_message", "¡Gracias por enviar tu pregunta!"
+  page << "$('#message_question')[0].value = 'Escribe tu pregunta aquí';"
+  page << "$('#message_name')[0].value = '¿Cómo te llamas?';"
+  page << "$('#message_location')[0].value = '¿De dónde eres?';"  
+end
+page << "setTimeout(function() {"
+page.visual_effect :fade, "return_post_message"
+page << "}, 10000);"

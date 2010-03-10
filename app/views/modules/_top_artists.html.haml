@@ -1,0 +1,12 @@
+- unless profile_user.most_listened_artists(1).empty?
+  %h3= t('modules.top_artists.title')
+  %ol
+    - profile_user.most_listened_artists(10).each_with_index do |artist, index|
+      %li
+        %span.index
+          - count = (index + 1) < 10 ? "0#{index+1}" : index+1 
+          = count
+        .artist
+          = link_to h(artist.name), artist
+        .listens
+          == #{h artist.total_listens} #{t('basics.plays')}

@@ -1,0 +1,16 @@
+.module.user_info.first.user_info_first
+  = render 'modules/user_info'
+
+.module.ad.clear
+  = banner_ad("square_banner")
+
+.module.following
+  = render :partial => 'modules/followers', :object => profile_user.followees.with_limit(24), :locals => { :header_key => t('dashboards.following.title') }
+
+- if profile_user.stations.any?
+  .module.recent_stations
+    = render 'modules/recent_stations'
+
+.module.top_artists_profile.last
+  = render 'modules/top_artists'
+

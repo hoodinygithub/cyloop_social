@@ -1,0 +1,124 @@
+- unless cyloop_site?
+  .module.ad.first
+    = banner_ad("square_banner")
+      
+- if site_includes(:msncafr, :msncaen)      
+  .module.create_station 
+    = render 'pages/home_modules/create_station'
+  %br
+
+- if site_includes(:msnmx)
+  %style{:type => "text/css"} @import url("http://blstc.msn.com/br/intl/ice/css/1/videogallery.css");
+  .module.msn_video
+    %script{:src => "http://images.video.msn.com/flash/script/embed.js", :type => "text/javascript"}
+    #Player1Container
+    %script{:type => "text/javascript"}
+      == Msn.Video.createWidget('Player1Container', 'Player', 300, 267, {"player.ad": "true", "player.bsbpg": "MSVP05", "player.c": "vcq", "player.ch": "true", "player.fr": "IVP%20es-mx_Cyloop_Homepage", "player.ifs": "true", "player.mkt": "es-mx", "player.pg": "MSVP19", "player.ps": "50", "player.timePlaying": "180", "player.vcq": "RandomVideo.aspx%3Fmk=es-mx%26ns=msnvideo_top_cat%26tag=esmxentertainment_esmx_videosmusicales&amp", "player.title": "true", "player.spl": "true", "width": "300", "height": "267"}, 'Player1');
+- elsif site_includes(:msnbr)
+  %style{:type => "text/css"} @import url("http://blstc.msn.com/br/intl/ice/css/1/videogallery.css");
+  .module.msn_video
+    %script{:src => "http://images.video.msn.com/flash/script/embed.js", :type => "text/javascript"}
+    #Player1Container
+    %script{:type => "text/javascript"}
+      == Msn.Video.createWidget('Player1Container', 'Player', 300, 267, {"player.ad": "true", "player.bsbpg": "MSVBR3", "player.c": "vcq", "player.ch": "true", "player.fr": "IVP%20pt-br_Cyloop_Homepage", "player.ifs": "true", "player.mkt": "pt-br", "player.pg": "MSVBR6", "player.ps": "20", "player.timePlaying": "180", "player.vcq": "videoByTag.aspx?tag=PTBR_Cyloop&ns=VC_Supplier&mk=pt-br&sf=ActiveStartDate&sd=-1&vs=0", "width": "300", "height": "267"}, 'Player1');
+- elsif site_includes(:msnlatam, :msnar)
+  %style{:type => "text/css"} @import url("http://blstc.msn.com/br/intl/ice/css/1/videogallery.css");
+  .module.msn_video
+    %script{:src => "http://images.video.msn.com/flash/script/embed.js", :type => "text/javascript"}	
+    #Player1Container
+    %script{:type => "text/javascript"}
+      == Msn.Video.createWidget('Player1Container', 'Player', 300, 267, {"player.ad": "true", "player.bsbpg": "LAVIBS", "player.c": "vcq", "player.ch": "true", "player.fr": "IVP%20es-xl_Cyloop_Homepage", "player.ifs": "true", "player.mkt": "es-xl", "player.pg": "LACYL4", "player.ps": "20", "player.timePlaying": "180", "player.vcq": "VideoByTag.aspx%3Ftag=cyloop%26ns=msnvideo_top_cat%26mk=es-xl%26sf=ActiveStartDate%26vs=0", "width": "300", "height": "267"}, 'Player1');
+  .ivp_cyloop_m{:id => "ivp_cyloop_m"}
+  .ivp_cyloop_a{:id => "ivp_cyloop_a"}
+  .module.clearfix
+    &nbsp;
+- elsif site_includes(:msnlatino)
+  .module.msn_video
+    %script{:src => "http://images.video.msn.com/flash/script/embed.js", :type => "text/javascript"}
+    #Player1Container
+    %script{:type => "text/javascript"}
+      == Msn.Video.createWidget('Player1Container', 'Player', 300, 267, {"player.ad": "true", "player.bsbpg": "ESULO2", "player.c": "vcq", "player.ch": "true", "player.fr": "IVP%20es-us_Cyloop_Homepage", "player.ifs": "true", "player.mkt": "es-us", "player.pg": "ESULO1", "player.ps": "20", "player.timePlaying": "180", "player.vcq": "videoByTag.aspx?tag=ESUS_13thFloor%3AESUS_Musica&ns=VC_Source&mk=es-us&sf=ActiveStartDate&sd=-1&vs=0", "width": "300", "height": "267"}, 'Player1');
+
+- unless @feed_promo.nil?
+  - if site_includes(:msnbr)
+    .module.br_small_ad      
+      = link_to image_tag(@feed_promo.image("300x135", msn_site_code)), @feed_promo.link     
+  - else
+    .module.small_ad
+      - if site_includes(:msnbr)
+        = link_to image_tag(@feed_promo.image("300x135", msn_site_code)), @feed_promo.link
+      - elsif site_includes(:msnlatam, :msnar)
+        = link_to image_tag(@feed_promo.image), @feed_promo.link, :alt => @feed_promo.alt
+      - elsif site_includes(:msnlatino)
+        = link_to image_tag(@feed_promo.image("300x120", msn_site_code),:alt => @feed_promo.artist(true)), @feed_promo.link, :title => @feed_promo.artist(true)
+      - elsif site_includes(:msncafr, :msncaen)
+        = link_to image_tag(@feed_promo.img_ca,{:alt => @feed_promo.artist(true), :class => :ad_image}), @feed_promo.url, :title => @feed_promo.artist(true)
+      - else
+        %object{:src => @feed_promo.image, :width => 300, :height => 150}
+          %param{:name => "msn_homepage_conciertos", :value => "#{@feed_promo.image}"}
+          %param{:name => "allowScriptAccess", :value => "always"}
+          %embed{:name => "msn_homepage_conciertos", :allowscriptaccess => "always", :src => "#{@feed_promo.image}", :width => 300, :height => 150}
+  
+  
+- if site_includes(:msncafr)
+  .module.msn_video
+    %style{:type => "text/css"} @import url("http://blstc.msn.com/br/intl/ice/css/1/videogallery.css");
+    %script{:src => "http://images.video.msn.com/flash/script/embed.js", :type => "text/javascript"}
+    #Player1Container
+    %script{:type => "text/javascript"}
+      == Msn.Video.createWidget('Player1Container', 'Player', 300, 267, {"player.ad": "true", "player.bsbpg": "MSVBS3", "player.c": "vcq", "player.ch": "true", "player.fr": "IV2_fr-ca_Cyloop_homepage", "player.ifs": "true", "player.mkt": "fr-ca", "player.pg": "VSFCA3", "player.ps": "20", "player.timePlaying": "180", "player.vcq": "videoByTag.aspx%3Fmk%3Dfr-ca%26sf%3DActiveStartDate%26sd%3D-1%26ns%3DVC_Supplier%26tag%3DFRCA_Cyloop%26vs%3D0", "width": "300", "height": "267"}, 'Player1');
+
+- if site_includes(:msncaen)
+  .module.msn_video
+    %style{:type => "text/css"} @import url("http://blstc.msn.com/br/intl/ice/css/1/videogallery.css");
+    %script{:src => "http://images.video.msn.com/flash/script/embed.js", :type => "text/javascript"}
+    #Player1Container
+    %script{:type => "text/javascript"}
+      == Msn.Video.createWidget('Player1Container', 'Player', 300, 267, {"player.ad": "true", "player.bsbpg": "MSVBS2", "player.c": "vcq", "player.ch": "true", "player.fr": "IV2_en-ca_Cyloop_homepage", "player.ifs": "true", "player.mkt": "en-ca", "player.pg": "VSECA3", "player.ps": "20", "player.timePlaying": "180", "player.vcq": "videoByTag.aspx%3Fmk%3Den-ca%26sf%3DActiveStartDate%26sd%3D-1%26ns%3DVC_Supplier%26tag%3DENCA_Cyloop%26vs%3D0", "width": "300", "height": "267"}, 'Player1');
+	
+- unless site_includes(:msncafr, :msncaen)
+  .module.recommended.clearfix
+    .blue.headline.clearfix
+      %h2
+        %span
+          =t 'modules.recommendations.title'
+    %ul
+      = render :partial => 'pages/home_modules/recommended_artist.html.haml', :collection => recommended_artists_existing(5)
+    
+- if site_includes(:msnmx)
+  - unless @feed_conciertos.nil?
+    .module.concerts
+      .grey.headline.clearfix
+        %h2  
+          %span
+            =t 'modules.concerts.title'
+        %object{:src => @feed_conciertos.image, :width => 300, :height => 109}
+          %param{:name => "msn_homepage_conciertos", :value => "#{@feed_conciertos.image}"}
+          %param{:name => "allowScriptAccess", :value => "always"}
+          %embed{:name => "msn_homepage_conciertos", :allowscriptaccess => "always", :src => "#{@feed_conciertos.image}", :width => 300, :height => 109, :wmode => "transparent"}
+
+//- if site_includes(:msnbr)
+//  - unless @feed_baladas.nil?
+//    .module.baladas
+//      .grey.headline.clearfix
+//        %h2  
+//          %span
+//            =t 'modules.concerts.title'
+//        %ul
+//          %li.clearfix
+//            = link_to image_tag(@feed_baladas.image), @feed_baladas.link, {:target => "_blank"}
+//            = link_to truncate(@feed_baladas.artist, :length => 20), @feed_baladas.link, {:target => "_blank"}
+//            %p
+//              = truncate(@feed_baladas.text, :length => 280)
+              
+              
+- if site_includes(:msncafr, :msncaen)
+  .module.videos
+    - unless @feed_videos.nil?
+      .grey.headline.clearfix
+        %h2  
+          %span
+            Videos
+      %ul
+        = render :partial => 'pages/home_modules/videos.html.haml', :collection => @feed_videos
+      .fix

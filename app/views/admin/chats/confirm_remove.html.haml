@@ -1,0 +1,5 @@
+%h3 Chats
+%p== Are you sure do you want remove chat with #{@chat.artist.name}?
+
+= pill_link_to "Cancel", admin_chats_path
+= pill_link_to "Remove", admin_chat_path(chat), :method => :delete

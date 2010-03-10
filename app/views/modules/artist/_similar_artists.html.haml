@@ -1,0 +1,7 @@
+- unless @similar_artists.blank?
+  %h3= t('modules.similar_artists.title')
+  %div.similar_artists
+  - @similar_artists.each do |artist|
+    %div.smiliar_artists_each
+      %div.avatar= link_to avatar_for(artist, :small, {:style => "width:84px;height:84px"}), artist
+      #artist_name.artist_name= link_to truncate(artist.name), artist

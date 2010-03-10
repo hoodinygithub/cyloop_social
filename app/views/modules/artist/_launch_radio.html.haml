@@ -1,0 +1,15 @@
+
+-if profile_artist.has_station?
+  .clearfix#launch_radio
+    = large_link_button_to :launch_radio, (logged_in?)? queue_my_station_path(profile_artist.station.id) : radio_path(:station_id => profile_artist.station.id)
+
+  / - if logged_in?
+  /   =link_to "LAUNCH #{profile_artist} RADIO", queue_my_station_path(profile_artist.station.id), :class => "launch_radio_link #{I18n.locale}"
+  / - else
+  /   =link_to "LAUNCH #{profile_artist} RADIO", radio_path(:station_id => profile_artist.station.id), :class => "launch_radio_link #{I18n.locale}"
+
+  -if profile_artist.station.includes.length > 0
+    .included_artists
+      == #{t('basics.includes')}:
+      = profile_artist.station.includes.map {|artist| link_to artist.name, artist}.join(", ")
+

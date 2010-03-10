@@ -1,0 +1,30 @@
+/*
+ * Summary
+ *
+ * - General
+ * - Forms
+ * - Chats
+ *
+ */
+
+/* General */
+#main_content { border-top: 1px solid #ddd; margin-top: 20px; }
+h2 { display: block; width: 100%; }
+h3 { }
+h3 .pill_button { font-size: 13px; float: right; margin-top: -5px; }
+
+/* Forms */
+form fieldset { border: 0px; border-bottom: 1px solid #bbb; padding-bottom: 10px; }
+form p { margin-bottom: 10px; }
+form label { display: block; }
+form em { margin-left: 5px; color: #888; font-style: italic; }
+
+/* Chats */
+body.chats h3 { margin-bottom: 0; padding-bottom: 10px; border-bottom: 1px solid #bbb; }
+ul.chats {}
+ul.chats li.chat h4 { padding: 5px;}
+ul.chats li.chat { border-bottom: 1px solid #bbb; height: 55px; }
+ul.chats li.even { background-color: #f4f4f4; }
+ul.chats li.chat .meta { float: left; padding: 5px; }
+ul.chats li.chat .actions { float: right; margin-right: 5px; }
+ul.chats li.chat .actions .clearfix { clear: none; float: left; }

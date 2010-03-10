@@ -1,0 +1,25 @@
+#mask {
+  position:absolute;
+  left:0;
+  top:0;
+  z-index:9000;
+  background-color:#000;
+  display:none;
+}
+
+.window {
+  position:fixed;
+  left:0;
+  top:0;
+  width:20px;
+  height:20px;
+  display:none;
+  z-index:9999;
+  padding:7px;
+}
+#dialog {
+  width:20px; 
+  height:20px;
+  padding: 4px 0px 0px 4px;
+  background-color:#fff;
+}

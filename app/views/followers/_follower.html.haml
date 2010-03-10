@@ -1,0 +1,14 @@
+.avatar
+  = link_to avatar_for(follower, :small), follower
+.info
+  .username
+    %h4
+      = link_to follower, follower
+  .meta
+    = follower.location
+  .tools
+    .follow
+      = follow_button(follower) if logged_in? && current_user.id != follower.id
+    - if follower.follows?(current_user)
+      .block
+        = pill_link_to :block, block_alert_url(:blockee_id => follower.id), :class => "facebox"

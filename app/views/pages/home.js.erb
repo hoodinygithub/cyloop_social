@@ -1,0 +1,3 @@
+jQuery(document).ready(function($){  
+	$('#secondary_content div.module.recommended.clearfix ul').html("<%= escape_javascript(render(:partial => 'pages/home_modules/recommended_artist.html.haml', :collection => @artists)) %>");
+});

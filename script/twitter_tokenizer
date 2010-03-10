@@ -1,0 +1,77 @@
+#!/usr/bin/env ruby
+
+HELP = <<EOS
+twitter_tokenizer helps you got some data to fill your app
+
+DEPENDENCIES:
+- oauth
+- twitter_oauth
+EOS
+
+USAGE = <<EOS
+Usage: twitter_tokenizer [consumer_key] [consumer_secret] [oauth_callback]
+EOS
+
+begin
+  require 'rubygems'
+  require 'oauth'
+  require 'twitter_oauth'
+rescue 
+  puts HELP
+  exit  
+end
+
+if ARGV.delete("--help") || ARGV.delete("-h")
+  puts USAGE
+  exit
+end
+
+$consumer_key    = ARGV.delete(ARGV.first)
+$consumer_secret = ARGV.delete(ARGV.first)
+$oauth_callback  = ARGV.delete(ARGV.first)
+
+unless $consumer_key && $consumer_secret && $oauth_callback
+  puts USAGE
+  exit  
+end
+
+$client = TwitterOAuth::Client.new(
+  :consumer_key => $consumer_key,
+  :consumer_secret => $consumer_secret
+)
+$request_token = $client.request_token(:oauth_callback => $oauth_callback)
+puts "You were tokenized... :)"
+puts "URL:    #{$request_token.authorize_url}"
+puts "Token:  #{$request_token.token}"
+puts "Secret: #{$request_token.secret}"
+puts ""
+puts "You should access the URL above to authorize these credentials."
+puts "After authorization, please, copy your callback URL and paste bellow with query strings:"
+$oauth_verifier = gets.chomp.split("?").last.split("&").last.split("=").last
+
+$access_token = $client.authorize(
+  $request_token.token,
+  $request_token.secret,
+  :oauth_verifier => $oauth_verifier
+)
+if $client.authorized?
+  puts "Save the info bellow to use later:"
+  puts "consumer_key:       #{$consumer_key}"
+  puts "consumer_secret:    #{$consumer_secret}"
+  puts "oauth_token:        #{$access_token.params[:oauth_token]}"
+  puts "oauth_token_secret: #{$access_token.params[:oauth_token_secret]}"
+else
+  puts "Haaaaa! Something was very wrong... You are unauthorized. Try again!"
+end
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,21 @@
+.info
+  .clearfix#chart_actions
+    - if params[:action] == "index" || params[:action] == 'show'
+      .tools
+        = link_to '',queue_song_path(:slug => song.artist.slug, :id => song.album, :song_id => song) , :class => "play"
+        = add_to_playlist_button(song)
+        - if has_buylink?( song )
+          .buy
+            = link_to '', song_buylink_path(song), :class => "facebox buy", :title => t('actions.buy_song')
+        = link_to '', "/share/song/#{song.id}", :class => "facebox share", :title => t('actions.share')
+    %span.title
+      = link_to truncate(song.title, :length => 20), queue_song_path(:slug => song.artist.slug, :id => song.album, :song_id => song)
+      %span
+        == #{t('basics.by')}:
+        = link_to truncate(song.artist.name, :length => 20), song.artist
+    = show_sample_flag(song)
+  .clearfix#chart_bar
+    .bar{:style => "width: #{minimum_width_for_chart(song)}%"}
+      %span
+        = pluralize(song.total_listens, t("basics.play"), t("basics.plays"))
+    .bar_right

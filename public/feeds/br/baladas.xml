@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<?mso-infoPathSolution name="urn:schemas-microsoft-com:office:infopath:GTL_LinkImageAbstract:-myXSD-2005-05-02T19-24-44" href="manifest.xsf" solutionVersion="1.0.1.5" productVersion="11.0.6357" PIVersion="1.0.0.0"?>
+<?mso-application progid="InfoPath.Document"?>
+<cp:gtl xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cp="urn:schemas-microsoft-com/contentpublishing/content" xmlns:ns1="http://www.w3.org/1999/xhtml" xmlns:my="urn:schemas-microsoft-com/contentpublishing/imagepreview" xmlns:xd="http://schemas.microsoft.com/office/infopath/2003">
+<cp:linkimageabstract>
+<cp:link>
+  <cp:text>House britânico</cp:text>
+  <cp:url>http://www.guiadasemana.com.br/Sao_Paulo/Noite/Evento/Layo_e_Bushwacka.aspx?MSN=1&amp;id=50298</cp:url>
+  <cp:format>0</cp:format>
+</cp:link>
+<cp:image>
+  <cp:src> http://www.guiadasemana.com.br/photos/main/MSNM_n-sp-layo_c.jpg </cp:src>
+  <cp:width>80</cp:width>
+  <cp:height>55</cp:height>
+  <cp:alternatetext>Guia da Semana</cp:alternatetext>
+  <my:ImageUrl>http://www.guiadasemana.com.br/Sao_Paulo/Noite/Evento/Layo_e_Bushwacka.aspx?MSN=1&amp;id=50298</my:ImageUrl>
+</cp:image>
+<cp:abstract>Para o fim de semana do feriado de Tiradentes o Sirena programou a apresentação do duo britânico Layo &amp; Bushwacka, que voltam ao Brasil para apresentar mais uma vez seu set com house e tech house.Apaixonados pelo país, os DJs sempre que podem se apresentam por aqui, e já chegaram a homenagear o Rio de Janeiro em um álbum recente. Na pista princ...</cp:abstract>
+</cp:linkimageabstract>
+
+<cp:linkimageabstract>
+<cp:link>
+<cp:text>Black music</cp:text>
+<cp:url>http://www.guiadasemana.com.br/Rio_de_Janeiro/Noite/Evento/Soul,_Baby,_Soul.aspx?MSN=1&amp;id=50349</cp:url>
+<cp:format>0</cp:format>
+</cp:link>
+<cp:image>
+<cp:src> http://www.guiadasemana.com.br/photos/main/MSNM_n-rj-sirdema_c.jpg </cp:src>
+<cp:width>80</cp:width>
+<cp:height>55</cp:height>
+<cp:alternatetext>Guia da Semana</cp:alternatetext>
+<my:ImageUrl>http://www.guiadasemana.com.br/Rio_de_Janeiro/Noite/Evento/Soul,_Baby,_Soul.aspx?MSN=1&amp;id=50349</my:ImageUrl>
+</cp:image>
+<cp:abstract>O estilo black music dos anos 70 é o ritmo que impera na festa Soul, Baby, Soul! da Cabaret Kalesa. Mario Henrique Peixinho, Sir Dema, Leandro Petersen e Lucio Branco discotecam um set list composto pelas canções da Banda Black Rio a The Family Stone chegando até a James Brown.A night também reserva espaço para quem gosta de dançar e aprender passo...</cp:abstract>
+</cp:linkimageabstract>
+
+<cp:linkimageabstract>
+<cp:link>
+<cp:text>Cabeças de motor</cp:text>
+<cp:url>http://www.guiadasemana.com.br/Sao_Paulo/Shows/Evento/Motörhead.aspx?MSN=1&amp;id=46934</cp:url>
+<cp:format>0</cp:format>
+</cp:link>
+<cp:image>
+<cp:src> http://www.guiadasemana.com.br/photos/main/MSNM_s-sp-motorhead_c.jpg </cp:src>
+<cp:width>80</cp:width>
+<cp:height>55</cp:height>
+<cp:alternatetext>Guia da Semana</cp:alternatetext>
+<my:ImageUrl>http://www.guiadasemana.com.br/Sao_Paulo/Shows/Evento/Motörhead.aspx?MSN=1&amp;id=46934</my:ImageUrl>
+</cp:image>
+<cp:abstract>Como de costume, os músicos da banda Motörhead incluem a América do Sul em sua turnê de divulgação dos novos trabalhos. Em 18 de abril, eles chegam ao Brasil para se apresentar no palco do Via Funchal. Liderado pelo vocalista e baixista Lemmy Kilmister, apoiado por Phil Campbell na guitarra e Mikkey Dee na bateria, o grupo mostra ao público paulist...</cp:abstract>
+</cp:linkimageabstract>
+
+<cp:linkimageabstract>
+<cp:link>
+<cp:text>Cabeças de motor</cp:text>
+<cp:url>http://www.guiadasemana.com.br/Rio_de_Janeiro/Shows/Evento/Motörhead.aspx?MSN=1&amp;id=46934</cp:url>
+<cp:format>0</cp:format>
+</cp:link>
+<cp:image>
+<cp:src> http://www.guiadasemana.com.br/photos/main/MSNM_s-sp-motorhead_c.jpg </cp:src>
+<cp:width>80</cp:width>
+<cp:height>55</cp:height>
+<cp:alternatetext>Guia da Semana</cp:alternatetext>
+<my:ImageUrl>http://www.guiadasemana.com.br/Rio_de_Janeiro/Shows/Evento/Motörhead.aspx?MSN=1&amp;id=46934</my:ImageUrl>
+</cp:image>
+<cp:abstract>Como de costume, os músicos da banda Motörhead incluem a América do Sul em sua turnê de divulgação dos novos trabalhos. Em 18 de abril, eles chegam ao Brasil para se apresentar no palco do Via Funchal. Liderado pelo vocalista e baixista Lemmy Kilmister, apoiado por Phil Campbell na guitarra e Mikkey Dee na bateria, o grupo mostra ao público paulist...</cp:abstract>
+</cp:linkimageabstract>
+</cp:gtl>

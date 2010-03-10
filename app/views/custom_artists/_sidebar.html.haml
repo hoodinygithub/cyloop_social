@@ -1,0 +1,9 @@
+- custom_ad ||= false
+.module.ad.first
+  = banner_ad("square_banner")
+- if custom_ad
+  .module.custom_ad
+    = custom_ad
+.module.followers
+  = render :partial => 'modules/followers', :object => profile_account.followers.with_limit(@followers_limit || 72), :locals => { :header_key => t('dashboards.followers.title') }
+

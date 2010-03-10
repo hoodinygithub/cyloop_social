@@ -1,0 +1,27 @@
+// Use this file to require common dependencies or to setup useful test functions.
+require("../../public/javascripts/jquery.js");
+require("../../public/javascripts/jquery.ui.js");
+require("../../public/javascripts/jquery.infiniteCarousel.js");
+require("../../public/javascripts/jcarousel/lib/jquery.jcarousel.js");
+require("../../public/javascripts/jquery.ifixpng.js");
+require("../../public/javascripts/jquery.corners.js");
+require("../../public/javascripts/jquery.autocomplete.js");
+require("../../public/javascripts/jquery.jeditable.js");
+require("../../public/javascripts/jquery.livequery.js");
+require("../../public/javascripts/jquery-ui-i18n.min.js");
+require("../../public/javascripts/jquery.form.js");
+require("../../public/javascripts/jrails.js");
+require("../../public/javascripts/swfobject.js");
+require("../../public/javascripts/facebox.js");
+require("../../public/javascripts/registration.js");
+require("../../public/javascripts/application.js");
+require("../../public/javascripts/followees.js");
+require("../../public/javascripts/colorpicker.js");
+require("../../public/javascripts/customizer.js");
+require("../../public/javascripts/radio.js");
+require("../../public/javascripts/swf_utils.js");
+require("../../public/javascripts/dashboard.js");
+require("../../public/javascripts/media_manager.js");
+require("../../public/javascripts/activity.js");
+require("../../public/javascripts/jquery.timers.js");
+require("../../public/javascripts/new_activity.js");

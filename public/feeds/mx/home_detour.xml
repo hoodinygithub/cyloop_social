@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<channel>
+ <title/>
+ <link>http://cm-msnmx.cyloop.com/cms/view/msnmx_home_detour_es</link>
+ <description>msnmx home detour (spanish)</description>
+ <language>en</language>
+<item>
+ <title>Beto Cuevas</title>
+ <link>http://cm-msnmx.cyloop.com/cms/node/9005</link>
+ <description><drupal_id>9005</drupal_id>
+<body><![CDATA[]]></body>
+<link><![CDATA[/detour]]></link>
+<image>/drupal/files/MSN_Detour_homepage_betocuevas_0.jpg</image>
+<publishing_site>MX MSN</publishing_site>
+<publishing_section>MSN MX Home - Detour</publishing_section>
+</description>
+ <authored>Tue, 11 Nov 2008 18:36:46 -0500</authored>
+ <author>admin</author>
+ <updated>Tue, 14 Apr 2009 16:36:17 -0400</updated>
+</item>
+</channel>

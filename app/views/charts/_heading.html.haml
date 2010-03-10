@@ -1,0 +1,8 @@
+.clearfix#list_header    
+  .title
+    %h3= possessive :charts
+  
+.filters
+  %p.label== #{t('actions.view')}:
+  = filter filter_args_charts
+  .clear

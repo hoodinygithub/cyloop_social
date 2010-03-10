@@ -1,0 +1,11 @@
+- if @feed_blog && !@feed_blog.empty?
+  .blue.headline.clearfix
+    %h2
+      %span
+        Blog
+  %ul
+    - @feed_blog.each do |feed|
+      %li.blog
+        %span= link_to(image_tag("#{feed.image}", :alt => feed.title), feed.link,{ :title => feed.title, :class => 'title' })
+        = link_to(feed.title, feed.link,{ :title => feed.title, :class => 'title' })
+        = truncate(feed.description, :length => 80)

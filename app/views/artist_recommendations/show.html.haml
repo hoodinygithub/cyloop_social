@@ -1,0 +1,19 @@
+%h2.channel_headline=t('registration.sign_up')
+.signup_section
+  %h3= t('users.new.step_3_title')
+  %p= t('users.new.step_3_description')
+  
+%ul#mycarousel.jcarousel-skin-tango
+  - @artists.in_groups_of(12) do |group_of_artists|
+    %li 
+      - group_of_artists.compact.each do |artist|
+        - following = current_user.followings.detect {|f| f.followee_id == artist.id}
+        .artist{:id => "artist_#{artist.id}", :class => following ? "following" : ""} 
+          .image
+            = image_tag "#{ENV['ASSETS_URL']}#{artist.image}", :alt => artist.nick_name, :height => '160px', :width => '160px', :class => 'thumb' 
+          .nick_name
+            = link_to artist.nick_name, "#{artist.profile_url}"
+          %span
+            = render :partial => 'artist_recommendation', :locals => {:following => following, :artist_id => artist.id}
+.clearfix
+  = large_link_button_to t('basics.done'), my_dashboard_path, :class => 'clearfix'

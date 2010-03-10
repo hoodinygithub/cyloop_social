@@ -1,0 +1,19 @@
+%h3== #{t("user.reset_password")}
+
+- form_for :user do |f|
+  .form.label_based 
+    .row.clearfix
+      .label
+        = f.label :password, t('user.new_password')
+      .field
+        .input_wrapper
+          = f.password_field :password
+    .row.clearfix
+      .label
+        = f.label :password_confirmation
+      .field
+        .input_wrapper
+          = f.password_field :password_confirmation
+    .form_actions
+      .row.clearfix
+        = large_form_button_to :reset

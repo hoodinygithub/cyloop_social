@@ -1,0 +1,6 @@
+- section = controller.controller_name
+%ul
+  %li{:style => 'display:inline'}= link_to_unless(section == 'discover', "Main", discover_path)
+  %li{:style => 'display:inline'}= link_to_unless(section == 'artists', "Artists", discover_artists_path)
+  %li{:style => 'display:inline'}= link_to_unless(section == 'songs', "Songs", discover_songs_path)
+  %li{:style => 'display:inline'}= link_to_unless(section == 'stations', "Stations", discover_stations_path)

@@ -1,0 +1,85 @@
+defaults: &defaults
+  ttl: 1800
+  readonly: false
+  urlencode: false
+  c_threshold: 10000
+  compression: true
+  debug: false
+  namespace: cyloop
+  sessions: false
+  session_servers: false
+  fragments: true
+  memory: 64
+  servers: localhost:11211
+  benchmarking: true
+  raise_errors: true
+  fast_hash: false
+  fastest_hash: false
+
+development: 
+  ttl: 604800
+  namespace: development
+  sessions: false
+  debug: false
+  servers: 
+    - 127.0.0.1:11211
+  benchmarking: true
+  raise_errors: true
+
+dc: 
+  ttl: 604800
+  namespace: development
+  sessions: false
+  debug: false
+  servers: 
+    - 127.0.0.1:11211
+  benchmarking: true
+  raise_errors: true
+
+  
+test:
+  ttl: 604800
+  namespace: test
+  sessions: false
+  debug: false
+  servers: localhost:11211
+
+staging:
+  ttl: 604800
+  namespace: staging
+  sessions: false
+  debug: false
+  servers: localhost:11211
+
+uat:
+  ttl: 604800
+  namespace: uat
+  sessions: false
+  debug: false
+  servers: localhost:11211
+
+production:
+  ttl: 604800
+  namespace: production
+  sessions: false
+  debug: false
+  servers:
+    - 10.6.65.128:11211
+    - 10.6.64.129:11211
+    - 10.6.64.130:11211
+    - 10.6.64.131:11211
+    - 10.6.64.132:11211
+    - 10.6.64.133:11211
+    - 10.6.64.134:11211
+    - 10.6.64.135:11211
+    - 10.6.64.136:11211
+    - 10.6.64.137:11211
+    - 10.6.64.138:11211
+    
+ec2_production: 
+  ttl: 604800
+  namespace: ec2_production
+  sessions: false
+  debug: false
+  servers: 
+    - 10.209.103.111:11211

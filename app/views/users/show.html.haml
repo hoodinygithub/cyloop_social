@@ -1,0 +1,7 @@
+- content_for :head do
+  %link{:href => account_rss_url( profile_account.slug, :format => 'rss' ), :rel => "alternate", :type => "application/rss+xml"}
+
+- require_javascript "media_manager"
+- require_javascript "new_activity"
+
+= render :partial => "modules/activity/activity"

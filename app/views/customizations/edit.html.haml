@@ -1,0 +1,12 @@
+%h2= t('settings.customizations.colors')
+
+= error_messages_for(:user, :header_message => "")
+
+:javascript
+  $(document).ready(function() {
+    initCustomizer();
+  });
+
+.color_settings
+  = render :partial => 'form'
+

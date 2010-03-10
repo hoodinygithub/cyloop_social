@@ -1,0 +1,15 @@
+server {
+  listen 443;
+
+  server_name _ ;
+  ssl on;
+  ssl_certificate /data/ssl/ssl.cyloop.com.crt;
+  ssl_certificate_key /data/ssl/ssl.cyloop.com.key;
+
+  root <%= deploy_to %>/current/public;
+  
+  include /etc/nginx/common/servers.conf;
+
+  passenger_enabled on;
+  passenger_use_global_queue on;
+}

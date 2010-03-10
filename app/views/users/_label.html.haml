@@ -1,0 +1,13 @@
+#profile_label
+  - unless profile_account.nil?
+    = avatar_for(profile_account, :small)
+    %h2
+      = profile_account.name
+    .user.meta== #{profile_account.location}
+    - if current_user != profile_account
+      = follow_button(profile_account)
+    - if logged_in? && current_user == profile_account
+      #customize_button
+        = pill_link_to t("profile.header.customize_page"), edit_my_customizations_path, :id => :customize_page_link
+        /= link_to content_tag(:span, t("profile.header.customize_page")), edit_my_customizations_path, :class => "pill_button", :id => :customize_page_link
+

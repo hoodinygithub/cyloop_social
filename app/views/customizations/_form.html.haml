@@ -1,0 +1,113 @@
+:javascript
+  var default_header_bg = "#{current_user.color_header_bg || Account::ProfileColors::DEFAULT_COLORS[:header_bg]}";
+  var default_main_font = "#{current_user.color_main_font || Account::ProfileColors::DEFAULT_COLORS[:main_font]}";
+  var default_links     = "#{current_user.color_links     || Account::ProfileColors::DEFAULT_COLORS[:links]}";
+  var default_color_bg  = "#{current_user.color_bg        || Account::ProfileColors::DEFAULT_COLORS[:bg]}";
+
+  function loading(){
+    $('#loading').show();
+    $('#customizer_form').hide();
+    sleep(5);
+  }
+
+
+#loading{:style => "border-bottom:1px solid #ccc;text-align:center;background-color:#fff;float:left;height:20px;padding-bottom:10%;padding-top:10%;width:1000px;"}
+  =image_tag('ajax_activity_indicators_download_animated_icon_animated_busy.gif')
+- form_for current_user, :url => my_customizations_path, :html => { :id => "customizer_form", :multipart => true, :class => :clearfix, :onsubmit => "loading()"} do |f|
+
+
+  %ul
+    %li.header_bg.color{:style => "background-color: ##{current_user.color_header_bg || Account::ProfileColors::DEFAULT_COLORS[:header_bg]}"}
+      %span
+        =t 'settings.customizations.header_background'
+    %li.main_font.color{:style => "background-color: ##{current_user.color_main_font || Account::ProfileColors::DEFAULT_COLORS[:main_font]}"}
+      %span
+        =t 'settings.customizations.main_font_color'
+    %li.links.color{:style => "background-color: ##{current_user.color_links || Account::ProfileColors::DEFAULT_COLORS[:links]}"}
+      %span
+        =t 'settings.customizations.link_font_color'
+    %li.bg.color{:style => "background-color: ##{current_user.color_bg || Account::ProfileColors::DEFAULT_COLORS[:color_bg]}"}
+      %span
+        =t 'settings.customizations.main_background_color'
+  .div_to_hide_while_styled
+    .header_bg.color_field
+      = f.label :color_header_bg
+      = f.text_field :color_header_bg, :value => current_user.color_header_bg || Account::ProfileColors::DEFAULT_COLORS[:header_bg]
+    .main_font.color_field
+      = f.label :color_main_font
+      = f.text_field :color_main_font, :value => current_user.color_main_font || Account::ProfileColors::DEFAULT_COLORS[:main_font]
+    .links.color_field
+      = f.label :color_links
+      = f.text_field :color_links, :value => current_user.color_links || Account::ProfileColors::DEFAULT_COLORS[:links]
+    .bg.color_field
+      = f.label :color_bg
+      = f.text_field :color_bg, :value => current_user.color_bg || Account::ProfileColors::DEFAULT_COLORS[:bg]
+  .background_customizations
+    .background_image
+      = f.label :background
+      .fileinputs
+        = f.file_field :background, :class => 'file'
+        = #pill_link_to t("settings.customizations.remove_background_image"), remove_background_image_my_customizations_path, :id => 'remove_background_image'
+
+        :javascript
+          var W3CDOM = (document.createElement && document.getElementsByTagName);
+
+          function initFileUploads() {
+          	if (!W3CDOM) return;
+          	var fakeFileUpload = document.createElement('div');
+          	fakeFileUpload.className = 'fakefile';
+          	var fakeInput = document.createElement('input');
+          	$(fakeInput).attr("class", "fake_input");
+          	fakeFileUpload.appendChild(fakeInput);
+
+            var buttonBox = document.createElement('div');
+            $(buttonBox).attr("class", "pill_button");
+          	var buttonLeft = document.createElement('div');
+            $(buttonLeft).attr("class", "left");
+            buttonBox.appendChild(buttonLeft);
+            var button_center = document.createElement("input");
+            $(button_center).attr("value", "#{t('settings.customizations.browse')}");
+            $(button_center).attr("type", "button");
+            $(button_center).attr("class", "pill_button");
+          	buttonBox.appendChild(button_center);
+          	var buttonRight = document.createElement('div');
+            $(buttonRight).attr("class", "right");
+            buttonBox.appendChild(buttonRight);
+
+          	fakeFileUpload.appendChild(buttonBox);
+          	var x = document.getElementsByTagName('input');
+          	for (var i=0;i<x.length;i++) {
+          		if (x[i].type != 'file') continue;
+          		if (x[i].parentNode.className != 'fileinputs') continue;
+          		x[i].className = 'file hidden';
+          		var clone = fakeFileUpload.cloneNode(true);
+          		x[i].parentNode.appendChild(clone);
+          		x[i].relatedElement = clone.getElementsByTagName('input')[0];
+          		x[i].onchange = x[i].onmouseout = function () {
+          		  var delimiter = (this.value.indexOf("/") >= 0) ? "/" : "\\";
+          		  var value = this.value.split(delimiter);
+          			this.relatedElement.value = value[(value.length-1)];
+          		}
+          	}
+          }
+          initFileUploads();
+          fixAlphaPng();
+
+    .background_align
+      = f.label :background_align
+      = f.select :background_align, options_for_background_align
+    .background_repeat
+      = f.label :background_repeat
+      = f.select :background_repeat, options_for_background_repeat
+    .background_fixed
+      = f.label :background_fixed
+      = f.select :background_fixed, [[t('basics.yes'), true], [t('basics.no'), false]]
+  .customize_buttons
+    .pill_button
+      .left
+      = tag :input, :type => :submit, :value => t('actions.save'), :class => :pill_button
+      .right
+
+    = pill_link_to t("settings.customizations.restore_defaults"), restore_defaults_my_customizations_path, :id => 'customizer_restore_defaults'
+    = pill_link_to :cancel, my_settings_path, :id => 'customizer_cancel'
+

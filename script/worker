@@ -1,0 +1,17 @@
+#!/usr/bin/env ruby
+require 'rubygems'
+require 'daemons'
+require File.join(File.dirname(__FILE__), '..', 'lib', 'daemons_extension')
+
+ENV['RAILS_ENV'] ||= 'development'
+
+options = {
+  :app_name  => 'beanstalk_processor',
+  :dir_mode  => :script,
+  :dir       => '../log',
+  :backtrace => true,
+  :mode      => :load,
+  :monitor   => true
+}
+
+Daemons.run(File.join(File.dirname(__FILE__), '..', 'lib', 'beanstalk_worker.rb'), options)

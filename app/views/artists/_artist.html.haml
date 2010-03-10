@@ -1,0 +1,36 @@
+#artist_result
+  %div{:class => "#{artist_counter == 0 ? 'artist_name clearfix first': 'artist_name clearfix'}"}
+    = avatar_for(artist, :really_tiny)
+    %span.result_title
+      = link_to artist.name, artist
+    - if artist.has_station?
+      .create_station
+        = button_to :create_station, queue_my_station_path(artist.station.id), :method => :post
+  %table
+    %thead
+      %th{:scope => "col", :width => "10%"}
+      %th{:scope => "col", :width => "65%"}
+        = t "basics.song"
+      %th{:scope => "col", :width => "15%"}
+        = t "basics.time"
+      %th{:scope => "col", :width => "10%"}
+    - artist.songs.all(:limit => 10, :include => :album).each_with_index do |song, index|
+      %tr
+        %td
+          = link_to image_tag("/images/activity-play.gif"), "#", :id => song.id, :title => t("actions.play"), :class => "what_listen"
+        %td.song
+          = avatar_for(song.album, :really_tiny, {:id => "album_avatar"})
+          %span.tip{:artist_name => truncate(artist.name, :length => 20, :omission => "..."), :album_name => "#{t("basics.album")}: #{truncate(song.album.name, :length => 20, :omission => "...")}", :album_year => "#{t("albums.year")}: #{song.album.year}", :artist_label => "#{t("albums.label")}: #{artist.label.name}"}
+          %span
+            = truncate(song.title, :length => 30)
+        %td.duration{:sec => song.duration}
+          = show_duration(song)
+        %td
+          - if params[:appending] == "0"
+            = link_to image_tag("/images/activity-add.gif"), "#", :id => song.id, :title => t("actions.add"), :class => "add"
+          - else
+            = link_to image_tag("/images/activity-append.gif"), "#", :id => song.id, :title => t("actions.append"), :class => "append"
+      - if index == 9
+        %tr
+          %td{:colspan => 4}
+            = link_to t('actions.view_more_songs'), artist_albums_url(song.artist)

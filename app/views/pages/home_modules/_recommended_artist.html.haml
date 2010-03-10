@@ -1,0 +1,5 @@
+%li.clearfix
+  = link_to avatar_for(recommended_artist, :small, {:alt => recommended_artist.nick_name, :title => recommended_artist.nick_name}), artist_path(recommended_artist)
+  = link_to recommended_artist.nick_name, artist_path(recommended_artist)
+  %span
+    == #{t('modules.top_songs.title')} #{recommended_artist.most_listened_songs(3).map { |song| link_to( truncate(song.title, :length => 14 ), queue_song_path(:slug => recommended_artist.slug, :id => song.album, :song_id => song))  }.join(', ')}

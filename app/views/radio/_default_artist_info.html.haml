@@ -1,0 +1,15 @@
+#radio_label
+  %h3= t("modules.recommended_stations.title")
+
+  %div.clearfix
+    - recommended_stations(3).each do |node|
+      %div.floater.clearfix
+        = link_to_function image_tag("#{ENV['ASSETS_URL']}#{node.image}", :class => "album thumb padding_img", :alt => node.artist_name, :title => node.artist_name), "createStation('#{node.artist_name}')"
+        = link_to_function node.artist_name, "createStation(\"#{node.artist_name}\")"
+        %br
+        = "#{t("basics.includes")}:"
+
+        %div
+          - node.includes.each do |artist|
+            %div
+              = link_to artist[:name], artist[:url], :target => 'blank'

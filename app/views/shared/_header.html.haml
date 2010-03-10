@@ -1,0 +1,22 @@
+CURRENT SITE: = current_site.inspect
+#header_wrapper
+  #header
+    - link_to root_path do
+      %h1#logo Cyloop
+    #main_menu
+      #primary-links-wrapper
+        %ul#primary-links
+          - if logged_in?
+            %li.link
+              = link_to(t("navigation.dashboard"), my_dashboard_path)
+          %li.link
+            = link_to(t("navigation.radio"), radio_path)
+          = render :partial => 'shared/nav_search'
+      %ul#secondary-links
+        %li.link
+          - if logged_in?
+            = link_to t("sessions.destroy.sign_out"), site_logout_url
+          - else
+            = link_to t("sessions.new.sign_in"), site_login_url
+        - if !logged_in?
+          %li.link= link_to t("registration.sign_up"), site_register_url

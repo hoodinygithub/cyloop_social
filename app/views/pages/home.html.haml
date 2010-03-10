@@ -1,0 +1,66 @@
+- content_for :head do
+  = render :partial => 'shared/logged_in_callback'
+  %script{ :src => '/flash.js', :type => 'text/javascript' }
+  %script{ :src => '/home.js', :type => 'text/javascript' }
+
+-if !logged_in? and site_includes(:msnlatino)
+  = render '3rd_party_branding/sub_msnlatino.html.haml'
+
+#content
+  = render 'pages/home_modules/featured'
+
+  - unless site_includes(:msncafr, :msncaen)
+    .module.create_station
+      = render 'pages/home_modules/create_station'
+
+  - if site_includes(:msncafr, :msncaen)
+    .news.clearfix
+      = render "pages/home_modules/news_#{site_code}"
+
+  - if site_includes(:msncafr, :msncaen)
+    .photos.clearfix
+      = render "pages/home_modules/photos_#{site_code}"
+
+  - if site_includes(:msncafr)
+    .reviews.clearfix
+      = render "pages/home_modules/reviews_#{site_code}"
+
+  - if site_includes(:msncaen)
+    .reviews_and_blogs.clearfix
+      .reviews.clearfix
+        = render "pages/home_modules/reviews_#{site_code}"
+      .blogs.clearfix
+        = render "pages/home_modules/blogs_#{site_code}"
+
+  .interviews.clearfix
+    - if site_includes(:msnbr)
+      = render "pages/home_modules/interviews_#{site_code}"
+
+  -if site_includes(:msnmx)
+    .news.clearfix
+      = render "pages/home_modules/news_#{site_code}"
+
+  -if site_includes(:msnlatino)
+    .news_latino.clearfix
+      = render "pages/home_modules/news_#{site_code}"
+
+  .tops.clearfix
+    = render 'pages/home_modules/top_artists'
+    = render 'pages/home_modules/top_songs'
+    - if cyloop_site?
+      #recommended.cyloop.module.recommended.clearfix
+        .blue.headline.clearfix
+          %h2
+            %span
+              =t 'modules.recommendations.title'
+        %ul{:style=>"background:#fff"}
+          = render :partial => 'pages/home_modules/recommended_artist.html.haml', :collection => recommended_artists_existing(5)
+
+  .photo_galleries.clearfix
+    - if site_includes(:msnmx)
+      = render "pages/home_modules/gallery_#{site_code}"
+
+-unless cyloop_site?
+  #secondary_content
+    = render 'pages/home_modules/sidebar'
+

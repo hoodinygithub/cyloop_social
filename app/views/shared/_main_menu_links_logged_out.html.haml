@@ -1,0 +1,9 @@
+#primary-links-wrapper
+  %ul#primary-links
+    %li.link
+      = link_to(t("navigation.radio"), radio_path)
+    = render :partial => 'shared/nav_search'
+%ul#secondary-links
+  %li.link
+    = link_to t("sessions.new.sign_in"), new_session_path
+  %li.link= link_to t("registration.sign_up"), new_user_path

@@ -1,0 +1,7 @@
+%li
+  = link_to(avatar_for(top_song.song.artist, :small), top_song.song.artist)
+  %h4
+    = link_to top_song.song.title, queue_song_path(:slug => top_song.song.artist.slug, :id => top_song.song.album, :song_id => top_song.song) 
+  .artist
+    =t 'basics.by'
+    = link_to top_song.song.artist.name, top_song.song.artist

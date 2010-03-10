@@ -1,0 +1,7 @@
+$("#customizer").hide().html("<%= escape_javascript(render(:partial => 'form')) %>")
+$('ul.navigation li.current').hide();
+initCustomizer();
+$("#customizer").show("blind");
+$('#loading').hide();
+$('ul.navigation li.current').show();
+

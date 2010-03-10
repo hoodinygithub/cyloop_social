@@ -1,0 +1,13 @@
+- unless controller_name =~ /album/
+  - unless profile_artist.genre.blank? && profile_artist.location.blank? && profile_artist.websites.blank? && profile_artist.influences.blank?
+    .module.info
+      %h3.artist_info_title= t('modules.information.title')
+      .info_body
+        - if !profile_artist.genre.blank?
+          %p.genre==  <span>#{t('information.genre')}:</span> #{profile_artist.genre.name}
+        - if !profile_artist.location.blank?
+          %p.location== <span>#{t('information.location')}:</span> #{profile_artist.location}
+        - if !profile_artist.websites.blank?
+          %p.websites== <span>#{t('information.website')}:</span> #{profile_artist.websites}
+        - if !profile_artist.influences.blank?
+          %p.influences== <span>#{t('information.influences')}:</span> #{h profile_artist.influences.gsub(/---/,"")}

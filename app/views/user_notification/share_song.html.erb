@@ -1,0 +1,97 @@
+<html>
+<body style="margin-left: 0px; margin-top: 0px; margin-right: 0px; margin-bottom: 0px;">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#CCCCCC">
+  <tr>
+    <td><br>
+        <br>
+      <table width="560" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#CCCCCC">
+      <tr>
+        <td><a href="http://<%= @global_url %>" target="_blank"><img src="http://<%= @global_url %>/images/share_email/top.gif" width="560" height="62" border="0"></a></td>
+      </tr>
+
+    </table>
+
+      <table width="560" border="0" align="center" cellpadding="0" cellspacing="20" bgcolor="#FFFFFF">
+        <tr>
+
+          <% if !@sender_slug.nil? %>
+            <td width="90">
+              <table width="90" border="0" cellpadding="0" cellspacing="1" bgcolor="#CCCCCC">
+                <tr>
+                  <td>
+                    <table width="88" border="0" cellpadding="2" cellspacing="0" bgcolor="#FFFFFF">
+                      <tr>
+                      <td><a href="http://<%= @global_url %>/<%= @sender_slug %>" target="_blank"><img src="http://<%= @global_url %>/<%= @sender_avatar %>" width="84" height="84"/></a></td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          <% end %>
+
+          <% if !@sender_slug.nil? %>
+            <td width="410" valign="top"><font face="Arial, Helvetica, sans-serif" color="#666666" size="+2"><%= t("share.song.subject", {:user => @sender_name }) %></font></td>
+          <% else %>
+            <td colspan="2" width="560" valign="top"><font face="Arial, Helvetica, sans-serif" color="#666666" size="+2"><%= t("share.song.subject", {:user => @sender_name }) %></font></td>
+          <% end %>
+        </tr>
+        <tr>
+          <td colspan="2"><img src="http://<%=@global_url%>/images/share_email/line.gif" width="520" height="1"></td>
+        </tr>
+        <tr>
+          <td colspan="2"><table width="520" border="0" cellspacing="10" cellpadding="0">
+            <tr>
+              <td width="439"><strong><font face="Arial, Helvetica, sans-serif" color="#025D8C" size="+2"><%= @item_title %></font></strong><br>
+                <font face="Arial, Helvetica, sans-serif" color="#025D8C" size="3"><strong><%= t('basics.by') %>: </strong><font color="#025D8C"><%= @item_author %></font></font></td>
+
+              <td width="51"><a href="<%= @share_link %>" target="_blank"><img src="http://<%=@global_url%>/images/share_email/btn_play_new.gif" width="60" height="68" border="0"></a></td>
+            </tr>
+          </table></td>
+        </tr>
+        <tr>
+          <td colspan="2"><img src="http://<%=@global_url%>/images/share_email/line.gif" width="520" height="1"></td>
+        </tr>
+        <tr>
+          <td colspan="2"><br>
+
+            <table width="520" border="0" cellspacing="10" cellpadding="0">
+            <tr>
+              <td width="77" valign="top"><font face="Arial, Helvetica, sans-serif" color="#025D8C" size="3"><strong><%= t('basics.message') %>: </strong></font></td>
+              <td width="413"><font face="Arial, Helvetica, sans-serif" color="#666666" size="3"><%= @message %></font></td>
+            </tr>
+          </table>
+              <br>
+              <br></td>
+
+        </tr>
+        <tr>
+          <td colspan="2"><img src="http://<%=@global_url%>/images/share_email/line.gif" width="520" height="1"></td>
+        </tr>
+        <tr>
+          <td colspan="2" align="center"><font face="Arial, Helvetica, sans-serif" color="#025D8C" size="3">Cyloop | <%= t('dashboards.show.what_do_you_want_to_listen_to') %></font></td>
+        </tr>
+      </table>
+
+      <table width="560" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#CCCCCC">
+        <tr>
+          <td><img src="http://<%=@global_url%>/images/share_email/bottom.gif" width="560" height="9"></td>
+        </tr>
+      </table>
+      <table width="560" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#CCCCCC">
+        <tr>
+          <td align="center"><br>
+      <font face="Arial, Helvetica, sans-serif" color="#666666" size="1">
+        <%= t('share.song.marketing') %>
+        </font></td>
+        </tr>
+      </table>
+      <br>
+    <br>
+
+    <br></td>
+  </tr>
+</table>
+</body>
+</html>
+

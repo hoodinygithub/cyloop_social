@@ -1,0 +1,35 @@
+- content_for :head do
+  = stylesheet_link_tag 'custom_profiles/sonyericsson'
+#profile_header.clearfix
+  #profile_label
+    = image_tag( 'sonyericsson/top100.gif' )
+  #stats.clearfix
+    .stat
+      %span.count= number_with_delimiter(profile_account.follower_count)
+      %span.label=t 'users.stats.followers'
+      .follow_actions
+        = follow_button(profile_account)
+    .stat
+      %span.count#stats_visits_count= number_with_delimiter(profile_account.visit_count)
+      %span.label= t 'users.stats.visits'
+
+#content{ :style => 'width: 578px' }
+  - @songs, @max_listens = paginate_top_100_songs
+
+  .filters
+    %p.label== #{t('actions.view')}:
+    %a.filter{ :href => 'javascript:void(0)' }
+      %span
+        = t('profile.navigation.songs')
+    .clear
+
+  %ol.chart
+    - @songs.each do |top|
+      = render 'charts/songs/song', :song => Summary::TotalListensProxy::TotalListensProxy.new( top.song, top.total_listens, @max_listens )
+  =will_paginate @songs, pagination_args
+    
+  #tm.clear
+    %p= t('custom_profiles.sony_disclaimer')
+
+#secondary_content
+  = render 'custom_artists/sidebar'

@@ -1,0 +1,14 @@
+.logged_out
+  %h3 ¡Esta es tu oportunidad para hablar con Shakira!
+  %p.title Ingresa a este video chat en vivo exclusivo y envíale tu pregunta.
+  
+  %p Recuerda actualizar o recargar esta página en tu navegador para poder visualizar el video chat correctamente una vez que comience.
+
+  %h4 
+    Si ya tienes tu cuenta de MSN Música, 
+    %br
+    == #{link_to("haz clic aquí", site_login_url(:return_to => request.request_uri, :follow_profile => @follow_profile))} para ingresar.
+  %p 
+    Si aún no tienes una cuenta gratis de MSN Música, 
+    = link_to("haz clic aquí", site_register_url(:return_to => request.request_uri, :follow_profile => @follow_profile))
+    para obtenerla con Windows Live.

@@ -1,0 +1,16 @@
+server {
+  listen 80;
+	server_name <%= nginx_server_name %>;
+
+  root <%= deploy_to %>/current/public;
+
+  access_log /var/log/nginx/<%= application %>.<%= stage %>.access.log main;
+  error_log  /var/log/nginx/<%= application %>.<%= stage %>.error.log  notice;
+
+  set $market "<%= stage %>";
+  include /etc/nginx/common/servers.conf;
+
+  passenger_enabled on;
+  passenger_use_global_queue on;
+  rails_env "<%= rails_environment %>";
+}

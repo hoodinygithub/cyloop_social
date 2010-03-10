@@ -1,0 +1,85 @@
+#production servers
+'br.msn.cyloop.com':
+  appid: 000000004C01B707
+  secret: rJQJ8fq8VmZF7dFUbdT3ArIznfekdeBd
+  consenturl: http://consent.messenger.services.live.com/
+'prodigy.msn.cyloop.com':
+  appid: 000000004401C1C0
+  secret: 1b1hkJWLhko36OxW7rg6QFTb2joFfRlu
+  consenturl: http://consent.messenger.services.live.com/
+'latam.msn.cyloop.com':
+  appid: 000000004C01B25A
+  secret: KidPmiCeq5t1FVlfY6y4JG2j5P9mjFAX
+  consenturl: http://consent.messenger.services.live.com/
+'latino.msn.cyloop.com':
+  appid: 000000004001C20D
+  secret: imCyLwCdtTEvwvbCXElJLg8VVIeZosUO
+  consenturl: http://consent.messenger.services.live.com/
+'music.ca.msn.cyloop.com':
+  appid: 000000004001C20F
+  secret: rvnLYKoi46OAnIjjtRDQVJBhGfTnnMG6
+  consenturl: http://consent.messenger.services.live.com/
+'musique.ca.msn.cyloop.com':
+  appid: 000000004401CD43
+  secret: WgStT8OsyLXOmh8Vi2Mspmhy73aZcWGW
+  consenturl: http://consent.messenger.services.live.com/
+'www.cyloop.es':
+  appid: 00000000480210C4
+  secret: APMzTYhVi6i66iamk2W4eMhfGEhSMBfQ
+  consenturl: http://consent.messenger.services.live.com/
+'cyloop.es':
+  appid: 000000004401EDD9
+  secret: 6741tUhiF7QVHRVHqpK5TCtKDQeSrtNd
+  consenturl: http://consent.messenger.services.live.com/
+#staging servers
+'staging.cyloop.es':
+  appid: 00000000480214D9
+  secret: p23wjOYSMob5A6x5DF79TvE4BgFXA8ka
+  consenturl: http://consent.messenger.services.live.com/
+'staging.latino.hoodiny.com':
+  appid: 000000004801DD98
+  secret: J4kyx9TxrgFQ4bCbyb3BQlprQPupLz2Z
+  consenturl: http://consent.messenger.services.live.com/
+  debug: true
+'staging.br.hoodiny.com':
+  appid: 000000004801F33D
+  secret: wSrJCbSoUvQs3NM9wi2ReKg9yHxragG5
+  consenturl: http://consent.messenger.services.live.com/
+  debug: true
+'staging.ca.en.hoodiny.com':
+  appid: 000000004C01AD71
+  secret: 16Rb8pYMoBwJJdabE8FLnFKcyRDjbb1t
+  consenturl: http://consent.messenger.services.live.com/
+  debug: true
+'staging.ca.fr.hoodiny.com':
+  appid: 000000004C01AD70
+  secret: hn6mrbXXRddzPkTaLPQLZUOlif4FUw7n
+  consenturl: http://consent.messenger.services.live.com/
+  debug: true
+'staging.cyloop.com':
+  appid: 000000004801E738
+  secret: Jv8nIMrxBkCqLGMiKjlgb7yDGhFfjc8K
+  consenturl: http://consent.messenger.services.live.com/
+  debug: true
+'staging.latam.hoodiny.com':
+  appid: 000000004C01AF41
+  secret: t3cfXHssBPyEPmEmmbUPehmnS6CtUZTa
+  consenturl: http://consent.messenger.services.live.com/
+  debug: true
+'staging.mx.hoodiny.com':
+  appid: 000000004C01AD6F
+  secret: lzIYNqd2RBXT67a2zpE4wgfseElE9ajs
+  consenturl: http://consent.messenger.services.live.com/
+  debug: true
+'www.javace.com':
+  appid: 000000004801DD3C
+  secret: fMbO68nswGMPCeu3kRdWjUNXj53lBvRj
+  consenturl: http://consent.messenger.services.live.com/
+  debug: true
+'tempmessenger.cyloop.com': &DEFAULT
+  appid: 000000004401C214
+  secret: VW1eDrsPLwkeQ1xOxFFA518DeukCpZM7
+  consenturl: http://consent.messenger.services.live.com/
+  debug: true
+'default': 
+  <<: *DEFAULT

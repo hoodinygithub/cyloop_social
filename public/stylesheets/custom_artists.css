@@ -1,0 +1,78 @@
+/* @override http://cyloop.local/stylesheets/custom_artists.css */
+
+/* @override http://cyloop.local/stylesheets/custom_artists.css */
+
+body.detour {
+	background: black url(/images/background_detour.jpg) top center no-repeat
+}
+
+body.invasion {
+	background: black url(/images/background_invasion.jpg) top center no-repeat;
+}
+
+body.invasion #mast_head {
+	background-color: #091340;
+}
+
+body.detour #mast_head {
+	background-color: black;
+}
+
+
+
+body.detour a, body.invasion a {
+	color: #666;
+	font-weight: normal;
+}
+
+.detour #main_content, .invasion #main_content,
+.detour #sub_header_container, .invasion #sub_header_container {
+	background-color: transparent;
+	border: none;
+}
+
+.detour #page_wrapper, .invasion #page_wrapper {
+	margin-top: 0;
+}
+
+.detour h3 {
+	color: #FA3407;
+}
+
+.invasion h3 {
+	color: #00269B;
+}
+
+.detour #header_wrapper {
+	background-color: black;
+}
+
+.invasion #header_wrapper {
+	background-color: #091340;
+}
+
+#profile_header { height: 140px; position: relative; z-index: 0 }
+#profile_header .follow_actions { position: absolute; top: 95px; right: 277px; }
+#profile_header a.pill_button, #profile_header button.pill_button { margin-top: 7px; display: inline-table; }
+#profile_header button { clear: both; float: right; margin-right: 240px; }
+
+/* -----------------------------------------------------
+	#stats
+----------------------------------------------------- */
+#stats { color: #025D8C; float: right; padding-top: 20px; text-align: left; width: 350px; }
+#stats .stat { display: inline; float: left; font-size: 13px; font-weight: bold; margin-left: 10px; text-align: left; width: 165px; }
+#stats .stat:first-child { margin-left: 0; }
+#stats .stat .count,
+#stats .stat .label { display: block; float: left; width: 100%; }
+#stats .stat .count { margin-bottom: 4px; font-weight: bold !important;}
+#stats .stat .count { font: 36px "Times New Roman", Times, Georgia; }
+#stats .stat.song_plays { display: none; }
+/* -- [ .detour ] -- */
+.detour #stats .stat { color: black; }
+.detour #stats .stat a { #000 }
+.detour #stats .stat .count { color: black; }
+.detour #stats .stat .count a { color: black; font-weight: bold; }
+/* -- [ .invasion ] -- */
+.invasion #stats .stat { color: #fff; }
+.invasion #stats .stat a { color: #00269B; }
+.invasion #stats .stat .count { color: #00269B; }

@@ -1,0 +1,19 @@
+%li.clearfix[song]
+  - page = (song.album.songs.map(&:id).index(song.id.to_i) / 15) + 1 rescue 1 
+  .avatar
+    = link_to avatar_for(song, :small, {:alt => "#{song.artist} - #{song.album}"}), queue_song_path(:slug => song.artist.slug, :id => song.album, :song_id =>song, :page => page) rescue nil
+  .info
+    %div.title.clearfix
+      %h4= link_to song.title, queue_song_path(:slug => song.artist.slug, :id => song.album, :song_id =>song, :page => page) rescue nil
+      =show_sample_flag(song)
+    .meta
+      .plays
+        -begin
+          %span== #{t('basics.by')}: #{link_to song.artist.name, song.artist},
+          %span.meta_count== #{t('basics.plays')}: #{song.total_listens}
+        - rescue
+          %span==
+    .tools.clearfix.clear
+      - if has_buylink?( song )
+        .buy.clear
+          = link_to '', song_buylink_path(song), :class => "facebox buy", :title => t('actions.buy_song')

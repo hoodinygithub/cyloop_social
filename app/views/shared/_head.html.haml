@@ -1,0 +1,31 @@
+%meta{"http-equiv" => 'Content-Type', :content => 'text/html;charset=utf-8'}
+%meta{"http-equiv" => 'Content-Script-Type', :content => 'text/javascript'}
+%title= h(@title || t("meta.title"))
+%meta{'name' => 'keywords', :content => t("meta.keywords") }
+%meta{'name' => 'description', :content => t("meta.description") }
+%meta{'name' => 'robots', :content => "ALL"}
+%meta{'name' => 'site', :content => current_site.id}
+%meta{'name' => 'created', :content => Time.now }
+%link{:rel=>"shortcut icon", :href=>"/favicon.ico"} 
+- if protect_against_forgery?
+  %meta{:name => 'authenticity_token', :content => form_authenticity_token}
+= main_stylesheets_link_tag
+/ [if IE 6]
+  = stylesheet_link_tag 'ie'
+/ [if IE 7]
+  = stylesheet_link_tag 'ie7'
+/ [if IE 8]
+  = stylesheet_link_tag 'ie8'
+= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.to_json};" if protect_against_forgery?
+= main_javascript_include_tags
+= resource_tags :defaults => false, :auto => false
+- if cyloop_site?
+  = javascript_include_tag 'jquery.corners'
+  = javascript_include_tag 'jquery.corners.js'
+- if site_includes(:msncaen, :msncafr)
+  = javascript_include_tag 'http://blstj.msn.com/br/gbl/js/4/mozcompat.js'
+  = javascript_include_tag 'http://blstj.msn.com/br/gbl/js/4/core.js'
+  = javascript_include_tag 'http://blstj.msn.com/br/gbl/js/2/report.js'  
+  = javascript_include_tag 'http://blstj.msn.com/br/gbl/js/7/navigation.js'
+
+= google_analytics_js_include_tag

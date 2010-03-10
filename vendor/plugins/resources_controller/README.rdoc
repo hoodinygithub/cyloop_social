@@ -1,0 +1,91 @@
+= resources_controller
+
+is a plugin to facilitate inheritance and DRYness in your resources controllers.  It introduces some abstraction to help
+you override the default RESTful funtionality in a clean and simple manner.
+
+See History.txt for recent changes.
+
+== Resources
+
+<b>Github</b> for code: http://github.com/ianwhite/resources_controller
+
+<b>API</b> docs: http://ianwhite.github.com/resources_controller/doc
+
+<b>Google group</b> for questions: http://groups.google.com/group/resources_controller
+
+<b>Lighthouse</b> for bugs: http://ianwhite.lighthouseapp.com/projects/10598-resources_controller
+
+<b>Blog</b> articles: http://blog.ardes.com/resources_controller
+
+<b>RailsConfEurope</b> presentation files: http://en.oreilly.com/railseurope2008/public/schedule/detail/3536
+
+== works with rails 2.x
+
+resources_controller works with rails 2.x, and is currently tested against 2.0, 2.1, 2.2, and 2.3 stable branches
+
+== Specs and Coverage
+
+* The SPECDOC lists the specifications
+* Coverage is 100% (C0), and the spec suite is quite comprehensive
+* Rspec's generated rspec_scaffold controller specs are tested against a simple rc controller (see rake spec:generate)
+
+RSpec is used for testing, so the tests are in <tt>spec/</tt> rather than
+<tt>test/</tt> Do rake --tasks for more details.
+
+== Continuous Integration
+
+garlic (at http://github.com/ianwhite/garlic) is used for CI.  To run the CI suite have a look at
+garlic.rb
+
+== How to contribute
+
+If you have found a bug, or have a new feature, then spec'd code is great.  To make sure you haven't broken rc, you
+want to run the ci suite.  This is pretty easy, you just need to install garlic, and run it in a fresh checkout of rc.
+The first time it runs it will be a little slow, as it needs to check out various git repos, but subsequent runs will
+be fast.  The following is how I work - you may want to only do a subset of this stuff
+
+  sudo gem install garlic
+  
+  # add the following line to your ~/.profile
+    source `garlic --path`/sh/garlic.sh
+  
+  # reload your profile
+  . ~/.profile
+  
+  # grab resources_controller and run the suite for the first time
+  git clone git://github.com/ianwhite/resources_controller.git
+  cd resources_controller
+  garlic all
+  
+  # jump into 2-3 garlic work repo to make some changes
+  gcdp 2-3
+  
+  # commit some stuff, run the specs with 'rake' etc
+  
+  # then push up to the local master repo
+  gpush
+  
+  # go back to the local master, run garlic again, to see if the 2-3 changes affected anything else
+  gup
+  garlic
+
+== Contributors
+
+The following people have made contributions to resources_controller.  Please let me know if I've missed you out.
+
+* Chris Hapgood
+* Jason Lee
+* Richard Hooker
+* Matt Mower
+* Inviz
+* Dan Kubb
+* Rein Henrichs
+* Tom Stuart
+* Joel Chippindale
+* Tim Pope
+* Tom ten Thij
+* Sergei Serdyuk
+
+== License
+
+Copyright (c) 2007-2009 Ian White, MIT License

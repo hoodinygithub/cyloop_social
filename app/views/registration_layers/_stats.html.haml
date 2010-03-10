@@ -1,0 +1,18 @@
+= link_to t('actions.close'), "#", :class => "close"
+.stats
+  %ul
+    %li.listen
+      %span= t("registration.layers.listen")
+      = t("registration.layers.listen_text", :count => "<em>#{number_with_delimiter(@songs)}</em>")
+
+    %li.discover
+      %span= t("registration.layers.discover")
+      = t("registration.layers.discover_text", :count => "<em>#{number_with_delimiter(@artists)}</em>")
+
+    %li.know
+      %span= t("registration.layers.know")
+      = t("registration.layers.know_text", :count => "<em>#{number_with_delimiter(@users)}</em>", :place => "<em>#{t("registration.layers.place")}</em>")
+
+    %li.share
+      %span= t("registration.layers.share")
+      = t("registration.layers.share_text")

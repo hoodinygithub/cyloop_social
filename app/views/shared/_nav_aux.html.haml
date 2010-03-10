@@ -1,0 +1,14 @@
+#nav_aux
+  - if logged_in? && controller_name != 'pages' && action_name != 'home'
+    = link_to t("sessions.destroy.sign_out"), site_logout_url
+  - else
+    - if @follow_profile
+      = link_to t("sessions.new.sign_in"), site_login_url(:return_to => nav_aux_login_url, :follow_profile => @follow_profile)
+      |
+      = link_to t("registration.sign_up"), registration_layers_path(:return_to => my_dashboard_path, :follow_profile => @follow_profile), :class => "facebox"      
+    - else
+      = link_to t("sessions.new.sign_in"), site_login_url(:return_to => nav_aux_login_url)
+      |
+      = link_to t("registration.sign_up"), registration_layers_path(:return_to => my_dashboard_path), :class => "facebox"
+
+/the homepage is cached, so the test against controller name and action name must be kept

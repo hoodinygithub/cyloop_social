@@ -1,0 +1,73 @@
+- content_for :head do
+  = stylesheet_link_tag 'custom_profiles/shakira'
+  / [if IE 6]
+    = stylesheet_link_tag 'custom_profiles/shakira.ie'
+#profile_header.clearfix
+  #profile_label
+    = image_tag( 'custom_profiles/shakira/logo.jpg' )
+  #stats.clearfix
+    .follow_button
+      = follow_button(profile_account, { :skip_auto_width => true })
+    .profile_stats
+      .stat
+        %span= number_with_delimiter(profile_account.follower_count)
+        =t 'users.stats.followers'
+      .stat.visits
+        %span= number_with_delimiter(profile_account.visit_count)
+        = t 'users.stats.visits'
+
+- unless @chat.promotion? || @chat.post?
+  = render :partial => 'custom_profiles/chat'
+
+#content
+  - if @chat.promotion? || @chat.post?
+    :javascript
+      var follow_profile = #{@chat.profile.id};
+      var flashvars = {
+        LOGGEDIN:"#{logged_in?}",
+        QUEUE:"#{params[:station_id]}",
+        LOCALE:"#{site_includes(:msnbr) ? 'pt_BR' : 'es'}",
+        PLID:"#{profile_account.playlists[0].try(:id)}"
+      };
+      var params = {wmode:"transparent"};
+      var attributes = {id:"radio_engine", name:"radio_engine"};
+      swfobject.embedSWF("flash/radio_engine_shakira.swf", "radio_player", "620", "329", "9", false, flashvars, params, attributes);
+    #radio_player
+    - if @chat.promotion?
+      #shakira_ad
+        = link_to(image_tag('custom_profiles/shakira/banner.jpg'), "http://www.siguealaluna.com/", :target => "_blank")
+    - else     
+      #chat_post      
+        %h3 ¡Revive el video chat con Shakira aquí!
+        = render :partial => "custom_profiles/chat_post_#{site_code}"    
+  - else
+    #chat_form
+      - if @chat.finished?
+        = render :partial => "custom_profiles/shakira_chat_ended"
+      - elsif logged_in?
+        - if @chat.pre?
+          = render :partial => 'custom_profiles/shakira_welcome'
+        - elsif (@chat.live? || @chat.down? || @chat.ustream?)
+          .form
+            %h3 Pregúntale a Shakira lo que siempre haz querido saber ...
+            %p ¡Si tu pregunta es elegida, será contestada por Shakira en vivo y en directo a través de este video chat!
+            - form_remote_for @message do |f|
+              = render :partial => 'messages/form', :locals => {:f => f, :button => "custom_profiles/shakira/enviar.png"}
+      - else
+        = render :partial => 'custom_profiles/shakira_logged_out'
+  :javascript
+    var flashvars = {};
+    var params = {wmode:"transparent"};
+    var attributes = {id:"ericsson_ad", name:"ericsson_ad"};
+    swfobject.embedSWF('flash/610x285_SE_SHAKIRA_PROMO.swf', 'ericsson_ad', '620', '285', '9', false, flashvars, params, attributes);
+  #ericsson_ad
+  #tm
+    = t('custom_profiles.sony_disclaimer')
+
+#secondary_content
+  - if @chat.promotion? || @chat.pre? || @chat.post?
+    = render :partial => 'custom_artists/sidebar', :locals => {:custom_ad => link_to(image_tag("custom_profiles/shakira/siguelaluna.jpg"), "http://siguelaluna.com/", :target => "_blank") }
+  - else
+    = render 'custom_artists/sidebar'
+    
+%img{ :height => "1", :width => "1", :src => "http://view.atdmt.com/action/cyloop_landingpage_1209" }

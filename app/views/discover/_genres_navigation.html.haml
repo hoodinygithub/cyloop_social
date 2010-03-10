@@ -1,0 +1,4 @@
+%ul
+  %li.genre= link_to_unless_current('All Genres', send("discover_#{section}_path"))
+  - genres.each do |genre|
+    %li.genre= link_to_unless_current(genre, send("discover_#{section.singularize}_path", genre.downcase))

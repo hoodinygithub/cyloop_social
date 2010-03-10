@@ -1,0 +1,21 @@
+%li.clearfix[artist]
+  .avatar
+    = avatar_for(artist, :small)  
+  .info
+    .navigation.clearfix
+      .follow_button
+        = follow_button(artist)
+      .artist
+        = link_to artist.name, artist_path(artist.slug)
+      .create_station
+        - if artist.has_station?
+          - if logged_in?
+            = button_to :create_station, queue_my_station_path(artist.station.id)
+          -else
+            = button_to :create_station, radio_path(:station_id => artist.station.id)
+
+    .clearfix#chart_bar
+      .bar{:style => "width: #{minimum_width_for_chart(artist)}%"}
+        %span
+          = pluralize(artist.total_listens, t("basics.play"), t("basics.plays"))
+      .bar_right

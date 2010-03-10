@@ -1,0 +1,32 @@
+.feedback
+  %p.closebutton
+    = link_to image_tag ('/facebox/close.gif'), '#',:rel=>'close', :class => 'close'
+  %h3 
+    =t "feedback.title"
+
+  -form_tag :feedback do
+    = hidden_field_tag :browser, browser_type
+    = hidden_field_tag :os, os_type
+    %p.field
+      = label_tag :address, t("feedback.email")
+      = text_field_tag :address, logged_in? ? current_user.email : ""
+    %p.field
+      = label_tag :feedback, t("feedback.feedback")
+      = text_area_tag :feedback
+    %p.field
+      = label_tag :os, t("feedback.os")
+      = text_field_tag :os, os_type, :disabled => true
+    %p.field
+      = label_tag :browser, t("feedback.browser")
+      = text_field_tag :browser, browser_type, :disabled => true
+    %p.field
+      = label_tag :country, t("feedback.country")
+      = text_field_tag :country, current_country
+    %div.create_actions.clearfix  
+      %p.submit_button
+        .pill_button
+          .left
+          = tag :input, :type => :submit, :value => t("feedback.submit"), :class => :pill_button
+          .right
+        - if request.xhr?
+          = link_to t('actions.cancel'), '#', :class => "close"

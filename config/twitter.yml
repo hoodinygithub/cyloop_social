@@ -1,0 +1,46 @@
+common_config:  &common_config
+  consumer_key: lJRNSWnp1ywCZ9bAQreAqA
+  consumer_secret: rV8JndxIdru8W2qqH3LCHs2QHwzz0VPUHZyDV8PonY
+  token: 72660239-qO2p2x8ZBKYequIeNiU0YbGKkKvPXEYhuA9E98QR8
+  secret: H4p3G4AmkQpkrj1uEpQ6mlW4vrdoPSBwkEfwCMMXTw
+  ttserver_host: localhost 
+  ttserver_port: 1980
+  
+development:
+  <<: *common_config
+
+test:
+  <<: *common_config
+  ttserver_port: 1981
+
+production:
+  <<: *common_config
+  consumer_key: FonTC5cnWH111FXCdmWpVw
+  consumer_secret: SGwfowbiNdPTEIUl5Qv84IeEondGRE7wjGIzE7eDAI
+  token: 76096687-WLjgZb7bXVTZFd1Jv82Z9puGeI9m0KOtw0C7wtAqh
+  secret: FbsHuYsfvQpzscLfa2sraD9FrG0z2bhpyxY9Gjit3U
+  ttserver_host: 10.6.64.128
+  ttserver_port: 1980
+
+ec2_production:
+  <<: *common_config
+  consumer_key: FonTC5cnWH111FXCdmWpVw
+  consumer_secret: SGwfowbiNdPTEIUl5Qv84IeEondGRE7wjGIzE7eDAI
+  token: 76096687-WLjgZb7bXVTZFd1Jv82Z9puGeI9m0KOtw0C7wtAqh
+  secret: FbsHuYsfvQpzscLfa2sraD9FrG0z2bhpyxY9Gjit3U
+  ttserver_host: 10.254.226.191
+  ttserver_port: 1980
+  
+dc:
+  <<: *common_config
+  
+staging:
+  consumer_key: FonTC5cnWH111FXCdmWpVw
+  consumer_secret: SGwfowbiNdPTEIUl5Qv84IeEondGRE7wjGIzE7eDAI
+  token: 76096687-WLjgZb7bXVTZFd1Jv82Z9puGeI9m0KOtw0C7wtAqh
+  secret: FbsHuYsfvQpzscLfa2sraD9FrG0z2bhpyxY9Gjit3U
+  ttserver_host: localhost 
+  ttserver_port: 1980
+  
+uat:
+  <<: *common_config

@@ -1,0 +1,184 @@
+/*
+ * Summary
+ *
+ * - General
+ * - Messages number
+ * - Moderator
+ * - Interviewee
+ *
+ */
+
+/* General */
+body { background-color: #440F16; }
+#main_content { border: 5px solid #F4F4F4; width: 1000px; margin-top: 20px; }
+h3 { line-height: 22px; }
+#emergency_button {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  display: block;
+  width: 145px;
+  line-height: 18px;
+  height: 18px;
+  background-color: #BCB1AA;
+  color: #FFF;
+  text-align: center; font-size: 10px;
+	border-width:2px;
+	border-style:solid;
+	border-bottom-color:#aaa;
+	border-right-color:#aaa;
+	border-top-color:#ddd;
+	border-left-color:#ddd;
+	border-radius:3px;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+}
+
+/* Messages number */
+#messages_flow {
+  float:right;
+  width:30%;
+  text-align: right;
+  padding-right:10px;
+  padding-top:7px;
+  text-transform:none;
+  font-size:0.85em;
+  font-weight:normal;
+}
+#messages_number {
+  float:right;
+  width:15%;
+  text-align: right;
+  padding-top:7px;
+  text-transform:none;
+  font-size:0.85em;
+  font-weight:normal;
+}
+
+/* Moderator */
+.disabled,
+.enabled { 
+  width: 80px; 
+  height: 22px; 
+  background-color: #EFF0A8; 
+  float: right;
+  border: 2px solid #ddd;
+	border-top-color:#aaa;
+	border-left-color:#aaa;
+	cursor: pointer;
+}
+.enabled span,
+.disabled span {
+  display: block;
+  width: 45px;
+  line-height: 18px;
+  height: 18px;
+  background-color: #999;
+  text-align: center; font-size: 10px;
+	background-color:#fff;
+	border-width:2px;
+	border-style:solid;
+	border-bottom-color:#aaa;
+	border-right-color:#aaa;
+	border-top-color:#ddd;
+	border-left-color:#ddd;
+	border-radius:3px;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+}
+.enabled { background-color: #9BEE9A; }
+.enabled span { float: right; }
+.disabled { background-color: #FFB8AF }
+.disabled span { float: left; }
+.tools_right { float: right; }
+
+.ul li div.info_chat {
+  width:100% !important;
+}
+.meta_chat {
+  width:90%;
+  font-size:0.85em;
+  line-height:18px;
+  margin-top:4px;
+  font-weight: normal;
+}
+.info_chat {
+  font-size:1.35em;
+  font-weight: bold;
+}
+.tools_right a.approve {
+  background: url(/images/approved_shakira.png);
+  display:block;
+  float:left;
+  height:28px;
+  width:92px;
+}
+.tools_right a.unapprove {
+  background: url(/images/unapproved.png);
+  display:block;
+  float:left;
+  height:28px;
+  width:92px;
+}
+ul li.message:hover {
+  /* background-color: #EAE4A3 !important; */ 
+}
+ul li.message {
+  padding: 10px 20px 10px 10px;
+  position: relative;
+	border: 1px solid #f4f4f4;
+  border-bottom: 1px solid #ddd;
+  border-right: 1px solid #ddd;  
+  margin-top: 5px;
+  background-color: #EBF9E3 !important;	
+}
+ul li.approved {
+  background-color: #F5F5F9 !important;
+  color: #BEBEBE !important;
+}
+
+/* Interviewee */
+.interviewee li {
+  min-height: 300px;
+  padding: 20px;
+}
+.interviewee .pre_submitted {
+  color: #6C471F;
+}
+.interviewee .location {
+  text-align: center; 
+	font-size: 2.7em;
+  font-weight: normal;
+  display: block;
+	padding: 20px;
+  color: #60081C;
+  font-style: italic;
+}
+.interviewee .question {
+  text-align: center; 
+  font-size: 3.6em;
+  line-height: 1.2em;
+  display: block;
+  width: 100%;
+	color: black !important;
+}
+.links { display: block; width: 100%; margin: 25px auto; text-align: center; }
+.links a.back,
+.links a.next {
+  display: inline;
+  padding: 10px 60px;
+  line-height: 60px;
+  height: 60px;
+  font-size: 3em;
+  background-color: #DFD7C9;
+  color: #2F0F12;
+  text-align: center;
+  width: auto;
+  margin: 0 10px;
+}
+.links a.back {
+  padding: 10px 40px 10px 30px;
+  line-height: 30px;
+  height: 60px;
+  font-size: 1.5em;
+}

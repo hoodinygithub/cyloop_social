@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<channel>
+ <title/>
+ <link>http://cm-msnbr.cyloop.com/cms/view/msnbr_home_invasion</link>
+ <description>msnbr home invasion</description>
+ <language>en</language>
+<item>
+ <title>Invasion</title>
+ <link>http://cm-msnbr.cyloop.com/cms/node/9223</link>
+ <description><drupal_id>9223</drupal_id>
+<body><![CDATA[Invasion Text here]]></body>
+<link><![CDATA[/invasion]]></link>
+<image>/drupal/files/ScreenHunter_101.jpg</image>
+<publishing_site>MSN BR</publishing_site>
+<publishing_section>Home - Invasion</publishing_section>
+</description>
+ <authored>Wed, 01 Apr 2009 10:57:44 -0400</authored>
+ <author>admin</author>
+ <updated>Mon, 13 Apr 2009 14:05:58 -0400</updated>
+</item>
+</channel>

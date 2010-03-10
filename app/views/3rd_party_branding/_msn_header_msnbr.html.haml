@@ -1,0 +1,55 @@
+#msn_header.clearfix
+  .wrapper
+    .msn_main
+      %ul.msn_navigation
+        %li= link_to "notícias", "http://noticias.br.msn.com/"
+        %li= link_to "entretenimento", "http://entretenimento.br.msn.com/"
+        %li= link_to "esportes", "http://msn.lancenet.com.br/"
+        %li= link_to "vídeo", "http://video.br.msn.com/"
+        %li.more
+          - link_to do
+            %span.more_wrapper= "navegue pelo MSN"
+      %ul.msn_sisters
+        %li= link_to "MSN home", "http://br.msn.com/"
+        %li= link_to "Hotmail", "http://mail.live.com"
+        %li.last= link_to "Messenger", "http://download.live.com/messenger"
+    .portal.clearfix{:style => 'display: none'}
+      %ul.msn_sisters
+        %li.hotmail= link_to "Hotmail", "http://mail.live.com"
+        %li.messenger= link_to "Messenger", "http://download.live.com/messenger"
+        %li.spaces= link_to "Spaces", "http://www.windowslive.com.br/index_windowslive.html"
+        %li.shopping= link_to "Shopping", "http://shopping.msn.com.br/"
+      %ul.msn_sections
+        %li= link_to "Alertas", "http://alertas.br.msn.com/"
+        %li= link_to "Entretenimento", "http://entretenimento.br.msn.com/"
+        %li= link_to "Imóveis", "http://msn.imovelweb.com.br/?xxsite=msn"
+        %li= link_to "Notícias", "http://noticias.br.msn.com/"
+        %li= link_to "Tecnologia", "http://tecnologia.br.msn.com/"
+        %li= link_to "Automóvel", "http://www.msnauto.com.br/webmotors/ssMSN/index.aspx"
+        %li= link_to "Esportes", "http://msn.lancenet.com.br/"
+        %li= link_to "Inglês Online", "http://englishtown.msn.com.br/online/home.aspx?bhcp=1&etag=br_msncanal_portal"
+        %li= link_to "Paquera", "http://match.br.msn.com/channel/index.aspx?pg=channel&trackingid=1011453"
+        %li= link_to "Verde", "http://verde.br.msn.com/"
+        %li= link_to "Celular", "http://info.mobile.br.msn.com/pt-BR/default.aspx"
+        %li= link_to "Estilo de Vida", "http://msn.onne.com.br/"
+        %li= link_to "Jogos", "http://jogos.br.msn.com"
+        %li= link_to "Serviços", "http://servicos.br.msn.com/"
+        %li= link_to "Viagem", "http://viagem.br.msn.com/"
+        %li= link_to "Corpo & Saúde", "http://msn.minhavida.com.br/homemsn.vxlpub?utm_source=MSN&amp;utm_medium=canal"
+        %li= link_to "Horóscopo", "http://entretenimento.br.msn.com/astrologia/astrologia_v2.aspx"
+        %li= link_to "Mulher", "http://msn.bolsademulher.com/"
+        %li= link_to "Seu Dinheiro", "http://dinheiro.br.msn.com/"
+        %li= link_to "Vídeo", "http://video.br.msn.com/"
+        %li= link_to "Empregos", "http://msn.catho.com.br/"
+        %li= link_to "I Love Messenger", "http://specials.br.msn.com/ilovemessenger/home.aspx"
+        %li= link_to "Música", "/"
+        %li= link_to "Shopping", "http://shopping.msn.com.br/"
+        %li.last= link_to "Internet Explorer 8", "http://ie8.msn.com/microsoft/internet-explorer-8/pt-br/ie8.aspx"
+
+
+    .sub
+      %ul.msn_navigation
+        %li.active= link_to "Cyloop", "/"
+        %li.last= link_to "iMusica", "http://imusica.br.msn.com"
+        %li.last= link_to "Todas Cifras", "http://msn.todascifras.com.br/"
+

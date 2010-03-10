@@ -1,0 +1,49 @@
+!!!
+%html{application_html_attrs}
+  %head
+    = render 'shared/head'
+    = customized_colors
+    = yield :head
+  %body{:class => body_classes("dashboards"), :loggedin => (logged_in?).to_s, :locale => current_site.default_locale, :market => current_site.code}
+    = render_messenger_app
+    #main_content
+      - unless cyloop_site?
+        #sub_header_container.banner
+          = banner_ad("top_banner")
+      = render :partial => "shared/mast_head"
+      #customizer
+      = render 'users/profile_header'
+      #page_wrapper
+        = render_flash
+        #filters
+          %ul#activity_type_filters
+            %li
+              %span
+              = link_to_function t("activity.filters.all"), "$('#activity').data('activityFeed').switchActivity(this)", {:id => 'all', :class => "active"}
+            /
+              %li
+                %span
+                = link_to_function t("activity.filters.songs"), "$('#activity').data('activityFeed').switchActivity(this)", {:id => 'listen'}
+            %li
+              %span
+              = link_to_function t("activity.filters.playlists"), "$('#activity').data('activityFeed').switchActivity(this)", {:id => 'playlist'}
+            %li
+              %span
+              = link_to_function t("activity.filters.stations"), "$('#activity').data('activityFeed').switchActivity(this)", {:id => 'station'}
+            %li
+              %span
+              = link_to_function "TWITTER", "$('#activity').data('activityFeed').switchActivity(this)", {:id => 'twitter'}              
+        #content_wrap
+          #content
+            = yield
+          #secondary_content{:style => "margin-top:0px" }
+            - if params[:slug].blank?
+              = render 'dashboards/sidebar'
+            - elsif profile_account.artist?
+              = render 'artists/sidebar'
+            - else
+              = render 'users/sidebar'
+
+      = render :partial => "shared/footer"
+      - if site_includes(:msnlatino, :msnmx, :msnbr, :msnlatam, :msnar, :msncaen, :msncafr)
+        = render "3rd_party_branding/msn_footer_#{site_code}"

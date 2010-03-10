@@ -1,0 +1,117 @@
+<?xml version="1.0"?>
+<Application>
+  <SiteLoginUIProperties>
+    <Header id="default">STRID_WL_DEFAULT_HEADER</Header>
+    <Title id="default">STRID_WL_DEFAULT_TITLE</Title>
+    <Subtitle id="default">STRID_WL_DEFAULT_SUBTITLE</Subtitle>
+    <ImageURL id="default">STRID_WL_DEFAULT_IMAGEURL</ImageURL>
+    <SSLImageURL id="default">STRID_WL_DEFAULT_SSLIMAGEURL</SSLImageURL>
+    <Header id="var1">STRID_WL_VAR1_HEADER</Header>
+    <Title id="var1">STRID_WL_VAR1_TITLE</Title>
+    <Subtitle id="var1">STRID_WL_VAR1_SUBTITLE</Subtitle>
+    <ImageURL id="var1">STRID_WL_VAR1_IMAGEURL</ImageURL>
+    <SSLImageURL id="var1">STRID_WL_VAR1_SSLIMAGEURL</SSLImageURL>
+  </SiteLoginUIProperties>
+  <WhiteLabelProperties>
+    <LogoAltText>STRID_LOGOALTTEXT</LogoAltText>
+    <HeaderBkgndImage>https://ssl.cyloop.com/images/windows_live_ID_header.png</HeaderBkgndImage>
+    <HeaderBkgndColor>#002C43</HeaderBkgndColor>
+    <WLIDValuePropFontColor>WLIDValuePropFontColor</WLIDValuePropFontColor>
+    <FontColor>black</FontColor>
+    <ButtonColor>#EBEBEB</ButtonColor>
+    <BkgndColor>#FFFFFF</BkgndColor>
+    <FontColorLink>#002C43</FontColorLink>
+    <FontColorLight>#999999</FontColorLight>
+    <ButtonBorder>#BEBEBE</ButtonBorder>
+    <UserTileColor>#EBEBEB</UserTileColor>
+    <Logo>STRID_LOGO</Logo>
+    <LogoSSL>STRID_LOGOSSL</LogoSSL>
+  </WhiteLabelProperties>
+  <StringTable>
+    <Language langID="es">
+      <String id="STRID_DISPLAYNAME">Cyloop</String>
+      <String id="STRID_WL_DEFAULT_HEADER">Inicia sesi&#xF3;n con tu Windows Live ID</String>
+      <String id="STRID_WL_DEFAULT_TITLE">Windows Live</String>
+      <String id="STRID_WL_DEFAULT_SUBTITLE"/>
+      <String id="STRID_WL_DEFAULT_IMAGEURL"/>
+      <String id="STRID_WL_DEFAULT_SSLIMAGEURL"/>
+      <String id="STRID_WL_VAR1_HEADER">Reg&#xED;strese para acceder a los detalles de tu cuenta</String>
+      <String id="STRID_WL_VAR1_TITLE">Windows Live</String>
+      <String id="STRID_WL_VAR1_SUBTITLE"/>
+      <String id="STRID_WL_VAR1_IMAGEURL"/>
+      <String id="STRID_WL_VAR1_SSLIMAGEURL"/>
+      <String id="STRID_LOGO"/>
+      <String id="STRID_LOGOSSL"/>
+      <String id="STRID_LOGOALTTEXT">Cyloop</String>
+      <String id="STRID_HEADER_BKGND_IMAGE">https://ssl.cyloop.com/images/windows_live_ID_header.png</String>
+    </Language>
+    <Language langID="pt-BR">
+      <String id="STRID_DISPLAYNAME">Cyloop</String>
+      <String id="STRID_WL_DEFAULT_HEADER">Escute m&#xFA;sica gr&#xE1;tis, descubra novos artistas e fa&#xE7;a amigos</String>
+      <String id="STRID_WL_DEFAULT_TITLE">Entre</String>
+      <String id="STRID_WL_DEFAULT_SUBTITLE"/>
+      <String id="STRID_WL_DEFAULT_IMAGEURL"/>
+      <String id="STRID_WL_DEFAULT_SSLIMAGEURL"/>
+      <String id="STRID_WL_VAR1_HEADER">Registre-se para acessar os detalhes de sua conta</String>
+      <String id="STRID_WL_VAR1_TITLE">Registre-se</String>
+      <String id="STRID_WL_VAR1_SUBTITLE"/>
+      <String id="STRID_WL_VAR1_IMAGEURL"/>
+      <String id="STRID_WL_VAR1_SSLIMAGEURL"/>
+      <String id="STRID_LOGO"/>
+      <String id="STRID_LOGOSSL"/>
+      <String id="STRID_LOGOALTTEXT">Cyloop</String>
+      <String id="STRID_HEADER_BKGND_IMAGE">https://ssl.cyloop.com/images/windows_live_ID_header.png</String>
+    </Language>
+    <Language langID="pt">
+      <String id="STRID_DISPLAYNAME">Cyloop</String>
+      <String id="STRID_WL_DEFAULT_HEADER">Escute m&#xFA;sica gr&#xE1;tis, descubra novos artistas e fa&#xE7;a amigos</String>
+      <String id="STRID_WL_DEFAULT_TITLE">Entre</String>
+      <String id="STRID_WL_DEFAULT_SUBTITLE"/>
+      <String id="STRID_WL_DEFAULT_IMAGEURL"/>
+      <String id="STRID_WL_DEFAULT_SSLIMAGEURL"/>
+      <String id="STRID_WL_VAR1_HEADER">Registre-se para acessar os detalhes de sua conta</String>
+      <String id="STRID_WL_VAR1_TITLE">Registre-se</String>
+      <String id="STRID_WL_VAR1_SUBTITLE"/>
+      <String id="STRID_WL_VAR1_IMAGEURL"/>
+      <String id="STRID_WL_VAR1_SSLIMAGEURL"/>
+      <String id="STRID_LOGO"/>
+      <String id="STRID_LOGOSSL"/>
+      <String id="STRID_LOGOALTTEXT">Cyloop</String>
+      <String id="STRID_HEADER_BKGND_IMAGE">https://ssl.cyloop.com/images/windows_live_ID_header.png</String>
+    </Language>
+    <Language langID="en">
+      <String id="STRID_DISPLAYNAME">Cyloop</String>
+      <String id="STRID_WL_DEFAULT_HEADER">Sign in with your Windows Live ID </String>
+      <String id="STRID_WL_DEFAULT_TITLE">Sign Up</String>
+      <String id="STRID_WL_DEFAULT_SUBTITLE"/>
+      <String id="STRID_WL_DEFAULT_IMAGEURL"/>
+      <String id="STRID_WL_DEFAULT_SSLIMAGEURL"/>
+      <String id="STRID_WL_VAR1_HEADER">Sign in to access your account details </String>
+      <String id="STRID_WL_VAR1_TITLE">Windows Live</String>
+      <String id="STRID_WL_VAR1_SUBTITLE"/>
+      <String id="STRID_WL_VAR1_IMAGEURL"/>
+      <String id="STRID_WL_VAR1_SSLIMAGEURL"/>
+      <String id="STRID_LOGO"/>
+      <String id="STRID_LOGOSSL"/>
+      <String id="STRID_LOGOALTTEXT">Cyloop</String>
+      <String id="STRID_HEADER_BKGND_IMAGE">https://ssl.cyloop.com/images/windows_live_ID_header.png</String>
+    </Language>
+    <Language langID="fr">
+      <String id="STRID_DISPLAYNAME">Cyloop</String>
+      <String id="STRID_WL_DEFAULT_HEADER"> Connectez-vous avec votre identifiant Windows Live </String>
+      <String id="STRID_WL_DEFAULT_TITLE">Sign Up</String>
+      <String id="STRID_WL_DEFAULT_SUBTITLE"></String>
+      <String id="STRID_WL_DEFAULT_IMAGEURL"></String>
+      <String id="STRID_WL_DEFAULT_SSLIMAGEURL"></String>
+      <String id="STRID_WL_VAR1_HEADER"> Connectez-vous pour accéder aux détails de votre compte </String>
+      <String id="STRID_WL_VAR1_TITLE">Windows Live</String>
+      <String id="STRID_WL_VAR1_SUBTITLE"></String>
+      <String id="STRID_WL_VAR1_IMAGEURL"></String>
+      <String id="STRID_WL_VAR1_SSLIMAGEURL"></String>
+      <String id="STRID_LOGO"></String>
+      <String id="STRID_LOGOSSL"></String>
+      <String id="STRID_LOGOALTTEXT">Cyloop</String>
+      <String id="STRID_HEADER_BKGND_IMAGE">https://ssl.cyloop.com/images/windows_live_ID_header.png</String>
+    </Language>    
+  </StringTable>
+</Application>

@@ -1,0 +1,22 @@
+!!!
+%html{application_html_attrs}
+  %head
+    %title= h(@title || t("meta.title"))  
+    = main_stylesheets_link_tag
+    / [if IE 6]
+      = stylesheet_link_tag 'ie'
+    / [if IE 7]
+      = stylesheet_link_tag 'ie7'
+    / [if IE 8]
+      = stylesheet_link_tag 'ie8'
+    = resource_tags :defaults => false, :auto => false
+    = stylesheet_link_tag 'chat'
+    = javascript_include_tag 'jquery', 'jquery.ui.js', 'jrails', 'jquery.timers', 'chat'
+  %body{:class => body_classes}
+    = render_messenger_app
+    #main_content
+      #page_wrapper
+        = render_flash
+        = yield
+        #emergency_button
+          turn off

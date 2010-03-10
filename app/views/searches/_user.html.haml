@@ -1,0 +1,16 @@
+%li.clearfix[user]
+  .avatar
+    = avatar_for(user, :small)
+  .info
+    %h4
+      = link_to user.name, user
+    %br.clean
+    .meta
+      .location
+        %span== #{t('information.location')}:
+        %span.meta_count==  #{user.city}
+      .followers
+        %span== #{t('users.stats.followers')}:  
+        %span.meta_count= link_to(number_with_delimiter(user.follower_count), artist_followers_path(user), :id => 'stats_followers_count')
+    .actions
+      = follow_button(user)

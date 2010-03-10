@@ -1,0 +1,19 @@
+- if site_includes(:msnmx, :msnbr, :msnlatam, :msnar,  :msnlatino, :msncaen, :msncafr)
+  = render "3rd_party_branding/msn_header_#{site_code}"
+#wrap
+  #mast_head
+    .clearfix#logos
+      - if current_site.name =~ /^MSN/ # TODO: make it not be so dirty
+        %div{ :id => "msn_logo_#{site_code}" }
+          .link
+            = msn_home_page_link
+        .logo_separator
+      #cyloop_logo
+        .link
+          = link_to 'Cyloop', root_url, :class => "fn org url", :rel => "home", :title => "Cyloop"
+    #nav_main_aux_wrap.clearfix
+      = render :partial => "shared/nav_aux"
+      = render :partial => "shared/nav_main"
+
+- if site_includes(:msnlatino) 
+  = render "3rd_party_branding/sub_#{site_code}"

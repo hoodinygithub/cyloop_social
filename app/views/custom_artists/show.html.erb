@@ -1,0 +1,22 @@
+<%  content_for :head do %>
+  <%= stylesheet_link_tag 'custom_artists'                                               %>
+  <%= stylesheet_link_tag 'http://blstc.msn.com/br/intl/ice/css/1/videogallery.css'      %>
+  <%= javascript_include_tag 'http://images.video.msn.com/flash/script/embed.js'         %>
+  <%= javascript_include_tag 'http://images.video.msn.com/js/vp.js'                      %>
+  <%= javascript_include_tag 'http://blstj.msn.com/br/gbl/js/2/video.js'                 %>
+  <%= javascript_include_tag 'http://blstj.msn.com/br/intl/ice/js/1/channels.js'             %>
+  <%= javascript_include_tag 'http://blstj.msn.com/br/intl/ice/js/2/gwidget.js'          %>
+<% end %>
+
+<%= render 'custom_artists/profile_header'%>
+
+
+<div id="content">
+  <% if site_includes(:cyloop, :cyloopes, :msnmx, :msnbr, :msnlatam, :msnar, :msnlatino, :msncafr, :msncaen) %>
+    <%= render "video_player" %>
+  <% end %>
+</div>
+
+<div id="secondary_content">
+  <%= render 'sidebar' %>
+</div>

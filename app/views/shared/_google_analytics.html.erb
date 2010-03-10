@@ -1,0 +1,8 @@
+<% if gatracker_id %>
+  <% @code = flash[:google_code] unless flash[:google_code].blank? %>
+  <script type="text/javascript">
+  try {
+  var pageTracker = _gat._getTracker("<%= gatracker_id %>");
+  pageTracker._trackPageview(<%= "'#{@code}'" if @code %>);
+  } catch(err) {}</script>
+<% end %>

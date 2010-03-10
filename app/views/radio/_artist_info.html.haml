@@ -1,0 +1,67 @@
+.clearfix#radio_label
+  = link_to avatar_for(artist, :medium), artist, :target => '_blank'
+  %h2
+    = link_to(artist.name, user_path(artist.slug), :target => '_blank')
+  .meta.clearfix
+    = follow_button(artist)
+    #stats
+      - unless artist.blank?
+        %div
+          %span.count= number_with_delimiter(artist.follower_count)
+          =t 'users.stats.followers'
+        %div
+          %span.count= number_with_delimiter(artist.total_listen_count)
+          =t 'users.stats.song_plays'
+        %div
+          %span.count= number_with_delimiter(artist.visit_count)
+          =t 'users.stats.visits'
+  .tabs
+    -begin
+      %ul.tabNavigation#artist_info
+        - unless artist.nil? || artist.is_a?(User)
+          - unless artist.recent_listens.empty?
+            %li
+              = link_to t("modules.recent_listeners.title"), :anchor => :recent_listeners
+          - unless artist.most_listened_songs.empty?
+            %li
+              = link_to t("modules.top_songs.title"), :anchor => :top_songs
+          - unless artist.similar.empty?
+            %li
+              = link_to t("modules.recommended_artists.title"), :anchor => :similar_artists
+    -rescue
+      %ul.tabNavigation#artist_info
+    .clearfix#recent_listeners
+      - recent_listeners.each do |user|
+        = link_to avatar_for(user, :small), user, :target => '_blank'
+    .clearfix#top_songs
+      %table
+        %tr
+          %th
+          %th
+            =t 'basics.song'
+          %th
+            =t 'basics.album'
+          %th
+            =t 'basics.time'
+          - most_listened_songs.each do |song|
+            %tr
+              %td.tools
+                = link_to '', queue_song_path(:slug => song.artist.slug, :id => song.album, :song_id => song.id), :class => "what_listen play", :title => t("actions.play"), :target => '_blank' unless song.artist.slug.blank?
+              %td
+                = truncate(song.title, :length => 20)
+              %td
+                = truncate(song.album.try(:name).to_s, :length => 20)
+              %td
+                = show_duration(song)
+    - unless artist.nil? || artist.is_a?(User)
+      - if similar_artists
+        .clearfix#similar_artists
+          - similar_artists.each do |similar_artist|
+            .artist
+              = link_to avatar_for(similar_artist, :small), user_path(similar_artist.slug), :target => '_blank'
+              .meta
+                = link_to(similar_artist.name, user_path(similar_artist.slug), :target => '_blank')
+                = follow_button(similar_artist, :current_station => session[:current_station])
+:javascript
+  initArtistInfo();
+

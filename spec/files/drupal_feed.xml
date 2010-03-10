@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<channel>
+  <title></title>
+  <link>http://cm-msncanada.cyloop.com/cms/view/msnca_home_detour_en</link>
+  <description>msnca home detour en</description>
+  <language>en</language>
+  <item url="http://example.com/drupal/files/DETOUR_petshopboys.jpg">
+    <title>Pet Shop Boys </title>
+
+    <link>http://cm-msncanada.cyloop.com/cms/node/9278</link>
+    <description>
+      <drupal_id>9278</drupal_id>
+      <body><![CDATA[Interview with the Pet Shop Boys]]>
+      </body>
+      <link><![CDATA[/detour ]]>
+      </link>
+      <image>/drupal/files/DETOUR_petshopboys.jpg</image>
+      <publishing_site>MSN Canada</publishing_site>
+      <publishing_section>Home - Detour - EN</publishing_section>
+    </description>
+    <authored>Fri, 23 Oct 2009 15:40:25 -0400</authored>
+
+    <author>ariel</author>
+    <updated />
+  </item>
+  <item url="http://example.com/drupal/files/INVASION_petshopboys.jpg">
+    <title>Pet Shop Boys </title>
+
+    <link>http://cm-msncanada.cyloop.com/cms/node/9278</link>
+    <description>
+      <drupal_id>9278</drupal_id>
+      <body><![CDATA[Interview with the Pet Shop Boys]]>
+      </body>
+      <link><![CDATA[/invasion ]]>
+      </link>
+      <image>/drupal/files/INVASION_petshopboys.jpg</image>
+      <publishing_site>MSN Canada</publishing_site>
+      <publishing_section>Home - Invasion - EN</publishing_section>
+    </description>
+    <authored>Fri, 23 Oct 2009 15:40:25 -0400</authored>
+
+    <author>ariel</author>
+    <updated />
+  </item>
+</channel>

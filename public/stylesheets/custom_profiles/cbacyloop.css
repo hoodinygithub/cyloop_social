@@ -1,0 +1,15 @@
+body {
+  background: #FFF9D6 url('/images/custom_profiles/cbacyloop/background.jpg') repeat-x top left;
+}
+
+#main_content {
+  background-color: #FFD401;
+}
+
+#top_stations ul {
+  background-color: #FFF;
+}
+
+div.artist_radio_info div#radio_label {
+  margin-bottom: 0;
+}

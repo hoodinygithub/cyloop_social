@@ -1,0 +1,52 @@
+#create_station
+  %h2= t('home.create_your_own_personalized_radio_station')
+  #create_form
+    :javascript
+      $(document).ready(function() {
+        var artistSearch = $("input[name='artist_name']");
+        artistSearch.autocomplete("/stations.txt");
+        artistSearch.css('color', '#c0d6e2');
+        artistSearch.focus(function() {
+          if (artistSearch.attr("touched") != 'true') {
+            artistSearch.attr("touched", 'true');
+            artistSearch.css('color', '#025d8c');
+            artistSearch.attr('value', '')
+          }
+        })
+      });
+    - form_for :station, :url => search_radio_path do
+      %p
+        = text_field_tag :artist_name, t('home.type_artist_name')
+      %p
+        = submit_tag t("home.create_radio"), {:id => 'create_station'}
+#featured_wrapper
+  #featured
+    #artists
+      %ul#featured_wide
+        %li#featured_image
+          = image_tag("/images/featured_horizontal_wide.jpg")
+      %ul#featured_horizontal_left
+        %li
+          = image_tag("/images/featured_horizontal_left.jpg")
+      %ul#featured_horizontal_right
+        %li
+          = image_tag("/images/featured_horizontal_right.jpg")
+    #videos
+      %ul
+        %li
+          = image_tag("/images/featured_video.jpg")
+  #ad_banner
+    = banner_ad("square_banner")
+#user_suggestions
+  #recommended_artists
+    %h3
+      =t 'home.recommended_artists'
+    = render 'shared/recommended_artists', :recommended_artists => recommended_artists(15)
+  #top_songs
+    %h3
+      =t 'home.top_songs'
+    = render 'shared/top_songs', :top_songs => @top_songs
+  #top_stations
+    %h3
+      =t 'home.top_stations'
+    = render 'shared/top_stations', :top_stations => @top_stations

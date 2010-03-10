@@ -1,0 +1,32 @@
+//.row.clearfix
+//  .label
+//    = f.label :twitter_username
+//  .field
+//    = f.text_field :twitter_username
+.row.clearfix
+  .label
+    = f.label :gender
+  .field
+    = f.select :gender, %w(Male Female).map {|g| [ t("user.#{g.downcase}"), g]}, :include_blank => true
+.row.clearfix
+  .label
+    = f.label :born_on
+  .field
+    .input_wrapper
+      - if @current_user.blank?
+        = f.text_field :born_on
+      - else
+        - born_on_fmt = @current_user.born_on.nil? ? "" : @current_user.born_on.strftime("%d-%m-%Y")
+        = f.text_field :born_on, :value => born_on_fmt
+.row.clearfix
+  .label
+    = f.label :city_name
+  .field
+    .input_wrapper
+      = f.text_field :city_name
+.row.clearfix.avatar_field
+  .label
+    = f.label :avatar
+  .field
+    = f.file_field :avatar, :size => 20
+    = link_to t("user.remove_avatar"), remove_avatar_my_settings_path

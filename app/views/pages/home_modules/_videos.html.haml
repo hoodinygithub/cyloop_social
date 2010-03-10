@@ -1,0 +1,9 @@
+%li.clearfix
+  -if site_includes(:msncaen, :msncafr)
+    %span= link_to(image_tag(videos.image, :alt => videos.title), videos.link, {:title => videos.title})
+    = link_to(videos.song, videos.link, {:title => videos.title, :class => 'song'})
+    = link_to(videos.artist, videos.link, {:title => videos.title, :class => 'artist'})
+  - else
+    = link_to(image_tag(videos.image, :alt => videos.title), videos.link, {:target => "_blank", :title => videos.title})
+    = link_to(videos.song, videos.link, {:target => "_blank", :title => videos.title, :class => 'song'})
+    = link_to(videos.artist, videos.link, {:target => "_blank", :title => videos.title, :class => 'artist'})

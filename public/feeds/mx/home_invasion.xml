@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<channel>
+ <title/>
+ <link>http://cm-msnmx.cyloop.com/cms/view/msnmx_home_invasion_es</link>
+ <description>msnmx home invasion (spanish)</description>
+ <language>en</language>
+<item>
+ <title>Babasonicos</title>
+ <link>http://cm-msnmx.cyloop.com/cms/node/9213</link>
+ <description><drupal_id>9213</drupal_id>
+<body><![CDATA[]]></body>
+<link><![CDATA[/invasion]]></link>
+<image>/drupal/files/Invasion_homepage_babasonicos_rev.jpg</image>
+<publishing_site>MX MSN</publishing_site>
+<publishing_section>MSN MX Home - Invasion</publishing_section>
+</description>
+ <authored>Mon, 19 Jan 2009 13:10:36 -0500</authored>
+ <author>msnmx_editor</author>
+ <updated>Tue, 14 Apr 2009 17:28:12 -0400</updated>
+</item>
+</channel>

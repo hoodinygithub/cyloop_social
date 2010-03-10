@@ -1,0 +1,353 @@
+body { background: #000000 url(../../images/custom_profiles/shakira/background.jpg) no-repeat top center; }
+#mast_head { background-color: #9A0201!important; }
+#main_content { background-color: #180204!important; border: 1px solid #000; }
+
+#page_wrapper { 
+  margin: 23px auto;
+  width: 956px;
+}
+
+#profile_header { padding: 0 0 23px 0; margin: 0; float: right; }
+
+#stats .pill_button,
+#stats .pill_button a {
+  background: none;
+  text-shadow: none;
+}
+
+#stats .pill_button a,
+#stats .pill_button .pill_button {
+  display: block;
+  width: 122px;
+  height: 46px!important;
+  line-height: 46px!important;
+  font-weight: bolder;
+  text-transform: none!important;
+  font-size: 15px!important;
+  color: #fff!important;
+  text-align: center!important;
+  background: url(../../images/custom_profiles/shakira/seguir.jpg) no-repeat;
+}
+
+#stats .pill_button .left,
+#stats .pill_button .right {
+  display: none;
+}
+
+#stats .follow_button {
+  height: 55px !important;
+  width: 130px !important;  
+  padding: 10px 0 0 180px !important;
+  background: url(../../images/custom_profiles/shakira/segue-a-este-perfil.jpg) no-repeat left center;  
+}
+
+#stats .profile_stats {
+  color: #ddd;
+  text-align: center;
+  padding-top: 15px;
+  font-family: Arial;
+}
+
+#stats .profile_stats .stat {
+  font-size: 14px!important;
+  font-weight: normal!important;  
+  width: 150px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+#stats .profile_stats .stat span {
+  font-size: 16px!important;  
+  color: #fff;
+  font-weight: bolder!important;
+}
+
+#profile_header {
+  padding-left: 0px;
+  padding-top: 0px;
+  padding-bottom: 23px;
+}
+
+#secondary_content .custom_ad {
+  margin-top: 30px;
+}
+
+#secondary_content .module.followers h3 {
+  color: #DFDFDF;
+  font-size: 18px;
+}
+
+#tm {
+  color: #DFDFDF;
+  font-size: 11px;
+  padding: 5px;
+}
+
+#shakira_ad, #ericsson_ad { margin-top: 29px; }
+
+#chat_container {
+  background: url(../../images/custom_profiles/shakira/chat-background.jpg) no-repeat bottom center; 
+  width: 955px;
+  height: 404px;
+  clear: both;
+  margin-bottom: 23px;
+}
+
+#chat_container .video {
+  background: url(../../images/custom_profiles/shakira/picture.jpg) no-repeat bottom center;   
+  width: 432px;
+  height: 363px;
+  margin: 20px 0 20px 20px;
+  float: left;
+}
+
+#chat_down h2,
+#chat_down h3 {
+  border: 0;
+  display: block;
+  color: #FFF!important;
+  text-transform: none!important;
+  margin-left: 10px;
+}
+
+#chat_down h2 { margin-top: 310px !important; font-size: 20px; }
+#chat_down h3 { margin-top: 10px; font-size: 12px!important; }
+
+#chat_container #questions {
+  background: url(../../images/custom_profiles/shakira/questions-backgrond.jpg) no-repeat bottom center; 
+  width: 466px;
+  height: 363px;
+  margin: 20px 20px 20px 0;
+  float: right;
+}
+
+#chat_container #questions #questions_head {
+  height: 50px;
+  line-height: 50px;
+  padding: 0 20px;
+}
+
+#chat_container #questions #questions_head h3 {
+  margin: 0;
+  border: 0;
+  text-transform: none;
+  color: white;
+}
+
+#chat_container #questions #questions_head a {
+  float: right;
+  color: white;
+  text-decoration: underline;
+}
+
+.chat_not_started {
+  text-align: center;
+}
+
+.chat_not_started h3,
+#chat_form .form h3,
+#chat_form .welcome h3,
+#chat_form .chat_ended h3,
+#chat_form .logged_out h3,
+#chat_form .logged_out h4 {
+  color: #FFF!important;
+  font-size: 28px;  
+  text-transform: none!important;
+  border: 0!important;
+  line-height: 30px;
+  font-weight: bolder;
+  margin: 20px 20px;
+}
+
+.chat_not_started ul {
+  margin: 15px 0;
+}
+
+.chat_not_started li {
+  color: #AAA;
+  font-size: 24px;
+  font-weight: normal;
+  line-height: 35px;
+}
+
+.chat_not_started p {
+  margin: 25px 5px 0 5px;
+  font-size: 15px!important;
+  color: #AAA;
+}
+
+#chat_form {
+  background: url(../../images/custom_profiles/shakira/chat-form-brackground.jpg) no-repeat bottom center; 
+  width: 614px;
+  height: 251px;  
+}
+
+#chat_post {
+  background: url(../../images/custom_profiles/shakira/background-post-videos.jpg) no-repeat bottom center; 
+  width: 606px;
+  overflow: hidden;
+  height: 725px;  
+  padding: 8px;
+  margin-top: 25px;
+}
+
+#chat_post h3 {
+  font-size: 20px;
+  text-align: left;
+  margin: 20px 0;
+  padding: 0;
+  color: white;
+  border: 0;
+  text-transform: none;
+}
+
+#chat_form .form {
+  padding: 20px;
+}
+
+#chat_form .form h3 {
+  font-size: 18px;
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 22px;
+}
+
+#chat_form .form p {
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-size: 12px!important;
+  color: #AAA;
+  line-height: 15px;
+}
+
+#chat_form .form .question,
+#chat_form .form .name,
+#chat_form .form .location { margin: 0 0 15px 0; padding: 0; color: red;}
+#chat_form .form .name { float: left; }
+#chat_form .form .location { float: right; }
+#chat_form .form .submit { float: right; clear: both; width: 550px; text-align: right; }
+#chat_form .submit #return_post_message,
+#chat_form .submit .button { float: right; margin-left: 20px; }
+#chat_form .submit .button input,
+#chat_form .submit .button button { cursor: pointer; border: 0; background: transparent url(../../images/custom_profiles/shakira/gray-button.jpg) no-repeat; display: block; width: 103px; height: 42px; color: #6E0102; font: 21px Arial; font-weight: bolder; }
+#chat_form .submit #return_post_message { line-height: 45px; color: #FFF; font-size: 16px; width: 390px; overflow: hidden; height: 45px; }
+#chat_form .form .outborder { border: 2px solid #930001; margin: 0; padding: 0; background-color: #fff; }
+#chat_form .border input { border: 0px; margin: 0; padding: 0 5px; font-size: 14px; color: #777; }
+#chat_form .form .border { border: 1px solid #000; }
+#chat_form .question #message_question { width: 550px!important; height: 30px; padding-top: 10px; }
+#chat_form #message_name,
+#chat_form #message_location { width: 265px!important; height: 30px; padding-top: 10px; }
+
+#chat_form .welcome,
+#chat_form .chat_ended {
+  padding: 25px;
+  text-align: center;
+}
+
+#chat_form .welcome h3,
+#chat_form .chat_ended h3 {
+  font-size: 24px;
+}
+
+#chat_form .chat_ended h3 {
+  margin-bottom: 0;
+  padding: 0;
+}
+
+#chat_form .chat_ended h4 {
+  font-size: 22px;
+  border: 0;
+  color: #888;
+  text-transform: none!important;
+  font-weight: bolder;
+  margin-top: 45px;
+}
+
+#chat_form .chat_ended p {
+  margin: 0 5px 25px 5px;
+  font-size: 16px!important;
+  color: #AAA;
+  line-height: 20px;
+}
+
+#chat_form .welcome p {
+  margin: 10px 5px 5px 5px;
+  font-size: 20px!important;
+  color: #AAA;
+  line-height: 24px;
+}
+
+#chat_form .logged_out {
+  padding: 5px;
+  text-align: center;
+}
+
+#chat_form .logged_out a { 
+  color: white;
+  text-decoration: underline;
+}
+
+#chat_form .logged_out h3 {
+  font-size: 22px;
+  margin: 0;
+}
+
+#chat_form .logged_out h4 {
+  font-size: 20px;
+  padding-top: 0px;
+}
+
+#chat_form .logged_out p {
+  margin: 0;
+  padding: 0 10px;
+  font-size: 15px!important;
+  color: #AAA;
+  line-height: 20px;
+}
+
+#chat_form .logged_out p.title {
+  font-size: 16px;
+}
+
+#questions_body.live {
+  height: 285px;
+  padding-bottom: 5px;
+  overflow: auto;
+}
+
+#questions_body.live ul#messages {
+  margin: 15px 0;
+  background-color: transparent;
+}
+
+#questions_body.live li {
+  color: #FFF;
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 1.2em;
+  border-bottom: 1px solid #400000;
+  padding: 16px 20px;
+}
+
+#questions_body.live li.first {
+  padding-top: 0;
+}
+
+#questions_body.live li span {
+  display: block;
+  color: #AAA;
+  font-size: 11px;
+  line-height: 1.6em;
+  margin-top: 4px;
+}
+
+#powered_justin a {
+  background: black url(../../images/custom_profiles/shakira/justin_tv.png) no-repeat top right;  
+  height: 31px;
+  line-height: 31px;  
+  text-indent: -9999px;
+  overflow: hidden;
+  display: block;
+  width: 432px;
+}

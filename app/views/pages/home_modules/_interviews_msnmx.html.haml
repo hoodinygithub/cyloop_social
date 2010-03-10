@@ -1,0 +1,14 @@
+.blue.headline.clearfix
+  %h2
+    %span
+      =t 'modules.interviews.title'
+%ul
+  %li.clearfix
+    - unless @feed_detour.nil? 
+      = link_to image_tag(@feed_detour.image("206x112", msn_site_code)), @feed_detour.link
+  %li.clearfix
+    - unless @feed_invasion.nil? 
+      = link_to image_tag(@feed_invasion.image("206x112", msn_site_code)), @feed_invasion.link
+  - @feed_entrevistas.each do |feed|
+    %li.last
+      = link_to image_tag(feed.image), feed.link

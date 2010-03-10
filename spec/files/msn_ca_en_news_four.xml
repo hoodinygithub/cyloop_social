@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+  <channel>
+    <title>The latest music news - Music - MSN CA</title>
+    <link>http://entertainment.ca.msn.com</link>
+    <description>All the latest music news from Canadian Press</description>
+    <copyright>2010 Microsoft</copyright>
+    <language>en-ca</language>
+    <image>
+      <url>http://sc.msn.com/global/c/lgpos/MSFT_pos.gif</url>
+      <title>The latest music news - Music - MSN CA</title>
+      <link>http://entertainment.ca.msn.com</link>
+    </image>
+    <ttl>60</ttl>
+    <category>News</category>
+    <item>
+      <title>Swell Season Talk Sex, Success, Staying Grounded</title>
+      <link>http://entertainment.ca.msn.com/music/news/cp-article.aspx?cp-documentid=22305136</link>
+      <guid isPermaLink="true">http://entertainment.ca.msn.com/music/news/cp-article.aspx?cp-documentid=22305136</guid>
+      <description>&lt;p&gt;Glen Hansard and Marketa Irglova of The Swell Season never set out to become famous musicians. With their second album Strict Joy up for release Oct. 27, the two seem...&lt;/p&gt;</description>
+      <enclosure length="25251" url="http://blstb.msn.com/i/7E/CC4B278142D25BECE2ED3AD6F82033.jpg" type="image/jpeg"></enclosure>
+      <pubDate>Sun, 25 Oct 2009 07:14:07 GMT</pubDate>
+    </item>
+    <item>
+      <title>Bowie, Coldplay, Clash Albums To Be Featured On British Stamps</title>
+      <link>http://entertainment.ca.msn.com/music/news/cp-article.aspx?cp-documentid=22305135</link>
+      <guid isPermaLink="true">http://entertainment.ca.msn.com/music/news/cp-article.aspx?cp-documentid=22305135</guid>
+      <description>&lt;p&gt;Classic British album covers from the likes of David Bowie, The Clash, Led Zeppelin and Coldplay are to be featured on a new series of Royal Mail stamps in the...&lt;/p&gt;</description>
+      <enclosure length="33250" url="http://blstb.msn.com/i/3C/2BEAEA0B6E413DEB55871406E3BEB.jpg" type="image/jpeg"></enclosure>
+      <pubDate>Sun, 25 Oct 2009 07:14:07 GMT</pubDate>
+    </item>
+    <item>
+      <title>Flaming Lips Covering Pink Floyd's Dark Side Of The Moon</title>
+      <link>http://entertainment.ca.msn.com/music/news/cp-article.aspx?cp-documentid=22305134</link>
+      <guid isPermaLink="true">http://entertainment.ca.msn.com/music/news/cp-article.aspx?cp-documentid=22305134</guid>
+      <description>&lt;p&gt;We don't know why this hasn't happened yet because it makes total sense, but The Flaming Lips are set to cover Pink Floyd's 1972 classic album, The Dark Side Of...&lt;/p&gt;</description>
+      <enclosure length="35910" url="http://blstb.msn.com/i/CB/792591587FD8B18E4450B4957429.jpg" type="image/jpeg"></enclosure>
+      <pubDate>Sun, 25 Oct 2009 07:14:07 GMT</pubDate>
+    </item>
+    <item>
+      <title>Wax Mannequin Destroyed Andy Magoffin's Studio</title>
+      <link>http://entertainment.ca.msn.com/music/news/cp-article.aspx?cp-documentid=22304530</link>
+      <guid isPermaLink="true">http://entertainment.ca.msn.com/music/news/cp-article.aspx?cp-documentid=22304530</guid>
+      <description>&lt;p&gt;Hamilton, Ont.'s Wax Mannequin is in the midst of what he has dubbed "an extended, six month long CD launch," has already gigged across Canada (and has another tour already...&lt;/p&gt;</description>
+      <enclosure length="49922" url="http://blstb.msn.com/i/E0/F94955D8A94920CAB97215F82199FE.jpg" type="image/jpeg"></enclosure>
+      <pubDate>Sun, 25 Oct 2009 07:14:07 GMT</pubDate>
+    </item>
+  </channel>
+</rss>

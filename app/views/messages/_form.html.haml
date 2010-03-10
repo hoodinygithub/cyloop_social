@@ -1,0 +1,22 @@
+- button ||= nil
+= f.hidden_field :chat_id
+= f.hidden_field :user_id
+
+.question 
+  .outborder
+    .border
+      = f.text_field :question, :value => "Escribe tu pregunta aquí", :onfocus => "if(this.value == 'Escribe tu pregunta aquí') this.value = '';"
+.name_and_location
+  .name
+    .outborder
+      .border
+        = f.text_field :name, :value => "¿Cómo te llamas?", :onfocus => "if(this.value == '¿Cómo te llamas?') this.value = '';"
+  .location
+    .outborder
+      .border
+        = f.text_field :location, :value => "¿De dónde eres?", :onfocus => "if(this.value == '¿De dónde eres?') this.value = '';"  
+
+.submit
+  .button
+    = f.submit t("actions.submit"), :type => "submit"
+  #return_post_message

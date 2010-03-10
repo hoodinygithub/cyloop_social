@@ -1,0 +1,5 @@
+%li.clearfix{ :class => 'song', :id => dom_id(song) }
+  .avatar
+    = link_to avatar_for(song, :small, {:alt => "#{song.artist} - #{song.album}"}), artist_album_path(song.artist, song.album) rescue avatar_for(song, :small)
+    = link_to '',artist_album_path(song.artist, song.album), :class =>"cover_case" rescue ""
+  = render 'songs/song_info', :song => song

@@ -1,0 +1,45 @@
+- if @buylinks && !@buylinks.empty?
+  .buy_links
+    %h3= t('actions.buy_song')
+    .cover_art.clearfix
+      .song_avatar
+        = avatar_for(@song, :medium, {:alt => "#{@song.artist.name} - #{@song.album.name}"})
+        %span.cover_case
+      .info
+        .title
+          %h4== "#{@song.title}"
+        .artist
+          %div
+            == #{t('basics.by')}:
+            %span== #{@song.artist.name}
+        .album
+          %div
+            == #{t('basics.album')}:
+            %span==  #{@song.album.name}
+    %p.buylink_info
+      = t('actions.select_store')
+    %div.buylinks
+      - @buylinks.each do |link|
+        = link_to image_tag(link.store_image), link.url, :class => "#{link.buylink_provider.name} close_after_click", :target => :new
+    %div.create_actions.clearfix
+      = link_to t('actions.cancel'), "#", :class => "close"
+- else
+  .buy_links
+    %h3= t('actions.buy_song')
+    .cover_art.clearfix
+      .song_avatar
+        = avatar_for(@song, :medium, {:alt => "#{@song.artist.name} - #{@song.album.name}"})
+        %span.cover_case
+      .info
+        .title
+          %h4== "#{@song.title}"
+        .artist
+          %div
+            == #{t('basics.by')}:
+            %span== #{@song.artist.name}
+        .album
+          %div
+            == #{t('basics.album')}:
+            %span==  #{@song.album.name}
+    %p.buylink_info
+      = t("buylink.no_buylinks")

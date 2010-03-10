@@ -1,0 +1,18 @@
+-unless album.nil?
+  %li.cover_art.clearfix[album]
+    .avatar
+      = link_to avatar_for(album, :small, {:alt => "#{album.owner.name} - #{album.name}"}), artist_album_path(album.owner, album, :autoplay => "true")
+      = link_to '', artist_album_path(album.owner, album, :autoplay => "true"), :class =>"cover_case"
+    .info
+      %div.title.clearfix
+        %h4= link_to album.name, artist_album_path(album.owner, album, :autoplay => "true")
+      .meta
+        .plays
+          %span== #{t('basics.by')}: #{link_to album.owner.name, album.owner},
+          %span.meta_count== #{t('basics.plays')}: #{album.total_listens}
+          .tools
+            = link_to '', artist_album_path(album.owner, album, :autoplay => "true"), :class => "play", :title => t('actions.play')
+            - if has_buylink?( album )
+              .buy
+                = link_to '', album_buylink_path(album), :class => "facebox buy", :title => t('actions.buy_album')
+

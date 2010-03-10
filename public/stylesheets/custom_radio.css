@@ -1,0 +1,103 @@
+/* @override http://cyloop.local/stylesheets/custom_artists.css */
+body {
+  background-image: url("/images/sonyericsson/radio_background.jpg");
+  background-color: #95D4CE;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: top center;
+}
+
+body.radio #mast_head {
+  background-color: #00FFFF;
+}
+
+body.radio #custom_header {
+  height: 101px;
+  width: 1000px;
+  background: black url(/images/radiocoke_header.png) top center no-repeat;
+}
+
+.radio #page_wrapper #content {
+  width: 620px;
+}
+
+.radio #main_content {
+  background-color: #FFF;
+  border: 0px;
+}
+
+#radio_engine {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.radio #create_station_form {
+  background-image: url(/images/sonyericsson/custom_radio_header.png);
+  width: 351px;
+  height: 39px;
+  padding: 18px 19px 0 250px;
+}
+
+.radio #create_station_form input {
+  color: #60BDB8;
+}
+
+.radio .artist_radio_info {
+  background-color: #60BDB8;
+}
+
+.radio .artist_radio_info a ,
+.radio .artist_radio_info h3 {
+ color: #27343C;
+}
+
+.radio .artist_radio_info #radio_label .meta #stats .count {
+ color: #27343C;
+}
+
+div.artist_radio_info {
+  margin-top: 20px;
+}
+
+.radio .artist_radio_info div#radio_label {
+  margin-bottom: 0;
+}
+
+.radio #square_banner {
+  border: 1px solid #FFFFFF;
+}
+
+.radio #sony_ad {
+  padding: 20px 0 20px 0;
+  float: left;
+}
+
+.radio #top_stations h3 {
+  border-bottom: 1px solid #CECECE;
+  color: #27343C;
+}
+
+.radio #top_stations ul {
+  border-left: 1px solid #CECECE;
+  border-right: 1px solid #CECECE;
+}
+
+.radio #top_stations ul li {
+  border-bottom: 1px solid #CECECE;
+}
+
+.radio #top_stations ul li h4 a {
+  color: #27343C;
+}
+
+.radio #top_stations .including a {
+  color: #27343C;
+}
+
+body.radio #custom_footer {
+  display: block;
+  float: left;
+  height: 201px;
+  width: 1000px;
+  background-image: url(/images/radiocoke_footer.jpg);
+}

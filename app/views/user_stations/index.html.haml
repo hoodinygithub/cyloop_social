@@ -1,0 +1,18 @@
+= javascript_include_tag 'station'
+
+.clearfix#list_header    
+  .title  
+    %h3= possessive :stations
+    - if @stations.length > 0
+      %span.created= t("stations.last_station_created_at", :when => distance_of_time_in_words_to_now(@stations.first.created_at))
+    - else
+      = t("stations.no_stations_created")
+  .count
+    %span.count== #{@stations.size}
+    %span.counted= t 'basics.stations'
+
+= render :partial => 'heading'
+    
+%ul.stations
+  = render @stations
+= will_paginate @stations, pagination_args

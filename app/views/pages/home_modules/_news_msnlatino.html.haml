@@ -1,0 +1,10 @@
+- if @feed_noticias && !@feed_noticias.empty?
+  .grey.headline.clearfix
+    %h2
+      %span
+        =t 'modules.news.title'
+  %ul
+    - @feed_noticias.each_with_index do |feed, index|
+      %li.clearfix{ :class => (index == 0 || 2) ? 'odd' : "even" }
+        = link_to truncate(feed.title, :length => 31), feed.link, :title => feed.title
+

@@ -1,0 +1,18 @@
+!!!
+%html
+  %head
+    = stylesheet_link_tag 'history'
+    = javascript_include_tag 'swfobject', 'htmlcomponent', 'history', :cache => 'flex_app_cached'
+    %title Messenger Player
+  %body
+    - player_key = current_site.players.find_by_player_key("messengerradio_#{current_site.code}").id unless (current_site.players.find_by_player_key("messengerradio_#{current_site.code}")).nil?
+    :javascript
+      var flashvars = {
+        urlContext:"/",
+        market:"#{current_site.code}"
+      };
+      var params = {wmode:"opaque"};
+      var attributes = {id:"radio_engine", name:"radio_engine"};
+      swfobject.embedSWF("/flash/cyloop.swf", "messengerradio_player", "555", "450", "9", false, flashvars, params, attributes);
+
+    #messengerradio_player

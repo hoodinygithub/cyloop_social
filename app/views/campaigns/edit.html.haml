@@ -1,0 +1,12 @@
+%h3 Edit campaign
+
+#campaigns
+  - form_for :campaign, :url => campaign_path(@campaign), :html => {:method => :put, :multipart => true} do |f|
+    %fieldset
+      = render :partial => 'form_fields', :locals => {:f => f, :campaign => @campaign}
+      = submit_tag 'Update'
+      &nbsp;
+      = link_to "Cancel", campaigns_path
+      
+    
+    

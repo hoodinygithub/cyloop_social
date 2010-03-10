@@ -1,0 +1,77 @@
+- content_for :head do
+  = render :partial => 'shared/logged_in_callback'
+
+%h2.alternate= @title
+
+%p
+  Nós estamos empenhados a manter a sua privacidade. Esta política de privacidade é um acordo entre você (também referido como “usuário” ou “visitante”) e o Cyloop (o “site”, “website” ou “nós”).
+
+%h4 1. Seu consentimento
+
+%p
+  Por favor, leia atentamente este documento. Você deve concordar com estes termos, que criam obrigações legais entre o usuário e o Cyloop. Ao acessar e utilizar qualquer parte do site você está automaticamente reconhecendo esta política de privacidade. Se você não concorda com qualquer parte deste documento, por favor, não acesse o site.
+
+%h4 2. Participação de menores de 13 anos
+%p
+  Não é permitido o registro no site de menores de 13 anos. Se você tem entre 13 e 18 anos de idade, por favor, leia este acordo com os seus pais ou responsáveis. Ressaltamos que o site pode oferecer material explícito (tais como linguagem ofensiva e linguagem ou imagens associadas com sexualidade, violência e drogas). Porque o serviço pode fornecer acesso a conteúdo que contenha material explícito, é aconselhável a APROVAÇÃO DOS PAIS para todos os usuários com idades entre 13 e 18 anos. Da mesma maneira, ressaltamos ser impossível verificar se a informação sobre idade fornecida por um usuário é verdadeira.
+
+%h4 2.1 Informações sobre segurança
+%p
+  Se desejar mais informações sobre privacidade e segurança online em geral, sugerimos visitar os seguintes sites de terceiros:
+
+%p
+  http://www.microsoft.com/brasil/athome/security/children/default.mspx
+  %br
+    http://www.miudossegurosna.net/
+  %br
+    http://guia.mercadolivre.com.br/dicas-seguranca-online-criancas-7-8-18627-VGP
+
+%h4 3 Informações pessoais   
+%p
+  Não compartilharemos as informações pessoais que você fornecer ao Cyloop com quaisquer terceiros, exceto quando expressamente informado nesta política. Muitas informações que você fornecer durante o cadastro podem permitir a outros usuários ou ao Cyloop identificá-lo. Observe, por exemplo, que o nome de usuário padrão é o nome que você fornece durante o cadastro. Se você prefere se manter anônimo, não utilize seu nome verdadeiro ou troque seu nome dentro de “Meu Perfil” > “Opções”.
+  
+%h4 3.1 Uso da informação pessoal
+%p
+  Utilizamos o seu endereço de email somente para enviar notificações relacionadas ao site. Para promover e ilustrar os nossos serviços podemos postar na homepage e em outras páginas informações públicas do perfil de usuários. Assumimos que os usuários que optem por não empregar o controle de privacidade não se opõem à divulgação dessa informação dentro do site.
+  
+%h4 3.2 Compartilhamento de informação pessoal
+%p
+  Somente compartilharemos a sua informação com (1) empresas que estiverem prestando serviços ao Cyloop e necessitarem acesso para a manutenção do site ou (2) com as autoridades legais, se e somente se requerido por lei. Se o Cyloop for comprado por outra empresa, suas informações pessoais são automaticamente transferidas para o comprador, que fica comprometido a cumprir o acordado nesses termos.
+  
+%h4 4. Informações anônimas
+%p
+  Utilizamos informações anônimas (estatísticas) para analisar a eficácia do nosso site, para melhorar os nossos serviços, e para outros fins. Estas informações anônimas pode ser compartilhadas com terceiros. As informações anônimas não permitem a identificação de um usuário. Podemos recolher informações anônimas através de “cookies” (pequenos arquivos de texto que residem no seu computador), IP (o endereço numérico do seu computador na Internet) e outros dados armazenados em nossos servidor quando você acessa o site. 
+  
+%h4 5. Remoção de perfil  
+%p
+  Para remover o seu perfil, você deve entrar em contato através do email #{mail_to "#{request.host}@hoodiny.com?subject=privacy_policy", "privacy@hoodiny.com"}.
+  
+%h4 6. Alteração da política de privacidade
+%p
+  Nos reservamos o direito de alterar a presente política de privacidade sem aviso prévio. Se a política for alterada, vamos notificar os usuários através de email e/ou alerta na próxima visita ao site depois da modificação.     
+  
+%h4 Relação com os termos de uso.
+%p
+  Este documento complementa os termos de uso. Se existir conflito entre os termos de uso e esta política, a política de privacidade prevalece.
+
+%h4 Contato
+%p 
+  Se você tiver qualquer dúvida sobre esta política de privacidade, por favor entre em contato:
+
+%p
+  Endereço:
+  %br
+    Ao Presidente
+  %br
+    Hoodiny Entertainment Group, LLC
+  %br
+    555 Washington Avenue, Suite 340
+  %br
+    Miami Beach, FL 33139
+  %br
+  = mail_to "#{request.host}@hoodiny.com?subject=privacy_policy", "privacy@hoodiny.com"
+
+%h4 Data efetiva
+%p
+  A data efetiva da presente política de privacidade é 30 de abril de 2009.
+  

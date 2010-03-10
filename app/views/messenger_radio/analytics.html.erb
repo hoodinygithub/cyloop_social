@@ -1,0 +1,9 @@
+<%= google_analytics_js_include_tag %>
+<% if gatracker_id %>
+  <% @code = flash[:google_code] unless flash[:google_code].blank? %>
+  <script type="text/javascript">
+  try {
+  var pageTracker = _gat._getTracker("<%= messenger_player_gatracker_id %>");
+  pageTracker._trackPageview(<%= "'#{@code}'" if @code %>);
+  } catch(err) {}</script>
+<% end %>

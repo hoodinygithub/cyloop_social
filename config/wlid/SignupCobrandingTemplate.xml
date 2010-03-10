@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?><Cobranding_TC>
+  <Cobranding_CSS_TC>
+    <!-- This property defines the URL of your application's logo. Note that this URL needs to be SSL -->
+    <LogoURL>https://shared.live.com/ceiKB83P7mF6XW7lyeP3rg/WindowsLive.png</LogoURL>
+    <!-- This property defines the background color for the sign up page -->
+    <BackgroundColor></BackgroundColor>
+    <!-- This property defines the background color of header on the registration page -->
+    <HeaderBackgroundColor>#002C43</HeaderBackgroundColor>
+    <!-- This property defines the URL of an image that needs to be rendered as header background -->
+    <HeaderBackgroundURL>http://br.msn.cyloop.com/images/windows_live_ID_header_sign_up.png</HeaderBackgroundURL>
+    <!-- This property defines the color of the contextual help font -->
+    <HelpColor>#002C43</HelpColor>
+    <!-- This property defines the color of the titles for each block on the page. Example of title is create a password or Create a Windows Live ID --><TitleColor></TitleColor><!-- This property defines the color of hyperlinks on the page --><LinkColor></LinkColor><!-- This property defines the color of error messages on the page --><ErrorColor></ErrorColor><!-- This property defines the color of text labels on the page --><LabelColor></LabelColor><!-- This property defines the color of hints on the page (hint text below textboxes) --><HintColor></HintColor><!-- This property defines the color of the progress meter on the page --><ProgressMeterColor></ProgressMeterColor>
+    </Cobranding_CSS_TC>
+</Cobranding_TC>

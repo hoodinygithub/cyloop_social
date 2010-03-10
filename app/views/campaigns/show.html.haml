@@ -1,0 +1,9 @@
+%h3 
+  Campaign:
+  = @campaign.name
+
+#campaigns
+  - @campaign.attributes.each do |key, value| 
+    %p
+      %strong= key.capitalize
+      = value

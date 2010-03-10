@@ -1,0 +1,28 @@
+.featured_artist.clearfix
+  - if @feed_featured.size > 0
+    - require_javascript "featured"
+    %ul#featured_list
+      - @feed_featured.each_with_index do |feed, index|
+        %li{:id => "t#{index}", :onmouseover => "swapManual(#{index}, #{feed.object_id})", :onmouseout => "swapOut()"}
+          = link_to image_tag(feed.image('75x45', msn_site_code)), feed.link, :title => feed.artist
+          %span.artist_name
+            = link_to truncate(feed.artist, :length => 23), feed.link
+    #featured_large_image
+      = link_to image_tag(@feed_featured.first.image('455x250', msn_site_code), :id => "#{@feed_featured.first.object_id}"), @feed_featured.first.link, :title => @feed_featured.first.artist(true)
+      .meta
+        = link_to @feed_featured.first.artist, @feed_featured.first.link
+        %span
+          = @feed_featured.first.text
+
+    %script
+      - @feed_featured.each_with_index do |feed, index|
+        ==ids[#{index}] = "#{feed.object_id}";
+        ==titles[#{index}] = "#{feed.artist.gsub(/"/, "'")}";
+        ==subtitles[#{index}] = "#{feed.text.gsub(/"/, "'")}";
+        ==images[#{index}] = "#{feed.image('455x250', msn_site_code)}";
+        ==thumbs[#{index}] = "#{feed.image('75x45', msn_site_code)}";
+        ==links[#{index}] = "#{feed.link}";
+        ==alts[#{index}] = "#{feed.artist(true).gsub(/"/, "'")}";
+
+      swapAuto();
+

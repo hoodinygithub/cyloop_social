@@ -1,0 +1,63 @@
+- content_for :head do
+  %link{:href => account_rss_url( profile_account.slug, :format => 'rss' ), :rel => "alternate", :type => "application/rss+xml"}
+
+
+- require_javascript "media_manager"
+- require_javascript "new_activity"
+
+:javascript
+  $(document).ready(function() {
+    $(".module.charts > ol:eq(0)").show();
+    $(".module.charts > ol:eq(1)").hide();
+
+    function setUpTab(index) {
+      $("a.filter:eq(" + index + ")").click(function() {
+        $(".module.charts > ol").hide();
+        $("#charts_tabs a").removeClass('active');
+        $(".module.charts > ol:eq(" + index + ")").show();
+        $("#charts_tabs a:eq(" + index + ")").addClass('active');
+        return false;
+      })
+    }
+
+    for(var i = 0; i <= 2; i++)
+      setUpTab(i);
+  })
+
+- if session[:display_layer] & logged_in?
+  = render :partial => "shared/lightbox_show"
+
+#top_activity
+  %h3.top_activity= t 'modules.top_activity.title'
+
+  .filters#charts_tabs
+    %p.label== #{t('actions.view')}:
+    %a.filter.active{:href => "#"}
+      %span= t 'basics.songs'
+    %a.filter{:href => "#"}
+      %span= t 'basics.albums'
+
+.module.charts
+  %ol.chart.songs
+    - cache("#{site_cache_key}/#{profile_artist.slug_cache_key}/most_listened_songs", :expires_in => EXPIRATION_TIMES['artist_show_most_listened_songs']) do
+      = render :partial => "charts/songs/song", :collection => profile_artist.most_listened_songs(5)
+  %ol.chart.albums
+    - cache("#{site_cache_key}/#{profile_artist.slug_cache_key}/most_listened_albums", :expires_in => EXPIRATION_TIMES['artist_show_most_listened_albums']) do
+      = render :partial => "charts/albums/album", :collection => profile_artist.most_listened_albums(5)
+
+- if profile_artist.albums.size > 0
+  .module.albums.clearfix
+    %h3= t('basics.albums')
+    %ul
+      - profile_artist.albums(6).each do |album|
+        %li.cover_art
+          = link_to avatar_for(album, :medium, {:alt => "#{profile_artist.name} - #{album.name}"}), album_path(album)
+          = link_to '', album_path(album), :class =>"cover_case_medium"
+    = link_to t('actions.view_more'), albums_path, {:class => 'album_view_more'} if profile_artist.albums.size > 6
+
+
+#activity
+  %h3= t 'dashboards.show.activity_feed_title'
+  %ul.activities{:user => profile_account.id, :is_artist => 'true'}
+  = render :partial => "modules/activity/pagination"
+

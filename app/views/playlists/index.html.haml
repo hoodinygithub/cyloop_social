@@ -1,0 +1,43 @@
+.clearfix#list_header
+  .title
+    %h3= possessive :playlists
+    - if @playlists.any?
+      %span.created
+        == #{t('playlists.last_playlist')} #{t('basics.created_at', :when => distance_of_time_in_words_to_now(@playlists.first.created_at))}
+  .count
+    %span.count= @playlists.size
+    %span.counted= t('basics.playlists')
+= render :partial => 'heading'
+
+%ul.playlists.activities
+  - @playlists.each do |playlist|
+    %li.clearfix.listen[playlist]
+      .avatar{:onclick => 'do_toggle(this)'}
+        = avatar_for(playlist, :small)
+      .info
+        %h4= link_to playlist.name, playlist_path(playlist)
+        .meta{:onclick => 'do_toggle(this)'}
+          /== #{t('basics.created_by')} #{h playlist.owner} <span class="date_time">#{distance_of_time_in_words_to_now(playlist.created_at)}</span> - #{playlist.comments_count} #t{('basics.comments')}
+          == #{t('basics.created_at', :when => distance_of_time_in_words_to_now(playlist.created_at))}
+          /- #{playlist.comments_count} #{t('basics.comments')}
+          %span.contains== #{t('basics.contains')}: #{h playlist.artists_contained(:random => true, :limit => 4).join(', ')}
+        .additional_meta{:onclick => 'do_toggle(this)'}
+          %span.songs
+            %span.count= playlist.songs_count
+            =t 'basics.songs'
+          %span.time
+            %span.count= length_of_time_from_seconds playlist.total_time
+            =t 'playlists.total_time'
+        .tools
+          .play
+            = link_to '', playlist_path(playlist, :autoplay => true), :class => "play", :title => t('actions.play')
+          - if current_user == profile_account
+            .delete
+              =pill_link_to :delete, delete_confirmation_my_playlist_path(playlist), :class => "facebox"
+              /= button_to t('actions.delete'), my_playlist_path(playlist), :method => :delete
+            .edit
+              = pill_link_to :edit, edit_my_playlist_path(playlist), :class => "facebox"
+              /= link_to content_tag(:span, t('actions.edit')), edit_my_playlist_path(playlist), :class => "pill_button edit"
+
+= will_paginate @playlists, pagination_args
+

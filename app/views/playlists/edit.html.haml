@@ -1,0 +1,6 @@
+.edit_playlist
+  %h3= t('playlist.edit_your_playlist')
+  - form_for @playlist, :url => my_playlist_path, :html => {:name => "edit_playlist"} do |f|
+    = f.text_field :name
+    = f.submit t('actions.save'), :type => :submit
+    = link_to t('actions.cancel'), "", :class => "close"

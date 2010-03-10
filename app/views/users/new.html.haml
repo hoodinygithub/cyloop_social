@@ -1,0 +1,102 @@
+%script
+  == text_is_available = '#{t('registration.is_available_exclamation')}';
+  == text_slug_is_available = '#{t('registration.slug_available_exclamation')}';
+  == text_your_profile = '#{t("registration.your_profile_name")}';
+  == email_address = '#{t("registration.email_address")}';
+
+%h2.channel_headline=t('registration.customize')
+#content
+  - form_for @user, :html => { :multipart => true } do |f|
+    - if @user.errors.count > 0
+      .errors= t("registration.complete_all_fields_in_red")
+
+    .form.label_based
+      - field_set_tag t("Create an Account") do
+        .clearfix
+          = f.label :gender, t("registration.you_are")
+        .row.clearfix{:class => error_class_for(@user, 'gender')}
+          .field
+            %label.radio
+              = f.radio_button :gender, "Female"
+              = t("user.female")
+            %label.radio
+              = f.radio_button :gender, "Male"
+              = t("user.male")
+            = custom_error_message_on @user, 'gender', 'registration.you_are'
+
+        .clearfix
+          = f.label :name, t("registration.your_name")
+        .row.clearfix{:class => error_class_for(@user, 'name')}
+          .field
+            .input_wrapper
+              = f.text_field :name
+            = custom_error_message_on @user, 'name', 'registration.your_name'
+
+        .clearfix
+          = f.label :email, "#{t("registration.email_address")} #{content_tag(:em, t("registration.email_address_tip"))}"
+        .row.clearfix.email_block{:class => error_class_for(@user, 'email')}
+          .field
+            .input_wrapper
+              = f.text_field :email
+            = custom_error_message_on @user, 'email', 'registration.email_address'
+            #xhr_email.formError{:style => "display: none"}
+
+        .clearfix
+          = f.label :slug, "#{t("registration.your_profile_name")} #{content_tag(:em, t("registration.your_profile_name_tip"))}"
+        .row.clearfix
+          .user_url cyloop.com/
+          .slug_block{:class => error_class_for(@user, 'slug')}
+            .field
+              .input_wrapper
+                = f.text_field :slug, :autocomplete => "off"
+              = custom_error_message_on @user, 'slug', 'registration.your_profile_name'
+              #xhr_slug.formError{:style => "display: none"}
+
+        .clearfix
+          = f.label :born_on
+        #dob.row.clearfix{:class => error_class_for(@user, 'born_on')}
+          .field.combobox
+            = f.date_select :born_on, :start_year => 10.years.ago.year, :end_year => 1900, :use_month_numbers => true
+            = custom_error_message_on @user, 'born_on', ''
+
+        - if cyloop_login?
+          .clearfix
+            = f.label :password, t("registration.your_password")
+          .row.clearfix#password_field{:class => error_class_for(@user, 'password')}
+            .field
+              .input_wrapper
+                = f.password_field :password, :autocomplete => "off"
+            = custom_error_message_on @user, 'password', 'registration.your_password'
+
+          .clearfix
+            = f.label :password_confirmation, t("registration.confirm_your_password")
+          .row.clearfix#password_field{:class => error_class_for(@user, 'password_confirmation')}
+            .field
+              .input_wrapper
+                = f.password_field :password_confirmation, :autocomplete => "off"
+            = custom_error_message_on @user, 'password_confirmation', 'registration.confirm_your_password'
+
+        .row.clearfix#negative_captcha
+          = f.label :negative_captcha
+          = f.text_field :negative_captcha
+        .row.clearfix
+
+        .row.clearfix
+          .field.checkbox
+            .left{:class => error_class_for(@user, 'terms_and_privacy')}
+              = f.check_box :terms_and_privacy
+            .right
+              = custom_error_message_on @user, 'terms_and_privacy', ''
+              %label{ :for => "terms_and_privacy", :class => "checkbox" }= t("registration.terms_and_privacy", :terms_link => link_to(t("registration.terms_of_use"), terms_and_conditions_url), :privacy_link => link_to(t("registration.privacy_policy"), privacy_policy_url))
+
+    .registration_complete
+      %span= t("registration.thats_it")
+      = f.submit( t("registration.complete"), :type => :submit, :loading => t('actions.submitting') + '...')
+#sidebar
+  %ul
+    - ['discover', 'radio', 'follow', 'playlist', 'chat'].each do |item|
+      %li{:class => item}
+        %span= t("registration.sidebar.#{item}_title")
+        = t("registration.sidebar.#{item}_text")
+.clear
+

@@ -1,0 +1,23 @@
+.top_songs.clearfix
+  - if @top_songs && !@top_songs.empty?
+    .blue.headline.clearfix
+      %h2
+        %span
+          =t 'modules.top_songs.title'
+    %ul
+      - @top_songs.each do |top_song|
+        %li.clearfix
+          = link_to(avatar_for(top_song.song.album, :small, {:alt => "#{top_song.song.artist} - #{top_song.song.album}"}), top_song.song.artist)
+          = link_to '', top_song.song.artist, :class => 'cover_case'
+          .title
+            = link_to truncate(top_song.song.title, :length => 18), queue_song_path(:slug => top_song.song.artist, :id => top_song.song.album, :song_id => top_song.song) rescue ""
+          .meta
+            = link_to truncate(top_song.song.artist.name, :length => 25), queue_song_path(:slug => top_song.song.artist, :id => top_song.song.album, :song_id => top_song.song) rescue ""
+          %span.count
+            = number_with_delimiter(top_song.total_listens)
+            %span
+              =t 'basics.plays'
+    - if site_includes(:msnlatino)
+      %div.top_songs_advertisement
+        = banner_ad("top_songs_banner")
+

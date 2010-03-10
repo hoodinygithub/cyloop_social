@@ -1,0 +1,27 @@
+%ul.playlists.activities#album_songs
+  - songs.each do |item|
+    %li.cover_art.clearfix{:artist_id => "#{item.artist.id}",:song_id => "#{item.id}" ,:song_file => "#{item.file_name}", :id => "#{item.id}", :genre => "#{item.genre_name}", :label => "#{item.album.label_name}"}
+      .avatar
+        = avatar_for(item, :small, {:alt => "#{item.artist.name} - #{item.album.name}"})
+        %span.cover_case
+      .info
+        .title
+          %h4= item.title
+          %span== #{t('basics.by')} #{item.artist.name}
+
+        .meta.clearfix
+          %span.duration
+            == #{t('playlists.duration')}:
+          = show_duration(item)
+
+        .tools
+          .play
+            = link_to '', "#", :class => "play", :title => t('actions.play')
+            .media_player
+          = add_to_playlist_button( item )
+          - if has_buylink?( item )
+            .buy
+              = link_to '', song_buylink_path(item), :class => "facebox buy", :title => t('actions.buy_song')
+          .share
+            = link_to '', "/share/song/#{item.id}", :class => "facebox share", :title => t('actions.share')
+

@@ -1,0 +1,16 @@
+#content.block_alert{:style => "border: none;"}
+  = form_tag "/my/blocks/", :name => 'block_user', :method => :post
+  = hidden_field_tag :blockee_id, params[:blockee_id]
+  .block_header
+    %h3= t 'blocks.warning.title'
+  .block_description
+    %p.header= t 'blocks.warning.description_header'
+    %ul
+      %li= t 'blocks.warning.description_bullet_1'
+      %li= t 'blocks.warning.description_bullet_2'
+      %li= t 'blocks.warning.description_bullet_3'
+    %p.tag_line= t 'blocks.warning.description_footer'
+  .form_actions 
+    .block_actions
+      = large_button_to :block_this_person, "/my/blocks?blockee_id=#{params[:blockee_id]}"
+      = large_link_button_to :cancel, "#", :class => "close"

@@ -1,0 +1,20 @@
+.delete_confirmation
+  .title
+    = t('playlist_items.delete_title')
+  .playlist_name
+    = "\"#{@playlist_item.song.title}\""
+    %span.artist_by
+      == #{t('basics.by')}
+    %span.artist_name
+      == #{@playlist_item.song.artist.name}
+  .are_you_sure
+    = t('playlist_items.delete_text')
+  .buttons
+    .pill_button
+      - form_for @playlist_item, :url => playlist_item_path(@playlist_item), :html => {:name => "remove_playlist_item", :method =>:delete, :class => "remove_playlist" } do |f|
+        .left
+        = f.submit t('playlists.continue_btn'), :type => :submit
+        .right
+    .cancel_btn
+      = link_to t('actions.cancel'), "", :class => "close"
+

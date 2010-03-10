@@ -1,0 +1,9 @@
+= javascript_include_tag 'http://www.wlmessenger.net/api/3.1/Loader.js'
+:javascript
+  function showBar() {
+    $(".MessengerBarControl").show();
+  }
+  Microsoft.Live.Core.Loader.load(["messenger.core", "messenger.ui", "messenger.ui.styles.core"], showBar );
+= stylesheet_link_tag 'messenger_theme'
+/ [if lt IE 8]
+  = stylesheet_link_tag 'messenger_theme_ie'

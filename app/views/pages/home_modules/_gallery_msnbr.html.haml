@@ -1,0 +1,12 @@
+- if @feed_albums && !@feed_albums.empty?
+  .grey.headline.clearfix
+    %h2
+      %span
+        =t 'modules.features_and_galleries.title'
+  %ul
+    - @feed_albums.each_with_index do |feed, index|
+      %li.clearfix{ :class => (index == 0 || 2) ? 'odd' : "even" }
+        = link_to image_tag(feed.image), feed.link, {:target => "_blank"}
+        = link_to truncate(feed.title, :length => 43), feed.link, {:target => "_blank"}
+        %span
+          = truncate(feed.description, :length => 120)

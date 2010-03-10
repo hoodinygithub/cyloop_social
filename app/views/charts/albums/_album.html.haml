@@ -1,0 +1,24 @@
+%li.cover_art.clearfix[album]
+  .avatar
+    = avatar_for(album, :small, {:alt => "#{profile_account.name} - #{album}"})
+    %span.cover_case
+  .info
+    .item.clearfix
+      
+      .tools
+        - if album.deleted_at.nil?
+          = link_to '', album_path(album, :autoplay => "true"), :class => "play_icon"
+        - if has_buylink?( album )
+          .buy
+            = link_to '', album_buylink_path(album), :class => "facebox buy", :title => t('actions.buy_album')
+      %h4
+        - if album.deleted_at.nil?
+          = link_to album.name, album
+        - else
+          = h album.name
+          
+    .clearfix#chart_bar
+      .bar{:style => "width: #{minimum_width_for_chart(album)}%"}
+        %span
+          = pluralize(album.total_listens, t("basics.play"), t("basics.plays"))
+      .bar_right

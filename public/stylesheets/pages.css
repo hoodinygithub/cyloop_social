@@ -1,0 +1,1491 @@
+/* @override http://cyloop.local/stylesheets/pages.css */
+
+	/* @group Home */
+
+	.home .module.small_ad {
+		height: 156px;
+  }
+
+	.home.msnlatino .module.small_ad {
+		height: 120px;
+	}
+  .home .module.br_small_ad {
+		height: 156px;
+  }
+
+	.home img.avatar {
+		border: none;
+		padding: 0;
+	}
+
+	.home #page_wrapper, .custom_artists #page_wrapper {
+		width: 960px;
+		margin: 20px;
+	}
+
+	.home #content, .custom_artists #content {
+		width: 640px;
+	}
+
+	.home #secondary_content, .custom_artists #secondary_content {
+		width: 300px;
+	}
+
+	.home #content a,
+	.home #content-secondary a,
+	.home .module.recommended a {
+		font-size: 1.4em;
+		font-weight: bold;
+/*		text-transform: uppercase;*/
+	}
+
+
+	.home .entrevistas ul li img {
+		margin-bottom: 8px;
+	}
+
+	.home .entrevistas ul li span {
+		margin-top: 6px;
+	}
+	/* @group headlines */
+
+	.home .headline {
+		letter-spacing: -0.06em;
+		text-transform: uppercase;
+		height: 19px;
+		margin: 20px 0 10px;
+		line-height: 22px;
+	}
+
+	.home .headline span {
+		background-color: white;
+		margin-left: 15px;
+		padding: 0 5px;
+		height: 22px;
+		line-height: 22px;
+		position: relative;
+		top: -2px;
+	}
+
+	.home .headline h2 {
+		font-family: "Arial Black";
+		letter-spacing: -0.06em;
+	}
+
+	.home .headline.blue {
+		color: #0278B5;
+		background: transparent url(/images/background_headline_blue.gif);
+	}
+
+	.home .headline.grey {
+		color: #333;
+		background: white url(/images/background_headline_grey.gif);
+	}
+
+
+	/* @end */
+
+	/* @group Lists */
+
+/* @group Baladas */
+
+.home.msnbr .baladas img {
+	float: left;
+	padding: 5px 8px 0 0;
+}
+
+.home.msnbr .baladas ul a {
+	font-size: 1.3em;
+	font-weight: bold;
+	display: block;
+	margin-top: 10px;
+	margin-bottom: 4px;
+}
+
+	.home.msnbr .baladas ul p {
+		display: block;
+		font-size: 1.em;
+		text-transform: none;
+		line-height: 1.33em;
+		color: #666;
+margin: 0;
+padding: 0;
+	}
+
+/* @end */
+
+/* @group Baladas */
+
+.home.msnbr .videos img {
+	float: left;
+	padding: 5px 8px 0 0;
+}
+
+.home .module.recommended ul li {
+		margin-right: 15px;
+		margin-bottom: 5px;
+		padding-bottom: 5px;
+		height: 59px;
+		border-bottom: 1px dotted #b5b5b5;
+}
+
+.home.msnbr .videos ul a {
+	font-size: 1.3em;
+	font-weight: bold;
+	display: block;
+	margin-top: 10px;
+	margin-bottom: 4px;
+}
+
+.home.msnbr .videos ul p {
+		display: block;
+		font-size: 1.em;
+		text-transform: none;
+		line-height: 1.33em;
+		color: #666;
+    margin: 0;
+    padding: 0;
+}
+
+/* @end */
+
+
+/* @group Featured */
+
+.home .featured_artist #featured_large_image {
+	position: relative;
+	float: right;
+}
+
+.home .featured_artist #featured_large_image img {
+	width: 455px;
+	height: 250px;
+}
+
+.home .featured_artist ul {
+	float: left;
+		width: 184px;
+
+}
+
+.home .featured_artist ul li {
+	display: block;
+	font-size: 0.7em;
+	height: 49px;
+	font-family: Tahoma, Arial, Verdana;
+	background: #515151 url('/images/background_featured_list.gif') 0 0 repeat-x;
+	border-bottom: 1px solid #818181;
+	border-right: 1px solid #444;
+	width: 184px;
+}
+
+.home .featured_artist ul li:hover,
+.home .featured_artist ul li.active {
+	background: #515151 url('/images/background_featured_list.gif') 0 184px repeat-x;
+}
+
+.home .featured_artist ul li img {
+	float: left;
+	position: relative;
+	top: 2px;
+	left: 3px;
+	width: 75px;
+	height: 45px;
+}
+
+.home .featured_artist ul li .artist_name {
+   display: inline-block;
+   position: relative;
+   top: 10px;
+   left: 15px;
+   width: 90px;
+   font-size: .9em;
+}
+
+.home .featured_artist ul li .artist_name a {
+	color: white;
+	font-weight: normal!important;
+}
+
+.home .featured_artist .meta {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+
+}
+.home .featured_artist .meta a {
+	display: block;
+	color: white;
+	background: transparent url(/images/background_featured_trans_light.png) 0 0 repeat;
+	padding: 4px 8px;
+}
+
+.home .featured_artist .meta span {
+	display: block;
+	color: white;
+	background: transparent url(/images/background_featured_trans_dark.png) 0 0 repeat;
+	padding: 4px 8px;
+}
+
+
+/* @end */
+
+	/* @group create_station */
+
+	.home .module.create_station {
+		width: 640px;
+		height: 96px;
+		background: white url(/images/background_create_station.gif);
+		position: relative;
+		margin-top: 20px;
+	}
+
+	.home .module.create_station h3 {
+		color: white;
+		border: none;
+		padding: 0;
+		margin: 0;
+		position: absolute;
+		top: 11px;
+		left: 110px;
+	}
+
+	.home .module.create_station form {
+		margin-top: 21px;
+		width: 500px;
+		position: absolute;
+		top: 35px;
+		left: 110px;
+	}
+
+	.home .module.create_station form input.radio_create, .home .module.create_station form input.radio_create_es {
+		font-size: 1.5em;
+		padding: 3px;
+		color: #666;
+		width: 370px;
+		border: none;
+		border-top: 1px solid #00537E;
+		border-left: 1px solid #00537E;
+		border-right: 1px solid #0282C4;
+		border-bottom: 1px solid #0282C4;
+		float: left;
+		margin-right: 7px;
+		position: relative;
+		top: -4px;
+	}
+
+  .home .module.create_station form input.radio_create_es {
+    margin-top: 4px;
+    width:710px
+  }
+
+	.home .module.create_station form p.submit_button {
+		float: left;
+	}
+
+
+	/* @end */
+
+#secondary_content .module.create_station {
+		width: 300px;
+		height: 137px;
+		background: white url(/images/background_create_station_300.gif);
+		position: relative;
+		margin-top: 20px;
+	}
+
+#secondary_content .module.create_station h3 {
+		color: white;
+		border: none;
+		padding: 0;
+		margin: 0;
+		left: 55px;
+		width: 240px;
+		font-size: 1.1em;
+	}
+
+#secondary_content .module.create_station form {
+		margin-top: 15px;
+		width: 260px;
+		position: absolute;
+		top: 35px;
+		left: 15px;
+	}
+
+#secondary_content .module.create_station form input.radio_create, #secondary_content .module.create_station form input.radio_create_es {
+		font-size: 1.5em;
+		color: #666;
+		width: 260px;
+		border-top: 1px solid #00537E;
+		border-left: 1px solid #00537E;
+		border-right: 1px solid #0282C4;
+		border-bottom: 1px solid #0282C4;
+		margin: 20px 0 5px 0;
+    clear: both;
+	}
+
+#secondary_content .module.create_station form div.pill_button {
+	float: right;
+	margin: 0;
+	padding: 0;
+}
+
+
+	/* @end */
+	/* @group recommended */
+
+	.home .module.recommended ul li a {
+		color: #0278B5;
+	}
+
+	.home .module.recommended ul li.clearfix span a {
+		font-size: .8em !important;
+		color: #333;
+		font-weight: normal !important;
+	}
+
+	.home .module.recommended ul li img {
+		float: left;
+		margin-right: 8px;
+	}
+
+	.home .module.recommended ul li {
+		margin-right: 15px;
+		margin-bottom: 5px;
+		padding-bottom: 5px;
+		border-bottom: 1px dotted #b5b5b5;
+	}
+
+	.home .module.recommended ul li span {
+		display: block;
+		padding-top: 4px;
+	}
+
+
+	/* @end */
+
+	/* @group Gallery */
+
+	.home .photo_galleries ul {
+		margin-right: -13px;
+	}
+
+	.home .photo_galleries ul li {
+		margin-right: 13px;
+		width: 117px;
+		display: block;
+		float: left;
+	}
+
+	.home .photo_galleries ul li span {
+		display: block;
+	}
+
+	.home.msnbr .photo_galleries ul li {
+		display: block;
+		width: 310px;
+		float: left;
+		margin-bottom: 5px;
+		padding-bottom: 5px;
+		border-bottom: 1px dotted #b5b5b5;
+		height: 90px;
+	}
+
+	.home.msnbr .photo_galleries ul li.odd {
+		margin-right: 10px;
+	}
+
+	.home.msnbr .photo_galleries ul li img {
+		float: left;
+		margin-right: 10px;
+		width: 85px;
+		height: 88px;
+	}
+
+	.home.msnbr .photo_galleries ul li span {
+		display: block;
+		padding-top: 4px;
+	}
+
+
+	/* @end */
+
+	/* @group Interviews */
+
+	.home.msncafr .interviews img,
+	.home.msncaen .interviews img,
+	.home.msnbr .interviews img {
+		height: 112px;
+		width: 310px;
+	}
+
+	.home.msnbr .interviews ul li {
+		width: 310px;
+	}
+
+	.home.msnbr .interviews img {
+		height: 112px;
+		width: 310px;
+	}
+
+	.home.msnbr .interviews ul li {
+		width: 310px;
+	}
+
+	.home.msnlatam .interviews img {
+		height: 112px;
+		width: 310px;
+	}
+
+	.home.msnlatam .interviews ul li {
+		width: 310px;
+	}
+
+	.home.msnlatam .interviews img {
+		height: 112px;
+		width: 310px;
+	}
+
+	.home.msnlatam .interviews ul li {
+		width: 310px;
+	}
+
+	.home.msnlatino .interviews img {
+		height: 112px;
+		width: 310px;
+	}
+
+	.home.msnlatino .interviews ul li {
+		width: 310px;
+	}
+
+	.home.msnlatino .interviews img {
+		height: 112px;
+		width: 310px;
+	}
+
+	.home.msnlatino .interviews ul li {
+		width: 310px;
+	}
+
+	.home .interviews ul li {
+		width: 206px;
+		display: block;
+		float: left;
+		margin-right: 10px;
+	}
+	.msncaen .interviews ul li, .msncafr .interviews ul li {
+		width: 310px !important;
+	}
+
+	.home .interviews ul li.last, .home .photo_galleries ul li.last {
+		margin-right: 0;
+	}
+
+	/* @end */
+	.detour {
+    background: url(/images/DETOUR_placeholder.jpg) no-repeat;
+		height: 112px;
+  }
+	.invasion {
+    background: url(/images/INVASION_placeholder.jpg) no-repeat;
+    height: 112px;
+  }
+	/* @group News */
+
+
+	.home .news ul li {
+		display: block;
+		width: 310px;
+		float: left;
+		margin-bottom: 5px;
+		padding-bottom: 5px;
+		border-bottom: 1px dotted #b5b5b5;
+		height:60px;
+	}
+
+		.home .news ul li.odd {
+			margin-right: 10px;
+		}
+
+	.home .news ul li img {
+		float: left;
+		margin-right: 10px;
+		width: 88px;
+		height: 55px;
+	}
+
+	.home.msnbr .news li {
+		font-size: .8em;
+		height:56px;
+  }
+
+  .home .news_latino ul li {
+		display: block;
+		width: 310px;
+		float: left;
+		margin-bottom: 5px;
+		padding-bottom: 5px;
+		border-bottom: 1px dotted #b5b5b5;
+		height:22px;
+	}
+
+		.home .news_latino ul li.odd {
+			margin-right: 10px;
+		}
+
+	.home .news_latino ul li img {
+		float: left;
+		margin-right: 10px;
+		width: 88px;
+		height: 55px;
+	}
+
+
+	.home .news ul li span {
+		display: block;
+		font-size: 1.2em;
+		line-height: 1;
+;
+	}
+	/* @end */
+
+	/* @group Tops */
+
+	.home .tops {
+		font-family: tahoma, "lucida grande", arial;
+	}
+
+	.home .tops ul li a:link {
+		text-decoration: none;
+	}
+
+
+	.home .tops .title {
+	    padding-top: 6px;
+	    width: 200px;
+    }
+
+	.home .tops span.count{
+		position: absolute;
+		font-size: 2.0em;
+		font-weight: bold;
+		font-family: "Times New Roman";
+		margin: 8px;
+		top: 0;
+		right: 0;
+		color: #60AAD1;
+		text-align: right;
+		width: auto;
+	}
+
+	.home .tops span.count span {
+		display: block;
+		font: .4em tahoma;
+		font-weight: bold;
+		color: white;
+		text-align: right;
+	}
+
+	.home .tops a:link, .home .tops a:visited {
+		color: #0278B5 !important;
+	}
+
+	.home .tops img {
+		float: left;
+		margin-right: 8px;
+	}
+
+	.home .tops ul li {
+		background-color: #C0DDEC;
+		margin-bottom: 10px;
+		position: relative;
+		padding-top: ;
+	}
+
+	.home .top_artists, .home .top_songs {
+		width: 48%;
+	}
+
+	.home .top_songs .meta {
+		font-size: .7em;
+		font-weight: normal !important;
+	}
+
+	.home .top_artists {
+		float: left;
+	}
+
+	.home .top_songs {
+		float: right;
+	}
+
+	.home .top_songs ul li {
+	  padding-left: 7px !important;
+	}
+
+	/* @end */
+
+	/* @end */
+
+	/* @end */
+
+	.users .thumb, .artist_recommendations .thumb { background: #fff; border: 1px solid #999; padding: 4px; }
+
+	.signup_section p,   .users .signup_section p,   .artist_recommendations .signup_section p {
+		color: #666;
+		font-size: 1.2em;
+	}
+
+	#content .input_fields input#user_slug,        #content .input_fields select#user_slug,       .users #content .input_fields input#user_slug,       .users #content .input_fields select#user_slug,       .artist_recommendations #content .input_fields input#user_slug,       .artist_recommendations #content .input_fields select#user_slug {
+		margin-bottom: 4px;
+	}
+
+	#content .input_fields span.url,     .users #content .input_fields span.url,     .artist_recommendations #content .input_fields span.url {
+		margin-bottom: 10px;
+		float: right;
+		text-align: left;
+		margin-right: 20px;
+		width: 380px;
+	}
+
+	#content .input_fields span.url .status,       .users #content .input_fields span.url .status,       .artist_recommendations #content .input_fields span.url .status {
+		font-weight: bold;
+	}
+
+	#content .input_fields .user_acceptance,     .users #content .input_fields .user_acceptance,     .artist_recommendations #content .input_fields .user_acceptance {
+		border-bottom: 1px solid #999;
+		float: right;
+		font-size: .9em;
+		line-height: 1.43em;
+		padding-bottom: 23px;
+		text-align: left;
+		width: 400px;
+		margin-bottom: 23px;
+	}
+
+	#content .input_fields .user_acceptance ul li,       .users #content .input_fields .user_acceptance ul li,       .artist_recommendations #content .input_fields .user_acceptance ul li {
+		clear: both;
+		margin-bottom: 0;
+	}
+
+	#content .input_fields .user_acceptance input,       .users #content .input_fields .user_acceptance input,       .artist_recommendations #content .input_fields .user_acceptance input {
+		margin-right: 5px;
+		border: none;
+		width: 20px;
+	}
+
+	#content .input_fields #password_field,     .users #content .input_fields #password_field,     .artist_recommendations #content .input_fields #password_field {
+		clear: both;
+	}
+
+	#content .input_fields .skip_link,     .users #content .input_fields .skip_link,     .artist_recommendations #content .input_fields .skip_link {
+		font-size: 1.6em;
+		color: #34393C;
+		float: left;
+		margin-left: 340px;
+		margin-top: 39px;
+	}
+
+	#content .input_fields #signup_button button,      #content .input_fields .save_button button,     .users #content .input_fields #signup_button button,     .users #content .input_fields .save_button button,     .artist_recommendations #content .input_fields #signup_button button,     .artist_recommendations #content .input_fields .save_button button {
+		cursor: hand;
+		border: none;
+		margin-top: 23px;
+		height: 49px;
+		width: 120px;
+		background: white url(/images/btn_large_signup.png) top left no-repeat;
+	}
+
+	#content .input_fields #signup_button button.save_large,        #content .input_fields .save_button button.save_large,       .users #content .input_fields #signup_button button.save_large,       .users #content .input_fields .save_button button.save_large,       .artist_recommendations #content .input_fields #signup_button button.save_large,       .artist_recommendations #content .input_fields .save_button button.save_large {
+		background: white url(/images/btn_large_save.png) top left no-repeat;
+		cursor: hand;
+	}
+
+	#content .input_fields #signup_button button span,        #content .input_fields .save_button button span,       .users #content .input_fields #signup_button button span,       .users #content .input_fields .save_button button span,       .artist_recommendations #content .input_fields #signup_button button span,       .artist_recommendations #content .input_fields .save_button button span {
+		display: none;
+	}
+
+	.users .form_marketing, .demographics .form_marketing {
+		display: block;
+		margin-top: 45px;
+	}
+
+	div.primary_content form div.login_actions {
+		float: right;
+	}
+
+	#secondary_content .form_marketing,
+	.users #secondary_content .form_marketing,
+	.artist_recommendations #secondary_content .form_marketing {
+		width: 220px;
+		background: white url(/images/background_signup_sidebar_bottom.png) bottom left no-repeat;
+		padding: 20px 40px;
+		position: relative;
+		clear: both;
+	}
+
+	.sessions #secondary_content .form_marketing {
+		margin-top: 32px;
+	}
+
+	#secondary_content span.header {
+		display: block;
+		height: 15px;
+		width: 100%;
+		background: white url(/images/background_signup_sidebar_top.png) top left no-repeat;
+		position: absolute;
+		top: -10px;
+		left: 0;
+		z-index: 2;
+	}
+
+	.artist .nick_name,   .users .artist .nick_name,   .artist_recommendations .artist .nick_name {
+		font-size: 1.2em;
+		margin-bottom: 5px;
+	}
+
+	.artist img,   .users .artist img,   .artist_recommendations .artist img {
+		margin-bottom: 9px;
+	}
+
+	.artist_recommendations .artist {
+		float: left;
+		padding: 30px 30px 0 30px;
+		text-align: center;
+		width: 165px;
+	}
+
+	.artist_recommendations div.button button.pill_button {
+		position: relative;
+		left: 370px;
+		top: 11px;
+		cursor: hand;
+	}
+
+	.artist_recommendations .artist form div.pill_button { display: block; margin: 0 auto; width: 135px; }
+	.artist_recommendations .artist form div.pill_button input.pill_button { width: 110px; }
+
+	/* @group Radio */
+
+	.radio #page_wrapper {
+		width: 937px;
+		margin : 30px;
+	}
+
+	.radio #page_wrapper #content {
+		width: 612px;
+	}
+
+	.radio #create_station_form {
+		color: #ddd;
+		height: 44px;
+		line-height: 32px;
+		width:  565px;
+		background-image: url(../images/background_radio_player_create.gif);
+		padding: 18px 19px 0px 28px;
+		font-size: 15px;
+		font-weight: bold;
+	}
+
+	.radio #create_station_form label {
+		width: 210px;
+		display: block;
+		float: left;
+	}
+
+	.radio #create_station_form input {
+		height: 16px;
+		border: 1px solid #2b5a77;
+		font-size: 16px;
+		font-weight:  bold;
+		width: 340px;
+		padding: 6px 5px 6px 5px;
+		font-family:  inherit;
+		color: #3978a2;
+	}
+
+	.radio #create_station_form button {
+		*height: 30px;
+		*width: 85px;
+	}
+
+	.radio #create_station_form .submit_button {
+		display: none;
+	}
+
+	.radio #top_stations h3 {
+		text-transform: none;
+		font-size: 1.5em;
+		margin-bottom: 0px;
+	}
+
+	.radio #top_stations ul {
+		border-left: 1px solid #ccc;
+		border-right: 1px solid #ccc;
+		color: #888;
+	}
+
+	.radio #top_stations ul li {
+		padding: 10px;
+		border-bottom: 1px solid #ccc;
+		color: #888;
+	}
+
+	.radio #top_stations ul li:after {
+		content: ".";
+		display: block;
+		clear: both;
+		height: 0;
+		visibility: hidden;
+	}
+
+	.radio #top_stations ul li h4 {
+		text-transform: none;
+		font-size: 1.2em;
+		margin-bottom: 0.33em;
+		border-bottom: 0px;
+	}
+
+	.radio #top_stations img.avatar {
+		float: left;
+		margin-right: 8px;
+	}
+
+	.radio #secondary_content div#top_stations {
+		width: 304px;
+	}
+
+
+	div.artist_radio_info {
+		background-color: #ECECEC;
+		padding: 20px;
+		margin-top: 30px;
+	}
+
+	div.artist_radio_info div#radio_label:after {
+		content: ".";
+		display: block;
+		clear: both;
+		height: 0;
+		visibility: hidden;
+	}
+
+	div.artist_radio_info div#radio_label {
+		background-color: white;
+		border: 1px solid #CECECE;
+		padding: 20px;
+		position: relative;
+		margin-bottom: 20px;
+	}
+
+
+	div.artist_radio_info div#radio_label a img.avatar.medium {
+		float: left;
+		margin-right: 20px;
+		margin-bottom: 10px;
+		height: 120px;
+		width: 120px;
+	}
+
+
+	div.artist_radio_info div#radio_label a img.album.thumb.padding_img {
+		float: left;
+		margin-right: 20px;
+		margin-bottom: 10px;
+		height: 120px;
+		width: 120px;
+	}
+
+	div.artist_radio_info div#radio_label h2 {
+		text-transform: none;
+		margin-bottom: 12px;
+		margin-left: 20px;
+		font-size: 1.9em;
+		font-weight: normal;
+		position: relative;
+	}
+
+	div.artist_radio_info div#radio_label #stats {
+/*		color: #025D8C;
+		position: absolute;
+		top: 15px;
+		left: 160px;
+		width:360px;
+*/
+		color: #025D8C;
+		float: left;
+		left: 160px;
+		margin-top: 15px;
+		top: 15px;
+		width: 360px;
+	}
+
+	div.artist_radio_info .button-to {
+		float: left;
+	}
+
+	div.artist_radio_info .pill_button {
+		float: left;
+	}
+
+	div.artist_radio_info div#radio_label #stats span.count {
+		color: #025D8C;
+		display: block;
+		font-size: 1.75em;
+		margin-bottom: 4px;
+		width: 100%;
+	}
+	div.artist_radio_info div#radio_label #stats div {
+		width: 120px;
+		display: -moz-inline-block;
+		display: -moz-inline-box;
+		display: inline-block;
+		color: #aaa;
+		line-height: 1.67em;
+		text-align: left;
+		float: left;
+	}
+
+	div.artist_radio_info div.tabs ul {
+		float: right;
+		width: 100%;
+		padding-top: 4px;
+		background-color: #ECECEC;
+	}
+	div.artist_radio_info div.tabs td.tools a {
+		float: none !important;
+	}
+
+	* html div.artist_radio_info div.tabs ul li {
+		display: inline; /* ie6 double float margin bug */
+	}
+
+
+	* html div.artist_radio_info div.tabs ul li {
+		display: inline; /* ie6 double float margin bug */
+	}
+
+
+	* html div.artist_radio_info div.tabs ul li {
+		display: inline; /* ie6 double float margin bug */
+	}
+
+	div.artist_radio_info div.tabs ul li,
+	div.artist_radio_info div.tabs ul li a {
+		float: left;
+	}
+
+	div.artist_radio_info div.tabs ul li a {
+		font-size: 1.1em;
+		text-decoration: none;
+		padding: 8px 20px;
+	}
+
+	div.artist_radio_info div.tabs ul li.active  {
+		background-color: white;
+		border-top: 1px solid #CECECE;
+		border-left: 1px solid #CECECE;
+		border-right: 1px solid #CECECE;
+		margin-bottom: -1px;
+		position: relative;
+	}
+
+	div.artist_radio_info div.tabs ul li.active a {
+		color: #333;
+		font-weight: bold;
+	}
+
+	div.artist_radio_info div.tabs div#similar_artists,
+	div.artist_radio_info div.tabs div#recent_listeners {
+		background-color: white;
+		clear: both;
+		border: 1px solid #CECECE;
+		padding: 20px;
+		overflow: hidden;
+	}
+
+	div.artist_radio_info div.tabs div#top_songs {
+		background-color: white;
+		clear: both;
+	}
+
+	div.artist_radio_info div.tabs div#recent_listeners {
+		padding-right: 0;
+	}
+
+	div.artist_radio_info div.tabs div#similar_artists {
+		padding-bottom: 0;;
+	}
+
+	div.artist_radio_info div.tabs div#recent_listeners img.avatar {
+		margin-right: 3px;
+	}
+
+	div.artist_radio_info div.tabs div#top_songs table {
+		width: 100%;
+		border-left: 1px solid #CCCCCC;
+		border-top: 1px solid #CCCCCC;
+	}
+
+	div.artist_radio_info div.tabs div#top_songs table th {
+		background-color: #E5E5E5;
+		font-weight: bold;
+		padding: 4px 10px;
+		text-transform: uppercase;
+	}
+
+	div.artist_radio_info div.tabs div#top_songs table td {
+		padding: 4px 10px;
+		border-bottom: 1px solid #CCCCCC;
+		border-right: 1px solid #CCCCCC;
+		width: 425px;
+		margin-right: 10px;
+		padding: 7px 10px;
+		line-height: 21px;
+	}
+
+	div.artist_radio_info div.tabs div#top_songs table td.tools {
+		width: 30px;
+	}
+
+	div.artist_radio_info div#similar_artists div.artist {
+		width: 50%;
+    height:65px;
+		float: left;
+		margin-bottom: 20px;
+	}
+
+	div.artist_radio_info div#similar_artists div.artist:after {
+		content: ".";
+		display: block;
+		clear: both;
+		height: 0;
+		visibility: hidden;
+	}
+
+	div.artist_radio_info div#similar_artists div.artist img.avatar{
+		float: left;
+		margin: 0 10px 0 0;
+	}
+
+	div.artist_radio_info div#similar_artists div.artist div.meta a {
+		font-size: 1.3em;
+		display: block;
+		padding-bottom: 10px;
+	}
+
+
+
+
+
+	/* @end */
+
+	/* @group Search */
+
+	.searches .search_box {
+		padding: 20px;
+		border-right: 1px solid #ccc;
+		border-bottom: 1px solid #ccc;
+		border-left: 1px solid #ccc;
+		position: relative;
+	}
+
+	.searches .search_box .element {
+		float: left;
+		width: 450px;
+		padding: 0 !important;
+		margin: 0 !important;
+	}
+
+	.searches .search_box button {
+		position: relative;
+		right: 0;
+		margin: 5px 0px 0px 20px;
+	}
+
+	.searches  .filters {
+		margin-top: 0;
+	}
+
+	.searches  .filters.title {
+		position: absolute;
+		width: 400px;
+		margin: -64px 0 0 90px;
+		background: none;
+		border: 0;
+	}
+
+	/* @end */
+
+	/* @group .biography */
+
+	.biography div#content h3 {
+		margin-top: 0px;
+	}
+
+	/* @end */
+
+	/* @group Common Pages */
+	.pages.faq #page_wrapper strong, .pages.safety_tips #page_wrapper strong, .pages.privacy_policy #page_wrapper strong, .pages.about #page_wrapper strong, .pages.terms_and_conditions #page_wrapper strong {
+		display: block;
+		font-size: 1.2em;
+		padding: 10px 0;
+	}
+	.pages.faq h4, .pages.safety_tips h4, .pages.privacy_policy h4, .pages.about h4, .pages.terms_and_conditions h4 {
+		font-size: 1.33em;
+		padding: 10px 0;
+	}
+
+/*	.pages.faq ol, .pages.safety_tips ol , .pages.safety_tips ul, .pages.privacy_policy ol , .pages.privacy_policy ul, .pages.about ol, .pages.about ul, .pages.terms_and_conditions ol, .pages.terms_and_conditions ul{
+		padding: 10px 0;
+		padding-left: 15px;
+		list-style-type: square;
+	}
+*/
+	.pages.faq p, .pages.safety_tips p, .pages.privacy_policy p, .pages.about p, .pages.terms_and_conditions p {
+		padding: 0 0 10px;
+	}
+
+
+	/* @end */
+
+	#radio_label .floater {
+		width: 145px;
+		float: left;
+		margin-right: 10px;
+	}
+	#radio_label .padding_img {
+		padding: 3px;
+		margin: 10px 0;
+	}
+
+	.home img.avatar {
+	border: none;
+}
+
+/* Canada EN / Canada FR */
+.home.msncaen .news li, .home.msncafr .news li,
+.home.msncaen .photos li, .home.msncafr .photos li,
+.home.msncaen .reviews li, .home.msncafr .reviews li {
+	font-size: .8em;
+}
+.home.msncaen .reviews img, .home.msncafr .reviews img {
+	width: 84px;
+	height: 84px;
+}
+.home.msncaen .videos .fix, .home.msncafr .videos .fix {
+	clear: both;
+}
+.home.msncaen .videos li span, .home.msncafr .videos li span {
+	display: block;
+	width: 88px;
+	height: 55px;
+	float: left;
+	overflow: hidden;
+	margin-right: 10px;
+}
+.home.msncaen .videos img, .home.msncafr .videos img {
+	width: 88px;
+	margin-top: -5px;
+	float: left;
+}
+.home.msncaen .photos li, .home.msncafr .photos li {
+	float: left;
+	display: block;
+	width: 125px;
+	padding: 0 8px;
+	font-size: .8em;
+}
+.home.msncaen .reviews li, .home.msncafr .reviews li {
+  background-color: #fff;
+	float: left;
+	display: block;
+	width: 80px;
+	margin: 0 30px 0 0;
+	font-size: .8em;
+}
+.home.msncaen .reviews li.last, .home.msncaen , .home.msncafr .reviews li.last {
+	margin: 0;
+  padding-right:0;
+}
+.home.msncaen .videos li, .home.msncafr .videos li {
+	margin-top: 5px;
+	padding-bottom: 5px;
+	border-bottom: 1px dotted #b5b5b5;
+	background-color: #fff;
+	height: 63px;
+}
+.home.msncaen .photos li a, .home.msncafr .photos li a,
+.home.msncaen .reviews a, .home.msncafr .reviews a {
+	font-size: 1.2em !important;
+	color: #555;
+	text-transform: none !important;
+}
+.home.msncaen .videos li a.song, .home.msncafr .videos li a.song {
+	display: block;
+	color: #000;
+	font-weight: bolder;
+	font-style: italic !important;
+	margin: 0;
+	padding: 5px 0 0 0;
+}
+.home.msncaen .videos li a.artist, .home.msncafr .videos li a.artist {
+	display: block;
+	color: #555;
+	text-transform: none !important;
+	margin: 0;
+	padding: 0 0 5px 0;
+}
+
+.home.msncaen .small_ad,
+.home.msncafr .small_ad {
+	overflow: hidden;
+	margin-bottom: 20px;
+}
+.home.msncaen .small_ad img,
+.home.msncafr .small_ad img {
+	width: 300px !important;
+}
+
+/* Canada EN - Reviews and Blogs */
+.home.msncaen .reviews, .home.msncaen .blogs {
+	width: 48%;
+	float: left;
+}
+.home.msncaen .blogs {
+	float: right;
+}
+.home.msncaen .blogs li span {
+	margin: 0px;
+	width: 305px;
+	height: 84px;
+	float: left;
+	overflow: hidden;
+	display: block;
+}
+.home.msncaen .blogs img {
+	margin: 0px;
+	width: 305px;
+	margin-top: -40px;
+}
+.home.msncaen .blogs li {
+	background-color: #fff;
+	float: left;
+	display: block;
+	margin: 0 30px 0 0;
+}
+.home.msncaen .blogs li a.title {
+	font-size: 1.15em !important;
+	display: block;
+	margin: 0;
+	padding: 0 0 5px 0;
+}
+
+/* Carousel */
+.home.msncaen .photos, .home.msncafr .photos {
+	overflow: hidden;
+}
+
+.home.msncaen .photos .infiniteCarousel, .home.msncafr .photos .infiniteCarousel {
+	width: 640px;
+	height: 140px;
+}
+.home.msncaen .photos .infiniteCarousel .wrapper, .home.msncafr .photos .infiniteCarousel .wrapper {
+  width: 560px;
+	margin: 0 40px;
+	height: 140px;
+}
+.home.msncaen .photos li span,
+.home.msncafr .photos li span {
+	display: block;
+	width: 125px;
+	height: 90px;
+	overflow: hidden;
+}
+.home.msncaen .photos img, .home.msncafr .photos img {
+	width: 175px;
+	margin-top: -10px;
+	margin-left: -10px;
+}
+
+.home.msncaen .photos .arrow, .home.msncafr .photos .arrow {
+}
+.home.msncaen .news ul li .image a, .home.msncafr .news ul li .image a {
+  display:block;
+  float:left;
+  width:88px;
+  height:55px;
+  line-height:55px;
+  overflow:hidden;
+  position:relative;
+  z-index:1;
+  margin-right:10px
+}
+.home.msncafr .news ul li .text a {
+  display:block;
+  float:left;
+  width:210px;
+  overflow:hidden;
+  position:relative;
+  z-index:1;
+}
+.home.msncafr .news ul li .image a img,
+.home.msncaen .news ul li .image a img {
+  float: left;
+  margin-right: 10px;
+  width: 88px;
+  height: auto;
+  position:absolute;
+  top:-10px;
+}
+
+/* Cyloop.com */
+/*body.cyloop_home #logos {
+	width: 960px;
+	margin: 0 auto;
+}
+body.cyloop_home #nav_main_aux_wrap {
+	margin: 0 auto;
+}*/
+body.cyloop_home #main_content, body.cyloopes_home #main_content {
+	border: 0;
+	padding: 0;
+	background-color: #ECECEC;
+}
+body.cyloop_home #sub_header_container, body.cyloopes_home #sub_header_container{
+  background-color: #FFF;
+  height: 90px;
+	width: 1000px;
+	border: 1px solid #cecece;
+	border-top: 0;
+	border-bottom: 0;
+}
+.cyloop #sub_header_container.banner, .cyloopes #sub_header_container.banner {
+  background-color: #FFF;
+  text-align: center;
+  padding: 10px 0;
+  min-height: 90px; height: auto !important; height: 90px;
+}
+
+body.cyloop_home #mast_head, body.cyloopes_home #mast_head {
+	border: 1px solid #cecece;
+	border-top: 0;
+	border-bottom: 0;
+	width: 1000px;
+}
+body.cyloop_home #page_wrapper, body.cyloopes_home #page_wrapper {
+	margin: 0 auto 20px auto;
+	padding: 20px;
+	border: 0;
+	width: 960px;
+	background-color: #fff;
+	border: 1px solid #cecece;
+	border-top: 0;
+}
+body.cyloop_home #cyloop_footer, body.cyloopes_home #cyloop_footer {
+	background-color: #111;
+	width: 960px;
+	margin: 0 auto;
+	padding: 20px;
+}
+body.cyloop_home .module.create_station, body.cyloopes_home .module.create_station{
+	width: 957px;
+	height: 280px;
+	margin-top: 0px;
+	margin:0;
+	padding:0;
+	text-align: left;
+}
+
+body.cyloop_home .module.create_station {
+  background: white url(/images/background_cyloop_create_station.gif);
+}
+
+body.cyloopes_home .module.create_station{
+	background: white url(/images/background_cyloop_create_station_es.gif);
+}
+
+body.cyloop_home .module.create_station h3, body.cyloopes_home .module.create_station h3 {
+	display: none;
+}
+body.cyloop_home .module.create_station form, body.cyloopes_home .module.create_station form {
+	margin: 0 auto;
+	padding: 215px 0 0 0;
+	width: 900px;
+	height: 45px;
+	position: relative;
+	left: auto;
+	top: auto;
+}
+body.cyloop_home .module.create_station form input,
+body.cyloopes_home .module.create_station form input,
+.home.cyloop .module.create_station form input {
+	width: 710px;
+	height: 30px;
+	font-weight: bolder;
+	font-size: 1.7em;
+	top: 0;
+	margin-left: 8px;
+}
+body.cyloop_home .module.create_station form .pill_button, body.cyloopes_home .module.create_station form .pill_button {
+	display: block;
+	float: left;
+	margin: 0;
+	top: -4px;
+	position: relative;
+	width: 160px;
+	height: 50px;
+	background: transparent url(../images/background_btn_create_station.gif) no-repeat right;
+}
+body.cyloop_home .module.create_station form .pill_button .left,
+body.cyloop_home .module.create_station form .pill_button .right,
+body.cyloopes_home .module.create_station form .pill_button .left,
+body.cyloopes_home .module.create_station form .pill_button .right {
+	display: none;
+}
+body.cyloop_home .module.create_station form .pill_button input,
+body.cyloopes_home .module.create_station form .pill_button input{
+	width: 160px;
+	line-height: 55px;
+	border: 0;
+	background: transparent;
+	text-shadow: none;
+	font-size: 1.1em !important;
+}
+body.cyloop_home .interviews,
+body.cyloopes_home .interviews,
+body.cyloop_home .photo_galleries,
+body.cyloopes_home .photo_galleries,
+body.cyloop_home .featured_artist,
+body.cyloopes_home .featured_artist { display: none; }
+
+body.cyloop_home #secondary_content
+body.cyloopes_home #secondary_content { margin-top: 280px; }
+
+#recommended.cyloop {
+  background:#fff;
+  width:300px;
+  width:300px;
+  float:right;
+}
+
+#recommended.cyloop ul li{
+  background:#fff;
+}
+
+body.cyloop_home .top_artists, body.cyloop_home .top_songs,
+body.cyloopes_home .top_artists, body.cyloopes_home .top_songs {
+  width: 32%;
+}
+body.cyloop_home .tops,
+body.cyloopes_home .tops {
+  width: 940px;
+}
+
+body.cyloop_home .top_songs,
+body.cyloopes_home .top_songs {
+  float: left;
+  padding-left:15px
+}
+

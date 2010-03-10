@@ -1,0 +1,14 @@
+- unless @recent_listeners.blank?
+  %h3= t 'modules.recent_listeners.title'
+  %ol.listeners
+    - @recent_listeners.each do |user|
+      %li.clearfix
+        .avatar
+          = link_to avatar_for(user, :small), user
+        .info
+          %h4= link_to truncate(user.name, :length => 24), user
+          .meta
+            %p= user.location
+            %p
+              == #{t('users.stats.followers')}: 
+              = link_to user.follower_count, user_followers_url(user)

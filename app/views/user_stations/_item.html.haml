@@ -1,0 +1,19 @@
+.avatar
+  = avatar_for(Station.find(user_station.station_id).artist, :small, {:alt => user_station})
+.info
+  %h4
+    %span{:id => user_station.id}
+      - if logged_in?
+        %span= link_to h(user_station), queue_my_station_path(user_station.station_id)
+      -else
+        %span= link_to h(user_station), radio_path(:station_id => user_station.station_id)
+  .meta
+    %span.created_at= t("basics.created_at", :when => distance_of_time_in_words_to_now(user_station.created_at))
+    .tools
+      .play
+        = button_to :launch_radio, (logged_in?)? queue_my_station_path(user_station.station_id) : radio_path(:station_id => user_station.station_id), :method => :get
+      - if page_owner?
+        .delete
+          = button_to :delete, my_station_path(user_station), :method => :delete
+        .edit
+          = pill_link_to :edit, edit_my_station_path(user_station), :class => "facebox"

@@ -1,0 +1,12 @@
+%li.twitter.activity.clearfix{:timestamp => twitter_activity["timestamp"]}
+  - account = twitter_activity["record"] || Account.find(twitter_activity["account_id"])
+  .avatar
+    = link_to avatar_for_activity(account.avatar_file_name, twitter_activity['account_id'], "account", {:alt => twitter_activity['screen_name']}), account    
+  .item
+    %h3= linkify(twitter_activity['text'])
+    .meta
+      == #{t('basics.created_by')}     
+      = (logged_in? && current_user.id == twitter_activity["account_id"].to_i) ? t('basics.me') : link_to(truncate(account.name, :length => 42), user_path(account.slug))
+      %span.date_time= t("basics.created_at", :when => distance_of_time_in_words_to_now(Time.at(twitter_activity["timestamp"].to_i)))
+    .source
+      = link_to("Twitter / #{twitter_activity['screen_name']}", "http://twitter.com/#{twitter_activity['screen_name']}", :target => "_blank")

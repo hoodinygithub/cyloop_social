@@ -1,0 +1,62 @@
+<en>
+	<add_song_to_loops>Add this song into the following Playlist</add_song_to_loops>
+	<add_to_loops>Add to Playlist/s</add_to_loops>
+	<add_to_mixer>Add to Mixer</add_to_mixer>
+	<album>album</album>
+	<anon_add_to_library>
+	Log in to add to your library.
+Not a member? Register for free.
+	</anon_add_to_library>
+	<anon_save_mix_to_library>
+	Log in to save this mix to your library. 
+Not a member? Register for free.
+	</anon_save_mix_to_library>
+	<are_you_sure>Are you sure you want to remove</are_you_sure>
+	<artist>artist</artist>
+	<buy_music>Buy</buy_music>
+	<close>Close</close>
+	<create_new_loop>Create new playlist</create_new_loop>
+	<creating_station>Creating Station</creating_station>
+	<dont_show_again>Don't show this again</dont_show_again>
+	<delete_station>Delete Station</delete_station>
+	<edit_station_name>Edit Station Name</edit_station_name>
+	<error_no_radio>We apologize but this service is not available in your country yet.</error_no_radio>
+	<error_timeout>
+	There was a problem loading the station.
+Please try again.
+	</error_timeout>
+	<error_unknown>
+	We apologize but there was a problem with your request. 
+Please refresh and try again. If the problem still persists then 
+contact us using the support form.
+	</error_unknown>
+	<error_empty_playlist>
+	We apologize but there was a problem with the station you are trying to play. 
+Please try again or make another selection.
+	</error_empty_playlist>
+	<from_my_stations>from my Stations?</from_my_stations>
+	<label>label</label>
+	<loading_station>Loading Station</loading_station>
+	<my_stations>My Stations</my_stations>
+	<not_allowed_in_your_country>
+	We're sorry. The radio is not yet allowed in your country.
+	</not_allowed_in_your_country>
+	<radio_cyloop>Radio Cyloop</radio_cyloop>	
+	<save>Save</save>
+	<save_confirmed>has been added to your loops</save_confirmed>
+	<save_mix>Save Mix</save_mix>
+	<share>Share</share>
+	<station>station</station>
+	<this_mix_will_be_saved>
+	This mix will be saved as a new Playlist in your 
+library.
+  </this_mix_will_be_saved>
+	<title>Title</title>
+	<using_the_loop_mixer>Using the Playlist Mixer</using_the_loop_mixer>
+	<using_the_loop_mixer_info>
+	Type in the name of an artist to create a 
+station. Click on ‘Add to Mixer’ to add a song 
+into the Playlist Mixer bin and then save the mix 
+as a new Playlist.
+	</using_the_loop_mixer_info>
+</en>

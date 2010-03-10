@@ -1,0 +1,6 @@
+- unless followers.empty?
+  %h3= header_key
+  =# link_to(t('actions.view_more'), following_index_path, :class => 'view_more')
+  %ul
+    - followers.each do |follower|
+      %li.followee= link_to(avatar_for(follower, :tiny), follower)                                    

@@ -1,0 +1,29 @@
+!!!
+%html{html_attrs}
+  %head
+    %meta{"http-equiv" => 'Content-Type', :content => 'text/html;charset=utf-8'}
+    %title= h(@title || "cyloop")
+    = stylesheet_link_tag 'reset', :media => 'screen, projection'
+    = stylesheet_link_tag 'application', :media => 'screen, projection'
+    = stylesheet_link_tag 'jcarousel/jquery.jcarousel', :media => 'screen, projection'
+    = stylesheet_link_tag 'jcarousel/skins/tango/skin', :media => 'screen, projection'
+    = javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.to_json};" if protect_against_forgery?
+    = javascript_include_tag 'jquery'
+    = javascript_include_tag 'application'
+    = javascript_include_tag 'registration'
+    = javascript_include_tag 'jquery.pngFix'
+    = javascript_include_tag 'jquery.corners'
+    = javascript_include_tag 'jquery.corners.js'
+    = javascript_include_tag 'jcarousel/lib/jquery.jcarousel.pack'
+    = javascript_include_tag 'jcarousel/lib/jquery.jcarousel'
+    = yield :head
+%body
+  = render :partial => "shared/mast_head"
+  #main_content.rounded
+    = render_flash
+    = render :partial => 'discover/main_navigation'
+    - section = controller.controller_name == 'discover' ? 'artists' : controller.controller_name
+    = render :partial => 'discover/genres_navigation', :locals => {:section => section}
+    = yield
+    #main_content_footer
+  #footer

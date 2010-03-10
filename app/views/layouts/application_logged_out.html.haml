@@ -1,0 +1,19 @@
+!!!
+%html{application_html_attrs}
+  %head
+    = render 'shared/head'
+    /= resource_tags :defaults => false, :auto => false
+    = yield :head
+  %body{:class => body_classes}
+    = render_messenger_app
+    #main_content
+      - unless cyloop_site?
+        #sub_header_container.banner
+          = banner_ad("top_banner")
+      = render :partial => "shared/mast_head"
+      #page_wrapper.clearfix
+        = render_flash
+        = yield
+      = render :partial => "shared/footer"
+      - if site_includes(:msnlatino, :msnmx, :msnbr, :msnlatam, :msnar, :msncaen, :msncafr)
+        = render "3rd_party_branding/msn_footer_#{site_code}"

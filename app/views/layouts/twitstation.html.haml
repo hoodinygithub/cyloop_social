@@ -1,0 +1,8 @@
+!!!
+%html{html_attrs}
+  %head
+    = render 'shared/twit_head'
+    = resource_tags :defaults => false, :auto => false
+    = yield :head
+  %body{:class => body_classes}
+    = yield

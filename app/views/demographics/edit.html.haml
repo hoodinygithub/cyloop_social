@@ -1,0 +1,23 @@
+%h2.channel_headline=t('registration.sign_up')
+.signup_section
+  %h3= t('users.new.step_2_title')
+  %p= t('users.new.step_2_description')
+
+#content
+  .form_elements.label_based.prominent
+    - form_for @user, :url => demographics_path, :html => { :multipart => true } do |f|
+      .fields_wrapper
+        = error_messages_for(:user, :header_message => "")
+        = render :partial => 'form', :locals => { :f => f }
+        %hr    
+        / #TODO: Make this pass the cucumber test t("registration.sign_up") (Andrew)
+        = large_form_button_to :save
+
+#secondary_content
+  .form_marketing
+    %span.header
+    %h4= t('users.new.step_2_vignette_header')
+    %ul.features
+      %li= t('users.new.step_2_vignette_with_more_info')
+      %li= t('users.new.step_2_vignette_songs_align_identity')
+      %li= t('users.new.step_2_vignette_let_cyloop_learn')

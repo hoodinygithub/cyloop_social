@@ -1,0 +1,43 @@
+%h2.alternate
+  =t 'sessions.new.sign_in'
+
+#content  
+  .primary_content
+    - form_tag session_path do
+      .form.label_based
+        %fieldset
+          %legend Test
+          .row.clearfix
+            .label
+              %label{ :for => "email" }
+                = "#{t("user.email")}:"
+            .field
+              .input_wrapper
+                = text_field_tag 'email', params[:email], :class => "text"
+          .row.clearfix
+            .label
+              %label{ :for => "password" }
+                = "#{t("user.password")}:"
+            .field
+              .input_wrapper
+                = password_field_tag 'password', nil, :class => "text"
+              .alternate_actions
+                %p
+                .checkbox
+                  = check_box_tag 'remember_me'
+                  %label{ :for => "remember_me", :class => "checkbox" }= t("sessions.new.remember_me")
+                  %br
+                  = link_to t("actions.forgot_password"), forgot_path
+          .form_actions
+            .login_actions.clearfix
+              = large_form_button_to :login
+#secondary_content
+  .form_marketing.clearfix
+    %span.header
+    %h4= t 'sessions.new.sign_up_for_free'
+    .vignette_actions.clearfix
+      .button_wrapper.style2
+        %div
+          = link_to t("sessions.new.listener_account"), new_user_path    
+          %div.blue_arrow
+    %div.tag_line= t 'sessions.new.sign_up_tag_line'

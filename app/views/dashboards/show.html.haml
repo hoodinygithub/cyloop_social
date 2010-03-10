@@ -1,0 +1,58 @@
+- require_javascript "media_manager"
+- require_javascript "new_activity"
+
+%script
+  == artist_not_found = "#{t('dashboards.messages.artist_not_found')}";
+  == select_playlist = "#{t('actions.select_playlist')}";
+
+:javascript
+  $(document).ready(function() {
+    $('#activity').activityFeedSwitcher();
+  });
+
+#content
+  #start_listening.clearfix
+    = avatar_for(current_user, :tiny)
+    %h3 
+      = t('dashboards.show.what_do_you_want_to_listen_to') 
+    - form_tag artists_path, :id => "artist_search", :class => 'clearfix', :method => :get do
+      = text_field_tag :name
+      .go_button
+        .left
+        = submit_tag t('actions.go_with_exclamation')
+        .right
+    #results
+    #save_options
+      %h3
+        = t('actions.add')
+        %span
+        = "#{t('actions.to')}:"
+      - form_tag "#", {:id => "user_playlists"} do
+        = select_tag "playlists", "<option>...</option>"
+      .create_new
+        %h3
+          = "#{t('actions.or')}"
+        = text_field_tag :new_playlist, "#{t('actions.add_into_a_new_playlist')}", :default => "#{t('actions.add_into_a_new_playlist')}"
+        %div.create_actions.clearfix
+          %p.submit_button
+            .pill_button
+              .left
+              = tag :input, :type => :submit, :value => t('actions.create'), :class => :pill_button
+              .right
+    #playlist_results
+    #playlist_options
+      %div.create_actions.clearfix
+        %p.submit_button
+          .pill_button
+            .left
+            = tag :input, :type => :submit, :value => t('actions.save'), :class => :pill_button
+            .right
+    #loader
+      = image_tag "/images/ajax-loader.gif"
+    #cancel_creation
+      = link_to t("actions.cancel"), "#", :class => "cancel"
+    #confirmation_alert
+      = t("activerecord.attributes.user.playlist_confirmation")
+
+  = render :partial => "modules/activity/activity"
+

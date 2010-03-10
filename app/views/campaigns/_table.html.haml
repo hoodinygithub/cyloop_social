@@ -1,0 +1,22 @@
+%table
+  %tr
+    %th{:scope => "col", :width => "40%"} Name
+    %th{:scope => "col", :width => "20%"} Status
+    %th{:scope => "col", :width => "20%"} Actions
+
+  - campaigns.each do |c|
+    %tr
+      %td= c.name 
+      %td
+        %strong
+          - if c.active?
+            Active
+            = link_to "(Deactivate)", deactivate_campaign_path(c), :method => :post, :confirm => "Are you sure?"
+          - else
+            Not active
+            = link_to "(Activate)", activate_campaign_path(c), :method => :post, :confirm => "Are you sure?"
+          
+      %td 
+        = link_to 'Edit', edit_campaign_path(c)
+        |
+        = link_to 'Delete', campaign_path(c), :method => :delete, :confirm => "Are you sure?"

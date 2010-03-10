@@ -1,0 +1,123 @@
+/* @override http://blstc.msn.com/br/intl/ice/css/1/videogallery.css */
+
+.videogallery_clear {
+	clear: both;
+	line-height: 0;
+	font-size: 0
+}
+
+.videogallery_list_wrap {
+	background: #000 url(decoration/widgetbg.jpg) no-repeat right bottom
+}
+
+.videogallery_list {
+	background: url(decoration/pagingbg.gif) repeat-x top;
+	border: 2px solid #444;
+	border-top: none;
+	border-bottom: none
+}
+
+.videogallery_paging_lt {
+	background: url(decoration/pagingbg_lt.gif) no-repeat left top
+}
+
+.videogallery_paging_rt {
+	background: url(decoration/pagingbg_rt.gif) no-repeat right top
+}
+
+.videogallery_ad {
+	text-align: center;
+	background: #000 url(decoration/adbg.gif) repeat-x
+}
+
+.videogallery_ad a {
+	padding: 5px 0;
+	display: block;
+	text-align: center;
+	width: 100%
+}
+
+.videogallery_grey .videogallery_list_wrap {
+	background: #282627 url(decoration/widgetbg_grey.jpg) no-repeat right bottom
+}
+
+.videogallery_grey .videogallery_list {
+	background: url(decoration/pagingbg_grey.gif) repeat-x top;
+	border: 2px solid #444;
+	border-top: none;
+	border-bottom: none
+}
+
+.videogallery_grey .videogallery_paging_lt {
+	background: url(decoration/pagingbg_lt_grey.gif) no-repeat left top
+}
+
+.videogallery_grey .videogallery_paging_rt {
+	background: url(decoration/pagingbg_rt_grey.gif) no-repeat right top
+}
+
+.videogallery_grey .videogallery_ad {
+	background: #000 url(decoration/adbg_grey.gif) repeat-x
+}
+
+.videogallery_plain .videogallery_list_wrap {
+	background: #fff
+}
+
+.videogallery_plain .videogallery_list {
+	background: #fff;
+	border: none
+}
+
+.videogallery_plain .videogallery_paging_lt {
+	background: #fff
+}
+
+.videogallery_plain .videogallery_paging_rt {
+	background: #fff
+}
+
+.videogallery_plain .videogallery_ad {
+	background: #fff
+}
+
+.videogallery_plain.videogallery_top .videogallery_list_wrap {
+	border-top: 1px solid #ccc
+}
+
+object,embed {
+	display: block
+}
+
+.videogallery_top .videogallery_player {
+	
+}
+
+.videogallery_top .videogallery_list_wrap {
+	
+}
+
+.videogallery_left .videogallery_player {
+	float: right
+}
+
+.videogallery_left .videogallery_list_wrap {
+	float: right
+}
+
+.videogallery_right .videogallery_player {
+	float: left
+}
+
+.videogallery_right .videogallery_list_wrap {
+	float: left
+}
+
+.video {
+	width: 100%!important;
+	background-color: Transparent!important
+}
+
+#area6 .video1 {
+	background-color: Transparent!important
+}

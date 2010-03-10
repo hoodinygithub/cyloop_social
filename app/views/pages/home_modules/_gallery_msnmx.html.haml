@@ -1,0 +1,11 @@
+- if @feed_especiales && !@feed_especiales.empty?
+  .grey.headline.clearfix
+    %h2
+      %span
+        =t 'modules.features_and_galleries.title'
+  %ul
+    - @feed_especiales.each_with_index do |feed, index|
+      %li{ :class => (index == 4) ? 'photo last' : "photo" }
+        = link_to image_tag(feed.image), feed.link
+        %span
+          = feed.description

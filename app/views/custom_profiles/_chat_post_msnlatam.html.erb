@@ -1,0 +1,33 @@
+<%  content_for :head do %>
+  <%= stylesheet_link_tag 'http://blstc.msn.com/br/intl/ice/css/1/videogallery.css'      %>
+  <%= javascript_include_tag 'http://images.video.msn.com/flash/script/embed.js'         %>
+  <%= javascript_include_tag 'http://images.video.msn.com/js/vp.js'                      %>
+  <%= javascript_include_tag 'http://blstj.msn.com/br/gbl/js/2/video.js'                 %>
+  <%= javascript_include_tag 'http://blstj.msn.com/br/intl/ice/js/1/channels.js'             %>
+  <%= javascript_include_tag 'http://blstj.msn.com/br/intl/ice/js/2/gwidget.js'          %>
+<% end %>
+
+<div class="videogallery_top videogallery_grey" style="width:600px;">
+  <div class="videogallery_player" style="width:600px;">
+    <div>
+      <script type="text/javascript">
+        Msn.Video.BuildPlayer('IVP_es-xl_Cyloop',{"id": "IVP_es-xl_Cyloop","ifs":"true","ps": "99","c": "vcq","vcq":"videoByTag.aspx%3Ftag%3DAID123542%26ns%3Dpromotion%26mk%3Des-xl%26sf%3DActiveStartDate%26vs%3D0","bsbpg":"LAVIBS","pg":"LACYL4","partnerlogo":"true",
+    "mkt":"es-xl","skin":"2","t":"Musica","fr":"IVP_es-xl_Cyloop","fg":"gtlv2","ad":"true","spl":"false","rv":"true","timePlaying":"180","playlistmin":"1","ch": "true","title":"true"},600,418,'http://images.video.msn.com/flash/soapbox1_1.swf');
+      </script>
+    </div>
+  </div>
+
+  <div class="videogallery_list_wrap">
+    <div class="videogallery_list">
+      <div class="videogallery_paging_lt">
+        <div class="videogallery_paging_rt" id="hot_widget">
+          <div></div>
+          <a onclick="return Msn.Navigation.OpenNew(event,this)" href="http://www.adobe.com/go/getflashplayer"></a>
+        </div>
+        <script type="text/javascript">
+          Msn.Video.BuildGallery('hot_widget',600,200,{ "gallery.tabCustom": "false", "gallery.dispContainer": "false","gallery.mkt": "es-xl", "gallery.vcMarket": "es-xl", "gallery.showPlaylist": "false", "gallery.playType": "inline", "gallery.playerId": "IVP_es-xl_Cyloop", "gallery.categoryRequests": "videoByTag.aspx%3Ftag%3DAID123542%26ns%3Dpromotion%26mk%3Des-xl%26sf%3DActiveStartDate%26vs%3D0", "gallery.autoLoadVideo": "none","cssPath": "http://blstc.msn.com/br/intl/ice/css/1/videogalleryWidgetTop.css", "gallery.linkbackLocation": "hidden", "gallery.pageInfoLocation": "top_right", "gallery.pageControlsLocation": "top_right", "gallery.searchBoxLocation": "hidden", "gallery.categoryMenuLocation": "hidden", "gallery.previewVolume": "100", "gallery.listViewImageLocDetail": "hidden", "gallery.listViewImageLocGrid": "hidden", "gallery.listViewImageLocList": "hidden", "gallery.defaultView": "Grid", "gallery.allowedViews": "Detail%3BGrid%3BList%3B", "gallery.useAutoPage": "true", "gallery.autoPageCategories": "false", "gallery.autoPageMax": "99", "gallery.autoPageTimer": "15", "gallery.dispRss": "top_left", "gallery.dispUpload": "hidden","gallery.numRowsDetail": "2", "gallery.numColsDetail": "5","gallery.imageWidthDetail": "80","gallery.imageWidthGrid": "80","gallery.imageWidthList": "80", "gallery.imageHeightDetail": "60", "gallery.imageHeightGrid": "60", "gallery.imageHeightList": "60","gallery.dispSourceGrid": "false", "gallery.dispDescriptionGrid": "false", "gallery.dispDateGrid": "false","gallery.dispTitleDetail": "true", "gallery.dispSourceDetail": "false", "gallery.dispDescriptionDetail": "false", "gallery.dispDateDetail": "false","gallery.numRowsGrid": "2", "gallery.numColsGrid": "5","gallery.dispDateList": "false","gallery.numRowsList": "2", "gallery.numColsList": "5"},"hot","http://images.video.msn.com/flash/gallerywidget/1_0/gallerywidget.swf");
+        </script>
+      </div>
+    </div>
+  </div>
+</div>

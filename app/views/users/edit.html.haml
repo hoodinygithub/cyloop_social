@@ -1,0 +1,173 @@
+.clearfix#list_header
+  .title
+    %h3= t 'settings.page_title'
+    = error_messages_for(:user, :header_message => "")
+
+:javascript
+  $(document).ready(function() {
+    $("form div > fieldset:eq(#{(@current_tab != 1 ? 1 : 0)})").hide();
+      $("form div > fieldset:eq(2)").hide();
+
+    function setUpTab(index) {
+      $("a.filter:eq(" + index + ")").click(function() {
+        $("form div > fieldset").hide();
+        $("#settings_tabs a").removeClass('active');
+        $("form div > fieldset:eq(" + index + ")").show();
+        $("#settings_tabs a:eq(" + index + ")").addClass('active');
+        if (index > 0)
+          $('.cancel_account').hide();
+        else
+          $('.cancel_account').show();
+      })
+    }
+
+    for(var i = 0; i <= 2; i++)
+      setUpTab(i);
+
+    $(".input_wrapper.web input").keyup(function() { if (this.value.length > 50) this.value = this.value.substring(0, 50) });
+    $("#user_short_bio").keyup(function() { if (this.value.length > 200) this.value = this.value.substring(0, 200) });
+    $("#user_name").keyup(function() { if (this.value.length > 100) this.value = this.value.substring(0, 100) });
+    $("#user_email").keyup(function() { if (this.value.length > 100) this.value = this.value.substring(0, 100) });
+  })
+
+  $(document).ready(function() {	
+  
+    $('#send_buttom').click(function(e) {
+      e.preventDefault();
+      
+      var id = "#dialog";
+    
+      var maskHeight = $(document).height();
+      var maskWidth = $(window).width();
+    
+      $('#mask').css({'width':maskWidth,'height':maskHeight});
+  
+      $('#mask').fadeIn(0);	
+      $('#mask').fadeTo("slow",0.8);	
+    
+      //Get the window height and width
+      var winH = $(window).height();
+      var winW = $(window).width();
+                
+      $(id).css('top',  winH/2-$(id).height()/2);
+      $(id).css('left', winW/2-$(id).width()/2);
+    
+      $(id).fadeIn(2000);
+      $('#form_settings').submit();
+          
+    });
+    
+  });
+
+= content_for :head do
+  = stylesheet_link_tag "modal_window_loading"
+
+= content_for :body_top do
+  #dialog.window
+    = image_tag "indicator.gif"
+  #mask
+
+.row.clearfix
+.filters#settings_tabs
+  %p.label== #{t('actions.view')}:
+  - if @current_tab == 1
+    %a.filter{:href => "#"}
+      %span= t('settings.tabs.account')
+    - if cyloop_login?
+      %a.filter.active{:href => "#"}
+        %span= t('settings.tabs.password')
+  - else
+    %a.filter.active{:href => "#"}
+      %span= t('settings.tabs.account')
+    - if cyloop_login?
+      %a.filter{:href => "#"}
+        %span= t('settings.tabs.password')
+  %a.filter{:href => "#"}
+    %span= t('settings.tabs.notifications')
+  .clear
+
+- form_for @user, :html => { :method => :put, :multipart => true, :id => "form_settings" }, :url => my_settings_path do |f|
+  .form.label_based
+    / field_set_tag
+    - field_set_tag t('settings.account') do
+      .row.clearfix
+        .label
+          = f.label :name
+        .field
+          .input_wrapper
+            = f.text_field :name
+      .row.clearfix
+        .label
+          = f.label :slug, t('user.slug')
+        .field.copy
+          .url= "http://#{request.server_name}/#{@user.slug}"
+      .row.clearfix
+        .label
+          = f.label :email
+        .field
+          .input_wrapper
+            = f.text_field :email
+      .row.clearfix
+        .label
+          = f.label :short_bio
+        .field
+          = f.text_area :short_bio, :rows => 3, :wrap => :soft
+      .row.clearfix#user_websites_field
+        .label
+          = f.label :websites
+        .field.multiple_input_fields
+          - if @user.websites.blank?
+            .input_wrapper.web
+              = text_field_tag "user[websites][]"
+          - @user.websites.each_with_index do |site, index|
+            .input_wrapper.web
+              = text_field_tag "user[websites][]", h(site)
+          = link_to t('actions.add_more'), {}, :class => "add_more"
+      = render :partial => 'demographics/form', :locals => { :f => f }
+      .row.clearfix
+        .field.checkbox
+          = f.check_box :private_profile
+        .field.checkbox_label
+          = f.label :private_profile
+      .row.clearfix
+        .field.checkbox
+          = f.check_box :marketing_opt_out
+        .field.checkbox_label
+          = f.label :marketing_opt_out
+
+    - if cyloop_login?
+      / field_set_tag
+      - field_set_tag t('user.password') do
+        .row.clearfix
+          .label
+            = f.label :current_password
+          .field
+            .input_wrapper
+              = f.password_field :current_password
+        .row.clearfix
+          .label
+            = f.label :password, t('user.new_password')
+          .field
+            .input_wrapper
+              = f.password_field :password
+        .row.clearfix
+          .label
+            = f.label :password_confirmation
+          .field
+            .input_wrapper
+              = f.password_field :password_confirmation
+
+    / field_set_tag
+    - field_set_tag t('user.email') do
+      .row.notification.clearfix
+        .field.check_box
+          = f.check_box :receives_following_notifications
+          /.label.small
+          = f.label(:receives_following_notifications)
+    .form_actions
+      .row.clearfix
+        .left
+          = large_form_button_to :save, "send_buttom"
+        .cancel_my_account
+          = link_to(t('settings.cancel_my_account') , my_cancellation_confirm_path, :class => "facebox cancel_account")
+

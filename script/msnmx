@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+ENV['SITE'] = 'MSN Mexico'
+require File.dirname(__FILE__) + '/../config/boot'
+require 'commands/server'

@@ -1,0 +1,307 @@
+/*
+  Summary
+  ---
+  * Registration Form
+  * Layers
+*/
+
+/* Registration Form */
+body.users_new #page_wrapper,
+body.users_create #page_wrapper { 
+  clear: both;
+  margin: 0;
+  width: 100%;
+}
+
+body.users_new #page_wrapper h2,
+body.users_create #page_wrapper h2 {
+  padding: 30px 40px;
+}
+
+body.users_new #page_wrapper #content,
+body.users_create #page_wrapper #content {
+  border-right: 1px solid #ddd;
+  width: 400px !important; /* temporary fix to avoid override this */
+  padding: 0px 50px;
+  float: left;  
+}
+body.users_new #page_wrapper #sidebar,
+body.users_create #page_wrapper #sidebar {
+  padding: 50px;
+  float: left;
+  width: 380px;
+}
+body.users_new .new_user label,
+body.users_create .new_user label { 
+  display: block;
+  font-weight: bolder;
+  font-size: 18px;
+  color: black;
+  margin-bottom: 5px;
+}
+body.users_new .new_user label em,
+body.users_create .new_user label em {
+  font-size: 13px;
+  color: #666;
+  font-weight: normal;
+}
+body.users_new .new_user .checkbox input,
+body.users_create .new_user .checkbox input {
+  float: left;
+}
+body.users_new .new_user label.radio,
+body.users_create .new_user label.radio {
+  float: left;
+  font-weight: normal;
+  font-size: 16px;
+  color: #666;
+  width: 90px;
+  margin: 3px 0 0 5px;  
+  padding: 5px 0;
+}
+body.users_new #dob,
+body.users_create #dob {
+  margin-bottom: 25px;
+}
+body.users_new .new_user .checkbox .left,
+body.users_create .new_user .checkbox .left { 
+  float: left;
+  padding: 0;
+  margin: 0;
+}
+body.users_new .new_user .checkbox .right,
+body.users_create .new_user .checkbox .right {
+  float: left;
+  width: 370px;
+  margin: 0 0 0 5px;  
+  padding: 0;
+}
+body.users_new .new_user .checkbox label,
+body.users_create .new_user .checkbox label {
+  font-weight: normal;
+  font-size: 12px;
+  color: #666;
+}
+body.users_new .new_user .user_url,
+body.users_create .new_user .user_url {
+  float: left;
+  width: 115px;
+  font-size: 20px;
+  color: #bcbcbc;
+  line-height: 40px;
+}
+body.users_new .new_user .slug_block,
+body.users_create .new_user .slug_block {
+  width: 280px;
+  float: right;
+}
+body.users_new .new_user .slug_block .input_wrapper,
+body.users_create .new_user .slug_block .input_wrapper {
+  width: 275px;  
+}
+body.users_new .new_user .url,
+body.users_create .new_user .url {
+  margin-bottom: 10px;
+  display: block;
+}
+body.users_new .new_user .ac_loading,
+body.users_create .new_user .ac_loading {
+  background: url(../images/indicator.gif) no-repeat 370px 5px;
+}
+body.users_new .new_user .registration_complete,
+body.users_create .new_user .registration_complete {
+  text-align: right;
+}
+body.users_new .new_user .registration_complete button,
+body.users_create .new_user .registration_complete button {
+  margin-left: 20px;
+  font-family: "Helvetica", sans-serif;
+  font-size: 17px;
+  color: white;
+  border: 0;
+  width: 124px;
+  height: 43px;
+  line-height: 38px;
+  padding: 0 5px 5px 0;
+  cursor: pointer;
+  background: transparent url(../images/registration/button-complete.png) no-repeat;
+}
+body.users #sidebar ul {
+  padding: 0;
+  margin: 0;
+}
+body.users #sidebar ul li {
+  padding: 0 10px 40px 80px;
+}
+body.users #sidebar ul li span {
+  display: block;
+  font-weight: bolder;
+  color: black;
+  font-size: 18px;
+  line-height: 23px;
+}
+body.users #sidebar ul .discover { 
+  background: transparent url(../images/registration/discover.png) no-repeat 0 0;
+}
+body.users #sidebar ul .radio { 
+  background: transparent url(../images/registration/radio.png) no-repeat 0 0;
+}
+body.users #sidebar ul .playlist { 
+  background: transparent url(../images/registration/playlist.png) no-repeat 0 0;
+}
+body.users #sidebar ul .follow { 
+  background: transparent url(../images/registration/follow.png) no-repeat 0 0;
+}
+body.users #sidebar ul .chat { 
+  background: transparent url(../images/registration/chat.png) no-repeat 0 0;
+}
+
+/* Errors */
+body.users_new .has_errors,
+body.users_create .has_errors { 
+  border: 2px solid #990000;
+  padding: 0;
+  width: 400px;
+}
+body.users_new #dob.has_errors,
+body.users_create #dob.has_errors {
+  margin-bottom: 20px;  
+}
+body.users_new .fieldWithErrors label,
+body.users_create .fieldWithErrors label {
+  color: #990000;
+}
+body.users_new .combobox .fieldWithErrors,
+body.users_create .combobox .fieldWithErrors {
+  margin-left: 10px;
+}
+body.users_new .checkbox .has_errors,
+body.users_create .checkbox .has_errors {
+  width: auto;
+}
+body.users_new .checkbox .fieldWithErrors input,
+body.users_create .checkbox .fieldWithErrors input {
+  margin: 0;
+  padding: 0;
+  top: 0;
+}
+body.users_new .combobox .fieldWithErrors select,
+body.users_create .combobox .fieldWithErrors select {
+  margin-bottom: 15px;
+}
+body.users_new .formError,
+body.users_create .formError {
+  background-color: #990000;
+  color: white;
+  float: left;
+  width: 390px;
+  padding: 5px;
+  margin: 0;
+}
+body.users_new .checkbox .formError,
+body.users_create .checkbox .formError {
+  background-color: #fff;
+  color: #900;
+  font-size: 14px;
+  font-weight: bolder;
+  width: 360px;  
+  padding: 0 0 5px 0;
+}
+body.users_new .new_user .slug_block .formError,
+body.users_create .new_user .slug_block .formError{
+  width: 270px;
+}
+body.users_new .new_user .slug_block ,
+body.users_create .new_user .slug_block {
+  width: 280px;
+}
+body.users_new .available,
+body.users_create .available {
+  background-color: green;
+  color: white;
+  float: left;
+  padding: 5px;
+  margin: 0;
+}
+body.users_new .slug_block .available,
+body.users_create .slug_block .available {
+  width: 270px;
+}
+body.users_new .email_block .available,
+body.users_create .email_block .available {
+  width: 390px;
+}
+body.users_new .errors,
+body.users_create .errors {
+  color: #800;
+  font-weight: bolder;
+  font-size: 18px;  
+}
+
+/* Layers */
+.registration_layer { width: 600px; font-family: Helvetica; margin: 0 auto; padding: 0; cursor: pointer; }
+.registration_layer .close { float: right; margin-top: -246px; height: 12px; width: 12px; display: block; background: transparent url(../images/layers/close.png) no-repeat center; text-indent: -9999px; overflow: hidden; margin-right: 4px; z-index: 999; }
+.registration_layer .top a { color: white; text-decoration: underline; }
+.registration_layer .top { height: 390px; background: #fff url(../images/layers/cyloop/1.jpg) no-repeat; }
+.registration_layer .top h2 { border: 0; font-size: 19px; padding: 0; color: white; font-weight: bolder; text-align: left; margin: 20px; width: 350px; padding-right: 210px; line-height: 25px; float: left; height: 210px; background: transparent url(../images/layers/cyloop_powered.png) no-repeat top right; }
+.registration_layer .stats ul { margin: 0; padding: 0; clear: both; height: 140px; background: url(../images/layers/transparency.png); }
+.registration_layer .stats li { float: left; padding: 0; margin: 0; width: 130px; padding: 10px; color: #999; font-weight: normal; font-family: Tahoma; font-size: 11px; }
+.registration_layer .stats em { color: #0294DF; font-style: normal; }
+.registration_layer .stats li span {
+  display: block;
+  text-transform: uppercase;
+  font-weight: bolder;
+  font-size: 16px;
+  width: 120px; 
+  padding-top: 60px;  
+  text-align: center;
+  color: white;
+  margin-bottom: 10px;
+  font-family: Helvetica;
+}
+.registration_layer .stats li.listen span {
+  background: transparent url(../images/layers/listen.png) no-repeat top center;
+}
+.registration_layer .stats li.discover span {
+  background: transparent url(../images/layers/discover.png) no-repeat top center;
+}
+.registration_layer .stats li.know span {
+  background: transparent url(../images/layers/know.png) no-repeat top center;
+}
+.registration_layer .stats li.share span {
+  background: transparent url(../images/layers/share.png) no-repeat top center;
+}
+.registration_layer .bottom { 
+  background: transparent url(../images/layers/bottom.png) no-repeat bottom center; 
+  height: 69px; 
+  padding: 20px;
+  text-align: center;
+}
+.registration_layer .bottom h2 {
+  color: #666;
+  font-size: 18px;
+  text-transform: none;
+  display: block;
+  line-height: 20px;
+}
+.registration_layer .bottom h2 a {
+  padding-right: 20px;
+  background: transparent url(../images/layers/msn.png) no-repeat right center;
+}
+body.cyloop .registration_layer .bottom h2 a,
+body.cyloopes .registration_layer .bottom h2 a {
+  background: none;
+  padding: 0;
+}
+.registration_layer .bottom h2 a {
+  color: #0294DF
+}
+.registration_layer .bottom p {
+  margin-top: 20px;
+  color: #666;
+}
+.registration_layer .bottom a { 
+  color: #666;  
+}
+
+

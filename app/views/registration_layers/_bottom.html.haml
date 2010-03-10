@@ -1,0 +1,9 @@
+.bottom
+  %h2= t("registration.layers.still_do_not_have_msn_account")
+  %h2= t("registration.layers.msn_music_is_free", :link => link_to(t("registration.layers.sign_in_with_your_windows_live_id"), site_login_url, :onclick => gat_code(@code)))
+  %p= t("registration.layers.do_not_have_account", :link => link_to(t("registration.layers.click_here"), site_register_url, :onclick => gat_code(@code)))
+
+- if request.xhr?
+  :javascript
+    Registration.Layers.removeSomeFaceboxStyles();
+  = render :partial => 'shared/google_analytics'

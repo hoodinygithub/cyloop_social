@@ -1,0 +1,21 @@
+.buy_links
+  %h3= t('actions.buy_album')
+  .cover_art.clearfix
+    .song_avatar
+      = avatar_for(@album, :medium, {:alt => "#{@album.owner} - #{@album}"})
+      %span.cover_case
+    .info
+      .title
+        %h4== "#{@album}"
+      .artist
+        %div
+          == #{t('basics.by')}:
+          %span== #{@album.owner}
+      .album= "#{t('albums.song_count')}: #{@album.songs_count}"
+  %p.buylink_info
+    = t('actions.select_store')
+  %div.buylinks
+    - @buylinks.each do |link|
+      = link_to image_tag(link.buylink_provider.store_image), link.url, :class => "#{link.buylink_provider.name} close_after_click", :target => :new
+  %div.create_actions.clearfix
+    = link_to t('actions.cancel'), "#", :class => "close"

@@ -1,0 +1,19 @@
+#!/bin/bash
+
+echo "Clear all sites cache"
+SITE="MSN Brazil" rake cache:clear > /dev/null
+echo "Brazil: OK"
+SITE="MSN Mexico" rake cache:clear > /dev/null
+echo "Mexico: OK"
+SITE="MSN US Latin" rake cache:clear > /dev/null
+echo "Latin: OK"
+SITE="MSN Latam" rake cache:clear > /dev/null
+echo "Latam: OK"
+SITE="MSN Argentina" rake cache:clear > /dev/null
+echo "Argentina: OK"
+SITE="MSN Canada EN" rake cache:clear > /dev/null
+echo "Canada EN: OK"
+SITE="MSN Canada FR" rake cache:clear > /dev/null
+echo "Canada FR: OK"
+SITE="Cyloop" rake cache:clear > /dev/null
+echo "Cyloop: OK"

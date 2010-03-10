@@ -1,0 +1,32 @@
+%h3
+  #messages_number
+    == #{@n_messages} More Questions
+  |
+
+%ul
+  - unless @message.blank?
+    %li.clearfix[@message]
+      .location
+        == #{@message.name} 
+        %strong from 
+        == #{@message.location}
+        - if @message.pre_submitted?
+          %em.pre_submitted (pre-submitted)
+      .question
+        ==  #{@message.question}
+    .links
+      = link_to "BACK", '#', :class=>'back', :id =>"#{@chat.id}_#{@message.id}"
+      = link_to "NEXT", '#', :class=>'next', :id =>"#{@chat.id}_#{@message.id}"
+  -else
+    %h4.no_message To start press NEXT.
+    %li.clearfix
+      .location
+      .question
+    .links
+      = link_to "BACK", '#', :class=>'back', :id =>"#{@chat.id}_0"
+      = link_to "NEXT", '#', :class=>'next', :id =>"#{@chat.id}_0"
+
+%script
+  == var chat_id    = #{params[:id]};
+  $("#messages_number").n_messageChecker();
+

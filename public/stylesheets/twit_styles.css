@@ -1,0 +1,58 @@
+#main_content { 
+  background-color: transparent;
+  border: 0; 
+} 
+
+* {
+margin: 0;
+}
+
+body.twitstation {
+	background: #9AE4E8 url(/images/twit_background.png) center 0 no-repeat;
+}
+
+.twitstation #content {
+	width: 613px;
+	margin: 0 auto;
+        float: none;
+}
+
+.twitstation .logo {
+	height: 88px;
+	margin-bottom: 40px;
+}
+
+.twitstation .radio_player {
+	margin-bottom: 40px;
+}
+
+.twitstation .logo img {
+	float: left;
+	margin-left: 10px;
+}
+
+.twitstation .logo h1 {
+	position: relative;
+	top: 30px;
+	left: 160px;
+}
+
+.twitstation .logo h1 a {
+	display: block;
+	height: 59px;
+	width: 390px;
+	background: transparent url(/images/twitter_logo.png) top left no-repeat;
+	text-indent: -5000px;
+}
+
+div.artist_radio_info {
+  background-color: #7EAFB1;
+}
+
+div.artist_radio_info div.tabs ul {
+  background-color: #FFF;
+}
+
+div.artist_radio_info div#radio_label {
+  margin-bottom: 0;
+}

@@ -1,0 +1,33 @@
+#playlist_result
+  %div.playlist_name
+    %span.result_title
+      - if params[:id] != "0"
+        = playlist_result.name
+    %div.additional_meta
+      %span.songs
+        %span.count
+        = t "basics.songs"
+      %span.time
+        %span.count
+        = t "playlists.total_time"
+  %table
+    %thead
+      %th{:scope => "col", :width => "45%"}
+        = t "basics.song"
+      %th{:scope => "col", :width => "30%"}
+        = t "basics.artist"
+      %th{:scope => "col", :width => "15%"}
+        = t "basics.time"
+      %th{:scope => "col", :width => "10%"}
+      %tbody
+        - if params[:id] != "0"
+          - playlist_result.items.each_with_index do |item, index|
+            %tr{:id => item.song_id}
+              %td.name
+                = truncate(item.song.title, :length => 28)
+              %td.artist
+                = truncate(item.song.artist.name, :length => 18)
+              %td.duration{:sec => item.song.duration}
+                = show_duration(item.song)
+              %td
+                = link_to image_tag("/images/activity-delete.gif"), "#", :id => item.id, :title => t("actions.delete"), :class => "delete"

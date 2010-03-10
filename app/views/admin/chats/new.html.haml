@@ -1,0 +1,42 @@
+- if @chat.new_record?
+  %h3 New Chat
+- else
+  %h3== Edit Chat with #{@chat.artist.name}
+
+- form_for [:admin, @chat] do |f|
+  = f.error_messages :header_message => nil
+  %fieldset
+    %p
+      = f.label :artist_slug, "Artist Slug"
+      = f.text_field :artist_slug
+
+    %p
+      = f.label :profile_slug, "Profile Slug (leave empty if is the same of the artist)"
+      = f.text_field :profile_slug
+      %em Profile should have a custom profile defined
+
+    %p
+      = f.label :chat_date, "Scheduled at (UTC)"
+      = f.datetime_select :chat_date, :include_blank => true, :use_month_numbers => true
+
+    %p
+      = f.label :status, "Status"
+      = f.select :status, ['disabled', 'promotion', 'pre', 'live', 'ustream', 'down', 'finished', 'post']
+
+    %p
+      = f.label :markets, "Markets"
+      %ul
+        - Site.all.each do |site|
+          %li
+            %label
+              = check_box_tag "chat[markets][]", site.id, (@chat.markets && @chat.markets.include?(site.id.to_s))
+              = site.name
+
+  %p
+    .pill_button
+      .left
+      = f.submit "Submit", :class => :pill_button, :disable_with => "Processing...", :type => "submit"
+      .right
+      = pill_link_to "Cancel", admin_chats_path
+  .clear
+

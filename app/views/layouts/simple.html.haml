@@ -1,0 +1,6 @@
+!!!
+%html{application_html_attrs}
+  %head
+    %title= h(@title || t("meta.title"))
+  %body
+    = yield

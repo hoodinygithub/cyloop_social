@@ -1,0 +1,14 @@
+%h3 Campaigns Admin
+
+#campaigns
+  - if @campaigns.size > 0
+    = render :partial => 'table', :locals => {:campaigns => @campaigns}
+  - else
+    %strong Could not find campaigns
+  
+  %p
+    &nbsp;
+  
+  %p
+    = link_to "New campaign", new_campaign_path
+  

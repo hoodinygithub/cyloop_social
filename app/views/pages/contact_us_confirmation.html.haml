@@ -1,0 +1,10 @@
+- content_for :head do
+  = render :partial => 'shared/logged_in_callback'
+
+.feedback
+  %h3 
+    =t "contact_us.confirmation.title"
+  %h4= t('contact_us.confirmation.body')
+  %p
+    = t('contact_us.confirmation.thanks')
+    

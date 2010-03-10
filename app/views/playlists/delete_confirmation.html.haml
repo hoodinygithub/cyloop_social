@@ -1,0 +1,16 @@
+.delete_confirmation
+  .title
+    = t('playlists.delete_title')
+  .playlist_name
+    = "\"#{@playlist.name}\""
+  .are_you_sure
+    = t('playlists.delete_text')
+  .buttons
+    .pill_button
+      - form_for @playlist, :url => my_playlist_path(@playlist), :html => {:name => "remove_playlist", :method =>:delete, :class => "remove_playlist" } do |f|
+        .left
+        = f.submit t('playlists.continue_btn'), :type => :submit
+        .right
+    .cancel_btn
+      = link_to t('actions.cancel'), "", :class => "close"
+

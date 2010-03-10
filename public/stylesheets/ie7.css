@@ -1,0 +1,329 @@
+/*++++++++++++++++++++++++++++++++++++++++++++++++++*/
+/* Misc Styles*/
+/*++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+
+
+input {
+  color: #666;
+  font-size: 1.6em;
+  padding: 4px 4px;
+  border: 1px solid #999; }
+
+*:first-child+html .ClearFix{
+	height:1%;
+}
+/*++++++++++++++++++++++++++++++++++++++++++++++++++*/
+/* Homepage */
+/*++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+.home .module.small_ad {
+	padding-top: 20px;
+	height: 161px;
+}
+
+.home .module.br_small_ad {
+	padding-top: 20px;
+	height:163px;
+}
+
+
+.home .module.create_station form input.radio_create {
+	width: 351px;
+}
+
+.home.cyloop .module.create_station form input {
+	width: 710px!important;
+}
+
+.home.cyloop .module.create_station form .pill_button input {
+	width: 160px!important;
+}
+
+.home .featured_artist a {
+	font-size: 1.2em !important;
+}
+
+.home #featured_large_image a {
+	font-size: 1em !important;
+}
+
+.home .featured_artist ul li .artist_name {
+  top: 7px!important;  
+	font-size: 9px !important;
+}
+
+.home .featured_artist #featured_large_image {
+	height: 250px;
+}
+
+.home .featured_artist .meta {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+}
+
+.home .msn_video {
+	margin-top: 20px	;
+}
+
+.home .module.ad.first {
+	margin-top: 0 !important;
+	margin-bottom: 10px;
+}
+
+/*++++++++++++++++++++++++++++++++++++++++++++++++++*/
+/* */
+/*++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+div.form_marketing {
+  z-index: -1;
+}
+
+input#create_station {
+  cursor: hand;
+}
+
+#featured #artists ul#featured_wide {
+  padding-bottom: 2px;
+}
+
+.users .signup_section, .demographics .signup_section {
+  margin-left: 135px;
+}
+
+.users #content, .demographics #content {
+  margin-left: 10px;
+}
+
+.artist_recommendations .artist {
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin: 0;
+}
+
+.dashboards #profile_header, .dashboards ul#nav_menu {
+  height: 1%;
+}
+
+.dashboards #profile_header #stats div,   .dashboards ul#nav_menu #stats div {
+  display: block;
+  display: inline;
+}
+
+div.recommended_artists {
+	margin-bottom: 150px !important;
+}
+
+div.recommended_artists h3{
+	display: block;
+}
+
+div.recommended_artists h3{
+	display: block;
+}
+
+div.recommended_artists ul li {
+	float: left;
+	font-size: 0.9em;
+	margin-bottom: 10px !important;
+	margin-right: 3px !important;
+	overflow: hidden;
+	width: 91px;
+}
+
+div.recommended_artists ul li {
+	float: left;
+	font-size: 0.9em;
+	margin-bottom: 10px !important;
+	margin-right: 3px !important;
+	overflow: hidden;
+	width: 91px;
+}
+
+div#stats span.count {
+	line-height:1.0em !important;
+}
+div#stats span.label {
+	margin-top: -5px !important;
+}
+
+ul.navigation {
+	height: 27px;
+}
+
+div#start_listening input {
+	float: left;
+}
+div#start_listening .button {
+	float: left;
+}
+
+div#results {
+	clear: both;
+}
+
+div#start_listening form#artist_search {
+	background-color: #ECECEC;
+	height: 40px;
+}
+
+.users div#profile_header, .songs div#profile_header, .artists div#profile_header, .follow_requests div#profile_header, .followers div#profile_header, .followees div#profile_header, .user_stations div#profile_header, .playlists div#profile_header {
+	margin-bottom:15px;
+}
+
+div#list_header div.count span.count {
+	line-height: 1.0em;
+}
+
+div#list_header div.count span.counted {
+	margin-top: -7px;
+
+}
+div.module, div.recommended_artist {
+	margin-bottom: 0px !important;
+}
+
+ol.chart div.bar span {
+	display: block;
+	height: 27px;
+	top: 0;
+}
+
+div.top_artists li div.listens {
+	margin-top: -15px;
+}
+
+div.form_actions button {
+	width: auto;
+}
+
+.module.albums ul {
+	margin-bottom:40px;
+	margin-left: 5px;
+}
+.module.albums ul li {
+	margin-left: 0px;
+	margin-right: 10px;
+}
+.module.biography, .module.ad {
+	margin-top: 30px;
+}
+
+div#list_header div.count span.item {
+	margin-top: -5px;
+}
+
+li div.info div.title span{
+	margin-left: 5px;
+}
+div.customize_buttons {
+	padding-bottom: 15px;
+	width: 450px!important;
+	margin-left: 270px!important;
+}
+
+div#list_header div.count {
+	width: 300px !important;
+}
+div#list_header div.count div.time {
+	display: block;
+}
+
+div#list_header div.count div.time {
+	margin-top: -5px;
+	width: 100%;
+}
+
+li div.info div.song span.song_by {
+	margin-left: 4px;
+}
+
+ul.similar_artists li {
+	margin-right: 5px !important;
+}
+
+ul.similar_artists li {
+	margin-right: 5px !important;
+}
+
+div#start_listening div.go_button {
+	margin-top: -3px;
+	margin-left: 5px;
+}
+div#start_listening div.go_button input {
+	padding: 0px 4px !important;
+}
+
+div#results .artist_name {
+	width: 96%;
+}
+
+div.pill_button input {
+	padding: 0px 4px !important;
+}
+
+.home .module.create_station form input.radio_create {
+	width: 320px;
+}
+
+.home .cover_case {
+  margin-top: 0px;
+  margin-left: -76px;
+}
+
+.cover_case {
+	margin-top: 0px;
+  margin-left: -76px;
+}
+
+.cover_case_medium {
+  margin-top: 0px;
+  margin-left: -93px;
+}
+
+.cover_case_large {
+  margin-top: 25px;
+  margin-left: -331px;
+}
+
+.module.user_info, .module.info {
+	border: 1px solid white; /* crazy, but works - adjust the problem with margin-bottom */
+}
+
+
+/* Cyloop.com */
+.home.cyloop .module.create_station {
+	position: static!important;
+}
+
+.home.cyloop .module.create_station form {
+    position: static!important;
+}
+
+.home.cyloop .interviews,
+.home.cyloop .photo_galleries,
+.home.cyloop .featured_artist { display: none; }
+
+.home.cyloop #secondary_content { margin-top: 280px; font-size: .8em; }
+
+.forgot_form {
+   position: relative;
+   width: 578px;
+}
+
+
+div.large_form_button input {width: 260px !important;}
+
+.registration_layer .bottom h2 {
+  font-size: 15px;
+}
+
+.registration_layer .bottom {
+  margin: 0;
+  padding-bottom: 0;
+}
+.registration_layer .bottom p {
+  margin-top: 10px;
+}

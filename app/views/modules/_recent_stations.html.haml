@@ -1,0 +1,16 @@
+- unless profile_user.stations.empty?
+  %h3= t('modules.recently_created_stations.title')
+  %ul
+    - profile_user.stations.all(:limit => 5, :order => "user_stations.created_at DESC").each do |user_station|
+      %li.clearfix
+        .station
+          - if logged_in?
+            %span= link_to h(user_station), queue_my_station_path(user_station.station_id)
+          -else
+            %span= link_to h(user_station), radio_path(:station_id => user_station.station_id)
+
+          .artist.including
+            == #{t('basics.includes')}:
+            = user_station.station.includes.map {|artist| link_to artist.name, artist}.join(", ")
+        .icon
+          =link_to image_tag('/images/icon_small_station.gif'), (logged_in?)? queue_my_station_path(user_station.station_id) : radio_path(:station_id => user_station.station_id)

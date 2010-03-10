@@ -1,0 +1,19 @@
+.forgot_form
+  %h3{:style => 'margin-top:10px'}= t("user.forgot_your_password")
+
+  #content{:style => 'margin-bottom:0px'}
+    = t("user.forgot_message")
+    %br
+    %br
+    - form_for :user do |f|
+      .form.label_based
+        .row.clearfix
+          .label
+            = f.label :email, t("user.email")
+          .field
+            .input_wrapper
+              = f.text_field :email, :class => 'text'
+        .form_actions
+          .row.clearfix
+            = large_form_button_to t('actions.submit')
+

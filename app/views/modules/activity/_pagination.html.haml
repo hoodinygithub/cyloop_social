@@ -1,0 +1,9 @@
+- require_javascript "jquery.timers"
+- require_javascript "new_activity"
+
+%script
+  == var more_activity = "#{t('basics.more')}";
+  == var no_more_activity = "#{t('activity.no_more_activity')}";
+.pagination
+  .next
+    = large_link_button_to t('basics.more'), "#", :id => "activity_more", :onclick => "$('#activity').data('activityFeed').more(); return false;"

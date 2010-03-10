@@ -1,0 +1,61 @@
+# These are expiration times for the given keys.  You can change them here and
+# it will be picked up by the views after a server restart.
+
+defaults: &defaults
+  artist_recent_listeners: <%= 10.minutes %> # app/views/artists/_sidebar.html.haml:16
+  artist_similar_artists:  <%= 10.minutes %> # app/views/artists/_sidebar.html.haml:22
+  artist_show_most_listened_songs: <%= 10.minutes %>  # app/views/artists/show.html.haml:34
+  artist_show_most_listened_albums: <%= 10.minutes %> # app/views/artists/show.html.haml:37
+  artist_show_activity_stats: <%= 10.minutes %> # app/views/artists/show.html.haml:55
+  artist_activity: <%= 1.minute %> # app/controllers/activities_controller.rb:2
+  user_show_activity_stats: <%= 10.minutes %> # app/views/users/show.html.haml:4
+  artist_bio: <%= 10.minutes %> # app/views/biography/index.html.haml:3
+  artist_charts_songs_action: <%= 12.hours %> # app/controllers/charts/songs_controller:4
+  artist_charts_albums_action: <%= 12.hours %>
+  artist_similar: <%= 1.hour %> # app/models/artist.rb:152
+  artist_info_similar_artists: <%= 1.hour %> # app/views/_artist_info.html.haml:52
+  song_listen_most_listened: <%= 5.minutes %> # app/models/song_listen.rb:30
+  rec_engine_recommended_stations: <%= 5.minutes %> # app/controllers/application_controller.rb:119
+  rec_engine_recommended_artists: <%= 5.minutes %> # app/controllers/application_controller.rb:113
+  rec_engine_similar_artists: <%= 1.hour %> # rec_engine.rb:68
+  rec_engine_play_list: <%= 0.minutes %> # rec_engine.rb:60
+  radio_top_stations: <%= 1.hour %> # app/views/radio/index.html.haml:37
+  radio_default_artist_info: <%= 1.minute %> # app/views/radio/index.html.haml:32
+  radio_artist_info_partial: <%= 30.minutes %> # app/views/radio/_artist_info.html.haml
+  user_station_songs: <%= 20.minutes %> # app/controllers/user_stations_controller:54
+  radio_show: <%= 1.minutes %> # app/controllers/radio_controller.rb:3
+  artist_recent_listeners_js: <%=  %>  # app/controllers/artists_controller.rb:2
+  artist_similar_artists_js: <%= 30.minutes %> # app/controllers/artists_controller.rb:3
+
+development:
+  <<: *defaults
+
+dc:
+  <<: *defaults
+  
+test:
+  artist_recent_listeners: 0.minutes # app/views/artists/_sidebar.html.haml:16
+  artist_similar_artists:  0.minutes # app/views/artists/_sidebar.html.haml:22
+  artist_show_most_listened_songs: 0.minutes  # app/views/artists/show.html.haml:34
+  artist_show_most_listened_albums: 0.minutes # app/views/artists/show.html.haml:37
+  artist_bio: 0.minutes # app/views/biography/index.html.haml:3
+  artist_show_activity_stats: 0.minutes # app/views/artists/show.html.haml:55
+  user_show_activity_stats: 0.minutes # app/views/users/show.html.haml:4
+  
+uat:
+  artist_recent_listeners: 0.minutes # app/views/artists/_sidebar.html.haml:16
+  artist_similar_artists:  0.minutes # app/views/artists/_sidebar.html.haml:22
+  artist_show_most_listened_songs: 0.minutes  # app/views/artists/show.html.haml:34
+  artist_show_most_listened_albums: 0.minutes # app/views/artists/show.html.haml:37
+  artist_bio: 0.minutes # app/views/biography/index.html.haml:3
+  artist_show_activity_stats: 0.minutes # app/views/artists/show.html.haml:55
+  user_show_activity_stats: 0.minutes # app/views/users/show.html.haml:4
+  
+staging:
+  <<: *defaults
+      
+production:
+  <<: *defaults
+  
+ec2_production:
+  <<: *defaults

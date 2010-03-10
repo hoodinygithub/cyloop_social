@@ -1,0 +1,42 @@
+- require_javascript "jquery.timers"
+
+#chat_container
+  - if @chat.pre?
+    .video
+    #questions
+      = render :partial => "custom_profiles/#{@chat.artist.slug}_chat_not_started"
+  - elsif @chat.live? || @chat.finished? || @chat.down? || @chat.ustream?
+    #livestream_frame.video
+      - unless @chat.finished?
+        - if @chat.down?
+          = render :partial => 'custom_profiles/chat_down'
+        - else
+          - if @chat.ustream?
+            = render :partial => "chats/ustream"
+          - else
+            = render :partial => "chats/justin_tv"        
+    #questions
+      #questions_head
+        = link_to "envia tu pregunta!", :anchor => "chat_form"
+        %h3 Preguntas de los fans
+      #questions_body.live
+        = render :partial => "custom_profiles/chat_questions"
+        - unless @chat.finished?
+          :javascript
+            var chat_id = "#{@chat.id}";
+            var total_questions = "#{@messages.size}";
+            var pullRequest = true;
+            checkChatMessages = function() {
+              if (!pullRequest) return false;
+              var justin_tv = $('#livestream_frame').find("#justin_tv_link").length;
+              var ustream = $('#livestream_frame').find("#ustream_link").length;              
+              $.get("/chat/messages", {format: "js", chat_id: chat_id, justin_tv: justin_tv, ustream: ustream, total_questions: total_questions}, function() {
+                total_questions = $("ul#messages li").length;
+              }, "script");
+            }
+            $(window).bind("blur",  function() { pullRequest = false; });
+            $(window).bind("focus", function() { pullRequest = true; });
+            $("#questions").everyTime("15s", function() {
+              checkChatMessages();
+            });
+
