@@ -30,11 +30,13 @@
 <body>
 
     <div id="container">
+      <div id="msn_header_container">
         <%= banner_ad("top_banner") %>
         <% if site_includes(:msnmx, :msnbr, :msnlatam, :msnlatino, :msnar, :msncaen, :msncafr) %>
           <%= render "3rd_party_branding/msn_header_#{site_code}" %>
         <% end %>
-        
+      </div>
+      
         <div id="header">
             <div id="header_content">
                 <a href="#"><img src="images/logo.gif" id="logo2" alt="" /></a>
@@ -248,9 +250,11 @@
             
             <br class="clearer" />
         </div><!--/end footer -->
-        
-        <%= render "3rd_party_branding/msn_footer_#{site_code}" %>
-        <%= render :partial => "shared/google_analytics" %>
+       
+        <div id="msn_footer_container">
+          <%= render "3rd_party_branding/msn_footer_#{site_code}" %>
+          <%= render :partial => "shared/google_analytics" %>
+        </div>
         
     </div><!--/end container -->
 </body>

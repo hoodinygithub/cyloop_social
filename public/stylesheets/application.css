@@ -294,8 +294,8 @@ body.new .alternate_actions {
 }
 
 #msn_header .msn_main {
-  padding: 5px 0px 0px;
-  margin: 0px 2px;
+  padding: 5px 5px 0px 0px;
+  margin: 0px 5px;
   height: 20px;
 }
 
@@ -2799,3 +2799,14 @@ body.msnlatino .sub li.active {
   height:30px;
 }
 
+#msn_header_container {
+  background: #333333;
+  width: 950px;
+  margin: 0px auto;
+  position: relative;
+}
+
+#msn_footer_container {
+  width: 952px;
+  margin: 0px auto;
+}
