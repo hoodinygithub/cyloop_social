@@ -1,0 +1,24 @@
+<%= stylesheet_link_tag 'application' %>
+<%= stylesheet_link_tag 'styles' %>
+<%= javascript_include_tag 'jquery-1.4.1.min' %>
+<%= javascript_include_tag 'jquery.cycle.all.min' %>
+<%= javascript_include_tag 'jquery.cycle.all.min' %>
+<%= javascript_include_tag 'supersleight.plugin' %>
+<%= javascript_include_tag 'functions' %>
+
+<%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.to_json};" if protect_against_forgery? %>
+<%= google_analytics_js_include_tag %>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    //png_fix for png images and png backgrounds
+    $('.png_fix').supersleight({shim: 'images/blank.gif'});
+  
+    $('#slides').cycle({
+      fx: 'fade',
+      timeout: 5000,
+      pager: '#pager_links'
+    });
+  });
+</script>
+
