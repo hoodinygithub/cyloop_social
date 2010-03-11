@@ -1,0 +1,254 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>MSN Music</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <meta name="KEYWORDS" content="" />    
+
+    <%= stylesheet_link_tag 'application' %>
+    <%= stylesheet_link_tag 'styles' %>
+    <%= javascript_include_tag 'jquery-1.4.1.min' %>
+    <%= javascript_include_tag 'jquery.cycle.all.min' %>
+    <%= javascript_include_tag 'jquery.cycle.all.min' %>
+    <%= javascript_include_tag 'supersleight.plugin' %>
+    <%= javascript_include_tag 'functions' %>
+
+    <script type="text/javascript">
+    $(document).ready(function() {
+      //png_fix for png images and png backgrounds
+      $('.png_fix').supersleight({shim: 'images/blank.gif'});
+      
+      $('#slides').cycle({
+        fx: 'fade',
+        timeout: 5000,
+        pager: '#pager_links'
+      });
+    });
+    </script>
+</head>
+<body>
+
+    <div id="container">
+        <%= banner_ad("top_banner") %>
+        <% if site_includes(:msnmx, :msnbr, :msnlatam, :msnlatino, :msnar, :msncaen, :msncafr) %>
+          <%= render "3rd_party_branding/msn_header_#{site_code}" %>
+        <% end %>
+        
+        <div id="header">
+            <div id="header_content">
+                <a href="#"><img src="images/logo.gif" id="logo2" alt="" /></a>
+                
+                <ul id="main_links">
+                    <li><a href="#" class="active">Home</a></li>
+                    <li><a href="#">Mixes</a></li>
+                    <li><a href="#">Radio</a></li>
+                </ul><!--/end main_links -->
+                
+                <div id="login_links">
+                    <a href="#">Login</a> <span class="spacer">|</span> <a href="#">Register</a>
+                </div><!--/end login_links -->
+                
+                <div id="search_form">
+                    <form action="" method="post">
+                        <div>
+                            <input type="text" class="search_input" value="Search for your favorite artist &amp; music" onfocus="clearInput('Search for your favorite artist &amp; music', this); $('.search_results_box').show();" onblur="restoreInput('Search for your favorite artist &amp; music', this); setTimeout(function() {$('.search_results_box').hide();}, 300);" />
+                            <input type="image" src="images/search_icon.gif" class="search_button" />
+                            <div class="clearer"></div>
+                        </div>
+                    </form>
+                    
+                    <div class="search_results_box">
+                        <div class="oveflow_list">
+                            <h1>ARTISTS</h1>
+                            
+                            <ul class="search_list">
+                                <li>
+                                    <a href="#">
+                                        <img src="images/search_result_icon.gif" alt="" />
+                                        <b>Cold</b>
+                                        <br class="clearer" />
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img src="images/search_result_icon.gif" alt="" />
+                                        <b>Cold</b>
+                                        <br class="clearer" />
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img src="images/search_result_icon.gif" alt="" />
+                                        <b>Cold</b>
+                                        <br class="clearer" />
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img src="images/search_result_icon.gif" alt="" />
+                                        <b>Cold</b>
+                                        <br class="clearer" />
+                                    </a>
+                                </li>
+                            </ul>
+                            
+                            <div class="grey_spacer"></div>
+                            
+                            <h1>ALBUMS</h1>
+                            
+                            <ul class="search_list">
+                                <li>
+                                    <a href="#">
+                                        <img src="images/search_result_icon.gif" alt="" />
+                                        <b>Cold</b><br/>
+                                        Coldplay
+                                        <br class="clearer" />
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img src="images/search_result_icon.gif" alt="" />
+                                        <b>Cold</b><br/>
+                                        Coldplay
+                                        <br class="clearer" />
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img src="images/search_result_icon.gif" alt="" />
+                                        <b>Cold</b><br/>
+                                        Coldplay
+                                        <br class="clearer" />
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img src="images/search_result_icon.gif" alt="" />
+                                        <b>Cold</b><br/>
+                                        Coldplay
+                                        <br class="clearer" />
+                                    </a>
+                                </li>
+                            </ul>
+                            
+                            <div class="grey_spacer"></div>
+                            
+                            <h1>ARTISTS</h1>
+                            
+                            <ul class="search_list">
+                                <li>
+                                    <a href="#">
+                                        <img src="images/search_result_icon.gif" alt="" />
+                                        <b>Cold</b>
+                                        <br class="clearer" />
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img src="images/search_result_icon.gif" alt="" />
+                                        <b>Cold</b>
+                                        <br class="clearer" />
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img src="images/search_result_icon.gif" alt="" />
+                                        <b>Cold</b>
+                                        <br class="clearer" />
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img src="images/search_result_icon.gif" alt="" />
+                                        <b>Cold</b>
+                                        <br class="clearer" />
+                                    </a>
+                                </li>
+                            </ul>
+                            
+                            <div class="grey_spacer"></div>
+                            
+                            <h1>ALBUMS</h1>
+                            
+                            <ul class="search_list">
+                                <li>
+                                    <a href="#">
+                                        <img src="images/search_result_icon.gif" alt="" />
+                                        <b>Cold</b><br/>
+                                        Coldplay
+                                        <br class="clearer" />
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img src="images/search_result_icon.gif" alt="" />
+                                        <b>Cold</b><br/>
+                                        Coldplay
+                                        <br class="clearer" />
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img src="images/search_result_icon.gif" alt="" />
+                                        <b>Cold</b><br/>
+                                        Coldplay
+                                        <br class="clearer" />
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img src="images/search_result_icon.gif" alt="" />
+                                        <b>Cold</b><br/>
+                                        Coldplay
+                                        <br class="clearer" />
+                                    </a>
+                                </li>
+                            </ul>
+                        </div><!--/end oveflow_list -->
+                        
+                        <div class="search_term">
+                            search for "cold"
+                        </div>
+                    </div><!--/end search_results_box -->
+                </div><!--/end search_form -->
+                
+                <div id="userdata_box">
+                    <div class="user">
+                        <img src="images/userdata_icon.gif" alt="" /> <a href="#">jjcaleiro</a>
+                    </div>
+                    
+                    <ul class="links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Mixes</a></li>
+                        <li><a href="#">Stations</a></li>
+                        <li><a href="#" class="current">Subscriptions</a></li>
+                        <li><a href="#">Reviews</a></li>
+                        <li><a href="#">Activity</a></li>
+                        <li><a href="#">Followers</a></li>
+                        <li><a href="#">Following</a></li>
+                        <li class="last"><a href="#">Account Settings</a></li>
+                    </ul>
+                    
+                    <a href="#" id="userdata_arrow"><img src="images/userdata_arrow.png" class="png_fix" alt="" /><img class="arrow_up" src="images/arrow_up.gif" /></a>
+                </div><!--/end userdata_box -->
+                
+                <div class="clearer"></div>
+            </div><!--/end header_content -->
+        </div><!--/end header -->
+
+        <div id="footer">
+            <div class="footer_left">
+                <a href="#">About Hoodiny</a> <a href="#">About Cyloop</a> <a href="#">Terms &amp; Conditions</a> <a href="#">Privacy Policy</a> <a href="#">F.A.Q</a> <a href="#">Conttact Us</a> 
+            </div>
+            
+            <div class="footer_right">
+                <a href="#"><img src="images/cyloop.gif" alt="cyloop powered" /></a>
+            </div>
+            
+            <br class="clearer" />
+        </div><!--/end footer -->
+        <%= render "3rd_party_branding/msn_footer_#{site_code}" %>
+    </div><!--/end container -->
+</body>
+</html>

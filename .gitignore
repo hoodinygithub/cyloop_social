@@ -1,0 +1,3 @@
+config/database.yml
+config/resque.yml
+db/schema.rb
