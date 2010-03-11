@@ -340,6 +340,10 @@ body.new .alternate_actions {
   display: block;
 }
 
+#msn_header .msn_main .msn_navigation ul, #msn_header .sub .msn_navigation {
+  list-style: none;
+}
+
 #msn_header .msn_main .msn_navigation li.open .more_wrapper {
   background-position: right bottom;
 }
@@ -347,6 +351,7 @@ body.new .alternate_actions {
 #msn_header .msn_main .msn_sisters {
   margin-top:  2px;
   float: right;
+  list-style: none;
 }
 
 #msn_header .msn_main .msn_sisters li {
