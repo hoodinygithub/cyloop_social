@@ -1,8 +1,10 @@
 <div id="userdata_box">
-    <div class="user">
-        <%= image_tag 'userdata_icon.gif' %>
-        <%= link_to 'jjcaleiro', '#' %>
-    </div>
+    <% unless profile_account.nil? %>
+      <div class="user">
+          <%= avatar_for(profile_account, :tiny) %>
+          <%= link_to truncate(profile_account.name, 10), '#' %>
+      </div>
+    <% end %>
     
     <ul class="links">
         <li><a href="#">Home</a></li>

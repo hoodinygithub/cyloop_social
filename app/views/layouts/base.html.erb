@@ -4,6 +4,7 @@
     <title>MSN Music</title>
     <%= render 'shared/meta' %>
     <%= render 'shared/javascripts' %>
+    <%= render 'shared/stylesheets' %>
   </head>
   <body>
     <div id="container">
@@ -24,6 +25,8 @@
           <div class="clearer"></div>
         </div>
       </div>
+      
+      <%= yield %>
 
       <%= render 'shared/footer' %>
     </div><!--/end container -->
