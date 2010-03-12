@@ -1,4 +1,4 @@
-<div class="artist_box png_fix <%= style_classes if defined? style_classes %>">
+<div class="artist_box png_fix <%= style if defined? style %>">
     <%= image_tag('artist_image.jpg') %>
     
     <span class="close_btn">Close</span>
@@ -24,3 +24,7 @@
         </div>
     </div><!--/end overlay -->
 </div><!--/end artist_box -->
+
+<% if defined? clearer %>
+  <br class="clearer" />
+<% end %>

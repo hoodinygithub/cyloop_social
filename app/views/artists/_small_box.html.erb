@@ -1,0 +1,9 @@
+<div class="small_thumb <%= style if defined? style %>">
+    <span class="close_btn">Close</span>
+    <%= link_to(image_tag('comment_icon.gif', :class => 'spaced_img'), '#')%>
+    <a href="#">Madonna</a>
+</div>
+
+<% if defined? clearer %>
+  <br class="clearer" />
+<% end %>

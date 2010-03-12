@@ -1,0 +1,12 @@
+<ul class="comments_list">
+  <% @comments.each do |comment| %>
+    <li>
+        <%= link_to(image_tag('comment_icon.gif', :class => 'comment_icon'), '#') %>
+        <div class="comment_text">
+            <b><a href="#">Jason</a></b> Lorem ipsum dolor sit amet sed diam nonummy, consectetuer adt, sed diam nonummy...<br/>
+            <span class="grey">5 days ago</span>
+        </div>
+        <div class="clearer"></div>
+    </li>
+  <% end %>
+</ul>
