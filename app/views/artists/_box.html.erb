@@ -1,0 +1,26 @@
+<div class="artist_box png_fix <%= style_classes if defined? style_classes %>">
+    <%= image_tag('artist_image.jpg') %>
+    
+    <span class="close_btn">Close</span>
+    
+    <div class="overlay">
+        <div class="hidden">
+            <%= link_to(image_tag('artist_icon.gif', :class => 'artist_icon'), '#') %>
+            <span>
+                <span class="blue">Jason Calleiro</span><br/>
+                09/10/10
+            </span>
+            <br class="clearer" />
+            
+            Contains: <a href="#">Metallica</a>, <a href="#">Someone Else</a>, <a href="#">Alice in Chains</a>...
+            
+            <br/><br/>
+            <b><a href="#">Alice in Chains</a></b><br/>
+            <b><a href="#">Station</a></b>
+        </div>
+        
+        <div class="visible">
+            <%= link_to(image_tag('play_button.png', :class => 'play_button'), '#') %>
+        </div>
+    </div><!--/end overlay -->
+</div><!--/end artist_box -->
