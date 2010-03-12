@@ -1,0 +1,25 @@
+%h3= t('home.create_your_own_personalized_radio_station')
+#create_form
+  :javascript
+    $(document).ready(function() {
+      var artistSearch = $("input[name='station_name']");
+      artistSearch.autocomplete("/stations.txt");
+      artistSearch.css('color', '#c0d6e2');
+      artistSearch.focus(function() {
+        if (artistSearch.attr("touched") != 'true') {
+          artistSearch.attr("touched", 'true');
+          artistSearch.css('color', '#025d8c');
+          artistSearch.attr('value', '')
+        }
+      })
+    });
+- form_for :station, :html => {:class => "clearfix"}, :url => search_radio_path do
+  %p
+    - if site_includes(:cyloopes)
+      = text_field_tag :station_name, t('home.type_artist_name'), {:class => 'radio_create_es'}
+    - else
+      = text_field_tag :station_name, t('home.type_artist_name'), {:class => 'radio_create'}
+    .pill_button
+      .left
+      = tag :input, :type => :submit, :value => t('actions.create_station'), :class => :pill_button
+      .right
