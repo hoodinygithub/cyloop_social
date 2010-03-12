@@ -2855,6 +2855,11 @@ a:hover {
     min-width: 950px;
 }
 
+#all_header {
+  background: #EDEDED;
+}
+
+
 #header {
     background: #000;
     border-bottom: solid 1px #cccccc;

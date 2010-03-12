@@ -1,0 +1,19 @@
+<div id="all_header">
+  <div id="msn_header_container">
+    <%= banner_ad("top_banner") %>
+    <% if site_includes(:msnmx, :msnbr, :msnlatam, :msnlatino, :msnar, :msncaen, :msncafr) %>
+      <%= render "3rd_party_branding/msn_header_#{site_code}" %>
+    <% end %>
+  </div>
+
+  <div id="header">
+    <div id="header_content">
+      <%= link_to(image_tag('logo.gif', :id => 'logo2'), msn_home_page_link_path) %>
+      <%= render 'shared/main_links' %>
+      <%= render 'shared/login_links' %>
+      <%= render 'shared/search_form' %>
+      <%= render 'shared/user_data' %>
+      <div class="clearer"></div>
+    </div>
+  </div>
+</div>
