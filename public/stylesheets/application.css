@@ -2796,9 +2796,16 @@ body.msnlatino .sub li.active {
   height:30px;
 }
 
+/* 
+  Here starts the cyloop_social 
+*/
+
+#all_header {
+  background: #EDEDED;
+}
+
 #msn_header_container {
   background: #333333;
-  width: 950px;
   margin: 0px auto;
   position: relative;
 }
@@ -2808,7 +2815,6 @@ body.msnlatino .sub li.active {
   margin: 0px auto;
 }
 
-/* Here starts the cyloop_social */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -2855,17 +2861,13 @@ a:hover {
     min-width: 950px;
 }
 
-#all_header {
-  background: #EDEDED;
-}
-
-
 #header {
     background: #000;
     border-bottom: solid 1px #cccccc;
     position: relative;
     height: 54px;
     z-index: 5;
+    width: 100%;
 }
 
 #header_content {
@@ -2876,7 +2878,7 @@ a:hover {
     position: relative;
 }
 
-#logo2 {
+#logo {
     float: left;
 }
 

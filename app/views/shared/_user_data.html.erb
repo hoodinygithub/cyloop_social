@@ -1,4 +1,4 @@
-<% if logged_in? %>
+<% if params[:controller] == 'dashboards' %>
   <div id="userdata_box">
       <% unless profile_account.nil? %>
         <div class="user">
