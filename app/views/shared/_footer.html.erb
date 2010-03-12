@@ -1,9 +1,14 @@
 <div id="footer">
     <div class="footer_left">
-        <a href="#">About Hoodiny</a> <a href="#">About Cyloop</a> <a href="#">Terms &amp; Conditions</a> <a href="#">Privacy Policy</a> <a href="#">F.A.Q</a> <a href="#">Conttact Us</a> 
+        <%= link_to 'About Hoodiny', '#'%>
+        <%= link_to 'About Cyloop', '#'%>
+        <%= link_to 'Terms &amp; Conditions', '#'%>
+        <%= link_to 'Privacy Policy', '#'%>
+        <%= link_to 'F.A.Q', '#'%>
+        <%= link_to 'Contact Us', '#'%>
     </div>
     <div class="footer_right">
-        <a href="#"><img src="images/cyloop.gif" alt="cyloop powered" /></a>
+        <%= link_to(image_tag('cyloop.gif'), '#') %>
     </div>
     <br class="clearer" />
 </div>

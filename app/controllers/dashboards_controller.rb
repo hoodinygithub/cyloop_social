@@ -4,7 +4,7 @@ class DashboardsController < ApplicationController
   before_filter :auto_follow_profile  
   current_tab :dashboard 
   current_filter :songs
-  layout_except_xhr "dashboard"
+  layout_except_xhr "base"
   
   def show
     respond_to do |format|

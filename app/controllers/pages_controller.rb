@@ -1,8 +1,7 @@
 class PagesController < ApplicationController
   caches_page :home, :if => Proc.new { |c| !c.request.format.js? }
   #caches_page :about, :faq, :privacy_policy, :safety_tips, :terms_and_conditions
-  layout :select_layout
-  # layout 'logged_out.html.haml'
+  layout 'base'
   before_filter :authenticate, :only => [:x46b]
 
   def banner
@@ -230,7 +229,6 @@ class PagesController < ApplicationController
   end
 
   private
-
     def select_layout
       if params[:layout] != 'simple'
         'logged_out'

@@ -1,6 +1,7 @@
 <div id="userdata_box">
     <div class="user">
-        <img src="images/userdata_icon.gif" alt="" /> <a href="#">jjcaleiro</a>
+        <%= image_tag 'userdata_icon.gif' %>
+        <%= link_to 'jjcaleiro', '#' %>
     </div>
     
     <ul class="links">
@@ -15,5 +16,8 @@
         <li class="last"><a href="#">Account Settings</a></li>
     </ul>
     
-    <a href="#" id="userdata_arrow"><img src="images/userdata_arrow.png" class="png_fix" alt="" /><img class="arrow_up" src="images/arrow_up.gif" /></a>
+    <a href="#" id="userdata_arrow">
+      <%= image_tag 'userdata_arrow.png', :class => 'png_fix' %>
+      <%= image_tag 'arrow_up.gif', :class => 'arrow_up' %>
+    </a>
 </div><!--/end userdata_box -->
