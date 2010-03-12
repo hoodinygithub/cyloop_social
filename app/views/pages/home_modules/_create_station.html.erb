@@ -1,0 +1,67 @@
+    <div class="tabs_column">
+      <div class="tabs">
+        <a href="#" class="left_side">CREATE RADIO</a>
+        <a href="#" class="right_side active">CREATE MIX</a>
+        <br class="clearer" />
+      </div>
+
+      <div class="tabs_content">
+        <div class="text">
+          <div class="title">Text about the Radio</div>
+
+          <p>
+            Explaing what it is &amp; Why<br/>
+            they should create a<br/>
+            new station now
+          </p>
+        </div>
+
+        <% content_for :javascripts do %>
+          <%= stylesheet_link_tag 'jquery.autocomplete' %>
+          <%= javascript_include_tag 'jquery.autocomplete' %>
+          <script type="text/javascript">
+          $(document).ready(function() {
+            var artistSearch = $("input[name='station_name']");
+            artistSearch.autocomplete("/stations.txt");
+            artistSearch.css('color', '#c0d6e2');
+            artistSearch.focus(function() {
+              if (artistSearch.attr("touched") != 'true') {
+                artistSearch.attr("touched", 'true');
+                artistSearch.css('color', '#025d8c');
+                artistSearch.attr('value', '')
+              }
+            })
+            
+            $("form.new_station>div>a.blue_button").click(function(){
+              $("form.new_station").submit();
+              return false;
+            });
+          });
+            
+          </script>
+        <% end %>
+        <% form_for(:station, :html => {:class => "new_station"}, :url => search_radio_path) do %>
+          <div>
+            <label>Create your own station now!</label><br/>
+          </div>
+
+          <div class="input_placeholder">
+            <%= text_field_tag :station_name, t('home.type_artist_name'),  {:class => "text_input"} %>
+            <div class="align_right">
+              <a href="#"  class="blue_button"><span><span>START LISTENING</span></span></a>
+            </div>
+
+            <div class="stations_results_box">
+              <ul class="search_stations_list">
+                <li><a href="#">Cold</a></li>
+                <li><a href="#">Colder</a></li>
+                <li><a href="#">Cold</a></li>
+                <li><a href="#">Colder</a></li>
+                <li><a href="#">Cold</a></li>
+                <li><a href="#">Colder</a></li>
+              </ul>
+            </div><!--/end stations_results_box -->
+          </div><!--/end input_placeholder -->
+        <% end %><!--/end new_station -->
+      </div><!--/end tabs_content -->
+    </div><!--/end tabs_column -->
