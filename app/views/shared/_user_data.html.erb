@@ -1,25 +1,27 @@
-<div id="userdata_box">
-    <% unless profile_account.nil? %>
-      <div class="user">
-          <%= avatar_for(profile_account, :tiny) %>
-          <%= link_to truncate(profile_account.name, 10), '#' %>
-      </div>
-    <% end %>
+<% if logged_in? %>
+  <div id="userdata_box">
+      <% unless profile_account.nil? %>
+        <div class="user">
+            <%= avatar_for(profile_account, :tiny) %>
+            <%= link_to truncate(profile_account.name, 10), '#' %>
+        </div>
+      <% end %>
     
-    <ul class="links">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Mixes</a></li>
-        <li><a href="#">Stations</a></li>
-        <li><a href="#" class="current">Subscriptions</a></li>
-        <li><a href="#">Reviews</a></li>
-        <li><a href="#">Activity</a></li>
-        <li><a href="#">Followers</a></li>
-        <li><a href="#">Following</a></li>
-        <li class="last"><a href="#">Account Settings</a></li>
-    </ul>
+      <ul class="links">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Mixes</a></li>
+          <li><a href="#">Stations</a></li>
+          <li><a href="#" class="current">Subscriptions</a></li>
+          <li><a href="#">Reviews</a></li>
+          <li><a href="#">Activity</a></li>
+          <li><a href="#">Followers</a></li>
+          <li><a href="#">Following</a></li>
+          <li class="last"><a href="#">Account Settings</a></li>
+      </ul>
     
-    <a href="#" id="userdata_arrow">
-      <%= image_tag 'userdata_arrow.png', :class => 'png_fix' %>
-      <%= image_tag 'arrow_up.gif', :class => 'arrow_up' %>
-    </a>
-</div><!--/end userdata_box -->
+      <a href="#" id="userdata_arrow">
+        <%= image_tag 'userdata_arrow.png', :class => 'png_fix' %>
+        <%= image_tag 'arrow_up.gif', :class => 'arrow_up' %>
+      </a>
+  </div><!--/end userdata_box -->
+<% end %>
