@@ -3,24 +3,36 @@
         <div id="left_column">
             <div class="black_boxes">
                 <div class="black_box left_side">
-                    <big class="blue"><a href="#">12,3698</a></big><br/>
+                    <big class="blue">
+                      <%= link_to(number_with_delimiter(profile_user.playlists.size), '') %>  
+                    </big>
+                    <br/>
                     Mixes
                 </div>
                 
                 <div class="black_box right_side">
-                    <big class="blue"><a href="#">3,849</a></big><br/>
+                    <big class="blue">
+                      <%= link_to "#{profile_user.stations.size}", my_stations_path %>
+                    </big>
+                    <br/>
                     Stations
                 </div>
                 
                 <div class="clearer"></div>
                 
                 <div class="black_box left_side">
-                    <big class="blue"><a href="#">12</a></big><br/>
+                    <big class="blue">
+                      <%= link_to(number_with_delimiter(profile_account.follower_count), followers_path) %>
+                    </big>
+                    <br/>
                     Followers
                 </div>
                 
                 <div class="black_box right_side">
-                    <big class="blue"><a href="#">3,849</a></big><br/>
+                  <big class="blue">
+                    <%= link_to(number_with_delimiter(profile_account.followee_count), following_index_path) %>
+                  </big>
+                  <br/>
                     Following
                 </div>
                 
@@ -110,11 +122,11 @@
             <div class="grey_box">
                 <div class="box_content">
                     <h1>CYLOOP RECOMMENDS</h1>
-                    <% @cyloop_recommends.each_with_index do |artist, i| %>
+                    <% recommended_artists.each_with_index do |artist, i| %>
                       <% if ((i+1) % 4) == 0 %>
-                        <%= render :partial => 'artists/small_box', :locals => {:style => 'last_thumb', :clearer => true} %>
+                        <%= render :partial => 'artists/small_box', :locals => {:style => 'last_thumb', :clearer => true, :artist => artist} %>
                       <% else %>
-                        <%= render :partial => 'artists/small_box' %>
+                        <%= render :partial => 'artists/small_box', :locals => {:artist => artist} %>
                       <% end %>
                     <% end %>
                 </div><!--/end box_content -->

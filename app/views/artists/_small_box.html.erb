@@ -1,7 +1,8 @@
 <div class="small_thumb <%= style if defined? style %>">
     <span class="close_btn">Close</span>
-    <%= link_to(image_tag('comment_icon.gif', :class => 'spaced_img'), '#')%>
-    <a href="#">Madonna</a>
+    <%= link_to(image_tag("#{ENV['ASSETS_URL']}#{artist.image}", :class => "spaced_img tiny", :alt => artist.nick_name, :title => artist.nick_name), artist_path(artist.profile_url.gsub(/\//,""))) %>
+    
+    <%= link_to(artist.nick_name, artist.profile_url.gsub(/\//,"")) %>
 </div>
 
 <% if defined? clearer %>
