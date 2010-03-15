@@ -48,8 +48,15 @@
         <li><a href="#">Subscriptions</a></li>
         <li><a href="#">Reviews</a></li>
         <li><a href="#">Activity</a></li>
-        <li><a href="#">Followers</a></li>
-        <li><a href="#">Following</a></li>
+        
+        <li>
+          <%= link_to 'Followers', followers_path %>
+        </li>
+        
+        <li>
+          <%= link_to 'Following', following_index_path %>
+        </li>
+        
         <li class="last">
           <%= link_to 'Account Settings', my_settings_path %>
         </li>

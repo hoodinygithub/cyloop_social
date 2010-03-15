@@ -1,7 +1,7 @@
 class FolloweesController < ApplicationController
   before_filter :profile_ownership_required, :only => [:update, :show, :destroy]
 
-  layout "profile"
+  layout "base"
   current_tab :community
   current_filter :following
   

@@ -10,7 +10,7 @@ module AvatarsHelper
         options[:title] = options[:alt] unless !options.has_key?(:alt)
         image_tag path, options
       else
-        image_tag path, :alt => avatar.instance.to_s, :title => avatar.instance.to_s, :class => "avatar #{type}"
+        image_tag path, :alt => avatar.instance.to_s, :title => avatar.instance.to_s, :class => "avatar #{type} follower_image"
       end
     else
       image_tag path, :class => "avatar #{type}"
