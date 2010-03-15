@@ -1,0 +1,34 @@
+<div id="right_column">
+    <div class="ad_box">
+        <%= link_to(image_tag('ad.jpg'), '#') %>
+    </div>
+    
+    <div class="grey_box">
+        <div class="box_content">
+            <h1>CYLOOP RECOMMENDS</h1>
+            <% recommended_artists.each_with_index do |artist, i| %>
+              <% if ((i+1) % 4) == 0 %>
+                <%= render :partial => 'artists/small_box', :locals => {:style => 'last_thumb', :clearer => true, :artist => artist} %>
+              <% else %>
+                <%= render :partial => 'artists/small_box', :locals => {:artist => artist} %>
+              <% end %>
+            <% end %>
+        </div><!--/end box_content -->
+        
+        <div class="box_content">
+            <h1>TOP MIXES</h1>
+            
+            <div class="big_text">
+                <a href="#">Click here</a> to create<br/>your first mix
+            </div>
+        </div><!--/end grey_box -->
+        
+        <div class="box_content">
+            <h1>TOP STATIONS</h1>
+            
+            <div class="big_text">
+                <a href="#">Click here</a> to create<br/>your first station
+            </div>
+        </div><!--/end grey_box -->
+    </div><!--/end grey_box -->
+</div><!--/end right_column -->

@@ -1,0 +1,57 @@
+<div id="left_column">
+    <div class="black_boxes">
+        <div class="black_box left_side">
+            <big class="blue">
+              <%= link_to(number_with_delimiter(profile_user.playlists.size), '') %>  
+            </big>
+            <br/>
+            Mixes
+        </div>
+        
+        <div class="black_box right_side">
+            <big class="blue">
+              <%= link_to "#{profile_user.stations.size}", my_stations_path %>
+            </big>
+            <br/>
+            Stations
+        </div>
+        
+        <div class="clearer"></div>
+        
+        <div class="black_box left_side">
+            <big class="blue">
+              <%= link_to(number_with_delimiter(profile_account.follower_count), followers_path) %>
+            </big>
+            <br/>
+            Followers
+        </div>
+        
+        <div class="black_box right_side">
+          <big class="blue">
+            <%= link_to(number_with_delimiter(profile_account.followee_count), following_index_path) %>
+          </big>
+          <br/>
+            Following
+        </div>
+        
+        <div class="clearer"></div>
+    </div><!--/end black_boxes -->
+    
+    <a href="#" class="blue_button full_width"><span><span>CREATE A MIX</span></span></a>
+    
+    <a href="#" class="blue_button full_width"><span><span>CREATE A STATION</span></span></a>
+    
+    <ul class="side_links">
+        <li><a href="#" class="active">Home</a></li>
+        <li><a href="#">Mixes</a></li>
+        <li><a href="#">Stations</a></li>
+        <li><a href="#">Subscriptions</a></li>
+        <li><a href="#">Reviews</a></li>
+        <li><a href="#">Activity</a></li>
+        <li><a href="#">Followers</a></li>
+        <li><a href="#">Following</a></li>
+        <li class="last">
+          <%= link_to 'Account Settings', my_settings_path %>
+        </li>
+    </ul>
+</div><!--/end left_column -->

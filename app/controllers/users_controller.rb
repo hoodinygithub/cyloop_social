@@ -19,7 +19,7 @@ class UsersController < ApplicationController
   # GET /users/id/edit
   def edit
     @user = current_user
-    render :layout => "profile"
+    render :layout => "base"
   end
 
   # POST /users/id

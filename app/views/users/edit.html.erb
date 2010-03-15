@@ -1,0 +1,96 @@
+<div id="internal_content">
+    <div id="main_content">
+        
+        <%= render :partial => 'dashboards/left_column' %>
+        
+        <div id="center_column">
+            <h1>ACCOUNT SETTINGS</h1>
+            
+            <% form_for @user, :html => { :method => :put, :multipart => true, :class => "account_settings" }, :url => my_settings_path do |f| %>
+                <div class="form_row">
+                    <label>Name</label>
+                    
+                    <div class="grey_round_box">
+                        <%= f.text_field :name, :class => 'input full_width' %>
+                    </div>
+                </div><!--/end form_row -->
+                
+                <div class="form_row">
+                    <label>Profile URL</label>
+                    
+                    <div class="grey_round_box">
+                        <span class="grey">www.cyloop.com/</span> <input type="text" class="input half_width" />
+                    </div>
+                </div><!--/end form_row -->
+                
+                <div class="form_row">
+                    <label>Email</label>
+                    
+                    <div class="grey_round_box">
+                       <%= f.text_field :email, :class => 'input full_width' %>
+                    </div>
+                </div><!--/end form_row -->
+                
+                <div class="form_row">
+                    <div class="left_side">
+                        <label>Gender</label>
+                        <div class="grey_round_box">
+                            <%= f.select :gender, [['Male', 'Male'], ['Female', 'Female']] %>
+                        </div>
+                    </div>
+                    
+                    <div class="left_side">
+                        <label>Date of Birth</label>
+                        <div class="grey_round_box">
+                          <%= f.date_select :born_on, :use_month_numbers => true %>
+                        </div>
+                    </div>
+                    <div class="clearer"></div>
+                </div><!--/end form_row -->
+                
+                <div class="form_row">
+                    <label>Location</label>
+                    
+                    <div class="grey_round_box">
+                      <%= f.text_field :location, :class => 'input full_width' %>
+                    </div>
+                </div><!--/end form_row -->
+                
+                <div class="form_row">
+                    <label>Upload Image</label>
+                    <%= f.file_field :avatar %>
+                </div><!--/end form_row -->
+                
+                <div class="form_row">
+                    <div class="left_side">
+                        <div class="grey_round_box">
+                          <%= f.check_box :private_profile %>
+                          <span>Maintain your profile private</span>
+                        </div>
+                    </div>
+                    <div class="clearer"></div>
+                </div><!--/end form_row -->
+                
+                <div class="form_row last">
+                    <div class="left_side">
+                        <a href="#">Delete my profile</a>
+                    </div>
+                    
+                    <div class="align_right right_side">
+                        <a href="#" class="cancel_button">Cancel</a>
+                        <a href="#" class="blue_button" onclick="$(this).closest('form').submit(); return false;"><span><span>SAVE</span></span></a>
+                    </div>
+                    
+                    <div class="clearer"></div>
+                </div><!--/end form_row -->
+            <% end %><!--/end account_settings_form -->
+        </div><!--/end center_column -->
+        
+        <div id="right_column">
+            &nbsp;
+        </div><!--/end right_column -->
+        
+        <div class="clearer"></div>
+    </div><!--/end main_content -->
+    
+</div><!--/end internal_content -->
