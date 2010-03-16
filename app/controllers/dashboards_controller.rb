@@ -29,8 +29,6 @@ private
   
   def load_cyloop_recommendations
     @mixes_recommended = (1..6).to_a
-    @stations_recommended = (1..6).to_a
-    @cyloop_recommends = (1..8).to_a
   end
   
   def load_user_comments

@@ -1,21 +1,49 @@
 <div class="artist_box png_fix <%= style if defined? style %>">
-    <%= image_tag('artist_image.jpg') %>
+    
+    <% if defined? node %>
+      <%= image_tag("#{ENV['ASSETS_URL']}#{node.image}", :class => 'artist_icon_box') %>
+    <% else %>
+      <%= image_tag('artist_image.jpg') %>
+    <% end %>
     
     <span class="close_btn">Close</span>
     
     <div class="overlay">
         <div class="hidden">
-            <%= link_to(image_tag('artist_icon.gif', :class => 'artist_icon'), '#') %>
+            <% if defined? node %>
+              <%= image_tag("#{ENV['ASSETS_URL']}#{node.image}", :class => 'artist_icon_box tiny artist_icon') %>
+            <% else %>
+              <%= link_to(image_tag('artist_icon.gif', :class => 'artist_icon'), '#') %>
+            <% end %>
             <span>
-                <span class="blue">Jason Calleiro</span><br/>
+                <span class="blue">
+                  <% if defined? node %>
+                    <%= node.artist_name %>
+                  <% else %>
+                    Jason Calleiro
+                  <% end %>
+                </span><br/>
+               
                 09/10/10
             </span>
             <br class="clearer" />
             
-            Contains: <a href="#">Metallica</a>, <a href="#">Someone Else</a>, <a href="#">Alice in Chains</a>...
+            Contains: 
+            <% if defined? node %>
+              <% includes = node.includes[0..3].collect {|a| link_to(a[:name], a[:url], :target => 'blank') } %>
+              <%= includes.join(", ") + "..." %>
+            <% else %>
+              <a href="#">Metallica</a>, <a href="#">Someone Else</a>, <a href="#">Alice in Chains</a>...
+            <% end %>
             
             <br/><br/>
-            <b><a href="#">Alice in Chains</a></b><br/>
+            <b>
+              <% if defined? node %>
+                <%= link_to node.artist_name, node.profile_url %>
+              <% else %>
+                <a href="#">Alice in Chains</a>
+              <% end %>
+            </b><br/>
             <b><a href="#">Station</a></b>
         </div>
         

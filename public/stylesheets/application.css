@@ -656,6 +656,17 @@ h1 {
     margin-bottom: 14px;
 }
 
+img.artist_icon_box {
+  width: 150px;
+  height: 149px;
+}
+
+img.artist_icon_box.tiny {
+  width: 30px;
+  height: 30px;
+}
+
+
 .blue {
     color: #00a5f8;
 }
