@@ -1,37 +1,21 @@
 <div id="slides_banner">
   <ul id="slides">
-    <li class="slide">
-      <img src="images/slide1.jpg" alt="" />
-      <div class="band_details">
-        <div class="band_name">underoath</div>
-        <div class="band_slogan">Pissed off rednecks fight back with quitar</div>
-      </div>
-      <div class="band_ad_box">
-        <a href="#"><img src="images/ad3.jpg" alt="" /></a>
-      </div>
-    </li><!--/end slide -->
-
-    <li class="slide">
-      <img src="images/slide2.jpg" alt="" />
-      <div class="band_details">
-        <div class="band_name">Another band</div>
-        <div class="band_slogan">And this is another slogan</div>
-      </div>
-      <div class="band_ad_box">
-        <a href="#"><img src="images/ad.jpg" alt="" /></a>
-      </div>
-    </li><!--/end slide -->
-
-    <li class="slide">
-      <img src="images/slide3.jpg" alt="" />
-      <div class="band_details">
-        <div class="band_name">Last band</div>
-        <div class="band_slogan">Last slogan here</div>
-      </div>
-      <div class="band_ad_box">
-        <a href="#"><img src="images/ad2.jpg" alt="" /></a>
-      </div>
-    </li><!--/end slide -->
+    <% (1..3).to_a.each do |slide| %>
+        <li class="slide">
+          <img src="images/slide1.jpg" alt="" />
+          <div class="band_details">
+            <div class="band_name">underoath</div>
+            <div class="band_slogan">Pissed off rednecks fight back with quitar</div>
+          </div>
+          <div class="band_ad_box">
+            <a href="#"><img src="images/ad3.jpg" alt="" /></a>
+          </div>
+        </li><!--/end slide -->
+    <% end %>
   </ul><!--/end slides -->
-    <div id="pager"><img src="images/pager_left.png" class="png_fix" alt="" /><span id="pager_links" class="png_fix"></span><img src="images/pager_right.png" class="png_fix" alt="" /></div>
+  <div id="pager">
+    <img src="images/pager_left.png" class="png_fix" alt="" />
+    <span id="pager_links" class="png_fix"></span>
+    <img src="images/pager_right.png" class="png_fix" alt="" />
+  </div>
   </div><!--/end slides_banner -->

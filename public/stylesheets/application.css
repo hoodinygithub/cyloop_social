@@ -276,6 +276,18 @@ img.avatar.medium {
 	width: 86px;
 	height: 86px;
 }
+img.avatar.new_medium {
+	width: 150px;
+	height: 150px;
+	padding: 0px;
+	border: none;
+}
+img.avatar.new_small {
+	width: 25px;
+	height: 25px;
+	padding: 0px;
+	border: none;
+}
 
 
 img.avatar.small {
@@ -654,6 +666,11 @@ h1 {
     border: solid 2px #fff;
     margin-right: 6px;
     margin-bottom: 14px;
+}
+.artist_box img.artist_icon  {
+    width: 25px;
+    height: 25px;
+
 }
 
 .blue {

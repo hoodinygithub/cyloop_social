@@ -24,6 +24,7 @@ module AvatarsHelper
     
     if !path.nil? && !path.empty?
       if !path.index("/.elhood.com").nil?
+        path = path.sub(%r{/hires/}, '/hi-thumbnail/') if type == :new_medium
         path = path.sub(%r{/hires/}, '/hi-thumbnail/') if type == :medium
         path = path.sub(%r{/hires/}, '/thumbnail/') unless type == :album
         path = ("#{ENV['ASSETS_URL']}/storage/storage?fileName=" + path) unless (path.index("http://")==0)
@@ -57,8 +58,10 @@ module AvatarsHelper
       if avatar
         if path = avatar.instance.try(:pending_avatar_url)
           path = path.sub(%r{/hires/}, '/hi-thumbnail/') if type == :medium
+          path = path.sub(%r{/hires/}, '/hi-thumbnail/') if type == :new_medium
           path = path.sub(%r{/hires/}, '/thumbnail/') unless type == :album
           path = path.sub(%r{/hires/}, '/thumbnail/') if type == :small
+          path = path.sub(%r{/hires/}, '/thumbnail/') if type == :artist_icon
           path = path.sub(%r{/hires/}, '/comments/') if type == :album
         else
           path = avatar.url(type)
