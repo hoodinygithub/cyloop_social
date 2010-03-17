@@ -1,0 +1,35 @@
+<div class="follower_text">
+    <b>
+      <%= link_to item, item %>
+    </b>
+    <br/>
+    <span>
+      <%= item.location %>
+    </span>
+    <br/>
+    <%= link_to item.playlists.size, playlist_path(item) %> Mixes /
+    <%= link_to item.stations.size, station_path(item) %> Stations /
+    <%= link_to item.followers.size, followers_path(item) %> Followers
+</div>
+<div class="follower_actions w_settings">
+    <a href="#" class="green_button follower_btn"><span><span>FOLLOWING</span></span></a>
+    <a href="#" class="blue_button settings_button">
+      <span>
+        <span>
+          <%= image_tag 'settings_button.png' %>
+        </span>
+      </span>
+    </a>
+    <br/>
+    
+    <% if item.respond_to? :blocked_by? and item.blocked_by? current_user %>
+      <div class="blocked">
+        <%= image_tag 'blocked.gif' %> Blocked
+      </div>
+    <% end %>
+    
+    <ul class="actions_settings">
+        <li><a href="#">Block</a></li>
+        <li><a href="#">Flag</a></li>
+    </ul>
+</div>

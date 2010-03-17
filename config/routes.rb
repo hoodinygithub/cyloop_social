@@ -137,6 +137,7 @@ ActionController::Routing::Routes.draw do |map|
     profile.resources :biography, :only => :index
     profile.resources :following, :controller => 'followees'
     profile.resources :followers
+    profile.resources :activities, :only => :index
 
     profile.resources :charts, :only => :index
     #profile.charts 'charts', :controller => 'charts', :action => 'index'

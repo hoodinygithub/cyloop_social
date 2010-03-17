@@ -7,7 +7,9 @@ class FollowersController < ApplicationController
 
   def index
     begin
-      @followers = profile_account.followers.paginate :page => params[:page], :per_page => 15
+      @target = "#{params[:controller]}/#{params[:action]}"
+      @collection = profile_account.followers.paginate :page => params[:page], :per_page => 15
+      render :template => 'shared/community'
     rescue NoMethodError
       redirect_to new_session_path
     end

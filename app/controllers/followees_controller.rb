@@ -6,7 +6,8 @@ class FolloweesController < ApplicationController
   current_filter :following
   
   def index
-    @followees = profile_user.followees.paginate :page => params[:page], :per_page => 15
+    @collection = profile_user.followees.paginate :page => params[:page], :per_page => 15
+    render :template => 'shared/community'
   end
 
   def update

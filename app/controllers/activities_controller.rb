@@ -2,6 +2,12 @@ class ActivitiesController < ApplicationController
 
   before_filter :account
   before_filter :set_page, :except => [ :song ]
+  layout :set_layout
+
+  def index
+    @collection = profile_user.followees.paginate :page => params[:page], :per_page => 15
+    render :template => 'shared/community'
+  end
 
   def get_activity
     @activities = load_related_item_activity( account.transformed_activity_feed(:kind => params[:type].to_sym,
@@ -31,6 +37,9 @@ class ActivitiesController < ApplicationController
   end
 
   private
+  def set_layout
+    "base" if params[:action] == 'index'
+  end
   
   def set_page
     params[:page]   ||= 1

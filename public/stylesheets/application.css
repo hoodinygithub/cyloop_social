@@ -1123,6 +1123,10 @@ img.artist_icon_box.tiny {
     color: #999;
 }
 
+.grey.small {
+  font-size: 0.9em;
+}
+
 .align_right {
     text-align: right;
 }
