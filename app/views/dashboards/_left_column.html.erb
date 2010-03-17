@@ -41,27 +41,5 @@
     
     <a href="#" class="blue_button full_width"><span><span>CREATE A STATION</span></span></a>
     
-    <ul class="side_links">
-        <li><a href="#" class="active">Home</a></li>
-        <li><a href="#">Mixes</a></li>
-        <li><a href="#">Stations</a></li>
-        <li><a href="#">Subscriptions</a></li>
-        <li><a href="#">Reviews</a></li>
-        
-        <li>
-          <%= link_to "Activity", activities_path %>
-        </li>
-        
-        <li>
-          <%= link_to 'Followers', followers_path %>
-        </li>
-        
-        <li>
-          <%= link_to 'Following', following_index_path %>
-        </li>
-        
-        <li class="last">
-          <%= link_to 'Account Settings', my_settings_path %>
-        </li>
-    </ul>
+    <%= user_sidebar_links %>
 </div><!--/end left_column -->

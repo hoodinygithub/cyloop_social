@@ -6,8 +6,8 @@ class FollowersController < ApplicationController
   current_filter :followers
 
   def index
+    @dashboard_menu = :followers
     begin
-      @target = "#{params[:controller]}/#{params[:action]}"
       @collection = profile_account.followers.paginate :page => params[:page], :per_page => 15
       render :template => 'shared/community'
     rescue NoMethodError

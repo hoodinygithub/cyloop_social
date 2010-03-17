@@ -8,6 +8,8 @@ class DashboardsController < ApplicationController
   layout_except_xhr 'base'
   
   def show
+    @dashboard_menu = :home
+    
     @mixes_recommended = (1..6).to_a
     @comments = (1..3).to_a
     
