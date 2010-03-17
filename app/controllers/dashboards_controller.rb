@@ -8,7 +8,6 @@ class DashboardsController < ApplicationController
   layout_except_xhr 'base'
   
   def show
-    @top_stations = current_site.summary_top_stations.limited_to(3)
     @mixes_recommended = (1..6).to_a
     @comments = (1..3).to_a
     

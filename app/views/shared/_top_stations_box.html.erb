@@ -1,0 +1,21 @@
+<div class="box_content">
+    <h1>TOP STATIONS</h1>
+    
+    <% current_site.summary_top_stations.limited_to(3).each_with_index do |top_station, i| %>
+      <div class="medium_thumb">
+        <%= four_thumbs_to(top_station) %>
+        <br class="clearer">
+        <%= link_to(truncate(top_station.station.artist.name, 13), top_station.station.artist, :title => top_station.station.artist.name) %>
+      </div>
+    <% end %>
+    
+    <br class="clearer">
+    
+    <div class="align_right">
+      <b>
+        <%= link_to("view more") %>
+      </b>
+    </div>
+    
+  </div>
+</div><!--/end grey_box -->
