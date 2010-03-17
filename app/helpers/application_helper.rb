@@ -1,4 +1,17 @@
 module ApplicationHelper
+  
+  def four_thumbs_to(station)
+    station = station.station if station.is_a? TopStation
+    station_link = station.artist
+    
+    station_images_with_links = link_to(image_tag(AvatarsHelper.avatar_path(station.artist, :small), :class => 'avatar_four_thumbs'), station_link)
+    station.includes[0..3].each do |artist|
+      station_images_with_links << link_to(image_tag(AvatarsHelper.avatar_path(artist, :small), :class => 'avatar_four_thumbs'), station_link)
+    end
+    station_images_with_links = station_images_with_links
+    html = content_tag(:div, station_images_with_links, :class => 'four_thubms')
+  end
+  
 
   def nav_aux_login_url
     if params.fetch(:controller) == "pages" && params.fetch(:action) == "home"

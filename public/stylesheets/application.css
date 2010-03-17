@@ -1242,8 +1242,13 @@ img.artist_icon_box.tiny {
 .medium_thumb {
     width: 80px;
     float: left;
-    margin-right: 9px;
-    margin-bottom: 15px;
+    margin-right: 5px;
+    margin-bottom: 10px;
+}
+
+img.avatar_four_thumbs {
+  width: 35px;
+  height: 35px;
 }
 
 .sorting {
