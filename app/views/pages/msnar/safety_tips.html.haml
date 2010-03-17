@@ -1,0 +1,52 @@
+- content_for :head do
+  %script{ :src => "/logged_in.js?lang=#{I18n.default_locale}", :type => "text/javascript" }
+
+%h2.alternate= @title
+%p
+  Cyloop es un entorno abierto en el que artistas y fans pueden interactuar/comunicarse, escuchar música, ver videos, conversar y compartir. Siendo un entorno público y abierto, con independencia de los datos de registro, los usuarios deben ejercer la discreción y el sentido común:
+
+%h4 Recuerda que los perfiles y forums son espacios públicos.
+%p
+  No publiques nada que no deseas que se conozca (p.ej., tu nombre real, número de teléfono, domicilio u otros datos personales). Evita hacer público cualquier detalle que facilite a un extraño tu localización, como los lugares que frecuentas.
+
+%h4 No todo el mundo es quien dice ser
+%p
+  Se prudente con la elección de quien decides añadir a su lista de amigos. Es divertido conectar con nuevos amigos de todo el mundo en Cyloop, pero evita quedar en persona con gente a la que no conoces plenamente. Si decides hacerlo, hazlo en un lugar público y acompañado de un amigo o un adulto de tu confianza.
+
+%h4 El acoso, el lenguaje ofensivo y el contenido inapropiado deben ser reportados.
+%p
+  Si percibes un comportamiento inapropiado, toma acción. Informa de cualquier incidencia a Cyloop a través de nuestros formularios de incidencias o haciendo click en los botones de Reporte de Abusos.
+
+%h4 No publiques nada que pueda avergonzarte después.
+%p
+  ¡Piensa dos veces antes de publicar fotos o información que no te gustaría que vieran tus amigos, padres, conocidos o tu propio jefe!
+
+%h4 ¡No hagas phishing!
+%p
+  El Phishing es un método utilizado por los estafadores para conseguir información, tal como tu clave de usuario y password, fingiendo ser un site en el que confías.
+
+%h4 No des nunca tus claves a nadie
+%p
+  Si divulgas fotos, historias, chistes o cualquier otro contenido con referencias sexuales, atraerás a gente que quiere hablar de sexo. Cuando publicas contenidos online, estás haciendo una declaración pública al mundo online sobre quién eres
+
+%h4 No respondas a emails o mensajes inapropiados
+%p
+  Si respondes, solo conseguirás animar al remitente a enviarte más material inapropiado. En lugar de responder, informa a las autoridades pertinentes sobre el remitente.
+
+%h4 Para más información, por favor visita estas otras fuentes:
+%P
+  OnGuard Online: FTC safety tips
+= link_to "http://www.onguardonline.gov/topics/safety-tips-tweens-teens.aspx", "http://www.onguardonline.gov/topics/safety-tips-tweens-teens.aspx"
+%p
+  Internet Crime Complaint Center
+= link_to "http://www.ic3.gov", "http://www.ic3.gov/default.aspx"
+%p
+  Netsmartz.org
+= link_to "http://www.netsmartz.org", "http://www.netsmartz.org"
+%p
+  BlogSafety.Com
+= link_to "http://www.blogsafety.com", "http://www.blogsafety.com/"
+%p
+  National Crime Prevention Council
+= link_to "http://www.ncpc.org", "http://www.ncpc.org"
+
