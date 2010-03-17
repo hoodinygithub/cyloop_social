@@ -1,149 +1,41 @@
 <div class="top_radios_column">
   <h1>TOP RADIOS</h1>
+  <% @top_stations.each_with_index do |radio, index| %>
+    <div class="artist_box png_fix <%= "last_box" if (index+1) % 6 == 0 %>">
+      
+      <% if radio.station.artist_id.nil? %>
+        <%= avatar_for(nil, :new_medium) %>
+      <% else %>
+        <%= link_to avatar_for(radio.station.artist, :new_medium), radio.station.artist %>
+      <% end %>
 
-  <div class="artist_box png_fix">
-    <img src="images/artist_image.jpg" alt="" />
+      <div class="overlay">
+        <div class="hidden">
+          <% if radio.station.artist_id.nil? %>
+            <%= avatar_for(nil, :artist_icon) %>
+          <% else %>
+            <%= link_to avatar_for(radio.station.artist, :artist_icon), radio.station.artist %>
+          <% end %>
+          
+          <span>
+            <span class="blue"><%= radio.station.name %></span><br/>
+            <%= radio.station.created_at.strftime("%m/%d/%Y") %>
+          </span>
+          <br class="clearer" />
 
-    <div class="overlay">
-      <div class="hidden">
-        <a href="#"><img src="images/artist_icon.gif" class="artist_icon" alt="" /></a>
-        <span>
-          <span class="blue">Jason Calleiro</span><br/>
-          09/10/10
-        </span>
-        <br class="clearer" />
+          Contains: 
+          <%= radio.station.includes.map {|artist| link_to artist.name, artist, :target => '_blank'}.join(", ") %>
+        </div>
 
-        Contains: <a href="#">Metallica</a>, <a href="#">Someone Else</a>, <a href="#">Alice in Chains</a>...
-      </div>
+        <div class="visible">
+          <%= link_to_function image_tag("play_button.png", :class => "play_button", :alt => "Play"), "createStation(\"#{radio.station.name}\")" %>
 
-      <div class="visible">
-        <a href="#"><img src="images/play_button.png" class="play_button" alt="" /></a>
-
-        <a href="#">Alice in Chains</a><br/>
-        <a href="#">Station</a>
-      </div>
-    </div><!--/end overlay -->
-  </div><!--/end artist_box -->
-
-  <div class="artist_box png_fix">
-    <img src="images/artist_image.jpg" alt="" />
-
-    <div class="overlay">
-      <div class="hidden">
-        <a href="#"><img src="images/artist_icon.gif" class="artist_icon" alt="" /></a>
-        <span>
-          <span class="blue">Jason Calleiro</span><br/>
-          09/10/10
-        </span>
-        <br class="clearer" />
-
-        Contains: <a href="#">Metallica</a>, <a href="#">Someone Else</a>, <a href="#">Alice in Chains</a>...
-      </div>
-
-      <div class="visible">
-        <a href="#"><img src="images/play_button.png" class="play_button" alt="" /></a>
-
-        <a href="#">Alice in Chains</a><br/>
-        <a href="#">Station</a>
-      </div>
-    </div><!--/end overlay -->
-  </div><!--/end artist_box -->
-
-  <div class="artist_box png_fix">
-    <img src="images/artist_image.jpg" alt="" />
-
-    <div class="overlay">
-      <div class="hidden">
-        <a href="#"><img src="images/artist_icon.gif" class="artist_icon" alt="" /></a>
-        <span>
-          <span class="blue">Jason Calleiro</span><br/>
-          09/10/10
-        </span>
-        <br class="clearer" />
-
-        Contains: <a href="#">Metallica</a>, <a href="#">Someone Else</a>, <a href="#">Alice in Chains</a>...
-      </div>
-
-      <div class="visible">
-        <a href="#"><img src="images/play_button.png" class="play_button" alt="" /></a>
-
-        <a href="#">Alice in Chains</a><br/>
-        <a href="#">Station</a>
-      </div>
-    </div><!--/end overlay -->
-  </div><!--/end artist_box -->
-
-  <div class="artist_box png_fix">
-    <img src="images/artist_image.jpg" alt="" />
-
-    <div class="overlay">
-      <div class="hidden">
-        <a href="#"><img src="images/artist_icon.gif" class="artist_icon" alt="" /></a>
-        <span>
-          <span class="blue">Jason Calleiro</span><br/>
-          09/10/10
-        </span>
-        <br class="clearer" />
-
-        Contains: <a href="#">Metallica</a>, <a href="#">Someone Else</a>, <a href="#">Alice in Chains</a>...
-      </div>
-
-      <div class="visible">
-        <a href="#"><img src="images/play_button.png" class="play_button" alt="" /></a>
-
-        <a href="#">Alice in Chains</a><br/>
-        <a href="#">Station</a>
-      </div>
-    </div><!--/end overlay -->
-  </div><!--/end artist_box -->
-
-  <div class="artist_box png_fix">
-    <img src="images/artist_image.jpg" alt="" />
-
-    <div class="overlay">
-      <div class="hidden">
-        <a href="#"><img src="images/artist_icon.gif" class="artist_icon" alt="" /></a>
-        <span>
-          <span class="blue">Jason Calleiro</span><br/>
-          09/10/10
-        </span>
-        <br class="clearer" />
-
-        Contains: <a href="#">Metallica</a>, <a href="#">Someone Else</a>, <a href="#">Alice in Chains</a>...
-      </div>
-
-      <div class="visible">
-        <a href="#"><img src="images/play_button.png" class="play_button" alt="" /></a>
-
-        <a href="#">Alice in Chains</a><br/>
-        <a href="#">Station</a>
-      </div>
-    </div><!--/end overlay -->
-  </div><!--/end artist_box -->
-
-  <div class="artist_box png_fix last_box">
-    <img src="images/artist_image.jpg" alt="" />
-
-    <div class="overlay">
-      <div class="hidden">
-        <a href="#"><img src="images/artist_icon.gif" class="artist_icon" alt="" /></a>
-        <span>
-          <span class="blue">Jason Calleiro</span><br/>
-          09/10/10
-        </span>
-        <br class="clearer" />
-
-        Contains: <a href="#">Metallica</a>, <a href="#">Someone Else</a>, <a href="#">Alice in Chains</a>...
-      </div>
-
-      <div class="visible">
-        <a href="#"><img src="images/play_button.png" class="play_button" alt="" /></a>
-
-        <a href="#">Alice in Chains</a><br/>
-        <a href="#">Station</a>
-      </div>
-    </div><!--/end overlay -->
-  </div><!--/end artist_box -->
-
+          <%= link_to radio.station.name, artist_path(radio.station.artist) %>
+          <%= link_to_function "Station", "createStation(\"#{radio.station.name}\")" %>
+        </div>
+      </div><!--/end overlay -->
+    </div><!--/end artist_box -->
+  <% end %>
+  
   <br class="clearer" />
 </div><!--/end top_radios_column -->
