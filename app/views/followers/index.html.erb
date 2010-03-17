@@ -4,36 +4,28 @@
         <%= render :partial => 'dashboards/left_column' %>
         
         <div id="center_column">
-            <h1>MY FOLLOWERS</h1>
+            <h1>FOLLOWING</h1>
             
             <div class="sorting">
-                <a href="#">
-                  DEMIAN + FOLLOWING
-                </a> / 
-                
-                <a href="#" class="active">
-                  JUST DEMIAN
-                </a> / 
-                  
-                <a href="#">JUST FOLLOWING</a>
+                <a href="#">DEMIAN + FOLLOWING</a> / <a href="#" class="active">JUST DEMIAN</a> / <a href="#">JUST FOLLOWING</a>
             </div>
             
             <ul class="followers_list">
-              <% @followees.each do |followee| %>
+              <% @followers.each do |follower| %>
                 <li>
-                    <a href="#"><%= link_to (avatar_for(followee, :small), followee) %></a>
+                    <a href="#"><%= link_to (avatar_for(follower, :small), follower) %></a>
                     <div class="follower_text">
                         <b>
-                          <%= link_to followee, followee %>
+                          <%= link_to follower, follower %>
                         </b>
                         <br/>
                         <span>
-                          <%= followee.location %>
+                          <%= follower.location %>
                         </span>
                         <br/>
-                        <%= link_to followee.playlists.size, playlist_path(followee) %> Mixes /
-                        <%= link_to followee.stations.size, station_path(followee) %> Stations /
-                        <%= link_to followee.followers.size, followers_path(followee) %> Followers
+                        <%= link_to follower.playlists.size, playlist_path(follower) %> Mixes /
+                        <%= link_to follower.stations.size, station_path(follower) %> Stations /
+                        <%= link_to follower.followers.size, followers_path(follower) %> Followers
                     </div>
                     <div class="follower_actions w_settings">
                         <a href="#" class="green_button follower_btn"><span><span>FOLLOWING</span></span></a>
@@ -46,7 +38,7 @@
                         </a>
                         <br/>
                         
-                        <% if followee.respond_to? :blocked_by? and followee.blocked_by? current_user %>
+                        <% if follower.respond_to? :blocked_by? and follower.blocked_by? current_user %>
                           <div class="blocked">
                             <%= image_tag 'blocked.gif' %> Blocked
                           </div>
