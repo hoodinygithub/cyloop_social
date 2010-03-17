@@ -21,7 +21,7 @@ set :password,            "Xh00d17ME71z"
 set :deploy_to,           "#{deploy_base}/#{application}"
 set :monit_group,         ENV['DEPLOY_SITE'] || ARGV[0]
 set :runner,              "hoodiny"
-set :repository,          "git@github.com:hoodinygithub/cyloop3.git"
+set :repository,          "git@github.com:hoodinygithub/cyloop_social.git"
 set :cyqueue,             "/data/cyqueue/current"
 
 set :git_shallow_clone,   1
@@ -36,7 +36,7 @@ set :dbuser,              "hoodiny_db"
 set :dbpass,              "Q97t42WGDj8a"
 
 set :shared_path,         "#{deploy_to}/shared"
-set :sites,               ["mexico", "latam", "latino", "cyloop", "canada", "cyloopes", "argentina"]
+set :sites,               ["mexico", "latam", "latino", "cyloop", "canada", "cyloopes", "argentina", "cyloop_social.mx"]
 
 
 # comment out if it gives you trouble. newest net/ssh needs this set.
