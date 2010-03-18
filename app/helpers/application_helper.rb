@@ -26,11 +26,13 @@ module ApplicationHelper
       stylesheet_class = 'error_message'
     end
 
+    flash[:error] = flash[:success] = nil
+
     html = ""
     if defined? message and !message.blank?
       html = content_tag(:div, content_tag(:div, message, :class => stylesheet_class), :class => 'message')
     end
-    
+
     html
   end
   
