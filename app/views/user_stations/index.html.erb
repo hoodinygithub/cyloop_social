@@ -4,7 +4,7 @@
 
 <% content_for :sorting do %>
   <%= link_to 'ALPHABETICAL' %> /
-  <%= link_to 'LATEST', '', :class => 'active' %> /
+  <%= link_to 'LATEST', '', :class => 'active' %>
 <% end %>
 
 <% content_for :list do %>
@@ -26,9 +26,9 @@
           <%= station_contains(station) %>
 
           <div class="buttons">
-            <a href="#"><img src="images/play_button.png" class="png_fix" alt="" /></a>
-            <a href="#"><img src="images/edit_button.png" class="png_fix" alt="" /></a>
-            <a href="#"><img src="images/close_button.png" class="png_fix" alt="" /></a>
+            <%= link_to(image_tag('play_button.png', :class => 'png_fix')) %>
+            <%= link_to(image_tag('edit_button.png', :class => 'png_fix')) %>
+            <%= link_to(image_tag('close_button.png', :class => 'png_fix')) %>
           </div>
         </div>
         <br class="clearer" />

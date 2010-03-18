@@ -3,8 +3,8 @@
 <% end %>
 
 <% content_for :sorting do %>
-  <%= link_to("#{current_user.name} + FOLLOWING", '') %>
-  <%= link_to("#{current_user.name}", '', :class => '') %>
+  <%= link_to("#{current_user.name} + FOLLOWING", '') %> /
+  <%= link_to("#{current_user.name}", '', :class => '') %> /
   <%= link_to("JUST FOLLOWING", '', :class => 'active') %>
 <% end %>
 

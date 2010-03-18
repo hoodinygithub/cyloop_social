@@ -3,3 +3,4 @@ config/resque.yml
 db/schema.rb
 *.swp
 *.swo
+config/development.sphinx.conf
