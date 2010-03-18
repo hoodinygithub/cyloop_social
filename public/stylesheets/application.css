@@ -1,3 +1,40 @@
+/* Rails error explanation */
+.label_based.form_elements #errorExplanation {
+	margin-left: 152px;
+}
+
+#errorExplanation {
+	padding: 7px;
+	border: 1px solid #e09597;
+	background: #ffeded;
+	color: #7d0000;
+	margin-bottom: 2em;
+}
+
+#errorExplanation ul li {
+	font-size: 0.9em;
+	list-style-type: disc;
+	margin-left: 1.4em;
+}
+
+#errorExplanation h2 {
+	text-align: left;
+	font-weight: bold;
+	font-size: 1em;
+	color: #7d0000;
+	text-transform: none;
+	padding-bottom: 0.5em;
+	border-bottom: 1px solid #e09597;
+	margin-bottom: 1em;
+}
+
+#errorExplanation p {
+	color: #333;
+	margin: 1em 0 0.5em 0;
+	padding: 5px;
+}
+
+
 /* MSN header content */
 #msn_header {
   background: #333 url("../images/msn_header_bg.gif") repeat-x 0 bottom;

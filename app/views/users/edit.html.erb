@@ -6,7 +6,7 @@
         <div id="center_column">
             <h1>ACCOUNT SETTINGS</h1>
             
-            <%= error_messages_for :user, :header => ""%>
+            <%= error_messages_for(:user, :header_message => "") %>
             
             <% form_for @user, :html => { :method => :put, :multipart => true, :class => "account_settings" }, :url => my_settings_path do |f| %>
                 <div class="form_row">
@@ -21,7 +21,9 @@
                     <label>Profile URL</label>
                     
                     <div class="grey_round_box">
-                        <span class="grey">www.cyloop.com/</span> <input type="text" class="input half_width" />
+                        <span class="grey">
+                          <%= "http://#{request.server_name}/#{@user.slug}" %>
+                        </span>
                     </div>
                 </div><!--/end form_row -->
                 
@@ -44,7 +46,7 @@
                     <div class="left_side">
                         <label>Date of Birth</label>
                         <div class="grey_round_box">
-                          <%= f.date_select :born_on, :use_month_numbers => true %>
+                          <%= f.date_select :born_on, :use_month_numbers => true, :from_year => 1900, :end_year => Time.now.year %>
                         </div>
                     </div>
                     <div class="clearer"></div>

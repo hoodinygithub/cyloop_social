@@ -8,7 +8,6 @@ class FolloweesController < ApplicationController
   def index
     @dashboard_menu = :following
     @collection = profile_user.followees.paginate :page => params[:page], :per_page => 15
-    render :template => 'shared/community'
   end
 
   def update

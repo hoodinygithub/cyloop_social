@@ -28,11 +28,10 @@
             </span>
             <br class="clearer" />
             
-            Contains: 
             <% if defined? node %>
-              <% includes = node.includes[0..3].collect {|a| link_to(a[:name], a[:url], :target => 'blank') } %>
-              <%= includes.join(", ") + "..." %>
+              <%= station_contains(node) %>
             <% else %>
+              Contains: 
               <a href="#">Metallica</a>, <a href="#">Someone Else</a>, <a href="#">Alice in Chains</a>...
             <% end %>
             

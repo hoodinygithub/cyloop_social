@@ -1,0 +1,40 @@
+<% content_for :title do %>
+  MY NETWORK ACTIVITY
+<% end %>
+
+<% content_for :sorting do %>
+  <%= link_to 'ALPHABETICAL' %> /
+  <%= link_to 'LATEST', '', :class => 'active' %> /
+<% end %>
+
+<% content_for :list do %>
+  <ul class="stations_list">
+    <% @stations.each do |station| %>
+      <li>
+        <%= four_thumbs_to(station, :class => 'left_side', :clearer => true) %>
+        <div class="station_text">
+          <big>
+            <%= link_to(station.artist, station.artist) %>
+          </big>
+          <br/>
+          
+          <span class="grey">
+            Last modified: 09/10/10
+          </span>
+          <br/>
+          
+          <%= station_contains(station) %>
+
+          <div class="buttons">
+            <a href="#"><img src="images/play_button.png" class="png_fix" alt="" /></a>
+            <a href="#"><img src="images/edit_button.png" class="png_fix" alt="" /></a>
+            <a href="#"><img src="images/close_button.png" class="png_fix" alt="" /></a>
+          </div>
+        </div>
+        <br class="clearer" />
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= render 'shared/internal_content' %>

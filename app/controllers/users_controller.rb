@@ -4,10 +4,13 @@ class UsersController < ApplicationController
 
   before_filter :login_required, :only => [:follow, :unfollow, :edit, :update, :destroy, :feedback, :confirm_cancellation, :remove_avatar]
   before_filter :set_return_to, :only => [:msn_login_redirect, :msn_registration_redirect]
+  before_filter :set_dashboard_menu, :only => [:edit, :update]
+
+  layout 'base'
+
   # TODO: Pending installation of Certificate on Server
   #ssl_required :create, :new if RAILS_ENV == "production"
   current_tab :settings
-
   disable_sanitize_params
   strip_tags_from_params
 
@@ -18,32 +21,21 @@ class UsersController < ApplicationController
 
   # GET /users/id/edit
   def edit
-    @dashboard_menu = :settings
     @user = current_user
-    render :layout => "base"
   end
 
   # POST /users/id
   def update
-    @current_tab             = 0
     @user                    = current_user
     params[:user]            = trim_attributes_for_paperclip(params[:user], :avatar)
     @user.attributes         = params[:user]
     twitter_username_changed = @user.twitter_username_changed?
     if @user.save
-      if twitter_username_changed
-        # Background validation and fetch id using twitter username
-        Resque.enqueue(TwitterJob, {
-          :user_id => @user.id, :twitter_username => @user.twitter_username
-        })
-      end
+      Resque.enqueue(TwitterJob, {:user_id => @user.id, :twitter_username => @user.twitter_username}) if twitter_username_changed
       flash[:success] = t('settings.saved')
       redirect_to my_dashboard_path
     else
       flash[:error] = t('settings.not_saved')
-      @current_tab = 1 if (@user.errors.on(:password) or @user.errors.on(:current_password)) and
-                        !(@user.errors.on(:name) or @user.errors.on(:email) or
-                            @user.errors.on(:birth) or @user.errors.on(:city))
       render :action => :edit
     end
   end
@@ -177,5 +169,10 @@ class UsersController < ApplicationController
       flash[:error] = t('settings.not_saved')
       render :action => :edit
     end
+  end
+  
+  private
+  def set_dashboard_menu
+    @dashboard_menu = :settings
   end
 end

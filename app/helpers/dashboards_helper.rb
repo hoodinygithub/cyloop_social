@@ -3,7 +3,7 @@ module DashboardsHelper
     [
       {:menu => :home,          :label => 'Home',             :url => my_dashboard_path },
       {:menu => :mixes,         :label => 'Mixes',            :url => '#' },
-      {:menu => :stations,      :label => 'Stations',         :url => '#' },
+      {:menu => :stations,      :label => 'Stations',         :url => my_stations_path },
       {:menu => :subscriptions, :label => 'Subscriptions',    :url => '#' },
       {:menu => :reviews,       :label => 'Reviews',          :url => '#' },
       {:menu => :activity,      :label => 'Activity',         :url => activities_path },

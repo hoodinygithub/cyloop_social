@@ -20,6 +20,8 @@ class UserStationsController < ApplicationController
   end
 
   def index
+    @dashboard_menu = :stations
+    
     respond_to do |format|
       block = Proc.new do
         @stations = profile_user.stations
@@ -27,7 +29,7 @@ class UserStationsController < ApplicationController
       end
       format.html do
         @stations = profile_user.stations.paginate :page => params[:page], :per_page => 15
-        render :layout => 'profile'
+        render :layout => 'base'
       end
       if logged_in?
         format.xml(&block)

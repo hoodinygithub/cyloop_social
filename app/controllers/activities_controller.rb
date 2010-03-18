@@ -7,7 +7,6 @@ class ActivitiesController < ApplicationController
   def index
     @dashboard_menu = :activity
     @collection = profile_user.followees.paginate :page => params[:page], :per_page => 15
-    render :template => 'shared/community'
   end
 
   def get_activity

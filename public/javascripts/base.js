@@ -1,5 +1,5 @@
 var Base = {
-  message_fadeout_timeout: 4000
+  message_fadeout_timeout: 8000
 };
 
 Base.hide_success_and_error_messages = function() {

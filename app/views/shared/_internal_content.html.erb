@@ -1,0 +1,39 @@
+<div id="internal_content">
+    <div id="main_content">
+
+        <%= render :partial => 'dashboards/left_column' %>
+        
+        <div id="center_column">
+            <h1>
+              <%= yield :title %>
+            </h1>
+            
+            <div class="sorting">
+              <%= yield :sorting %>
+            </div>
+            
+            <% if @collection %>
+              <ul class="followers_list">
+                <% @collection.each do |item| %>
+                  <li>
+                      <a href="#"><%= link_to (avatar_for(item, :small), item) %></a>
+                      <% if params[:controller] == 'activities' %>
+                        <%= render :partial => 'shared/user_update_info', :locals => {:item => item} %>
+                      <% else %>
+                        <%= render :partial => 'shared/user_details_and_setting_options', :locals => {:item => item} %>
+                      <% end %>
+                      <br class="clearer" />
+                  </li>
+                <% end %>
+              <% else %>
+                <%= yield :list %>
+              <% end %>
+            </ul><!--/end followers_list -->
+        </div><!--/end center_column -->
+
+        <%= render :partial => 'dashboards/right_column' %>
+        
+        <div class="clearer"></div>
+    </div><!--/end main_content -->
+    
+</div><!--/end internal_content -->

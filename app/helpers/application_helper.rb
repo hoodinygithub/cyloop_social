@@ -1,4 +1,22 @@
 module ApplicationHelper
+  
+  def station_contains(station, includes = 3)
+    links = []
+    
+    if station.is_a? RecEngine::Station
+      artists = station.includes[0..(includes - 1)]
+    elsif station.is_a? UserStation
+      artists = station.includes(includes)
+    end
+    
+    artists.each do |artist| 
+      links << link_to(artist[:name], artist[:url]) if station.is_a? RecEngine::Station 
+      links << link_to(artist, artist) if station.is_a? UserStation
+    end
+    "Contains: #{links.join(", ")}..."
+  end
+  
+  
   def render_flash_messages
     if flash[:success]
       message = flash[:success]
@@ -16,7 +34,7 @@ module ApplicationHelper
     html
   end
   
-  def four_thumbs_to(station)
+  def four_thumbs_to(station, options = {})
     station = station.station if station.is_a? TopStation
     station_link = station.artist
     
@@ -24,8 +42,8 @@ module ApplicationHelper
     station.includes[0..3].each do |artist|
       station_images_with_links << link_to(image_tag(AvatarsHelper.avatar_path(artist, :small), :class => 'avatar_four_thumbs'), station_link)
     end
-    station_images_with_links = station_images_with_links
-    html = content_tag(:div, station_images_with_links, :class => 'four_thubms')
+    station_images_with_links << content_tag(:br, "&nbsp;", :class => 'clearer') if options[:clearer]
+    html = content_tag(:div, station_images_with_links, :class => "four_thubms #{options[:class]}")
   end
   
 
