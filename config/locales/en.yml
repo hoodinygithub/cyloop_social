@@ -831,8 +831,15 @@ en:
       song_plays: Song Plays
   home:
     create_your_own_personalized_radio_station: Create Your Own Personalized Radio Station
+    create_your_own_station_now: Create Your Own Station now!
     create_radio: Create Radio
+    text_about_radio: Text about radio
+    explaing_what_is_and_why_create_a_new_radio: Explaing what is and why they should create a new radio
+    start_listening: START LISTENING
     type_artist_name: Type Artist Name
+    station: Station
+    radios_recomended_for_you: RADIOS RECOMENDED FOR YOU
+    top_radios: TOP RADIOS
     top_songs: Top Songs
     top_stations: Top Stations
     recommended_artists: Recommended Artists

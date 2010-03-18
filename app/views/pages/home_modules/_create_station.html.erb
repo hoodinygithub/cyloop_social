@@ -21,30 +21,28 @@
 
 <div class="tabs_column">
   <div class="tabs">
-    <a href="#" class="left_side">CREATE RADIO</a>
+    <a href="#" class="left_side"><%= t("home.create_radio") %></a>
     <br class="clearer" />
   </div>
 
   <div class="tabs_content">
     <div class="text">
-      <div class="title">Text about the Radio</div>
+      <div class="title"><%= t("home.text_about_radio")%></div>
 
       <p>
-        Explaing what it is &amp; Why<br/>
-        they should create a<br/>
-        new station now
+        <%= t("home.explaing_what_is_and_why_create_a_new_radio") %>
       </p>
     </div>
 
     <% form_for(:station, :html => {:class => "new_station"}, :url => search_radio_path) do %>
       <div>
-        <label>Create your own station now!</label><br/>
+        <label><%= t("home.create_your_own_station_now") %></label><br/>
       </div>
 
       <div class="input_placeholder">
         <%= text_field_tag :station_name, t('home.type_artist_name'),  {:class => "text_input"} %>
         <div class="align_right">
-          <a href="#" onclick="$('form.new_station').submit();return false;" class="blue_button"><span><span>START LISTENING</span></span></a>
+          <a href="#" onclick="$('form.new_station').submit();return false;" class="blue_button"><span><span><%= t("home.start_listening") %></span></span></a>
         </div>
       </div><!--/end input_placeholder -->
     <% end %><!--/end new_station -->

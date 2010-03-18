@@ -1,5 +1,5 @@
 <div class="radios_recomended_column">
-  <h1>RADIOS RECOMENDED FOR YOU</h1>
+  <h1><%= t("home.radios_recomended_for_you") %></h1>
 
   <% recommended_stations.each_with_index do |radio, index| %>
     <div class="artist_box png_fix <%= "last_box" if (index+1) % 3 == 0 %>">
@@ -10,11 +10,11 @@
           <%= image_tag "#{ENV['ASSETS_URL']}#{radio.image}", :class => "artist_icon" %> 
           <span>
             <span class="blue"><%= radio.artist_name %></span><br/>
-            09/10/10
+            <%= l(Date.today) %>
           </span>
           <br class="clearer" />
 
-          Contains:
+          <%= t("basics.contains") %>:
           <%= radio.includes.map {|artist| link_to artist[:name], artist[:url], :target => '_blank'}.join(", ") %>
         </div>
 

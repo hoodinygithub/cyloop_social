@@ -11,7 +11,9 @@
     <div id="container">
       <%= render 'shared/header' %>
       <%= yield %>
-      <%= render 'shared/footer' %>
+      <% unless site_includes(:cyloop) %>
+        <%= render 'shared/footer' %>
+      <% end %>
     </div><!--/end container -->
   </body>
 </html>

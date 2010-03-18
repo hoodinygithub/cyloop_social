@@ -1,5 +1,5 @@
 <div class="top_radios_column">
-  <h1>TOP RADIOS</h1>
+  <h1><%= t("home.top_radios") %></h1>
   <% @top_stations.each_with_index do |radio, index| %>
     <div class="artist_box png_fix <%= "last_box" if (index+1) % 6 == 0 %>">
       
@@ -19,11 +19,11 @@
           
           <span>
             <span class="blue"><%= radio.station.name %></span><br/>
-            <%= radio.station.created_at.strftime("%m/%d/%Y") %>
+            <%= l(radio.station.created_at) %>
           </span>
           <br class="clearer" />
 
-          Contains: 
+          <%= t("basics.contains") %>:
           <%= radio.station.includes.map {|artist| link_to artist.name, artist, :target => '_blank'}.join(", ") %>
         </div>
 
@@ -31,7 +31,7 @@
           <%= link_to_function image_tag("play_button.png", :class => "play_button", :alt => "Play"), "createStation(\"#{radio.station.name}\")" %>
 
           <%= link_to radio.station.name, artist_path(radio.station.artist) %>
-          <%= link_to_function "Station", "createStation(\"#{radio.station.name}\")" %>
+          <%= link_to_function t("home.station"), "createStation(\"#{radio.station.name}\")" %>
         </div>
       </div><!--/end overlay -->
     </div><!--/end artist_box -->
