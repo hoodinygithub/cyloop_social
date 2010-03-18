@@ -1,3 +1,9 @@
+<% content_for :javascript do %>
+  <% if @user.errors.size > 0 %>
+    field_with_errors = <%= @user.errors.to_json %>;
+  <% end %>
+<% end %>
+
 <div id="internal_content">
     <div id="main_content">
         
@@ -5,9 +11,6 @@
         
         <div id="center_column">
             <h1>ACCOUNT SETTINGS</h1>
-            
-            <%= error_messages_for(:user, :header_message => "") %>
-            
             <% form_for @user, :html => { :method => :put, :multipart => true, :class => "account_settings" }, :url => my_settings_path do |f| %>
                 <div class="form_row">
                     <label>Name</label>
