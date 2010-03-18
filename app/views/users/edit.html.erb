@@ -6,6 +6,8 @@
         <div id="center_column">
             <h1>ACCOUNT SETTINGS</h1>
             
+            <%= error_messages_for :user, :header => ""%>
+            
             <% form_for @user, :html => { :method => :put, :multipart => true, :class => "account_settings" }, :url => my_settings_path do |f| %>
                 <div class="form_row">
                     <label>Name</label>
@@ -52,7 +54,7 @@
                     <label>Location</label>
                     
                     <div class="grey_round_box">
-                      <%= f.text_field :location, :class => 'input full_width' %>
+                      <%= f.text_field :city_name, :class => 'input full_width' %>
                     </div>
                 </div><!--/end form_row -->
                 

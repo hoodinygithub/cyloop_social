@@ -3,6 +3,7 @@
 <%= javascript_include_tag 'jquery.cycle.all.min' %>
 <%= javascript_include_tag 'supersleight.plugin' %>
 <%= javascript_include_tag 'functions' %>
+<%= javascript_include_tag 'base' %>
 
 <%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.to_json};" if protect_against_forgery? %>
 <%= google_analytics_js_include_tag %>

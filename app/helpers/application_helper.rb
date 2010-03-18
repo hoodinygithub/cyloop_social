@@ -1,4 +1,20 @@
 module ApplicationHelper
+  def render_flash_messages
+    if flash[:success]
+      message = flash[:success]
+      stylesheet_class = 'confirmation_message'
+    elsif flash[:error]
+      message = flash[:error]
+      stylesheet_class = 'error_message'
+    end
+
+    html = ""
+    if defined? message and !message.blank?
+      html = content_tag(:div, content_tag(:div, message, :class => stylesheet_class), :class => 'message')
+    end
+    
+    html
+  end
   
   def four_thumbs_to(station)
     station = station.station if station.is_a? TopStation

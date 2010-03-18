@@ -18,6 +18,7 @@ class UsersController < ApplicationController
 
   # GET /users/id/edit
   def edit
+    @dashboard_menu = :settings
     @user = current_user
     render :layout => "base"
   end
@@ -37,7 +38,7 @@ class UsersController < ApplicationController
         })
       end
       flash[:success] = t('settings.saved')
-      redirect_to :action => :edit
+      redirect_to my_dashboard_path
     else
       flash[:error] = t('settings.not_saved')
       @current_tab = 1 if (@user.errors.on(:password) or @user.errors.on(:current_password)) and
