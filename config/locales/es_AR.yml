@@ -1,5 +1,116 @@
 --- 
 es_AR: 
+  actions: 
+    play: Reproducir
+    share: Compartir
+    awaiting_approval: "Aprobaci\xC3\xB3n Pendiente"
+    add: "A\xC3\xB1adir"
+    forgot_password: "\xC2\xBFHa olvidado la contrase\xC3\xB1a?"
+    add_song_to_playlist: "Agregar Canci\xC3\xB3n al Playlist"
+    unfollow: Siguiendo
+    edit: Editar
+    share_with_a_friend: "Compartir esta canci\xC3\xB3n con un amigo"
+    select_playlist: Seleccionar playlist
+    previous: Anterior
+    buy_album: Comprar Album
+    delete: Borrar
+    stop: Parar
+    close: Cerrar
+    submit: Enviar
+    cancel: Cancelar
+    go_with_exclamation: Ir!
+    or: o
+    buy_song: "Comprar Canci\xC3\xB3n"
+    deny: Denegar
+    view_more: "Mostrar M\xC3\xA1s"
+    block_this_person: Bloquear Esta Persona
+    add_this_song_into_the_following_playlists: "Agregar esta canci\xC3\xB3n a los siguientes playlists"
+    search_again: Buscar nuevamente
+    to: a
+    view_more_songs: "mostrar m\xC3\xA1s canciones"
+    follow: Seguir
+    add_to_playlist: "A\xC3\xB1adir a mis Playlists"
+    launch_radio: Crear Radio
+    block: Bloquear
+    save: Guardar
+    view: Mostrar
+    filter_by: Filtrar por
+    approve: Aprobar
+    create: Crear
+    next: "Pr\xC3\xB3ximo"
+    go: Ir
+    reset: Enviar
+    add_into_a_new_playlist: Agregar a un nuevo playlist
+    login: Login
+    skip: ""
+    create_station: Crear Radio
+    submitting: Enviando
+    add_more: "Agregar M\xC3\xA1s"
+    select_store: Seleccionar Tienda
+    add_song: "Agregar Canci\xC3\xB3n"
+    search: Buscar
+  modules: 
+    photos: 
+      title: Fotos
+    top_artists: 
+      title: Top Artistas
+    concerts: 
+      title: Conciertos
+    user_info: 
+      title: "Informaci\xC3\xB3n del Usuario"
+    recently_created_stations: 
+      title: "Radios Reci\xC3\xA9n Creadas"
+    recommended_stations: 
+      title: Radios Recomendadas
+    top_activity: 
+      title: Top Actividad
+    information: 
+      title: "Informaci\xC3\xB3n"
+    recent_listeners: 
+      title: "Oyentes M\xC3\xA1s Recientes"
+    recommendations: 
+      title: Recomendaciones
+    similar_artists: 
+      title: Artistas Similares
+    reviews: 
+      title: Reviews
+    members: 
+      title: Integrantes
+    features_and_galleries: 
+      title: Especiales Y Fotogalerias
+    news: 
+      title: Noticias
+    top_stations: 
+      title: Top Radios
+    interviews: 
+      title: Entrevistas
+    top_songs: 
+      title: Top Canciones
+    recommended_artists: 
+      title: Artistas Recomendados
+    biography: 
+      title: "Biograf\xC3\xADa"
+  number: 
+    format: 
+      separator: .
+      delimiter: ","
+    human: 
+      storage_units: 
+        format: "%n %u"
+        units: 
+          kb: KB
+          tb: TB
+          gb: GB
+          byte: 
+            one: Byte
+            other: Bytes
+          mb: MB
+    currency: 
+      format: 
+        format: "%u%n"
+        unit: $
+        separator: .
+        delimiter: ","
   share: 
     name: Tu Nombre
     errors: 
@@ -24,117 +135,6 @@ es_AR:
       message: "Creo que esta canci\xC3\xB3n te va a gustar."
     multiple_emails: "(si ingresas varios emails, sep\xC3\xA1ralos usando una coma entre cada uno)"
     email: Tu Email
-  modules: 
-    photos: 
-      title: Fotos
-    recently_created_stations: 
-      title: "Radios Reci\xC3\xA9n Creadas"
-    top_artists: 
-      title: Top Artistas
-    concerts: 
-      title: Conciertos
-    user_info: 
-      title: "Informaci\xC3\xB3n del Usuario"
-    recommended_stations: 
-      title: Radios Recomendadas
-    recent_listeners: 
-      title: "Oyentes M\xC3\xA1s Recientes"
-    top_activity: 
-      title: Top Actividad
-    information: 
-      title: "Informaci\xC3\xB3n"
-    recommendations: 
-      title: Recomendaciones
-    similar_artists: 
-      title: Artistas Similares
-    reviews: 
-      title: Reviews
-    members: 
-      title: Integrantes
-    features_and_galleries: 
-      title: Especiales Y Fotogalerias
-    news: 
-      title: Noticias
-    top_stations: 
-      title: Top Radios
-    top_songs: 
-      title: Top Canciones
-    interviews: 
-      title: Entrevistas
-    biography: 
-      title: "Biograf\xC3\xADa"
-    recommended_artists: 
-      title: Artistas Recomendados
-  number: 
-    format: 
-      separator: .
-      delimiter: ","
-    human: 
-      storage_units: 
-        format: "%n %u"
-        units: 
-          kb: KB
-          tb: TB
-          gb: GB
-          byte: 
-            one: Byte
-            other: Bytes
-          mb: MB
-    currency: 
-      format: 
-        format: "%u%n"
-        unit: $
-        separator: .
-        delimiter: ","
-  actions: 
-    share: Compartir
-    awaiting_approval: "Aprobaci\xC3\xB3n Pendiente"
-    play: Reproducir
-    add: "A\xC3\xB1adir"
-    forgot_password: "\xC2\xBFHa olvidado la contrase\xC3\xB1a?"
-    unfollow: Siguiendo
-    add_song_to_playlist: "Agregar Canci\xC3\xB3n al Playlist"
-    share_with_a_friend: "Compartir esta canci\xC3\xB3n con un amigo"
-    edit: Editar
-    select_playlist: Seleccionar playlist
-    previous: Anterior
-    go_with_exclamation: Ir!
-    cancel: Cancelar
-    buy_album: Comprar Album
-    delete: Borrar
-    stop: Parar
-    close: Cerrar
-    submit: Enviar
-    or: o
-    buy_song: "Comprar Canci\xC3\xB3n"
-    deny: Denegar
-    add_this_song_into_the_following_playlists: "Agregar esta canci\xC3\xB3n a los siguientes playlists"
-    search_again: Buscar nuevamente
-    view_more: "Mostrar M\xC3\xA1s"
-    block_this_person: Bloquear Esta Persona
-    view_more_songs: "mostrar m\xC3\xA1s canciones"
-    to: a
-    follow: Seguir
-    add_to_playlist: "A\xC3\xB1adir a mis Playlists"
-    launch_radio: Crear Radio
-    block: Bloquear
-    save: Guardar
-    view: Mostrar
-    approve: Aprobar
-    go: Ir
-    filter_by: Filtrar por
-    create: Crear
-    reset: Enviar
-    next: "Pr\xC3\xB3ximo"
-    login: Login
-    skip: ""
-    add_into_a_new_playlist: Agregar a un nuevo playlist
-    submitting: Enviando
-    search: Buscar
-    create_station: Crear Radio
-    add_more: "Agregar M\xC3\xA1s"
-    add_song: "Agregar Canci\xC3\xB3n"
-    select_store: Seleccionar Tienda
   dashboards: 
     messages: 
       artist_not_found: "No hemos encontrado ning\xC3\xBAn artista con ese nombre.  Por favor buscar nuevamente."
@@ -147,6 +147,8 @@ es_AR:
       title: Artistas Recomendados
     following: 
       title: Siguiendo
+  songs: 
+    play_confirmation: Disftuta {{title}}!
   playlist_items: 
     delete_text: "Seguro que queres borrar esta Canci\xC3\xB3n?"
     delete_title: "Borrar Canci\xC3\xB3n?"
@@ -160,28 +162,28 @@ es_AR:
       bio: 
         short: "Biograf\xC3\xADa"
       user: 
-        bios: "Biograf\xC3\xADa"
         name: Nombre
+        bios: "Biograf\xC3\xADa"
         slug: Este es tu Nombre de Perfil
-        location: "Ubicaci\xC3\xB3n"
         terms_of_use: "T\xC3\xA9rminos de uso"
-        cyloop_password: "Contrase\xC3\xB1a Cyloop"
-        twitter_username: Nombre de Usuario en Twitter
+        location: "Ubicaci\xC3\xB3n"
         playlist_confirmation: "Tu playlist se ha creado. \xC2\xA1Continua tu b\xC3\xBAsqueda!"
-        current_password: "Contrase\xC3\xB1a actual"
-        password_confirmation: "Confirmar contrase\xC3\xB1a"
+        twitter_username: Nombre de Usuario en Twitter
+        cyloop_password: "Contrase\xC3\xB1a Cyloop"
         cyloop_email: Email de Cyloop
+        current_password: "Contrase\xC3\xB1a actual"
         female: Femenino
+        password_confirmation: "Confirmar contrase\xC3\xB1a"
         websites: Sitios web
-        short_bio: "Breve rese\xC3\xB1a"
         gender: Sexo
+        short_bio: "Breve rese\xC3\xB1a"
         new_password: "Nueva contrase\xC3\xB1a"
         male: Masculino
         city_id: Ciudad
-        bio: Bio
         time_zone: Franja horaria
-        password: "Contrase\xC3\xB1a"
+        bio: Bio
         privacy_policy: "Pol\xC3\xADtica de privacidad"
+        password: "Contrase\xC3\xB1a"
         age: Edad
         born_on: Fecha de nacimiento
         email: Email
@@ -193,14 +195,14 @@ es_AR:
               content_type: "Lo sentimos, pero solo autorizamos la subida de im\xC3\xA1genes en formatos de .jpg, .gif y .png"
             avatar: 
               content_type: "Lo sentimos, pero solo autorizamos la subida de im\xC3\xA1genes en formatos de .jpg, .gif y .png"
-        album: 
-          attributes: 
-            avatar: 
-              content_type: "Lo sentimos, pero solo autorizamos la subida de im\xC3\xA1genes en formatos de .jpg, .gif y .png"
         block: 
           attributes: 
             blockee_id: 
               already_blocked: "ya est\xC3\xA1 bloqueado"
+        album: 
+          attributes: 
+            avatar: 
+              content_type: "Lo sentimos, pero solo autorizamos la subida de im\xC3\xA1genes en formatos de .jpg, .gif y .png"
         user: 
           attributes: 
             slug: 
@@ -223,31 +225,29 @@ es_AR:
               has_blocked_you: te ha bloqueado
       messages: 
         greater_than_or_equal_to: debe ser mayor o igual a {{count}}
-        less_than_or_equal_to: debe ser menor o igual a {{count}}
         confirmation: "La confirmaci\xC3\xB3n no coincide"
+        less_than_or_equal_to: debe ser menor o igual a {{count}}
         blank: Debe completarse
         exclusion: "ya est\xC3\xA1 reservado"
         invalid: "es inv\xC3\xA1lido"
         odd: "debe ser n\xC3\xBAmero impar"
         gender: debe ser Masculino o Femenino
+        even: "debe ser n\xC3\xBAmero par"
         too_short: "es demasiado corto (el m\xC3\xADnimo es {{count}} caracteres)"
         wrong_length: no tiene una cantidad correcta de caracteres  (deben ser {{count}})
         empty: Debe completarse
-        even: "debe ser n\xC3\xBAmero par"
         less_than: debe ser menor que {{count}}
-        equal_to: debe ser igual a {{count}}
-        invalid_content_type: "Lo sentimos, pero solo autorizamos la subida de im\xC3\xA1genes en formatos de .jpg, .gif y .png"
         greater_than: debe ser mayor de {{count}}
+        invalid_content_type: "Lo sentimos, pero solo autorizamos la subida de im\xC3\xA1genes en formatos de .jpg, .gif y .png"
+        equal_to: debe ser igual a {{count}}
+        too_long: "es demasiado largo (el m\xC3\xA1ximo es {{count}} caracteres)"
         taken: ya ha sido tomado
         accepted: Debe ser aceptado
-        too_long: "es demasiado largo (el m\xC3\xA1ximo es {{count}} caracteres)"
-        not_a_number: "no es un n\xC3\xBAmero"
         inclusion: "no est\xC3\xA1 inclu\xC3\xADdo en la lista"
+        not_a_number: "no es un n\xC3\xBAmero"
       template: 
         body: "Hubieron problemas con los siguientes campos:"
         header: "{{count}} errores no permitieron que este {{model}} pueda ser guardado"
-  songs: 
-    play_confirmation: Disftuta {{title}}!
   blocks: 
     been_unblocked: "{{name}} ha sido desbloqueado/a."
     been_blocked: "{{name}} ha sido bloqueado/a."
@@ -275,26 +275,6 @@ es_AR:
       followees: "Gente que estoy siguiendo "
       follow_requests: Mis Pedidos de Gente a Seguir
       charts: Mis Listas
-  profile: 
-    header: 
-      customize_page: "Personalizar la P\xC3\xA1gina"
-    navigation: 
-      all: Todo
-      artists: Artistas
-      songs: Canciones
-      dashboard: Dashboard
-      stations: Radios
-      playlists: Playlists
-      followers: Seguidores
-      albums: Albumes
-      music: "M\xC3\xBAsica"
-      settings: "Configuraci\xC3\xB3n"
-      home: Inicio
-      community: Comunidad
-      follow_requests: Peticiones
-      biography: "Biograf\xC3\xADa"
-      charts: Listas
-      following: Siguiendo
   chat: 
     moderator: 
       title: "M\xC3\xB3dulo de Moderaci\xC3\xB3n"
@@ -305,11 +285,29 @@ es_AR:
     deleted: "Tu estaci\xC3\xB3n de radio ha sido borrada."
     no_stations_created: No hay radios creadas aun.
     last_station_created_at: Radio creada desde hace {{when}}
+  profile: 
+    header: 
+      customize_page: "Personalizar la P\xC3\xA1gina"
+    navigation: 
+      all: Todo
+      songs: Canciones
+      artists: Artistas
+      stations: Radios
+      dashboard: Dashboard
+      playlists: Playlists
+      followers: Seguidores
+      albums: Albumes
+      settings: "Configuraci\xC3\xB3n"
+      music: "M\xC3\xBAsica"
+      community: Comunidad
+      follow_requests: Peticiones
+      home: Inicio
+      biography: "Biograf\xC3\xADa"
+      charts: Listas
+      following: Siguiendo
   comments: 
     create_success: "El comentario se ha publicado "
     delete_success: El comentario se ha borrado
-  forgot: 
-    reset_message_sent: "Gracias. Las instrucciones para reconfigurar tu contrase\xC3\xB1a te han sido enviadas al email que nos has indicado."
   playlists: 
     duration: "Duraci\xC3\xB3n"
     total_time: Tiempo Total
@@ -317,59 +315,12 @@ es_AR:
     delete_text: Seguro que quieres borrar este playlist?
     playlist_name: Nombre del Playlist
     last_playlist: Ultimo Playlist
-    continue_btn: Continuar
     delete_title: Borrar Playlist
-  albums: 
-    label: "Sello discogr\xC3\xA1fico"
-    song_count: Canciones
-    show: 
-      about_this_album: "Acerca de este \xC3\xA1lbum"
-    year: !binary |
-      QcOxbw==
-
-    release_date: Fecha de lanzamiento
-    total_plays: Reproducciones
-  messenger_player: 
-    click_here: "clic aqu\xC3\xAD"
-    buylink: 
-      song: "Comprar esta canci\xC3\xB3n"
-      select_store: Selecciona tu tienda
-    share: 
-      title: Compartir con un amigo
-      message: Mensaje
-      friend: Email de tu amigo
-      email: Tu Email
-    sign_in: ingresa con tu Live ID de Windows
-    edit_station: "Para editar esta radio, "
-    station: 
-      name: "Nombre de la Estaci\xC3\xB3n de Radio"
-      edit: "Cambiar Nombre de la Estaci\xC3\xB3n de Radio"
-      delete: "Borrar Estaci\xC3\xB3n de Radio"
-      would_delete: "Quieres borrar esta estaci\xC3\xB3n de radio?"
-    we_hope_you_enjoyed: "Esperamos que te hayan gustado las canciones que se tocaron. Para escuchar m\xC3\xA1s, "
-    record_not_found: El material que buscas no pudo encontrarse
-    checkout_today_polular_stations: "Checar las  Radios M\xC3\xA1s Populares del d\xC3\xADa"
-    recengineerror_UNKNOWN: Error desconocido
-    take_a_moment: "T\xC3\xB3mate unos segundos para activar tu cuenta de MSN M\xC3\xBAsica"
-    msn_stations: Estaciones de MSN
-    registration: 
-      success: Felicitaciones! Ya has quedado registrado.
-      email: "Tu Direcci\xC3\xB3n de E-mail"
-    to_login: para ingresar
-    activate_your_account: "Activa tu cuenta de MSN M\xC3\xBAsica"
-    buy: Comprar
-    album: 
-      released: Editado
-    authentication_required: Necesitas conectarte haciendo to log in parra continuar
-    internal_error: "Tu acci\xC3\xB3n no se pudo ejecutar debido a un error interno. Ya estamos al tanto de \xC3\xA9sto y en breve estaremos resolvi\xC3\xA9ndolo."
-    station_edit_success: "El nombre de la estaci\xC3\xB3n de radio ha quedado efectivamente cambiado"
-    msn_music_is_free: "MSN M\xC3\xBAsica es gratis, "
-    recengineerror_NO_PLAYLIST: "No se encontr\xC3\xB3 el playlist"
-    now_playing: Tocando Ahora
-    view_your_stations: "Para ver tus radios, "
-    continue: Continuar
-    still_dont_have: "\xC2\xBFNo tienes una cuenta de MSN M\xC3\xBAsica a\xC3\xBAn?"
-    recengineerror_NO_RADIO: "No se encontr\xC3\xB3 la radio"
+    continue_btn: Continuar
+  forgot: 
+    reset_message_sent: "Gracias. Las instrucciones para reconfigurar tu contrase\xC3\xB1a te han sido enviadas al email que nos has indicado."
+  custom_profiles: 
+    sony_disclaimer: El logo y s&#237;mbolo de Walkman&#8482; son marcas registrados de Sony Corporation.
   time: 
     am: am
     formats: 
@@ -377,57 +328,97 @@ es_AR:
       short: "%d %b %H:%M"
       long: "%B %d, %Y %H:%M"
     pm: pm
+  albums: 
+    label: "Sello discogr\xC3\xA1fico"
+    song_count: Canciones
+    year: !binary |
+      QcOxbw==
+
+    show: 
+      about_this_album: "Acerca de este \xC3\xA1lbum"
+    total_plays: Reproducciones
+    release_date: Fecha de lanzamiento
+  messenger_player: 
+    click_here: "clic aqu\xC3\xAD"
+    buylink: 
+      song: "Comprar esta canci\xC3\xB3n"
+      select_store: Selecciona tu tienda
+    station: 
+      name: "Nombre de la estaci\xC3\xB3n de radio"
+      edit: "Cambiar nombre de la estaci\xC3\xB3n de radio"
+      delete: "Borrar estaci\xC3\xB3n de radio"
+      would_delete: "\xC2\xBFQuer\xC3\xA9s borrar esta estaci\xC3\xB3n de radio?"
+    sign_in: "ingres\xC3\xA1 con tu Live ID de Windows"
+    we_hope_you_enjoyed: "Esperamos que te hayan gustado las canciones que se tocaron. Para escuchar m\xC3\xA1s, "
+    edit_station: "Para editar esta radio, "
+    share: 
+      title: Compartir con un amigo
+      message: Mensaje
+      friend: Email de tu amigo
+      email: Tu Email
+    record_not_found: El material que buscas no pudo encontrarse
+    checkout_today_polular_stations: "Estas son las radios m\xC3\xA1s populares del d\xC3\xADa"
+    recengineerror_UNKNOWN: Error desconocido
+    take_a_moment: "Tomate unos segundos para activar tu cuenta de MSN M\xC3\xBAsica"
+    msn_stations: Estaciones de MSN
+    registration: 
+      success: Felicitaciones! Ya has quedado registrado.
+      email: "Tu direcci\xC3\xB3n de E-mail"
+    to_login: para ingresar
+    activate_your_account: "Activ\xC3\xA1 tu cuenta de MSN M\xC3\xBAsica"
+    buy: Comprar
+    authentication_required: Necesitas conectarte haciendo to log in parra continuar
+    album: 
+      released: Editado
+    internal_error: "Tu acci\xC3\xB3n no se pudo ejecutar debido a un error interno. Ya estamos al tanto de \xC3\xA9sto y en breve estaremos resolvi\xC3\xA9ndolo."
+    msn_music_is_free: "MSN M\xC3\xBAsica es gratis, "
+    station_edit_success: "El nombre de la estaci\xC3\xB3n de radio ha quedado efectivamente cambiado"
+    recengineerror_NO_PLAYLIST: "No se encontr\xC3\xB3 el playlist"
+    now_playing: Tocando ahora
+    view_your_stations: "Para ver tus radios, "
+    continue: Continuar
+    still_dont_have: "\xC2\xBFNo ten\xC3\xA9s una cuenta de MSN M\xC3\xBAsica a\xC3\xBAn?"
+    recengineerror_NO_RADIO: "No se encontr\xC3\xB3 la radio"
   activity: 
     created_playlist: "Cre\xC3\xB3 el Playlist '{{playlist}}'"
-    just_user: "S\xC3\xB3lo {{user}}"
     just_following: "S\xC3\xB3lo siguiendo"
+    just_user: "S\xC3\xB3lo {{user}}"
     listened_to: "Escuch\xC3\xB3 '{{song}}' de '{{artist}}'"
     push_notification_refresh: Recarga
-    push_notification: Tienes {{count}} actualizaciones nuevas. {{link}} la actividad en tu Dashboard para verlas.
-    twitter_you_following: "Tweets de artistas que t\xC3\xBA est\xC3\xA1s siguiendo"
-    no_more_activity: "No hay m\xC3\xA1s actividad"
     filters: 
       all: TODOS
       songs: CANCIONES
       stations: RADIOS
       playlists: PLAYLISTS
+    twitter_you_following: "Tweets de artistas que t\xC3\xBA est\xC3\xA1s siguiendo"
+    no_more_activity: "No hay m\xC3\xA1s actividad"
+    push_notification: Tienes {{count}} actualizaciones nuevas. {{link}} la actividad en tu Dashboard para verlas.
     push_notification_more_than: "Tienes m\xC3\xA1s de {{count}} actualizaciones nuevas. {{link}} la actividad en tu Dashboard para verlas."
     created_station: "Cre\xC3\xB3 la Radio '{{station}}'"
     twitter_following: "Tweets de los artistas que {{user}} est\xC3\xA1 siguiendo"
     user_following: "{{user}} + Siguiendo"
-  custom_profiles: 
-    sony_disclaimer: El logo y s&#237;mbolo de Walkman&#8482; son marcas registrados de Sony Corporation.
-  date: 
-    order: 
-    - :month
-    - :day
-    - :year
-    formats: 
-      default: "%Y-%m-%d"
-      short: "%b %d"
-      long: "%B %d, %Y"
-  meta: 
-    title: "Cyloop | \xC2\xBFQu\xC3\xA9 te gustar\xC3\xADa escuchar?"
-    description: "Descubre m\xC3\xBAsica nueva y videos gratis de la biblioteca m\xC3\xA1s grande y completa de m\xC3\xBAsica y videos en Internet, sigue a tus amigos y lo que est\xC3\xA1n escuchando, y crea y comparte playlists y radios personalizadas de tus artistas favoritos."
-    keywords: "Descubrir m\xC3\xBAsica, descubrir m\xC3\xBAsica nueva, descubrir videos, ver videos, escuchar m\xC3\xBAsica, escuchar m\xC3\xBAsica gratis, m\xC3\xBAsica gratis, videos gratis, artistas de m\xC3\xBAsica, descubrir artistas, escuchar artistas, descubrir artistas de m\xC3\xBAsica, descubrir m\xC3\xBAsicos, descubrir bandas, escuchar bandas, biblioteca de m\xC3\xBAsica online, biblioteca de m\xC3\xBAsica en la red, la m\xC3\xA1s grande biblioteca de m\xC3\xBAisca online, musica online gratis, m\xC3\xBAsica gratis en la red, biblioteca de m\xC3\xBAsica gratis online, biblioteca de m\xC3\xBAsica gratis en la red, la m\xC3\xA1s grande biblioteca de m\xC3\xBAisca gratis online, seguir amigos, siguiendo amigos, seguidor de amigos, crear playlists, compartir playlists, crear playlists de m\xC3\xBAsica, compartir playlists de m\xC3\xBAsica, radios personalizadas, estaciones de radio personalizadas, artistas favoritos, compartir m\xC3\xBAsica, compartir m\xC3\xBAsica gratis"
   titles: 
     awaiting_approval: "A la espera de aprobaci\xC3\xB3n para seguir a este usuario."
     unfollow: "Clic aqu\xC3\xAD para dejar de seguir a este usuario"
     follow: "Clic aqu\xC3\xAD para seguir a este usuario"
+  meta: 
+    title: "Cyloop | \xC2\xBFQu\xC3\xA9 te gustar\xC3\xADa escuchar?"
+    description: "Descubre m\xC3\xBAsica nueva y videos gratis de la biblioteca m\xC3\xA1s grande y completa de m\xC3\xBAsica y videos en Internet, sigue a tus amigos y lo que est\xC3\xA1n escuchando, y crea y comparte playlists y radios personalizadas de tus artistas favoritos."
+    keywords: "Descubrir m\xC3\xBAsica, descubrir m\xC3\xBAsica nueva, descubrir videos, ver videos, escuchar m\xC3\xBAsica, escuchar m\xC3\xBAsica gratis, m\xC3\xBAsica gratis, videos gratis, artistas de m\xC3\xBAsica, descubrir artistas, escuchar artistas, descubrir artistas de m\xC3\xBAsica, descubrir m\xC3\xBAsicos, descubrir bandas, escuchar bandas, biblioteca de m\xC3\xBAsica online, biblioteca de m\xC3\xBAsica en la red, la m\xC3\xA1s grande biblioteca de m\xC3\xBAisca online, musica online gratis, m\xC3\xBAsica gratis en la red, biblioteca de m\xC3\xBAsica gratis online, biblioteca de m\xC3\xBAsica gratis en la red, la m\xC3\xA1s grande biblioteca de m\xC3\xBAisca gratis online, seguir amigos, siguiendo amigos, seguidor de amigos, crear playlists, compartir playlists, crear playlists de m\xC3\xBAsica, compartir playlists de m\xC3\xBAsica, radios personalizadas, estaciones de radio personalizadas, artistas favoritos, compartir m\xC3\xBAsica, compartir m\xC3\xBAsica gratis"
   registration: 
+    sign_up_exclamation: "Reg\xC3\xADstrate!"
     your_profile_name_tip: "(Tu direcci\xC3\xB3n para que puedas envi\xC3\xA1rsela a tus amigos)"
     sign_in: ""
-    you_are: Eres...
+    you_are: Sos...
     artist_login_denied: "Login para Artistas estar\xC3\xA1 disponible muy pronto!"
     sign_up: "Reg\xC3\xADstrate"
-    sign_up_exclamation: "Reg\xC3\xADstrate!"
+    msg: 
+      privacy: must be accepted
+      terms: must be accepted
     messages: 
       terms_of_use: Debe ser aceptado
       pivacy_policy: debe aceptarse
       privacy_policy: Debe ser aceptado
-    msg: 
-      privacy: must be accepted
-      terms: must be accepted
     terms_of_use: "T\xC3\xA9rminos de uso"
     confirmation: 
       click_here: "clic aqu\xC3\xAD"
@@ -438,6 +429,7 @@ es_AR:
       email_resent: "Tu email de confirmaci\xC3\xB3n te ha sido reenviado."
       email: 
         welcome: Bienvenido/a y gracias por registrarte en Cyloop.
+        subject: Bienvenido/a a Cyloop!
         info: "Como nuevo miembro de Cyloop no dejes de probar las siguientes funcionalidades:\r\n\
           \r\n\
           - Colecciona canciones y crea tus propios listados de m\xC3\xBAsica\r\n\
@@ -446,7 +438,6 @@ es_AR:
           - Sigue a otros usuarios de Cyloop y deja que otros te sigan\r\n\
           - Cuanto m\xC3\xA1s usas Cyloop estando registrado, m\xC3\xA1s aprende Cyloop a reconocer qu\xC3\xA9 estilo de m\xC3\xBAsica es la que m\xC3\xA1s te interesa\r\n\
           - Conoce nuevos amigos y otros fan\xC3\xA1ticos a los que les gusta la misma m\xC3\xBAsica que a ti, y te ayudar\xC3\xA1n a conocer nuevos artistas\r\n"
-        subject: Bienvenido/a a Cyloop!
         opt_out: "Para dejar de recibir mensajes como \xC3\xA9ste, haz clic aqu\xC3\xAD."
         sig: "\xC2\xA1Divi\xC3\xA9rtete e invita a tus amigos a que se unan!\r\n\
           \r\n\
@@ -465,8 +456,8 @@ es_AR:
     your_profile_name: El nombre de tu perfil
     layers: 
       click_here: "Haz clic aqu\xC3\xAD"
-      share: Comparte
       do_not_have_account: "Si a\xC3\xBAn no tienes una cuenta gratis de Windows Live, {{link}}"
+      share: "Compart\xC3\xAD"
       discover_text: "m\xC3\xA1s de {{count}} artistas, todos gratis"
       follow_user: Para seguir a {{slug}} y saber lo que {{gender}} escuchando, {{link}} para hacer tu login.
       know: "Am\xC3\xADgate"
@@ -481,10 +472,10 @@ es_AR:
       index: "Si ya tienes tu cuenta de MSN M\xC3\xBAsica, {{link}} para hacer tu login."
       max_song: "Esperamos que te hayan gustado las canciones que escuchaste. Para escuchar m\xC3\xA1s canciones, {{link}} para hacer tu login."
       msn_music_is_free: "MSN M\xC3\xBAsica es gratis, {{link}}"
-      sign_in_with_your_windows_live_id: ingresa con tu Windows Live ID
+      sign_in_with_your_windows_live_id: "ingres\xC3\xA1 con tu Live ID de Windows"
       place: Cyloop
-      discover: Descubre
       listen: Escucha
+      discover: Descubre
       follow_artist: Para seguir a {{name}} y tus otros artistas favoritos, {{link}} para hacer tu login.
       add_song: "Para agregar esta canci\xC3\xB3n a un playlist, {{link}} para hacer tu login."
       still_do_not_have_msn_account: "A\xC3\xBAn no tienes tu cuenta de MSN M\xC3\xBAsica?"
@@ -492,36 +483,37 @@ es_AR:
     opt_out: Optas por salirte?
     email_address_tip: (En la que prefieres recibir mensajes, etc.)
     terms_and_privacy_must_be_accepted: "Los T\xC3\xA9rminos de Uso y la Pol\xC3\xADtica de Privacidad deben ser aceptados"
-    complete: Completar
     complete_all_fields_in_red: Completa todos los campos en rojo
     msn_login_error: Error de Login de MSN Live! Intentar ingresar nuevamente.
     customize: "Configura tu perfil de MSN M\xC3\xBAsica"
-    associate_msn_login: "Ya casi terminamos. Por favor, ingresa tus datos de Cyloop as\xC3\xAD podemos relacionarlos con tu Live ID de MSN"
+    complete: Completar
     sidebar: 
       radio_title: Disfruta radios personalizadas
       chat_text: "En la parte inferior de cada p\xC3\xA1gina encontrar\xC3\xA1s una barra de Windows Messenger. Ingresa y puedes chatear con tus amigos mientras disfrutas de la mejor m\xC3\xBAsica."
       discover_text: "Ent\xC3\xA9rate en tiempo real de lo que est\xC3\xA1n oyendo tus amigos, y escucha o gu\xC3\xA1rdate las canciones que m\xC3\xA1s te gusten."
-      playlist_title: Crea tus playlists de canciones
       chat_title: Chatea con tus amigos
       discover_title: "Descubre m\xC3\xBAsica con tus amigos"
+      playlist_title: Crea tus playlists de canciones
       playlist_text: Si aspiras a convertirte en DJ, crea tus propios mixes agregando a tus playlists canciones que te gusten.
       follow_text: "Con s\xC3\xB3lo un clic puedes seguir a tus artistas favoritos y mantenerte al tanto de sus Twitters y otras noticias."
       radio_text: "Nuestro motor de recomendaci\xC3\xB3n crea radios hechas espec\xC3\xADficamente a tu medida con todos tus artistas favoritos."
       follow_title: Sigue a tus artistas favoritos
-    send: "Reg\xC3\xADstrate"
-    email_address: "Tu direcci\xC3\xB3n de E-mail"
     thats_it: Listo!
+    email_address: "Tu direcci\xC3\xB3n de E-mail"
+    send: "Reg\xC3\xADstrate"
+    associate_msn_login: "Ya casi terminamos. Por favor, ingresa tus datos de Cyloop as\xC3\xAD podemos relacionarlos con tu Live ID de MSN"
+    privacy_policy: "Pol\xC3\xADtica de Privacidad"
     your_password: "Tu contrase\xC3\xB1a"
     must_be_13_years_older: "Debes tener 13 a\xC3\xB1os o m\xC3\xA1s de edad para usar este website."
-    privacy_policy: "Pol\xC3\xADtica de Privacidad"
     terms_and_privacy: "Al checar el casillero, est\xC3\xA1s confirmando que sabes que Cyloop.com es un sitio web operado por Hoodiny Entertainment Group en los Estados Unidos, y est\xC3\xA1s otorgando tu consentimiento de transferir todos tus datos personales a los Estados Unidos, donde tus datos personales estar\xC3\xA1n sujetos a las leyes de los Estados Unidos y donde el nivel de protecci\xC3\xB3n de datos es diferente en comparaci\xC3\xB3n con el de tu pa\xC3\xADs. Tambi\xC3\xA9n confirmas estar de acuerdo con los {{terms_link}} y la {{privacy_link}} de Cyloop, la cual describe c\xC3\xB3mo ser\xC3\xA1n usados tus datos personales."
+    confirm_your_password: "Confirma tu contrase\xC3\xB1a"
     not_a_user: No eres usuario aun?
     email: 
       button: Comienza!
       title: Bienvenido! Gracias por registarte en Cyloop!
       subtitle: "Como miembro de Cyloop, mira lo que puedes hacer:"
-      closing_statement: "Cyloop | Qu\xC3\xA9 te gustar\xC3\xADa escuchar?"
       subject: Bienvenido! Gracias por registarte en Cyloop!
+      closing_statement: "Cyloop | Qu\xC3\xA9 te gustar\xC3\xADa escuchar?"
       terms_and_legal_text: "Copyright \xC2\xA9 2008-2009 Cyloop LLC. Todos los derechos reservados. Cyloop, Cyloop.com, el logo de Cyloop y todas las otras marcas <br>\r\n\
         de Cyloop aqu\xC3\xAD inclu\xC3\xADdas son marcas registradas de Hoodiny Entertainment Group y/o de sus compa\xC3\xB1\xC3\xADas afiliadas. <br> \r\n\
         Todas las dem\xC3\xA1s marcas aqu\xC3\xAD inclu\xC3\xADdas son propiedad de sus respectivos due\xC3\xB1os. La reproducci\xC3\xB3n en forma total <br> \r\n\
@@ -534,21 +526,67 @@ es_AR:
         Microsoft Corporation, One Microsoft Way, Redmond, WA 98052-6399, USA \xC2\xA9 2008-2009 Microsoft Corporation. <br>\r\n\
         Todos los derechos reservados."
     login_failed: "Email y/o contrase\xC3\xB1a inv\xC3\xA1lidos."
-    confirm_your_password: "Confirma tu contrase\xC3\xB1a"
-  radio: 
-    create_new_station: Crear Una Radio Nueva
+  date: 
+    order: 
+    - :month
+    - :day
+    - :year
+    formats: 
+      default: "%Y-%m-%d"
+      short: "%b %d"
+      long: "%B %d, %Y"
   information: 
-    location: "Ubicaci\xC3\xB3n"
     influences: Influencias
+    location: "Ubicaci\xC3\xB3n"
     genre: Estilo
+  radio: 
+    create_new_station: Crear una radio nueva
+  widget: 
+    station: 
+      name: "Nombre de la estaci\xC3\xB3n de radio"
+      edit: "Cambiar nombre de la estaci\xC3\xB3n de radio"
+      delete: "Borrar estaci\xC3\xB3n de radio"
+      would_delete: "\xC2\xBFQuer\xC3\xA9s borrar esta estaci\xC3\xB3n de radio?"
+    sign_in: "ingres\xC3\xA1 con tu Live ID de Windows"
+    checkout_today_polular_stations: "Estas son las radios m\xC3\xA1s populares del d\xC3\xADa"
+    take_a_moment: "Tomate unos segundos para activar tu cuenta de MSN M\xC3\xBAsica"
+    registration: 
+      you_are: Sos...
+    activate_your_account: "Activ\xC3\xA1 tu cuenta de MSN M\xC3\xBAsica"
+    create_new_station: Crear una radio nueva
+    now_playing: Tocando ahora
+    home: 
+      create_your_own_personalized_radio_station: "Cre\xC3\xA1 tu propia radio personalizada"
+      create_radio: Crear radio
+    still_dont_have: "\xC2\xBFNo ten\xC3\xA9s una cuenta de MSN M\xC3\xBAsica a\xC3\xBAn?"
+  block: 
+    confirmation: 
+      are_you_sure: "\xC2\xBFConfirmas que quieres cancelar tu cuenta?"
+      title: Lamentamos que te vayas de Cyloop.
+      body: "La cancelaci\xC3\xB3n de tu cuenta de Cyloop eliminar\xC3\xA1 en forma permanente toda la informaci\xC3\xB3n de tu perfil, incluyendo tus fotos, canales de actividad y tu red personal de seguidores. Esta informaci\xC3\xB3n no podr\xC3\xA1 ser recuperada una vez removida."
+      keep_account: No, Conservar Mi Cuenta
+      cancel_account: "S\xC3\xAD, Cancelar Mi Cuenta"
+    blockee_id: Usuario
+    feedback: 
+      label: Feedback
+      title: "\xC2\xBFFue algo que dijimos? Snif. :("
+      body: "Lamentamos que hayas decidido dejar el servicio Cyloop. Nos ser\xC3\xADa de mucha utlidad si nos pudieras dejar saber las razones de tu pedido.\r\n\
+        Te esperamos para que en cualquier momento puedas volver a utilizar el servicio cuando quieras. Muchas gracias!"
+      send: Enviar
+      no_thanks: No Gracias
+    email: 
+      title: Hola {{name}}
+      body: Tu perfil de Cyloop ha sido removido.
+      subject: Perfil Removido
+      goodbye: Gracias
   support: 
     array: 
       last_word_connector: ", y"
       words_connector: ","
       two_words_connector: y
   followings: 
-    awaiting_approval: "Est\xC3\xA1s a la espera de una aprobaci\xC3\xB3n de este usuario."
     has_blocked_you: Este usuario te tiene bloqueado/a. No puedes seguirlo/a!
+    awaiting_approval: "Est\xC3\xA1s a la espera de una aprobaci\xC3\xB3n de este usuario."
     create_success: "Est\xC3\xA1s siguiendo a {{name}}"
     followers: Seguidores
     create_error: 
@@ -568,33 +606,54 @@ es_AR:
         Visita el perfil de {{follower}} aqu\xC3\xAD:\r\n\
         {{link}}"
     following: Siguiendo
-  block: 
+  playlist: 
+    edit_your_playlist: Editar tu playlist
+  contact_us: 
     confirmation: 
-      are_you_sure: "\xC2\xBFConfirmas que quieres cancelar tu cuenta?"
-      title: Lamentamos que te vayas de Cyloop.
-      body: "La cancelaci\xC3\xB3n de tu cuenta de Cyloop eliminar\xC3\xA1 en forma permanente toda la informaci\xC3\xB3n de tu perfil, incluyendo tus fotos, canales de actividad y tu red personal de seguidores. Esta informaci\xC3\xB3n no podr\xC3\xA1 ser recuperada una vez removida."
-      cancel_account: "S\xC3\xAD, Cancelar Mi Cuenta"
-      keep_account: No, Conservar Mi Cuenta
-    blockee_id: Usuario
-    feedback: 
-      label: Feedback
-      title: "\xC2\xBFFue algo que dijimos? Snif. :("
-      body: "Lamentamos que hayas decidido dejar el servicio Cyloop. Nos ser\xC3\xADa de mucha utlidad si nos pudieras dejar saber las razones de tu pedido.\r\n\
-        Te esperamos para que en cualquier momento puedas volver a utilizar el servicio cuando quieras. Muchas gracias!"
-      send: Enviar
-      no_thanks: No Gracias
-    email: 
-      title: Hola {{name}}
-      body: Tu perfil de Cyloop ha sido removido.
-      subject: Perfil Removido
-      goodbye: Gracias
+      thanks: Gracias por dejar su mensaje. Le responderemos lo antes posible.
+      title: "Confirmaci\xC3\xB3n"
+      body: Su formulario ha sido enviado
+    form: 
+      feedback_default: "Por favor ser lo m\xC3\xA1s detallado posible"
+      category_error: Reporte de Errores
+      faq: Preguntas Frecuentes
+      category_business: "Informaci\xC3\xB3n sobre Negocios Generales o Relaciones P\xC3\xBAblicas"
+      category_security: Mi Seguridad
+      category: "Categor\xC3\xADa"
+      submit: Enviar mensaje
+      country: !binary |
+        UGHDrXM=
+
+      support_form: "Formulario de Soporte T\xC3\xA9cnico"
+      welcome: "Bienvenido a la secci\xC3\xB3n de Soporte T\xC3\xA9cnico de Cyloop"
+      category_account: Mi Cuenta
+      business_inquires: "Informaci\xC3\xB3n sobre Negocios Generales?"
+      business_inquires_text: Por Favor Contactar
+      os: Sistema Operativo
+      support_form_text: "Si tienes alguna pregunta o problema que no has podido resolver con la informaci\xC3\xB3n incluida en esta p\xC3\xA1gina o el link, o quieres dejar alg\xC3\xBAn comentario, puedes enviarnos un mensaje completando este formulario."
+      header: "Queremos ayudarte a conseguir las respuestas a tus preguntas lo m\xC3\xA1s r\xC3\xA1pido posible para que puedas seguir disfrutando de las innovadoras funciones que te ofrece Cyloop"
+      category_other_features: Otras  Funciones en Cyloop
+      privacy_text: "Ent\xC3\xA9rate como maneja Cyloop temas como Spam, Imitaci\xC3\xB3n, Marcas,  Derechos de reproducci\xC3\xB3n y otras violaciones legales."
+      resources: Recursos
+      new_cyloop: Nuevo en Cyloop?
+      information: "Por favor incluir toda la informaci\xC3\xB3n posible"
+      category_music: "Sobre la M\xC3\xBAsica"
+      category_photos: Sobre las Fotos
+      feedback: Mensaje
+      category_other: Otro
+      privacy: Privacidad y Seguridad
+      new_cyloop_text: "Para encontrar las respuestas a las preguntas m\xC3\xA1s comunes sigue nuestro link. Si no encuentras la respuesta a tu pregunta, por favor utiliza el formulario en el siguiente link para comunicarte con nosotros"
+      category_feedback: "Sugerencias, Ideas, "
+      browser: Navegador
+      category_profile: Mi  Perfil
+      email: "Direcci\xC3\xB3n de correo electr\xC3\xB3nico"
   cancellation: 
     confirmation: 
       are_you_sure: "\xC2\xBFConfirmas que quieres cancelar tu cuenta?"
       title: Lamentamos que te vayas de Cyloop.
       body: "La cancelaci\xC3\xB3n de tu cuenta de Cyloop eliminar\xC3\xA1 en forma permanente toda la informaci\xC3\xB3n de tu perfil, incluyendo tus fotos, canales de actividad y tu red personal de seguidores. Esta informaci\xC3\xB3n no podr\xC3\xA1 ser recuperada una vez removida."
-      cancel_account: "S\xC3\xAD, Cancelar Mi Cuenta"
       keep_account: No, Conservar Mi Cuenta
+      cancel_account: "S\xC3\xAD, Cancelar Mi Cuenta"
     feedback: 
       label: Feedback
       title: "\xC2\xBFFue algo que dijimos? Snif. :("
@@ -607,66 +666,89 @@ es_AR:
       body: Tu perfil de Cyloop ha sido removido.
       subject: Perfil Removido
       goodbye: Gracias
+  settings: 
+    background_not_saved_image_too_large: "Las im\xC3\xA1genes de fondo no pueden superar el tama\xC3\xB1o de 1MB"
+    page_title: Controla tu Cyloop
+    private_profile: 
+      description: "Descripci\xC3\xB3n de qu\xC3\xA9 hace la funci\xC3\xB3n \"Mantener Perfil Privado?\""
+    cancel_my_account: Cancelar Mi Cuenta
+    customizations: 
+      header_background: Fondo del Encabezado
+      link_font_color: "Color para Tipograf\xC3\xADas de Enlaces"
+      main_background_color: Color del Fondo Principal
+      main_font_color: "Color de la Tipograf\xC3\xADa Principal"
+      reset_to_default: "El dise\xC3\xB1o de tu perfil ha vuelto a su formato original."
+      remove_background_image: Remover Imagen
+      restore_defaults: Volver al original
+      colors: Colores
+      browse: Navegar...
+    not_saved: "Tus par\xC3\xA1metros no fueron guardados correctamente."
+    notifications: ""
+    saved: "Tus par\xC3\xA1metros han sido guardados."
+    tabs: 
+      account: Cuenta
+      notifications: Notificaciones
+      password: "Contrase\xC3\xB1a"
   site: 
     profile_not_found: Perfil No Encontrado
     faq: "Preguntas M\xC3\xA1s Frecuentes"
     private_profile: "Pol\xC3\xADtica de Privacidad"
     terms_and_conditions: "T\xC3\xA9rminos y condiciones"
     support: Soporte
+    about_cyloop: Sobre Cyloop
     profile_not_available: Perfil No Disponible
     feedback: Feedback
-    about_cyloop: Sobre Cyloop
     safety_tips: Consejos de Seguridad
     about_hoodiny: Sobre Hoodiny
-    profile_not_available_sorry: "Lamentablemente este perfil no est\xC3\xA1 disponible en tu pa\xC3\xADs"
     privacy_policy: Privacidad
+    profile_not_available_sorry: "Lamentablemente este perfil no est\xC3\xA1 disponible en tu pa\xC3\xADs"
     profile_not_found_sorry: "Perd\xC3\xB3n, pero no hemos podido encontrar el perfil de {{profile}}."
     sample_flag_description: "Desafortunadamente este contenido tiene restricciones para el territorio desde el cual intentas esucharlo, por lo que no toca en su duraci\xC3\xB3n completa. Puedes escuchar canciones completas de este artista u otros parecidos en la secci\xC3\xB3n de Radio."
   feedback: 
     submit: "Env\xC3\xADa Tu Sugerencias"
+    title: Sugerencias
     country: !binary |
       UGHDrXM=
 
-    title: Sugerencias
     os: Sistema Operativo
     feedback: Sugerencias
     browser: Navegador
     email: Tu Email
   basics: 
-    followees_of: Seguidor de
-    plays: Reproducciones
-    albums_by: Albumes por
     play: Reproducir
-    sorry: "Perd\xC3\xB3n!"
-    artist: Artista
     station: Radio
-    charts_for: Charts de
+    followees_of: Seguidor de
     city: Ciudad
+    albums_by: Albumes por
+    plays: Reproducciones
+    artist: Artista
     comment: Comentario
+    sorry: "Perd\xC3\xB3n!"
+    charts_for: Charts de
+    songs: Canciones
+    person: Pesona
     by: por
+    created_at: hace {{when}}
     listens: Escucha
     artists: Artistas
     my: Mi
-    songs: Canciones
-    "no": "No"
     previous: Anterior
-    person: Pesona
-    created_at: hace {{when}}
-    includes: Incluye
-    me: mi
-    followwes: ""
+    "no": "No"
+    created_on: Creada el
+    stations: Radios
     country: !binary |
       UGHDrXM=
 
-    created_on: Creada el
-    stations: Radios
+    me: mi
+    followwes: ""
     comments: Comentarios
+    includes: Incluye
     welcome: Bienvenido/a
-    my_plural: Mis
     playlists: Playlists
+    my_plural: Mis
+    time: Hora
     albums: Albumes
     done: Listo
-    time: Hora
     created_by: Creada por
     playlists_created_by: Playlists Creados por
     in: en
@@ -677,15 +759,15 @@ es_AR:
     "yes": Si
     played_by: Escuchada por
     stations_created_by: Radios creadas por
+    people: Gente
+    service_unavailable: "Este servicio no est\xC3\xA1 disponible en este momento, por favor regresa m\xC3\xA1s tarde."
     next: Siguiente
     follow_requests_for: Pedidos de Seguidores de
-    service_unavailable: "Este servicio no est\xC3\xA1 disponible en este momento, por favor regresa m\xC3\xA1s tarde."
-    people: Gente
+    follow_requests: Pedidos de Seguidores
     contains: Incluye
     message: Mensaje
-    follow_requests: Pedidos de Seguidores
-    unknown: Desconocido
     song: "Canci\xC3\xB3n"
+    unknown: Desconocido
     chart: Chart
     more: !binary |
       TcOhcw==
@@ -708,104 +790,42 @@ es_AR:
         {{reset_link}}\r\n\
         \r\n\
         Consejo: crea una contrase\xC3\xB1a que contenga una mezcla de caracteres tanto de letras como de n\xC3\xBAmeros, para que sea m\xC3\xA1s segura."
-  playlist: 
-    edit_your_playlist: Editar tu playlist
-  settings: 
-    background_not_saved_image_too_large: "Las im\xC3\xA1genes de fondo no pueden superar el tama\xC3\xB1o de 1MB"
-    page_title: Controla tu Cyloop
-    cancel_my_account: Cancelar Mi Cuenta
-    customizations: 
-      header_background: Fondo del Encabezado
-      main_background_color: Color del Fondo Principal
-      link_font_color: "Color para Tipograf\xC3\xADas de Enlaces"
-      main_font_color: "Color de la Tipograf\xC3\xADa Principal"
-      reset_to_default: "El dise\xC3\xB1o de tu perfil ha vuelto a su formato original."
-      remove_background_image: Remover Imagen
-      restore_defaults: Volver al original
-      colors: Colores
-      browse: Navegar...
-    private_profile: 
-      description: "Descripci\xC3\xB3n de qu\xC3\xA9 hace la funci\xC3\xB3n \"Mantener Perfil Privado?\""
-    not_saved: "Tus par\xC3\xA1metros no fueron guardados correctamente."
-    notifications: ""
-    saved: "Tus par\xC3\xA1metros han sido guardados."
-    tabs: 
-      account: Cuenta
-      notifications: Notificaciones
-      password: "Contrase\xC3\xB1a"
   footer: 
     faq: FAQ
     help: Ayuda
     terms_and_conditions: "T\xC3\xA9rminos y Condiciones"
     support: Soporte
-    about_us: Sobre Nosotros
-    feedback: Sugerencias
     about_cyloop: Sobre Cyloop
+    feedback: Sugerencias
     safety_tips: Consejos de Seguridad
+    about_us: Sobre Nosotros
     about_hoodiny: Sobre Hoodiny
     privacy_policy: "Pol\xC3\xADtica de Privacidad"
-  contact_us: 
-    confirmation: 
-      thanks: Gracias por dejar su mensaje. Le responderemos lo antes posible.
-      title: "Confirmaci\xC3\xB3n"
-      body: Su formulario ha sido enviado
-    form: 
-      feedback_default: "Por favor ser lo m\xC3\xA1s detallado posible"
-      faq: Preguntas Frecuentes
-      category_error: Reporte de Errores
-      category_business: "Informaci\xC3\xB3n sobre Negocios Generales o Relaciones P\xC3\xBAblicas"
-      category_security: Mi Seguridad
-      category: "Categor\xC3\xADa"
-      support_form: "Formulario de Soporte T\xC3\xA9cnico"
-      submit: Enviar mensaje
-      country: !binary |
-        UGHDrXM=
-
-      welcome: "Bienvenido a la secci\xC3\xB3n de Soporte T\xC3\xA9cnico de Cyloop"
-      category_account: Mi Cuenta
-      support_form_text: "Si tienes alguna pregunta o problema que no has podido resolver con la informaci\xC3\xB3n incluida en esta p\xC3\xA1gina o el link, o quieres dejar alg\xC3\xBAn comentario, puedes enviarnos un mensaje completando este formulario."
-      header: "Queremos ayudarte a conseguir las respuestas a tus preguntas lo m\xC3\xA1s r\xC3\xA1pido posible para que puedas seguir disfrutando de las innovadoras funciones que te ofrece Cyloop"
-      category_other_features: Otras  Funciones en Cyloop
-      privacy_text: "Ent\xC3\xA9rate como maneja Cyloop temas como Spam, Imitaci\xC3\xB3n, Marcas,  Derechos de reproducci\xC3\xB3n y otras violaciones legales."
-      os: Sistema Operativo
-      business_inquires: "Informaci\xC3\xB3n sobre Negocios Generales?"
-      business_inquires_text: Por Favor Contactar
-      new_cyloop: Nuevo en Cyloop?
-      resources: Recursos
-      information: "Por favor incluir toda la informaci\xC3\xB3n posible"
-      category_photos: Sobre las Fotos
-      category_music: "Sobre la M\xC3\xBAsica"
-      feedback: Mensaje
-      category_other: Otro
-      new_cyloop_text: "Para encontrar las respuestas a las preguntas m\xC3\xA1s comunes sigue nuestro link. Si no encuentras la respuesta a tu pregunta, por favor utiliza el formulario en el siguiente link para comunicarte con nosotros"
-      privacy: Privacidad y Seguridad
-      category_feedback: "Sugerencias, Ideas, "
-      browser: Navegador
-      email: "Direcci\xC3\xB3n de correo electr\xC3\xB3nico"
-      category_profile: Mi  Perfil
+  alert: 
+    blocking: ""
   users: 
     new: 
       step_1_vignette_get_music_recommendations: "Genera recomendaciones de m\xC3\xBAsica elegidas especialmente para ti"
+      step_1_vignette_save_radio_stations: "Guarda tus estaciones de radio personalizadas y comp\xC3\xA1rtelas con tus amigos"
       step_3_title: "CH\xC3\x89CATE QUI\xC3\x89NES EST\xC3\x81N EN CYLOOP!"
       step_1_title: Registrarse
       step_2_only: Paso 2
-      step_1_vignette_save_radio_stations: "Guarda tus estaciones de radio personalizadas y comp\xC3\xA1rtelas con tus amigos"
       step_2_title: "Paso 2: Informaci\xC3\xB3n Adicional"
       step_1_vignette_start_collecting_songs: "Comienza a coleccionar canciones  y a crear tus propios playlists de m\xC3\xBAsica"
       step_2_vignette_with_more_info: "Con m\xC3\xA1s datos tuyos, Cyloop puede ofrecerte mejor calidad de recomendaciones de m\xC3\xBAsica elegida especialmente para ti."
       step_3_description: "Comienza a seguir a tus artistas favoritos. Probablemente ya eres fan de algunos de \xC3\xA9stos.<br />Selecciona todos los nombres que te gustar\xC3\xADa comenzar a seguir.\r\n"
       step_2_vignette_header: "Para qu\xC3\xA9 es \xC3\xA9sto?"
       step_1_description: Unete GRATIS a Cyloop de manera muy simple
-      step_2_description: "Personaliza aun m\xC3\xA1s tu experiencia en Cyloop, completando unos datos m\xC3\xA1s sobre ti"
       step_1_vignette_header: "Por qu\xC3\xA9 registrarse?"
       step_1_slug_explanation: "Esta ser\xC3\xA1 la direcci\xC3\xB3n de la p\xC3\xA1gina de tu perfil de Cyloop en Internet."
+      step_2_description: "Personaliza aun m\xC3\xA1s tu experiencia en Cyloop, completando unos datos m\xC3\xA1s sobre ti"
       step_2_vignette_let_cyloop_learn: "Cyloop aprende qu\xC3\xA9 tipo de m\xC3\xBAsica es la que m\xC3\xA1s te interesa"
       step_2_vignette_songs_align_identity: "Al crear una estaci\xC3\xB3n de radio personalizada, las canciones estar\xC3\xA1n mejor elegidas acorde con tu identidad"
     stats: 
       followers: Seguidores
       visits: Visitas
-      following: Siguiendo
       song_plays: Reproducciones
+      following: Siguiendo
   reset: 
     insert_valid_email: Por favor, ingresar un e-mail valido
     message_delivered: "Te hemos enviado instrucciones para reconfigurar tu contrase\xC3\xB1a correspondiente con tu direcci\xC3\xB3n de email. En breve estar\xC3\xA1s recibiendo un correo con estas instrucciones."
@@ -822,105 +842,6 @@ es_AR:
         {{password}}\r\n\
         \r\n\
         Consejo: crea una contrase\xC3\xB1a que contenga una mezcla de caracteres tanto de letras como de n\xC3\xBAmeros, para que sea m\xC3\xA1s segura."
-  alert: 
-    blocking: ""
-  navigation: 
-    search_web: Buscar en Bing
-    search_songs: Buscar Canciones
-    search_artists: Buscar Artistas
-    dashboard: Dashboard
-    radio: Radio
-    search_people: Buscar Gente
-    search_users: Buscar Gente
-    search_albums: Buscar Albumes
-    homepage: Inicio
-    discover: Descubrir
-  sessions: 
-    new: 
-      register_link_msn: "Si no tienes una cuenta de Cyloop, contin\xC3\xBAa y reg\xC3\xADstrate para tenerla enlazada con tu ID de MSN"
-      sign_in: Log in
-      register_cyloop: Registrarse En Cyloop
-      complete_registration: "Completar Registraci\xC3\xB3n"
-      remember_me: Recordarme
-      listener_account: Cuenta de Usuario
-      sign_up_for_free: "Reg\xC3\xADstrate Gratis"
-      not_registered: "No est\xC3\xA1s registrado aun?"
-      sign_up_tag_line: "Sigue a tus artistas favoritos y descubre m\xC3\xBAsica a trav\xC3\xA9s de amigos."
-      recover_cyloop_password: "Recuperar Contrase\xC3\xB1a"
-    destroy: 
-      sign_out: Log out
-  home: 
-    create_your_own_personalized_radio_station: Crea Tu Propia Radio Personalizada
-    create_radio: Crear Radio
-    type_artist_name: Escribe el nombre de un artista
-    top_stations: Top Radios
-    top_songs: Top Canciones
-    recommended_artists: Artistas Recomendados
-  user: 
-    forgot_message: Cyloop te enviara instrucciones al email asociado con tu cuenta. Por favor,  entre su email.
-    background_repeats: 
-      horizontal_repeat: "Repetici\xC3\xB3n Horizontal"
-      full_repeat: "Repetici\xC3\xB3n Completa"
-      no_repeat: No Repetir
-      vertical_repeat: "Repetici\xC3\xB3n Vertical"
-    name: Nombre
-    receives_following_notifications: Alertarme cuando alguien comienza a seguirme
-    slug: Elige tu Nombre de Perfil
-    background_align: Alineamiento del Fondo
-    city_name: Ciudad
-    marketing_opt_out: "Por favor no me env\xC3\xADen emails de parte de Cyloop o sus sitios relacionados."
-    color_links: Color del Enlace
-    background_fixed_false: "No"
-    background_fixed_true: Si
-    terms_of_use: "T\xC3\xA9rminos de uso"
-    confirmation: 
-      click_here: "clic aqu\xC3\xAD"
-      email_resend_failed: "El e-mail de confirmaci\xC3\xB3n no pudo ser reenviado. Por favor reintentar m\xC3\xA1s tarde."
-      still_pending: "Tu cuenta no ha sido confirmada aun. Por favor busca en tus emails, y sigue las instrucciones para confirmaci\xC3\xB3n, o {{click_here}} para reenviar tu enlace de confirmaci\xC3\xB3n."
-      email_resent: "Tu e-mail de confirmaci\xC3\xB3n ha sido enviado."
-    cyloop_password: "Contrase\xC3\xB1a"
-    twitter_username: Nombre de Usuario en Twitter
-    forgot_your_password: "Se te olvido tu contrase\xC3\xB1a?"
-    private_profile: Mantener tu perfil privado?
-    terms_of_use_instructions: "Al registrarte, aceptas los {{link}} y confirmas que tienes por lo menos 13 a\xC3\xB1os."
-    reset_password: "Cambio de Contrase\xC3\xB1a"
-    background: Imagen de Fondo
-    color_bg: Color del fondo
-    current_password: "Contrase\xC3\xB1a Actual"
-    background_alignments: 
-      left: Izquierda
-      upper_right: Superior Derecha
-      lower_right: Inferior Derecha
-      center: Centro
-      upper_left: Superior Izquierda
-      lower_left: Inferior Izquierda
-      right: Derecha
-      upper_center: Superior Centro
-      lower_center: Inferior Centro
-    password_confirmation: "Confirmar Contrase\xC3\xB1a"
-    cyloop_email: Email de Cyloop
-    female: Mujer
-    terms_and_conditions: "t\xC3\xA9rminos y condiciones"
-    websites: Sitios
-    remove_avatar: Eliminar Imagen
-    color_main_font: "Color de la Tipograf\xC3\xADa Principal"
-    short_bio: "Breve rese\xC3\xB1a"
-    negative_captcha: No completar este campo
-    background_fixed: Fondo Ajustado
-    background_repeat: "Repetici\xC3\xB3n del Fondo"
-    gender: Sexo
-    avatar: Imagen
-    privacy_policy_instructions: "Nuestra {{link}} existe para protegerte! Por favor l\xC3\xA9ela y confirma que est\xC3\xA1s de acuerdo con sus t\xC3\xA9rminos."
-    new_password: "Nueva Contrase\xC3\xB1a"
-    male: Hombre
-    safety_tips: Consejos de Seguridad
-    time_zone: Franja  Horaria
-    saved: "Tus par\xC3\xA1metos han sido guardados."
-    password: "Contrase\xC3\xB1a"
-    color_header_bg: Color del Encabezado
-    privacy_policy: "Pol\xC3\xADtica de  Privacidad"
-    born_on: Fecha de nacimiento
-    email: Correo Electronico
   datetime: 
     prompts: 
       minute: Minuto
@@ -945,6 +866,9 @@ es_AR:
       x_seconds: 
         one: 1 segundo
         other: "{{count}} segundos"
+      about_x_hours: 
+        one: aproximadamente 1 hora
+        other: aproximadamente {{count}} horas
       less_than_x_seconds: 
         one: menos de 1 segundo
         other: menos de {{count}} segundos
@@ -954,9 +878,6 @@ es_AR:
       x_minutes: 
         one: 1 minuto
         other: "{{count}} minutos"
-      about_x_hours: 
-        one: aproximadamente 1 hora
-        other: aproximadamente {{count}} horas
       about_x_years: 
         one: "aproximadamente 1 a\xC3\xB1o"
         other: "aproximadamente {{count}} a\xC3\xB1os"
@@ -967,6 +888,103 @@ es_AR:
         one: "m\xC3\xA1s de 1 a\xC3\xB1o"
         other: "m\xC3\xA1s de {{count}} a\xC3\xB1os"
       half_a_minute: medio minuto
+  user: 
+    receives_following_notifications: Alertarme cuando alguien comienza a seguirme
+    city_name: Ciudad
+    name: Nombre
+    marketing_opt_out: "Por favor no me env\xC3\xADen emails de parte de Cyloop o sus sitios relacionados."
+    color_links: Color del Enlace
+    background_fixed_false: "No"
+    forgot_message: Cyloop te enviara instrucciones al email asociado con tu cuenta. Por favor,  entre su email.
+    background_align: Alineamiento del Fondo
+    background_repeats: 
+      full_repeat: "Repetici\xC3\xB3n Completa"
+      horizontal_repeat: "Repetici\xC3\xB3n Horizontal"
+      no_repeat: No Repetir
+      vertical_repeat: "Repetici\xC3\xB3n Vertical"
+    slug: Elige tu Nombre de Perfil
+    terms_of_use: "T\xC3\xA9rminos de uso"
+    confirmation: 
+      click_here: "clic aqu\xC3\xAD"
+      email_resend_failed: "El e-mail de confirmaci\xC3\xB3n no pudo ser reenviado. Por favor reintentar m\xC3\xA1s tarde."
+      still_pending: "Tu cuenta no ha sido confirmada aun. Por favor busca en tus emails, y sigue las instrucciones para confirmaci\xC3\xB3n, o {{click_here}} para reenviar tu enlace de confirmaci\xC3\xB3n."
+      email_resent: "Tu e-mail de confirmaci\xC3\xB3n ha sido enviado."
+    background_fixed_true: Si
+    forgot_your_password: "Se te olvido tu contrase\xC3\xB1a?"
+    private_profile: Mantener tu perfil privado?
+    terms_of_use_instructions: "Al registrarte, aceptas los {{link}} y confirmas que tienes por lo menos 13 a\xC3\xB1os."
+    reset_password: "Cambio de Contrase\xC3\xB1a"
+    twitter_username: Nombre de Usuario en Twitter
+    cyloop_password: "Contrase\xC3\xB1a"
+    background: Imagen de Fondo
+    cyloop_email: Email de Cyloop
+    color_bg: Color del fondo
+    current_password: "Contrase\xC3\xB1a Actual"
+    female: Mujer
+    background_alignments: 
+      upper_right: Superior Derecha
+      left: Izquierda
+      center: Centro
+      lower_right: Inferior Derecha
+      upper_left: Superior Izquierda
+      lower_left: Inferior Izquierda
+      right: Derecha
+      upper_center: Superior Centro
+      lower_center: Inferior Centro
+    password_confirmation: "Confirmar Contrase\xC3\xB1a"
+    terms_and_conditions: "t\xC3\xA9rminos y condiciones"
+    websites: Sitios
+    remove_avatar: Eliminar Imagen
+    background_repeat: "Repetici\xC3\xB3n del Fondo"
+    gender: Sexo
+    avatar: Imagen
+    color_main_font: "Color de la Tipograf\xC3\xADa Principal"
+    short_bio: "Breve rese\xC3\xB1a"
+    negative_captcha: No completar este campo
+    privacy_policy_instructions: "Nuestra {{link}} existe para protegerte! Por favor l\xC3\xA9ela y confirma que est\xC3\xA1s de acuerdo con sus t\xC3\xA9rminos."
+    background_fixed: Fondo Ajustado
+    new_password: "Nueva Contrase\xC3\xB1a"
+    male: Hombre
+    safety_tips: Consejos de Seguridad
+    time_zone: Franja  Horaria
+    privacy_policy: "Pol\xC3\xADtica de  Privacidad"
+    password: "Contrase\xC3\xB1a"
+    color_header_bg: Color del Encabezado
+    saved: "Tus par\xC3\xA1metos han sido guardados."
+    born_on: Fecha de nacimiento
+    email: Correo Electronico
+  navigation: 
+    search_web: Buscar en Bing
+    search_songs: Buscar Canciones
+    search_artists: Buscar Artistas
+    dashboard: Dashboard
+    radio: Radio
+    search_people: Buscar Gente
+    search_users: Buscar Gente
+    homepage: Inicio
+    search_albums: Buscar Albumes
+    discover: Descubrir
+  sessions: 
+    new: 
+      complete_registration: "Completar Registraci\xC3\xB3n"
+      sign_in: Log in
+      register_link_msn: "Si no tienes una cuenta de Cyloop, contin\xC3\xBAa y reg\xC3\xADstrate para tenerla enlazada con tu ID de MSN"
+      register_cyloop: Registrarse En Cyloop
+      remember_me: Recordarme
+      listener_account: Cuenta de Usuario
+      sign_up_for_free: "Reg\xC3\xADstrate Gratis"
+      sign_up_tag_line: "Sigue a tus artistas favoritos y descubre m\xC3\xBAsica a trav\xC3\xA9s de amigos."
+      not_registered: "No est\xC3\xA1s registrado aun?"
+      recover_cyloop_password: "Recuperar Contrase\xC3\xB1a"
+    destroy: 
+      sign_out: Log out
+  home: 
+    create_your_own_personalized_radio_station: "Cre\xC3\xA1 tu propia radio personalizada"
+    create_radio: Crear radio
+    type_artist_name: Escribe el nombre de un artista
+    top_stations: Top Radios
+    top_songs: Top Canciones
+    recommended_artists: Artistas Recomendados
   search: 
     search_title: "B\xC3\xBAsqueda"
     search_results_for: Buscar resultados para
