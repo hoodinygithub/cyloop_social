@@ -1081,3 +1081,8 @@ en:
     activated_success: Campaign successfully activated
     deactivated_success: Campaign successfully deactivated
     start_date_gt_end_date: Start date must be less than end date
+  main:
+    navigation:
+      home: Home
+      mixes: Mixes
+      stations: Stations

@@ -876,4 +876,8 @@ en_US:
   following:
     approval: "{{name}} will now receive your updates"
     denial: "{{name}} will not be allowed to receive your updates"
-
+  main:
+    navigation:
+      home: Home
+      mixes: Mixes
+      stations: Stations

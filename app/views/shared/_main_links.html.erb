@@ -1,5 +1,5 @@
 <ul id="main_links">
-    <li><%= link_to 'Home', root_url, :class => "fn org url", :rel => "home", :title => "Cyloop" %></li>
-    <li><a href="#">Mixes</a></li>
-    <li><a href="#">Radio</a></li>
+    <li><%= link_to "#{t('main.navigation.home')}",     root_url, :class => "fn org url", :rel => "home", :title => "Cyloop" %></li>
+    <li><%= link_to "#{t('main.navigation.mixes')}",    "#",      :class => "fn org url", :rel => "home", :title => "Mixes" %></li>
+    <li><%= link_to "#{t('main.navigation.stations')}", stations_url,      :class => "fn org url", :rel => "home", :title => "Radios" %></li>
 </ul><!--/end main_links -->
