@@ -1,4 +1,13 @@
 module ApplicationHelper
+  
+  def main_content(content)
+    if params[:controller] == 'pages' and params[:action] != 'index'
+      content_tag(:div, content_tag(:div, content_tag(:div, content, :id => 'pages_internal'), :id => 'internal_content'), :id => 'pages')
+    else
+      content
+    end
+  end
+  
   def blue_button(button_label, options = {})
     options.merge!({
       :class => "#{options[:class]} blue_button",

@@ -10,7 +10,9 @@
   <body>
     <div id="container">
       <%= render 'shared/header' %>
-      <%= yield %>
+      
+      <%= main_content(yield) %>
+      
       <% unless site_includes(:cyloop) %>
         <%= render 'shared/footer' %>
       <% end %>

@@ -1,11 +1,11 @@
 <div id="footer">
     <div class="footer_left">
-        <%= link_to 'About Hoodiny', '#'%>
-        <%= link_to 'About Cyloop', '#'%>
-        <%= link_to 'Terms &amp; Conditions', '#'%>
-        <%= link_to 'Privacy Policy', '#'%>
-        <%= link_to 'F.A.Q', '#'%>
-        <%= link_to 'Contact Us', '#'%>
+        <%= link_to t('footer.about_hoodiny'), "http://www.hoodiny.com", :target => '_blank' %>
+        <%= link_to t('footer.about_cyloop'), about_url %>
+        <%= link_to t('footer.terms_and_conditions'), terms_and_conditions_url %>
+        <%= link_to t('footer.privacy_policy'), privacy_policy_url %>
+        <%= link_to t('footer.safety_tips'), safety_tips_url %>
+        <%= link_to t('footer.feedback'), contact_us_url %>
     </div>
     <div class="footer_right">
         <%= link_to(image_tag('cyloop.gif'), '#') %>

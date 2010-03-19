@@ -1,6 +1,5 @@
 class PagesController < ApplicationController
   caches_page :home, :if => Proc.new { |c| !c.request.format.js? }
-  #caches_page :about, :faq, :privacy_policy, :safety_tips, :terms_and_conditions
   layout 'base'
   before_filter :authenticate, :only => [:x46b]
 
