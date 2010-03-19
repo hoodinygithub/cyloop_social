@@ -1308,6 +1308,10 @@ img.avatar_four_thumbs {
   width: 35px;
   height: 35px;
 }
+img.avatar_four_thumbs_big {
+  width: 73px;
+  height: 73px;
+}
 
 .sorting {
     margin-bottom: 10px;
@@ -2100,6 +2104,8 @@ img.avatar_four_thumbs {
 .four_thubms_big img {
     float: left;
     margin: 0px 2px 2px 0px;
+    width: 73px
+    height: 73px
 }
 
 .big_round_box {

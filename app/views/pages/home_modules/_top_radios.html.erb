@@ -6,7 +6,7 @@
       <% if radio.station.artist_id.nil? %>
         <%= avatar_for(nil, :new_medium) %>
       <% else %>
-        <%= link_to avatar_for(radio.station.artist, :new_medium), radio.station.artist %>
+        <%= four_thumbs_to(radio.station, {:type => :big}) %>
       <% end %>
 
       <div class="overlay">
@@ -19,7 +19,7 @@
           
           <span>
             <span class="blue"><%= radio.station.name %></span><br/>
-            <%= l(radio.station.created_at) %>
+            <%= l(radio.station.created_at, :format => "default") %>
           </span>
           <br class="clearer" />
 
@@ -30,7 +30,7 @@
         <div class="visible">
           <%= link_to_function image_tag("play_button.png", :class => "play_button", :alt => "Play"), "createStation(\"#{radio.station.name}\")" %>
 
-          <%= link_to radio.station.name, artist_path(radio.station.artist) %>
+          <%= link_to truncate(radio.station.name,15), artist_path(radio.station.artist), :title => radio.station.name %><br/>
           <%= link_to_function t("home.station"), "createStation(\"#{radio.station.name}\")" %>
         </div>
       </div><!--/end overlay -->
