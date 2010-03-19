@@ -404,15 +404,59 @@ es_MX:
     user_following: "{{user}} + Siguiendo"
   custom_profiles: 
     sony_disclaimer: El logo y s&#237;mbolo de Walkman&#8482; son marcas registrados de Sony Corporation.
-  date: 
-    order: 
+  date:
+    month_names:
+    -
+    - January
+    - February
+    - March
+    - April
+    - May
+    - June
+    - July
+    - August
+    - September
+    - October
+    - November
+    - December
+    order:
     - :month
     - :day
     - :year
-    formats: 
+    abbr_day_names:
+    - Sun
+    - Mon
+    - Tue
+    - Wed
+    - Thu
+    - Fri
+    - Sat
+    formats:
       default: "%Y-%m-%d"
       short: "%b %d"
       long: "%B %d, %Y"
+    day_names:
+    - Sunday
+    - Monday
+    - Tuesday
+    - Wednesday
+    - Thursday
+    - Friday
+    - Saturday
+    abbr_month_names:
+    -
+    - Jan
+    - Feb
+    - Mar
+    - Apr
+    - May
+    - Jun
+    - Jul
+    - Aug
+    - Sep
+    - Oct
+    - Nov
+    - Dec
   meta: 
     title: "Cyloop | Qu\xC3\xA9 te gustar\xC3\xADa escuchar?"
     description: "Descubre m\xC3\xBAsica nueva y videos gratis de la biblioteca m\xC3\xA1s grande y completa de m\xC3\xBAsica y videos en Internet, sigue a tus amigos y lo que est\xC3\xA1n escuchando, y crea y comparte playlists y radios personalizadas de tus artistas favoritos."
