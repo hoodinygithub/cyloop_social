@@ -309,6 +309,11 @@ en:
       charts: Charts
       biography: Biography
       following: Following
+      account_settings: Account Settings
+      activity: Activity
+      subscriptions: Subscriptions
+      mixes: Mixes
+      reviews: Reviews
   stations:
     edit:
       edit_your_station: Edit Your Station

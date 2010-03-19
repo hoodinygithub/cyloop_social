@@ -1,15 +1,15 @@
 module DashboardsHelper
   def nav_links
     [
-      {:menu => :home,          :label => 'Home',             :url => my_dashboard_path },
-      {:menu => :mixes,         :label => 'Mixes',            :url => '#' },
-      {:menu => :stations,      :label => 'Stations',         :url => my_stations_path },
-      {:menu => :subscriptions, :label => 'Subscriptions',    :url => '#' },
-      {:menu => :reviews,       :label => 'Reviews',          :url => '#' },
-      {:menu => :activity,      :label => 'Activity',         :url => activities_path },
-      {:menu => :followers,     :label => 'Followers',        :url => followers_path },
-      {:menu => :following,     :label => 'Following',        :url => following_index_path },
-      {:menu => :settings ,     :label => 'Account Settings', :url => my_settings_path }
+      {:menu => :home,          :label => "#{t('profile.navigation.home')}",             :url => my_dashboard_path },
+      {:menu => :mixes,         :label => "#{t('profile.navigation.mixes')}",            :url => '#' },
+      {:menu => :stations,      :label => "#{t('profile.navigation.stations')}",         :url => my_stations_path },
+      {:menu => :subscriptions, :label => "#{t('profile.navigation.subscriptions')}",    :url => '#' },
+      {:menu => :reviews,       :label => "#{t('profile.navigation.reviews')}",          :url => '#' },
+      {:menu => :activity,      :label => "#{t('profile.navigation.activity')}",         :url => activities_path },
+      {:menu => :followers,     :label => "#{t('profile.navigation.followers')}",        :url => followers_path },
+      {:menu => :following,     :label => "#{t('profile.navigation.following')}",        :url => following_index_path },
+      {:menu => :settings ,     :label => "#{t('profile.navigation.account_settings')}", :url => my_settings_path }
     ]
   end
   
