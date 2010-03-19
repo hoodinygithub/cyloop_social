@@ -1,4 +1,13 @@
 module ApplicationHelper
+  def blue_button(button_label, options = {})
+    options.merge!({
+      :class => "#{options[:class]} blue_button",
+      :onclick => "#{options[:onclick]}; return false;"
+    })
+    
+    button = content_tag(:span, content_tag(:span, button_label))
+    link_to button, '#', options
+  end
   
   def station_contains(station, includes = 3)
     links = []

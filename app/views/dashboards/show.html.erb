@@ -26,22 +26,24 @@
             
             <h1>NETWORK UPDATE</h1>
             <div class="network_update">
-                <form action="" method="post">
+                <form id="network_update_form" action="" method="post">
                     <div>
                         <%= image_tag('network_icon.gif', :class => 'network_icon') %>
-                        
-                        <textarea rows="3" cols="20"></textarea>
+                        <textarea name="comment" rows="3" cols="20"></textarea>
                         <%= image_tag('network_arrow.gif', :class => 'network_arrow') %>
-                        
                         <div class="clearer"></div>
                         
                         <div class="update_text">
-                            <b>Demian Lopez</b> - Lorem ipsum dolor amet, consectetuer adt, sed diam nonummy ipsum dolor sit amet, consectetuer adt, sed diam nonummy... <a href="#">http://tumblr.com/xkv5zlm1r</a><br/>
+                            <b>username</b>
+                            -
+                            texto
+                            <br/>
                             
-                            <span class="grey">1 day ago from Twitter </span>
+                            <span class="grey">1 day ago</span>
                         </div>
                         
-                        <a href="#" class="blue_button compartir_button"><span><span>COMPARTIR</span></span></a>
+                        <%= blue_button('COMPARTIR', :class => 'compartir_button', :onclick => 'Base.network.submit_form()') %>
+                        
                         
                         <div class="network_twitter">
                             <input type="checkbox" />

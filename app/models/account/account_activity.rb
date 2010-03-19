@@ -1,4 +1,2 @@
 module Account::AccountActivity
-
-
 end

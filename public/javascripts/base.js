@@ -1,15 +1,33 @@
 var Base = {
-  message_fadeout_timeout: 8000
+  message_fadeout_timeout: 8000,
+  layout: {},
+  account_settings: {},
+  network: {}
 };
 
-Base.hide_success_and_error_messages = function() {
+/*
+ * Layout shared behavior
+ */
+Base.layout.hide_success_and_error_messages = function() {
   var message = jQuery('.message');
   if (message.length) {
     setTimeout(function() { message.fadeOut(); }, this.message_fadeout_timeout);
   }
 };
 
-Base.highlight_field_with_errors = function() {
+
+/*
+ * Comment shared 
+ */
+Base.network.submit_form = function() {
+  $comment_field = jQuery('#network_update_form');
+  comment_text = $comment_field[0].comment.value;
+};
+
+/*
+ * Account settings page 
+ */
+Base.account_settings.highlight_field_with_errors = function() {
   if (typeof(field_with_errors) != 'undefined') {
     for(i=0; i < field_with_errors.length; i++) {
       
@@ -27,13 +45,19 @@ Base.highlight_field_with_errors = function() {
   }
 };
 
+
+/*
+ * Register and triggers
+ */
 Base.init = function() {
   jQuery('.png_fix').supersleight({shim: '../images/blank.gif'});
   jQuery('#slides').cycle({fx: 'fade', timeout: 5000, pager: '#pager_links'});
-  this.hide_success_and_error_messages();
-  this.highlight_field_with_errors();
+  this.layout.hide_success_and_error_messages();
+  this.account_settings.highlight_field_with_errors();
 };
 
 jQuery(document).ready(
   function() { Base.init(); }
 );
+
+
