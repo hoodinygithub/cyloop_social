@@ -15,13 +15,15 @@
     
       <div class="big_black_box">
         <% if profile_account.is_a? User %>
-          <b class="blue"><a href="#">Age //</a></b>
+          <b class="blue">
+            <%= link_to(t('profile.navigation.age') + " //") %>
+          </b>
           <br>
           <%= profile_account.age %>
           <br>
           <br>
           <b class="blue">
-            <a href="#">Biography //</a>
+            <%= link_to(t('profile.navigation.biography') + " //") %>
           </b>
           <br>
           <%= h(profile_account.bio) %>
@@ -45,7 +47,7 @@
                 <%= link_to("#{profile_user.playlists.size}", my_playlists_path) %>  
               </big>
               <br/>
-              Mixes
+              <%= t('basics.mixes') %>
           </div>
         
           <div class="black_box right_side">
@@ -53,7 +55,7 @@
                 <%= link_to("#{profile_user.stations.size}", my_stations_path) %>
               </big>
               <br/>
-              Stations
+              <%= t('basics.stations') %>
           </div>
         <% end %>
         
@@ -64,7 +66,7 @@
                 <%= link_to(number_with_delimiter(profile_account.follower_count), followers_path) %>
               </big>
               <br/>
-              Followers
+              <%= t('users.stats.followers') %>
           </div>
         
           <div class="black_box right_side">
@@ -72,7 +74,7 @@
               <%= link_to(number_with_delimiter(profile_account.followee_count), following_index_path) %>
             </big>
             <br/>
-              Following
+             <%= t('users.stats.following') %>
           </div>
         <% end %>
         
@@ -80,10 +82,10 @@
     </div><!--/end black_boxes -->
 
     <% if profile_owner? %>
-      <%= blue_button('CREATE A MIX', :class => 'full_width', :onclick => "")%>
-      <%= blue_button('CREATE A STATION', :class => 'full_width', :onclick => "")%>
+      <%= blue_button(t("actions.create_mix"), :class => 'full_width', :onclick => "")%>
+      <%= blue_button(t("actions.create_station"), :class => 'full_width', :href => radio_path)%>
     <% else %>
-      <%= blue_button('FOLLOW', :class => 'full_width', :onclick => "")%>
+      <%= blue_button(t('actions.follow'), :class => 'full_width', :onclick => "")%>
     <% end %>
     
     <%= user_sidebar_links %>

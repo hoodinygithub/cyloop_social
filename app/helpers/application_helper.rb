@@ -16,9 +16,12 @@ module ApplicationHelper
       :class => "#{options[:class]} blue_button",
       :onclick => "#{options[:onclick]}; return false;"
     })
+
+    options[:href] = '#' unless options[:href]
+    options.delete(:onclick) if options[:href]
     
     button = content_tag(:span, content_tag(:span, button_label))
-    link_to button, '#', options
+    link_to button, options[:href], options
   end
   
   def station_contains(station, includes = 3)

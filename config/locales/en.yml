@@ -136,7 +136,8 @@ en:
     search: Search
     select_store: ""
     add_more: Add More
-    create_station: Create Station
+    create_station: CREATE STATION
+    create_station: CREATE MIX
   share:
     name: Your Name
     errors:
@@ -308,6 +309,7 @@ en:
       community: Community
       charts: Charts
       biography: Biography
+      age: Age
       following: Following
       account_settings: Account Settings
       activity: Activity
@@ -734,6 +736,7 @@ en:
     country: Country
     created_on: Created On
     stations: Stations
+    mixes: Mixes
     comments: Comments
     welcome: Welcome
     me: Me
@@ -834,6 +837,8 @@ en:
       visits: Visits
       following: Following
       song_plays: Song Plays
+      
+      
   home:
     create_your_own_personalized_radio_station: Create Your Own Personalized Radio Station
     create_your_own_station_now: Create Your Own Station now!
