@@ -3,10 +3,19 @@ class AccountsController < ApplicationController
   before_filter :record_visit, :only => [:show]
   before_filter :assert_profile_is_available, :only => [ :show ]
   before_filter :auto_follow_profile, :only => [ :show ]
+  layout 'base'
 
   current_tab :home
-
+  
   def show
+    @dashboard_menu = :home
+    @mixes_recommended = (1..6).to_a
+    @comments = (1..3).to_a
+    
+    render :template => 'dashboards/show'
+  end
+  
+  def oldshow
     redirect_to( user_path( profile_account.slug ) ) && return if params[:slug] != profile_account.slug
     respond_to do |format|
       format.html do

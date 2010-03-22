@@ -1,45 +1,90 @@
 <div id="left_column">
+    <% unless profile_owner? %>
+      <div class="side_user_box">
+        <%= avatar_for(profile_account, :album, :class => 'side_user_image', :disable_default_css => true)%>
+        <div class="overlay png_fix">
+          <div class="overlay_content">
+            <big>
+              <%= link_to(profile_account.name, "") %>
+            </big>
+            <br />
+            <%= profile_account.location %>
+          </div>
+        </div>
+      </div>
+    
+      <div class="big_black_box">
+        <% if profile_account.is_a? User %>
+          <b class="blue"><a href="#">Age //</a></b>
+          <br>
+          <%= profile_account.age %>
+          <br>
+          <br>
+          <b class="blue">
+            <a href="#">Biography //</a>
+          </b>
+          <br>
+          <%= h(profile_account.bio) %>
+          <br>
+          <br>
+        <% end %>
+
+        <% if profile_account.websites %>
+          <b class="blue"><a href="#">Websites //</a></b><br>
+          <% profile_account.websites.each do |website| %>
+            <%= link_to website.url, website.url %>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+    
     <div class="black_boxes">
-        <div class="black_box left_side">
+        <% if profile_account.is_a? User and profile_user %>
+          <div class="black_box left_side">
+              <big class="blue">
+                <%= link_to("#{profile_user.playlists.size}", my_playlists_path) %>  
+              </big>
+              <br/>
+              Mixes
+          </div>
+        
+          <div class="black_box right_side">
+              <big class="blue">
+                <%= link_to("#{profile_user.stations.size}", my_stations_path) %>
+              </big>
+              <br/>
+              Stations
+          </div>
+        <% end %>
+        
+        <% if profile_owner? %>
+          <div class="clearer"></div>
+          <div class="black_box left_side">
+              <big class="blue">
+                <%= link_to(number_with_delimiter(profile_account.follower_count), followers_path) %>
+              </big>
+              <br/>
+              Followers
+          </div>
+        
+          <div class="black_box right_side">
             <big class="blue">
-              <%= link_to(number_with_delimiter(profile_user.playlists.size), '') %>  
+              <%= link_to(number_with_delimiter(profile_account.followee_count), following_index_path) %>
             </big>
             <br/>
-            Mixes
-        </div>
-        
-        <div class="black_box right_side">
-            <big class="blue">
-              <%= link_to "#{profile_user.stations.size}", my_stations_path %>
-            </big>
-            <br/>
-            Stations
-        </div>
-        
-        <div class="clearer"></div>
-        
-        <div class="black_box left_side">
-            <big class="blue">
-              <%= link_to(number_with_delimiter(profile_account.follower_count), followers_path) %>
-            </big>
-            <br/>
-            Followers
-        </div>
-        
-        <div class="black_box right_side">
-          <big class="blue">
-            <%= link_to(number_with_delimiter(profile_account.followee_count), following_index_path) %>
-          </big>
-          <br/>
-            Following
-        </div>
+              Following
+          </div>
+        <% end %>
         
         <div class="clearer"></div>
     </div><!--/end black_boxes -->
-    
-    <a href="#" class="blue_button full_width"><span><span>CREATE A MIX</span></span></a>
-    
-    <a href="#" class="blue_button full_width"><span><span>CREATE A STATION</span></span></a>
+
+    <% if profile_owner? %>
+      <%= blue_button('CREATE A MIX', :class => 'full_width', :onclick => "")%>
+      <%= blue_button('CREATE A STATION', :class => 'full_width', :onclick => "")%>
+    <% else %>
+      <%= blue_button('FOLLOW', :class => 'full_width', :onclick => "")%>
+    <% end %>
     
     <%= user_sidebar_links %>
 </div><!--/end left_column -->

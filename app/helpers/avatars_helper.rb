@@ -6,7 +6,8 @@ module AvatarsHelper
 
     if avatar
       if options.size > 0 
-        options[:class] = "avatar #{type}"
+        options[:class] = "avatar" unless options[:disable_default_css]
+        options[:class] << " #{type}"
         options[:title] = options[:alt] unless !options.has_key?(:alt)
         image_tag path, options
       else
@@ -15,7 +16,6 @@ module AvatarsHelper
     else
       image_tag path, :class => "avatar #{type}"
     end
-
   end
 
   def avatar_for_activity(path, user_id, gender, options = {}, type = :medium)

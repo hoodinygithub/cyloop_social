@@ -1491,6 +1491,11 @@ img.avatar_four_thumbs_big {
     z-index: 1;
 }
 
+.side_user_box img.album {
+  width:150px;
+}
+
+
 .big_black_box {
     background: #000;
     margin-bottom: 6px;

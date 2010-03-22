@@ -1,4 +1,7 @@
 module ApplicationHelper
+  def profile_owner? 
+    current_user == profile_account
+  end
   
   def main_content(content)
     if params[:controller] == 'pages' and params[:action] != 'index'
