@@ -37,6 +37,7 @@ en:
       toggle_on: On
       toggle_off: Off
   dashboards:
+    top_stations: TOP STATIONS
     messages:
       artist_not_found: We couldn't find an artist by that name. Please search again.
     followers:

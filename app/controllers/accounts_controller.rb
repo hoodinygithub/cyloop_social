@@ -11,7 +11,8 @@ class AccountsController < ApplicationController
     @dashboard_menu = :home
     @mixes_recommended = (1..6).to_a
     @comments = (1..3).to_a
-    
+    @top_stations =  profile_account.stations.most_created(3) 
+    @followers = profile_account.followers.all(:limit => 4)
     render :template => 'dashboards/show'
   end
   

@@ -17,6 +17,7 @@ class DashboardsController < ApplicationController
     stations = recommended_stations(30)
     @recommended_stations = stations[0..(RECOMMENDED_STATIONS-1)]
     @recommended_stations_queue = stations[RECOMMENDED_STATIONS..(stations.size)]
+    @top_stations = profile_user.stations.most_created(3)
     
     respond_to do |format|
       format.html
@@ -29,7 +30,7 @@ class DashboardsController < ApplicationController
 private
   # this is solely to cache so we don't do a ton of queries
   def find_user_stations
-    stations = profile_user.stations.find(:all, :limit => 5, :include => [:station])
+    stations = profile_user.stations.all(:limit => 5, :include => [:station])
     artist_ids = stations.map{|s| s.station.artist_id}
     Artist.find_all_by_id artist_ids
   rescue
