@@ -24,20 +24,21 @@ module ApplicationHelper
     link_to button, options[:href], options
   end
   
-  def station_contains(station, includes = 3)
+  def station_contains(item, includes = 3)
     links = []
     
-    if station.is_a? RecEngine::Station
-      artists = station.includes[0..(includes - 1)]
-    elsif station.is_a? UserStation
-      artists = station.includes(includes)
-    else
-      artists = []
+    if item.is_a? RecEngine::Station
+      artists = item.includes[0..(includes - 1)]
+    elsif item.is_a? UserStation
+      artists = item.includes(includes)
+    elsif item.is_a? Artist
+      artists = item.station.includes(includes)
     end
     
+    
     artists.each do |artist| 
-      links << link_to(artist[:name], artist[:url]) if station.is_a? RecEngine::Station 
-      links << link_to(artist, artist) if station.is_a? UserStation
+      links << link_to(artist[:name], artist[:url]) if item.is_a? RecEngine::Station 
+      links << link_to(artist, artist) if (item.is_a? UserStation or item.is_a? Artist)
     end
     "Contains: #{links.join(", ")}..."
   end

@@ -13,7 +13,10 @@ module ArtistsHelper
   end
   
   def artist_name(item)
-    item.artist_name if item.is_a? RecEngine::Station
-    item.name      if item.is_a? Artist
+    if item.is_a? RecEngine::Station
+      item.artist_name
+    elsif item.is_a? UserStation or item.is_a? Artist
+      item.name
+    end
   end
 end
