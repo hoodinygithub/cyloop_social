@@ -430,4 +430,5 @@ class ApplicationController < ActionController::Base
     else                    "Other Browser"
     end
   end
+
 end

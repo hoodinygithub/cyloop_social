@@ -2401,7 +2401,7 @@ img.avatar_four_thumbs_big {
 
 .delete_info {
     display: inline-block;
-    width: 355px;
+    width: 350px;
     line-height: 14px;
     vertical-align: top;
 }
@@ -2466,8 +2466,6 @@ img.avatar_four_thumbs_big {
     top: 2px;
     zoom: 1;
 }
-
-
 
 .play_button2 {
     margin: 0px 8px 5px 0px;
@@ -3189,4 +3187,18 @@ h2 {
 
 #center_column.album_details_page {
     overflow: hidden;
+}
+
+#delete_account_form label.error {
+  margin-top: 8px;
+  margin-right: 66px;
+  float: right;
+  color: red;
+  height: 23px;
+  font-weight: bold;
+  padding-left: 30px;
+}
+
+#delete_account_form div div label.error {
+  margin-right: 15px;
 }
