@@ -19,5 +19,12 @@ class StationsController < ApplicationController
       format.xml { render :xml => @stations.to_xml( :root => 'stations' ) }
     end
   end
+  
+  def top_station_html
+    artist = Artist.find(params[:artist_id])
+    @locals = {:node => artist, :place_type => :recommended_station}
+    @locals[:style] = 'last_box' if params[:last_bot]
+    render :layout => false
+  end
 
 end

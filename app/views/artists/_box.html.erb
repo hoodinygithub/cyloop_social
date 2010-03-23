@@ -1,12 +1,11 @@
 <div class="artist_box png_fix <%= style if defined? style %>">
-    
     <% if defined? node %>
       <%= image_tag("#{ENV['ASSETS_URL']}#{node.image}", :class => 'artist_icon_box') %>
     <% else %>
       <%= image_tag('artist_image.jpg') %>
     <% end %>
     
-    <span class="close_btn">Close</span>
+    <span class="close_btn <%= place_type if defined? place_type %>">Close</span>
     
     <div class="overlay">
         <div class="hidden">
@@ -18,7 +17,7 @@
             <span>
                 <span class="blue">
                   <% if defined? node %>
-                    <%= node.artist_name %>
+                    <%= artist_name(node) %>
                   <% else %>
                     Jason Calleiro
                   <% end %>
@@ -38,7 +37,7 @@
             <br/><br/>
             <b>
               <% if defined? node %>
-                <%= link_to node.artist_name, node.profile_url %>
+                <%= link_to artist_name(node), artist_url(node) %>
               <% else %>
                 <a href="#">Alice in Chains</a>
               <% end %>

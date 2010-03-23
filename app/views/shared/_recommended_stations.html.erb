@@ -1,0 +1,10 @@
+<% @recommended_stations.each_with_index do |node, i| %>
+  <% if ((i+1) % 3) == 0 %>
+    <%= 
+      render :partial => 'artists/box', :locals => {:style => 'last_box', :clearer => true, :node => node, :place_type => :recommended_station}
+    %>
+  <% else %>
+    <%= render :partial => 'artists/box', :locals => {:node => node, :place_type => :recommended_station} %>
+  <% end %>
+<% end %>
+<br/>

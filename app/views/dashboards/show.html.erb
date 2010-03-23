@@ -1,8 +1,10 @@
+<% content_for :javascript do %>
+  var recommended_stations_queue = [<%= @recommended_stations_queue.collect(&:artist_id).join(", ") %>];
+<% end %>
+
 <div id="internal_content">
     <div id="main_content">
-        
         <%= render :partial => 'dashboards/left_column' %>
-        
         <div id="center_column">
             <h1><%= t('home.recommended_mixes') %></h1>
             <% @mixes_recommended.each_with_index do |artist, i| %>
@@ -15,14 +17,7 @@
             <br/>
             
             <h1><%= t('home.recommended_stations') %></h1>
-            <% recommended_stations(3).each_with_index do |node, i| %>
-              <% if ((i+1) % 3) == 0 %>
-                <%= render :partial => 'artists/box', :locals => {:style => 'last_box', :clearer => true, :node => node} %>
-              <% else %>
-                <%= render :partial => 'artists/box', :locals => {:node => node} %>
-              <% end %>
-            <% end %>
-            <br/>
+            <%= render :partial => 'shared/recommended_stations' %>
             
             <h1><%= t('home.network_update') %></h1>
             <div class="network_update">

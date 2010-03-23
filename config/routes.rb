@@ -50,7 +50,7 @@ ActionController::Routing::Routes.draw do |map|
   map.friendly_search '/search/:mkt/:scope/:q', :controller => 'searches', :action => 'show'  
   map.friendly_search_with_page '/search/:mkt/:scope/:q/:page', :controller => 'searches', :action => 'show'
 
-  map.resources :stations, :collection => {:top => :get}
+  map.resources :stations, :collection => {:top => :get, :top_station_html => :get}
 
   map.resource :activity
   map.resource :artist_recommendations

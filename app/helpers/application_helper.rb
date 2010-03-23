@@ -31,6 +31,8 @@ module ApplicationHelper
       artists = station.includes[0..(includes - 1)]
     elsif station.is_a? UserStation
       artists = station.includes(includes)
+    else
+      artists = []
     end
     
     artists.each do |artist| 
