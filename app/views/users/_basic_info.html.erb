@@ -98,7 +98,7 @@ $(document).ready(function(){
     </div><!--/end form_row -->
 
     <div class="form_row">
-      <%= avatar_for(profile_account, :upload_thumb) %>
+      <%= avatar_for(profile_account, :small, :class => 'avatar small upload_thumb', :disable_default_css => true ) %>
       <div class="add_update">
         <div class="fileinputs">
           <%= f.file_field :avatar %>
