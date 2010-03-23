@@ -1060,6 +1060,9 @@ en:
       top_songs: Top Songs
       top_stations: Top Stations
       recommended_artists: Recommended Artists
+      recommended_stations: STATIONS RECOMMENDED BY CYLOOP
+      recommended_mixes: MIXES RECOMMENDED BY CYLOOP
+      network_update: NETWORK UPDATE
     registration:
       discover: Discover
       discover_text: more than {{count}} artists, all free

@@ -4,7 +4,7 @@
         <%= render :partial => 'dashboards/left_column' %>
         
         <div id="center_column">
-            <h1>MIXES RECOMMENDED BY CYLOOP</h1>
+            <h1><%= t('home.recommended_mixes') %></h1>
             <% @mixes_recommended.each_with_index do |artist, i| %>
               <% if ((i+1) % 3) == 0 %>
                 <%= render :partial => 'artists/box', :locals => {:style => 'last_box', :clearer => true} %>
@@ -14,7 +14,7 @@
             <% end %>
             <br/>
             
-            <h1>STATIONS RECOMMENDED BY CYLOOP</h1>
+            <h1><%= t('home.recommended_stations') %></h1>
             <% recommended_stations(3).each_with_index do |node, i| %>
               <% if ((i+1) % 3) == 0 %>
                 <%= render :partial => 'artists/box', :locals => {:style => 'last_box', :clearer => true, :node => node} %>
@@ -24,7 +24,7 @@
             <% end %>
             <br/>
             
-            <h1>NETWORK UPDATE</h1>
+            <h1><%= t('home.network_update') %></h1>
             <div class="network_update">
                 <form id="network_update_form" action="" method="post">
                     <div>

@@ -1,12 +1,12 @@
 <div id="right_column">
     <div class="ad_box">
-        <%= link_to(image_tag('ad.jpg'), '#') %>
+        <%= banner_ad('square_banner') %>
     </div>
     
     <div class="grey_box">
         <div class="box_content">
             <h1>CYLOOP RECOMMENDS</h1>
-            <% recommended_artists.each_with_index do |artist, i| %>
+            <% recommended_artists(8).each_with_index do |artist, i| %>
               <% if ((i+1) % 4) == 0 %>
                 <%= render :partial => 'artists/small_box', :locals => {:style => 'last_thumb', :clearer => true, :artist => artist} %>
               <% else %>
