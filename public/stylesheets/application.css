@@ -3235,3 +3235,7 @@ label.label_holder{
   margin-left: 135px;
   padding-top: 5px;
 }
+
+#basic_info_form .avatar {
+  float : left;
+}

@@ -4,8 +4,12 @@ var uploadInfo = function(){
   $('#avatar_upload_info').text($(this).val());
 }
 
+var addWebSite = function() {
+}
+
 $(document).ready(function(){
   $('#user_avatar').change(uploadInfo);
+  $('#add_website').bind('keydown', 'return', addWebSite);
 });
 
 <% end %>
@@ -64,16 +68,18 @@ $(document).ready(function(){
     <div class="form_row">
       <label><b>Websites</b></label>
       <div class="grey_round_box left_side">
-        <input type="text" class="input full_width" />
+        <input type="text" id="add_website" class="input full_width" />
       </div>
       <br class="clearer" />
-      <br/>
-      <b><big><a href="#">twitter.com/bellumio</a></big> &nbsp; <a href="#" class="black">[ DELETE ]</a></b><br/>
-      <b><big><a href="#">facebook.com/bellumio</a></big> &nbsp; <a href="#" class="black">[ DELETE ]</a></b>
+      <div id="websites">
+      <% @user.websites.each do |w| %>
+        <b><big><a href="http://<%= w %>"><%= w %></a></big> &nbsp; <a href="#" class="black">[ DELETE ]</a></b><br/>
+      <% end %>
+      </div>
     </div><!--/end form_row -->
 
     <div class="form_row">
-      <%= avatar_for(profile_account, :small, :class => 'avatar small upload_thumb', :disable_default_css => true ) %>
+      <%= avatar_for(profile_account, :small) %>
       <div class="add_update">
         <label class='label_holder'>
           <a href="#" id="avatar_upload_button" class="blue_button"><span><span>ADD / UPDATE</span></span></a>
