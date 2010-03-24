@@ -6,18 +6,6 @@
     <div id="main_content">
         <%= render :partial => 'dashboards/left_column' %>
         <div id="center_column">
-            <!--
-            <h1><%= t('home.recommended_mixes') %></h1>
-            <% @mixes_recommended.each_with_index do |artist, i| %>
-              <% if ((i+1) % 3) == 0 %>
-                <%= render :partial => 'artists/box', :locals => {:style => 'last_box', :clearer => true} %>
-              <% else %>
-                <%= render :partial => 'artists/box' %>
-              <% end %>
-            <% end %>
-            <br/>
-            -->
-            
             <h1><%= t('home.recommended_stations') %></h1>
             <%= render :partial => 'shared/recommended_stations' %>
             
