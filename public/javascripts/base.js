@@ -28,14 +28,22 @@ Base.stations.close_button_handler = function(object) {
     var artist_id = $button.attr('artist_id');
     
     $parent_div = $button.parent();
-    $parent_div.html("loading...");
+    $parent_div.html("<img style='margin-top:50px' src='/images/loading.gif'></img>");
+    $parent_div.css({'background':'#cccccc', 'text-align':'center'});
     
     var new_artist_id = recommended_stations_queue.shift();
+    
+    if (typeof(new_artist_id) == 'undefined') {
+      $parent_div.html("");
+      $parent_div.css({'background':'white', 'text-align':'left'});
+      return;
+    }
     
     var params = {'artist_id':new_artist_id, 'last_box':$parent_div.hasClass('last_box')};
     jQuery.get('/stations/top_station_html', params, function(data) {
       $new_div = jQuery(data);
       $parent_div.html($new_div.html());
+      $parent_div.css({'background':'white', 'text-align':'left'});
       Base.stations.close_button_event_binder();
     });
 };
