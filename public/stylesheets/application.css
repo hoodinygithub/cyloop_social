@@ -2383,7 +2383,7 @@ img.avatar_four_thumbs_big {
 }
 
 .upload_thumb {
-    float: left;
+    float : left;
 }
 
 .add_update {
@@ -3203,40 +3203,35 @@ h2 {
   margin-right: 15px;
 }
 
-/* Input file styles */
-
-div.fileinputs {
-	position: relative;
-  display: inline;
+#avatar_upload_button {
+  position: absolute;
+  top: 0px;
+  left: 0px;
 }
 
-div.fakefile {
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	z-index: 1;
+label.label_holder input.file{
+  position: relative;
+  height: 100%;
+  width: auto;
+  opacity: 0;
+  -moz-opacity: 0;
+  filter:progid : DXImageTransform.Microsoft.Alpha(opacity=0);
+  left:-152px;top:0px;
+  position: relative;
+  z-index:2;
 }
 
-input.file {
-	position: relative;
-	text-align: right;
-	-moz-opacity:0 ;
-	filter:alpha(opacity: 0);
-	opacity: 0;
-	z-index: 2;
+label.label_holder{
+  width: 125px;
+  height: 40px;
+  display: block;
+  overflow: hidden;
+  cursor: pointer;
+  position: absolute;
+  z-index: 1;
 }
 
-div.fakefile input {
-  visibility: hidden;
-}
-
-#user_avatar {
-  width: 20px;
-}
-
-#avatar_upload_info {
-  font-weight: bold;
-  color: green;
-  margin-top: 5px;
-  margin-left: 40px;
+#avatar_delete {
+  margin-left: 135px;
+  padding-top: 5px;
 }
