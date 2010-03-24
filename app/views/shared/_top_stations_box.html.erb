@@ -1,19 +1,21 @@
-<div class="box_content">
-  <h1><%= t("dashboards.top_stations") %></h1>
+<% unless @top_stations.empty? %>
+  <div class="box_content">
+    <h1><%= t("dashboards.top_stations") %></h1>
 
-  <% @top_stations.each_with_index do |top_station, i| %>
-    <div class="medium_thumb">
-      <%= four_thumbs_to(top_station) %>
-      <br class="clearer">
-      <%= link_to(truncate(top_station.artist.name, 13), top_station.artist, :title => top_station.artist.name) %>
+    <% @top_stations.each_with_index do |top_station, i| %>
+      <div class="medium_thumb">
+        <%= four_thumbs_to(top_station) %>
+        <br class="clearer">
+        <%= link_to(truncate(top_station.artist.name, 13), top_station.artist, :title => top_station.artist.name) %>
+      </div>
+    <% end %>
+
+    <br class="clearer">
+
+    <div class="align_right">
+      <b>
+        <%= link_to(t('actions.view_more'), '#') %>
+      </b>
     </div>
-  <% end %>
-
-  <br class="clearer">
-
-  <div class="align_right">
-    <b>
-      <%= link_to(t('actions.view_more'), '#') %>
-    </b>
   </div>
-</div>
+<% end %>

@@ -1,11 +1,13 @@
 module AvatarsHelper
 
+
   def avatar_for(target, type = :medium, options = {})
     avatar = target.try(:avatar)
     path = AvatarsHelper.avatar_path( target, type )
 
     if avatar
       if options.size > 0 
+        options[:class] = "" 
         options[:class] = "avatar" unless options[:disable_default_css]
         options[:class] << " #{type}"
         options[:title] = options[:alt] unless !options.has_key?(:alt)
