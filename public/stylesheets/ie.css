@@ -15,3 +15,7 @@
 .iefix .grey_button i img {
     top: -2px;
 }
+
+label.label_holder input.file{
+  filter: alpha(opacity=0)!important;
+}
