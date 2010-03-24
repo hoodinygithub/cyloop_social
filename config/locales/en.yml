@@ -854,6 +854,7 @@ en:
     top_songs: Top Songs
     top_stations: Top Stations
     recommended_artists: Recommended Artists
+    user_latest_stations:  s LATEST STATION
   sessions:
     new:
       sign_in: Log in

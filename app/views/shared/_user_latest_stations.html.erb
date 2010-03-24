@@ -1,0 +1,45 @@
+<% @latest_stations.each_with_index do |station, index| %>
+  <div class="artist_box png_fix <%= "last_box" if (index+1) % 3 == 0 %>">
+    
+    <% if station.artist_id.nil? %>
+      <%= avatar_for(nil, :new_medium) %>
+    <% else %>
+      <%= four_thumbs_to(station, {:type => :big}) %>
+    <% end %>
+
+    <div class="overlay">
+      <div class="hidden">
+        <% if station.artist_id.nil? %>
+          <%= avatar_for(nil, :artist_icon) %>
+        <% else %>
+          <%= link_to avatar_for(station.artist, :artist_icon), station.artist %>
+        <% end %>
+        
+        <span>
+          <span class="blue"><%= station.name %></span><br/>
+          <%= l(station.created_at, :format => "default") %>
+        </span>
+        <br class="clearer" />
+
+        <%= t("basics.contains") %>:
+        <%= station.includes.map {|artist| link_to artist.name, artist, :target => '_blank'}.join(", ") %>
+      </div>
+
+      <div class="visible">
+        <%= link_to_function image_tag("play_button.png", :class => "play_button", :alt => "Play"), "createStation(\"#{station.name}\")" %>
+
+        <%= link_to truncate(station.name,15), artist_path(station.artist), :title => station.name %><br/>
+        <div class="rating_stars">
+          <a href="#"><img src="images/star_blue.png" alt="" /></a> <a href="#"><img src="images/star_blue.png" alt="" /></a> <a href="#"><img src="images/star_blue.png" alt="" /></a> <a href="#"><img src="images/star_blue.png" alt="" /></a> <a href="#"><img src="images/star_white.png" alt="" /></a>
+        </div>
+      </div>
+    </div><!--/end overlay -->
+  </div><!--/end artist_box -->
+
+  <% if index == 2 %>
+    <br class="clearer" />
+  <% end %>
+
+<% end %>  
+<br class="clearer" />
+<br/><br/>
