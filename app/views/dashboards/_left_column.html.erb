@@ -42,6 +42,7 @@
     
     <div class="black_boxes">
         <% if profile_account.is_a? User and profile_user %>
+          <!--
           <div class="black_box left_side">
               <big class="blue">
                 <%= link_to("#{profile_user.playlists.size}", my_playlists_path) %>  
@@ -49,7 +50,8 @@
               <br/>
               <%= t('basics.mixes') %>
           </div>
-        
+          --> 
+          
           <div class="black_box right_side">
               <big class="blue">
                 <%= link_to("#{profile_user.stations.size}", my_stations_path) %>
@@ -82,7 +84,7 @@
     </div><!--/end black_boxes -->
 
     <% if profile_owner? %>
-      <%= blue_button(t("actions.create_mix"), :class => 'full_width', :onclick => "")%>
+      <% blue_button(t("actions.create_mix"), :class => 'full_width', :onclick => "")%>
       <%= blue_button(t("actions.create_station"), :class => 'full_width', :href => radio_path)%>
     <% else %>
       <%= blue_button(t('actions.follow'), :class => 'full_width', :onclick => "")%>

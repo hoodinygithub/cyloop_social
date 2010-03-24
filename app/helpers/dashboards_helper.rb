@@ -2,7 +2,7 @@ module DashboardsHelper
   def nav_links
     [
       {:menu => :home,          :label => "#{t('profile.navigation.home')}",             :url => my_dashboard_path },
-      {:menu => :mixes,         :label => "#{t('profile.navigation.mixes')}",            :url => '#' },
+#      {:menu => :mixes,         :label => "#{t('profile.navigation.mixes')}",            :url => '#' },
       {:menu => :stations,      :label => "#{t('profile.navigation.stations')}",         :url => my_stations_path },
       {:menu => :subscriptions, :label => "#{t('profile.navigation.subscriptions')}",    :url => '#' },
       {:menu => :reviews,       :label => "#{t('profile.navigation.reviews')}",          :url => '#' },
