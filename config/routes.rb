@@ -45,10 +45,11 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :players, :only => :show
 
   map.resource :search
-  map.friendly_empty_search '/search/empty/:mkt/:scope', :controller => 'searches', :action => 'show'  
-  map.friendly_empty_search_with_page '/search/empty/:mkt/:scope/:page', :controller => 'searches', :action => 'show'  
-  map.friendly_search '/search/:mkt/:scope/:q', :controller => 'searches', :action => 'show'  
+  map.friendly_empty_search '/search/empty/:mkt/:scope', :controller => 'searches', :action => 'show'
+  map.friendly_empty_search_with_page '/search/empty/:mkt/:scope/:page', :controller => 'searches', :action => 'show'
+  map.friendly_search '/search/:mkt/:scope/:q', :controller => 'searches', :action => 'show'
   map.friendly_search_with_page '/search/:mkt/:scope/:q/:page', :controller => 'searches', :action => 'show'
+  map.autocomplete_search '/search/autocomplete/:q', :controller => 'searches', :action => 'autocomplete'
 
   map.resources :stations, :collection => {:top => :get, :top_station_html => :get}
 
@@ -118,7 +119,7 @@ ActionController::Routing::Routes.draw do |map|
 
 
   map.resources :campaigns, :member => {:activate => :post, :deactivate => :post}
-  
+
   profile_routes = lambda do |profile|
     profile.resources :comments
     profile.resources :follow_requests
@@ -203,5 +204,6 @@ ActionController::Routing::Routes.draw do |map|
   map.special_followee_update '/my/following/:id/update/:skip_auto_width', :controller => 'followees', :action => 'update'
   map.special_followee_destroy '/my/following/:id/destroy/:skip_auto_width', :controller => 'followees', :action => 'destroy'
   map.followee_destroy '/my/following/:id/destroy', :controller => 'followees', :action => 'destroy'
-  
+
 end
+

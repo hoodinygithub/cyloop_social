@@ -1,40 +1,43 @@
 <div class="radios_recomended_column">
   <h1><%= t("home.radios_recomended_for_you") %></h1>
 
-  <% recommended_stations.each_with_index do |radio, index| %>
-    <% artist = Artist.find_by_name(radio.artist_name) %>
-    <div class="artist_box png_fix <%= "last_box" if (index+1) % 3 == 0 %>">
-      <%= four_thumbs_to(artist.station, {:type => :big}) %>
+  <% unless recommended_stations %>
+    <% recommended_stations.each_with_index do |radio, index| %>
+      <% artist = Artist.find_by_name(radio.artist_name) %>
+      <div class="artist_box png_fix <%= "last_box" if (index+1) % 3 == 0 %>">
+        <%= four_thumbs_to(artist.station, {:type => :big}) %>
 
-      <div class="overlay">
-        <div class="hidden">
-          <% if artist.nil? %>
-            <%= avatar_for(nil, :artist_icon) %>
-          <% else %>
-            <%= link_to avatar_for(artist, :artist_icon), artist %>
-          <% end %>
-          
-          <span>
-            <span class="blue"><%= radio.artist_name %></span><br/>
-            <%= l(artist.station.created_at, :format => "default") %>
-          </span>
-          <br class="clearer" />
+        <div class="overlay">
+          <div class="hidden">
+            <% if artist.nil? %>
+              <%= avatar_for(nil, :artist_icon) %>
+            <% else %>
+              <%= link_to avatar_for(artist, :artist_icon), artist %>
+            <% end %>
 
-          <%= t("basics.contains") %>:
-          <%= artist.station.includes.map {|artist| link_to artist.name, artist, :target => '_blank'}.join(", ") %>
-        </div>
+            <span>
+              <span class="blue"><%= radio.artist_name %></span><br/>
+              <%= l(artist.station.created_at, :format => "default") %>
+            </span>
+            <br class="clearer" />
 
-        <div class="visible">
-          <%= link_to_function image_tag("play_button.png", :class => "play_button", :alt => "Play"), "createStation(\"#{radio.artist_name}\")" %>
-          
-          <%= link_to truncate(artist.station.name,15), artist_path(artist), :title => artist.station.name %>
-          <div class="rating_stars">
-            <a href="#"><img src="images/star_blue.png" alt="" /></a> <a href="#"><img src="images/star_blue.png" alt="" /></a> <a href="#"><img src="images/star_blue.png" alt="" /></a> <a href="#"><img src="images/star_blue.png" alt="" /></a> <a href="#"><img src="images/star_white.png" alt="" /></a>
+            <%= t("basics.contains") %>:
+            <%= artist.station.includes.map {|artist| link_to artist.name, artist, :target => '_blank'}.join(", ") %>
           </div>
-        </div>
-      </div><!--/end overlay -->
-    </div><!--/end artist_box -->
+
+          <div class="visible">
+            <%= link_to_function image_tag("play_button.png", :class => "play_button", :alt => "Play"), "createStation(\"#{radio.artist_name}\")" %>
+
+            <%= link_to truncate(artist.station.name,15), artist_path(artist), :title => artist.station.name %>
+            <div class="rating_stars">
+              <a href="#"><img src="images/star_blue.png" alt="" /></a> <a href="#"><img src="images/star_blue.png" alt="" /></a> <a href="#"><img src="images/star_blue.png" alt="" /></a> <a href="#"><img src="images/star_blue.png" alt="" /></a> <a href="#"><img src="images/star_white.png" alt="" /></a>
+            </div>
+          </div>
+        </div><!--/end overlay -->
+      </div><!--/end artist_box -->
+    <% end %>
   <% end %>
-  
+
   <div class="clearer"></div>
 </div><!--/end mixes_recomended_column -->
+

@@ -66,7 +66,7 @@
 #
 
 class User < Account
-  
+
   include Account::ProfileColors
   include Account::FolloweeCache
   include Account::Website
@@ -79,14 +79,14 @@ class User < Account
   has_one :bio, :autosave => true, :foreign_key => :account_id
   validates_associated :bio
 
-  has_many :stations,  
+  has_many :stations,
     :foreign_key => :owner_id,
     :order => 'user_stations.name ASC',
     :class_name => "UserStation",
     :include => :station,
     :source => :station,
     :conditions => 'stations.available'
-  
+
   has_many :playlists, :foreign_key => :owner_id, :order => 'created_at DESC'
 
   has_many :song_listens, :foreign_key => :listener_id
@@ -104,7 +104,7 @@ class User < Account
   end
 
   has_many :blocks_as_blockee, :class_name => 'Block', :foreign_key => 'blockee_id'
-  has_many :blockers, :through => :blocks_as_blockee, :source => :blocker 
+  has_many :blockers, :through => :blocks_as_blockee, :source => :blocker
   has_many :blockees, :through => :blocks, :source => :blockee
   has_many :blocks, :foreign_key => 'blocker_id'
   has_many :messages
@@ -113,11 +113,15 @@ class User < Account
 
   validates_presence_of :entry_point_id
   validates_presence_of :born_on
-  
+
   validates_inclusion_of :gender, :in => ['Male', 'Female'], :message => :gender
-  
+
   validate :check_born_on_in_future, :unless => Proc.new { |user| user.born_on.blank? }
   validate :check_age_is_at_least_13, :unless => Proc.new { |user| user.born_on.blank? }
+
+  define_index do
+    indexes :name
+  end
 
   def <=>(b)
     id <=> b.id
@@ -136,13 +140,13 @@ class User < Account
   end
 
   def follows?(followee_id)
-    followee_id = followee_id.id if followee_id.kind_of? Account 
+    followee_id = followee_id.id if followee_id.kind_of? Account
     # followings.approved.exists?(:followee_id => followee_id)
     cached_followee_ids.include?(followee_id)
   end
 
   def awaiting_follow_approval?(followee_id)
-    followee_id = followee_id.id if followee_id.kind_of? Account 
+    followee_id = followee_id.id if followee_id.kind_of? Account
     # followings.pending.exists?(:followee_id => followee_id)
     cached_pending_followee_ids.include?(followee_id)
   end
@@ -150,9 +154,9 @@ class User < Account
   #TODO MUST BE REVISITED WHEN IMPLEMENTING LOCALES
 
   def create_user_station(params = {})
-    stations.find_or_create_by_station_id(:station_id => params[:station_id], :site_id => params[:current_site].id) 
+    stations.find_or_create_by_station_id(:station_id => params[:station_id], :site_id => params[:current_site].id)
   end
-  
+
   def block(blockee_id)
     blockee_id = blockee_id.id if blockee_id.kind_of? User
     Block.create! :blocker_id => id, :blockee_id => blockee_id
@@ -162,7 +166,7 @@ class User < Account
     blockee_id = blockee_id.id if blockee_id.kind_of? User
     blocks.map(&:blockee_id).include?(blockee_id)
   end
-  
+
   def blocked_by?(blocker_id)
     blocker_id = blocker_id.id if blocker_id.kind_of? User
     blockers.map(&:id).include?(blocker_id)
@@ -194,14 +198,14 @@ class User < Account
   def cached_pending_followee_ids
     Rails.cache.fetch("#{cache_key}/pending_followee_ids") do
       followings.pending.find(:all, :select => 'followee_id').map{|f| f.followee_id}
-    end    
+    end
   end
-  
+
   after_destroy :remove_customizations
   def remove_customizations
     CustomizationWriter.new(self).remove_css if File.exists?(CustomizationWriter.css_path(self.id))
   end
-  
+
   def remove_avatar
     self.avatar_file_name    = nil
     self.avatar_content_type = nil
@@ -210,7 +214,7 @@ class User < Account
     self.save
   end
 
-  protected  
+  protected
   def check_born_on_in_future
     errors.add(:born_on, :cant_be_in_future) if born_on > Date.today
   end
@@ -218,5 +222,5 @@ class User < Account
   def check_age_is_at_least_13
     errors.add(:born_on, I18n.t("registration.must_be_13_years_older")) if underage?
   end
-    
 end
+

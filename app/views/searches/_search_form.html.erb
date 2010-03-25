@@ -1,7 +1,8 @@
-<div id="search_form">
-  <% form_for :search, :url => search_path, :html => { :onsubmit => 'return Base.header_search.buildSearchUrl();', :method => :get, :id => :header_search_form, :class =>:line } do |f| %>
-    <div>
-      <%= text_field_tag :q, "Search for your favorite artist &amp; music",  {:id => :search_query, :class => "search_input", :onfocus => "clearInput('Search for your favorite artist &amp; music', this); $('.search_results_box').show(); ", :onblur => "restoreInput('Search for your favorite artist &amp; music', this); setTimeout(function() {$('.search_results_box').hide();}, 300);" } %>
+<% form_for :search, :url => search_path, :html => { :onsubmit => 'return Base.main_search.buildSearchUrl();', :method => :get, :id => :main_search_form } do |f| %>
+  <div class="title">Search Music on Cyloop</div>
+
+  <span class="text_input_placeholder">
+      <%= text_field_tag :q, "Enter artist name",  {:id => :search_query, :class => "search_input", :onfocus => "clearInput('Enter artist name', this);", :onblur => "restoreInput('Enter artist name', this);"} %>
       <% if site_includes(:msnbr)%>
         <%= f.hidden_field :market, :name => :mkt, :value => 'pt-BR'%>
       <% elsif site_includes(:msnmx)%>
@@ -21,15 +22,15 @@
       <% else %>
         <%= f.hidden_field :market, :name => :mkt, :value => 'es-us' %>
       <% end %>
-      <input type="image" src="/images/search_icon.gif" class="search_button" />
-      <div class="clearer"></div>
-    </div>
-  <% end %>
-</div><!--/end search_form -->
-<div class="search_results_box">
-  <%= render :partial=>'searches/list' %>
-        <div class="search_term">
-            search for "cold"
-        </div>
-</div><!--/end search_results_box -->
+  </span>
+
+  <span class="btn_placeholder">
+      <a href="#" onclick="return Base.main_search.buildSearchUrl();" class="blue_button"><span><span>SEARCH</span></span></a>
+  </span>
+  <br/>
+
+  <div class="sorting">
+      <a href="#" class="active">ARTISTS</a> / <a href="#">MIXES</a> / <a href="#">STATIONS</a> / <a href="#">ALBUMS</a> / <a href="#">USERS</a>
+  </div>
+<% end %>
 

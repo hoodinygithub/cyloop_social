@@ -1,0 +1,44 @@
+<div id="internal_content">
+  <div id="main_content">
+      <div class="two_columns">
+          <div class="search_box">
+              <%= render :partial => 'search_form' %>
+          </div><!--/end search_box -->
+
+          <div id="left_column">
+              <ul class="side_links">
+                  <li><a href="#" class="active">Home</a></li>
+                  <li><a href="#">Mixes</a></li>
+                  <li><a href="#">Stations</a></li>
+                  <li><a href="#">Albums</a></li>
+                  <li class="last"><a href="#">Users</a></li>
+              </ul>
+          </div><!--/end left_column -->
+
+          <div id="center_column">
+              <%= render :partial => 'artist'%>
+              <div class="pagination">
+                <span class="disabled prev_page">&laquo; Previous</span>
+                <span class="current">1</span>
+                <a href="/articles?page=2" rel="next">2</a>
+                <a href="/articles?page=3">3</a>
+                <a href="/articles?page=3">4</a>
+                <a href="/articles?page=3">5</a>
+                <a href="/articles?page=3">6</a>
+                <a href="/articles?page=3">7</a>
+                <a href="/articles?page=3">8</a>
+                <a href="/articles?page=2" class="next_page" rel="next">Next &raquo;</a>
+              </div>
+          </div><!--/end center_column -->
+      </div><!--/end two_columns -->
+
+      <div id="right_column">
+          <div class="ad_box">
+              <a href="#"><img src="/images/ad.jpg" alt="" /></a>
+          </div>
+      </div><!--/end right_column -->
+
+      <div class="clearer"></div>
+  </div><!--/end main_content -->
+</div><!--/end internal_content -->
+

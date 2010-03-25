@@ -70,7 +70,7 @@ class Artist < Account
 
   include SongListen::Most
   include Searchable::ByName
-  
+
   index [:slug, :type]
 
   has_one :station, :foreign_key => 'artist_id', :conditions => { :available => true }
@@ -79,30 +79,35 @@ class Artist < Account
   has_many :listeners, :class_name => 'User', :through => :artist_listens
   has_many :songs
   has_many :top_songs
- 
+
   has_many :album_artists
   has_many :artist_albums, :through => :album_artists, :source => :album, :uniq => true
 
   has_many :band_members
-  
+
   named_scope :starts_with, lambda {|prefix|{:conditions => ["name LIKE ?", "#{prefix}%"], :limit => 10}}
   named_scope :ordered_by_slug, :order => "slug asc"
-  
+
   belongs_to :locale
   belongs_to :genre
   belongs_to :label
 
   has_many :bios, :autosave => true, :foreign_key => :account_id
-  #validates_associated :bios  
-  
+  #validates_associated :bios
+
+  define_index do
+    where "deleted_at IS NULL"
+    indexes :name
+  end
+
   def total_listens
     song_listens.sum(:total_listens)
   end
-  
+
   def recent_listens(limit = 5)
-    song_listens.recent_listens(limit).map { |a| Account.find(a.listener_id) }.compact 
+    song_listens.recent_listens(limit).map { |a| Account.find(a.listener_id) }.compact
   end
-  
+
   def recent_listeners(limit = 5)
     listens = song_listens.find(:all, :limit => limit,
       :order => ['updated_at desc'],
@@ -115,11 +120,11 @@ class Artist < Account
   def image
     avatar(:medium)
   end
-  
+
   def profile_url
     slug
   end
-  
+
   def nick_name
     name
   end
@@ -131,7 +136,7 @@ class Artist < Account
   def genre_name
     self.genre.name rescue nil
   end
-  
+
   def label_name
     self.label.name rescue nil
   end
@@ -147,7 +152,7 @@ class Artist < Account
   def has_station?
     !station.nil?
   end
-  
+
   def similar(limit = 4)
     Rails.cache.fetch("#{self.cache_key}/similar/#{limit}", :expires_delta => EXPIRATION_TIMES['artist_similar']) do
       return [] if self.amg_id.blank?
@@ -193,3 +198,4 @@ class Artist < Account
   "
 
 end
+
