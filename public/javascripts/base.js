@@ -132,7 +132,6 @@ Base.main_search.buildSearchUrl = function () {
   var mkt   = Base.header_search.getFieldValue(form_values,'mkt');
   var scope = 'album'
   var url   = "/search/"+(q=="" ? "empty/" : "")+mkt+"/"+scope+"/"+q;
-  alert (url);
   location.href = url;
   return false;
 };

@@ -20,7 +20,7 @@ class SearchesController < ApplicationController
       @results.store(scope,@partial_results)
     end
     #@cross_search=ThinkingSphinx::Search.search "#{params[:q]}" , :classes => [User, Song, Album, Artist ]
-    render :partial => 'searches/list2', :object => @results, :locals => {:query => params[:q]}
+    render :partial => 'searches/list', :object => @results, :locals => {:query => params[:q]}
 
   end
 
