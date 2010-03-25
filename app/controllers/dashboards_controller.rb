@@ -17,7 +17,6 @@ class DashboardsController < ApplicationController
     stations = recommended_stations(30)
     @recommended_stations = stations[0..(RECOMMENDED_STATIONS-1)]
     @recommended_stations_queue = stations[RECOMMENDED_STATIONS..(stations.size)]
-    @top_stations = profile_user.stations.most_created(3)
     
     respond_to do |format|
       format.html

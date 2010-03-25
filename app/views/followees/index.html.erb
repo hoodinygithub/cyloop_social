@@ -3,9 +3,8 @@
 <% end %>
 
 <% content_for :sorting do %>
-  <%= link_to("#{current_user.name} + FOLLOWING", '') %> /
-  <%= link_to("#{current_user.name}", '', :class => '') %> /
-  <%= link_to("JUST FOLLOWING", '', :class => 'active') %>
+  <%= sort_link_to('LATEST',       :field => 'created_at', :order => 'desc') %>
+  <%= sort_link_to('ALPHABETICAL', :field => 'name',       :order => 'asc' ) %>
 <% end %>
 
 <%= render 'shared/internal_content' %>

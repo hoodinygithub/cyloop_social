@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   before_filter :login_required, :only => [:follow, :unfollow, :edit, :update, :destroy, :feedback, :confirm_cancellation, :remove_avatar]
   before_filter :set_return_to, :only => [:msn_login_redirect, :msn_registration_redirect]
   before_filter :set_dashboard_menu, :only => [:edit, :update]
+  before_filter :find_user_by_slug, :only => [:follow, :unfollow, :block, :unblock]
 
   layout 'base'
 
@@ -156,7 +157,32 @@ class UsersController < ApplicationController
     end
   end
   
+  def follow
+    current_user.follow(@user) unless current_user.follows?(@user)
+    render :layout => false, :text => ''
+  end
+  
+  def unfollow
+    current_user.unfollow(@user) if current_user.follows?(@user)
+    render :layout => false, :text => ''
+  end
+  
+  def block
+    current_user.block(@user)
+    render :layout => false, :text => ''
+  end
+  
+  def unblock
+    current_user.unblock(@user) if current_user.blocks?(@user)
+    render :layout => false, :text => ''
+  end
+  
+  
   private
+  def find_user_by_slug
+    @user = User.find_by_slug(params[:user_slug])
+  end
+  
   def set_dashboard_menu
     @dashboard_menu = :settings
   end

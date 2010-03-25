@@ -111,6 +111,10 @@ class Account < ActiveRecord::Base
     def with_limit(limit=10)
       find(:all, :limit => limit)
     end
+    
+    def alphabetical
+      find(:all, :order => 'accounts.name ASC')
+    end
   end
 
   has_many :account_slugs, :dependent => :destroy

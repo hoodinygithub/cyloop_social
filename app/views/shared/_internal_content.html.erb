@@ -29,6 +29,8 @@
                 <%= yield :list %>
               <% end %>
             </ul><!--/end followers_list -->
+            
+            <%= will_paginate @collection, pagination_args %>
         </div><!--/end center_column -->
 
         <%= render :partial => 'dashboards/right_column' %>

@@ -6,6 +6,7 @@ var Base = {
   stations: {},
   header_search: {},
   main_search: {}
+  community: {}
 };
 
 /*
@@ -17,6 +18,110 @@ Base.layout.hide_success_and_error_messages = function() {
     setTimeout(function() { message.fadeOut(); }, this.message_fadeout_timeout);
   }
 };
+
+Base.layout.span_button = function(content) {
+  return "<span><span>" + content + "</span></span>";
+};
+
+/*
+ * Community
+ */
+Base.community.follow = function(user_slug, button, remove_div) {
+  var params = {'user_slug':user_slug}
+  var $button = jQuery(button);
+  var old_onclick = $button.attr('onclick');
+
+  $button_label = $button.children().children();
+  $button_label.html("...");
+
+  $button.attr('onclick', "");
+  $button.bind('click', function() { return false; });
+  
+  jQuery.post('/users/follow', params, function(response, status) {
+    if (status == 'success') {
+      $button.removeClass("blue_button");
+      $button.addClass("green_button");
+      $button_label.html('FOLLOWING');
+      $button.bind('click', function() { Base.community.unfollow(user_slug, this, remove_div);  });
+    } else {
+      $button_label.html('FOLLOW');
+      $button.bind('click', old_onclick);
+    }
+  });
+};
+
+Base.community.unfollow = function(user_slug, button, remove_div) {
+  var params = {'user_slug':user_slug}
+  var $button = jQuery(button);
+  var old_onclick = $button.attr('onclick');
+
+  $button_label = $button.children().children();
+  $button_label.html("...");
+
+  $button.attr('onclick', "");
+  $button.bind('click', function() { return false; });
+  
+  jQuery.post('/users/unfollow', params, function(response, status) {
+    if (status == 'success') {
+      if (remove_div) {
+        $button.parent().parent().slideUp();
+      } else {
+        $button.removeClass("green_button");
+        $button.addClass("blue_button");
+        $button_label.html('FOLLOW');
+        $button.bind('click', function() { Base.community.follow(user_slug, this, remove_div);  });
+      }
+    } else {
+      $button_label.html('UNFOLLOW');
+      $button.bind('click', old_onclick);
+    }
+  });
+};
+
+Base.community.block = function(user_slug, button) {
+  var params = {'user_slug':user_slug}
+  var $button = jQuery(button);
+  var old_onclick = $button.attr('onclick');
+  var $main_div = $button.parent().parent().parent();
+  var $black_ul = $button.parent().parent();
+  var $settings_button = $main_div.find('.settings_button').children().children();
+  
+  $black_ul.fadeOut();
+  $settings_button.html("<img src='/images/blue_loading.gif'></img>");
+
+  jQuery.post('/users/block', params, function(response, status) {
+    if (status == 'success') {
+      $main_div.find('.blocked').html("<img src='/images/blocked.gif'></img> Blocked");
+      $button.attr('onclick', "");
+      $button.bind('click', function() { Base.community.unblock(user_slug, this); return false; });
+      $button.html("Unblock")
+      $settings_button.html("<img src='/images/settings_button.png'></img>");
+    }
+  });
+};
+
+Base.community.unblock = function(user_slug, button) {
+  var params = {'user_slug':user_slug}
+  var $button = jQuery(button);
+  var old_onclick = $button.attr('onclick');
+  var $main_div = $button.parent().parent().parent();
+  var $black_ul = $button.parent().parent();
+  var $settings_button = $main_div.find('.settings_button').children().children();
+  
+  $black_ul.fadeOut();
+  $settings_button.html("<img src='/images/blue_loading.gif'></img>");
+
+  jQuery.post('/users/unblock', params, function(response, status) {
+    if (status == 'success') {
+      $main_div.find('.blocked').html("");
+      $button.attr('onclick', "");
+      $button.bind('click', function() { Base.community.block(user_slug, this); return false; });
+      $button.html("Block")
+      $settings_button.html("<img src='/images/settings_button.png'></img>");
+    }
+  });
+};
+
 
 /*
  * Stations

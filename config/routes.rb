@@ -19,7 +19,10 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users,
                 :only => [ :new, :create ],
                 :member => { :resend_confirmation_email => :get },
-                :collection => { :errors_on => :get, :msn_registration_redirect => :get, :msn_login_redirect => :get }
+                :collection => { :errors_on => :get, :msn_registration_redirect => :get, 
+                :msn_login_redirect => :get, :follow => :post, :unfollow => :post,
+                :block => :post, :unblock => :post }
+                
   map.resources :registration_layers, :collection => {
      :test            => :any,
      :follow_artist   => :any,

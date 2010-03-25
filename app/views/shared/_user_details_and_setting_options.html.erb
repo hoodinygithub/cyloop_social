@@ -11,25 +11,33 @@
     <%= link_to item.stations.size, station_path(item) %> Stations /
     <%= link_to item.followers.size, followers_path(item) %> Followers
 </div>
+
 <div class="follower_actions w_settings">
-    <a href="#" class="green_button follower_btn"><span><span>FOLLOWING</span></span></a>
-    <a href="#" class="blue_button settings_button">
-      <span>
-        <span>
-          <%= image_tag 'settings_button.png' %>
-        </span>
-      </span>
-    </a>
-    <br/>
-    
-    <% if item.respond_to? :blocked_by? and item.blocked_by? current_user %>
-      <div class="blocked">
-        <%= image_tag 'blocked.gif' %> Blocked
-      </div>
+    <% if current_user.follows?(item) %>
+      <%= green_button('FOLLOWING', 
+        :onclick => "Base.community.unfollow('#{item.slug}', this, #{following_page?})", 
+        :class => 'follower_btn') %>
+    <% else %>
+      <%= blue_button('FOLLOW', 
+        :onclick => "Base.community.unfollow('#{item.slug}', this, #{following_page?})", 
+        :class => 'follower_btn') %>
     <% end %>
     
+    <%= blue_button(image_tag('settings_button.png'), :href => '#', :class => 'settings_button') %>
+    <br/>
+    
+    <div class="blocked">
+      <% if current_user.blocks?(item) %>
+      <%= image_tag('blocked.gif') %> Blocked
+      <% end %>
+    </div>
+    
     <ul class="actions_settings">
-        <li><a href="#">Block</a></li>
-        <li><a href="#">Flag</a></li>
+      <% if current_user.blocks?(item) %>
+        <li><a href="#" onclick="Base.community.unblock('<%= item.slug %>', this); return false;">Unblock</a></li>
+      <% else %>
+        <li><a href="#" onclick="Base.community.block('<%= item.slug %>', this); return false;">Block</a></li>
+      <% end %>
+      <li><a href="#" onclick="Base.community.flag('<%= item.slug %>', this); return false;">Flag</a></li>
     </ul>
 </div>

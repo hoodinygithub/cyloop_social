@@ -101,6 +101,10 @@ class User < Account
     def song_listens
       SongListen.for_followees_of(proxy_owner)
     end
+    
+    def alphabetical
+      find(:all, :order => 'accounts.name ASC')
+    end
   end
 
   has_many :blocks_as_blockee, :class_name => 'Block', :foreign_key => 'blockee_id'
@@ -160,6 +164,12 @@ class User < Account
   def block(blockee_id)
     blockee_id = blockee_id.id if blockee_id.kind_of? User
     Block.create! :blocker_id => id, :blockee_id => blockee_id
+  end
+  
+  def unblock(blockee_id)
+    blockee_id = blockee_id.id if blockee_id.kind_of? User
+    blocked = Block.first(:conditions => {:blocker_id => id, :blockee_id => blockee_id})
+    blocked.destroy if blocked
   end
 
   def blocks?(blockee_id)

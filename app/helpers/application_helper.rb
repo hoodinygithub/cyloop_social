@@ -1,4 +1,27 @@
 module ApplicationHelper
+  def sort_link_to(link_label, options = {})
+    field = options.delete(:field)
+    order = options.delete(:order)
+        
+    raise ArgumentError unless (field && order)
+    
+    url = request.request_uri.split('?').first
+    url << "?page=#{params[:page]}" if params.fetch(:page, nil)
+    url << (url.include?('?') ? '&' : '?')
+    url << "sort_field=#{field}&sort_order=#{order}"
+    url = url.downcase
+    
+    if @sort_field == field and @sort_order == order
+      options[:class] = 'active'
+    end
+    
+    link_to link_label, url, options
+  end
+  
+  def following_page?
+    params[:controller] == 'followees'
+  end
+  
   def profile_owner? 
     current_user == profile_account
   end
@@ -11,18 +34,30 @@ module ApplicationHelper
     end
   end
   
-  def blue_button(button_label, options = {})
+  def special_button(type, button_label, options = {})
     options.merge!({
-      :class => "#{options[:class]} blue_button",
+      :class => "#{options[:class]} #{type}",
       :onclick => "#{options[:onclick]}; return false;"
     })
 
-    options[:href] = '#' unless options[:href]
-    options.delete(:onclick) if options[:href]
+    
+    if options[:href]
+      options.delete(:onclick)
+    else
+      options[:href] = '#' unless options[:href]
+    end
     
     button = content_tag(:span, content_tag(:span, button_label))
     link_to button, options[:href], options
   end
+  
+  def blue_button(button_label, options = {})
+    special_button(:blue_button, button_label, options)
+  end
+  
+  def green_button(button_label, options = {})
+    special_button(:green_button, button_label, options)
+  end  
   
   def station_contains(item, includes = 3)
     links = []
