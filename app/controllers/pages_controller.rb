@@ -11,6 +11,8 @@ class PagesController < ApplicationController
   def home
     respond_to do |format|
       format.html do
+        
+        @latest_stations = Station.all(:limit => 8, :order => "stations.created_at DESC")
 
         if site_includes(:msnlatam)
           @top_songs = current_site.summary_top_songs.limited_to(9)
@@ -115,7 +117,7 @@ class PagesController < ApplicationController
 
         @feed_featured ||= []
       end
-
+      
       format.js do
         if logged_in?
           @artists = Artist.artists_by_recommended( rec_engine.get_recommended_artists(:number_of_records => 30), 5)
