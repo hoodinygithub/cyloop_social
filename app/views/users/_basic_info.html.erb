@@ -6,7 +6,7 @@ var uploadInfo = function(){
 
 var addWebSite = function() {
   var value = $(this).val().replace('http://', '');
-  $('.website_row').last().after('<div class="website_row">' + 
+  $('#websites_clearer').before('<div class="website_row">' + 
    '<input id="user_websites_" name="user[websites][]" type="hidden" value="' + value + '" />' +
    '<b><big><a href="http://' + value + '">' + value + '</a></big> &nbsp; ' +
    '<a href="#" class="black delete_site">[ DELETE ]</a></b><br/></div>');
@@ -90,9 +90,9 @@ $(document).ready(function(){
             <big><a href="http://<%= site %>"><%= site %></a></big> &nbsp; 
             <a href="#" class="black delete_site">[ DELETE ]</a>
           </b>
-          <br/>
         </div>
       <% end %>
+      <br class="clearer" id="websites_clearer" />
       </div>
     </div><!--/end form_row -->
 
