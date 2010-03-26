@@ -6,19 +6,14 @@
           </div><!--/end search_box -->
 
           <div id="left_column">
-              <ul class="side_links">
-                  <li><a href="#" class="active">Artists (<%= @counts["Artist"].to_s %>)</a></li>
-                  <li><a href="#">Stations (<%= @counts["Station"].to_s %>)</a></li>
-                  <li><a href="#">Albums(<%= @counts["Album"].to_s %>)</a></li>
-                  <li class="last"><a href="#">Users (<%= @counts["User"].to_s %>)</a></li>
-              </ul>
+              <%= render :partial => 'side_link', :object =>@counts , :locals => {:active_scope => @active_scope} %>
           </div><!--/end left_column -->
 
           <div id="center_column">
-              <%= render :partial => 'artist', :object => @artists %>
-              <div class="pagination">
-              <%= will_paginate @artists, pagination_args%>
-              </div>
+            <%= render :partial => @active_scope.to_s, :object => @results %>
+            <div class="pagination">
+              <%= will_paginate @results, pagination_args%>
+            </div>
           </div><!--/end center_column -->
       </div><!--/end two_columns -->
 

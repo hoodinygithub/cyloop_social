@@ -30,7 +30,7 @@
         <a href="#">
           <%= avatar_for(album, :search, {:alt => " #{album.name}"}) %>
           <b> <%= album.name %> </b><br/>
-          <%= album.owner.name%>
+          <%= album.owner.name unless album.owner.nil?%>
           <br class="clearer" />
         </a>
       </li>
@@ -47,7 +47,7 @@
         <a href="#">
           <%= avatar_for(station.artist, :search, {:alt => " #{station.name}"}) %>
           <b> <%= station.name %> </b><br/>
-          <%= station.artist.name %>
+          <%= station.artist.name unless station.artist.nil? %>
           <br class="clearer" />
         </a>
       </li>

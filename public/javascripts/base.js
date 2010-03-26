@@ -55,7 +55,7 @@ Base.community.follow = function(user_slug, button, remove_div) {
 
   $button.attr('onclick', "");
   $button.bind('click', function() { return false; });
-  
+
   jQuery.post('/users/follow', params, function(response, status) {
     if (status == 'success') {
       $button.removeClass("blue_button");
@@ -77,7 +77,7 @@ Base.community.unfollow = function(user_slug, button, remove_div) {
 
   $button.attr('onclick', "");
   $button.bind('click', function() { return false; });
-  
+
   jQuery.post('/users/unfollow', params, function(response, status) {
     if (status == 'success') {
       if (remove_div) {
@@ -100,7 +100,7 @@ Base.community.block = function(user_slug, button) {
   var $main_div = $button.parent().parent().parent();
   var $black_ul = $button.parent().parent();
   var $settings_button = $main_div.find('.settings_button').children().children();
-  
+
   $black_ul.fadeOut();
   $settings_button.html("<img src='/images/blue_loading.gif'></img>");
 
@@ -123,7 +123,7 @@ Base.community.unblock = function(user_slug, button) {
   var $main_div = $button.parent().parent().parent();
   var $black_ul = $button.parent().parent();
   var $settings_button = $main_div.find('.settings_button').children().children();
-  
+
   $black_ul.fadeOut();
   $settings_button.html("<img src='/images/blue_loading.gif'></img>");
 
@@ -219,14 +219,14 @@ Base.header_search.buildSearchUrl = function () {
   var form_values = jQuery("#header_search_form").serializeArray();
   var q     = Base.header_search.getFieldValue(form_values,'q');
   var mkt   = Base.header_search.getFieldValue(form_values,'mkt');
-  var scope = 'artist'
+  var scope = 'any'
   var url   = "/search/"+(q=="" ? "empty/" : "")+mkt+"/"+scope+"/"+q;
   location.href = url;
   return false;
 };
 
 Base.header_search.dropdown = function() {
-  jQuery("#search_query").keypress(function() {
+  jQuery("#search_query").keyup(function() {
       var form_values = jQuery("#header_search_form").serializeArray();
       var q           = Base.header_search.getFieldValue(form_values,'q');
       if (q.length>1) {

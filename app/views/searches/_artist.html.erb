@@ -1,11 +1,11 @@
 <h1>ARTISTS</h1>
 
 <div class="sorting">
-    <a href="#">DEMIAN + FOLLOWING</a> / <a href="#" class="active">JUST DEMIAN</a> / <a href="#">JUST FOLLOWING</a>
+    <a href="#" class="active">RELEVANCE</a> / <a href="#" >ALPHABETICAL</a>
 </div>
 
 <ul class="followers_list">
-  <% @artists.each do |artist|%>
+  <% @results.each do |artist|%>
     <li>
         <a href="#"><div id="logo"><%= avatar_for(artist, :search, {:alt => " #{artist.name}", :class =>"follower_image"}) %></div></a>
         <div class="follower_text">

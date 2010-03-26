@@ -1,0 +1,42 @@
+<h1>STATIONS</h1>
+
+<div class="sorting">
+  <a href="#">TOP RATED</a> / <a href="#">ALPHABETICAL</a> / <a href="#" class="active">LATEST</a>
+</div>
+
+
+<ul class="subcriptions_list">
+  <% @results.each do |station|%>
+    <li>
+                                <a href="#"><img src="images/listen_icon.png" class="listen_icon png_fix" alt="" title="Listen" /></a>
+
+                                <div class="four_thubms_big">
+                                    <a href="#"><img src="/images/4thumbs_big_1.gif" alt="" /></a>
+                                    <a href="#"><img src="/images/4thumbs_big_2.gif" alt="" /></a>
+                                    <a href="#"><img src="/images/4thumbs_big_3.gif" alt="" /></a>
+                                    <a href="#"><img src="/images/4thumbs_big_4.gif" alt="" /></a>
+                                </div><!--/end four_thubms_big -->
+
+                                <div class="subcription_text">
+                                    <big><a href="#">Radio Name</a></big><br/>
+                                    <span class="grey">Last modified: 09/10/10</span><br/>
+                                    Contains: <a href="#">Metallica</a>, <a href="#">Someone Else</a>, <a href="#">Alice in Chains</a>...<br/>
+
+                                    <div class="buttons">
+                                        <a href="#"><img src="/images/listen_button.png" class="png_fix" alt="" title="Listen" /></a>
+                                        <a href="#"><img src="/images/play_button.png" class="png_fix" alt="" title="Play" /></a>
+                                    </div>
+
+                                    <div class="subcription_creator">
+                                        <img src="/images/network_icon.gif" class="creator_image" alt="" />
+                                        <div class="creator_text">
+                                            <b>Created by: <a href="#">Jason Calleiro</a></b><br/>
+                                            Click <a href="#">here</a> to follow Jason.
+                                        </div>
+                                    </div>
+                                </div><!--/end subcription_text -->
+                                <br class="clearer" />
+                            </li>
+  <% end %>
+</ul><!--/end followers_list -->
+
