@@ -5,7 +5,7 @@ var Base = {
   network: {},
   stations: {},
   header_search: {},
-  main_search: {}
+  main_search: {},
   community: {}
 };
 

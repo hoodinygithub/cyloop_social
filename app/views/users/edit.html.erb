@@ -10,6 +10,7 @@
     <div class="settings_column">
       <h1>ACCOUNT SETTINGS</h1>
       <%= render :partial => 'basic_info' %>
+      <%= render :partial => 'password_change' if cyloop_login? %>
       <%= render :partial => 'email_notifications' %>
       <%= render :partial => 'delete_account' %>
     </div><!--/end settings_column -->

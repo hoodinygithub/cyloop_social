@@ -17,5 +17,5 @@
 }
 
 label.label_holder input.file{
-  filter: alpha(opacity=0)!important;
+    filter: alpha(opacity=0)!important;
 }

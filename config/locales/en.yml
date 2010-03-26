@@ -1097,13 +1097,20 @@ en:
       mixes: Mixes
       stations: Stations
   account_settings:
-    delete_account: DELETE ACCOUNT
     password: Password
-    delete_info: By checking this box, I understand that deleting my account means that my Cyloop page, music library and picture will be deleted. I understand that in order to return to Cyloop, I will have to create a new account with a new username.
+    update: UPDATE
     cancel: Cancel
-    delete_my_account: DELETE MY ACCOUNT
+    password_change: PASSWORD CHANGE
+    old_password: Old Password
+    new_password: New Password
+    change_password: CHANGE PASSWORD
     email_me_communications: Send me periodical Cyloop Newsletters and communications
     email_me_following_me: Send me an email when someone is following me
     email_me_reviews_mixes: Send me an email when someone reviews/rates one of my mixes
     email_me_subscribes_mixes: Send me an email when someone subscribes to one of my mixes
     email_me_subscribes_radios: Send me an email when someone subscribes to one of my radios
+    delete_account: DELETE ACCOUNT
+    delete_info: By checking this box, I understand that deleting my account means that my Cyloop page, music library and picture will be deleted. I understand that in order to return to Cyloop, I will have to create a new account with a new username.
+    delete_my_account: DELETE MY ACCOUNT
+    delete_info_required: You must click on the check box to continue
+    password_required: You must enter a valid password

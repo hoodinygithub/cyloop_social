@@ -3241,3 +3241,14 @@ label.label_holder{
   float : left;
 }
 
+#avatar_image img {
+  height: 150px;
+  width: 150px;
+}
+
+#avatar_upload_info {
+  margin-top: 10px;
+  margin-left: 10px;
+  font-weight: bold;
+  color: green;
+}

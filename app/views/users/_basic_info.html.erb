@@ -5,11 +5,23 @@ var uploadInfo = function(){
 }
 
 var addWebSite = function() {
+  var value = $(this).val().replace('http://', '');
+  $('.website_row').last().after('<div class="website_row">' + 
+   '<input id="user_websites_" name="user[websites][]" type="hidden" value="' + value + '" />' +
+   '<b><big><a href="http://' + value + '">' + value + '</a></big> &nbsp; ' +
+   '<a href="#" class="black delete_site">[ DELETE ]</a></b><br/></div>');
+  $('.delete_site').click(deleteWebSite);
+}
+
+var deleteWebSite = function() {
+  $(this).closest('.website_row').remove();
+  return false;
 }
 
 $(document).ready(function(){
   $('#user_avatar').change(uploadInfo);
   $('#add_website').bind('keydown', 'return', addWebSite);
+  $('.delete_site').click(deleteWebSite);
 });
 
 <% end %>
@@ -21,7 +33,6 @@ $(document).ready(function(){
       <label><b>Name</b></label>
       <div class="grey_round_box left_side">
         <%= f.text_field :name, :class => 'input full_width2' %>
-        <!-- <input type="text" class="input full_width2" value="Enter artist name" onfocus="clearInput('Enter artist name', this);" onblur="restoreInput('Enter artist name', this);" /> -->
       </div>
       <br class="clearer" />
     </div><!--/end form_row -->
@@ -72,14 +83,23 @@ $(document).ready(function(){
       </div>
       <br class="clearer" />
       <div id="websites">
-      <% @user.websites.each do |w| %>
-        <b><big><a href="http://<%= w %>"><%= w %></a></big> &nbsp; <a href="#" class="black">[ DELETE ]</a></b><br/>
+      <% @user.websites.each_with_index do |site, index| %>
+        <div class="website_row">
+          <%= hidden_field_tag "user[websites][]", h(site) %>
+          <b>
+            <big><a href="http://<%= site %>"><%= site %></a></big> &nbsp; 
+            <a href="#" class="black delete_site">[ DELETE ]</a>
+          </b>
+          <br/>
+        </div>
       <% end %>
       </div>
     </div><!--/end form_row -->
 
     <div class="form_row">
-      <%= avatar_for(profile_account, :small) %>
+      <div id="avatar_image">
+        <%= avatar_for(profile_account, :small) %>
+      </div> 
       <div class="add_update">
         <label class='label_holder'>
           <a href="#" id="avatar_upload_button" class="blue_button"><span><span>ADD / UPDATE</span></span></a>
