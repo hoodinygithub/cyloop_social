@@ -2,7 +2,7 @@
   <div class="title">Search Music on Cyloop</div>
 
   <span class="text_input_placeholder">
-      <%= text_field_tag :q, "Enter artist name",  {:id => :search_query, :class => "search_input", :onfocus => "clearInput('Enter artist name', this);", :onblur => "restoreInput('Enter artist name', this);"} %>
+      <%= text_field_tag :q, query.nil? ? "Enter artist name" : query,  {:id => :search_query, :class => "search_input", :onfocus => "clearInput('Enter artist name', this);", :onblur => "restoreInput('Enter artist name', this);"} %>
       <% if site_includes(:msnbr)%>
         <%= f.hidden_field :market, :name => :mkt, :value => 'pt-BR'%>
       <% elsif site_includes(:msnmx)%>
@@ -30,7 +30,7 @@
   <br/>
 
   <div class="sorting">
-      <a href="#" class="active">ARTISTS</a> / <a href="#">MIXES</a> / <a href="#">STATIONS</a> / <a href="#">ALBUMS</a> / <a href="#">USERS</a>
+      <a href="#" class="active">ARTISTS</a> / <a href="#">STATIONS</a> / <a href="#">ALBUMS</a> / <a href="#">USERS</a>
   </div>
 <% end %>
 

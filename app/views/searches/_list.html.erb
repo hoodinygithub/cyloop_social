@@ -3,73 +3,74 @@
   <% @albums = value if key=='Album'%>
   <% @songs = value if key=='Song'%>
   <% @users = value if key=='User'%>
+  <% @stations = value if key=='Station'%>
 <% end %>
 <div class="oveflow_list">
-     <h1>ARTISTS</h1>
+  <h1>ARTISTS</h1>
 
-    <ul class="search_list">
-     <% @artists.each do |artist|  %>
-        <li>
-            <a href="#">
-                <%= avatar_for(artist, :small, {:alt => " #{artist.name}"}) %>
-                <b> <%= artist.name %> </b><br/>
-                <br class="clearer" />
-            </a>
-        </li>
-      <% end %>
-    </ul>
+  <ul class="search_list">
+   <% @artists.each do |artist|  %>
+      <li>
+        <a href="#">
+          <%= avatar_for(artist, :search, {:alt => " #{artist.name}"}) %>
+          <b> <%= artist.name %> </b><br/>
+          <br class="clearer" />
+        </a>
+      </li>
+    <% end %>
+  </ul>
 
-    <div class="grey_spacer"></div>
+  <div class="grey_spacer"></div>
 
-    <h1>ALBUMS</h1>
+  <h1>ALBUMS</h1>
 
-    <ul class="search_list">
-     <% @albums.each do |album|  %>
-        <li>
-            <a href="#">
-                <%= avatar_for(album, :small, {:alt => " #{album.name}"}) %>
-                <b> <%= album.name %> </b><br/>
-                <%= album.owner.name%>
-                <br class="clearer" />
-            </a>
-        </li>
-      <% end %>
-    </ul>
+  <ul class="search_list">
+   <% @albums.each do |album|  %>
+      <li>
+        <a href="#">
+          <%= avatar_for(album, :search, {:alt => " #{album.name}"}) %>
+          <b> <%= album.name %> </b><br/>
+          <%= album.owner.name%>
+          <br class="clearer" />
+        </a>
+      </li>
+    <% end %>
+  </ul>
 
-    <div class="grey_spacer"></div>
+  <div class="grey_spacer"></div>
 
-    <h1>SONGS</h1>
+  <h1>STATIONS</h1>
 
-    <ul class="search_list">
-     <% @songs.each do |song|  %>
-        <li>
-            <a href="#">
-                <%= avatar_for(song, :small, {:alt => " #{song.title}"}) %>
-                <b> <%= song.title %> </b><br/>
-                <%= song.album.owner.name %>
-                <br class="clearer" />
-            </a>
-        </li>
-      <% end %>
-    </ul>
+  <ul class="search_list">
+   <% @stations.each do |station|  %>
+      <li>
+        <a href="#">
+          <%= avatar_for(station.artist, :search, {:alt => " #{station.name}"}) %>
+          <b> <%= station.name %> </b><br/>
+          <%= station.artist.name %>
+          <br class="clearer" />
+        </a>
+      </li>
+    <% end %>
+  </ul>
 
-    <div class="grey_spacer"></div>
+  <div class="grey_spacer"></div>
 
-    <h1>USERS</h1>
+  <h1>USERS</h1>
 
-    <ul class="search_list">
-     <% @users.each do |user|  %>
-        <li>
-            <a href="#">
-                <%= avatar_for(user, :small, {:alt => " #{user.name}"}) %>
-                <b> <%= user.name %> </b><br/>
-                <br class="clearer" />
-            </a>
-        </li>
-      <% end %>
-    </ul>
+  <ul class="search_list">
+   <% @users.each do |user|  %>
+      <li>
+        <a href="#">
+          <%= avatar_for(user, :search, {:alt => " #{user.name}"}) %>
+          <b> <%= user.name %> </b><br/>
+          <br class="clearer" />
+        </a>
+      </li>
+    <% end %>
+  </ul>
 
-    <div class="grey_spacer"></div>
+  <div class="grey_spacer"></div>
 
 
 

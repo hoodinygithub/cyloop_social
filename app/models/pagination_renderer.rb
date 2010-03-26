@@ -6,7 +6,7 @@ class PaginationRenderer < WillPaginate::LinkRenderer
 
     links = [
       page_link_or_span(@collection.previous_page, 'previous', @options[:previous_label], true),
-      @template.content_tag( :div, links.join(@options[:separator]), :class => 'windowed_links' ),
+      @template.content_tag( :span, links.join(@options[:separator]), :class => 'windowed_links' ),
       page_link_or_span(@collection.next_page, 'next', @options[:next_label], true)
       ]
 
@@ -56,11 +56,11 @@ class PaginationRenderer < WillPaginate::LinkRenderer
   end
 
   def button_active(page, text, attributes = {})
-    pill_link_to text, url_for(page)
+    @template.link_to text, url_for(page), :class=>'next_page'
   end
 
   def button_disabled(page, text, attributes = {})
-    pill_link_to text, url_for(page), :disabled => :true
+    @template.link_to text, url_for(page), :class=>'disabled', :disabled => :true
   end
 
   def page_span(page, text, attributes = {})

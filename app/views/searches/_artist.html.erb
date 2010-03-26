@@ -5,44 +5,22 @@
 </div>
 
 <ul class="followers_list">
+  <% @artists.each do |artist|%>
     <li>
-        <a href="#"><img src="/images/comment_icon.gif" class="follower_image" alt="" /></a>
+        <a href="#"><div id="logo"><%= avatar_for(artist, :search, {:alt => " #{artist.name}", :class =>"follower_image"}) %></div></a>
         <div class="follower_text">
-            <b><a href="#">Jason Calleiro</a></b><br/>
-            <span>Miami, Fl</span><br/>
+            <b><a href="#"><%= artist.name %></a></b><br/>
+            <span><%= "#{artist.city}" %></span><br/>
+            <span><%= "#{artist.genre.name}" unless artist.genre.nil? %></span>
         </div>
+
         <div class="follower_actions w_settings">
             <a href="#"><img src="/images/play_button.png" class="png_fix" alt="" /></a>
             <a href="#" class="blue_button"><span><span>FOLLOW</span></span></a><br/>
         </div>
         <br class="clearer" />
-        <div class="long_text"><a href="#">3,250</a> Mixes / <a href="#">5,350</a> Stations / <a href="#">5,350</a> Followers</div>
+        <div class="long_text"><a href="#"><%= artist.station.nil? ? "0": "1"%></a> Stations / <a href="#"><%= artist.followers.size %></a> Followers</div>
     </li>
-    <li>
-        <a href="#"><img src="/images/comment_icon.gif" class="follower_image" alt="" /></a>
-        <div class="follower_text">
-            <b><a href="#">Jason Calleiro</a></b><br/>
-            <span>Miami, Fl</span><br/>
-        </div>
-        <div class="follower_actions w_settings">
-            <a href="#"><img src="/images/play_button.png" class="png_fix" alt="" /></a>
-            <a href="#" class="blue_button"><span><span>FOLLOW</span></span></a><br/>
-        </div>
-        <br class="clearer" />
-        <div class="long_text"><a href="#">3,250</a> Mixes / <a href="#">5,350</a> Stations / <a href="#">5,350</a> Followers</div>
-    </li>
-    <li>
-        <a href="#"><img src="/images/comment_icon.gif" class="follower_image" alt="" /></a>
-        <div class="follower_text">
-            <b><a href="#">Jason Calleiro</a></b><br/>
-            <span>Miami, Fl</span><br/>
-        </div>
-        <div class="follower_actions w_settings">
-            <a href="#"><img src="/images/play_button.png" class="png_fix" alt="" /></a>
-            <a href="#" class="green_button"><span><span>FOLLOWING</span></span></a><br/>
-        </div>
-        <br class="clearer" />
-        <div class="long_text"><a href="#">3,250</a> Mixes / <a href="#">5,350</a> Stations / <a href="#">5,350</a> Followers</div>
-    </li>
+  <% end %>
 </ul><!--/end followers_list -->
 

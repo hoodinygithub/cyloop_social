@@ -2,30 +2,30 @@ module ApplicationHelper
   def sort_link_to(link_label, options = {})
     field = options.delete(:field)
     order = options.delete(:order)
-        
+
     raise ArgumentError unless (field && order)
-    
+
     url = request.request_uri.split('?').first
     url << "?page=#{params[:page]}" if params.fetch(:page, nil)
     url << (url.include?('?') ? '&' : '?')
     url << "sort_field=#{field}&sort_order=#{order}"
     url = url.downcase
-    
+
     if @sort_field == field and @sort_order == order
       options[:class] = 'active'
     end
-    
+
     link_to link_label, url, options
   end
-  
+
   def following_page?
     params[:controller] == 'followees'
   end
-  
-  def profile_owner? 
+
+  def profile_owner?
     current_user == profile_account
   end
-  
+
   def main_content(content)
     if params[:controller] == 'pages' and params[:action] != 'index'
       content_tag(:div, content_tag(:div, content_tag(:div, content, :id => 'pages_internal'), :id => 'internal_content'), :id => 'pages')
@@ -33,35 +33,34 @@ module ApplicationHelper
       content
     end
   end
-  
+
   def special_button(type, button_label, options = {})
     options.merge!({
       :class => "#{options[:class]} #{type}",
       :onclick => "#{options[:onclick]}; return false;"
     })
 
-    
     if options[:href]
       options.delete(:onclick)
     else
       options[:href] = '#' unless options[:href]
     end
-    
+
     button = content_tag(:span, content_tag(:span, button_label))
     link_to button, options[:href], options
   end
-  
+
   def blue_button(button_label, options = {})
     special_button(:blue_button, button_label, options)
   end
-  
+
   def green_button(button_label, options = {})
     special_button(:green_button, button_label, options)
-  end  
-  
+  end
+
   def station_contains(item, includes = 3)
     links = []
-    
+
     if item.is_a? RecEngine::Station
       artists = item.includes[0..(includes - 1)]
     elsif item.is_a? UserStation
@@ -69,16 +68,16 @@ module ApplicationHelper
     elsif item.is_a? Artist
       artists = item.station.includes(includes)
     end
-    
-    
-    artists.each do |artist| 
-      links << link_to(artist[:name], artist[:url]) if item.is_a? RecEngine::Station 
+
+
+    artists.each do |artist|
+      links << link_to(artist[:name], artist[:url]) if item.is_a? RecEngine::Station
       links << link_to(artist, artist) if (item.is_a? UserStation or item.is_a? Artist)
     end
     "Contains: #{links.join(", ")}..."
   end
-  
-  
+
+
   def render_flash_messages
     if flash[:success]
       message = flash[:success]
@@ -97,11 +96,11 @@ module ApplicationHelper
 
     html
   end
-  
+
   def four_thumbs_to(station, options = {})
     station = station.station if station.is_a? TopStation
     station_link = station.artist
-    
+
     if options[:type].nil?
       station_images_with_links = link_to(image_tag(AvatarsHelper.avatar_path(station.artist, :small), :class => 'avatar_four_thumbs'), station_link)
       station.includes[0..3].each do |artist|
@@ -118,7 +117,7 @@ module ApplicationHelper
       html = content_tag(:div, station_images_with_links, :class => "four_thubms_big #{options[:class]}")
     end
   end
-  
+
 
   def nav_aux_login_url
     if params.fetch(:controller) == "pages" && params.fetch(:action) == "home"
@@ -156,7 +155,7 @@ module ApplicationHelper
     output = date.to_date.to_s(:default)
     output << " | #{date.strftime('%I:%M%p')}"
   end
-  
+
   def generic_URL_regexp
     @generic_URL_regexp ||= Regexp.new( '(^|[\n ])([\w]+?://[\w]+[^ \"\n\r\t<]*)', Regexp::MULTILINE | Regexp::IGNORECASE )
   end
@@ -197,14 +196,14 @@ module ApplicationHelper
     when "Cyloop ES"
       "UA-410780-38"
     when "MSN Argentina"
-      "UA-410780-46"      
+      "UA-410780-46"
     end
   end
-  
+
   def messenger_player_gatracker_id
     case current_site.name
     when "MSN Brazil"
-      "UA-410780-39"      
+      "UA-410780-39"
     when "MSN Mexico"
       "UA-410780-40"
     when "MSN Latam"
@@ -216,7 +215,7 @@ module ApplicationHelper
     when "MSN Canada FR"
       "UA-410780-44"
     when "MSN Argentina"
-      "UA-410780-45"      
+      "UA-410780-45"
     end
   end
 
@@ -325,12 +324,12 @@ module ApplicationHelper
       options[:width] = 1
       options[:height] = 1
     end
-    
+
     if id == "top_artists_banner"
       options[:width] = 120
       options[:height] = 30
     end
-    
+
     if id == "top_songs_banner"
       options[:width] = 120
       options[:height] = 30
@@ -350,7 +349,7 @@ module ApplicationHelper
     url_options = options.to_a.map{|e| e.join("=")}.join("&")
     render :partial => 'shared/banner', :locals => {:options => options, :url_options => url_options}
   end
-  
+
   def full_url(url)
     return url if url =~ /http/
     "http://#{url}"
@@ -364,11 +363,11 @@ module ApplicationHelper
   def perma_id(link)
     "#{link.split("-")[0]}"
   end
-  
+
   def profile_public_home?
     profile_user.slug == request.env["REQUEST_URI"].gsub!(/\//,'')
   end
-  
+
   def navigation_args_main
     args = []
     if page_owner?
@@ -380,25 +379,25 @@ module ApplicationHelper
     else
       args.push({:home => user_path})
     end
-    if profile_type?("Artist") 
+    if profile_type?("Artist")
       args.push({:biography => biography_index_path}, {:music => albums_path})
       args.push({:community => followers_path}, :charts)
     end
-    if profile_type?("User") 
+    if profile_type?("User")
       args.push(:playlists, {:stations => (page_owner?)? my_stations_path : user_stations_path})
       args.push({:community => following_index_path}, :charts)
     end
-    if page_owner? 
+    if page_owner?
       args.push({:settings => my_settings_path})
     end
     args
   end
-  
+
   def filter_args_global
     args = []
     args.push({:all => "#"})
   end
-  
+
   def filter_args_charts
     args = []
     args.push({:songs => charts_songs_path})
@@ -410,7 +409,7 @@ module ApplicationHelper
     end
     args
   end
-  
+
   def filter_args_activity
     args = []
     if page_owner?
@@ -420,25 +419,25 @@ module ApplicationHelper
     end
     args
   end
-  
+
   def filter_args_playlists
     args = []
     args.push({:all => playlists_path})
     args
   end
-  
+
   def filter_args_albums
     args = []
     args.push({:all => albums_path})
     args
   end
-  
+
   def filter_args_stations
     args = []
     args.push({:stations => :stations})
     args
   end
-  
+
   def filter_args_followings
     args = []
     args.push({:following => following_index_path})
@@ -448,9 +447,9 @@ module ApplicationHelper
   end
 
   def pagination_args
-    { 
-      :previous_label => t('actions.previous'), 
-      :next_label => t('actions.next'),
+    {
+      :previous_label => "« #{t('actions.previous')}",
+      :next_label => "#{t('actions.next')} »",
       :renderer => PaginationRenderer
     }
   end
@@ -477,16 +476,16 @@ module ApplicationHelper
     elsif site_includes(:msncafr)
       'http://musique.ca.msn.cyloop.com/'
     elsif site_includes(:msnar)
-      'http://ar.msn.com/'  
+      'http://ar.msn.com/'
     else
       ''
     end
   end
 
-  def pluralize(count, singular, plural=nil) 
+  def pluralize(count, singular, plural=nil)
     "#{number_with_delimiter(count) || 0} " + ((count == 1 || count == '1') ? singular : (plural || singular.pluralize))
   end
-  
+
   def os_type
     my_os = request.env["HTTP_USER_AGENT"]
     case my_os
@@ -516,7 +515,7 @@ module ApplicationHelper
     when /PPC Mac OS X/   then "Mac OS X"
     when /AmigaOS/        then "Amiga OS"
     else                       "Other OS"
-    end    
+    end
   end
 
   def browser_type
@@ -550,7 +549,7 @@ module ApplicationHelper
     else                    "Other Browser"
     end
   end
-  
+
   def options_for_contact_us_categories
     [[t("contact_us.form.category_account"),  "Account - #{t("contact_us.form.category_account")} "],
       [t("contact_us.form.category_profile"),  "Profile - #{t("contact_us.form.category_profile")}"],
@@ -568,7 +567,7 @@ module ApplicationHelper
       [t("contact_us.form.category_other"),   "Other - #{t("contact_us.form.category_other")}"],
     ]
   end
-  
+
   def minimum_width_for_chart(item)
     ratio = item.ratio.to_f
     ratio = ratio.nan? ? 0 : ratio
@@ -588,7 +587,7 @@ module ApplicationHelper
   def render_flash
     render 'shared/flash', :flash => flash
   end
-  
+
   def error_class_for(model, method)
     model.errors.on(method) ? "has_errors" : ""
   end
@@ -613,11 +612,12 @@ module ApplicationHelper
     when 'msnlatino'
       'latino'
     when 'msnar'
-      'ar'      
+      'ar'
     else
-      site_code.to_s      
+      site_code.to_s
     end
     "/images/msn_#{path}_music_sm.png"
   end
 
 end
+

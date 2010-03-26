@@ -202,7 +202,7 @@ Base.header_search.buildSearchUrl = function () {
   var form_values = jQuery("#header_search_form").serializeArray();
   var q     = Base.header_search.getFieldValue(form_values,'q');
   var mkt   = Base.header_search.getFieldValue(form_values,'mkt');
-  var scope = 'album'
+  var scope = 'artist'
   var url   = "/search/"+(q=="" ? "empty/" : "")+mkt+"/"+scope+"/"+q;
   location.href = url;
   return false;
@@ -235,7 +235,7 @@ Base.main_search.buildSearchUrl = function () {
   var form_values = jQuery("#main_search_form").serializeArray();
   var q     = Base.header_search.getFieldValue(form_values,'q');
   var mkt   = Base.header_search.getFieldValue(form_values,'mkt');
-  var scope = 'album'
+  var scope = 'artist'
   var url   = "/search/"+(q=="" ? "empty/" : "")+mkt+"/"+scope+"/"+q;
   location.href = url;
   return false;
