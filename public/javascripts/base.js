@@ -6,7 +6,7 @@ var Base = {
   stations: {},
   header_search: {},
   main_search: {},
-  community: {}
+  community: {},
   locale: {}
 };
 
@@ -34,7 +34,7 @@ Base.locale.translate = function(key) {
   if (!translation) {
     translation = key + " does not exist";
   }
-  
+
   return translation;
 };
 
