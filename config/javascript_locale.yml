@@ -1,0 +1,5 @@
+keys:
+  actions.unfollow
+  actions.follow
+  actions.block
+  blocks.blocked

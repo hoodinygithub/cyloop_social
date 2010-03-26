@@ -207,6 +207,9 @@ ActionController::Routing::Routes.draw do |map|
   map.special_followee_update '/my/following/:id/update/:skip_auto_width', :controller => 'followees', :action => 'update'
   map.special_followee_destroy '/my/following/:id/destroy/:skip_auto_width', :controller => 'followees', :action => 'destroy'
   map.followee_destroy '/my/following/:id/destroy', :controller => 'followees', :action => 'destroy'
+  
+  # Mapping javascript locale file
+  map.javascript_locale '/javascripts/locale.js', :controller => :javascripts, :action => :locale
 
 end
 

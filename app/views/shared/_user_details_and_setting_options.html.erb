@@ -14,12 +14,12 @@
 
 <div class="follower_actions w_settings">
     <% if current_user.follows?(item) %>
-      <%= green_button('FOLLOWING', 
+      <%= green_button(t('actions.unfollow'), 
         :onclick => "Base.community.unfollow('#{item.slug}', this, #{following_page?})", 
         :class => 'follower_btn') %>
     <% else %>
-      <%= blue_button('FOLLOW', 
-        :onclick => "Base.community.unfollow('#{item.slug}', this, #{following_page?})", 
+      <%= blue_button(t('actions.follow'), 
+        :onclick => "Base.community.follow('#{item.slug}', this, #{following_page?})", 
         :class => 'follower_btn') %>
     <% end %>
     
@@ -28,15 +28,23 @@
     
     <div class="blocked">
       <% if current_user.blocks?(item) %>
-      <%= image_tag('blocked.gif') %> Blocked
+      <%= image_tag('blocked.gif') %> <%= t('blocks.blocked') %>
       <% end %>
     </div>
     
     <ul class="actions_settings">
       <% if current_user.blocks?(item) %>
-        <li><a href="#" onclick="Base.community.unblock('<%= item.slug %>', this); return false;">Unblock</a></li>
+        <li>
+          <a href="#" onclick="Base.community.unblock('<%= item.slug %>', this); return false;">
+            <%= t('actions.unblock') %>
+          </a>
+        </li>
       <% else %>
-        <li><a href="#" onclick="Base.community.block('<%= item.slug %>', this); return false;">Block</a></li>
+        <li>
+          <a href="#" onclick="Base.community.block('<%= item.slug %>', this); return false;">
+            <%= t('actions.block') %>
+          </a>
+        </li>
       <% end %>
     </ul>
 </div>

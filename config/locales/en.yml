@@ -123,6 +123,7 @@ en:
     launch_radio: Launch Radio
     follow: Follow
     block: Block
+    unblock: Unblock
     save: Save
     view: View
     go: Go
@@ -276,6 +277,7 @@ en:
       follow_requests: My Follow Requests
       charts: My Charts
   blocks:
+    blocked: Blocked
     been_unblocked: "{{name}} has been unblocked."
     been_blocked: "{{name}} has been blocked."
     warning:

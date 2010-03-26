@@ -7,6 +7,7 @@ var Base = {
   header_search: {},
   main_search: {},
   community: {}
+  locale: {}
 };
 
 /*
@@ -21,6 +22,24 @@ Base.layout.hide_success_and_error_messages = function() {
 
 Base.layout.span_button = function(content) {
   return "<span><span>" + content + "</span></span>";
+};
+
+
+/*
+ * Locales Helpers
+ */
+Base.locale.translate = function(key) {
+  var translation = Base.locale.content[Base.locale.current][key];
+
+  if (!translation) {
+    translation = key + " does not exist";
+  }
+  
+  return translation;
+};
+
+Base.locale.t = function(key) {
+  return Base.locale.translate(key);
 };
 
 /*
@@ -41,11 +60,9 @@ Base.community.follow = function(user_slug, button, remove_div) {
     if (status == 'success') {
       $button.removeClass("blue_button");
       $button.addClass("green_button");
-      $button_label.html('FOLLOWING');
-      $button.bind('click', function() { Base.community.unfollow(user_slug, this, remove_div);  });
-    } else {
-      $button_label.html('FOLLOW');
-      $button.bind('click', old_onclick);
+      $button_label.html(Base.locale.t('actions.unfollow'));
+      $button.unbind('click');
+      $button.bind('click', function() { Base.community.unfollow(user_slug, this, remove_div); return false; });
     }
   });
 };
@@ -68,12 +85,10 @@ Base.community.unfollow = function(user_slug, button, remove_div) {
       } else {
         $button.removeClass("green_button");
         $button.addClass("blue_button");
-        $button_label.html('FOLLOW');
-        $button.bind('click', function() { Base.community.follow(user_slug, this, remove_div);  });
+        $button_label.html(Base.locale.t('actions.follow'));
+        $button.unbind('click');
+        $button.bind('click', function() { Base.community.follow(user_slug, this, remove_div); return false; });
       }
-    } else {
-      $button_label.html('UNFOLLOW');
-      $button.bind('click', old_onclick);
     }
   });
 };
@@ -91,10 +106,11 @@ Base.community.block = function(user_slug, button) {
 
   jQuery.post('/users/block', params, function(response, status) {
     if (status == 'success') {
-      $main_div.find('.blocked').html("<img src='/images/blocked.gif'></img> Blocked");
+      $main_div.find('.blocked').html("<img src='/images/blocked.gif'></img> " + Base.locale.t('blocks.blocked'));
       $button.attr('onclick', "");
+      $button.unbind('click');
       $button.bind('click', function() { Base.community.unblock(user_slug, this); return false; });
-      $button.html("Unblock")
+      $button.html(Base.locale.t('actions.unblock'));
       $settings_button.html("<img src='/images/settings_button.png'></img>");
     }
   });
@@ -115,8 +131,9 @@ Base.community.unblock = function(user_slug, button) {
     if (status == 'success') {
       $main_div.find('.blocked').html("");
       $button.attr('onclick', "");
+      $button.unbind('click');
       $button.bind('click', function() { Base.community.block(user_slug, this); return false; });
-      $button.html("Block")
+      $button.html(Base.locale.t('actions.block'));
       $settings_button.html("<img src='/images/settings_button.png'></img>");
     }
   });

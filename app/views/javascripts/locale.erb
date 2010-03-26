@@ -1,0 +1,6 @@
+if (typeof(Base) == 'object') {
+  Base.locale.current = "<%=  I18n.default_locale %>";
+  Base.locale.content = <%=  @translations.to_json %>;
+} else {
+  throw('Could not find Base namespace definition');
+}

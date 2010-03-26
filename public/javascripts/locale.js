@@ -1,0 +1,6 @@
+if (typeof(Base) == 'object') {
+  Base.locale.current = "pt_BR";
+  Base.locale.content = {"es_ES":{"blocks.blocked":null,"actions.follow":"Seguir","actions.unfollow":"Siguiendo","actions.block":"Bloquear"},"en_US":{"blocks.blocked":null,"actions.follow":"Follow","actions.unfollow":"Following","actions.block":"Block"},"en_CA":{"blocks.blocked":null,"actions.follow":"Follow","actions.unfollow":"Following","actions.block":"Block"},"es":{"blocks.blocked":null,"actions.follow":"Seguir","actions.unfollow":"Siguiendo","actions.block":"Bloquear"},"pt_BR":{"blocks.blocked":null,"actions.follow":"Seguir","actions.unfollow":"Seguindo","actions.block":"Bloquear"},"es_AR":{"blocks.blocked":null,"actions.follow":"Seguir","actions.unfollow":"Siguiendo","actions.block":"Bloquear"},"es_US":{"blocks.blocked":null,"actions.follow":"Seguir","actions.unfollow":"Siguiendo","actions.block":"Bloquear"},"en":{"blocks.blocked":"Blocked","actions.follow":"Follow","actions.unfollow":"Following","actions.block":"Block"},"fr_CA":{"blocks.blocked":null,"actions.follow":"Devenir fan","actions.unfollow":"Ne plus \u00eatre fan","actions.block":"Bloquer"},"es_MX":{"blocks.blocked":null,"actions.follow":"Seguir","actions.unfollow":"Siguiendo","actions.block":"Bloquear"}};
+} else {
+  throw('Could not find Base namespace definition');
+}
