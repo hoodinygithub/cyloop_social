@@ -27,5 +27,6 @@ label.label_holder {
 #avatar_delete{
   position:absolute;
   padding-top: 55px;
+  padding-left: 0px !important;
 }
 
