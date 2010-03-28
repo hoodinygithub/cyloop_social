@@ -17,7 +17,7 @@
 }
 
 label.label_holder input.file{
-    filter: alpha(opacity=0)!important;
+    filter: alpha(opacity=0)!important; 
 }
 
 label.label_holder {
@@ -30,3 +30,11 @@ label.label_holder {
   padding-left: 0px !important;
 }
 
+
+#avatar_upload_info {
+  margin-top: 30px;
+  margin-left: 10px;
+  font-weight: bold;
+  color: green;
+  position:absolute;
+}
