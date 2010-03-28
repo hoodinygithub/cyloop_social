@@ -28,11 +28,11 @@ $(document).ready(function(){
 
 <% end %>
 
-<div class="accordion_title expanded">BASIC INFO</div>
+<div class="accordion_title expanded"><%= t('account_settings.email_notifications') %></div>
 <div class="accordion_box expanded">
   <% form_for @user, :html => { :method => :put, :multipart => true, :class => "account_settings", :id => 'basic_info_form' }, :url => my_settings_path do |f| %>
     <div class="form_row">
-      <label><b>Name</b></label>
+      <b><%= f.label :name %></b>
       <div class="grey_round_box left_side">
         <%= f.text_field :name, :class => 'input full_width2' %>
       </div>
@@ -41,13 +41,13 @@ $(document).ready(function(){
 
     <div class="form_row">
       <div class="left_s">
-        <label><b>Email</b></label>
+        <b><%= f.label :email %></b>
         <div class="grey_round_box">
           <%= f.text_field :email, :class => 'input half_width2' %>
         </div>
       </div>
       <div class="right_s">
-        <label><b>Profile URL</b></label>
+        <b><%= f.label :slug %></b>
         <div class="grey_round_box align_right">
             <span class="grey"><small>http://www.cyloop.com/</small></span>
             <%= f.text_field :slug, :class => 'input half_width' %>
@@ -58,19 +58,19 @@ $(document).ready(function(){
 
     <div class="form_row">
       <div class="left_side">
-        <label><b>Gender</b></label>
+        <b><%= f.label :gender %></b>
         <div class="grey_round_box">
           <%= f.select :gender, [['Male', 'Male'], ['Female', 'Female']] %>
         </div>
       </div>
       <div class="left_side">
-        <label><b>Date of Birth</b></label>
+        <b><%= f.label :born_on %></b>
         <div class="grey_round_box">
           <%= f.date_select :born_on, :use_month_numbers => true, :from_year => 1900, :end_year => Time.now.year %>
         </div>
       </div>
       <div class="right_s">
-        <label><b>Location</b></label>
+        <b><%= f.label :city_name %></b>
         <div class="grey_round_box">
           <%= f.text_field :city_name, :class => 'input half_width3' %>
         </div>
@@ -79,7 +79,7 @@ $(document).ready(function(){
     </div><!--/end form_row -->
 
     <div class="form_row">
-      <label><b>Websites</b></label>
+      <b><%= f.label :websites %></b>
       <div class="grey_round_box left_side">
         <input type="text" id="add_website" class="input full_width" />
       </div>
@@ -90,7 +90,7 @@ $(document).ready(function(){
           <%= hidden_field_tag "user[websites][]", h(site) %>
           <b>
             <big><a href="http://<%= site %>"><%= site %></a></big> &nbsp; 
-            <a href="#" class="black delete_site">[ DELETE ]</a>
+            <a href="#" class="black delete_site">[ <%= t('account_settings.delete') %> ]</a>
           </b>
         </div>
       <% end %>
@@ -104,17 +104,17 @@ $(document).ready(function(){
       </div> 
       <div class="add_update">
         <label class='label_holder'>
-          <a href="#" id="avatar_upload_button" class="blue_button"><span><span>ADD / UPDATE</span></span></a>
+          <a href="#" id="avatar_upload_button" class="blue_button"><span><span><%= t('account_settings.add_update') %></span></span></a>
           <%= f.file_field :avatar, :class => 'file' %>
         </label>
         <div id="avatar_upload_info"></div>
       </div>
       <div id="avatar_delete">
-        <b><a href="/my/settings/remove_avatar" class="black">[ DELETE ]</a></b>
+        <b><a href="/my/settings/remove_avatar" class="black">[ <%= t('account_settings.delete') %> ]</a></b>
       </div>
       <div class="right_side maintain_private">
         <div class="grey_round_box">
-          <%= f.check_box :private_profile %> <span>Maintain your profile private</span>
+          <%= f.check_box :private_profile %> <span><%= t('user.private_profile') %></span>
         </div>
       </div>
       <div class="clearer"></div>
@@ -122,8 +122,8 @@ $(document).ready(function(){
 
     <div class="form_row last">
       <div class="align_right right_side">
-        <a href="#" class="cancel_button">Cancel</a>
-        <a href="#" class="blue_button" onclick="$(this).closest('form').submit();"><span><span>SAVE</span></span></a>
+        <a href="#" class="cancel_button"><%= t('account_settings.cancel') %></a>
+        <a href="#" class="blue_button" onclick="$(this).closest('form').submit();"><span><span><%= t('account_settings.save') %></span></span></a>
       </div>
 
       <br class="clearer" />

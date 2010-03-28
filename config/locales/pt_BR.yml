@@ -1027,11 +1027,4 @@ pt_BR:
       home: Home
       mixes: Mixes
       stations: Stations
-  account_settings:
-    delete_account: DELETE ACCOUNT
-    password: Password
-    delete_info: By checking this box, I understand that deleting my account means that my Cyloop page, music library and picture will be deleted. I understand that in order to return to Cyloop, I will have to create a new account with a new username.
-    cancel: Cancel
-    delete_my_account: DELETE MY ACCOUNT
-    delete_info_required: "You must click on the check box to continue"
-    password_required: "You must enter a valid password"
+

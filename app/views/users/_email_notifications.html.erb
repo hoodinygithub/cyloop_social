@@ -1,4 +1,4 @@
-<div class="accordion_title">EMAIL NOTIFICATIONS</div>
+<div class="accordion_title"><%= t('account_settings.email_notificaions') %></div>
 <div class="accordion_box">
   <% form_for @user, :html => { :method => :put, :class => "account_settings", :id => 'email_notifications_form' }, :url => my_settings_path do |f| %>
     <div class="form_row">
