@@ -11,6 +11,7 @@ var addWebSite = function() {
    '<b><big><a href="http://' + value + '">' + value + '</a></big> &nbsp; ' +
    '<a href="#" class="black delete_site">[ DELETE ]</a></b><br/></div>');
   $('.delete_site').click(deleteWebSite);
+  $(this).val('');
 }
 
 var deleteWebSite = function() {
@@ -105,10 +106,10 @@ $(document).ready(function(){
           <a href="#" id="avatar_upload_button" class="blue_button"><span><span>ADD / UPDATE</span></span></a>
           <%= f.file_field :avatar, :class => 'file' %>
         </label>
-        <div id="avatar_delete">
-        <b><a href="#" class="black">[ DELETE ]</a></b>
-        </div>
         <div id="avatar_upload_info"></div>
+      </div>
+      <div id="avatar_delete">
+        <b><a href="#" class="black">[ DELETE ]</a></b>
       </div>
       <div class="right_side maintain_private">
         <div class="grey_round_box">

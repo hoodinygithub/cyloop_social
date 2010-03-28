@@ -9,7 +9,7 @@
 
 <% content_for :list do %>
   <ul class="stations_list">
-    <% @stations.each do |station| %>
+    <% @user_stations.each do |station| %>
       <li>
         <%= four_thumbs_to(station, :class => 'left_side', :clearer => true) %>
         <div class="station_text">

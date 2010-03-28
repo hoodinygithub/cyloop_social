@@ -24,11 +24,11 @@ class UserStationsController < ApplicationController
     
     respond_to do |format|
       block = Proc.new do
-        @stations = profile_user.stations
-        render :xml => Player::Station.from(@stations, :ip => remote_ip, :user_id => logged_in? ? current_user.id : nil).to_xml(:root => 'user_stations')
+        @user_stations = profile_user.stations
+        render :xml => Player::Station.from(@user_stations, :ip => remote_ip, :user_id => logged_in? ? current_user.id : nil).to_xml(:root => 'user_stations')
       end
       format.html do
-        @stations = profile_user.stations.paginate :page => params[:page], :per_page => 15
+        @user_stations = profile_user.stations.paginate :page => params[:page], :per_page => 15
         render :layout => 'base'
       end
       if logged_in?
