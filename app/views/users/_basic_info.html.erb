@@ -20,6 +20,7 @@ var deleteWebSite = function() {
 }
 
 $(document).ready(function(){
+  $('#user_avatar').focus(uploadInfo);
   $('#user_avatar').change(uploadInfo);
   $('#add_website').bind('keydown', 'return', addWebSite);
   $('.delete_site').click(deleteWebSite);
