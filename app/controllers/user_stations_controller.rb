@@ -36,6 +36,8 @@ class UserStationsController < ApplicationController
           if @sort_field == 'name' and  @sort_order == 'asc'
             @user_stations = profile_user.stations.paginate :page => params[:page], :per_page => 15, :order => 'stations.name ASC'
           else
+            @sort_field = 'created_at'
+            @sort_order = 'desc'
             @user_stations = profile_user.stations.paginate :page => params[:page], :per_page => 15, :order => 'stations.created_at ASC'
           end
           render :layout => 'base'
