@@ -17,14 +17,11 @@
             <%= link_to(station.artist, station.artist) %>
           </big>
           <br/>
-          
           <span class="grey">
             <%= t("activerecord.attributes.station.updated_at", :when => l(station.updated_at.to_date)) %>
           </span>
           <br/>
-          
           <%= station_contains(station) %>
-
           <div class="buttons">
             <%= link_to(image_tag('play_button.png', :class => 'png_fix')) %>
             <%= link_to(image_tag('edit_button.png', :class => 'png_fix')) %>
