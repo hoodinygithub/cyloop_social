@@ -17,5 +17,24 @@
 }
 
 label.label_holder input.file{
-    filter: alpha(opacity=0)!important;
+    filter: alpha(opacity=0)!important; 
+}
+
+label.label_holder {
+  margin-right: 90px;
+}
+
+#avatar_delete{
+  position:absolute;
+  padding-top: 55px;
+  padding-left: 0px !important;
+}
+
+
+#avatar_upload_info {
+  margin-top: 30px;
+  margin-left: 10px;
+  font-weight: bold;
+  color: green;
+  position:absolute;
 }

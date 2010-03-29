@@ -888,13 +888,19 @@ en_US:
     cancel: Cancel
 
   account_settings:
+    title: ACCOUNT SETTINGS
     password: Password
     update: UPDATE
+    save: SAVE
+    delete: DELETE
+    add_update: ADD / UPDATE
     cancel: Cancel
+    basic_info: BASIC INFO
     password_change: PASSWORD CHANGE
     old_password: Old Password
     new_password: New Password
     change_password: CHANGE PASSWORD
+    email_notifications: EMAIL NOTIFICATIONS
     email_me_communications: Send me periodical Cyloop Newsletters and communications
     email_me_following_me: Send me an email when someone is following me
     email_me_reviews_mixes: Send me an email when someone reviews/rates one of my mixes

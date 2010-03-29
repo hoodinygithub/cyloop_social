@@ -8,7 +8,7 @@
   <div id="main_content">
     <%= render :partial => 'dashboards/left_column' %>
     <div class="settings_column">
-      <h1>ACCOUNT SETTINGS</h1>
+      <h1><%= t('account_settings.title') %></h1>
       <%= render :partial => 'basic_info' %>
       <%= render :partial => 'password_change' if cyloop_login? %>
       <%= render :partial => 'email_notifications' %>

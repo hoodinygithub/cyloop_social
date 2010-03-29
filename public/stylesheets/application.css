@@ -3224,7 +3224,7 @@ label.label_holder input.file{
   width: auto;
   opacity: 0;
   -moz-opacity: 0;
-  left:-152px;top:0px;
+  left:-198px;top:0px;
   position: relative;
   z-index:2;
 }
@@ -3241,7 +3241,9 @@ label.label_holder{
 
 #avatar_delete {
   margin-left: 135px;
-  padding-top: 5px;
+  position:absolute;
+  padding-top: 55px;
+  padding-left: 160px;
 }
 
 #basic_info_form .avatar {
@@ -3254,7 +3256,7 @@ label.label_holder{
 }
 
 #avatar_upload_info {
-  margin-top: 10px;
+  margin-top: 60px;
   margin-left: 10px;
   font-weight: bold;
   color: green;
