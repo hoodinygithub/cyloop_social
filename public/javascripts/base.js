@@ -7,7 +7,7 @@ var Base = {
   header_search: {},
   main_search: {},
   community: {},
-  locale: {}
+  locale: {},
 };
 
 /*
@@ -24,9 +24,26 @@ Base.layout.span_button = function(content) {
   return "<span><span>" + content + "</span></span>";
 };
 
+Base.layout.blue_button = function(label) {
+  //<a href="/radio" class="full_width blue_button"><span><span>Criar Rádio</span></span></a>
+
+  link = document.createElement('a');
+  link.setAttribute('href', '#');
+  link.setAttribute('class', 'blue_button');
+  
+  span1 = document.createElement('span');
+  span2 = document.createElement('span');
+  
+  button_label = document.createTextNode(label);
+  span2.appendChild(button_label);
+  span1.appendChild(span2);
+  link.appendChild(span1);
+  
+  return link;
+};
 
 /*
- * Locales Helpers
+ * Locales
  */
 Base.locale.translate = function(key) {
   var translation = Base.locale.content[Base.locale.current][key];
@@ -143,6 +160,74 @@ Base.community.unblock = function(user_slug, button) {
 /*
  * Stations
  */
+Base.stations.edit = function(user_station_id, button) {
+  $button = jQuery(button);
+  $station_text = $button.parent().parent();
+  $station_name_container = $station_text.find('.station_name');
+  $buttons = $station_text.find('.buttons');
+  
+  old_station_name_content = $station_name_container.html();
+  old_station_name = $station_name_container.text().replace(/^\s+|\s+$/g, "");
+  
+  station_name_input = document.createElement('input');
+  station_name_input.setAttribute('type', 'text');
+  station_name_input.setAttribute('id', 'station_' + user_station_id + '_input');
+  station_name_input.setAttribute('value', old_station_name);
+
+  old_buttons_content = $buttons.html();
+  
+  done_button = jQuery(Base.layout.blue_button('Done'));
+  done_button.bind('click', function() {
+    new_station_input = jQuery('#station_' + user_station_id + "_input");
+    new_station_name = new_station_input.val();
+    new_station_input.attr('readOnly', true);
+
+    $buttons.hide();
+    params = {'_method' : 'put', 'user_station' : {'name':new_station_name} };
+    jQuery.post('/my/stations/' + user_station_id, params, function(response) {
+      new_station_name_content = old_station_name_content;
+      new_station_name_content = new_station_name_content.split(old_station_name).join(new_station_name);
+      $buttons.html(old_buttons_content).show();
+      $station_name_container.html(new_station_name_content);
+    });
+
+    return false;
+  });
+  
+  cancel_button = jQuery(Base.layout.blue_button('Cancel'));
+  cancel_button.bind('click', function() {
+    $station_name_container.html(old_station_name_content);
+    $buttons.html(old_buttons_content);
+    return false;
+  });
+  
+
+  $buttons.html("");
+  $buttons.append(done_button);
+  $buttons.append("&nbsp;");
+  $buttons.append(cancel_button);
+  
+  $station_name_container.html(station_name_input);
+};
+
+ 
+Base.stations.remove = function(user_station_id, button) {
+  $button = jQuery(button);
+  $station_text = $button.parent().parent();
+  $buttons = $station_text.find('.buttons');
+  $li = $button.parent().parent().parent();
+
+  $buttons.hide();
+  
+  jQuery.post('/my/stations/' + user_station_id, {'_method':'delete'}, function(response) {
+    if (response == 'destroyed') {
+      $li.slideUp();
+    } else {
+      $buttons.show();
+    }
+  });
+};
+
 Base.stations.close_button_event_binder = function() {
   jQuery("span.recommended_station").bind('click', function() { Base.stations.close_button_handler(this); });
 };

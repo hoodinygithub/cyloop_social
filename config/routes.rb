@@ -210,6 +210,5 @@ ActionController::Routing::Routes.draw do |map|
   
   # Mapping javascript locale file
   map.javascript_locale '/javascripts/locale.js', :controller => :javascripts, :action => :locale
-
 end
 

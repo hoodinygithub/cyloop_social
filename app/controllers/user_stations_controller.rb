@@ -73,11 +73,17 @@ class UserStationsController < ApplicationController
     @user_station.update_attribute(:name, params[:user_station][:name])
     respond_to do |format|
       format.html do
-        redirect_to my_stations_path
+        if request.xhr?
+          render :text => 'updated'
+        else
+          redirect_to my_stations_path
+        end
       end
+      
       format.xml do
         render :xml => Player::Message.new( :message => t('messenger_player.station_edit_success') )
       end
+      
       format.js
     end
   end
@@ -86,11 +92,17 @@ class UserStationsController < ApplicationController
     UserStation.find_by_id_and_owner_id!(params[:id], profile_user.id).destroy
     respond_to do |format|
       format.html do
-        redirect_to my_stations_path
+        if request.xhr?
+          render :text => 'destroyed'
+        else
+          redirect_to my_stations_path
+        end
       end
+
       format.xml do
         render :xml => Player::Message.new( :message => t('stations.deleted') )
       end
+
     end
   end
 
