@@ -192,6 +192,8 @@ en_US:
         password: Password
         born_on: Birth date
         email: Email
+      station:
+        updated_at: "Last modified: {{when}}"
     errors:
       messages:
         greater_than_or_equal_to: must be greater than or equal to {{count}}

@@ -1,10 +1,10 @@
 <% content_for :title do %>
-  MY NETWORK ACTIVITY
+  <%= possessive :stations %>
 <% end %>
 
 <% content_for :sorting do %>
-  <%= link_to 'ALPHABETICAL' %> /
-  <%= link_to 'LATEST', '', :class => 'active' %>
+  <%= sort_link_to(t('sort.lastest'),       :field => 'created_at', :order => 'desc') %>
+  <%= sort_link_to(t('sort.alphabetical'),  :field => 'name',       :order => 'asc' ) %>
 <% end %>
 
 <% content_for :list do %>
@@ -19,7 +19,7 @@
           <br/>
           
           <span class="grey">
-            Last modified: 09/10/10
+            <%= t("activerecord.attributes.station.updated_at", :when => l(station.updated_at.to_date)) %>
           </span>
           <br/>
           

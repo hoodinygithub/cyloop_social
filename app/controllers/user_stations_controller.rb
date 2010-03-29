@@ -20,6 +20,7 @@ class UserStationsController < ApplicationController
   end
 
   def index
+
     @dashboard_menu = :stations
     
     respond_to do |format|
@@ -27,10 +28,22 @@ class UserStationsController < ApplicationController
         @user_stations = profile_user.stations
         render :xml => Player::Station.from(@user_stations, :ip => remote_ip, :user_id => logged_in? ? current_user.id : nil).to_xml(:root => 'user_stations')
       end
+
       format.html do
-        @user_stations = profile_user.stations.paginate :page => params[:page], :per_page => 15
-        render :layout => 'base'
+        @sort_field = params.fetch(:sort_field, nil)
+        @sort_order = params.fetch(:sort_order, nil)
+        begin
+          if @sort_field == 'name' and  @sort_order == 'asc'
+            @user_stations = profile_user.stations.paginate :page => params[:page], :per_page => 15, :order => 'stations.name ASC'
+          else
+            @user_stations = profile_user.stations.paginate :page => params[:page], :per_page => 15, :order => 'stations.created_at ASC'
+          end
+          render :layout => 'base'
+        rescue NoMethodError
+          redirect_to new_session_path
+        end
       end
+
       if logged_in?
         format.xml(&block)
         format.js(&block)
@@ -38,6 +51,7 @@ class UserStationsController < ApplicationController
         format.js { render :text => 'authentication required', :layout => false }
         format.xml { render :xml => { :error => 'authentication required' }.to_xml(:root => 'response') }
       end
+
     end
   end
 

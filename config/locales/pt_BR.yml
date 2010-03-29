@@ -200,6 +200,8 @@ pt_BR:
         password: Senha
         born_on: Data de nascimento
         email: Email
+      station:
+        updated_at: "Última modificação em : {{when}}"
     errors:
       models:
         account:
@@ -389,7 +391,7 @@ pt_BR:
     - Fri
     - Sat
     formats:
-      default: "%Y-%m-%d"
+      default: "%d-%m-%Y"
       short: "%b %d"
       long: "%B %d, %Y"
     day_names:
