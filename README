@@ -1,3 +1,10 @@
-Dependencies
-=============
+Cyloop Social
+--
+A more social version of Cyloop.
 
+Dependencies
+--
+- ImageMagick
+- Nokogiri
+- Redis
+- Tokyo Cabinet/Tyrant
