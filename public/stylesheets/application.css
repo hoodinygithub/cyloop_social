@@ -1022,7 +1022,7 @@ img.artist_icon_box.tiny {
 }
 
 #internal_content {
-    background: #fff url("../images/grey_bg.gif") repeat-x left top;
+    background-color: #fff;
     padding: 35px 0px 0px;
 }
 
