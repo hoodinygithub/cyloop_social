@@ -123,10 +123,13 @@ class User < Account
   validate :check_born_on_in_future, :unless => Proc.new { |user| user.born_on.blank? }
   validate :check_age_is_at_least_13, :unless => Proc.new { |user| user.born_on.blank? }
 
-  define_index do
-    indexes :name, :sortable => true
-    has created_at
-  end
+  #define_index do
+  #  where "deleted_at IS NULL"
+  #  indexes :name
+  #  set_property :min_prefix_len => 1
+  #  set_property :enable_star => 1
+  #  has created_at
+  #end
 
   def <=>(b)
     id <=> b.id

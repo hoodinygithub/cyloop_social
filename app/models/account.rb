@@ -77,6 +77,14 @@ class Account < ActiveRecord::Base
 
   index [:type]
 
+  define_index do
+    where "deleted_at IS NULL"
+    indexes :name, :sortable => true
+    set_property :min_prefix_len => 1
+    set_property :enable_star => 1
+    has visit_count
+  end
+
   default_scope :conditions => { :deleted_at => nil }
 
   serialize :default_locale, Symbol
@@ -111,7 +119,7 @@ class Account < ActiveRecord::Base
     def with_limit(limit=10)
       find(:all, :limit => limit)
     end
-    
+
     def alphabetical
       find(:all, :order => 'accounts.name ASC')
     end
@@ -158,7 +166,7 @@ class Account < ActiveRecord::Base
       ((Date.today - born_on) / 365.25).to_i
     end
   end
-  
+
   def underage?(age = 13)
     !born_on.nil? && age.years.ago < born_on
   end
@@ -170,7 +178,7 @@ class Account < ActiveRecord::Base
 
   belongs_to :city
   belongs_to :country
-  
+
   before_validation :find_country_by_ip_address
   def find_country_by_ip_address
     self.country = Country.find_by_addr(ip_address) unless ip_address.nil? && !country.nil?
@@ -296,13 +304,13 @@ class Account < ActiveRecord::Base
     end
     @transformed_activity_feed.uniq
   end
-  
+
   def city_db
     self.class.city_db
   end
 
   has_many :chats
-  has_many :profile_chats, :class_name => "Chat", :foreign_key => "profile_id" 
+  has_many :profile_chats, :class_name => "Chat", :foreign_key => "profile_id"
   attr_accessor :next_chat
   def has_chat?(current_site)
     self.next_chat = profile_chats.find(:first, :order => "chat_date asc", :conditions => "status <> 'disabled'")
@@ -316,16 +324,16 @@ class Account < ActiveRecord::Base
         find_by_name!( name )
       end
     end
-    
+
     def find_deleted_by_slug( slug )
       with_exclusive_scope do
         find_by_slug( slug )
       end
-    end    
-    
+    end
+
     def city_db
       @city_db ||= GeoIPCity::Database.new('/opt/GeoIP/share/GeoIP/GeoLiteCity.dat')
-    end    
+    end
 
   end
 
@@ -344,3 +352,4 @@ end
 # Cache money sucks
 require_dependency 'user'
 require_dependency 'artist'
+
