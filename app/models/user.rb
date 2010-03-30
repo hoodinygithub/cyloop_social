@@ -101,7 +101,7 @@ class User < Account
     def song_listens
       SongListen.for_followees_of(proxy_owner)
     end
-    
+
     def alphabetical
       find(:all, :order => 'accounts.name ASC')
     end
@@ -124,7 +124,8 @@ class User < Account
   validate :check_age_is_at_least_13, :unless => Proc.new { |user| user.born_on.blank? }
 
   define_index do
-    indexes :name
+    indexes :name, :sortable => true
+    has created_at
   end
 
   def <=>(b)
@@ -165,7 +166,7 @@ class User < Account
     blockee_id = blockee_id.id if blockee_id.kind_of? User
     Block.create! :blocker_id => id, :blockee_id => blockee_id
   end
-  
+
   def unblock(blockee_id)
     blockee_id = blockee_id.id if blockee_id.kind_of? User
     blocked = Block.first(:conditions => {:blocker_id => id, :blockee_id => blockee_id})

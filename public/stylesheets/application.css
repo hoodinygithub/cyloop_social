@@ -1380,14 +1380,14 @@ img.avatar_four_thumbs_big {
     left: -5px;
 }
 
-.sorting a {
+.scope a, .sorting a {
     color: #999;
     text-decoration: none;
     padding: 0px 3px;
     margin: 0px 3px;
 }
 
-.sorting a.active, .sorting a:hover {
+.scope a.active, .sorting a.active, .sorting a:hover, .scope a:hover {
     background: #00a5f8;
     color: #fff;
     text-decoration: none;
@@ -3261,3 +3261,4 @@ label.label_holder{
   font-weight: bold;
   color: green;
 }
+

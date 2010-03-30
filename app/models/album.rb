@@ -26,17 +26,18 @@
 
 class Album < ActiveRecord::Base
   include AvatarImporter
-  
+
   index [:owner_id, :deleted_at, :songs_count, :year]
   index :owner_id
   index [:deleted_at, :songs_count]
-  
+
   define_index do
-    where "deleted_at IS NULL"    
-    indexes :name
+    where "deleted_at IS NULL"
+    indexes :name, :sortable => true
     set_property :min_prefix_len => 1
     set_property :enable_star => 1
-  end  
+    has year
+  end
 
   default_scope :conditions => 'deleted_at IS NULL', :order => 'year DESC'
 
@@ -54,9 +55,9 @@ class Album < ActiveRecord::Base
   validates_presence_of :owner
 
   has_attached_file :avatar, :styles => { :album => "300x300#", :medium => "86x86#", :small => "60x60#" }
-  validates_attachment_content_type :avatar, 
+  validates_attachment_content_type :avatar,
     :content_type => ["image/jpeg", "image/png", "image/gif", "image/pjpeg", "image/x-png"]
-  
+
   def total_listens
     song_listens.sum(:total_listens)
   end
@@ -74,19 +75,20 @@ class Album < ActiveRecord::Base
   def label_name
     label && label.name
   end
-  
+
   def localized_release_date
     unless released_on.nil?
       return (I18n.l(released_on, :format => :long) rescue released_on)
     end
     I18n.t('basics.unknown')
   end
-  
+
   def to_param
     "#{id}-#{PermalinkFu.escape(name)}"
   end
-  
+
   def to_s
     name
   end
 end
+

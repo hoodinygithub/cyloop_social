@@ -5,7 +5,7 @@ class SearchesController < ApplicationController
    @active_scope=params[:scope]
    @counts=cross_count (params[:q])
    @active_scope = @counts.sort {|a,b| a[1]<=>b[1]}.last.first.downcase if params[:scope] == "any"
-   @results=individual_search (params[:q],@active_scope, per_page = 20)
+   @results=individual_search (params[:q],@active_scope, 20, sorting(@active_scope,params[:order]))
   end
 
   def autocomplete
@@ -14,11 +14,11 @@ class SearchesController < ApplicationController
   end
 
   private
-    def individual_search (q, scope, per_page = 20)
+    def individual_search (q, scope, per_page = 20, order = :name )
       @scope = scope.classify.constantize
       query="#{q}"
       query="#{q}*" if scope.downcase=="song" || scope.downcase=="album"
-      results = @scope.search query, :page => params[:page], :per_page => per_page
+      results = @scope.search query, :page => params[:page], :per_page => per_page,:sql_order=> order
     end
 
     def cross_search (q, per_page = 20)
@@ -44,6 +44,18 @@ class SearchesController < ApplicationController
       end
       #@cross_search=ThinkingSphinx::Search.search "#{params[:q]}" , :classes => [User, Song, Album, Artist ]
       results
+    end
+
+    def sorting(scope,sort)
+      result='id'
+      case scope
+      when 'artist'
+        result='name' if sort=='alpha'
+      when 'station'
+        result='name' if sort=='alpha'
+      end
+      logger.error "#{scope}------#{sort}----------#{result}"
+      result
     end
 
 end

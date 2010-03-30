@@ -337,10 +337,31 @@ Base.main_search.buildSearchUrl = function () {
   var form_values = jQuery("#main_search_form").serializeArray();
   var q     = Base.header_search.getFieldValue(form_values,'q');
   var mkt   = Base.header_search.getFieldValue(form_values,'mkt');
-  var scope = 'artist'
+  var scope = Base.header_search.getFieldValue(form_values,'scope');
   var url   = "/search/"+(q=="" ? "empty/" : "")+mkt+"/"+scope+"/"+q;
   location.href = url;
   return false;
+};
+
+Base.main_search.highlight_scope = function() {
+    jQuery(".scope a").each(function(el) {
+      jQuery(this).removeClass('active');
+    });
+    value = jQuery("#search_scope").get(0).value;
+    jQuery("#search_" + value).addClass('active')
+  };
+
+Base.main_search.select_scope = function() {
+  jQuery(".scope a").click(function() {
+      value = this.id.match(/search_(.*)/)[1];
+      $('#search_scope').attr('value', value);
+      Base.main_search.highlight_scope()
+      return false;
+    });
+    $('#main_search_form').submit(function() {
+      scope = $('#search_scope').attr('value');
+    });
+    Base.main_search.highlight_scope()
 };
 
 
@@ -354,6 +375,7 @@ Base.init = function() {
   this.layout.hide_success_and_error_messages();
   this.account_settings.highlight_field_with_errors();
   this.header_search.dropdown();
+  this.main_search.select_scope();
 };
 
 jQuery(document).ready(

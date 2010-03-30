@@ -1,7 +1,7 @@
 <h1>ARTISTS</h1>
 
 <div class="sorting">
-    <a href="#" class="active">RELEVANCE</a> / <a href="#" >ALPHABETICAL</a>
+    <%= link_to "RELEVANCE ", "/search/#{params[:mkt]}/artist/#{params[:q]}?order=rel" , :class => params[:order]=='rel'? "active": "" %> / <%= link_to "ALPHABETICAL ", "/search/#{params[:mkt]}/artist/#{params[:q]}?order=alpha" , :class => params[:order]=='alpha'? "active": "" %>
 </div>
 
 <ul class="followers_list">
