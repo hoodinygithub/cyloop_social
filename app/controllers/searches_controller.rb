@@ -6,9 +6,9 @@ class SearchesController < ApplicationController
     @counts=cross_count (params[:q])
     @active_scope = @counts.sort {|a,b| a[1]<=>b[1]}.last.first.downcase if params[:scope] == "any"
     unless ordering(@active_scope,params[:order])
-      @results=individual_search (params[:q],@active_scope, 20, sorting(@active_scope,params[:order]))
+      @results=individual_search(params[:q],@active_scope, 20, sorting(@active_scope,params[:order]))
     else
-      @results=individual_search (params[:q],@active_scope, 20, sorting(@active_scope,params[:order]), ordering(@active_scope,params[:order]))
+      @results=individual_search(params[:q],@active_scope, 20, sorting(@active_scope,params[:order]), ordering(@active_scope,params[:order]))
     end
   end
 
@@ -24,18 +24,13 @@ class SearchesController < ApplicationController
       query="#{q}*" if scope.downcase=="song" || scope.downcase=="album"
       if order.nil?
         results = @scope.search(query, :page => params[:page], :per_page => per_page)
-        logger.info "#{order} )))))))))))))))))))))))) #{sort}"
       else
         unless sort.nil?
           results = @scope.search(query, :page => params[:page], :per_page => per_page,:order=> order, :sort_mode=>sort)
-
-          logger.info "#{order} ----------------------- #{sort}"
         else
           results = @scope.search(query, :page => params[:page], :per_page => per_page,:order=> order)
-          logger.info "#{order} ========================== #{sort}"
         end
       end
-      #results = @scope.search(query, :page => params[:page], :per_page => per_page,:order=> :visit_count, :sort_mode=>:desc)
       results
     end
 
