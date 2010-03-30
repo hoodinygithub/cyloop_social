@@ -13,9 +13,7 @@
       
       <%= main_content(yield) %>
       
-      <% unless site_includes(:cyloop) %>
-        <%= render 'shared/footer' %>
-      <% end %>
+      <%= render 'shared/footer' %>
     </div><!--/end container -->
   </body>
 </html>

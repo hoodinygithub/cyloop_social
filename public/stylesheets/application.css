@@ -392,7 +392,7 @@ a:hover {
     min-width: 950px;
 }
 
-#all_header {
+#msn_header {
   background: #333333;
 }
 
@@ -775,6 +775,11 @@ img.artist_icon_box.tiny {
 
 .footer_right {
     float: right;
+}
+
+#msn_footer { 
+  width: 952px;
+  margin: 10px auto;  
 }
 
 .tabs_column {

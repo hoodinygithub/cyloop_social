@@ -1,8 +1,11 @@
+<% # Phase 2 %>
+<% if false %>
 <div class="radios_recomended_column">
+<% end %>
   <h1><%= t("home.radios_recomended_for_you") %></h1>
 
-  <% unless recommended_stations %>
-    <% recommended_stations.each_with_index do |radio, index| %>
+  <% unless @recommended_stations %>
+    <% @recommended_stations.each_with_index do |radio, index| %>
       <% artist = Artist.find_by_name(radio.artist_name) %>
       <div class="artist_box png_fix <%= "last_box" if (index+1) % 3 == 0 %>">
         <%= four_thumbs_to(artist.station, {:type => :big}) %>
@@ -39,5 +42,7 @@
   <% end %>
 
   <div class="clearer"></div>
+<% # Phase 2 %>
+<% if false %>
 </div><!--/end mixes_recomended_column -->
-
+<% end %>

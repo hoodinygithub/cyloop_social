@@ -1,19 +1,22 @@
 <div id="footer">
-    <div class="footer_left">
-        <%= link_to t('footer.about_hoodiny'), "http://www.hoodiny.com", :target => '_blank' %>
-        <%= link_to t('footer.about_cyloop'), about_url %>
-        <%= link_to t('footer.terms_and_conditions'), terms_and_conditions_url %>
-        <%= link_to t('footer.privacy_policy'), privacy_policy_url %>
-        <%= link_to t('footer.safety_tips'), safety_tips_url %>
-        <%= link_to t('footer.feedback'), contact_us_url %>
-    </div>
-    <div class="footer_right">
-        <%= link_to(image_tag('cyloop.gif'), '#') %>
-    </div>
-    <br class="clearer" />
+  <div class="footer_left">
+    <%= link_to t('footer.about_hoodiny'), "http://www.hoodiny.com", :target => '_blank' %>
+    <%= link_to t('footer.about_cyloop'), about_url %>
+    <%= link_to t('footer.terms_and_conditions'), terms_and_conditions_url %>
+    <%= link_to t('footer.privacy_policy'), privacy_policy_url %>
+    <%= link_to t('footer.safety_tips'), safety_tips_url %>
+    <%= link_to t('footer.feedback'), contact_us_url %>
+  </div>
+  <div class="footer_right">
+    <%= link_to(image_tag('cyloop.gif'), '#') %>
+  </div>
+  <br class="clearer" />
 </div>
-
-<div id="msn_footer_container">
-  <%= render "3rd_party_branding/msn_footer_#{site_code}" %>
-  <%= render :partial => "shared/google_analytics" %>
-</div>
+<% unless site_includes(:cyloop) %>
+  <div id="msn_footer">
+    <div id="msn_footer_container">
+      <%= render "3rd_party_branding/msn_footer_#{site_code}" %>
+    </div>
+  </div>
+<% end %>
+<%= render :partial => "shared/google_analytics" %>

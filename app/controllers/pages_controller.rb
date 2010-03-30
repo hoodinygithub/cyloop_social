@@ -12,7 +12,8 @@ class PagesController < ApplicationController
     respond_to do |format|
       format.html do
         
-        @latest_stations = Station.all(:limit => 8, :order => "stations.created_at DESC")
+        @latest_stations      = Station.all(:limit => 8, :order => "stations.created_at DESC")
+        @recommended_stations = recommended_stations(6)
 
         if site_includes(:msnlatam)
           @top_songs = current_site.summary_top_songs.limited_to(9)
