@@ -40,7 +40,6 @@ class UserStationsController < ApplicationController
             @sort_order = 'desc'
             @user_stations = profile_user.stations.paginate :page => params[:page], :per_page => 15, :order => 'stations.created_at ASC'
           end
-          render :layout => 'base'
         rescue NoMethodError
           redirect_to new_session_path
         end

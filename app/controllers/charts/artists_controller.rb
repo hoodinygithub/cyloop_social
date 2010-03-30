@@ -1,6 +1,4 @@
 class Charts::ArtistsController < ApplicationController
-  layout "profile"  
-  
   current_tab :charts
   current_filter :artists
   

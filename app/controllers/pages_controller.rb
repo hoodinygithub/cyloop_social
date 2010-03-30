@@ -231,14 +231,6 @@ class PagesController < ApplicationController
   end
 
   private
-    def select_layout
-      if params[:layout] != 'simple'
-        'logged_out'
-      else
-        'simple'
-      end
-    end
-
     def authenticate
       authenticate_or_request_with_http_basic do |username, password|
         username == "hoodiny" && password == "3057227000"

@@ -1,6 +1,4 @@
 class ChartsController < ApplicationController
-  layout "profile"
-  
   current_tab :charts
 
   def index

@@ -7,8 +7,6 @@ class UsersController < ApplicationController
   before_filter :set_dashboard_menu, :only => [:edit, :update]
   before_filter :find_user_by_slug, :only => [:follow, :unfollow, :block, :unblock]
 
-  layout 'base'
-
   # TODO: Pending installation of Certificate on Server
   #ssl_required :create, :new if RAILS_ENV == "production"
   current_tab :settings

@@ -1,5 +1,4 @@
 class AlbumsController < ApplicationController
-  layout "profile"
   before_filter :set_origin
   before_filter :load_page, :only => :show
   current_tab :music

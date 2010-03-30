@@ -1,8 +1,6 @@
 class FollowRequestsController < ApplicationController
   before_filter :profile_ownership_required
 
-  layout "profile"
-
   def update
     following.approve!
     flash[:success] = t("following.approval", :name => following.follower.name)

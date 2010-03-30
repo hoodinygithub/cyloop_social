@@ -1,7 +1,5 @@
 class FollowersController < ApplicationController
 
-  layout 'base'
-
   current_tab :community
   current_filter :followers
 

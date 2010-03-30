@@ -1,8 +1,6 @@
 class PlaylistsController < ApplicationController
-
   current_tab :playlists
   current_filter :all
-  layout "profile"
 
   def index
     begin

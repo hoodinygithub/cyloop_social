@@ -1,5 +1,4 @@
 class Discover::ArtistsController < ApplicationController
-  layout 'discover'  
 
   def index
     if request.xhr?

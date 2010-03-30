@@ -1,8 +1,6 @@
 class ActivitiesController < ApplicationController
-
   before_filter :account
   before_filter :set_page, :except => [ :song ]
-  layout :set_layout
 
   def index
     @dashboard_menu = :activity
@@ -36,11 +34,7 @@ class ActivitiesController < ApplicationController
       :collection => [ @activity ])
   end
 
-  private
-  def set_layout
-    "base" if params[:action] == 'index'
-  end
-  
+  private  
   def set_page
     params[:page]   ||= 1
     @type             = params[:type] || nil

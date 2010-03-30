@@ -1,6 +1,4 @@
 class Charts::AlbumsController < ApplicationController
-  layout "profile"  
-
   caches_action :index, :expires_delta => EXPIRATION_TIMES['artist_charts_song_action'], 
                         :cache_path => Proc.new{|c| "#{CURRENT_SITE.cache_key}/#{c.params[:slug]}/#{c.params[:controller]}"}, 
                         :if => :is_artist?,

@@ -1,0 +1,18 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <%= render 'shared/meta' %>
+    <%= render 'shared/javascripts' %>
+    <%= render 'shared/stylesheets' %>
+    <%= yield :head %>
+  </head>
+  <body loggedin="<%= (logged_in?).to_s %>" locale="<%= current_site.default_locale %>" market="<%= current_site.code %>">
+    <div id="container">
+      <%= render 'shared/header' %>
+      
+      <%= main_content(yield) %>
+      
+      <%= render 'shared/footer' %>
+    </div><!--/end container -->
+  </body>
+</html>

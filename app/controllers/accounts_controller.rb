@@ -3,7 +3,6 @@ class AccountsController < ApplicationController
   before_filter :record_visit, :only => [:show]
   before_filter :assert_profile_is_available, :only => [ :show ]
   before_filter :auto_follow_profile, :only => [ :show ]
-  layout 'base'
 
   current_tab :home
   
@@ -28,8 +27,7 @@ class AccountsController < ApplicationController
     respond_to do |format|
       format.html do
         unless profile_account.has_custom_profile?
-          render :template => "#{profile_account.class.model_name.plural}/show",
-            :layout => profile_account.is_a?(Artist) ? 'artist_profile_logged_out' : 'dashboard'
+          render :template => "#{profile_account.class.model_name.plural}/show"
         else
           if profile_account.has_chat?(current_site)
             @chat           = profile_account.next_chat

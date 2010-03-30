@@ -1,5 +1,4 @@
 class Discover::SongsController < ApplicationController
-  layout 'discover'  
   
   def index
     #@songs = Song.all

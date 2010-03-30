@@ -1,6 +1,4 @@
 class SearchesController < ApplicationController
-  layout 'base'
-
   def show
     @active_scope=params[:scope]
     @counts=cross_count (params[:q])
