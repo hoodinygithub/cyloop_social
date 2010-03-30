@@ -1,6 +1,0 @@
-#nav_main.clearfix
-  %ul
-    - if logged_in?
-      %li.tab.dashboard= link_to(t("navigation.dashboard"), my_dashboard_path)
-    %li.tab.radio= link_to(t("navigation.radio"), radio_path)
-    = render :partial => 'shared/nav_search'

@@ -1,2 +1,0 @@
-%ul
-  = render :partial => "shared/top_artist", :collection => top_artists, :inline => true

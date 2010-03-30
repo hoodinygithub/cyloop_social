@@ -1,7 +1,0 @@
-- if Artist.exists?(recommended_artist.id)
-  %li
-    = recommended_artist.id 
-    = link_to(image_tag("#{ENV['ASSETS_URL']}#{recommended_artist.image}", :class => 'small avatar'), artist_path(recommended_artist.profile_url.gsub(/\//,"")))
-    %h4
-      = link_to(recommended_artist.nick_name, artist_path(recommended_artist.profile_url.gsub(/\//,"")))
-      == #{t('modules.top_songs.title')} #{Artist.find(recommended_artist.id).most_listened_songs(3).map { |song| link_to song.title, queue_song_path(:slug => song.artist.slug, :id => song.album, :song_id => song)  }.join(',')}

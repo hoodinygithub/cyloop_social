@@ -1,2 +1,0 @@
-%ul
-  = render :partial => 'shared/top_station', :collection => top_stations 

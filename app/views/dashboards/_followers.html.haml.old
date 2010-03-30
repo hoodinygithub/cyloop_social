@@ -1,4 +1,0 @@
-%h3 Following
-%ul
-  - followers.each do |follower|
-    %li= link_to(avatar_for(follower, :tiny), follower)

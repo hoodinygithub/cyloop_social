@@ -1,7 +1,0 @@
-%li
-  = link_to avatar_for(top_artist, :small), top_artist
-  = link_to top_artist.name, top_artist
-  %span.count
-    = top_artist.total_listens
-    %span
-      plays

@@ -1,3 +1,0 @@
-%h3= t('dashboards.recommended_artists.title')
-%ul
-  = render :partial => 'dashboards/recommended_artist', :collection => recommended_artists

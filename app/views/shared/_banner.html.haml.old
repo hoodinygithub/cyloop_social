@@ -1,3 +1,0 @@
-/ OBJECT REFRESH DOESN'T SEEM TO WORK IN IE SO SWITCHED IT OVER TO IFRAME
-/%object{:type => "text/html", :id => options[:id], :data => "#{banner_ads_path}?#{url_options}", :width => options[:width], :height => options[:height]}
-%iframe{:id => options[:id], :frameborder => "0", :name => options[:id], :src => "#{banner_ads_path}?#{url_options}", :width => options[:width], :height => options[:height]}
