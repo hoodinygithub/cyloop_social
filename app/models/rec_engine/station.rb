@@ -12,6 +12,22 @@ class RecEngine::Station < RecEngine::Abstract
   end
   alias to_param slug
 
+  def normalize_amg_id
+    a = amgID.to_s.split(/\s/)
+    new_amg_id = ""
+    unless a.empty?
+      new_amg_id << a[0].to_s
+      (9 - a[1].length).times { new_amg_id << ' ' }
+      new_amg_id << a[1].to_s
+    end
+    new_amg_id
+  end
+
+  def station
+    s = AbstractStation.find_by_amg_id(amgID)
+    s.station unless s.nil?
+  end
+
   def avatar
     require 'ostruct'
     OpenStruct.new(:url => "#{ENV['ASSETS_URL']}#{image}")

@@ -25,6 +25,7 @@ class PagesController < ApplicationController
           @top_artists = current_site.summary_top_artists.limited_to(5)
         end
         @top_stations = current_site.summary_top_stations.limited_to(6)
+        @top_user_stations = current_site.summary_top_user_stations.limited_to(6)
 
         if site_includes(:msnmx, :msnbr,:msnlatam,:msnlatino, :msnar)
           url_featured    = "/shared/feeds/current/#{site_code}_url_featured.xml"

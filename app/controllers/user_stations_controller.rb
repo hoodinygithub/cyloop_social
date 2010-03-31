@@ -9,10 +9,12 @@ class UserStationsController < ApplicationController
   def create
     @station = Station.find(params[:station_id])
     unless @station.nil?
-      user_station = current_user.stations.find_by_station_id(@station.id)
-      unless user_station
-        current_user.create_user_station(:station_id => @station.id, :current_site => current_site)
-        record_activity(@station)
+      if @station.is_a? AbstractStation
+        user_station = current_user.stations.find_by_abstract_station_id(@station.playable_id)
+        unless user_station
+          current_user.create_user_station(:station_id => @station.id, :current_site => current_site)
+          record_activity(@station)
+        end
       end
     end
 
@@ -90,7 +92,9 @@ class UserStationsController < ApplicationController
   end
 
   def destroy
-    UserStation.find_by_id_and_owner_id!(params[:id], profile_user.id).destroy
+    u = UserStation.find_by_id_and_owner_id!(params[:id], profile_user.id)
+    u.set_deleted
+
     respond_to do |format|
       format.html do
         if request.xhr?

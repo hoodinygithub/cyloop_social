@@ -88,6 +88,7 @@ ActionController::Routing::Routes.draw do |map|
     url.radio 'radio', :action => 'index'
     url.twitstation 'twitstation', :action => 'twitstation'
     url.search_radio 'radio/search.:format', :action => 'search'
+    url.play_station 'radio/play.:format', :action => 'play'
     url.radio_xml 'radio/:station_id.:format', :action => 'show'
     url.artist_info 'radio/info/:artist_id', :action => 'artist_info'
   end

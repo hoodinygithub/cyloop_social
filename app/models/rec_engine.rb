@@ -52,8 +52,13 @@ class RecEngine
   def get_rec_engine_play_list(params = {})
     #Explicitly removing caching on radio per Demian - 2009-09-29
     #Rails.cache.fetch("rec_engine/play_list/#{all_params_to_cache_key(params)}", :expires_in => EXPIRATION_TIMES['rec_engine_play_list']) do
+
     get_items(:get_rec_engine_play_list, params).map {|x| RecEngine::Song.new(x)}
     #end
+  end
+
+  def get_rec_engine_playlist_artists(params = {})
+    get_items(:get_rec_engine_play_list, params).map {|x| RecEngine::ArtistFromPlaylist.new(x) }.uniq_by { |y| y.artist_id }
   end
 
   def get_recommended_artists(params = {})

@@ -40,6 +40,7 @@ class Site < ActiveRecord::Base
   has_many :summary_top_albums, :order => 'total_listens DESC', :class_name => 'TopAlbum', :include => :album
   has_many :summary_top_artists, :order => 'total_listens DESC', :class_name => 'TopArtist', :include => :artist
   has_many :summary_top_stations, :order => 'station_count DESC', :class_name => 'TopStation', :include => :station
+  has_many :summary_top_user_stations, :order => 'total_requests DESC', :class_name => 'TopUserStation', :include => :user_station
   has_many :users, :foreign_key => 'entry_point_id'
   has_one :site_statistic
   has_many :campaigns

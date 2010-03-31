@@ -33,7 +33,7 @@ class RadioController < ApplicationController
     end
   end
 
-  def show
+  def old_show
     #Explicitly removing caching on radio per Demian - 2009-09-29
     #if !(Rails.cache.read(radio_show_cache_key_url))
     station = Station.find(params[:station_id])
@@ -43,6 +43,67 @@ class RadioController < ApplicationController
       format.xml { render :layout => false }
     end
     #end
+  end
+  
+  def show
+    @station = Station.find(params[:station_id]).playable
+    @songs = if @station.kind_of? AbstractStation
+      rec_engine.get_rec_engine_play_list(:artist_id => @station.amg_id)
+    elsif @station.kind_of? UserStation
+      rec_engine.get_rec_engine_play_list(:artist_id => @station.amg_id)
+    elsif @station.kind_of? EditorialStation
+      if @station.sites_available.include? current_site.id
+        @station.playlist
+      else
+        raise @station.sites_available.inspect #render :xml => { :alert => 'This station cannot play in this market' }.to_xml(:root => 'response')
+      end
+    end
+    #@songs = rec_engine.get_rec_engine_play_list(:artist_id => station.amg_id)
+    respond_to do |format|
+      format.html { render :layout => false }
+      format.xml { render :layout => false }
+    end
+    #end
+  end
+
+  def play
+    @station = Station.find( params[:station_id] ).playable
+    if @station
+
+      #raise @station_object.kind_of?(UserStation).inspect
+      respond_to do |format|
+        format.html do
+          redirect_to radio_path(:station_id => @station.id, :queue => true)
+        end
+        block = Proc.new do
+          session[:current_station] = @station.id
+          render :xml => Player::Station.from(@station, 
+                 :ip => remote_ip, 
+                 :user_id => logged_in? ? current_user.id : nil).to_xml(:root => @station.kind_of?(UserStation) ? 'user_station' : 'station')
+        end
+        format.xml(&block)
+        format.js(&block)
+        format.rss
+      end
+
+    else
+
+      not_found_message = t('stations.could_not_find_artist', :artist => params[:id])
+      respond_to do |format|
+        format.html do
+          flash[:error] = not_found_message
+          redirect_to radio_path
+        end
+        format.js { render :text => not_found_message, :layout => false }
+        format.xml { render :xml => Player::Error.new(:error => not_found_message, :code => 404) }
+        format.rss do
+          feed_site = site_code.match(/^msnca.*/) ? "msncanada" : site_code 
+          redirect_to "http://cm.cyloop.com/feeds/#{feed_site}/feed_top_stations_#{site_code}.xml" 
+        end
+      end
+
+    end
+
   end
 
   def search

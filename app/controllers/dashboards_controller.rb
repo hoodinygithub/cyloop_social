@@ -29,8 +29,8 @@ class DashboardsController < ApplicationController
 private
   # this is solely to cache so we don't do a ton of queries
   def find_user_stations
-    stations = profile_user.stations.all(:limit => 5, :include => [:station])
-    artist_ids = stations.map{|s| s.station.artist_id}
+    stations = profile_user.stations.all(:limit => 5, :include => [:abstract_station])
+    artist_ids = stations.map{|s| s.abstract_station.artist_id}
     Artist.find_all_by_id artist_ids
   rescue
   end

@@ -79,14 +79,14 @@ class User < Account
   has_one :bio, :autosave => true, :foreign_key => :account_id
   validates_associated :bio
 
-  has_many :stations,
-    :foreign_key => :owner_id,
-    :order => 'user_stations.name ASC',
-    :class_name => "UserStation",
-    :include => :station,
-    :source => :station,
-    :conditions => 'stations.available'
-
+  has_many :stations,  
+           :foreign_key => :owner_id,
+           :order => 'user_stations.name ASC',
+           :class_name => "UserStation",
+           :include => :abstract_station,
+           :source => :abstract_station,
+           :conditions => 'abstract_stations.available'
+  
   has_many :playlists, :foreign_key => :owner_id, :order => 'created_at DESC'
 
   has_many :song_listens, :foreign_key => :listener_id
@@ -155,12 +155,19 @@ class User < Account
   #TODO MUST BE REVISITED WHEN IMPLEMENTING LOCALES
 
   def create_user_station(params = {})
-    stations.find_or_create_by_station_id(:station_id => params[:station_id], :site_id => params[:current_site].id)
+    u = UserStation.create(:owner => self, :abstract_station_id => params[:station_id], :site_id => params[:current_site].id)
+    u.station.create
   end
 
   def block(blockee_id)
     blockee_id = blockee_id.id if blockee_id.kind_of? User
     Block.create! :blocker_id => id, :blockee_id => blockee_id
+  end
+  
+  def unblock(blockee_id)
+    blockee_id = blockee_id.id if blockee_id.kind_of? User
+    blocked = Block.first(:conditions => {:blocker_id => id, :blockee_id => blockee_id})
+    blocked.destroy if blocked
   end
 
   def unblock(blockee_id)

@@ -73,7 +73,11 @@ class Artist < Account
 
   index [:slug, :type]
 
-  has_one :station, :foreign_key => 'artist_id', :conditions => { :available => true }
+  has_one :station, :class_name => 'AbstractStation', :foreign_key => 'artist_id', :conditions => { :available => true }
+  has_many :abstract_station_artists
+  has_many :user_station_artists
+  has_many :abstract_stations, :through => :abstract_station_artists
+  has_many :stations, :class_name => 'UserStation', :through => :user_station_artists, :source => :user_station, :foreign_key => 'artist_id', :uniq => true
 
   has_many :song_listens
   has_many :listeners, :class_name => 'User', :through => :artist_listens

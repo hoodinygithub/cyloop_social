@@ -9,6 +9,10 @@ class RecEngine::Artist < RecEngine::Abstract
   def slug
     profile_url.sub(/^\//, '')
   end
+
+  def station
+    AbstractStation.find_by_artist_id(id)
+  end
   
   alias to_param slug
 

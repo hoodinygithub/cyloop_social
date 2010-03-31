@@ -4,25 +4,25 @@
     <% if station.artist_id.nil? %>
       <%= avatar_for(nil, :new_medium) %>
     <% else %>
-      <%= four_thumbs_to(station, {:type => :big}) %>
+      <%= four_thumbs_to(station.station, {:type => :big}) %>
     <% end %>
 
     <div class="overlay">
       <div class="hidden">
-        <% if station.artist_id.nil? %>
+        <% if station.owner_id.nil? %>
           <%= avatar_for(nil, :artist_icon) %>
         <% else %>
-          <%= link_to avatar_for(station.artist, :artist_icon), station.artist %>
+          <%= link_to avatar_for(station.owner, :artist_icon), station.owner %>
         <% end %>
         
         <span>
-          <span class="blue"><%= station.name %></span><br/>
-          <%= l(station.created_at, :format => "default") %>
+          <span class="blue"><%= station.owner.name %></span><br/>
+          <%= t('basics.created_at', :when => distance_of_time_in_words_to_now(station.created_at)) %>
         </span>
         <br class="clearer" />
 
         <%= t("basics.contains") %>:
-        <%= station.includes.map {|artist| link_to artist.name, artist, :target => '_blank'}.join(", ") %>
+        <%= station.includes(3).map {|user_station_artist| link_to user_station_artist.artist.name, user_station_artist.artist, :target => '_blank'}.join(", ") %>
       </div>
 
       <div class="visible">

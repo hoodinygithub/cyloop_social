@@ -23,6 +23,58 @@ function start_player()
   flash_object("radio_engine").add_station(station_obj); 
 }
 
+function playStation(id)
+{
+  $.ajax({
+    url:      "/radio/play",
+    type:     "post",
+    data:     {station_id: id, authenticity_token: encodeURIComponent(AUTH_TOKEN)},
+    dataType: "xml",
+    success:  function(xml)
+    {
+      var mainNode = flashvars.LOGGEDIN == "true" ? 'user-station' : 'station';
+      var obj = $(xml);
+
+      if(obj.find(mainNode).size() == 0) 
+      {
+        //TODO: PREPEND DOESN'T SEEM TO BE WORKING. REVIEW!!
+        if ($('#page_wrapper').find("#messages .error").size() > 0) 
+        {
+          $("#messages .error").text(obj);
+        }
+        else 
+        {
+          error_message = "<div id='messages'><p class='error'>broken</p></div>";
+          $(error_message).prependTo('#page_wrapper');
+        }
+      }
+      else
+      {
+        var station_name, station_idpl, station_url, station_id;
+        if(flashvars.LOGGEDIN == 'true')
+        {
+          station_name = obj.find('user-station name:eq(0)').text();
+          station_idpl = obj.find('user-station station-id').text();
+          station_url  = obj.find('user-station station-url').text();
+          station_id   = obj.find('user-station id:eq(0)').text();
+        }
+        else
+        {
+          station_name = obj.find('station name:eq(0)').text();
+          station_idpl = obj.find('station id:eq(0)').text();
+          station_url  = obj.find('station station-url').text();
+          station_id   = obj.find('station id:eq(0)').text();
+        }
+        addNewStation(station_name, station_idpl, station_url, station_id);
+      }
+    },
+    error: function(e)
+     {
+       alert('ERROR OCCURRED: ' + e);
+     }
+  });
+}
+
 function createStation(station_name)
 {
   $.ajax({

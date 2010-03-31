@@ -11,14 +11,14 @@ class AccountsController < ApplicationController
     @dashboard_menu = :home
     @mixes_recommended = (1..6).to_a
     @comments = (1..3).to_a
+
     stations = recommended_stations(30)
     @recommended_stations = stations[0..(RECOMMENDED_STATIONS-1)]
     @recommended_stations_queue = stations[RECOMMENDED_STATIONS..(stations.size)]
-    @top_stations =  profile_account.stations.most_created(3) 
+    @top_stations = profile_account.stations.most_created(3) 
     @followers = profile_account.followers.all(:limit => 4)
+    @latest_stations = profile_account.stations.all(:limit => 6, :order => "user_stations.created_at DESC") 
     
-    @latest_stations = profile_account.stations.all(:limit => 6, :order => "stations.created_at DESC")
-
     render :template => 'dashboards/show'
   end
   
@@ -82,7 +82,7 @@ class AccountsController < ApplicationController
           :visitor_ip_address => remote_ip,
           :timestamp => Time.now.to_i
         }
-        Resque.enqueue(ProfileVisitJob, tracker_payload)
+        #Resque.enqueue(ProfileVisitJob, tracker_payload)
       end
     rescue Exception => e
       Rails.logger.error("*** Could not record visit! #{e}\n#{e.backtrace.join("\n")}\n#{tracker_payload}") and return true
