@@ -7,18 +7,18 @@
 <ul class="followers_list">
   <% @results.each do |user|%>
     <li>
-                                <a href="#"><img src="/images/comment_icon.gif" class="follower_image" alt="" /></a>
-                                <div class="follower_text">
-                                    <b><a href="#">Jason Calleiro</a></b><br/>
-                                    <span>Miami, Fl</span><br/>
-                                    <a href="#">3,250</a> Mixes / <a href="#">5,350</a> Stations / <a href="#">5,350</a> Followers
-                                </div>
-                                <div class="follower_actions">
-                                    <a href="#" class="blue_button"><span><span>FOLLOW</span></span></a><br/>
-                                    <div class="blocked"><img src="/images/blocked.gif" alt="" /> Blocked</div>
-                                </div>
-                                <br class="clearer" />
-                            </li>
+        <div id="logo"><a href="#"><%= avatar_for(user, :search, {:alt => "", :class =>"follower_image"}) %></a></div>
+        <div class="follower_text">
+            <b><a href="#"><%= user.name %></a></b><br/>
+            <span><%= user.city %></span><br/>
+            <a href="#">3,250</a> Mixes / <a href="#">5,350</a> Stations / <a href="#">5,350</a> Followers
+        </div>
+        <div class="follower_actions">
+            <a href="#" class="blue_button"><span><span>FOLLOW</span></span></a><br/>
+            <div class="blocked"><img src="/images/blocked.gif" alt="" /> Blocked</div>
+        </div>
+        <br class="clearer" />
+    </li>
   <% end %>
 </ul><!--/end followers_list -->
 

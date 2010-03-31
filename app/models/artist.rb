@@ -69,7 +69,7 @@
 class Artist < Account
 
   include SongListen::Most
-  include Searchable::ByName
+  #include Searchable::ByName
 
   index [:slug, :type]
 

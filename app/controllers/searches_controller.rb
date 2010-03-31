@@ -38,7 +38,7 @@ class SearchesController < ApplicationController
         @scope = scope.classify.constantize
         query="#{q}"
         query="#{q}*" if scope=="Song" || scope=="Album"
-        partial_results = @scope.search query, :page => params[:page], :per_page => per_page
+        partial_results = @scope.search query, :per_page => per_page
         results.store(scope,partial_results)
       end
       #@cross_search=ThinkingSphinx::Search.search "#{params[:q]}" , :classes => [User, Song, Album, Artist ]
@@ -62,7 +62,7 @@ class SearchesController < ApplicationController
       case scope
       when 'artist'
         result=:name if sort=='alpha'
-        result=:visit_count if sort=='rel' || params[:order].blank?
+        result=:visit_count if sort=='rel' || sort.blank?
       when 'station'
         result=nil if sort=='alpha'
       end
@@ -73,7 +73,7 @@ class SearchesController < ApplicationController
       result=nil
       case scope
       when 'artist'
-        result=:desc if sort=='rel' || params[:order].blank?
+        result=:desc if sort=='rel' || sort.blank?
       end
       result
     end

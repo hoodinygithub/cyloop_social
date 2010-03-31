@@ -4,56 +4,52 @@
   <a href="#">TOP RATED</a> / <a href="#">ALPHABETICAL</a> / <a href="#" class="active">LATEST</a>
 </div>
 
-
-
   <% @results.each do |album|%>
-<div class="albums_item reviews_list">
-                            <div class="artist_box png_fix">
-                                <img src="/images/artist_image.jpg" alt="" />
+      <div class="albums_item reviews_list">
+          <div class="artist_box png_fix">
+              <%= avatar_for(album, :new_medium, {:alt => ""} ) rescue"" %>
 
-                                <div class="overlay">
-                                    <div class="hidden">
-                                        <a href="#"><img src="/images/artist_icon.gif" class="artist_icon" alt="" /></a>
-                                        <span>
-                                            <span class="blue">Jason Calleiro</span><br/>
-                                            09/10/10
-                                        </span>
-                                        <br class="clearer" />
+              <div class="overlay">
+                  <div class="hidden">
+                      <a href="#"><%= avatar_for(album.artists.first, :artist_icon, {:alt => ""} ) rescue"" %></a>
+                      <span>
+                          <span class="blue"><%= "#{album.artists.first.name}" rescue ""%></span><br/>
+                          09/10/10
+                      </span>
+                      <br class="clearer" />
 
-                                        Contains: <a href="#">Metallica</a>, <a href="#">Someone Else</a>, <a href="#">Alice in Chains</a>...
-                                    </div>
+                      Contains: <a href="#">Metallica</a>, <a href="#">Someone Else</a>, <a href="#">Alice in Chains</a>...
+                  </div>
 
-                                    <div class="visible">
-                                        <a href="#"><img src="/images/play_button.png" class="play_button" alt="" /></a>
+                  <div class="visible">
+                      <a href="#"><img src="/images/play_button.png" class="play_button" alt="" /></a>
 
-                                        <a href="#">Album Name</a><br/>
-                                        <span class="white">2004</span>
-                                    </div>
-                                </div><!--/end overlay -->
-                            </div><!--/end artist_box -->
+                      <a href="#"><%= album.name %></a><br/>
+                      <span class="white"><%= album.released_on.strftime("%Y") rescue"" %></span>
+                  </div>
+              </div><!--/end overlay -->
+          </div><!--/end artist_box -->
 
-                            <div class="reviews">
-                                <div class="review_item">
-                                    <a href="#"><img src="/images/comment_icon.gif" class="review_icon" alt="" /></a>
-                                    <div class="review_creator_large">
-                                        <b><a href="#">Artist Name</a></b><br/>
-                                        Miami, Fl,
-                                        Pop/Rock
-                                    </div>
-                                    <br class="clearer" />
-                                </div><!--/end review_item -->
+          <div class="reviews">
+              <div class="review_item">
+                  <div id="logo"><a href="#"><%= avatar_for(album.artists.first, :search, {:alt => ""} ) rescue"" %></a></div>
+                  <div class="review_creator_large">
+                      <b><a href="#"><%= "#{album.artists.first.name}" rescue ""%></a></b><br/>
+                      <%= "#{album.artists.first.genre.name}" rescue"" %>
+                  </div>
+                  <br class="clearer" />
+              </div><!--/end review_item -->
 
-                                <br/>
+              <br/>
 
-                                <b>Reviewed by: <a href="#">Jason Calleiro</a></b><br/>
+              <b>Reviewed by: <a href="#">Jason Calleiro</a></b><br/>
 
-                                <span class="grey">2 days ago</span><br/>
+              <span class="grey">2 days ago</span><br/>
 
-                                <span class="review_creator_stars2"><a href="#"><img src="images/star_blue.png" class="png_fix" alt="" /></a> <a href="#"><img src="images/star_blue.png" class="png_fix" alt="" /></a> <a href="#"><img src="images/star_grey.png" alt="" /></a> <a href="#"><img src="images/star_grey.png" alt="" /></a> <a href="#"><img src="images/star_grey.png" alt="" /></a></span><br/>
-                                <small>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy Lorem ipsum dolor sit amet....</small>
-                            </div><!--/end reviews -->
-
-                            <div class="clearer"></div>
-                        </div><!--/end albums_item -->
+              <span class="review_creator_stars2"><a href="#"><img src="images/star_blue.png" class="png_fix" alt="" /></a> <a href="#"><img src="images/star_blue.png" class="png_fix" alt="" /></a> <a href="#"><img src="images/star_grey.png" alt="" /></a> <a href="#"><img src="images/star_grey.png" alt="" /></a> <a href="#"><img src="images/star_grey.png" alt="" /></a></span><br/>
+              <small>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy Lorem ipsum dolor sit amet....</small>
+          </div><!--/end reviews -->
+          <div class="clearer"></div>
+      </div><!--/end albums_item -->
   <% end %>
 

@@ -292,7 +292,6 @@ img.avatar {
 	width: 62px;
 	height: 62px;
 	padding: 1px;
-	border: 1px solid #999;
 }
 
 img.avatar.tiny {
@@ -335,6 +334,11 @@ img.avatar.small {
 img.avatar.search {
 	width: 50px;
 	height: 50px;
+}
+
+img.avatar.search_station {
+	width: 70px;
+	height: 70px;
 }
 
 
@@ -1553,7 +1557,7 @@ img.avatar_four_thumbs_big {
 
 .followers_list .follower_text {
     float: left;
-    width: 235px;
+    width: 255px;
     padding-left: 10px;
     margin-right: -20px;
 }
@@ -1955,7 +1959,7 @@ img.avatar_four_thumbs_big {
 }
 
 .review_creator_large {
-    width: 240px;
+    width: 235px;
     float: left;
     padding-left: 10px;
 }

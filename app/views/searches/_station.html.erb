@@ -11,16 +11,21 @@
                                 <a href="#"><img src="images/listen_icon.png" class="listen_icon png_fix" alt="" title="Listen" /></a>
 
                                 <div class="four_thubms_big">
-                                    <a href="#"><img src="/images/4thumbs_big_1.gif" alt="" /></a>
-                                    <a href="#"><img src="/images/4thumbs_big_2.gif" alt="" /></a>
-                                    <a href="#"><img src="/images/4thumbs_big_3.gif" alt="" /></a>
-                                    <a href="#"><img src="/images/4thumbs_big_4.gif" alt="" /></a>
+                                    <a href="#"><%= avatar_for(station.artist.albums.first, :search_station, {:alt => station.artist.albums.first.name} ) rescue avatar_for(station.artist, :search_station, {:alt => ""} ) %></a>
+                                    <% station.includes.each do |included_artist| %>
+                                      <a href="#"><%= avatar_for(included_artist.albums.first, :search_station, {:alt => ""} ) rescue avatar_for(included_artist, :search_station, {:alt => ""} ) %></a>
+                                    <% end %>
                                 </div><!--/end four_thubms_big -->
 
                                 <div class="subcription_text">
-                                    <big><a href="#">Radio Name</a></big><br/>
-                                    <span class="grey">Last modified: 09/10/10</span><br/>
-                                    Contains: <a href="#">Metallica</a>, <a href="#">Someone Else</a>, <a href="#">Alice in Chains</a>...<br/>
+                                    <big><a href="#"><%= station.name%></a></big><br/>
+                                    <span class="grey">Last modified: <%= station.updated_at.strftime("%m/%d/%Y")
+%></span><br/>
+                                    Contains:
+                                    <% station.includes.each do |included_artist| %>
+                                      <a href="#"><%= included_artist.name %></a>,
+                                    <% end %>
+                                    ...<br/>
 
                                     <div class="buttons">
                                         <a href="#"><img src="/images/listen_button.png" class="png_fix" alt="" title="Listen" /></a>
@@ -28,10 +33,10 @@
                                     </div>
 
                                     <div class="subcription_creator">
-                                        <img src="/images/network_icon.gif" class="creator_image" alt="" />
+                                        <div id="logo"><%= avatar_for(station.user_stations.first.owner, :search, {:alt => ""}) rescue "" %></div>
                                         <div class="creator_text">
-                                            <b>Created by: <a href="#">Jason Calleiro</a></b><br/>
-                                            Click <a href="#">here</a> to follow Jason.
+                                            <b>Created by: <a href="#"><%= station.user_stations.first.owner.name rescue "" %></a></b><br/>
+                                            Click <a href="#">here</a> to follow <%= station.user_stations.first.owner.name rescue "" %>.
                                         </div>
                                     </div>
                                 </div><!--/end subcription_text -->
