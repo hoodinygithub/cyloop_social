@@ -1,6 +1,5 @@
 class PagesController < ApplicationController
   caches_page :home, :if => Proc.new { |c| !c.request.format.js? }
-  layout 'base'
   before_filter :authenticate, :only => [:x46b]
 
   def banner

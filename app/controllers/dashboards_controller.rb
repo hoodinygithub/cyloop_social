@@ -5,7 +5,7 @@ class DashboardsController < ApplicationController
   
   current_tab :dashboard 
   current_filter :songs
-  layout_except_xhr 'base'
+  layout_except_xhr 'application'
   
   RECOMMENDED_STATIONS = 12
   
