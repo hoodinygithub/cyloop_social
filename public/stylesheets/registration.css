@@ -6,27 +6,40 @@
 */
 
 /* Registration Form */
-body.users_new #page_wrapper,
-body.users_create #page_wrapper { 
+body{
+  background: url("../images/grey_bg.gif") repeat-x scroll left top #FFFFFF
+}
+.label_based{
+  border-top: 1px #ccc solid
+}
+
+#container,
+#container { 
   clear: both;
   margin: 0;
   width: 100%;
 }
 
-body.users_new #page_wrapper h2,
-body.users_create #page_wrapper h2 {
+#container h2,
+#container h2 {
   padding: 30px 40px;
+  color:#191919;
+  font-size:20px;
+  font-weight:bold;
+  line-height:22px;
+  text-align:left;
+
 }
 
-body.users_new #page_wrapper #content,
-body.users_create #page_wrapper #content {
+#container #content,
+#container #content {
   border-right: 1px solid #ddd;
   width: 400px !important; /* temporary fix to avoid override this */
   padding: 0px 50px;
   float: left;  
 }
-body.users_new #page_wrapper #sidebar,
-body.users_create #page_wrapper #sidebar {
+#container #sidebar,
+#container #sidebar {
   padding: 50px;
   float: left;
   width: 380px;
@@ -304,4 +317,55 @@ body.cyloopes .registration_layer .bottom h2 a {
   color: #666;  
 }
 
+.account_settings .form_row{
+  border: none;
+  width: 45%
+}
+#sidebar ul {
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
+#sidebar ul li {
+  padding: 0 10px 40px 80px;
+  list-style: none;
+}
+#sidebar ul li span {
+  display: block;
+  font-weight: bolder;
+  color: black;
+  font-size: 18px;
+  line-height: 23px;
+}
+#sidebar ul .discover { 
+  background: transparent url(../images/registration/discover.png) no-repeat 0 0;
+}
+#sidebar ul .radio { 
+  background: transparent url(../images/registration/radio.png) no-repeat 0 0;
+}
+#sidebar ul .playlist { 
+  background: transparent url(../images/registration/playlist.png) no-repeat 0 0;
+}
+#sidebar ul .follow { 
+  background: transparent url(../images/registration/follow.png) no-repeat 0 0;
+}
+#sidebar ul .chat { 
+  background: transparent url(../images/registration/chat.png) no-repeat 0 0;
+}
 
+.half_width2 {
+  width:375px;
+}
+button.registration_complete {
+  margin-left: 20px;
+  font-family: "Helvetica", sans-serif;
+  font-size: 17px;
+  color: white;
+  border: 0;
+  width: 124px;
+  height: 43px;
+  line-height: 38px;
+  padding: 0 5px 5px 0;
+  cursor: pointer;
+  background: transparent url(../images/registration/button-complete.png) no-repeat;
+}
