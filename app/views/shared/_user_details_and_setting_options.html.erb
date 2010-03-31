@@ -14,24 +14,24 @@
 
 <div class="follower_actions w_settings">
     <% if current_user.follows?(item) %>
-      <%= green_button(t('actions.unfollow'), 
-        :onclick => "Base.community.unfollow('#{item.slug}', this, #{following_page?})", 
+      <%= green_button(t('actions.unfollow'),
+        :onclick => "Base.community.unfollow('#{item.slug}', this, #{following_page?})",
         :class => 'follower_btn') %>
     <% else %>
-      <%= blue_button(t('actions.follow'), 
-        :onclick => "Base.community.follow('#{item.slug}', this, #{following_page?})", 
+      <%= blue_button(t('actions.follow'),
+        :onclick => "Base.community.follow('#{item.slug}', this, #{following_page?})",
         :class => 'follower_btn') %>
     <% end %>
-    
+
     <%= blue_button(image_tag('settings_button.png'), :href => '#', :class => 'settings_button') %>
     <br/>
-    
+
     <div class="blocked">
       <% if current_user.blocks?(item) %>
       <%= image_tag('blocked.gif') %> <%= t('blocks.blocked') %>
       <% end %>
     </div>
-    
+
     <ul class="actions_settings">
       <% if current_user.blocks?(item) %>
         <li>
@@ -48,3 +48,4 @@
       <% end %>
     </ul>
 </div>
+

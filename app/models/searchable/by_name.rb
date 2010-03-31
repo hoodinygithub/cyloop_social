@@ -1,5 +1,5 @@
 module Searchable::ByName
-  module ClassMethods    
+  module ClassMethods
     if RAILS_ENV =~ /test/ # bad bad bad
       def search(*args)
         options = args.extract_options!
@@ -12,19 +12,21 @@ module Searchable::ByName
       end
     end
   end
-  
+
   def self.included(base)
     base.class_eval do
       named_scope :starts_with, lambda { |prefix| { :conditions => ["name LIKE ?", "#{prefix}%"], :order => 'name asc' } }
 
       define_index do
         where "deleted_at IS NULL"
-        indexes :name
+        indexes :name, :sortable => true
         set_property :min_prefix_len => 1
         set_property :enable_star => 1
-        set_property :allow_star => 1        
+        set_property :allow_star => 1
+        has created_at
       end
     end
     base.extend ClassMethods
   end
 end
+

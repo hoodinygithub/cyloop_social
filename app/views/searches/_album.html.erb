@@ -1,8 +1,9 @@
 <h1>ALBUMS</h1>
 
 <div class="sorting">
-  <a href="#">TOP RATED</a> / <a href="#">ALPHABETICAL</a> / <a href="#" class="active">LATEST</a>
+   <a href="#">TOP RATED</a> /  <%= link_to "ALPHABETICAL ", "/search/#{params[:mkt]}/album/#{params[:q]}?order=alpha" , :class => params[:order]=='alpha'? "active": "" %> / <%= link_to "LATEST ", "/search/#{params[:mkt]}/album/#{params[:q]}?order=rel" , :class => params[:order]=='rel' || params[:order].blank? ? "active": "" %>
 </div>
+
 
   <% @results.each do |album|%>
       <div class="albums_item reviews_list">

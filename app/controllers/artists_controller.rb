@@ -3,7 +3,7 @@ class ArtistsController < ApplicationController
   caches_action :similar_artists, :cache_path => :artist_cache_path, :expires_delta => EXPIRATION_TIMES['artist_similar_artists_js']
 
   def index
-    @query = "#{params[:name] || params[:q]}"
+    @query = "#{params[:name] || params[:q]}*"
     respond_to do |format|
       format.html do
         @artists = Artist.search( @query , :include => [:label, :station], :per_page => 10)

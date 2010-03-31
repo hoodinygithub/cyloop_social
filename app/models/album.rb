@@ -36,6 +36,7 @@ class Album < ActiveRecord::Base
     indexes :name, :sortable => true
     set_property :min_prefix_len => 1
     set_property :enable_star => 1
+    set_property :allow_star => 1
     has year
   end
 

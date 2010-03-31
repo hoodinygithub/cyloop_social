@@ -95,11 +95,6 @@ class Artist < Account
   has_many :bios, :autosave => true, :foreign_key => :account_id
   #validates_associated :bios
 
-  #define_index do
-  #  where "deleted_at IS NULL"
-  #  indexes :name
-  #  indexes "LOWER(`account`.`name`)", :as => :name_sorted, :sortable =>true
-  #end
 
 
   def total_listens

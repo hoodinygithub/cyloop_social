@@ -1,7 +1,7 @@
 <h1>ARTISTS</h1>
 
 <div class="sorting">
-    <%= link_to "RELEVANCE ", "/search/#{params[:mkt]}/artist/#{params[:q]}?order=rel" , :class => params[:order]=='rel'? "active": "" %> / <%= link_to "ALPHABETICAL ", "/search/#{params[:mkt]}/artist/#{params[:q]}?order=alpha" , :class => params[:order]=='alpha'? "active": "" %>
+    <%= link_to "RELEVANCE ", "/search/#{params[:mkt]}/artist/#{params[:q]}?order=rel" , :class => params[:order]=='rel' || params[:order].blank? ? "active": "" %> / <%= link_to "ALPHABETICAL ", "/search/#{params[:mkt]}/artist/#{params[:q]}?order=alpha" , :class => params[:order]=='alpha'? "active": "" %>
 </div>
 
 <ul class="followers_list">
@@ -16,7 +16,16 @@
 
         <div class="follower_actions w_settings">
             <a href="#"><img src="/images/play_button.png" class="png_fix" alt="" /></a>
-            <a href="#" class="blue_button"><span><span>FOLLOW</span></span></a><br/>
+            <% if current_user && current_user.follows?(artist) %>
+              <%= green_button(t('actions.unfollow'),
+                :onclick => "Base.community.unfollow('#{artist.slug}', this, #{following_page?})",
+                :class => 'follower_btn') %>
+            <% else %>
+              <%= blue_button(t('actions.follow'),
+                :onclick => "Base.community.follow('#{artist.slug}', this, #{following_page?})",
+                :class => 'follower_btn') %>
+            <% end %>
+            <br/>
         </div>
         <br class="clearer" />
         <div class="long_text"><a href="#"><%= artist.station.nil? ? "0": "1"%></a> Stations / <a href="#"><%= artist.followers.size %></a> Followers</div>
