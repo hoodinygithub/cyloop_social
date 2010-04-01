@@ -73,7 +73,7 @@ class RecreateStationsAsPolymorphic < ActiveRecord::Migration
 
       connection.execute <<-EOF
       INSERT INTO editorial_stations
-      SELECT DISTINCT a.id, a.name, CASE WHEN s.site_id IS NULL THEN 0 ELSE 1 END, s.playlist_id, 0, a.created_at, a.updated_at, CASE WHEN s.site_id IS NULL THEN now() ELSE NULL END
+      SELECT DISTINCT a.id, a.name, CASE WHEN s.site_id IS NULL THEN 0 ELSE 1 END, s.playlist_id, a.created_at, a.updated_at, CASE WHEN s.site_id IS NULL THEN now() ELSE NULL END, 0, 0
       FROM sites_stations s
       INNER JOIN abstract_stations a ON s.station_id = a.id
       EOF
