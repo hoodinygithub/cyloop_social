@@ -8,3 +8,4 @@ config/development.sphinx.conf
 public/system
 db/tyrant
 vendor/cyqueue
+public/javascripts/locale.js
