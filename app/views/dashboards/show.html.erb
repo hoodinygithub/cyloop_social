@@ -1,5 +1,5 @@
 <% content_for :javascript do %>
-  var recommended_stations_queue = [<%= @recommended_stations_queue.collect(&:artist_id).join(", ") %>];
+  var recommended_stations_queue = [<%= @recommended_stations_queue.collect(&:artist_id).join(", ") if @recommended_stations_queue %>];
 <% end %>
 
 <div id="internal_content">
@@ -14,43 +14,8 @@
             <%= render :partial => 'shared/user_latest_stations' %>
           <% end %>
             
-            <h1><%= t('home.network_update') %></h1>
-            <div class="network_update">
-                <form id="network_update_form" action="" method="post">
-                    <div>
-                        <%= image_tag('network_icon.gif', :class => 'network_icon') %>
-                        <textarea name="comment" rows="3" cols="20"></textarea>
-                        <%= image_tag('network_arrow.gif', :class => 'network_arrow') %>
-                        <div class="clearer"></div>
-                        
-                        <div class="update_text">
-                            <b>username</b>
-                            -
-                            texto
-                            <br/>
-                            
-                            <span class="grey">1 day ago</span>
-                        </div>
-                        
-                        <%= blue_button('COMPARTIR', :class => 'compartir_button', :onclick => 'Base.network.submit_form()') %>
-                        
-                        
-                        <div class="network_twitter">
-                            <input type="checkbox" />
-                            <%= link_to(image_tag('twitter_icon.gif'), '#') %>
-                            &nbsp;
-                        </div>
-                        
-                        <div class="clearer"></div>
-                    </div>
-                </form>
-            </div><!--/end network_update -->
-            
+            <%= render 'dashboards/network_activity' %>
             <%= render 'dashboards/comment_list' %>
-            
-            <div class="align_right">
-                <a href="#" class="blue_button"><span><span>SHOW MORE</span></span></a>
-            </div>
         </div><!--/end center_column -->
         
         <%= render :partial => 'dashboards/right_column' %>

@@ -80,6 +80,7 @@ class ActivityProxy < BlankSlate
         [:id, :name, :created_at].map { |k| item[k] = @item[k] }
         item[:avatar_file_name] = station.artist.avatar_file_name
         item[:artists_contained] = station.includes.map { |k| {:artist => k.name, :slug => k.slug} }
+      when "status" then
       end
 
       hash[:item] = item

@@ -46,7 +46,12 @@ class RecEngine
   end
 
   def get_items(action, params = {})
-    get(action, params).search("/recommendation/method/items/item") rescue []
+    begin
+      get(action, params).search("/recommendation/method/items/item")
+    rescue Timeout::Error 
+      log.error "Coult not reach the server\n - #{$!}"
+      return []
+    end
   end
 
   def get_rec_engine_play_list(params = {})
@@ -69,7 +74,7 @@ class RecEngine
   end
   
   def get_recommended_stations(params = {})
-    get_items(:get_recommended_stations, params).map {|x| RecEngine::Station.new(x)}
+    get_items(:get_recommended_stations, params).map {|x| RecEngine::Station.new(x)} rescue []
   end
   
   def get_similar_artists(params = {})

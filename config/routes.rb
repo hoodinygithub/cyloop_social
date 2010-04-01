@@ -109,6 +109,7 @@ ActionController::Routing::Routes.draw do |map|
   map.with_options(:controller => 'activities') do |url|
     url.listen_activity 'activity/activity/:type/:song_id', :action => 'song'
     url.get_activity 'activity/activity/:type', :action => 'get_activity'
+    url.push_activity 'activity/update/:type', :action => 'update'
   end
 
   map.messenger_player '/messengerplayer', :controller => 'messenger_player/player', :action => 'index'

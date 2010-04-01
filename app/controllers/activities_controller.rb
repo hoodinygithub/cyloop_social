@@ -1,6 +1,11 @@
 class ActivitiesController < ApplicationController
+  include ActionView::Helpers::DateHelper
+  include ApplicationHelper
+
   before_filter :account
   before_filter :set_page, :except => [ :song ]
+  layout :set_layout
+  before_filter :login_required, :only => [:update_status]
 
   def index
     @dashboard_menu = :activity
@@ -32,6 +37,21 @@ class ActivitiesController < ApplicationController
     render(
       :partial => "modules/activity/listen_activity",
       :collection => [ @activity ])
+  end
+  
+  def update
+    if request.post? and request.xhr?
+      if params[:type] == 'status'
+        item = {:message => params[:message]}
+      end
+      
+      activity_status = Activity::Status.new(current_user)
+      hash_added = activity_status.put(item)
+      
+      activities = current_user.activity_status.latest
+      activities.each { |a| a['str_timestamp'] = nice_elapsed_time(a['timestamp']) }
+      return render :json => activities
+    end
   end
 
   private  

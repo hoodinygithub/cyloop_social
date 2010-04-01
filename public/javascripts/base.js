@@ -45,18 +45,72 @@ Base.layout.blue_button = function(label) {
 /*
  * Locales
  */
-Base.locale.translate = function(key) {
+Base.locale.translate = function(key, params) {
   var translation = Base.locale.content[Base.locale.current][key];
 
   if (!translation) {
     translation = key + " does not exist";
   }
+  
+  // if user pass params like {'count' => 1}
+  if (typeof(translation) == 'object') {
+    if (typeof(params) == 'object' && typeof(params.count) != 'undefined') {
+      if (params.count == 1) {
+        translation = translation.one;
+      } else {
+        translation = translation.other.split('{{count}}').join(params.count);
+      }
+    }
+  }
 
   return translation;
 };
 
-Base.locale.t = function(key) {
-  return Base.locale.translate(key);
+Base.locale.t = function(key, params) {
+  return Base.locale.translate(key, params);
+};
+
+Base.locale.date_difference = function(old_date, new_date) {
+  old_date      = new Date(old_date * 1000);
+
+  if (typeof(new_date) == 'undefined') {
+    new_date   = new Date();
+  } else {
+    new_date   = new Date(new_date * 1000);
+  }
+  
+  date_diff     = new Date(new_date - old_date).getTime();
+
+  weeks = Math.floor(date_diff / (1000 * 60 * 60 * 24 * 7));
+  date_diff -= weeks * (1000 * 60 * 60 * 24 * 7);
+
+  days = Math.floor(date_diff / (1000 * 60 * 60 * 24)); 
+  date_diff -= days * (1000 * 60 * 60 * 24);
+
+  hours = Math.floor(date_diff / (1000 * 60 * 60)); 
+  date_diff -= hours * (1000 * 60 * 60);
+
+  minutes = Math.floor(date_diff / (1000 * 60)); 
+  date_diff -= minutes * (1000 * 60);
+
+  seconds = Math.floor(date_diff / 1000); 
+  date_diff -= seconds * 1000;
+  
+  old_time_ago_str = "";
+  
+  if (days > 0) {
+    old_time_ago_str = Base.locale.t('datetime.distance_in_words.x_days', {'count':days});
+  } else if (hours > 1) {
+    old_time_ago_str = Base.locale.t('datetime.distance_in_words.x_hours', {'count':hours});
+  } else if (minutes > 1) {
+    old_time_ago_str = Base.locale.t('datetime.distance_in_words.x_minutes', {'count':minutes});
+  } else if (seconds > 30) {
+    old_time_ago_str = Base.locale.t('datetime.distance_in_words.x_seconds', {'count':seconds});
+  } else {
+    old_time_ago_str = Base.locale.t('datetime.distance_in_words.less_than_x_seconds', {'count':seconds});
+  }
+  
+  return old_time_ago_str + " ago";
 };
 
 /*
@@ -261,9 +315,105 @@ Base.stations.close_button_handler = function(object) {
 /*
  * Comment shared
  */
-Base.network.submit_form = function() {
-  $comment_field = jQuery('#network_update_form');
-  comment_text = $comment_field[0].comment.value;
+ 
+Base.network.push_update = function() {
+  $comment_field       = jQuery("#network_comment");
+  $comment_list        = jQuery('#network_comment_list');
+  $network_update_text = jQuery('#network_update_text');
+  $show_more_button = jQuery('#show_more_comments');
+  
+  $comment_field.css({'border':'10px solid #EDEDED'});
+  
+  var comment = jQuery.trim($comment_field.val());
+  var $old_network_update_text = $network_update_text.clone();
+  
+  var share_button = jQuery('a.compartir_button');
+  share_button.fadeOut();
+  
+  if (comment && comment.length > 0) {
+    jQuery.post('/activity/update/status', {'message':comment}, function (response) {
+      
+      first_element = response[0];
+      user_slug = first_element.user_slug;
+      timestamp = first_element.timestamp;
+      str_timestamp = first_element.str_timestamp;
+      
+      username = user_slug;
+      bold_username = document.createElement('b');
+      bold_username.appendChild(document.createTextNode(username));
+      break_line = document.createElement('br');
+      time_ago = document.createElement('span')
+      time_ago.setAttribute('class', 'grey');
+      time_ago.setAttribute('timestamp', timestamp);
+      time_ago.appendChild(document.createTextNode(str_timestamp));
+      spanned_comment = document.createElement('span');
+      spanned_comment.setAttribute('class', 'comment_text_container');
+      spanned_comment.appendChild(document.createTextNode(comment));
+     
+      $comment_field.val("");
+     
+      $network_update_text.html("").hide();
+      $network_update_text.append(bold_username);
+      $network_update_text.append(document.createTextNode(" - "));
+      $network_update_text.append(spanned_comment);
+      $network_update_text.append(break_line);
+      $network_update_text.append(time_ago);
+      $network_update_text.fadeIn();
+      
+      $comment_list.html("");
+      for (var i=response.length-1; i > 0 ; i--) {
+        activity = response[i];
+        old_time_ago_str = "123";
+        
+        $text_div = jQuery('<div></div>');
+        $text_div.attr('class', 'comment_text');
+      
+        $bold_username = jQuery('<b></b>');
+        $link_to_user_str = jQuery('<a></a>');
+        $link_to_user_str.attr('href', '#');
+        $link_to_user_str.append(activity.user_slug);
+        $bold_username.append($link_to_user_str);
+      
+        $timestamp_span = jQuery('<span></span>');
+        $timestamp_span.attr('timestamp', activity.timestamp);
+        $timestamp_span.attr('class', 'grey');
+        $timestamp_span.append(activity.str_timestamp);
+      
+        $text_div.append($bold_username);
+        $text_div.append('<br />');
+        $text_div.append(activity.message);
+        $text_div.append('<br />');
+        $text_div.append($timestamp_span);
+      
+        $avatar_image = jQuery('<img></img>');
+        $avatar_image.attr('src', activity.user_avatar);
+        $link_to_user = jQuery('<a></a>');
+        $link_to_user.attr('href', '#');
+        $link_to_user.append($avatar_image);
+      
+        $clearer = jQuery('<div></div>');
+        $clearer.attr('class', 'clearer');
+      
+        $new_li = jQuery('<li></li>');
+        $new_li.append($link_to_user);
+        $new_li.append($text_div);
+        $new_li.append($clearer);
+      
+        $comment_list.prepend($new_li);
+      }
+      
+      share_button.fadeIn();
+      
+      if ($comment_list.find('li').length >= 5) {
+        $show_more_button.fadeIn();
+      }
+    });
+  } else {
+    $comment_field.css({'border':'10px solid red'});
+    share_button.fadeIn();
+  }
+  
+  return false;
 };
 
 /*

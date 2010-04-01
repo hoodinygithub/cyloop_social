@@ -262,6 +262,10 @@ class Account < ActiveRecord::Base
     end
     accounts
   end
+  
+  def activity_status(args = {})
+    activity_status = Activity::Status.new(self)
+  end
 
   def activity_feed(*args)
     options = args.extract_options!
@@ -269,7 +273,7 @@ class Account < ActiveRecord::Base
     options[:page] ||= 1
     options[:group] ||= :all
     options[:group] = :all if self.is_a?(Artist)
-    raise ArgumentError unless [:all, :listen, :twitter, :station, :playlist].include?(options[:kind])
+    raise ArgumentError unless [:all, :listen, :twitter, :station, :playlist, :status].include?(options[:kind])
     raise ArgumentError unless [:all, :just_me, :just_following].include?(options[:group])
     Activity::Feed.query :for => options[:kind],
                                 :page => options[:page].to_i,

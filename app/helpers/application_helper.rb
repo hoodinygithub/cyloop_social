@@ -623,6 +623,10 @@ module ApplicationHelper
     end
     "/images/msn_#{path}_music_sm.png"
   end
-
+  
+  def nice_elapsed_time(timestamp)
+    time = Time.at(timestamp.to_i)
+    distance_of_time_in_words_to_now(time, true)
+  end
 end
 

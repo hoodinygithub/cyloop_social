@@ -1,12 +1,22 @@
-<ul class="comments_list">
-  <% @comments.each do |comment| %>
+<ul class="comments_list" id="network_comment_list">
+  <% @latest_activity_status.each do |activity, i| %>
     <li>
-        <%= link_to(image_tag('comment_icon.gif', :class => 'comment_icon'), '#') %>
+        <%= link_to(image_tag(activity['user_avatar']), '#') %>
         <div class="comment_text">
-            <b><a href="#">Jason</a></b> Lorem ipsum dolor sit amet sed diam nonummy, consectetuer adt, sed diam nonummy...<br/>
-            <span class="grey">5 days ago</span>
+            <b>
+              <%= link_to activity['user_slug'], '#' %>
+            </b> 
+            <%= activity['message'] %>
+            <br/>
+            <span timestamp="<%= activity['timestamp'] %>" class="grey">
+              <%= nice_elapsed_time(activity['timestamp']) %>
+            </span>
         </div>
         <div class="clearer"></div>
     </li>
   <% end %>
 </ul>
+
+<div class="align_right" id="show_more_comments" <%= 'style="display:none;"' if (@latest_activity_status and @latest_activity_status.size < 5) %>>
+  <a href="#" class="blue_button"><span><span>SHOW MORE</span></span></a>
+</div>

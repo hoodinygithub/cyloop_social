@@ -12,7 +12,15 @@ class DashboardsController < ApplicationController
   def show
     @dashboard_menu = :home
     @mixes_recommended = (1..6).to_a
-    @comments = (1..3).to_a
+    
+    @latest_activity_status = current_user.activity_status.latest_with_followings
+    @last_activity_status     = current_user.activity_status.last
+    
+    if @latest_activity_status and @latest_activity_status.size > 0
+      if @latest_activity_status.first['message'] == @last_activity_status['message']
+        @latest_activity_status.shift
+      end
+    end
 
     stations = recommended_stations(30)
     @recommended_stations = stations[0..(RECOMMENDED_STATIONS-1)]
