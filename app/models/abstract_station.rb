@@ -29,7 +29,7 @@ class AbstractStation < ActiveRecord::Base
 
   has_many :user_stations
   has_many :abstract_station_artists
-  has_many :artists, :through => :station_artists
+  has_many :artists, :through => :abstract_station_artists
 
   belongs_to :artist, :include => :label
   validates_presence_of :amg_id
@@ -65,7 +65,7 @@ class AbstractStation < ActiveRecord::Base
     new_artists = []
     new_artists = RecEngine.new(options).get_rec_engine_playlist_artists unless amg_id.nil?
     unless new_artists.empty? 
-      new_artists.each { |x| abstract_station_artists << AbstractStationArtist.create(:artist_id => x.artist_id, :abstract_station => self, :album_id => x.album_id) } 
+      new_artists.each { |x| abstract_station_artists << AbstractStationArtist.find_or_create_by_artist_id_and_abstract_station_id(:artist_id => x.artist_id, :abstract_station_id => self.id, :album_id => x.album_id) } 
     end
     update_attribute(:total_artists, new_artists.size)
   end

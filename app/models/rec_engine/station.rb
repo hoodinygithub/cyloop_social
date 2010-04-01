@@ -13,18 +13,18 @@ class RecEngine::Station < RecEngine::Abstract
   alias to_param slug
 
   def normalize_amg_id
-    a = amgID.to_s.split(/\s/)
+    a = amgID =~ /(\w{1})\s+(\d+)/
     new_amg_id = ""
-    unless a.empty?
-      new_amg_id << a[0].to_s
-      (9 - a[1].length).times { new_amg_id << ' ' }
-      new_amg_id << a[1].to_s
+    unless a.nil?
+      new_amg_id << $1.to_s
+      (9 - $2.length).times { new_amg_id << ' ' }
+      new_amg_id << $2.to_s
     end
     new_amg_id
   end
 
   def station
-    s = AbstractStation.find_by_amg_id(amgID)
+    s = AbstractStation.find_by_amg_id(normalize_amg_id)
     s.station unless s.nil?
   end
 

@@ -9,9 +9,9 @@ class PagesController < ApplicationController
 
   def home
     respond_to do |format|
-      format.html do
+      format.html do        
+        @latest_stations      = UserStation.latest_stations
 
-        @latest_stations      = AbstractStation.all(:limit => 8, :order => "created_at DESC")
         @recommended_stations = recommended_stations(6)
 
         if site_includes(:msnlatam)

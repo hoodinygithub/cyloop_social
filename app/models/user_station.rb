@@ -47,6 +47,10 @@ class UserStation < ActiveRecord::Base
     end
   end
 
+  def self.latest_stations(limit = 8)
+    all(:limit => limit, :conditions => 'deleted_at IS NULL', :order => 'created_at DESC')
+  end
+
   def refresh_included_artists(params={} )
     params[:ip_address] ||= '67.63.37.2'
     options = params.merge(:userID => owner_id, :artistID => amg_id)
