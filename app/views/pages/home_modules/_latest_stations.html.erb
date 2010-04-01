@@ -2,7 +2,6 @@
   <h1><%= t('home.latest_radios') %></h1>
   <% @latest_stations.each_with_index do |station, index| %>
     <div class="artist_box png_fix <%= "last_box" if (index+1) % 4 == 0 %>">
-      <%= logger.info "++++++++++++++++++++++"+station.inspect %>
       <% if station.artist.nil? %>
         <%= avatar_for(nil, :new_medium) %>
       <% else %>
