@@ -6,3 +6,4 @@ db/schema.rb
 *.swo
 config/development.sphinx.conf
 public/system
+db/tyrant
