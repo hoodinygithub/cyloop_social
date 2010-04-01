@@ -107,9 +107,9 @@ class RecreateStationsAsPolymorphic < ActiveRecord::Migration
     EOF
     drop_table :editorial_stations    
     drop_table :editorial_stations_sites    
-    connection.execute "RENAME TABLE abstract_stations TO stations"
     connection.execute "ALTER TABLE abstract_stations DROP COLUMN total_plays, DROP COLUMN total_artists"
     connection.execute "ALTER TABLE user_stations DROP COLUMN total_plays, DROP COLUMN total_artists"
+    connection.execute "RENAME TABLE abstract_stations TO stations"
     ActiveRecord::Base.connection.execute "ALTER TABLE user_stations CHANGE COLUMN abstract_station_id station_id int(11)"
   end
 end
