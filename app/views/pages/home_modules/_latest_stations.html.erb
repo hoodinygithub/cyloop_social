@@ -29,10 +29,16 @@
         <div class="visible">
           <%= link_to_function image_tag("play_button.png", :class => "play_button", :alt => "Play"), "createStation(\"#{user_station.name}\")" %>
 
-          <%= link_to truncate(user_station.name,15), artist_path(user_station.artist), :title => user_station.name %><br/>
+          <%= link_to truncate(user_station.name,15), artist_path(user_station.artist), :title => user_station.name %>
+          <% 
+            # phase 2 
+            if false 
+          %>
+          <br/>
           <div class="rating_stars">
             <a href="#"><img src="images/star_blue.png" alt="" /></a> <a href="#"><img src="images/star_blue.png" alt="" /></a> <a href="#"><img src="images/star_blue.png" alt="" /></a> <a href="#"><img src="images/star_blue.png" alt="" /></a> <a href="#"><img src="images/star_white.png" alt="" /></a>
           </div>
+          <% end %>
         </div>
       </div><!--/end overlay -->
     </div><!--/end artist_box -->
