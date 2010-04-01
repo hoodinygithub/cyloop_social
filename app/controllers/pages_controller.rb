@@ -27,94 +27,94 @@ class PagesController < ApplicationController
         @top_stations = current_site.summary_top_stations.limited_to(6)
         @top_user_stations = current_site.summary_top_user_stations.limited_to(6)
 
-        if site_includes(:msnmx, :msnbr,:msnlatam,:msnlatino, :msnar)
-          url_featured    = "/shared/feeds/current/#{site_code}_url_featured.xml"
-          url_invasion    = "/shared/feeds/current/#{site_code}_url_invasion.xml"
-          url_detour      = "/shared/feeds/current/#{site_code}_url_detour.xml"
-          @feed_featured  = FeedManager.new(site_code, url_featured, true).get_drupal_feed(5)
-          @feed_detour    = FeedManager.new(site_code, url_detour, true).get_drupal_feed(1).first
-          @feed_invasion  = FeedManager.new(site_code, url_invasion, true).get_drupal_feed(1).first
-        end
-
-        if site_includes(:msnlatino, :msnbr)
-          # url_promo         = "/shared/feeds/current/#{site_code}/#{site_code}_home_promo.xml"
-          url_promo = "/shared/feeds/current/#{site_code}_url_promo.xml"
-          @feed_promo       = FeedManager.new(site_code, url_promo, true).get_drupal_feed(1).first
-        end
-
-        if site_includes(:msnlatam, :msnar)
-          url_promo         = "/shared/feeds/current/#{site_code}_url_promo.xml"
-          @feed_promo       = FeedManager.new(site_code, url_promo, true).get_single_msn_feed(1).first
-        end
-
-        if site_includes(:msnmx)
-          url_homepage = "/shared/feeds/current/#{site_code}_url_homepage.xml"
-          fm = FeedManager.new(site_code, url_homepage, true)
-          @feed_entrevistas = fm.get_mixed_msn_feed(1, 'HOT')
-          @feed_noticias    = fm.get_mixed_msn_feed(4, 'Noticias')
-          @feed_especiales  = fm.get_mixed_msn_feed(5, 'Especiales')
-          @feed_conciertos  = fm.get_mixed_msn_feed(1, 'Flash - Reseñas').first
-          @feed_promo       = fm.get_mixed_msn_feed(1, 'Flash - INFOPANE - NEW').first
-        end
-
-        if site_includes(:msnbr)
-          url_noticias      = "/shared/feeds/current/#{site_code}_url_noticias.xml"
-          url_albums        = "/shared/feeds/current/#{site_code}_url_albums.xml"
-          #url_baladas       = "/shared/feeds/current/#{site_code}_url_baladas.xml"
-          @feed_noticias    = FeedManager.new(site_code, url_noticias, true).get_single_msn_feed(4)
-          @feed_albums      = FeedManager.new(site_code, url_albums, true).get_single_msn_feed(4)
-          #@feed_baladas     = FeedManager.new(site_code, url_baladas, true).get_single_msn_cp_feed(4).rand
-        end
-
-        if site_includes(:msnlatino)
-          url_noticias      = "/shared/feeds/current/#{site_code}_url_noticias.xml"
-          @feed_noticias    = FeedManager.new(site_code, url_noticias, true).get_single_msn_feed(6)
-        end
-
-        if site_includes(:msncafr)
-          # Live feeds
-          url_detour   = "/shared/feeds/current/#{site_code}_url_detour.xml"
-          url_invasion = "/shared/feeds/current/#{site_code}_url_invasion.xml"
-          url_featured = "/shared/feeds/current/#{site_code}_url_featured.xml"
-          url_news     = "/shared/feeds/current/#{site_code}_url_news.xml"
-          url_promo    = "/shared/feeds/current/#{site_code}_url_promo.xml"
-          url_photos   = "/shared/feeds/current/#{site_code}_url_photos.xml"
-          url_reviews  = "/shared/feeds/current/#{site_code}_url_reviews.xml"
-          url_videos   = "/shared/feeds/current/#{site_code}_url_videos.xml"
-
-          @feed_detour    = drupal_feed(      url_detour,   1).first
-          @feed_invasion  = drupal_feed(      url_invasion, 1).first
-          @feed_featured  = featured_feed(    url_featured, 5)
-          @feed_news      = single_msn_feed(  url_news,     6)
-          @feed_promo     = drupal_feed(      url_promo,    1).first
-          @feed_videos    = video_feed(       url_videos,   7)
-          @feed_reviews   = reviews_msn_feed( url_reviews,  6)
-          @feed_photos    = photos_msn_feed(  url_photos,  10)
-
-        end
-
-        if site_includes(:msncaen)
-          # Live feeds
-          url_detour   = "/shared/feeds/current/#{site_code}_url_detour.xml"
-          url_invasion = "/shared/feeds/current/#{site_code}_url_invasion.xml"
-          url_featured = "/shared/feeds/current/#{site_code}_url_featured.xml"
-          url_news     = "/shared/feeds/current/#{site_code}_url_news.xml"
-          url_promo    = "/shared/feeds/current/#{site_code}_url_promo.xml"
-          url_photos   = "/shared/feeds/current/#{site_code}_url_photos.xml"
-          url_reviews  = "/shared/feeds/current/#{site_code}_url_reviews.xml"
-          url_videos   = "/shared/feeds/current/#{site_code}_url_videos.xml"
-          url_blog     = "/shared/feeds/current/#{site_code}_url_blog.xml"
-
-          @feed_news      = single_msn_feed(  url_news,     6)
-          @feed_featured  = featured_feed(    url_featured, 5)
-          @feed_detour    = drupal_feed(      url_detour,   1).first
-          @feed_invasion  = drupal_feed(      url_invasion, 1).first
-          @feed_promo     = drupal_feed(      url_promo,    1).first
-          @feed_videos    = video_feed(       url_videos,   7)
-          @feed_reviews   = reviews_msn_feed( url_reviews,  3)
-          @feed_photos    = photos_msn_feed(  url_photos,  10)
-          @feed_blog      = blog_feed(        url_blog,     1)
-        end
+        # if site_includes(:msnmx, :msnbr,:msnlatam,:msnlatino, :msnar)
+        #   url_featured    = "/shared/feeds/current/#{site_code}_url_featured.xml"
+        #   url_invasion    = "/shared/feeds/current/#{site_code}_url_invasion.xml"
+        #   url_detour      = "/shared/feeds/current/#{site_code}_url_detour.xml"
+        #   @feed_featured  = FeedManager.new(site_code, url_featured, true).get_drupal_feed(5)
+        #   @feed_detour    = FeedManager.new(site_code, url_detour, true).get_drupal_feed(1).first
+        #   @feed_invasion  = FeedManager.new(site_code, url_invasion, true).get_drupal_feed(1).first
+        # end
+        # 
+        # if site_includes(:msnlatino, :msnbr)
+        #   # url_promo         = "/shared/feeds/current/#{site_code}/#{site_code}_home_promo.xml"
+        #   url_promo = "/shared/feeds/current/#{site_code}_url_promo.xml"
+        #   @feed_promo       = FeedManager.new(site_code, url_promo, true).get_drupal_feed(1).first
+        # end
+        # 
+        # if site_includes(:msnlatam, :msnar)
+        #   url_promo         = "/shared/feeds/current/#{site_code}_url_promo.xml"
+        #   @feed_promo       = FeedManager.new(site_code, url_promo, true).get_single_msn_feed(1).first
+        # end
+        # 
+        # if site_includes(:msnmx)
+        #   url_homepage = "/shared/feeds/current/#{site_code}_url_homepage.xml"
+        #   fm = FeedManager.new(site_code, url_homepage, true)
+        #   @feed_entrevistas = fm.get_mixed_msn_feed(1, 'HOT')
+        #   @feed_noticias    = fm.get_mixed_msn_feed(4, 'Noticias')
+        #   @feed_especiales  = fm.get_mixed_msn_feed(5, 'Especiales')
+        #   @feed_conciertos  = fm.get_mixed_msn_feed(1, 'Flash - Reseñas').first
+        #   @feed_promo       = fm.get_mixed_msn_feed(1, 'Flash - INFOPANE - NEW').first
+        # end
+        # 
+        # if site_includes(:msnbr)
+        #   url_noticias      = "/shared/feeds/current/#{site_code}_url_noticias.xml"
+        #   url_albums        = "/shared/feeds/current/#{site_code}_url_albums.xml"
+        #   #url_baladas       = "/shared/feeds/current/#{site_code}_url_baladas.xml"
+        #   @feed_noticias    = FeedManager.new(site_code, url_noticias, true).get_single_msn_feed(4)
+        #   @feed_albums      = FeedManager.new(site_code, url_albums, true).get_single_msn_feed(4)
+        #   #@feed_baladas     = FeedManager.new(site_code, url_baladas, true).get_single_msn_cp_feed(4).rand
+        # end
+        # 
+        # if site_includes(:msnlatino)
+        #   url_noticias      = "/shared/feeds/current/#{site_code}_url_noticias.xml"
+        #   @feed_noticias    = FeedManager.new(site_code, url_noticias, true).get_single_msn_feed(6)
+        # end
+        # 
+        # if site_includes(:msncafr)
+        #   # Live feeds
+        #   url_detour   = "/shared/feeds/current/#{site_code}_url_detour.xml"
+        #   url_invasion = "/shared/feeds/current/#{site_code}_url_invasion.xml"
+        #   url_featured = "/shared/feeds/current/#{site_code}_url_featured.xml"
+        #   url_news     = "/shared/feeds/current/#{site_code}_url_news.xml"
+        #   url_promo    = "/shared/feeds/current/#{site_code}_url_promo.xml"
+        #   url_photos   = "/shared/feeds/current/#{site_code}_url_photos.xml"
+        #   url_reviews  = "/shared/feeds/current/#{site_code}_url_reviews.xml"
+        #   url_videos   = "/shared/feeds/current/#{site_code}_url_videos.xml"
+        # 
+        #   @feed_detour    = drupal_feed(      url_detour,   1).first
+        #   @feed_invasion  = drupal_feed(      url_invasion, 1).first
+        #   @feed_featured  = featured_feed(    url_featured, 5)
+        #   @feed_news      = single_msn_feed(  url_news,     6)
+        #   @feed_promo     = drupal_feed(      url_promo,    1).first
+        #   @feed_videos    = video_feed(       url_videos,   7)
+        #   @feed_reviews   = reviews_msn_feed( url_reviews,  6)
+        #   @feed_photos    = photos_msn_feed(  url_photos,  10)
+        # 
+        # end
+        # 
+        # if site_includes(:msncaen)
+        #   # Live feeds
+        #   url_detour   = "/shared/feeds/current/#{site_code}_url_detour.xml"
+        #   url_invasion = "/shared/feeds/current/#{site_code}_url_invasion.xml"
+        #   url_featured = "/shared/feeds/current/#{site_code}_url_featured.xml"
+        #   url_news     = "/shared/feeds/current/#{site_code}_url_news.xml"
+        #   url_promo    = "/shared/feeds/current/#{site_code}_url_promo.xml"
+        #   url_photos   = "/shared/feeds/current/#{site_code}_url_photos.xml"
+        #   url_reviews  = "/shared/feeds/current/#{site_code}_url_reviews.xml"
+        #   url_videos   = "/shared/feeds/current/#{site_code}_url_videos.xml"
+        #   url_blog     = "/shared/feeds/current/#{site_code}_url_blog.xml"
+        # 
+        #   @feed_news      = single_msn_feed(  url_news,     6)
+        #   @feed_featured  = featured_feed(    url_featured, 5)
+        #   @feed_detour    = drupal_feed(      url_detour,   1).first
+        #   @feed_invasion  = drupal_feed(      url_invasion, 1).first
+        #   @feed_promo     = drupal_feed(      url_promo,    1).first
+        #   @feed_videos    = video_feed(       url_videos,   7)
+        #   @feed_reviews   = reviews_msn_feed( url_reviews,  3)
+        #   @feed_photos    = photos_msn_feed(  url_photos,  10)
+        #   @feed_blog      = blog_feed(        url_blog,     1)
+        # end
 
         @feed_featured ||= []
       end
