@@ -30,15 +30,15 @@ Base.layout.blue_button = function(label) {
   link = document.createElement('a');
   link.setAttribute('href', '#');
   link.setAttribute('class', 'blue_button');
-  
+
   span1 = document.createElement('span');
   span2 = document.createElement('span');
-  
+
   button_label = document.createTextNode(label);
   span2.appendChild(button_label);
   span1.appendChild(span2);
   link.appendChild(span1);
-  
+
   return link;
 };
 
@@ -165,17 +165,17 @@ Base.stations.edit = function(user_station_id, button) {
   $station_text = $button.parent().parent();
   $station_name_container = $station_text.find('.station_name');
   $buttons = $station_text.find('.buttons');
-  
+
   old_station_name_content = $station_name_container.html();
   old_station_name = $station_name_container.text().replace(/^\s+|\s+$/g, "");
-  
+
   station_name_input = document.createElement('input');
   station_name_input.setAttribute('type', 'text');
   station_name_input.setAttribute('id', 'station_' + user_station_id + '_input');
   station_name_input.setAttribute('value', old_station_name);
 
   old_buttons_content = $buttons.html();
-  
+
   done_button = jQuery(Base.layout.blue_button('Done'));
   done_button.bind('click', function() {
     new_station_input = jQuery('#station_' + user_station_id + "_input");
@@ -193,24 +193,24 @@ Base.stations.edit = function(user_station_id, button) {
 
     return false;
   });
-  
+
   cancel_button = jQuery(Base.layout.blue_button('Cancel'));
   cancel_button.bind('click', function() {
     $station_name_container.html(old_station_name_content);
     $buttons.html(old_buttons_content);
     return false;
   });
-  
+
 
   $buttons.html("");
   $buttons.append(done_button);
   $buttons.append("&nbsp;");
   $buttons.append(cancel_button);
-  
+
   $station_name_container.html(station_name_input);
 };
 
- 
+
 Base.stations.remove = function(user_station_id, button) {
   $button = jQuery(button);
   $station_text = $button.parent().parent();
@@ -218,7 +218,7 @@ Base.stations.remove = function(user_station_id, button) {
   $li = $button.parent().parent().parent();
 
   $buttons.hide();
-  
+
   jQuery.post('/my/stations/' + user_station_id, {'_method':'delete'}, function(response) {
     if (response == 'destroyed') {
       $li.slideUp();
@@ -375,7 +375,6 @@ Base.init = function() {
   this.layout.hide_success_and_error_messages();
   this.account_settings.highlight_field_with_errors();
   this.header_search.dropdown();
-  this.main_search.select_scope();
 };
 
 jQuery(document).ready(

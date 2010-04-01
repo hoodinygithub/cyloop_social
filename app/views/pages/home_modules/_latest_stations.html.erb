@@ -2,8 +2,8 @@
   <h1><%= t('home.latest_radios') %></h1>
   <% @latest_stations.each_with_index do |station, index| %>
     <div class="artist_box png_fix <%= "last_box" if (index+1) % 4 == 0 %>">
-      
-      <% if station.artist_id.nil? %>
+      <%= logger.info "++++++++++++++++++++++"+station.inspect %>
+      <% if station.artist.nil? %>
         <%= avatar_for(nil, :new_medium) %>
       <% else %>
         <%= four_thumbs_to(station, {:type => :big}) %>
@@ -16,7 +16,7 @@
           <% else %>
             <%= link_to avatar_for(station.artist, :artist_icon), station.artist %>
           <% end %>
-          
+
           <span>
             <span class="blue"><%= station.name %></span><br/>
             <%= l(station.created_at, :format => "default") %>
@@ -24,7 +24,7 @@
           <br class="clearer" />
 
           <%= t("basics.contains") %>:
-          <%= station.includes.map {|artist| link_to artist.name, artist, :target => '_blank'}.join(", ") %>
+          <%= station.includes.map {|rec_artist| link_to rec_artist.name, rec_artist.artist, :target => '_blank'}.join(", ") %>
         </div>
 
         <div class="visible">
@@ -43,3 +43,4 @@
     <% end %>
   <% end %>
 </div><!--/end popular_mixes_column -->
+

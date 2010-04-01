@@ -13,7 +13,7 @@
                                 <div class="four_thubms_big">
                                     <a href="#"><%= avatar_for(station.artist.albums.first, :search_station, {:alt => station.artist.albums.first.name} ) rescue avatar_for(station.artist, :search_station, {:alt => ""} ) %></a>
                                     <% station.includes.each do |included_artist| %>
-                                      <a href="#"><%= avatar_for(included_artist.albums.first, :search_station, {:alt => ""} ) rescue avatar_for(included_artist, :search_station, {:alt => ""} ) %></a>
+                                      <a href="#"><%= avatar_for(included_artist.albums.first, :search_station, {:alt => ""} ) rescue avatar_for(included_artist.artist, :search_station, {:alt => ""} ) %></a>
                                     <% end %>
                                 </div><!--/end four_thubms_big -->
 

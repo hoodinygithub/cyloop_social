@@ -13,6 +13,7 @@ class SearchesController < ApplicationController
 
   private
     def individual_search (q, scope, per_page = 20, order = nil, sort = nil )
+      scope="AbstractStation" if scope=="station"
       @scope = scope.classify.constantize
       query="#{q}"
       query="#{q}*" if scope.downcase=="song" || scope.downcase=="album" || scope.downcase=="artist"
@@ -20,15 +21,15 @@ class SearchesController < ApplicationController
         results = @scope.search(query, :page => params[:page], :per_page => per_page)
         logger.info "SPHINX ******** No sort *****#{scope} = #{query}"
       else
+        logger.info "SPHINX ******** SORT *****#{scope} =  #{query} =  #{order} = #{sort}   === "+@scope.inspect
         results = @scope.search(query, :page => params[:page], :per_page => per_page,:order=> order, :sort_mode=>sort)
-        logger.info "SPHINX ******** SORT *****#{scope} =  #{query} =  #{order} = #{sort}"
       end
       results
     end
 
     def cross_search (q, per_page = 20)
       results={}
-      ["User","Station", "Album", "Artist" ].each do |scope|
+      ["User","AbstractStation", "Album", "Artist" ].each do |scope|
         @scope = scope.classify.constantize
         query="#{q}"
         query="#{q}*" if scope.downcase=="song" || scope.downcase=="album" || scope.downcase=="artist"
@@ -41,10 +42,11 @@ class SearchesController < ApplicationController
 
     def cross_count (q)
       results={}
-      ["User","Station", "Album", "Artist" ].each do |scope|
+      ["User","AbstractStation", "Album", "Artist" ].each do |scope|
         @scope = scope.classify.constantize
         query="#{q}*"
         partial_results = @scope.search_count query
+        logger.error "#{scope} -----#{query}------- #{partial_results.inspect}"
         results.store(scope,partial_results)
       end
       #@cross_search=ThinkingSphinx::Search.search "#{params[:q]}" , :classes => [User, Song, Album, Artist ]
@@ -87,32 +89,6 @@ class SearchesController < ApplicationController
         result=:asc if sort=='alpha'
       end
       result
-    end
-
-  private
-    def cross_search (q, per_page = 10)
-      results={}
-      ["User","Station", "Album", "Artist" ].each do |scope|
-        @scope = scope.classify.constantize
-        query="#{q}"
-        query="#{q}*" if scope=="Song" || scope=="Album"
-        partial_results = @scope.search query, :page => params[:page], :per_page => per_page
-        results.store(scope,partial_results)
-      end
-      #@cross_search=ThinkingSphinx::Search.search "#{params[:q]}" , :classes => [User, Song, Album, Artist ]
-      results
-    end
-
-    def cross_count (q)
-      results={}
-      ["User","Station", "Album", "Artist" ].each do |scope|
-        @scope = scope.classify.constantize
-        query="#{q}*"
-        partial_results = @scope.search_count query
-        results.store(scope,partial_results)
-      end
-      #@cross_search=ThinkingSphinx::Search.search "#{params[:q]}" , :classes => [User, Song, Album, Artist ]
-      results
     end
 
 end
