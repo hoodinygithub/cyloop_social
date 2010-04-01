@@ -10,14 +10,14 @@
 
       <div class="overlay">
         <div class="hidden">
-          <% if user_station.artist_id.nil? %>
+          <% if user_station.owner_id.nil? %>
             <%= avatar_for(nil, :artist_icon) %>
           <% else %>
-            <%= link_to avatar_for(user_station.artist, :artist_icon), user_station.artist %>
+            <%= link_to avatar_for(user_station.owner, :artist_icon), user_station.owner %>
           <% end %>
 
           <span>
-            <span class="blue"><%= user_station.name %></span><br/>
+            <span class="blue"><%= user_station.owner.name %></span><br/>
             <%= t('basics.created_at', :when => distance_of_time_in_words_to_now(user_station.created_at)) %>
           </span>
           <br class="clearer" />
