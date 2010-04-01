@@ -185,8 +185,6 @@ task :symlink_remaining, :roles => :app, :except => {:no_release => true, :no_sy
     rm -rf #{latest_release}/db/sphinx &&
     mkdir -p #{latest_release}/db/ &&
     ln -s #{shared_path}/system/db/sphinx #{latest_release}/db/sphinx &&
-    rm #{latest_release}/config/beanstalk.yml &&
-    ln -s #{shared_path}/config/beanstalk.yml #{latest_release}/config/beanstalk.yml &&
     rm #{latest_release}/config/memcached.yml &&
     ln -s #{shared_path}/config/memcached.yml #{latest_release}/config/memcached.yml &&
     ln -s #{shared_path}/config/passenger_cluster.yml #{latest_release}/config/passenger_cluster.yml &&
