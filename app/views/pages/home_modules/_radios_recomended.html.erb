@@ -1,14 +1,14 @@
-<% #Phase 1 use top_radios_column class to get full width layout, phase 2 change to radios_recommended_column %>
+<% 
+  #Phase 1 use top_radios_column class to get full width layout, phase 2 change to radios_recommended_column 
+%>
 <div class="top_radios_column">
   <h1><%= t("home.radios_recomended_for_you") %></h1>
-
   <% @recommended_stations.each_with_index do |radio, index| %>
     <% unless radio.station.nil? %>
       <% artist = Artist.find(radio.artist_id) rescue nil %>
       <% unless artist.nil? %>      
         <div class="artist_box png_fix <%= "last_box" if (index+1) % @recommended_stations.size == 0 %>">
           <%= four_thumbs_to(radio.station, {:type => :big}) %>
-
           <div class="overlay">
             <div class="hidden">
               <% if artist.nil? %>
@@ -39,4 +39,4 @@
     <% end %>
   <% end %>
   <div class="clearer"></div>
-</div><!--/end mixes_recomended_column -->
+</div><!--/end radios_recomended_column -->
