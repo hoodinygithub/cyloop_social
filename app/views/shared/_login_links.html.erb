@@ -3,5 +3,7 @@
       <%= link_to 'Login', login_path %>
       <span class="spacer">|</span> 
       <%= link_to 'Register', signup_path %>
+    <% else %>
+      <%= link_to t("sessions.destroy.sign_out"), site_logout_url %>
     <% end %>
 </div>
