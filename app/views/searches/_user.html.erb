@@ -1,7 +1,7 @@
 <h1><%= t('basics.people')%></h1>
 
 <div class="sorting">
-    <%= link_to "RELEVANCE ", "/search/#{params[:mkt]}/user/#{params[:q]}?order=rel" , :class => params[:order]=='rel' || params[:order].blank? ? "active": "" %> / <%= link_to "NEWEST ", "/search/#{params[:mkt]}/user/#{params[:q]}?order=new" , :class => params[:order]=='new' ? "active": "" %> / <%= link_to "ALPHABETICAL ", "/search/#{params[:mkt]}/user/#{params[:q]}?order=alpha" , :class => params[:order]=='alpha'? "active": "" %>
+    <%= link_to t('actions.relevance'), "/search/#{params[:mkt]}/user/#{params[:q]}?order=rel" , :class => params[:order]=='rel' || params[:order].blank? ? "active": "" %> / <%= link_to t('actions.newest'), "/search/#{params[:mkt]}/user/#{params[:q]}?order=new" , :class => params[:order]=='new' ? "active": "" %> / <%= link_to t('actions.alphabetical'), "/search/#{params[:mkt]}/user/#{params[:q]}?order=alpha" , :class => params[:order]=='alpha'? "active": "" %>
 </div>
 
 
@@ -12,7 +12,7 @@
         <div class="follower_text">
             <b><a href="#"><%= user.name %></a></b><br/>
             <span><%= user.city %></span><br/>
-            <a href="#">5,350</a> Stations / <a href="#">5,350</a> Followers
+            <a href="#"><%= user.stations.size.to_s %></a> <%= t('basics.stations') %> / <a href="#"><%= user.followers.size.to_s %></a> <%= t('users.stats.followers') %>
         </div>
         <div class="follower_actions w_settings"">
             <% if current_user && current_user.follows?(user) %>

@@ -1,7 +1,7 @@
 <h1><%= t('basics.albums')%></h1>
 
 <div class="sorting">
-   <%= link_to "RELEVANCE ", "/search/#{params[:mkt]}/album/#{params[:q]}?order=def" , :class => params[:order]=='def' ? "active": "" %> /  <%= link_to "ALPHABETICAL ", "/search/#{params[:mkt]}/album/#{params[:q]}?order=alpha" , :class => params[:order]=='alpha'? "active": "" %> / <%= link_to "LATEST ", "/search/#{params[:mkt]}/album/#{params[:q]}?order=rel" , :class => params[:order]=='rel' || params[:order].blank? ? "active": "" %>
+   <%= link_to t('actions.relevance'), "/search/#{params[:mkt]}/album/#{params[:q]}?order=def" , :class => params[:order]=='def' ? "active": "" %> /  <%= link_to t('actions.alphabetical'), "/search/#{params[:mkt]}/album/#{params[:q]}?order=alpha" , :class => params[:order]=='alpha'? "active": "" %> / <%= link_to t('actions.latest'), "/search/#{params[:mkt]}/album/#{params[:q]}?order=rel" , :class => params[:order]=='rel' || params[:order].blank? ? "active": "" %>
 </div>
 
 
@@ -15,11 +15,15 @@
                       <a href="#"><%= avatar_for(album.artists.first, :artist_icon, {:alt => ""} ) rescue"" %></a>
                       <span>
                           <span class="blue"><%= "#{album.artists.first.name}" rescue ""%></span><br/>
-                          09/10/10
+                          <%= album.released_on.strftime("%m/%d/%Y") rescue ""%>
                       </span>
                       <br class="clearer" />
 
-                      Contains: <a href="#">Metallica</a>, <a href="#">Someone Else</a>, <a href="#">Alice in Chains</a>...
+                     <%= t('basics.contains') %>:
+                     <% album.songs[0..2].each do |included_song| %>
+                                      <a href="#"><%= included_song.title %></a>,
+                     <% end %>
+                      ...
                   </div>
 
                   <div class="visible">
@@ -48,7 +52,7 @@
               <span class="grey">2 days ago</span><br/>
 
               <span class="review_creator_stars2"><a href="#"><img src="images/star_blue.png" class="png_fix" alt="" /></a> <a href="#"><img src="images/star_blue.png" class="png_fix" alt="" /></a> <a href="#"><img src="images/star_grey.png" alt="" /></a> <a href="#"><img src="images/star_grey.png" alt="" /></a> <a href="#"><img src="images/star_grey.png" alt="" /></a></span><br/>
-              <small>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy Lorem ipsum dolor sit amet....</small>
+              <small><%= album.copyright %></small>
           </div><!--/end reviews -->
           <div class="clearer"></div>
       </div><!--/end albums_item -->
