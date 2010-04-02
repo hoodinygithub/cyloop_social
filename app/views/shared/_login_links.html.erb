@@ -1,9 +1,19 @@
 <div id="login_links">
-    <% unless logged_in? %>
-      <%= link_to 'Login', login_path %>
+  <% unless logged_in? %>
+    <%= link_to 'Login', login_path %>
+    <span class="spacer">|</span> 
+    <%= link_to 'Register', signup_path %>
+  
+    <% if @follow_profile %>
+      <%= link_to t("sessions.new.sign_in"), site_login_url(:return_to => nav_aux_login_url, :follow_profile => @follow_profile) %>
       <span class="spacer">|</span> 
-      <%= link_to 'Register', signup_path %>
+      <%=  link_to t("registration.sign_up"), registration_layers_path(:return_to => my_dashboard_path, :follow_profile => @follow_profile), :class => "facebox" %>
     <% else %>
-      <%= link_to t("sessions.destroy.sign_out"), site_logout_url %>
+      <%= link_to t("sessions.new.sign_in"), site_login_url(:return_to => nav_aux_login_url) %>
+      <span class="spacer">|</span> 
+      <%= link_to t("registration.sign_up"), registration_layers_path(:return_to => my_dashboard_path), :class => "facebox" %>
     <% end %>
+  <% else %>
+    <%= link_to t("sessions.destroy.sign_out"), site_logout_url %>
+  <% end %>
 </div>
