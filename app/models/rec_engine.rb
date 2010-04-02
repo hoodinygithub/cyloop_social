@@ -49,7 +49,7 @@ class RecEngine
     begin
       get(action, params).search("/recommendation/method/items/item")
     rescue Timeout::Error 
-      logger.error "Coult not reach the server\n - #{$!}"
+      #logger.error "Coult not reach the server\n - #{$!}"
       return []
     end
   end

@@ -1,0 +1,16 @@
+<div class="clearer"></div>
+<div class="black_box left_side">
+  <big class="blue">
+    <%= link_to(number_with_delimiter(profile_account.follower_count), followers_path) %>
+  </big>
+  <br/>
+  <%= t('users.stats.followers') %>
+</div>
+
+<div class="black_box right_side">
+  <big class="blue">
+    <%= link_to(number_with_delimiter(profile_account.followee_count), following_index_path) %>
+  </big>
+  <br/>
+   <%= t('users.stats.following') %>
+</div>

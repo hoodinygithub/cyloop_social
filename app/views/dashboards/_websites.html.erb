@@ -1,0 +1,4 @@
+<b class="blue"><a href="#">Websites //</a></b><br>
+<% profile_account.websites.each do |website| %>
+  <%= link_to website.url, website.url %>
+<% end %>
