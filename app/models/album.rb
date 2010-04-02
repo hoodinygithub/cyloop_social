@@ -37,7 +37,7 @@ class Album < ActiveRecord::Base
     set_property :min_prefix_len => 1
     set_property :enable_star => 1
     set_property :allow_star => 1
-    has year
+    has year, created_at
   end
 
   default_scope :conditions => 'deleted_at IS NULL', :order => 'year DESC'

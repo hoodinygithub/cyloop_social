@@ -4,6 +4,7 @@ class AbstractStationArtist < ActiveRecord::Base
   belongs_to :album
 
   delegate :name, :to => :artist
-  
-  named_scope :limited_to, lambda { |*num| { :limit => num.flatten.first || 10 } }  
+
+  named_scope :limited_to, lambda { |*num| { :limit => num.flatten.first || 10 } }
 end
+

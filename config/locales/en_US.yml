@@ -133,6 +133,8 @@ en_US:
     search: Search
     add_more: Add More
     create_station: Create Station
+    search_text: Search Music on Cyloop
+    results_for: Results for
   share:
     name: Your Name
     errors:
@@ -913,3 +915,4 @@ en_US:
     delete_my_account: DELETE MY ACCOUNT
     delete_info_required: You must click on the check box to continue
     password_required: You must enter a valid password
+

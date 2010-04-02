@@ -7,9 +7,9 @@
   <div id="main_content">
       <div class="two_columns">
           <div class="search_box">
-              <%= render 'search_form',  :locals => {:query => params[:q]} %>
+              <%= render  :partial =>'search_form',  :locals => {:query => params[:q]} %>
           </div><!--/end search_box -->
-
+           <h3><%= "#{t('actions.results_for')} \"#{params[:q]}\"" %></h3>
           <div id="left_column">
               <%= render 'side_link', :object =>@counts , :locals => {:active_scope => @active_scope} %>
           </div><!--/end left_column -->

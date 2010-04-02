@@ -140,6 +140,7 @@ en:
     add_more: Add More
     create_station: CREATE STATION
     create_station: CREATE MIX
+    search_text: Search Music on Cyloop
   share:
     name: Your Name
     errors:
@@ -840,14 +841,14 @@ en:
       visits: Visits
       following: Following
       song_plays: Song Plays
-      
-      
+
+
   home:
     create_your_own_personalized_radio_station: Create Your Own Personalized Radio Station
     create_your_own_station_now: Create Your Own Station now!
     create_radio: Create Radio
     text_about_radio: ""
-    explaing_what_is_and_why_create_a_new_radio: Type the name of your favorite artist. Cyloop will generate personalized radio station with your favorite music from your favorite artists 
+    explaing_what_is_and_why_create_a_new_radio: Type the name of your favorite artist. Cyloop will generate personalized radio station with your favorite music from your favorite artists
     start_listening: START LISTENING
     type_artist_name: Enter the name of an artist
     station: Station
@@ -1121,3 +1122,4 @@ en:
     delete_my_account: DELETE MY ACCOUNT
     delete_info_required: You must click on the check box to continue
     password_required: You must enter a valid password
+

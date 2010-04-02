@@ -1,8 +1,8 @@
 <% form_for :search, :url => search_path, :html => { :onsubmit => 'return Base.main_search.buildSearchUrl();', :method => :get, :id => :main_search_form } do |f| %>
-  <div class="title">Search Music on Cyloop</div>
+  <div class="title"><%= t('actions.search_text') %></div>
 
   <span class="text_input_placeholder">
-      <%= text_field_tag :q,  "Enter artist name" ,  {:id => :search_query, :class => "search_input", :onfocus => "clearInput('Enter artist name', this);", :onblur => "restoreInput('Enter artist name', this);"} %>
+      <%= text_field_tag :q, query.nil? ? "Enter artist name" : query ,  {:id => :search_query, :class => "search_input", :onfocus => "clearInput('Enter artist name', this);", :onblur => "restoreInput('Enter artist name', this);"} %>
       <%= f.hidden_field :scope, :name => :scope, :value => params[:scope] %>
       <% if site_includes(:msnbr)%>
         <%= f.hidden_field :market, :name => :mkt, :value => 'pt-BR'%>
@@ -26,7 +26,7 @@
   </span>
 
   <span class="btn_placeholder">
-      <a href="#" onclick="return Base.main_search.buildSearchUrl();" class="blue_button"><span><span>SEARCH</span></span></a>
+      <a href="#" onclick="return Base.main_search.buildSearchUrl();" class="blue_button"><span><span><%= t('actions.search').upcase %></span></span></a>
   </span>
   <br/>
 

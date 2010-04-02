@@ -83,7 +83,7 @@ class Account < ActiveRecord::Base
     set_property :min_prefix_len => 1
     set_property :enable_star => 1
     set_property :allow_star => 1
-    has visit_count
+    has visit_count, created_at
   end
 
   default_scope :conditions => { :deleted_at => nil }

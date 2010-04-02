@@ -46,7 +46,7 @@ class SearchesController < ApplicationController
         @scope = scope.classify.constantize
         query="#{q}*"
         partial_results = @scope.search_count query
-        logger.error "#{scope} -----#{query}------- #{partial_results.inspect}"
+        logger.error "#{scope} -----#{query}-------"
         results.store(scope,partial_results)
       end
       #@cross_search=ThinkingSphinx::Search.search "#{params[:q]}" , :classes => [User, Song, Album, Artist ]
@@ -62,12 +62,15 @@ class SearchesController < ApplicationController
       when 'station'
         result=:name if sort=='alpha'
         result=:created_at if sort=='rel' || sort.blank?
+        result=:created_at if sort=='def'
       when 'album'
         result=:name if sort=='alpha'
         result=:year if sort=='rel' || sort.blank?
+        result=:created_at if sort=='def'
       when 'user'
         result=:name if sort=='alpha'
         result=:visit_count if sort=='rel' || sort.blank?
+        result=:created_at if sort=='new'
       end
       result
     end
@@ -78,15 +81,19 @@ class SearchesController < ApplicationController
       when 'artist' || 'user'
         result=:desc if sort=='rel' || sort.blank?
         result=:asc if sort=='alpha'
+        result=:desc if sort=='def'
       when 'station'
         result=:asc if sort=='alpha'
         result=:desc if sort=='rel' || sort.blank?
+        result=:desc if sort=='def'
       when 'album'
         result=:asc if sort=='alpha'
         result=:desc if sort=='rel' || sort.blank?
+        result=:desc if sort=='def'
       when 'user'
         result=:desc if sort=='rel' || sort.blank?
         result=:asc if sort=='alpha'
+        result=:desc if sort=='new'
       end
       result
     end

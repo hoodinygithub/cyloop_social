@@ -1,7 +1,7 @@
 <ul class="side_links">
-  <li><%= link_to "Artists (#{@counts["Artist"].to_s})", "/search/#{params[:mkt]}/artist/#{params[:q]}" , :class => @active_scope=='artist'? "active": "" %></li>
-  <li><%= link_to "Stations (#{@counts["AbstractStation"].to_s})", "/search/#{params[:mkt]}/station/#{params[:q]}" , :class => @active_scope=='station'? "active": "" %></li>
-  <li><%= link_to "Albums (#{@counts["Album"].to_s})", "/search/#{params[:mkt]}/album/#{params[:q]}" , :class => @active_scope=='album'? "active": "" %></li>
-  <li class="last"><%= link_to "Users (#{@counts["User"].to_s})", "/search/#{params[:mkt]}/user/#{params[:q]}" , :class => @active_scope=='user'? "active": "" %></a></li>
+  <li><%= link_to " #{t('basics.artists')} (#{@counts["Artist"].to_s})", "/search/#{params[:mkt]}/artist/#{params[:q]}" , :class => @active_scope=='artist'? "active": "" %></li>
+  <li><%= link_to "#{t('basics.stations')} (#{@counts["AbstractStation"].to_s})", "/search/#{params[:mkt]}/station/#{params[:q]}" , :class => @active_scope=='station'? "active": "" %></li>
+  <li><%= link_to "#{t('basics.albums')} (#{@counts["Album"].to_s})", "/search/#{params[:mkt]}/album/#{params[:q]}" , :class => @active_scope=='album'? "active": "" %></li>
+  <li class="last"><%= link_to "#{t('basics.people')} (#{@counts["User"].to_s})", "/search/#{params[:mkt]}/user/#{params[:q]}" , :class => @active_scope=='user'? "active": "" %></a></li>
 </ul>
 

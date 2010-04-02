@@ -121,7 +121,9 @@ es_ES:
     add_song: "Agregar Canci\xC3\xB3n"
     create_station: Crear Radio
     search: Buscar
+    search_text: Buscar Musica en Cyloop
     select_store: Seleccionar Tienda
+    results_for: Resultados para
   share:
     name: Tu Nombre
     errors:

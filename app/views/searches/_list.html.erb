@@ -3,10 +3,10 @@
   <% @albums = value if key=='Album'%>
   <% @songs = value if key=='Song'%>
   <% @users = value if key=='User'%>
-  <% @stations = value if key=='Station'%>
+  <% @stations = value if key=='AbstractStation'%>
 <% end %>
 <div class="oveflow_list">
-  <h1>ARTISTS</h1>
+  <h1><%= t('basics.artists')%></h1>
 
   <ul class="search_list">
    <% @artists.each do |artist|  %>
@@ -22,7 +22,7 @@
 
   <div class="grey_spacer"></div>
 
-  <h1>ALBUMS</h1>
+  <h1><%= t('basics.albums')%></h1>
 
   <ul class="search_list">
    <% @albums.each do |album|  %>
@@ -39,7 +39,7 @@
 
   <div class="grey_spacer"></div>
 
-  <h1>STATIONS</h1>
+  <h1><%= t('basics.stations')%></h1>
 
   <ul class="search_list">
    <% @stations.each do |station|  %>
@@ -56,7 +56,7 @@
 
   <div class="grey_spacer"></div>
 
-  <h1>USERS</h1>
+  <h1><%= t('basics.people')%></h1>
 
   <ul class="search_list">
    <% @users.each do |user|  %>
