@@ -963,7 +963,7 @@ es_MX:
     email: Correo Electronico
   home: 
     station: Radio
-    start_listening: ""
+    start_listening: START LISTENING
     create_your_own_personalized_radio_station: Crea Tu Propia Radio Personalizada
     top_radios: TOP RADIOS
     create_radio: Crear Radio
@@ -972,7 +972,7 @@ es_MX:
     type_artist_name: Escribe el nombre de un artista
     top_songs: Top Canciones
     create_your_own_station_now: ""
-    radios_recomended_for_you: ""
+    radios_recomended_for_you: RADIOS RECOMENDADO PARA USTED
     top_stations: Top Radios
     recommended_artists: Artistas Recomendados
   datetime: 
