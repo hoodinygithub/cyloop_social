@@ -1,6 +1,6 @@
 module DashboardsHelper
   def nav_links
-    [
+    items = [
       {:menu => :home,          :label => "#{t('profile.navigation.home')}",             :url => my_dashboard_path },
 #      {:menu => :mixes,         :label => "#{t('profile.navigation.mixes')}",            :url => '#' },
       {:menu => :stations,      :label => "#{t('profile.navigation.stations')}",         :url => my_stations_path },
@@ -9,8 +9,13 @@ module DashboardsHelper
       {:menu => :activity,      :label => "#{t('profile.navigation.activity')}",         :url => activities_path },
       {:menu => :followers,     :label => "#{t('profile.navigation.followers')}",        :url => followers_path },
       {:menu => :following,     :label => "#{t('profile.navigation.following')}",        :url => following_index_path },
-      {:menu => :settings ,     :label => "#{t('profile.navigation.account_settings')}", :url => my_settings_path }
     ]
+    
+    if page_owner?
+      items << {:menu => :settings ,     :label => "#{t('profile.navigation.account_settings')}", :url => my_settings_path }
+    end
+    
+    items
   end
   
   

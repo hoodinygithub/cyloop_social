@@ -1,37 +1,39 @@
-<h1><%= t('home.network_update') %></h1>
-<div class="network_update">
-    <form id="network_update_form">
-        <div>
-            <%= image_tag('network_icon.gif', :class => 'network_icon') %>
-            <textarea id="network_comment" name="comment" rows="3" cols="20"></textarea>
-            <%= image_tag('network_arrow.gif', :class => 'network_arrow') %>
-            <div class="clearer"></div>
+<% if page_owner? %>
+  <h1><%= t('home.network_update') %></h1>
+  <div class="network_update">
+      <form id="network_update_form">
+          <div>
+              <%= image_tag('network_icon.gif', :class => 'network_icon') %>
+              <textarea id="network_comment" name="comment" rows="3" cols="20"></textarea>
+              <%= image_tag('network_arrow.gif', :class => 'network_arrow') %>
+              <div class="clearer"></div>
             
-            <div class="update_text" id="network_update_text">
-              <% if @last_activity_status %>
-                <b><%= current_user.slug %></b> - 
-                <span class="comment_text_container">
-                  <%= @last_activity_status['message'] %>
-                </span>
-                <br>
-                <span class="grey" timestamp="<%= @last_activity_status['timestamp'] %>">
-                  <%= nice_elapsed_time(@last_activity_status['timestamp']) %>
-                </span>
-              <% end %>
-            </div>
+              <div class="update_text" id="network_update_text">
+                <% if @last_activity_status %>
+                  <b><%= current_user.slug %></b> - 
+                  <span class="comment_text_container">
+                    <%= @last_activity_status['message'] %>
+                  </span>
+                  <br>
+                  <span class="grey" timestamp="<%= @last_activity_status['timestamp'] %>">
+                    <%= nice_elapsed_time(@last_activity_status['timestamp']) %>
+                  </span>
+                <% end %>
+              </div>
             
-            <%= blue_button(t('actions.share'), 
-                            :class => 'compartir_button', 
-                            :onclick => 'Base.network.push_update()') %>
+              <%= blue_button(t('actions.share'), 
+                              :class => 'compartir_button', 
+                              :onclick => 'Base.network.push_update()') %>
             
             
-            <div class="network_twitter">
-                <input type="checkbox" />
-                <%= link_to(image_tag('twitter_icon.gif'), '#') %>
-                &nbsp;
-            </div>
+              <div class="network_twitter">
+                  <input type="checkbox" />
+                  <%= link_to(image_tag('twitter_icon.gif'), '#') %>
+                  &nbsp;
+              </div>
             
-            <div class="clearer"></div>
-        </div>
-    </form>
-</div><!--/end network_update -->
+              <div class="clearer"></div>
+          </div>
+      </form>
+  </div><!--/end network_update -->
+<% end %>
