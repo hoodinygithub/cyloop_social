@@ -1,48 +1,36 @@
 <div class="artist_box png_fix <%= style if defined? style %>">
     <% if defined? node %>
       <%= image_tag("#{ENV['ASSETS_URL']}#{node.image}", :class => 'artist_icon_box') %>
-    <% else %>
-      <%= image_tag('artist_image.jpg') %>
     <% end %>
     
-    <span class="close_btn <%= place_type if defined? place_type %>">Close</span>
+    <% if false %>
+      <span class="close_btn <%= place_type if defined? place_type %>">Close</span>
+    <% end %>
     
     <div class="overlay">
         <div class="hidden">
             <% if defined? node %>
               <%= image_tag("#{ENV['ASSETS_URL']}#{node.image}", :class => 'artist_icon_box tiny artist_icon') %>
-            <% else %>
-              <%= link_to(image_tag('artist_icon.gif', :class => 'artist_icon'), '#') %>
             <% end %>
             <span>
                 <span class="blue">
                   <% if defined? node %>
                     <%= artist_name(node) %>
-                  <% else %>
-                    Jason Calleiro
                   <% end %>
                 </span><br/>
-               
-                09/10/10
             </span>
             <br class="clearer" />
             
             <% if defined? node %>
               <%= station_contains(node) %>
-            <% else %>
-              Contains: 
-              <a href="#">Metallica</a>, <a href="#">Someone Else</a>, <a href="#">Alice in Chains</a>...
             <% end %>
             
             <br/><br/>
             <b>
               <% if defined? node %>
-                <%= link_to artist_name(node), artist_url(node) %>
-              <% else %>
-                <a href="#">Alice in Chains</a>
+                <%= link_to artist_name(node) + "<br />Station", artist_url(node) %>
               <% end %>
-            </b><br/>
-            <b><a href="#">Station</a></b>
+            </b>
         </div>
         
         <div class="visible">
