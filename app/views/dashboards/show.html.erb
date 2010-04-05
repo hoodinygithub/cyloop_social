@@ -1,5 +1,7 @@
 <% content_for :javascript do %>
   var recommended_stations_queue = [<%= @recommended_stations_queue.collect(&:artist_id).join(", ") if @recommended_stations_queue %>];
+  
+  Base.network.load_latest();
 <% end %>
 
 <div id="internal_content">
