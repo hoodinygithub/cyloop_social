@@ -1119,12 +1119,12 @@ img.artist_icon_box.tiny {
     font-weight: bold;
 }
 
-.blue_button.full_width, .blue_button.full_width span {
+.blue_button.full_width, .blue_button.full_width span, .green_button.full_width, .green_button.full_width span {
     display: block;
     margin-bottom: 7px;
 }
 
-.blue_button.full_width span span {
+.blue_button.full_width span span, .green_button.full_width span span {
     padding: 0px;
 }
 

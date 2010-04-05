@@ -2,12 +2,9 @@
   <%= render 'dashboards/account_info' unless profile_owner? %>
 
   <div class="black_boxes">
-
     <%= render 'dashboards/user_stations'   if profile_user?  %>
     <%= render 'dashboards/following_count' if profile_owner? %>
-
     <div class="clearer"></div>
-
   </div><!--/end black_boxes -->
 
   <%= render profile_owner? ? 'dashboards/owner_buttons' : 'dashboards/user_buttons' %>

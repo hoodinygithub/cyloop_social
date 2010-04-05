@@ -1,20 +1,20 @@
 module DashboardsHelper
   def nav_links
-    items = [
-      {:menu => :home,          :label => "#{t('profile.navigation.home')}",             :url => my_dashboard_path },
-#      {:menu => :mixes,         :label => "#{t('profile.navigation.mixes')}",            :url => '#' },
-      {:menu => :stations,      :label => "#{t('profile.navigation.stations')}",         :url => my_stations_path },
-      # {:menu => :subscriptions, :label => "#{t('profile.navigation.subscriptions')}",    :url => '#' },
-      # {:menu => :reviews,       :label => "#{t('profile.navigation.reviews')}",          :url => '#' },
-      {:menu => :activity,      :label => "#{t('profile.navigation.activity')}",         :url => activities_path },
-      {:menu => :followers,     :label => "#{t('profile.navigation.followers')}",        :url => followers_path },
-      {:menu => :following,     :label => "#{t('profile.navigation.following')}",        :url => following_index_path },
-    ]
+    items = []
     
     if page_owner?
-      items << {:menu => :settings ,     :label => "#{t('profile.navigation.account_settings')}", :url => my_settings_path }
+      items.push({:menu => :home,          :label => "#{t('profile.navigation.home')}",             :url => my_dashboard_path })
+      items.push({:menu => :stations,      :label => "#{t('profile.navigation.stations')}",         :url => my_stations_path })
+      items.push({:menu => :settings ,     :label => "#{t('profile.navigation.account_settings')}", :url => my_settings_path })
+    else
+      items.push({:menu => :home,          :label => "#{t('profile.navigation.home')}",             :url => user_path })
+      items.push({:menu => :stations,      :label => "#{t('profile.navigation.stations')}",         :url => user_stations_path })
     end
     
+    items.push({:menu => :activity,      :label => "#{t('profile.navigation.activity')}",         :url => activities_path })
+    items.push({:menu => :followers,     :label => "#{t('profile.navigation.followers')}",        :url => followers_path })
+    items.push({:menu => :following,     :label => "#{t('profile.navigation.following')}",        :url => following_index_path })
+
     items
   end
   

@@ -1,2 +1,11 @@
-<%= blue_button(t('actions.follow'), :class => 'full_width', :onclick => "") %>
-
+<% if current_user %>
+  <% if current_user.follows?(profile_user) %>
+    <%= green_button(t('actions.unfollow'),
+      :onclick => "Base.community.unfollow('#{profile_user.slug}', this, false)",
+      :class => 'follower_btn full_width') %>
+  <% else %>
+    <%= blue_button(t('actions.follow'),
+      :onclick => "Base.community.follow('#{profile_user.slug}', this, false)",
+      :class => 'follower_btn full_width') %>
+  <% end %>
+<% end %>
