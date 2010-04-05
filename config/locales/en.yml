@@ -141,6 +141,12 @@ en:
     create_station: CREATE STATION
     create_station: CREATE MIX
     search_text: Search Music on Cyloop
+    show_more: SHOW MORE
+    relevance: RELEVANCE
+    alphabetical: ALPHABETICAL
+    latest: LATEST
+    alphabetical: ALPHABETICAL
+    newest: NEWEST
   share:
     name: Your Name
     errors:
@@ -753,6 +759,7 @@ en:
     in: in
     followers_of: Followers of
     created_by: Created By
+    last_modified: Last modified
     followees: Followees
     album: Album
     message_sent: You message has been sent
@@ -771,6 +778,8 @@ en:
     more: More
     chart: Chart
     unknown: Unknown
+    click_to_follow: Click {follow_link} to follow
+    here: here
   cancellation:
     confirmation:
       are_you_sure: Are you sure still want to cancel your account?
@@ -858,6 +867,7 @@ en:
     top_stations: Top Stations
     recommended_artists: Recommended Artists
     user_latest_stations:  s LATEST STATION
+    cyloop_recommends: CYLOOP RECOMMENDS
   sessions:
     new:
       sign_in: Log in

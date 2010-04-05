@@ -6,7 +6,9 @@
       <div class="medium_thumb">
         <%= four_thumbs_to(top_station.station) %>
         <br class="clearer">
-        <%= link_to(truncate(top_station.artist.name, 13), top_station.artist, :title => top_station.artist.name) %>
+        <%
+          #= link_to(truncate(top_station.artist.name, 13), top_station.artist, :title => top_station.artist.name) 
+        %>
       </div>
     <% end %>
 

@@ -4,28 +4,7 @@
   </div>
 
   <div class="grey_box">
-    <% if profile_account.is_a? User %>
-      <% if profile_user == current_user %>
-        <div class="box_content">
-          <h1>CYLOOP RECOMMENDS</h1>
-          <% recommended_artists(8).each_with_index do |artist, i| %>
-            <% if ((i+1) % 4) == 0 %>
-              <%= render :partial => 'artists/small_box', :locals => {:style => 'last_thumb', :clearer => true, :artist => artist} %>
-            <% else %>
-              <%= render :partial => 'artists/small_box', :locals => {:artist => artist} %>
-            <% end %>
-          <% end %>
-        </div><!--/end box_content -->
-
-        <% render :partial => 'shared/top_mixes' %>
-
-        <%= render 'shared/top_stations_box' %>
-      <% else %>
-          <%= render 'shared/user_follows' %>
-          <%= render 'shared/user_top_mixes' %>
-          <%= render 'shared/top_stations_box' %>
-          <%= render 'shared/user_recent_activity' %>
-      <% end %>
-    <% end %>
+    <%= render profile_owner? ? 'dashboards/owner_sections' : 'dashboards/user_sections' %>
   </div><!--/end grey_box -->
+
 </div><!--/end right_column -->

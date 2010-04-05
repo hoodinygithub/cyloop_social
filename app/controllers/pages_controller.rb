@@ -11,7 +11,6 @@ class PagesController < ApplicationController
     respond_to do |format|
       format.html do        
         @latest_stations      = UserStation.latest_stations
-
         @recommended_stations = recommended_stations(6)
 
         if site_includes(:msnlatam)

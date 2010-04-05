@@ -32,18 +32,6 @@ class RadioController < ApplicationController
       end
     end
   end
-
-  def old_show
-    #Explicitly removing caching on radio per Demian - 2009-09-29
-    #if !(Rails.cache.read(radio_show_cache_key_url))
-    station = Station.find(params[:station_id])
-    @songs = rec_engine.get_rec_engine_play_list(:artist_id => station.amg_id)
-    respond_to do |format|
-      format.html { render :layout => false }
-      format.xml { render :layout => false }
-    end
-    #end
-  end
   
   def show
     @station = Station.find(params[:station_id]).playable
@@ -55,10 +43,9 @@ class RadioController < ApplicationController
       if @station.sites_available.include? current_site.id
         @station.playlist
       else
-        raise @station.sites_available.inspect #render :xml => { :alert => 'This station cannot play in this market' }.to_xml(:root => 'response')
+        render :xml => { :alert => 'This station cannot play in this market' }.to_xml(:root => 'response')
       end
     end
-    #@songs = rec_engine.get_rec_engine_play_list(:artist_id => station.amg_id)
     respond_to do |format|
       format.html { render :layout => false }
       format.xml { render :layout => false }

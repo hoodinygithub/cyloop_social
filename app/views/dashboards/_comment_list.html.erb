@@ -17,8 +17,6 @@
   <% end %>
 </ul>
 
-<% if page_owner? %>
-  <div class="align_right" id="show_more_comments" <%= 'style="display:none;"' if (@latest_activity_status and @latest_activity_status.size < 5) %>>
-    <a href="#" class="blue_button"><span><span>SHOW MORE</span></span></a>
-  </div>
-<% end %>
+<div class="align_right" id="show_more_comments" <%= 'style="display:none;"' if (@latest_activity_status and @latest_activity_status.size < 5) %>>
+  <a href="#" class="blue_button"><span><span><%= t('actions.show_more') %></span></span></a>
+</div>

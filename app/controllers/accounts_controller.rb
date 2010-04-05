@@ -17,6 +17,8 @@ class AccountsController < ApplicationController
     @recommended_stations_queue = stations[RECOMMENDED_STATIONS..(stations.size)]
     @top_stations = profile_account.stations.most_created(3) 
     @followers = profile_account.followers.all(:limit => 4)
+    @latest_activity_status = profile_account.activity_status.latest_with_followings unless profile_account.is_a? Artist
+    @last_activity_status   = profile_account.activity_status.last
     @latest_stations = profile_account.stations.all(:limit => 6, :order => "user_stations.created_at DESC") 
     
     render :template => 'dashboards/show'

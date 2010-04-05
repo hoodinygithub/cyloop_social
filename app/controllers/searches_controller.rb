@@ -45,8 +45,7 @@ class SearchesController < ApplicationController
       ["User","AbstractStation", "Album", "Artist" ].each do |scope|
         @scope = scope.classify.constantize
         query="#{q}*"
-        partial_results = @scope.search_count query
-        logger.error "#{scope} -----#{query}-------"
+        partial_results = @scope.search_count query, :order => :name
         results.store(scope,partial_results)
       end
       #@cross_search=ThinkingSphinx::Search.search "#{params[:q]}" , :classes => [User, Song, Album, Artist ]

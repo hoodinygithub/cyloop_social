@@ -1,0 +1,84 @@
+<div id="left_column">
+    <% unless profile_owner? %>
+      <div class="side_user_box">
+        <%= avatar_for(profile_account, :album, :class => 'side_user_image', :disable_default_css => true)%>
+        <div class="overlay png_fix">
+          <div class="overlay_content">
+            <big>
+              <%= link_to(profile_account.name, "") %>
+            </big>
+            <br />
+            <%= profile_account.location %>
+          </div>
+        </div>
+      </div>
+    
+      <div class="big_black_box">
+        <% if profile_account.is_a? User %>
+          <b class="blue">
+            <%= link_to(t('profile.navigation.age') + " //") %>
+          </b>
+          <br>
+          <%= profile_account.age %>
+          <br>
+          <br>
+          <b class="blue">
+            <%= link_to(t('profile.navigation.biography') + " //") %>
+          </b>
+          <br>
+          <%= h(profile_account.bio) %>
+          <br>
+          <br>
+        <% end %>
+
+        <% if profile_account.websites %>
+          <b class="blue"><a href="#">Websites //</a></b><br>
+          <% profile_account.websites.each do |website| %>
+            <%= link_to website.url, website.url %>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+    
+    <div class="black_boxes">
+        <% if profile_account.is_a? User and profile_user %>
+          <div class="black_box right_side">
+              <big class="blue">
+                <%= link_to("#{profile_user.stations.size}", my_stations_path) %>
+              </big>
+              <br/>
+              <%= t('basics.stations') %>
+          </div>
+        <% end %>
+        
+        <% if profile_owner? %>
+          <div class="clearer"></div>
+          <div class="black_box left_side">
+              <big class="blue">
+                <%= link_to(number_with_delimiter(profile_account.follower_count), followers_path) %>
+              </big>
+              <br/>
+              <%= t('users.stats.followers') %>
+          </div>
+        
+          <div class="black_box right_side">
+            <big class="blue">
+              <%= link_to(number_with_delimiter(profile_account.followee_count), following_index_path) %>
+            </big>
+            <br/>
+             <%= t('users.stats.following') %>
+          </div>
+        <% end %>
+        
+        <div class="clearer"></div>
+    </div><!--/end black_boxes -->
+
+    <% if profile_owner? %>
+      <% blue_button(t("actions.create_mix"), :class => 'full_width', :onclick => "")%>
+      <%= blue_button(t("actions.create_station"), :class => 'full_width', :href => radio_path)%>
+    <% else %>
+      <%= blue_button(t('actions.follow'), :class => 'full_width', :onclick => "")%>
+    <% end %>
+    
+    <%= user_sidebar_links %>
+</div><!--/end left_column -->

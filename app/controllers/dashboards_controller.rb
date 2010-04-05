@@ -14,7 +14,7 @@ class DashboardsController < ApplicationController
     @mixes_recommended = (1..6).to_a
     
     @latest_activity_status = current_user.activity_status.latest_with_followings
-    @last_activity_status     = current_user.activity_status.last
+    @last_activity_status   = current_user.activity_status.last
     
     if @latest_activity_status and @latest_activity_status.size > 0
       if @latest_activity_status.first['message'] == @last_activity_status['message']
