@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
   caches_page :home, :if => Proc.new { |c| !c.request.format.js? }
   before_filter :authenticate, :only => [:x46b]
+  layout "logged_out"
 
   def banner
     @options = params
