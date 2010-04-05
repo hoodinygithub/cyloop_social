@@ -8,7 +8,7 @@
       <% if profile_user == current_user %>
         <div class="box_content">
           <h1>CYLOOP RECOMMENDS</h1>
-          <% recommended_artists.each_with_index do |artist, i| %>
+          <% recommended_artists(8).each_with_index do |artist, i| %>
             <% if ((i+1) % 4) == 0 %>
               <%= render :partial => 'artists/small_box', :locals => {:style => 'last_thumb', :clearer => true, :artist => artist} %>
             <% else %>
