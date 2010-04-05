@@ -8,8 +8,13 @@ class RadioController < ApplicationController
     @source_ip = remote_ip
     if params[:station_id]
       @station_obj = Station.find(params[:station_id])
+      @station_json = if @station_obj.playable.is_a? AbstractStation      
+        "{type:'99',station_url:'#{RecEngine::BASE_URI}?request=getRecEnginePlayList&artistID=#{@station_obj.playable.amg_id}&ipAddress=#{@source_ip}',idpl:'#{@station_obj.id}',nom:'#{@station_obj.playable.name}'};"
+      elsif @station_obj.playable.is_a? UserStation      
+        "{type:'99',station_url:'#{RecEngine::BASE_URI}?request=getRecEnginePlayList&artistID=#{@station_obj.playable.amg_id}&ipAddress=#{@source_ip}',idpl:'#{@station_obj.id}',nom:'#{@station_obj.playable.name}',userID:#{@station_obj.playable.owner_id}};"
+      end  
     elsif params[:artist_name]
-      @station_obj = Station.find(Artist.find_by_name(params[:artist_name]).station)
+      @station_obj = AbstractStation.find_by_name(params[:artist_name])
     end
     if site_includes(:msnlatam, :msnmx)
       render :template => 'radio/custom'
@@ -22,7 +27,7 @@ class RadioController < ApplicationController
       if params[:station_id]
         @station_obj = Station.find(params[:station_id])
       elsif params[:artist_name]
-        @station_obj = Station.find(Artist.find_by_name(params[:artist_name]).station)
+        @station_obj = AbstractStation.find_by_name(params[:artist_name])
       end
       render :layout => "twitstation"
     rescue
@@ -56,17 +61,15 @@ class RadioController < ApplicationController
   def play
     @station = Station.find( params[:station_id] ).playable
     if @station
-
-      #raise @station_object.kind_of?(UserStation).inspect
       respond_to do |format|
         format.html do
-          redirect_to radio_path(:station_id => @station.id, :queue => true)
+          redirect_to radio_path(:station_id => @station.station.id, :queue => true)
         end
         block = Proc.new do
           session[:current_station] = @station.id
           render :xml => Player::Station.from(@station, 
                  :ip => remote_ip, 
-                 :user_id => logged_in? ? current_user.id : nil).to_xml(:root => @station.kind_of?(UserStation) ? 'user_station' : 'station')
+                 :user_id => @station.kind_of?(UserStation) ? @station.owner_id : nil).to_xml(:root => @station.kind_of?(UserStation) ? 'user_station' : 'station')
         end
         format.xml(&block)
         format.js(&block)

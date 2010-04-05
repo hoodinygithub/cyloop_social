@@ -28,7 +28,7 @@
         </div>
 
         <div class="visible">
-          <%= link_to_function image_tag("play_button.png", :class => "play_button", :alt => "Play"), "createStation(\"#{radio.user_station.name}\")" %>
+          <%= button_image_to :launch_radio, '/images/play_button.png', radio_path(:station_id => radio.user_station.station.id), :method => :get, :class => 'play_button' %>
 
           <%= link_to truncate(radio.user_station.name,15), artist_path(radio.user_station.artist), :title => radio.user_station.name %><br/>
           <%= link_to_function t("home.station"), "createStation(\"#{radio.user_station.name}\")" %>

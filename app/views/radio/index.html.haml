@@ -1,7 +1,7 @@
 - if !logged_in? && @station_obj
   - content_for :head do
     %script
-      = "station_obj = {type:'99',station_url:'#{RecEngine::BASE_URI}?request=getRecEnginePlayList&artistID=#{@station_obj.amg_id}&ipAddress=#{@source_ip}',idpl:'#{@station_obj.id}',nom:'#{@station_obj.name}'};"
+      = "station_obj = #{@station_json}"
 
 #content
   -if params[:queue] == "true"
