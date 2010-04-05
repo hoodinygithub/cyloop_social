@@ -1,15 +1,19 @@
-<% if current_user %>
-  <div id="userdata_box">
-      <div class="user">
-          <%= avatar_for(current_user, :tiny) %>
-          <%= link_to truncate(current_user.name, 10), my_dashboard_path %>
-      </div>
-    
-      <%= user_top_navegation %>
-    
-      <a href="#" id="userdata_arrow">
-        <%= image_tag 'userdata_arrow.png', :class => 'png_fix' %>
-        <%= image_tag 'arrow_up.gif', :class => 'arrow_up' %>
-      </a>
-  </div><!--/end userdata_box -->
-<% end %>
+<% logged_out = false unless local_assigns[:logged_out] %>
+<div id="userdata_box" class="<%= current_user && !logged_out ? "user_data_logged_in" : "user_data_logged_out" %>">
+  <div class="user">
+    <% if logged_out %>
+      <%= avatar_for(nil, :tiny, :class => "avatar") %>
+      <%= link_to("Anon", my_dashboard_path, :class => "user_name") %>    
+    <% else %>
+      <%= avatar_for(current_user, :tiny, :class => "avatar") %>
+      <%= link_to(truncate(current_user.try(:name), 10), my_dashboard_path, :class => "user_name") %>
+    <% end %>
+  </div>
+
+  <%= user_top_navegation %>
+
+  <a href="#" id="userdata_arrow">
+    <%= image_tag 'userdata_arrow.png', :class => 'png_fix' %>
+    <%= image_tag 'arrow_up.gif', :class => 'arrow_up' %>
+  </a>
+</div><!--/end userdata_box -->

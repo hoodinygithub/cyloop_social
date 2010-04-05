@@ -3270,3 +3270,6 @@ label.label_holder{
   color: green;
 }
 
+/* User Data */
+.user_data_logged_in  { }
+.user_data_logged_out { display: none; }

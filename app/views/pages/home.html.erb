@@ -1,3 +1,9 @@
+<% content_for :head do %>
+  <%= render :partial => 'shared/logged_in_callback' %>
+  <script type="text/javascript" charset="utf-8" src="/flash.js"></script>
+  <script type="text/javascript" charset="utf-8" src="/home.js"></script>
+<% end %>
+
 <%= render :partial => 'pages/home_modules/slide_banner' %>
 
 <div id="homepage_content">

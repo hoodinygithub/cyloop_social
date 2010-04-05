@@ -1,4 +1,4 @@
-<% logged_out = false  unless local_assigns[:logged_out] %>
+<% logged_out = false unless local_assigns[:logged_out] %>
 <div id="msn_header">
   <div id="msn_header_container">
     <%= banner_ad("top_banner") %>
@@ -11,11 +11,13 @@
 <div id="header">
   <div id="header_content">
     <%= link_to(image_tag('logo.gif', :id => 'logo'), msn_home_page_link_path) %>
-    <%= render 'shared/main_links', :logged_out => logged_out %>
-    <%= render 'shared/login_links' %>
+    <%= render 'shared/main_links' %>
+    <%= render :partial => 'shared/login_links', :locals => {:logged_out => logged_out} %>
     <%= render 'shared/search_form' %>
-    <%= render 'shared/user_data' %>
+    <%= render :partial => 'shared/user_data', :locals => {:logged_out => logged_out} %>
     <div class="clearer"></div>
-    <%= render_flash_messages %>
+    <div id="flash_messages">
+      <%= render_flash_messages %>
+    </div>
   </div>
 </div>

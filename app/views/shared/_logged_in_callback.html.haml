@@ -1,1 +1,1 @@
-%script{ :src => "/logged_in.js?lang=#{I18n.default_locale}&logout_url=#{CGI::escape(site_logout_url)}", :type => "text/javascript" }
+%script{ :src => "/logged_in.js?lang=#{I18n.default_locale}&user_name=#{current_user.try(:name)}&avatar_path=#{AvatarsHelper.avatar_path( current_user, :tiny )}&logout_url=#{CGI::escape(site_logout_url)}", :type => "text/javascript" }

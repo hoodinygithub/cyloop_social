@@ -51,7 +51,8 @@ module DashboardsHelper
     nav_links(:possessive => possessive).each do |item|
       link_classes = li_classes = ""
       link_classes = active_class if @dashboard_menu == item[:menu]
-      li_classes = 'last' if nav_links.last == item
+      li_classes << "#{item[:menu]} "      
+      li_classes << 'last' if nav_links.last == item
       items << content_tag(:li, link_to(item[:label], item[:url], :class => link_classes), :class => li_classes)
     end
     content_tag(:ul, items.join("\n"), :class => ul_class)

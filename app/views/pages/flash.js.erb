@@ -1,8 +1,5 @@
 jQuery(document).ready(function($){
-	<% if flash[:success] %>
-		$('#main_content #page_wrapper #messages').append("<p class=\"success\"><%= escape_javascript(flash[:success]) %></p>");
-	<% end %>
-	<% if flash[:error] %>
-		$('#main_content #page_wrapper #messages').append("<p class=\"error\"><%= escape_javascript(flash[:error]) %></p>");
+	<% if flash[:success] || flash[:error] %>
+		$('#flash_messages').append("<%= escape_javascript(render_flash_messages) %>");
 	<% end %>
 });

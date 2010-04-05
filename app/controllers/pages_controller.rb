@@ -137,19 +137,6 @@ class PagesController < ApplicationController
     end
   end
 
-  def header_callback
-    expires_now
-    respond_to do |format|
-      format.js do
-        if logged_in?
-          render :template => 'pages/header.js.erb', :layout => false
-        else
-          head :ok
-        end
-      end
-    end
-  end
-
   def about
     @title = t 'site.about_cyloop'
     render "pages/#{site_code}/about"

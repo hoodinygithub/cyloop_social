@@ -8,11 +8,12 @@
   </head>
   <body locale="<%= current_site.default_locale %>" market="<%= current_site.code %>">
     <div id="container">
-      <%= render 'shared/header', :logged_out => true %>
+      <%= render :partial => 'shared/header', :locals => {:logged_out => true} %>
       
       <%= main_content(yield) %>
       
       <%= render 'shared/footer' %>
     </div><!--/end container -->
+    <%= google_analytics_js_include_tag %>
   </body>
 </html>

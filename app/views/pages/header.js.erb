@@ -1,4 +1,0 @@
-jQuery(document).ready(function($){  
-	$('#nav_aux').html("<%= escape_javascript(link_to t("sessions.destroy.sign_out"), site_logout_url) %>");
-	$('#nav_main ul.nav_tabs').prepend("<li class='tab dashboard'><a href='/my/dashbaord'><%= t("navigation.dashboard") %></a></li>");
-});

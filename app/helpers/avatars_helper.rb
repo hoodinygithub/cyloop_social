@@ -7,8 +7,8 @@ module AvatarsHelper
 
     if avatar
       if options.size > 0 
-        options[:class] = "" 
-        options[:class] = "avatar" unless options[:disable_default_css]
+        options[:class] = options.fetch(:class, "") 
+        options[:class] << " avatar" unless options[:disable_default_css]
         options[:class] << " #{type}"
         options[:title] = options[:alt] unless !options.has_key?(:alt)
         image_tag path, options
