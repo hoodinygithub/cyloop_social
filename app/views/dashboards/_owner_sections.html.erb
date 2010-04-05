@@ -7,7 +7,13 @@
       <%= render :partial => 'artists/small_box', :locals => {:artist => artist} %>
     <% end %>
   <% end %>
-</div><!--/end box_content -->
+  
+  <br class="clearer">
 
-<%# render 'shared/top_mixes' %>
-<%= render 'shared/top_stations_box' %>
+  <div class="align_right">
+    <b>
+      <%= link_to(t('actions.view_more'), '#') %>
+    </b>
+  </div>
+  
+</div><!--/end box_content -->
