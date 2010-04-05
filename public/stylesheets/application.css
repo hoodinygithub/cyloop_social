@@ -780,9 +780,9 @@ img.artist_icon_box.tiny {
     float: right;
 }
 
-#msn_footer { 
+#msn_footer {
   width: 952px;
-  margin: 10px auto;  
+  margin: 10px auto;
 }
 
 .tabs_column {
@@ -973,6 +973,10 @@ img.artist_icon_box.tiny {
     margin-left: 15px;
     margin-bottom:10px;
 }
+
+.search_results_header { display: block; float: left; }
+
+.search_results_ajax { display: none; float: right; }
 
 .search_list {
     list-style-type: none;

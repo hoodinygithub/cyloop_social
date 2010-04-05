@@ -6,7 +6,10 @@
   <% @stations = value if key=='AbstractStation'%>
 <% end %>
 <div class="oveflow_list">
-  <h1><%= t('basics.artists')%></h1>
+  <div class="search_results_header"><h1><%= t('basics.artists')%> </h1></div>
+  <div class="search_results_ajax"><%= image_tag "/images/ajax_activity_indicators_download_animated_icon_animated_busy.gif" %></div>
+  <div class="clearer"></div>
+
 
   <ul class="search_list">
    <% @artists.each do |artist|  %>

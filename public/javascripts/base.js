@@ -51,7 +51,7 @@ Base.locale.translate = function(key, params) {
   if (!translation) {
     translation = key + " does not exist";
   }
-  
+
   // if user pass params like {'count' => 1}
   if (typeof(translation) == 'object') {
     if (typeof(params) == 'object' && typeof(params.count) != 'undefined') {
@@ -78,26 +78,26 @@ Base.locale.date_difference = function(old_date, new_date) {
   } else {
     new_date   = new Date(new_date * 1000);
   }
-  
+
   date_diff     = new Date(new_date - old_date).getTime();
 
   weeks = Math.floor(date_diff / (1000 * 60 * 60 * 24 * 7));
   date_diff -= weeks * (1000 * 60 * 60 * 24 * 7);
 
-  days = Math.floor(date_diff / (1000 * 60 * 60 * 24)); 
+  days = Math.floor(date_diff / (1000 * 60 * 60 * 24));
   date_diff -= days * (1000 * 60 * 60 * 24);
 
-  hours = Math.floor(date_diff / (1000 * 60 * 60)); 
+  hours = Math.floor(date_diff / (1000 * 60 * 60));
   date_diff -= hours * (1000 * 60 * 60);
 
-  minutes = Math.floor(date_diff / (1000 * 60)); 
+  minutes = Math.floor(date_diff / (1000 * 60));
   date_diff -= minutes * (1000 * 60);
 
-  seconds = Math.floor(date_diff / 1000); 
+  seconds = Math.floor(date_diff / 1000);
   date_diff -= seconds * 1000;
-  
+
   old_time_ago_str = "";
-  
+
   if (days > 0) {
     old_time_ago_str = Base.locale.t('datetime.distance_in_words.x_days', {'count':days});
   } else if (hours > 1) {
@@ -109,7 +109,7 @@ Base.locale.date_difference = function(old_date, new_date) {
   } else {
     old_time_ago_str = Base.locale.t('datetime.distance_in_words.less_than_x_seconds', {'count':seconds});
   }
-  
+
   return old_time_ago_str + " ago";
 };
 
@@ -322,12 +322,12 @@ Base.network.update_page = function(list) {
   var $share_button = jQuery('a.compartir_button');
 
   $share_button.fadeOut();
-  
+
   first_element = list[0];
   user_slug = first_element.user_slug;
   timestamp = first_element.timestamp;
   str_timestamp = first_element.str_timestamp;
-  
+
   username = user_slug;
   bold_username = document.createElement('b');
   bold_username.appendChild(document.createTextNode(username));
@@ -339,7 +339,7 @@ Base.network.update_page = function(list) {
   spanned_comment = document.createElement('span');
   spanned_comment.setAttribute('class', 'comment_text_container');
   spanned_comment.appendChild(document.createTextNode(first_element.message));
- 
+
   $network_update_text.html("").hide();
   $network_update_text.append(bold_username);
   $network_update_text.append(document.createTextNode(" - "));
@@ -347,51 +347,51 @@ Base.network.update_page = function(list) {
   $network_update_text.append(break_line);
   $network_update_text.append(time_ago);
   $network_update_text.fadeIn();
-  
+
   $comment_list.html("");
   for (var i=list.length-1; i > 0 ; i--) {
     activity = list[i];
     old_time_ago_str = "123";
-    
+
     $text_div = jQuery('<div></div>');
     $text_div.attr('class', 'comment_text');
-  
+
     $bold_username = jQuery('<b></b>');
     $link_to_user_str = jQuery('<a></a>');
     $link_to_user_str.attr('href', '#');
     $link_to_user_str.append(activity.user_slug);
     $bold_username.append($link_to_user_str);
-  
+
     $timestamp_span = jQuery('<span></span>');
     $timestamp_span.attr('timestamp', activity.timestamp);
     $timestamp_span.attr('class', 'grey');
     $timestamp_span.append(activity.str_timestamp);
-  
+
     $text_div.append($bold_username);
     $text_div.append('<br />');
     $text_div.append(activity.message);
     $text_div.append('<br />');
     $text_div.append($timestamp_span);
-  
+
     $avatar_image = jQuery('<img></img>');
     $avatar_image.attr('src', activity.user_avatar);
     $link_to_user = jQuery('<a></a>');
     $link_to_user.attr('href', '#');
     $link_to_user.append($avatar_image);
-  
+
     $clearer = jQuery('<div></div>');
     $clearer.attr('class', 'clearer');
-  
+
     $new_li = jQuery('<li></li>');
     $new_li.append($link_to_user);
     $new_li.append($text_div);
     $new_li.append($clearer);
-  
+
     $comment_list.prepend($new_li);
   }
-  
+
   $share_button.fadeIn();
-  
+
   if ($comment_list.find('li').length >= 5) {
     $show_more_button.fadeIn();
   }
@@ -413,12 +413,12 @@ Base.network.push_update = function() {
   $show_more_button = jQuery('#show_more_comments');
   $comment_field       = jQuery("#network_comment");
   $comment_field.css({'border':'10px solid #EDEDED'});
-  
+
   var comment = jQuery.trim($comment_field.val());
   var $old_network_update_text = $network_update_text.clone();
   var $share_button = jQuery('a.compartir_button');
   $share_button.fadeOut();
-    
+
   if (comment && comment.length > 0) {
     jQuery.post('/activity/update/status', {'message':comment}, function (response) {
       $comment_field.val("");
@@ -428,7 +428,7 @@ Base.network.push_update = function() {
     $comment_field.css({'border':'10px solid red'});
     $share_button.fadeIn();
   }
-  
+
   return false;
 };
 
@@ -477,22 +477,37 @@ Base.header_search.buildSearchUrl = function () {
 };
 
 Base.header_search.dropdown = function() {
-  jQuery("#search_query").keyup(function() {
+  jQuery("#search_query").keyup(function(e) {
+      jQuery('.search_results_ajax').show();
+      var keyCode = e.keyCode || window.event.keyCode;
       var form_values = jQuery("#header_search_form").serializeArray();
       var q           = Base.header_search.getFieldValue(form_values,'q');
-      if (q.length>1) {
-        jQuery('.search_results_box').show();
-        $.get('/search/autocomplete/'+q, function(data) {
-            jQuery('.search_results_box').html(data);
-        });
-      }
-      if (q.length==1) {
+      if(keyCode == 37 || keyCode == 38 || keyCode == 39 || keyCode == 40){
+        return;
+	  }
+      if(keyCode == 13 || keyCode == 27 || q.length==1){
+        jQuery('.search_results_ajax').show();
         jQuery('.search_results_box').hide();
-      }
-
+        return;
+  	  }
+      jQuery('.search_results_box').show();
+      setTimeout(function () {Base.header_search.autocomplete(q)}, 500);
       return true;
-
     });
+};
+
+Base.header_search.autocomplete = function(last_value) {
+  jQuery('.search_results_ajax').show();
+  var form_values = jQuery("#header_search_form").serializeArray();
+  var q           = Base.header_search.getFieldValue(form_values,'q');
+  if( last_value != q || q == ''){
+    jQuery('search_results_ajax').hide();
+    return;
+  }
+  jQuery.get('/search/autocomplete/'+q, function(data) {
+      jQuery('.search_results_box').html(data);
+      jQuery('search_results_ajax').hide();
+  });
 };
 
 /*
