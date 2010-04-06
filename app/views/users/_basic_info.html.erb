@@ -28,7 +28,7 @@ $(document).ready(function(){
 
 <% end %>
 
-<div class="accordion_title expanded"><%= t('account_settings.email_notifications') %></div>
+<div class="accordion_title expanded"><%= t('account_settings.basic_info') %></div>
 <div class="accordion_box expanded">
   <% form_for @user, :html => { :method => :put, :multipart => true, :class => "account_settings", :id => 'basic_info_form' }, :url => my_settings_path do |f| %>
     <div class="form_row">
