@@ -3276,4 +3276,4 @@ label.label_holder{
 
 /* User Data */
 .user_data_logged_in  { }
-.user_data_logged_out { display: none; }
+.user_data_logged_out { display: none!important; }
