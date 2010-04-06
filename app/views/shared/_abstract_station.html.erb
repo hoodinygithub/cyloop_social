@@ -1,0 +1,39 @@
+<% unless abstract_station.nil? %>
+  <% artist = abstract_station.artist rescue nil %>
+  <% unless artist.nil? %>      
+    <div class="artist_box png_fix <%= "last_box" if (abstract_station_counter+1) % columns == 0 %>">
+      <%= four_thumbs_to(abstract_station.station, {:type => :big}) %>
+      <div class="overlay">
+        <div class="hidden">
+          <% if artist.nil? %>
+            <%= avatar_for(nil, :artist_icon) %>
+          <% else %>
+            <%= link_to avatar_for(artist, :artist_icon), artist %>
+          <% end %>
+          <span>
+            <span class="blue"><%= abstract_station.name %></span><br/>
+          </span>
+          <br class="clearer" />
+
+          <%= t("basics.contains") %>:
+          <%= abstract_station.includes(3).map {|station_artist| link_to station_artist.artist.name, station_artist.artist, :target => '_blank'}.join(", ") %>
+        </div>
+
+        <div class="visible">
+          <%= button_image_to :actions__launch_radio, '/images/play_button.png', radio_path(:station_id => abstract_station.station.id), :method => :get, :class => 'play_button' %>
+  
+          <%= link_to truncate(abstract_station.name,15), radio_path(:station_id => abstract_station.station.id), :title => abstract_station.name %>
+          <% 
+            # phase 2 
+            if false 
+          %>
+          <br />
+          <div class="rating_stars">
+            <a href="#"><img src="images/star_blue.png" alt="" /></a> <a href="#"><img src="images/star_blue.png" alt="" /></a> <a href="#"><img src="images/star_blue.png" alt="" /></a> <a href="#"><img src="images/star_blue.png" alt="" /></a> <a href="#"><img src="images/star_white.png" alt="" /></a>
+          </div>
+          <% end %>
+        </div>
+      </div><!--/end overlay -->
+    </div><!--/end artist_box -->
+  <% end %>
+<% end %>

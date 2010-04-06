@@ -486,7 +486,6 @@ en:
           Use the e-mail address {{email}} and password you provided during sign-up to access {{host_url}}.
     messages:
       terms_of_use: must be accepted
-      pivacy_policy: must be accepted
       privacy_policy: must be accepted
     is_available_exclamation: Email is available!
     slug_available_exclamation: Profile is available!
