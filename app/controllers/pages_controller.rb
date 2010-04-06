@@ -12,7 +12,7 @@ class PagesController < ApplicationController
     respond_to do |format|
       format.html do        
         @latest_stations      = UserStation.latest_stations
-        @recommended_stations = recommended_stations(6).map { |s| s.station.playable } 
+        @recommended_stations = recommended_stations(6).map { |s| s.station.try(:playable) }.compact
         @top_abstract_stations = current_site.top_abstract_stations.limited_to(6)
         @top_user_stations = current_site.top_user_stations.limited_to(6)
 
