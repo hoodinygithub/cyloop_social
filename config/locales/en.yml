@@ -1110,6 +1110,7 @@ en:
       mixes: Mixes
       stations: Stations
   account_settings:
+    title: ACCOUNT SETTINGS
     password: Password
     update: UPDATE
     save: SAVE
