@@ -12,6 +12,7 @@
 
 class TopArtist < ActiveRecord::Base
   include Summary::Predicates
+  include Db::Predicates::LimitedTo
   set_inheritance_column nil
   
   belongs_to :site

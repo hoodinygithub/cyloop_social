@@ -12,20 +12,9 @@ class PagesController < ApplicationController
     respond_to do |format|
       format.html do        
         @latest_stations      = UserStation.latest_stations
-        @recommended_stations = recommended_stations(6)
-
-        if site_includes(:msnlatam)
-          @top_songs = current_site.summary_top_songs.limited_to(9)
-          @top_artists = current_site.summary_top_artists.limited_to(9)
-        elsif site_includes(:msnlatino, :msnmx, :msnar, :msncafr, :msncaen, :msnbr)
-          @top_songs = current_site.summary_top_songs.limited_to(7)
-          @top_artists = current_site.summary_top_artists.limited_to(7)
-        else
-          @top_songs = current_site.summary_top_songs.limited_to(5)
-          @top_artists = current_site.summary_top_artists.limited_to(5)
-        end
-        @top_stations = current_site.summary_top_stations.limited_to(6)
-        @top_user_stations = current_site.summary_top_user_stations.limited_to(6)
+        @recommended_stations = recommended_stations(6).map { |s| s.station.playable } 
+        @top_abstract_stations = current_site.top_abstract_stations.limited_to(6)
+        @top_user_stations = current_site.top_user_stations.limited_to(6)
 
         # if site_includes(:msnmx, :msnbr,:msnlatam,:msnlatino, :msnar)
         #   url_featured    = "/shared/feeds/current/#{site_code}_url_featured.xml"

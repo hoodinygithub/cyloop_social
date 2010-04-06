@@ -4,7 +4,7 @@ class RadioController < ApplicationController
   #caches_action :show, :expires_in => EXPIRATION_TIMES['radio_show'], :cache_path => :radio_show_cache_key
 
   def index
-    @top_stations = current_site.summary_top_stations.limited_to(5)
+    @top_stations = current_site.top_abstract_stations.limited_to(5)
     @source_ip = remote_ip
     if params[:station_id]
       @station_obj = Station.find(params[:station_id])
@@ -12,10 +12,13 @@ class RadioController < ApplicationController
         "{type:'99',station_url:'#{RecEngine::BASE_URI}?request=getRecEnginePlayList&artistID=#{@station_obj.playable.amg_id}&ipAddress=#{@source_ip}',idpl:'#{@station_obj.id}',nom:'#{@station_obj.playable.name}'};"
       elsif @station_obj.playable.is_a? UserStation      
         "{type:'99',station_url:'#{RecEngine::BASE_URI}?request=getRecEnginePlayList&artistID=#{@station_obj.playable.amg_id}&ipAddress=#{@source_ip}',idpl:'#{@station_obj.id}',nom:'#{@station_obj.playable.name}',userID:#{@station_obj.playable.owner_id}};"
-      end  
+      end        
     elsif params[:artist_name]
       @station_obj = AbstractStation.find_by_name(params[:artist_name])
     end
+    
+    @station_obj.playable.track_a_play if @station_obj and @station_obj.playable
+    
     if site_includes(:msnlatam, :msnmx)
       render :template => 'radio/custom'
     end

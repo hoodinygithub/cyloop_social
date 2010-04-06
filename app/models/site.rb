@@ -30,17 +30,17 @@ class Site < ActiveRecord::Base
   validates_presence_of :default_locale
   validates_presence_of :code
 
-  has_many :song_listens
   has_many :profile_visits
   has_many :sites_stations, :class_name => "SitesStation"
   has_many :buylink_providers_sites, :class_name => "BuylinkProvidersSite"
+
   has_many :players, :class_name => "Player"
-  has_many :stations, :class_name => 'UserStation'
-  has_many :summary_top_songs, :order => 'total_listens DESC', :class_name => 'TopSong', :include => :song
-  has_many :summary_top_albums, :order => 'total_listens DESC', :class_name => 'TopAlbum', :include => :album
-  has_many :summary_top_artists, :order => 'total_listens DESC', :class_name => 'TopArtist', :include => :artist
-  has_many :summary_top_stations, :order => 'station_count DESC', :class_name => 'TopStation', :include => :station
+
+  has_many :summary_top_abstract_stations, :order => 'station_count DESC', :class_name => 'TopAbstractStation', :include => :station
+  has_many :top_abstract_stations, :through => :summary_top_abstract_stations, :class_name => 'AbstractStation', :foreign_key => 'abstract_station_id', :source => :abstract_station
   has_many :summary_top_user_stations, :order => 'total_requests DESC', :class_name => 'TopUserStation', :include => :user_station
+  has_many :top_user_stations, :through => :summary_top_user_stations, :class_name => 'UserStation', :foreign_key => 'user_station_id', :source => :user_station
+
   has_many :users, :foreign_key => 'entry_point_id'
   has_one :site_statistic
   has_many :campaigns
@@ -85,4 +85,5 @@ class Site < ActiveRecord::Base
   def cache_key
     "#{self.class.model_name.cache_key}/#{id}/#{self.updated_at.try(:to_s, :number)}/#{code}/#{default_locale}"
   end
+
 end

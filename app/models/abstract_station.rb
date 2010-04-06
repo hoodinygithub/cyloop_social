@@ -17,6 +17,7 @@ class AbstractStation < ActiveRecord::Base
   index :artist_id
   include Searchable::ByName
   include Station::Playable
+  include Db::Predicates::LimitedTo
   extend ActiveSupport::Memoizable
 
   named_scope :available, :conditions => { :available => true }

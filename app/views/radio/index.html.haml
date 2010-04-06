@@ -92,5 +92,5 @@
     %h3
       =t 'modules.top_stations.title'
     %ul
-      = render :partial => 'shared/top_station', :collection => @top_stations
+      = render :partial => 'shared/abstract_station', :collection => @top_abstract_stations, :locals => { :columns => 1 }
   = banner_ad("pixel_banner")

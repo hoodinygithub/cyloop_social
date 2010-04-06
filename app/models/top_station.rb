@@ -10,8 +10,9 @@
 #  station_count :integer(4)
 #
 
-class TopStation < ActiveRecord::Base
+class TopAbstractStation < ActiveRecord::Base
   include Summary::Predicates
+  include Db::Predicates::LimitedTo
   belongs_to :site
-  belongs_to :station, :foreign_key => :station_id
+  belongs_to :abstract_station
 end

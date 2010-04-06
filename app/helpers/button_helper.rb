@@ -44,7 +44,7 @@ module ButtonHelper
     # content = content_tag(:span, content) unless content.starts_with?("<span")
     # content_tag(:button, content, options)
   end
-  def button_image_tag_to(content, image_src, url = {}, html_options = {})
+  def button_image_tag_to(trans_key, image_src, url = {}, html_options = {})
     html_options = html_options.stringify_keys
     button_options = html_options.slice!('method')
     html_options['class'] = button_options['class']
@@ -52,21 +52,16 @@ module ButtonHelper
     base, query = *url.split("?", 2)
     skip_auto_width = button_options.fetch("skip_auto_width", false) == true ? 1 : 0
 
-    content = t("actions.#{content.to_s}") if content.kind_of?(Symbol)
+    content = t("#{trans_key.to_s.gsub(/__/, '.')}") if content.kind_of?(Symbol)
 
     output = form_tag(base, html_options)
         
-    #output << "<div class=\" clearfix\">"
-    #output << "<div class=\"left\"></div>"
-
     query.to_s.split(/[&;?]/).each do |input|
       key, value = *input.split("=", 2).map {|x| CGI.unescape(x)}
       output << tag(:input, :type => "hidden", :name => key, :value => value)
     end
     auto_width_style = !skip_auto_width ? "width:#{content.size}em" : nil
-    output << tag(:input, :type => "image", :value => content, :src => image_src, :style => auto_width_style)
-    #output << "<div class=\"right\"></div>"
-    #output << "</div>"
+    output << image_submit_tag(image_src, :title => content, :style => auto_width_style)
     output << "</form>"
   end
   alias button_image_to button_image_tag_to

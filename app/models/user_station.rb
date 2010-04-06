@@ -14,7 +14,9 @@
 #
 
 class UserStation < ActiveRecord::Base
+  include Db::Predicates::LimitedTo
   include Summary::TotalListensProxy
+  include Searchable::ByName
   include Station::Playable
 
   module Most
@@ -22,6 +24,7 @@ class UserStation < ActiveRecord::Base
       abstract_stations.most_created(limit)
     end
   end
+
 
   belongs_to :abstract_station
   

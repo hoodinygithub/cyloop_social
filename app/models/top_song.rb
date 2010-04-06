@@ -12,6 +12,7 @@
 
 class TopSong < ActiveRecord::Base
   include Summary::Predicates
+  include Db::Predicates::LimitedTo
   belongs_to :site
   belongs_to :song, :foreign_key => :song_id
 end
