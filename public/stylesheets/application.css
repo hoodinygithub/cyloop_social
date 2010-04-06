@@ -2387,6 +2387,12 @@ img.avatar_four_thumbs_big {
     width: 350px;
 }
 
+.slug_box {
+    width: 425px;
+    height: 26px;
+    padding-top : 10px;
+}
+
 .left_s {
     float: left;
 }

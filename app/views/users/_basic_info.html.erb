@@ -48,9 +48,9 @@ $(document).ready(function(){
       </div>
       <div class="right_s">
         <b><%= f.label :slug %></b>
-        <div class="grey_round_box align_right">
-            <span class="grey"><small>http://www.cyloop.com/</small></span>
-            <%= f.text_field :slug, :class => 'input half_width' %>
+        <div class="grey_round_box align_left slug_box">            
+          <span class="grey"><small>cyloop.com/</small></span>
+          <b class='half_width'><%= @user.slug %></b>
         </div>
       </div>
       <br class="clearer" />
