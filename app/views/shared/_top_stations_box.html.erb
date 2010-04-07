@@ -11,13 +11,21 @@
         %>
       </div>
     <% end %>
-
+    
+    <% index = (3 - profile_user.stations.most_created(3).size) %>
+    <% index.times do |i| %>
+      <div class="empty_box gb_medium <%= "last_box" if i == (index-1) %>">
+        &nbsp;
+      </div>
+    <% end %>
     <br class="clearer">
 
-    <div class="align_right">
-      <b>
-        <%= link_to(t('actions.view_more'), '#') %>
-      </b>
-    </div>
+    <% if profile_user.stations.most_created(3).size >= 3 %>
+      <div class="align_right">
+        <b>
+          <%= link_to(t('actions.view_more'), '#') %>
+        </b>
+      </div>
+    <% end %>
   </div>
 <% end %>

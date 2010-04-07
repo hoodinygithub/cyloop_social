@@ -882,6 +882,9 @@ en:
     destroy:
       sign_out: Log out
   user:
+    has_no_activity: "{{user_name}} has no activity" 
+    is_not_following_anybody: "{{user_name}} is not following anybody"  
+    hasnt_create_any_station: "{{user_name}} hasn't created any stations" 
     background_align: Background Align
     receives_following_notifications: Alert me when someone follows me
     name: Name

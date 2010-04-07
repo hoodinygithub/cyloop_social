@@ -1,16 +1,24 @@
 <div class="box_content">
-  <h1>RECENT ACTIVITY</h1>
+  <h1><%= t("home.recent_activity") %></h1>
 
-  <ul class="recent_activity_list">
-    <li><b><a href="#">Jason</a></b> created a new station called: <a href="#">These times that try mens souls</a> <span class="grey">5 days ago</span></li>
-    <li><b><a href="#">Jason</a></b> created a new station called: <a href="#">These times that try mens souls</a> <span class="grey">5 days ago</span></li>
-    <li><b><a href="#">Jason</a></b> created a new station called: <a href="#">These times that try mens souls</a> <span class="grey">5 days ago</span></li>
-    <li><b><a href="#">Jason</a></b> created a new station called: <a href="#">These times that try mens souls</a> <span class="grey">5 days ago</span></li>
-    <li><b><a href="#">Jason</a></b> created a new station called: <a href="#">These times that try mens souls</a> <span class="grey">5 days ago</span></li>
-    <li><b><a href="#">Jason</a></b> created a new station called: <a href="#">These times that try mens souls</a> <span class="grey">5 days ago</span></li>
-  </ul>
+  <% if false %>
+    <ul class="recent_activity_list">
+      <li><b><a href="#">Jason</a></b> created a new station called: <a href="#">These times that try mens souls</a> <span class="grey">5 days ago</span></li>
+      <li><b><a href="#">Jason</a></b> created a new station called: <a href="#">These times that try mens souls</a> <span class="grey">5 days ago</span></li>
+      <li><b><a href="#">Jason</a></b> created a new station called: <a href="#">These times that try mens souls</a> <span class="grey">5 days ago</span></li>
+      <li><b><a href="#">Jason</a></b> created a new station called: <a href="#">These times that try mens souls</a> <span class="grey">5 days ago</span></li>
+      <li><b><a href="#">Jason</a></b> created a new station called: <a href="#">These times that try mens souls</a> <span class="grey">5 days ago</span></li>
+      <li><b><a href="#">Jason</a></b> created a new station called: <a href="#">These times that try mens souls</a> <span class="grey">5 days ago</span></li>
+    </ul>
 
-  <div class="align_right">
-    <b><a href="#">view more</a></b>
-  </div>
+    <div class="align_right">
+      <b><a href="#">view more</a></b>
+    </div>
+  <% else %>
+    <div class="big_text">
+      <br/>
+      <%= t("user.has_no_activity", :user_name => profile_account.name) %> 
+      <br/><br/>
+    </div>
+  <% end %>
 </div><!--/end box_content -->
