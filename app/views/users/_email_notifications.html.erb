@@ -14,7 +14,7 @@
     <div class="form_row last">
       <div class="align_right right_side">
         <a href="#" class="cancel_button"><%= t('account_settings.cancel') %></a>
-        <a href="#" class="blue_button" onclick="$(this).closest('form').submit();"><span><span><%= t('account_settings.update') %></span></span></a>
+        <a href="#" class="blue_button" onclick="$(this).closest('form').submit(); return false;"><span><span><%= t('account_settings.update') %></span></span></a>
       </div>
       
       <br class="clearer" />

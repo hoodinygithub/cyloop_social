@@ -610,7 +610,9 @@ module ApplicationHelper
     error_message_on model, method, :prepend_text => (!key.to_s.empty? ? "#{t(key)} " : "")
   end
 
-  def cyloop_logo_path
+  def cyloop_logo_path(sm=true)
+    sufix = "_sm" if sm
+
     path = case site_code.to_s
     when 'msnbr'
       'br'
@@ -629,12 +631,18 @@ module ApplicationHelper
     else
       site_code.to_s
     end
-    "/images/msn_#{path}_music_sm.png"
+    "/images/msn_#{path}_music#{sufix}.png"
   end
   
   def nice_elapsed_time(timestamp)
     time = Time.at(timestamp.to_i)
     distance_of_time_in_words_to_now(time, true)
   end
+
+  def market_logo
+    image = image_tag(cyloop_logo_path(false), :id => 'logo')
+    link_to(image, msn_home_page_link_path)
+  end
+
 end
 

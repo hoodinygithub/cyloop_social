@@ -11,6 +11,7 @@ module Account::Website
   end
 
   def websites=(ary)
+    ary.each { |v| v.gsub!('http://', '') }
     write_attribute(:websites, Array(ary).select{|v| !v.blank? }[0..4]) # write up to 5 non-blank items
   end
 
