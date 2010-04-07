@@ -485,7 +485,7 @@ Base.account_settings.add_website = function() {
   $('#websites_clearer').before('<div class="website_row">' + 
    '<input id="user_websites_" name="user[websites][]" type="hidden" value="' + value + '" />' +
    '<b><big><a href="http://' + value + '">' + value + '</a></big> &nbsp; ' +
-   '<a href="#" class="black delete_site">[ DELETE ]</a></b><br/></div>');
+   '<a href="#" class="black delete_site">[' + Base.locale.t('account_settings.delete') + ']</a></b><br/></div>');
   $('.delete_site').click(Base.account_settings.delete_website);
   $(this).val('');
 };
