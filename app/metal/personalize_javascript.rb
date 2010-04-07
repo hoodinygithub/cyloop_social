@@ -11,11 +11,12 @@ class PersonalizeJavascript
         params    = request.params
         logout_url = params['logout_url'] ? "<a href='#{params['logout_url']}'>#{I18n.t("sessions.destroy.sign_out").strip}<\/a>" : ""
         I18n.default_locale = params['lang'].to_sym rescue :en
+        current_user = User.find(session[:user_id])
         js = <<-END
         jQuery(document).ready(function($){
         	$('#login_links').html("#{logout_url}");
-          $('#userdata_box .user_name').text("#{params['user_name']}");
-          $('#userdata_box .avatar').attr("src", "#{params['avatar_path']}");
+          $('#userdata_box .user_name').text("#{current_user.try(:first_name)}");
+          $('#userdata_box .avatar').attr("src", "#{AvatarsHelper.avatar_path(current_user, :tiny)}");
           $('#userdata_box').removeClass("user_data_logged_out").addClass("user_data_logged_in");
         });
         END

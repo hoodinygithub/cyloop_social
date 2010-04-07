@@ -550,8 +550,7 @@ Base.main_search.select_scope = function() {
  * Register and triggers
  */
 Base.init = function() {
-  jQuery('.png_fix').supersleight({shim: '../images/blank.gif'});
-  jQuery('#slides').cycle({fx: 'fade', timeout: 5000, pager: '#pager_links'});
+  $('#slides').cycle({fx: 'fade', timeout: 5000, pager: '#pager_links'});
   this.stations.close_button_event_binder();
   this.layout.hide_success_and_error_messages();
   this.account_settings.highlight_field_with_errors();
