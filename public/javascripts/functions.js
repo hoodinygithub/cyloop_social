@@ -8,7 +8,7 @@ $(document).ready(function() {
         
         return false;
     });
-    $('.png_fix').supersleight({shim: '/images/blank.gif'});    
+    $('.png_fix').supersleight({shim: '/images/blank.gif'});
     
     //observe followers setting button click
     $('.settings_button').click(function() {

@@ -7,7 +7,7 @@ var Base = {
   header_search: {},
   main_search: {},
   community: {},
-  locale: {},
+  locale: {}
 };
 
 /*
