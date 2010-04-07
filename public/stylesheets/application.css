@@ -41,6 +41,10 @@
   border-bottom: 2px solid #ccc;
 }
 
+#msn_header_container {
+  padding-top: 10px;
+}
+
 #msn_header .wrapper, #msn_nav_extension ul {
   width: 960px;
   margin: 0px auto;
