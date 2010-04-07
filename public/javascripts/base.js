@@ -1,5 +1,5 @@
 var Base = {
-  message_fadeout_timeout: 15000,
+  message_fadeout_timeout: 8000,
   layout: {},
   account_settings: {},
   network: {},
@@ -16,7 +16,7 @@ var Base = {
 Base.layout.hide_success_and_error_messages = function() {
   var message = jQuery('.message');
   if (message.length) {
-    setTimeout(function() { message.fadeOut(); }, this.message_fadeout_timeout);
+    setTimeout(function() { message.fadeOut(); }, Base.message_fadeout_timeout);
   }
 };
 
