@@ -1,5 +1,5 @@
 var Base = {
-  message_fadeout_timeout: 8000,
+  message_fadeout_timeout: 15000,
   layout: {},
   account_settings: {},
   network: {},
