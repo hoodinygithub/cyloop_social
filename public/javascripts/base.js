@@ -449,10 +449,66 @@ Base.account_settings.highlight_field_with_errors = function() {
       message = jQuery("<br /><span>" +  field_error + "</span>")
       message.css({'color':'white', 'font-size':'0.8em'});
       grey_box.append(message);
+      Base.account_settings.focus_first_section_with_error($('span.fieldWithErrors input').first());
     }
+  }
+  
+  if (typeof(delete_account_errors) != 'undefined') {
+    var validator = $("#delete_account_form").validate();
+    validator.showErrors(delete_account_errors);
+    Base.account_settings.focus_first_section_with_error($('label.error').first());
   }
 };
 
+Base.account_settings.focus_first_section_with_error = function(field_error) {
+  $('div.accordion_box').hide().prev().removeClass('expanded');
+  field_error.closest('div.accordion_box')
+             .slideToggle(200)
+             .prev()
+             .toggleClass('expanded');
+};
+
+Base.account_settings.focus_first_field_with_error_by_label = function() {
+  var field_error = $('span.fieldWithErrors input').first();
+  $('div.accordion_box').hide().prev().removeClass('expanded');
+  field_error.closest('div.accordion_box')
+             .slideToggle(200, function() {
+               field_error.focus();
+             })
+             .prev()
+             .toggleClass('expanded');
+};
+
+
+Base.account_settings.add_website = function() {
+  var value = $(this).val().replace('http://', '');
+  $('#websites_clearer').before('<div class="website_row">' + 
+   '<input id="user_websites_" name="user[websites][]" type="hidden" value="' + value + '" />' +
+   '<b><big><a href="http://' + value + '">' + value + '</a></big> &nbsp; ' +
+   '<a href="#" class="black delete_site">[ DELETE ]</a></b><br/></div>');
+  $('.delete_site').click(Base.account_settings.delete_website);
+  $(this).val('');
+};
+
+Base.account_settings.delete_website = function() {
+  $(this).closest('.website_row').remove();
+  return false;
+};
+
+Base.account_settings.update_avatar_upload_info = function() {
+  $('#avatar_upload_info').text($(this).val());
+};
+
+Base.account_settings.delete_account_submit = function() {
+  var validator = $(this).closest('form').validate();
+  var form = $(this).closest('form');
+  if (form.valid()) {
+    form.submit();
+  } else {
+    validator.showErrors();
+  }
+  return false;
+}
 
 /*
  * header search
@@ -553,7 +609,6 @@ Base.init = function() {
   $('#slides').cycle({fx: 'fade', timeout: 5000, pager: '#pager_links'});
   this.stations.close_button_event_binder();
   this.layout.hide_success_and_error_messages();
-  this.account_settings.highlight_field_with_errors();
   this.header_search.dropdown();
 };
 

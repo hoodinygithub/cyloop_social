@@ -1,7 +1,22 @@
 <% content_for :javascript do %>
-  <% if @user.errors.size > 0 %>
-    field_with_errors = <%= @user.errors.to_json %>;
-  <% end %>
+  $(document).ready(function(){
+
+    <% if @user.errors.size > 0 or @delete_account_errors %>
+      field_with_errors     = <%= @user.errors.to_json %>;
+      delete_account_errors = <%= @delete_account_errors.to_json %>;
+      Base.account_settings.highlight_field_with_errors();
+    <% end %>
+
+    $('#user_avatar').focus(Base.account_settings.update_avatar_upload_info);
+    $('#user_avatar').change(Base.account_settings.update_avatar_upload_info);
+    $('#add_website').bind('keydown', 'return', Base.account_settings.add_website);
+    $('.delete_site').click(Base.account_settings.delete_website);
+    $('.submit_button').click(function() {
+      $(this).closest('form').submit(); 
+      return false;
+    });
+    $("#delete_account_form .submit_button").click(Base.account_settings.delete_account_submit);
+  });
 <% end %>
 
 <div id="internal_content">

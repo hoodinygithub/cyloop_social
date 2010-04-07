@@ -1,35 +1,3 @@
-<% content_for :javascript do %>
-var errors = <%= @delete_account_errors.to_json %>;
-
-var deleteAccountSubmit = function() {
-  var validator = $(this).closest('form').validate();
-  var form = $(this).closest('form');
-  if (form.valid()) {
-    form.submit();
-  } else {
-    validator.showErrors();
-  }
-  return false;
-}
-
-var focusFirstFieldwithError = function() {
-  var error_label = $('label.error').first();
-  error_label.closest('div.accordion_box')
-             .slideToggle(200, function() {
-               $("#" + error_label.attr('for')).focus();
-             })
-             .prev()
-             .toggleClass('expanded');
-}
-
-$(document).ready(function(){
-  $("#delete_account_form .submit_button").click(deleteAccountSubmit);
-  var validator = $("#delete_account_form").validate();
-  validator.showErrors(errors);
-  focusFirstFieldwithError();
-});
-<% end %>
-
 <div class="accordion_title"><%= t('account_settings.delete_account') %></div>
 <div class="accordion_box">
   <% form_for @user, :html => { :method => :delete, :class => "account_settings", :id => 'delete_account_form' }, :url => my_cancellation_path do |f| %>

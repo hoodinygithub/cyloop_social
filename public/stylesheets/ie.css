@@ -16,10 +16,6 @@
     top: -2px;
 }
 
-label.label_holder input.file{
-    filter: alpha(opacity=0)!important; 
-}
-
 label.label_holder {
   margin-right: 90px;
 }
@@ -29,7 +25,6 @@ label.label_holder {
   padding-top: 55px;
   padding-left: 0px !important;
 }
-
 
 #avatar_upload_info {
   margin-top: 30px;

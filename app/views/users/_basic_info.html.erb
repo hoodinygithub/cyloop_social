@@ -1,33 +1,3 @@
-<% content_for :javascript do %>
-
-var uploadInfo = function(){
-  $('#avatar_upload_info').text($(this).val());
-}
-
-var addWebSite = function() {
-  var value = $(this).val().replace('http://', '');
-  $('#websites_clearer').before('<div class="website_row">' + 
-   '<input id="user_websites_" name="user[websites][]" type="hidden" value="' + value + '" />' +
-   '<b><big><a href="http://' + value + '">' + value + '</a></big> &nbsp; ' +
-   '<a href="#" class="black delete_site">[ DELETE ]</a></b><br/></div>');
-  $('.delete_site').click(deleteWebSite);
-  $(this).val('');
-}
-
-var deleteWebSite = function() {
-  $(this).closest('.website_row').remove();
-  return false;
-}
-
-$(document).ready(function(){
-  $('#user_avatar').focus(uploadInfo);
-  $('#user_avatar').change(uploadInfo);
-  $('#add_website').bind('keydown', 'return', addWebSite);
-  $('.delete_site').click(deleteWebSite);
-});
-
-<% end %>
-
 <div class="accordion_title expanded"><%= t('account_settings.basic_info') %></div>
 <div class="accordion_box expanded">
   <% form_for @user, :html => { :method => :put, :multipart => true, :class => "account_settings", :id => 'basic_info_form' }, :url => my_settings_path do |f| %>
@@ -81,7 +51,7 @@ $(document).ready(function(){
     <div class="form_row">
       <b><%= f.label :websites %></b>
       <div class="grey_round_box left_side">
-        <input type="text" id="add_website" class="input full_width" />
+        <input type="text" id="add_website" class="input full_width" name="user[websites][]" />
       </div>
       <br class="clearer" />
       <div id="websites">
@@ -123,7 +93,7 @@ $(document).ready(function(){
     <div class="form_row last">
       <div class="align_right right_side">
         <a href="#" class="cancel_button"><%= t('account_settings.cancel') %></a>
-        <a href="#" class="blue_button" onclick="$(this).closest('form').submit();"><span><span><%= t('account_settings.save') %></span></span></a>
+        <a href="#" class="blue_button submit_button"><span><span><%= t('account_settings.save') %></span></span></a>
       </div>
 
       <br class="clearer" />

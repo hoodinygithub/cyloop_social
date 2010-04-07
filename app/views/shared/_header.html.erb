@@ -10,7 +10,7 @@
 
 <div id="header">
   <div id="header_content">
-    <%= link_to(image_tag('logo.gif', :id => 'logo'), msn_home_page_link_path) %>
+    <%= market_logo %>
     <%= render 'shared/main_links' %>
     <%= render :partial => 'shared/login_links', :locals => {:logged_out => logged_out} %>
     <%= render 'shared/search_form' %>

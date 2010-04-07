@@ -417,6 +417,7 @@ a:hover {
 
 #logo {
     float: left;
+    margin-top: 5px;
 }
 
 #main_links {
@@ -3245,6 +3246,7 @@ label.label_holder input.file{
   left:-198px;top:0px;
   position: relative;
   z-index:2;
+  filter: alpha(opacity=0)!important; /* fix for ie */
 }
 
 label.label_holder{
