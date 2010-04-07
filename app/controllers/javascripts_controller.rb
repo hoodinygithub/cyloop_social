@@ -17,7 +17,7 @@ class JavascriptsController < ApplicationController
 
       keys.each do |key|
         key_to_eval = key.split('.').collect {|k| "['#{k}']"}.join("")
-        element = eval("locale_content#{key_to_eval}")
+        element = eval("locale_content#{key_to_eval}") rescue nil
         @translations[language][key] = element
       end
     end
