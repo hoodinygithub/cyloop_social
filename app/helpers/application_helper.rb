@@ -624,7 +624,7 @@ module ApplicationHelper
     when 'msnar'
       'ar'
     else
-      site_code.to_s
+      return '/images/cyloop_logo.png'
     end
     "/images/msn_#{path}_music#{sufix}.png"
   end
