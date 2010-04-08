@@ -544,8 +544,8 @@ Base.account_settings.highlight_field_with_errors = function() {
       message = jQuery("<br /><span>" +  field_error + "</span>")
       message.css({'color':'white', 'font-size':'0.8em'});
       grey_box.append(message);
-      Base.account_settings.focus_first_section_with_error($('span.fieldWithErrors input').first());
     }
+    Base.account_settings.focus_first_section_with_error($('span.fieldWithErrors input').first());
   }
   
   if (typeof(delete_account_errors) != 'undefined') {
