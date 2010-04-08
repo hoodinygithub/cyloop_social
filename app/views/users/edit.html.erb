@@ -9,7 +9,6 @@
 
     $('#user_avatar').focus(Base.account_settings.update_avatar_upload_info);
     $('#user_avatar').change(Base.account_settings.update_avatar_upload_info);
-    $('#add_website').bind('keydown', 'return', Base.account_settings.add_website);
     $('.delete_site').click(Base.account_settings.delete_website);
     $('.submit_button').click(function() {
       $(this).closest('form').submit(); 

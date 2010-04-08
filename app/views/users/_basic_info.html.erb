@@ -53,6 +53,9 @@
       <div class="grey_round_box left_side">
         <input type="text" id="add_website" class="input full_width" name="user[websites][]" />
       </div>
+      <script type="text/javascript">
+        $('#add_website').bind('keydown', 'return', Base.account_settings.add_website);
+      </script>
       <br class="clearer" />
       <div id="websites">
       <% @user.websites.each_with_index do |site, index| %>
