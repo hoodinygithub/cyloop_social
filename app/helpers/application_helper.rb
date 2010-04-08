@@ -65,23 +65,16 @@ module ApplicationHelper
     special_button(:green_button, button_label, options)
   end
 
-  def station_contains(item, includes = 3)
+  def station_contains(item, limit=3)
     links = []
+    playable = item.try(:playable)
+    station_artists = item.station.playable.includes(limit) if playable
 
-    if item.is_a? RecEngine::Station
-      artists = item.includes[0..(includes - 1)]
-    elsif item.is_a? UserStation
-      artists = item.includes(includes)
-    elsif item.is_a? Artist
-      artists = item.station.includes(includes)
+    station_artists.each do |station_artist|      
+      links << link_to(station_artist.artist.name, artist_path(station_artist.artist))
     end
 
-
-    artists.each do |artist|
-      links << link_to(artist[:name], artist[:url]) if item.is_a? RecEngine::Station
-      links << link_to(artist.name, artist_path(artist)) if (item.is_a? UserStation or item.is_a? Artist)
-    end
-    "Contains: #{links.join(", ")}..."
+    "#{t('basics.contains')}: #{links.join(", ")}..."
   end
 
 
