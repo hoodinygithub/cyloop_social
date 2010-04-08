@@ -1004,8 +1004,9 @@ pt_BR:
     station: Station
     start_listening: "Come\xC3\xA7ar ouvir"
     create_your_own_personalized_radio_station: "O que voc\xC3\xAA quer ouvir?"
+    text_about_radio: "Text About Radio"    
     create_radio: "Criar r\xC3\xA1dio"
-    explaing_what_is_and_why_create_a_new_radio: "Digite o nome do seu artista favorito. Cyloop criar\xC3\xA1 uma radio personalizada com m\xC3\xBAsidas de seus artistas favoritos."
+    explaing_what_is_and_why_create_a_new_radio: "Digite o nome do seu artista favorito. Cyloop criar\xC3\xA1 uma radio personalizada com m\xC3\xBAsidas dele."
     type_artist_name: Escreva o nome do artista
     create_your_own_station_now: "Crie sua pr\xC3\xB3pria r\xC3\xA1dio agora!"
     top_songs: Mais Tocadas
