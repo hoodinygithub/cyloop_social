@@ -5,6 +5,7 @@ db/schema.rb
 *.swp
 *.swo
 config/development.sphinx.conf
+public/flash/debug
 public/system
 db/tyrant
 vendor/cyqueue
