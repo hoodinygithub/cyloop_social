@@ -15,7 +15,7 @@
     <% if most_played_stations.size >= 3 %>
       <div class="align_right">
         <b>
-          <%= link_to(t('actions.view_more'), '#') %>
+          <%= link_to(t('actions.view_more'), profile_owner? ? my_stations_path : user_stations_path ) %>
         </b>
       </div>
     <% end %>
