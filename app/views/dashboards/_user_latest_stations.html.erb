@@ -1,4 +1,4 @@
-<h1><%= t('home.user_latest_stations', :user_name => profile_account.first_name.upcase) %></h1>
+<h1><%= t('dashboards.user_latest_stations', :user_name => profile_account.first_name.upcase) %></h1>
 <% if @latest_stations.empty? %>
   <div class="big_round_box png_fix">
     <%= t("user.hasnt_create_any_station", :user_name => profile_account.name.upcase) %>

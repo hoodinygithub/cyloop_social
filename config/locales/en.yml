@@ -39,6 +39,7 @@ en:
   dashboards:
     follows: "{{user_name}} FOLLOWS"
     top_stations: "{{user_name}}'S TOP STATIONS"
+    user_latest_stations:  "{{user_name}}'S LATEST STATIONS"
     recent_activity: "RECENT ACTIVITY"
     messages:
       artist_not_found: We couldn't find an artist by that name. Please search again.
@@ -867,7 +868,7 @@ en:
     top_songs: Top Songs
     top_stations: Top Stations
     recommended_artists: Recommended Artists
-    user_latest_stations:  "{{user_name}}'S LATEST STATION"
+    latest_stations:  "LATEST STATIONS"
     cyloop_recommends: CYLOOP RECOMMENDS
   sessions:
     new:
