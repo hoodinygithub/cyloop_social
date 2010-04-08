@@ -14,9 +14,7 @@
             <span class="blue"><%= abstract_station.name %></span><br/>
           </span>
           <br class="clearer" />
-
-          <%= t("basics.contains") %>:
-          <%= abstract_station.includes(3).map {|station_artist| link_to station_artist.artist.name, station_artist.artist, :target => '_blank'}.join(", ") %>
+          <%= station_contains(abstract_station) %>
         </div>
 
         <div class="visible">

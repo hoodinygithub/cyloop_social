@@ -67,8 +67,7 @@ module ApplicationHelper
 
   def station_contains(item, limit=3)
     links = []
-    playable = item.try(:playable)
-    station_artists = item.station.playable.includes(limit) if playable
+    station_artists = item.includes(limit)
 
     station_artists.each do |station_artist|      
       links << link_to(station_artist.artist.name, artist_path(station_artist.artist))
