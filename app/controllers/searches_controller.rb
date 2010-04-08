@@ -1,8 +1,10 @@
 class SearchesController < ApplicationController
+
   def show
     @active_scope=params[:scope]
     @counts=cross_count(params[:q])
     @active_scope = @counts.sort {|a,b| a[1]<=>b[1]}.last.first.downcase if params[:scope] == "any"
+    @active_scope = 'station' if @active_scope == 'abstractstation'
     @results=individual_search(params[:q],@active_scope, 20, ordering(@active_scope,params[:order]), sorting(@active_scope,params[:order]))
   end
 
@@ -13,7 +15,7 @@ class SearchesController < ApplicationController
 
   private
     def individual_search (q, scope, per_page = 20, order = nil, sort = nil )
-      scope="AbstractStation" if scope=="station"
+      scope="AbstractStation" if scope=="station" ||  scope=="abstractstation"
       @scope = scope.classify.constantize
       query="#{q}"
       query="#{q}*" if scope.downcase=="song" || scope.downcase=="album" || scope.downcase=="artist"

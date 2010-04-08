@@ -7,15 +7,15 @@
 <ul class="followers_list">
   <% @results.each do |artist|%>
     <li>
-        <a href="#"><div id="logo"><%= avatar_for(artist, :search, {:alt => " #{artist.name}", :class =>"follower_image"}) %></div></a>
+        <div id="logo"><%= link_to(avatar_for(artist, :search, {:alt => " #{artist.name}", :class =>"follower_image"}),artist) %></div>
         <div class="follower_text">
-            <b><a href="#"><%= artist.name %></a></b><br/>
+            <b><%= link_to artist.name, artist %></b><br/>
             <span><%= "#{artist.city}" %></span><br/>
             <span><%= "#{artist.genre.name}" unless artist.genre.nil? %></span>
         </div>
 
         <div class="follower_actions w_settings">
-            <a href="#"><img src="/images/play_button.png" class="png_fix" alt="" /></a>
+            <!-- phase 2 <a href="#"><img src="/images/play_button.png" class="png_fix" alt="" /></a> -->
             <% if current_user && current_user.follows?(artist) %>
               <%= green_button(t('actions.unfollow'),
                 :onclick => "Base.community.unfollow('#{artist.slug}', this, #{following_page?})",
@@ -28,7 +28,7 @@
             <br/>
         </div>
         <br class="clearer" />
-        <div class="long_text"><a href="#"><%= artist.station.nil? ? "0": "1"%></a> <%= t('basics.stations') %> / <a href="#"><%= artist.followers.size %></a> <%= t('users.stats.followers') %></div>
+        <div class="long_text"><a href="#"><%= artist.stations.size %></a> <%= t('basics.stations') %> / <a href="#"><%= artist.followers.size %></a> <%= t('users.stats.followers') %></div>
     </li>
   <% end %>
 </ul><!--/end followers_list -->

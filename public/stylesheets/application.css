@@ -979,8 +979,9 @@ img.artist_icon_box.tiny {
     margin-bottom:10px;
 }
 
-.search_results_header { display: block; float: left; }
-
+.search_results_header { display: block; float: left; text-transform: uppercase; }
+.search_result { line-height: 35px; margin: 0 0 10px 0; height: 35px; }
+.search_results h1 { text-transform: uppercase; }
 .search_results_ajax { display: none; float: right; }
 
 .search_list {
@@ -1406,6 +1407,7 @@ img.avatar_four_thumbs_big {
     line-height: 14px;
     position: relative;
     display: inline-block;
+    text-transform: uppercase;
     left: -5px;
 }
 

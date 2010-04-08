@@ -8,40 +8,39 @@
 <ul class="subcriptions_list">
   <% @results.each do |station|%>
     <li>
-                                <a href="#"><img src="images/listen_icon.png" class="listen_icon png_fix" alt="" title="Listen" /></a>
+        <a href="<%= radio_path(:station_id => station.id) %>"><img src="images/listen_icon.png" class="listen_icon png_fix" alt="" title="Listen" /></a>
 
-                                <div class="four_thubms_big">
-                                    <a href="#"><%= avatar_for(station.artist.albums.first, :search_station, {:alt => station.artist.albums.first.name} ) rescue avatar_for(station.artist, :search_station, {:alt => ""} ) %></a>
-                                    <% station.includes.each do |included_artist| %>
-                                      <a href="#"><%= avatar_for(included_artist.albums.first, :search_station, {:alt => ""} ) rescue avatar_for(included_artist.artist, :search_station, {:alt => ""} ) %></a>
-                                    <% end %>
-                                </div><!--/end four_thubms_big -->
+        <div class="four_thubms_big">
+            <%= four_thumbs_to(station.station, {:type => :big}) %>
+        </div><!--/end four_thubms_big -->
 
-                                <div class="subcription_text">
-                                    <big><a href="#"><%= station.name%></a></big><br/>
-                                    <span class="grey"><%= t('basics.last_modified') %> <%= station.updated_at.strftime("%m/%d/%Y")
-%></span><br/>
-                                    <%= t('basics.contains') %>:
-                                    <% station.includes.each do |included_artist| %>
-                                      <a href="#"><%= included_artist.name %></a>,
-                                    <% end %>
-                                    ...<br/>
+        <div class="subcription_text">
+            <big><%= link_to(station.name, station.artist ) %></big><br/>
+            <span class="grey"><%= t('basics.last_modified') %> <%= station.updated_at.strftime("%m/%d/%Y") %></span><br/>
+            <%= t('basics.contains') %>:
+            <% station.includes.each do |included_artist| %>
+              <%= link_to included_artist.name, included_artist.artist %>,
+            <% end %>
+            ...<br/>
 
-                                    <div class="buttons">
-                                        <a href="#"><img src="/images/listen_button.png" class="png_fix" alt="" title="Listen" /></a>
-                                        <a href="#"><img src="/images/play_button.png" class="png_fix" alt="" title="Play" /></a>
-                                    </div>
+            <div class="buttons">
+                <%= link_to(image_tag("listen_button.png", :class => "png_fix", :alt => "", :title => "Listen" ), radio_path(:station_id => station.id) ) %>
+                <%= link_to(image_tag("play_button.png", :class => "png_fix", :alt => "", :title => "Play" ), radio_path(:station_id => station.id) ) %>
+            </div>
 
-                                    <div class="subcription_creator">
-                                        <div id="logo"><%= avatar_for(station.user_stations.first.owner, :search, {:alt => ""}) rescue "" %></div>
-                                        <div class="creator_text">
-                                            <b><%= t('basics.created_by') %> <a href="#"><%= station.user_stations.first.owner.name rescue "" %></a></b><br/>
-                                            <%= t("basics.click_to_follow", :follow_link => link_to(t("basics.here"), "#")) %> <%= station.user_stations.first.owner.name rescue "" %>.
-                                        </div>
-                                    </div>
-                                </div><!--/end subcription_text -->
-                                <br class="clearer" />
-                            </li>
+            <div class="subcription_creator">
+              <% unless station.user_stations.first.nil? %>
+                <div id="logo"><%= avatar_for(station.user_stations.first.owner, :search, {:alt => ""}) rescue "" %></div>
+                <div class="creator_text">
+                    <b><%= t('basics.created_by') %> <%= link_to(station.user_stations.first.owner.name, "/#{station.user_stations.first.owner.slug}") rescue "" %></b><br/>
+                    <%= render :partial =>'searches/user_following', :locals => {:current_user => current_user, :user =>station.user_stations.first.owner} if current_user %>
+                    <%= render :partial =>'searches/user_following', :locals => {:user =>station.user_stations.first.owner} unless current_user %>
+                </div>
+              <% end %>
+            </div>
+        </div><!--/end subcription_text -->
+        <br class="clearer" />
+      </li>
   <% end %>
 </ul><!--/end followers_list -->
 

@@ -12,7 +12,7 @@ var Base = {
   utils: {}
 };
 
-/* 
+/*
  * Utils
  */
 var clearInput = function(value, input) {
@@ -41,33 +41,33 @@ Base.layout.bind_events = function() {
   $('#userdata_arrow').click(function() {
       $('#userdata_box .links').slideToggle(200);
       $('#userdata_arrow .arrow_up').toggleClass('visible');
-      
+
       return false;
   });
-  
+
   //observe followers setting button click
   $('.settings_button').click(function() {
       $('.actions_settings', $(this).closest('.follower_actions')).slideToggle('fast');
-      
+
       return false;
   });
-  
+
   //observe .artist_box mouse over
   $('.artist_box').hover(function() {
     $(this).addClass('hover');
   }, function() {
     $(this).removeClass('hover');
   });
-  
-  
+
+
   //observe accordion tabs
   $('.accordion_title').click(function() {
       $(this).toggleClass('expanded');
       $(this).next().slideToggle(200);
-      
+
       return false;
   });
-  
+
   //observe listen_icon button mouse over
   $('.listen_icon').hover(function() {
     clearTimeout(Base.listen_icon_timer);
@@ -77,7 +77,7 @@ Base.layout.bind_events = function() {
       $('.unsubscribe_mix').fadeOut(300);
     }, 1000);
   });
-  
+
   $('.unsubscribe_mix').hover(function() {
     clearTimeout(Base.listen_icon_timer);
   }, function() {
@@ -85,15 +85,15 @@ Base.layout.bind_events = function() {
       $('.unsubscribe_mix').fadeOut(300);
     }, 1000);
   });
-  
-  
+
+
   //observe .songs_box mouse over
   $('.hoverable_list > li').hover(function() {
     $(this).addClass('hover');
   }, function() {
     $(this).removeClass('hover');
   });
-  
+
   //observe .rule_tooltip mouse over
   $('.rule').hover(function() {
     $t = $('.rule_tooltip', this);
@@ -107,12 +107,12 @@ Base.layout.bind_events = function() {
     $(this).stop();
     $(this).fadeTo(100,1);
   });
-  
+
   //observe popup close button click
   $('.popup_close, .popup_close_action').click(function() {
     $(this).closest('.popup').fadeOut('fast');
     return false;
-  });  
+  });
 }
 
 Base.layout.span_button = function(content) {
@@ -547,7 +547,7 @@ Base.account_settings.highlight_field_with_errors = function() {
     }
     Base.account_settings.focus_first_section_with_error($('span.fieldWithErrors input').first());
   }
-  
+
   if (typeof(delete_account_errors) != 'undefined') {
     var validator = $("#delete_account_form").validate();
     validator.showErrors(delete_account_errors);
@@ -577,7 +577,7 @@ Base.account_settings.focus_first_field_with_error_by_label = function() {
 
 Base.account_settings.add_website = function() {
   var value = $(this).val().replace('http://', '');
-  $('#websites_clearer').before('<div class="website_row">' + 
+  $('#websites_clearer').before('<div class="website_row">' +
    '<input id="user_websites_" name="user[websites][]" type="hidden" value="' + value + '" />' +
    '<b><big><a href="http://' + value + '">' + value + '</a></big> &nbsp; ' +
    '<a href="#" class="black delete_site">[' + Base.locale.t('account_settings.delete') + ']</a></b><br/></div>');
@@ -647,6 +647,7 @@ Base.header_search.dropdown = function() {
     });
 };
 
+
 Base.header_search.autocomplete = function(last_value) {
   jQuery('.search_results_ajax').show();
   var form_values = jQuery("#header_search_form").serializeArray();
@@ -683,6 +684,29 @@ Base.main_search.highlight_scope = function() {
     jQuery("#search_" + value).addClass('active')
   };
 
+Base.main_search.follow = function(user_slug, element) {
+  var $element = jQuery(element);
+  var params = {'user_slug':user_slug}
+  jQuery.post('/users/follow', params, function(response, status) {
+    if (status == 'success') {
+      jQuery($element).parent().parent().find('#not_following').hide();
+      jQuery($element).parent().parent().find('#following').show();
+    }
+  });
+};
+
+Base.main_search.unfollow = function(user_slug, element) {
+  var $element = jQuery(element);
+  var params = {'user_slug':user_slug}
+  jQuery.post('/users/unfollow', params, function(response, status) {
+    if (status == 'success') {
+      jQuery($element).parent().parent().find('#not_following').show();
+      jQuery($element).parent().parent().find('#following').hide();
+    }
+  });
+};
+
+
 Base.main_search.select_scope = function() {
   jQuery(".scope a").click(function() {
       value = this.id.match(/search_(.*)/)[1];
@@ -702,9 +726,9 @@ Base.main_search.select_scope = function() {
  */
 Base.init = function() {
   $('#slides').cycle({fx: 'fade', timeout: 5000, pager: '#pager_links'});
-  $('.png_fix').supersleight({shim: '/images/blank.gif'});  
+  $('.png_fix').supersleight({shim: '/images/blank.gif'});
   Base.stations.close_button_event_binder();
-  Base.layout.bind_events();  
+  Base.layout.bind_events();
   Base.layout.hide_success_and_error_messages();
   Base.header_search.dropdown();
 };

@@ -21,26 +21,36 @@
 
                      <%= t('basics.contains') %>:
                      <% album.songs[0..2].each do |included_song| %>
-                                      <a href="#"><%= included_song.title %></a>,
+                       <%= link_to(included_song.title, queue_song_path(:slug => included_song.artist.slug, :id => included_song.album, :song_id =>included_song)) rescue nil  %>,
                      <% end %>
                       ...
                   </div>
 
                   <div class="visible">
-                      <a href="#"><img src="/images/play_button.png" class="play_button" alt="" /></a>
-
-                      <a href="#"><%= album.name %></a><br/>
+                      <%= link_to image_tag("/images/play_button.png", :class => "play_button"), artist_album_path(album.owner, album, :autoplay => "true") %>
+                      <%= link_to album.name, artist_album_path(album.owner, album, :autoplay => "true") %><br/>
                       <span class="white"><%= album.released_on.strftime("%Y") rescue"" %></span>
                   </div>
               </div><!--/end overlay -->
           </div><!--/end artist_box -->
 
           <div class="reviews">
+            <big><b><%= link_to album.name, artist_album_path(album.owner, album, :autoplay => "true") %></b><br/>
+            <%= "Label: #{album.music_label} (#{album.released_on.strftime("%Y")})" rescue ""%>
+            </big><br/>
+            Contains:
+            <% album.songs[0..2].each do |included_song| %>
+                       <%= link_to(truncate(included_song.title,30), queue_song_path(:slug => included_song.artist.slug, :id => included_song.album, :song_id =>included_song)) rescue nil  %>,
+             <% end %>
+             <br/>
+             <br/>
               <div class="review_item">
-                  <div id="logo"><a href="#"><%= avatar_for(album.artists.first, :search, {:alt => ""} ) rescue"" %></a></div>
+                  <div id="logo"><%=link_to(avatar_for(album.artists.first, :search, {:alt => ""} ),album.artists.first) rescue"" %></div>
                   <div class="review_creator_large">
-                      <b><a href="#"><%= "#{album.artists.first.name}" rescue ""%></a></b><br/>
-                      <%= "#{album.artists.first.genre.name}" rescue"" %>
+                      <b><a href="#"><%= link_to("#{album.artists.first.name}",album.artists.first) rescue ""%></a></b><br/>
+                      <%= "#{album.artists.first.genre.name}" rescue"" %><br/>
+                      <%= render :partial =>'searches/user_following', :locals => {:current_user => current_user, :user =>album.artists.first} if current_user %>
+                      <%= render :partial =>'searches/user_following', :locals => {:user =>album.artists.first} unless current_user %>
                   </div>
                   <br class="clearer" />
               </div><!--/end review_item -->

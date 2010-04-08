@@ -1,7 +1,10 @@
+<script>
+ var msg="<%= t('search.search_hint', :default => 'Search for your favorite artist & music') %>";
+</script>
 <div id="search_form">
   <% form_for :search, :url => search_path, :html => { :onsubmit => 'return Base.header_search.buildSearchUrl();', :method => :get, :id => :header_search_form, :class =>:line } do |f| %>
     <div>
-      <%= text_field_tag :q, "Search for your favorite artist &amp; music",  {:id => :search_query, :class => "search_input", :onfocus => "clearInput('Search for your favorite artist &amp; music', this); $('.search_results_box').show(); ", :onblur => "restoreInput('Search for your favorite artist &amp; music', this); setTimeout(function() {$('.search_results_box').hide();}, 300);", :autocomplete => :off } %>
+      <%= text_field_tag :q, t('search.search_hint', :default => 'Search for your favorite artist & music'),  {:id => :search_query, :class => "search_input", :onfocus => " clearInput(msg, this); $('.search_results_box').show(); ", :onblur => "restoreInput(msg, this); setTimeout(function() {$('.search_results_box').hide();}, 300);", :autocomplete => :off } %>
       <% if site_includes(:msnbr)%>
         <%= f.hidden_field :market, :name => :mkt, :value => 'pt-BR'%>
       <% elsif site_includes(:msnmx)%>

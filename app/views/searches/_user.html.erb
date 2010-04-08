@@ -8,11 +8,11 @@
 <ul class="followers_list">
   <% @results.each do |user|%>
     <li>
-        <div id="logo"><a href="#"><%= avatar_for(user, :search, {:alt => "", :class =>"follower_image"}) %></a></div>
+        <div id="logo"><a href="#"><%= link_to(avatar_for(user, :search, {:alt => "", :class =>"follower_image"}), user) %></a></div>
         <div class="follower_text">
-            <b><a href="#"><%= user.name %></a></b><br/>
+            <b><%= link_to user.name, user %></b><br/>
             <span><%= user.city %></span><br/>
-            <a href="#"><%= user.stations.size.to_s %></a> <%= t('basics.stations') %> / <a href="#"><%= user.followers.size.to_s %></a> <%= t('users.stats.followers') %>
+            <a href="#"><%= user.total_user_stations %></a> <%= t('basics.stations') %> / <a href="#"><%= user.followers.size.to_s %></a> <%= t('users.stats.followers') %>
         </div>
         <div class="follower_actions w_settings"">
             <% if current_user && current_user.follows?(user) %>
@@ -26,7 +26,7 @@
             <% end %>
             <br/>
             <div class="blocked">
-              <% if current_user && current_user.blocks?(item) %>
+              <% if current_user && current_user.blocks?(user) %>
               <%= image_tag('blocked.gif') %> <%= t('blocks.blocked') %>
               <% end %>
             </div>

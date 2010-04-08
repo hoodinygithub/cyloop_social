@@ -780,8 +780,10 @@ en:
     more: More
     chart: Chart
     unknown: Unknown
-    click_to_follow: Click {follow_link} to follow
+    click_to_follow: Click {{follow_link}} to follow
     here: here
+    click_to_unfollow: Click {{follow_link}} to stop following
+    you_are: You are
   cancellation:
     confirmation:
       are_you_sure: Are you sure still want to cancel your account?
@@ -885,9 +887,9 @@ en:
     destroy:
       sign_out: Log out
   user:
-    has_no_activity: "{{user_name}} has no activity" 
-    is_not_following_anybody: "{{user_name}} is not following anybody"  
-    hasnt_create_any_station: "{{user_name}} hasn't created any stations" 
+    has_no_activity: "{{user_name}} has no activity"
+    is_not_following_anybody: "{{user_name}} is not following anybody"
+    hasnt_create_any_station: "{{user_name}} hasn't created any stations"
     background_align: Background Align
     receives_following_notifications: Alert me when someone follows me
     name: Name
@@ -955,6 +957,7 @@ en:
     search_web: Search Web
     search_songs: Search Songs
     search_artists: Search Artists
+    search_stations: Search Stations
     dashboard: Dashboard
     radio: Radio
     search_users: Search People
@@ -1004,6 +1007,7 @@ en:
   search:
     search_title: Search
     search_results_for: Search results for
+    search_hint: Search for your favorite artist & music
   biography:
     no_bio_availible: No bio available
     management:
