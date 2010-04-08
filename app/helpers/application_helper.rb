@@ -108,21 +108,21 @@ module ApplicationHelper
         station_images_with_links << link_to(image_tag(AvatarsHelper.avatar_path(artist.album, :small), :class => 'avatar_four_thumbs'), station_link)
       end
       station_images_with_links << content_tag(:br, "&nbsp;", :class => 'clearer') if options[:clearer]
-      html = content_tag(:div, station_images_with_links, :class => "four_thubms #{options[:class]}")
+      html = content_tag(:div, station_images_with_links, :class => "four_thumbs #{options[:class]}")
 
     elsif options[:type] == :medium
       station.includes(4).each do |artist|
         station_images_with_links << link_to(image_tag(AvatarsHelper.avatar_path(artist.album, :small), :class => 'avatar_four_thumbs_medium'), station_link)
       end
       station_images_with_links << content_tag(:br, "&nbsp;", :class => 'clearer') if options[:clearer]
-      html = content_tag(:div, station_images_with_links, :class => "four_thubms #{options[:class]}")
+      html = content_tag(:div, station_images_with_links, :class => "four_thumbs #{options[:class]}")
 
     elsif options[:type] == :big
       station.includes(4).each do |artist|
         station_images_with_links << link_to(image_tag(AvatarsHelper.avatar_path(artist.album, :small), :class => 'avatar_four_thumbs_big'), station_link)
       end
       station_images_with_links << content_tag(:br, "&nbsp;", :class => 'clearer') if options[:clearer]
-      html = content_tag(:div, station_images_with_links, :class => "four_thubms_big #{options[:class]}")
+      html = content_tag(:div, station_images_with_links, :class => "four_thumbs_big #{options[:class]}")
     end
   end
 
