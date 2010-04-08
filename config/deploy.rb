@@ -36,7 +36,7 @@ set :dbuser,              "hoodiny_db"
 set :dbpass,              "Q97t42WGDj8a"
 
 set :shared_path,         "#{deploy_to}/shared"
-set :sites,               ["mexico", "latam", "latino", "cyloop", "canada", "cyloopes", "argentina", "mexico_cs"]
+set :sites,               ["mexico_cs", "brazil_cs", "canada_fr_cs", "canada_en_cs", "cyloop_cs"]
 
 
 # comment out if it gives you trouble. newest net/ssh needs this set.
@@ -243,14 +243,13 @@ namespace :deploy do
   task :save_current_branch do
     if rails_env == 'staging'    
       run "echo '#{application} - #{branch}' > #{shared_path}/current_branch.log"
-      run "ln -s #{shared_base}/deployments.txt #{latest_release}/public/deployments.txt"      
+      run "ln -s #{shared_base}/common_cs/deployments.txt #{latest_release}/public/deployments.txt"      
     end
   end
   
   task :build_release_html, :roles => :app, :except => {:no_release => true, :no_symlink => true} do
     if rails_env == 'staging'
-      sites = %w(mexico brazil latam latino cyloop cyloopes canada_en canada_fr argentina) 
-      deployments_file = "#{shared_base}/deployments.txt"
+      deployments_file = "#{shared_base}/common_cs/deployments.txt"
       run "echo 'CURRENT STAGING BRANCHES' > #{deployments_file}"
       sites.each do |site| 
         run "cat #{shared_base}/#{site}/current_branch.log >> #{deployments_file}"
