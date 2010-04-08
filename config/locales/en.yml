@@ -57,6 +57,8 @@ en:
       title: Photos
     user_info:
       title: User Information
+    recent_activity:
+      title: RECENT ACTIVITY
     recently_created_stations:
       title: Recently Created Stations
     top_artists:

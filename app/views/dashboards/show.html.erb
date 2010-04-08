@@ -1,7 +1,7 @@
 <% content_for :javascript do %>
   var recommended_stations_queue = [<%= @recommended_stations_queue.collect(&:artist_id).join(", ") if @recommended_stations_queue %>];
-  
-  Base.network.load_latest();
+
+  Base.network.load_latest(<%= params.to_json %>);
 <% end %>
 
 <div id="internal_content">
@@ -10,11 +10,13 @@
     <%= render 'dashboards/left_column' %>
 
     <div id="center_column">
-
-      <%= render profile_owner? ? 'dashboards/recommended_stations' : 'dashboards/user_latest_stations' %>
-      <%= render 'dashboards/network_activity' %>
-      <%= render 'dashboards/comment_list' if profile_user? %>
-
+      <% if profile_owner? %>
+        <%= render'dashboards/recommended_stations' %>
+        <%= render 'dashboards/network_activity' %>
+        <%= render 'dashboards/comment_list' if profile_user? %>
+      <% else %>
+        <%=  render 'dashboards/user_latest_stations' %>
+      <% end %>
     </div><!--/end center_column -->
 
     <%= render 'dashboards/right_column' %>

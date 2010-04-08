@@ -1,5 +1,5 @@
 var Base = {
-  message_fadeout_timeout: 8000,
+  message_fadeout_timeout: 15000,
   listen_icon_timer: null,
   layout: {},
   account_settings: {},
@@ -20,11 +20,22 @@ var clearInput = function(value, input) {
    input.value = '';
  }
 }
+
 var restoreInput = function(value, input) {
  if(input.value == '') {
    input.value = value;
  }
 }
+
+Base.utils.handle_redirect = function(response) {
+  if (typeof(response) == 'object') {
+    if (typeof(response.status) != 'undefined' && typeof(response.url) != 'undefined') {
+      window.location = response.url;
+      return true;
+    }
+  }
+  return false;
+};
 
 /*
  * Layout shared behavior
@@ -114,6 +125,33 @@ Base.layout.bind_events = function() {
     return false;
   });
 }
+
+Base.layout.spin_image = function(type, no_margin) {
+  if (typeof(type) == 'undefined' || !type) {
+    image_name = 'blue_loading.gif';
+  } else {
+    image_name = type + "_loading.gif";
+  }
+  $img = jQuery("<img></img>");
+  $img.attr('src', '/images/' + image_name);
+  
+
+  if (typeof(no_margin) == 'undefined' || no_margin) {
+    $img.css({'margin-top':'5px'});
+  }
+  
+  return $img;
+};
+
+Base.layout.spanned_spin_image = function(type, no_margin) {
+  $img = Base.layout.spin_image(type, no_margin);
+  $span1 = jQuery('<span></span>');
+  $span2 = $span1.clone();
+  $span2.append($img);
+  $span1.append($span2);
+
+  return $span1;
+};
 
 Base.layout.span_button = function(content) {
   return "<span><span>" + content + "</span></span>";
@@ -217,12 +255,16 @@ Base.community.follow = function(user_slug, button, remove_div) {
   var old_onclick = $button.attr('onclick');
 
   $button_label = $button.children().children();
-  $button_label.html("...");
+  $button_label.html(Base.layout.spanned_spin_image());
 
   $button.attr('onclick', "");
   $button.bind('click', function() { return false; });
 
   jQuery.post('/users/follow', params, function(response, status) {
+    
+    login_required = Base.utils.handle_redirect(response);
+    if (login_required) return;
+    
     if (status == 'success') {
       $button.removeClass("blue_button");
       $button.addClass("green_button");
@@ -239,7 +281,7 @@ Base.community.unfollow = function(user_slug, button, remove_div) {
   var old_onclick = $button.attr('onclick');
 
   $button_label = $button.children().children();
-  $button_label.html("...");
+  $button_label.html(Base.layout.spanned_spin_image('green'));
 
   $button.attr('onclick', "");
   $button.bind('click', function() { return false; });
@@ -268,7 +310,8 @@ Base.community.block = function(user_slug, button) {
   var $settings_button = $main_div.find('.settings_button').children().children();
 
   $black_ul.fadeOut();
-  $settings_button.html("<img src='/images/blue_loading.gif'></img>");
+  //$settings_button.html("<img src='/images/blue_loading.gif'></img>");
+  $settings_button.html(Base.layout.spin_image(false, false));
 
   jQuery.post('/users/block', params, function(response, status) {
     if (status == 'success') {
@@ -291,7 +334,8 @@ Base.community.unblock = function(user_slug, button) {
   var $settings_button = $main_div.find('.settings_button').children().children();
 
   $black_ul.fadeOut();
-  $settings_button.html("<img src='/images/blue_loading.gif'></img>");
+  // $settings_button.html("<img src='/images/blue_loading.gif'></img>");
+  $settings_button.html(Base.layout.spin_image(false, false));
 
   jQuery.post('/users/unblock', params, function(response, status) {
     if (status == 'success') {
@@ -410,14 +454,17 @@ Base.stations.close_button_handler = function(object) {
 /*
  * Comment shared
  */
-Base.network.update_page = function(list) {
+Base.network.__update_page_owner_page = function(list) {
   $network_update_text = jQuery('#network_update_text');
   $show_more_button = jQuery('#show_more_comments');
   $comment_list        = jQuery('#network_comment_list');
   var $share_button = jQuery('a.compartir_button');
 
-  $share_button.fadeOut();
-
+  if (list.length == 0) {
+    $share_button.fadeIn();
+    return;
+  }
+  
   first_element = list[0];
   user_slug = first_element.user_slug;
   timestamp = first_element.timestamp;
@@ -444,9 +491,8 @@ Base.network.update_page = function(list) {
   $network_update_text.fadeIn();
 
   $comment_list.html("");
-  for (var i=list.length-1; i > 0 ; i--) {
+  for (var i=1; i < list.length ; i++) {
     activity = list[i];
-    old_time_ago_str = "123";
 
     $text_div = jQuery('<div></div>');
     $text_div.attr('class', 'comment_text');
@@ -482,21 +528,89 @@ Base.network.update_page = function(list) {
     $new_li.append($text_div);
     $new_li.append($clearer);
 
-    $comment_list.prepend($new_li);
+    $comment_list.append($new_li);
   }
 
   $share_button.fadeIn();
 
   if ($comment_list.find('li').length >= 5) {
-    $show_more_button.fadeIn();
+    $show_more_button.show();
   }
 };
 
-Base.network.load_latest = function() {
+Base.network.__update_page_user_page = function(list) {
+  $user_big_text = jQuery("#user_activity_big_text");
+  $ul = jQuery('#user_recent_activities');
+
+  $user_big_text.find('img').remove();
+  
+  if (list.length == 0) {
+    $user_big_text.find('span').fadeIn();
+    return;
+  }
+  
+  $user_big_text.remove();
+  
+  $ul.hide();
+  for (var i=0; i < list.length ; i++) {
+    activity = list[i];
+
+    $li   = jQuery("<li></li>");
+    $bold = jQuery("<b></b>");
+    $link = jQuery("<a></a>");
+    $span = jQuery("<span></span>");
+
+    $link.attr('href', '#');
+    $link.append(activity.user_slug);
+    $bold.append($link);
+    $li.append($bold);
+
+    $li.append("&nbsp;");
+    $li.append(activity.message);
+    
+    $span.attr('class', 'grey');
+    $span.append(activity.str_timestamp);
+    
+    $li.append("&nbsp;");
+    $li.append($span);
+    $ul.append($li);
+  }
+  
+  $ul.fadeIn();
+
+  // show "view more" option if list is huge
+  if (list.length >= 5) {
+    $parent = $ul.parent();
+    
+    $link = jQuery("<a></a>");
+    $link.attr('href', '#');
+    $link.append(Base.locale.t('actions.view_more'));
+    $bold = jQuery("<b></b>").append($link);
+
+    $view_more_div = jQuery("<div></div>").attr('class', 'align_right').append($bold);
+    $parent.append($view_more_div);
+  }
+};
+
+
+Base.network.update_page = function(list) {
+  var user_page = jQuery('#user_recent_activities').length > 0;
+  $form = jQuery('#network_update_form');
+  
+  if (user_page) {
+    Base.network.__update_page_user_page(list)
+  } else {
+    $form.show();
+    Base.network.__update_page_owner_page(list);
+  }
+};
+
+
+Base.network.load_latest = function(params) {
   jQuery(document).ready(function() {
-    $form = jQuery('#network_update_form');
-    jQuery.post('/activity/latest', function (response) {
-      $form.show();
+    if (typeof(params) != 'object') params = {};
+    
+    jQuery.post('/activity/latest', params, function (response) {
       Base.network.update_page(response);
     });
   });

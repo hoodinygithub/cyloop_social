@@ -2,6 +2,7 @@ class DashboardsController < ApplicationController
   before_filter :login_required
   before_filter :find_user_stations
   before_filter :auto_follow_profile  
+  before_filter :follow_user_after_login, :only => [:show]
   
   current_tab :dashboard 
   current_filter :songs
@@ -35,6 +36,15 @@ class DashboardsController < ApplicationController
   end
   
 private
+  def follow_user_after_login
+    if session[:follow_after_login]
+      account = Account.find(session[:follow_after_login])
+      current_user.follow(account)
+      session[:follow_after_login] = nil
+      return redirect_to user_path(account.slug)
+    end
+  end
+  
   # this is solely to cache so we don't do a ton of queries
   def find_user_stations
     stations = profile_user.stations.all(:limit => 5, :include => [:abstract_station])

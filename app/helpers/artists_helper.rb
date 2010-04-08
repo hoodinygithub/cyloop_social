@@ -8,8 +8,11 @@ module ArtistsHelper
   end
 
   def artist_url(item)
-    return "/#{item.slug}" if item.is_a? RecEngine::Station
-    return artist_path(item.slug) if item.is_a? Artist
+    if item.is_a? RecEngine::Station or item.is_a? RecEngine::Artist
+      item.profile_url
+    elsif item.is_a? Artist
+      artist_path(item.slug)
+    end
   end
   
   def artist_name(item)

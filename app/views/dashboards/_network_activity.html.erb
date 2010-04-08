@@ -1,5 +1,5 @@
+<h1><%= t('home.network_update') %></h1>
 <% if page_owner? %>
-  <h1><%= t('home.network_update') %></h1>
   <div class="network_update">
       <form id="network_update_form" style="display:none;">
           <div>
@@ -13,11 +13,13 @@
             
               <%= blue_button(t('actions.share'), :class => 'compartir_button', :onclick => 'Base.network.push_update()') %>
             
-              <div class="network_twitter">
-                  <input type="checkbox" />
-                  <%= link_to(image_tag('twitter_icon.gif'), '#') %>
-                  &nbsp;
-              </div>
+              <% if false %>
+                <div class="network_twitter">
+                    <input type="checkbox" />
+                    <%= link_to(image_tag('twitter_icon.gif'), '#') %>
+                    &nbsp;
+                </div>
+              <% end %>
             
               <div class="clearer"></div>
           </div>

@@ -2,9 +2,8 @@ class ActivitiesController < ApplicationController
   include ActionView::Helpers::DateHelper
   include ApplicationHelper
 
-  before_filter :account
+  before_filter :account, :except => [:latest_activities]
   before_filter :set_page, :except => [ :song ]
-  layout :set_layout
   before_filter :login_required, :only => [:update_status]
 
   def index
@@ -58,9 +57,17 @@ class ActivitiesController < ApplicationController
 
   private  
   def latest_activities
-    activities = current_user.activity_status.latest
-    activities.each { |a| a['str_timestamp'] = nice_elapsed_time(a['timestamp']) }
-    activities
+    if params[:slug]
+      @account = AccountSlug.find_by_slug(params[:slug]).account
+    elsif current_user
+      @account = current_user
+    end
+
+    if @account
+      activities = @account.activity_status.latest
+      activities.each { |a| a['str_timestamp'] = nice_elapsed_time(a['timestamp']) }
+      activities
+    end
   end
   
   def set_page
@@ -92,5 +99,4 @@ class ActivitiesController < ApplicationController
   def account
     @account = params[:user] ? Account.find(params[:user]) : nil
   end
-
 end
