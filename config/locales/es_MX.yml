@@ -265,8 +265,8 @@ es_MX:
   possessives: 
     third_person: 
       stations: Radios de {{subject}}
-      playlists: Playlists de {{subject}}
       followers: "Gente que est\xC3\xA1 siguiendo a {{subject}}"
+      playlists: Playlists de {{subject}}
       albums: "Albumes de {{subject}} "
       followees: "Gente que  {{subject}} est\xC3\xA1 siguiendo"
       follow_requests: Pedidos de Gente a Seguir de {{subject}}
@@ -318,8 +318,8 @@ es_MX:
       stations: Radios
       subscriptions: Subscripciones
       dashboard: Mi Perfil
-      playlists: Playlists
       followers: Seguidores
+      playlists: Playlists
       albums: Albumes
       activity: Actividad
       account_settings: "Configuraci\xC3\xB3n de Cuenta"
@@ -330,8 +330,8 @@ es_MX:
       age: Edad
       community: Comunidad
       home: Inicio
-      mixes: Mixes
       charts: Rankings
+      mixes: Mixes
       following: Siguiendo
       biography: "Biograf\xC3\xADa"
   comments: 
@@ -530,10 +530,6 @@ es_MX:
       terms: Debe ser aceptado
     remember_me: ""
     terms_of_use: "T\xC3\xA9rminos de uso"
-    messages: 
-      terms_of_use: Debe ser aceptado
-      pivacy_policy: deber aceptarse
-      privacy_policy: "Debe ser aceptado "
     confirmation: 
       click_here: "clic aqu\xC3\xAD"
       here_is_your_confirmation_link: "Este es tu enlace para confirmaci\xC3\xB3n"
@@ -561,6 +557,10 @@ es_MX:
           {{confirm_url}}\r\n\
           \r\n\
           Utiliza la direcci\xC3\xB3n de correo electr\xC3\xB3nico {{email}} y la clave que proporcionaste durante la registraci\xC3\xB3n para acceder a {{host_url}}.\r\n"
+    messages: 
+      terms_of_use: Debe ser aceptado
+      pivacy_policy: deber aceptarse
+      privacy_policy: "Debe ser aceptado "
     is_available_exclamation: "Email est\xC3\xA1 disponible!"
     sign_out: ""
     your_name: Tu nombre
@@ -582,8 +582,8 @@ es_MX:
         w6lsIGVzdMOh
 
       index: "Si ya tienes tu cuenta de MSN M\xC3\xBAsica, {{link}} para hacer tu login."
-      max_song: "Esperamos que te hayan gustado las canciones que escuchaste. Para escuchar m\xC3\xA1s canciones, {{link}} para hacer tu login."
       listen_text: "m\xC3\xA1s de {{count}} canciones, totalmente gr\xC3\xA1tis"
+      max_song: "Esperamos que te hayan gustado las canciones que escuchaste. Para escuchar m\xC3\xA1s canciones, {{link}} para hacer tu login."
       msn_music_is_free: "MSN M\xC3\xBAsica es gratis, {{link}}"
       sign_in_with_your_windows_live_id: ingresa con tu Windows Live ID
       discover: Descubre
@@ -598,12 +598,11 @@ es_MX:
     terms_and_privacy_must_be_accepted: "Los T\xC3\xA9rminos de Uso y la Pol\xC3\xADtica de Privacidad deben ser aceptados"
     customize: "Configura tu perfil de MSN M\xC3\xBAsica"
     complete_all_fields_in_red: Completa todos los campos en rojo
-    complete: Completar
     msn_login_error: Error de Login de MSN Live! Intentar ingresar nuevamente.
+    complete: Completar
     email_address: "Tu direcci\xC3\xB3n de E-mail"
     thats_it: Listo!
     send: "Reg\xC3\xADstrate"
-    associate_msn_login: "Ya casi terminamos. Por favor, ingresa tus datos de Cyloop as\xC3\xAD podemos relacionarlos con tu Live ID de MSN"
     sidebar: 
       chat_text: "En la parte inferior de cada p\xC3\xA1gina encontrar\xC3\xA1s una barra de Windows Messenger. Ingresa y puedes chatear con tus amigos mientras disfrutas de la mejor m\xC3\xBAsica."
       radio_title: Disfruta radios personalizadas
@@ -615,12 +614,14 @@ es_MX:
       follow_text: "Con s\xC3\xB3lo un clic puedes seguir a tus artistas favoritos y mantenerte al tanto de sus Twitters y otras noticias."
       radio_text: "Nuestro motor de recomendaci\xC3\xB3n crea radios hechas espec\xC3\xADficamente a tu medida con todos tus artistas favoritos."
       follow_title: Sigue a tus artistas favoritos
+    associate_msn_login: "Ya casi terminamos. Por favor, ingresa tus datos de Cyloop as\xC3\xAD podemos relacionarlos con tu Live ID de MSN"
     privacy_policy: "Pol\xC3\xADtica de Privacidad "
     your_password: "Tu contrase\xC3\xB1a"
     must_be_13_years_older: "Debes tener 13 a\xC3\xB1os o m\xC3\xA1s de edad para usar este website."
     not_a_user: No eres usuario aun?
     login_failed: "Email y/o contrase\xC3\xB1a inv\xC3\xA1lidos."
     confirm_your_password: "Confirma tu contrase\xC3\xB1a"
+    terms_and_privacy: "Al checar el casillero, est\xC3\xA1s confirmando que sabes que Cyloop.com es un sitio web operado por Hoodiny Entertainment Group en los Estados Unidos, y est\xC3\xA1s otorgando tu consentimiento de transferir todos tus datos personales a los Estados Unidos, donde tus datos personales estar\xC3\xA1n sujetos a las leyes de los Estados Unidos y donde el nivel de protecci\xC3\xB3n de datos es diferente en comparaci\xC3\xB3n con el de tu pa\xC3\xADs. Tambi\xC3\xA9n confirmas estar de acuerdo con los {{terms_link}} y la {{privacy_link}} de Cyloop, la cual describe c\xC3\xB3mo ser\xC3\xA1n usados tus datos personales."
     email: 
       button: Comienza!
       title: Bienvenido! Gracias por registarte en Cyloop!
@@ -638,7 +639,6 @@ es_MX:
         <br> \r\n\
         Microsoft Corporation, One Microsoft Way, Redmond, WA 98052-6399, USA \xC2\xA9 2008-2010 Microsoft Corporation. <br>\r\n\
         Todos los derechos reservados."
-    terms_and_privacy: "Al checar el casillero, est\xC3\xA1s confirmando que sabes que Cyloop.com es un sitio web operado por Hoodiny Entertainment Group en los Estados Unidos, y est\xC3\xA1s otorgando tu consentimiento de transferir todos tus datos personales a los Estados Unidos, donde tus datos personales estar\xC3\xA1n sujetos a las leyes de los Estados Unidos y donde el nivel de protecci\xC3\xB3n de datos es diferente en comparaci\xC3\xB3n con el de tu pa\xC3\xADs. Tambi\xC3\xA9n confirmas estar de acuerdo con los {{terms_link}} y la {{privacy_link}} de Cyloop, la cual describe c\xC3\xB3mo ser\xC3\xA1n usados tus datos personales."
   radio: 
     create_new_station: Crear Una Radio Nueva
   meta: 
@@ -649,9 +649,9 @@ es_MX:
     we_hope_you_enjoyed: "Esperamos que te hayan gustado las canciones que escuchaste. Para escuchar m\xC3\xA1s canciones,"
     actions: 
       edit: Modificar
-      delete: Eliminar
-      close: Cerrar
       submit: Enviar
+      close: Cerrar
+      delete: Eliminar
       save: Guardar
     share: 
       title: Compartir con un amigo
@@ -712,7 +712,6 @@ es_MX:
     create_new_station: Crear una radio nueva
     view_your_stations: Para ver tus radios,
     my_stations: Mis Radios
-    continue: Continuar
     home: 
       create_your_own_personalized_radio_station: "Crea tu propia estaci\xC3\xB3n de radio personalizada"
       create_radio: Crear Radio
@@ -723,6 +722,7 @@ es_MX:
       top_songs: Top Canciones
       top_stations: Top Radios
       recommended_artists: Artistas Recomendados
+    continue: Continuar
     still_dont_have: "\xC2\xBFAun no tienes una cuenta de MSN M\xC3\xBAsica?"
     recengineerror_NO_RADIO: No se pudo encontrar una radio
   followings: 
@@ -888,42 +888,42 @@ es_MX:
     support: Soporte
     profile_not_available: Perfil No Disponible
     feedback: Feedback
-    safety_tips: Consejos de Seguridad
     about_cyloop: Sobre Cyloop
+    safety_tips: Consejos de Seguridad
     about_hoodiny: Sobre Hoodiny
     privacy_policy: "Privacidad "
     profile_not_available_sorry: "Lamentablemente este perfil no est\xC3\xA1 disponible en tu pa\xC3\xADs"
     sample_flag_description: "Desafortunadamente este contenido tiene restricciones para el territorio desde el cual intentas esucharlo, por lo que no toca en su duraci\xC3\xB3n completa. Puedes escuchar canciones completas de este artista u otros parecidos en la secci\xC3\xB3n de Radio."
     profile_not_found_sorry: "Perd\xC3\xB3n, pero no hemos podido encontrar el perfil de {{profile}}."
   basics: 
-    charts_for: Rankings de
     plays: Reproducciones
+    charts_for: Rankings de
     play: Reproducir
     city: Ciudad
-    followees_of: Seguidor de
-    comment: Comentario
     station: Radio
+    comment: Comentario
+    followees_of: Seguidor de
     artist: Artista
     albums_by: Albumes por
     sorry: "Perd\xC3\xB3n!"
-    my: Mi
     previous: Anterior
-    artists: Artistas
+    my: Mi
     by: por
+    artists: Artistas
     "no": "No"
     person: Pesona
     listens: Escucha
-    created_at: hace {{when}}
     songs: Canciones
+    created_at: hace {{when}}
     followwes: ""
     stations: Radios
     welcome: Bienvenido/a
     created_on: Creada el
-    comments: Comentarios
-    me: mi
     country: !binary |
       UGHDrXM=
 
+    me: mi
+    comments: Comentarios
     includes: Incluye
     my_plural: Mis
     playlists: Playlists
@@ -944,8 +944,8 @@ es_MX:
     "yes": Si
     played_by: Escuchada por
     follow_requests_for: Pedidos de Seguidores de
-    people: Gente
     service_unavailable: "Este servicio no est\xC3\xA1 disponible en este momento. Por favor regresa m\xC3\xA1s tarde. Gracias."
+    people: Gente
     click_to_follow: Clic {follow_link} para seguir a
     next: Siguiente
     follow_requests: Pedidos de Seguidores
@@ -956,8 +956,8 @@ es_MX:
     more: !binary |
       TcOhcw==
 
-    unknown: Desconocido
     charts: Rankings
+    unknown: Desconocido
     mixes: Mixes
     song: "Canci\xC3\xB3n"
   alert: 
@@ -1096,7 +1096,7 @@ es_MX:
       sign_out: Log out
   home: 
     station: Radio
-    start_listening: START LISTENING
+    start_listening: ""
     create_your_own_personalized_radio_station: Crea Tu Propia Radio Personalizada
     top_radios: TOP RADIO STATIONS
     create_radio: Crear Radio

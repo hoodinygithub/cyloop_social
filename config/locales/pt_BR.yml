@@ -2,21 +2,21 @@
 pt_BR: 
   actions: 
     awaiting_approval: "Esperando aprova\xC3\xA7\xC3\xA3o"
-    share: Compartilhar
     play: Tocar
-    add: adicionar
+    share: Compartilhar
     previous: Anterior
+    add: adicionar
     add_song_to_playlist: "Adicionar m\xC3\xBAsica \xC3\xA0 playlist"
     unfollow: Seguindo
-    edit: Editar
     share_with_a_friend: "Envie esta m\xC3\xBAsica para um amigo"
+    edit: Editar
     select_playlist: Selecione a playlist
     forgot_password: Esqueceu sua senha?
     results_for: Resultados para
-    close: Fechar
-    stop: Parar
-    delete: Apagar
     submit: Enviar
+    delete: Apagar
+    stop: Parar
+    close: Fechar
     cancel: Cancelar
     go_with_exclamation: Ir!
     buy_album: "Comprar \xC3\xA1lbum"
@@ -37,16 +37,16 @@ pt_BR:
     save: Salvar
     approve: Aprovar
     go: Ir
-    create: Criar
     next: "Pr\xC3\xB3xima"
+    create: Criar
     filter_by: Filtrar por
-    search_text: Buscar M\xC3\xBAsicasica no Cyloop
     reset: Enviar
+    search_text: Buscar M\xC3\xBAsicasica no Cyloop
     add_into_a_new_playlist: Adicionar a uma nova playlist
     skip: ""
     login: Login
-    add_song: "Adicionar m\xC3\xBAsica"
     add_more: Adicionar mais
+    add_song: "Adicionar m\xC3\xBAsica"
     select_store: Selecione a loja
     submitting: Enviando
     create_station: "Criar R\xC3\xA1dio"
@@ -141,10 +141,10 @@ pt_BR:
       title: "Not\xC3\xADcias"
     top_songs: 
       title: Mais Tocadas
-    top_stations: 
-      title: "R\xC3\xA1dios mais tocadas"
     interviews: 
       title: Entrevistas
+    top_stations: 
+      title: "R\xC3\xA1dios mais tocadas"
     recommended_artists: 
       title: Artistas recomendados
     biography: 
@@ -158,8 +158,8 @@ pt_BR:
       bio: 
         short: Biografia
       user: 
-        slug: Nome do perfil
         name: Nome
+        slug: Nome do perfil
         bios: Biografia
         location: !binary |
           TG9jYWxpemHDp8Ojbw==
@@ -253,16 +253,16 @@ pt_BR:
   possessives: 
     third_person: 
       stations: "R\xC3\xA1dios de {{subject}}"
-      followers: "Quem est\xC3\xA1 seguindo {{subject}}"
       playlists: Playlists de {{subject}}
+      followers: "Quem est\xC3\xA1 seguindo {{subject}}"
       albums: Discos de {{subject}}
       followees: "Quem {{subject}} est\xC3\xA1 seguindo "
       follow_requests: Pedidos de seguidores de {{subject}}
       charts: Ranking de {{subject}}
     first_person: 
       stations: "Minhas r\xC3\xA1dios"
-      followers: "Quem est\xC3\xA1 me seguindo"
       playlists: Minhas playlists
+      followers: "Quem est\xC3\xA1 me seguindo"
       albums: Meus Discos
       followees: Quem eu estou seguindo
       follow_requests: Meus pedidos de seguidores
@@ -304,8 +304,8 @@ pt_BR:
         SW5zY3Jpw6fDtWVz
 
       dashboard: Painel
-      followers: Seguidores
       playlists: Playlists
+      followers: Seguidores
       albums: Discos
       activity: Novidades
       account_settings: "Configura\xC3\xA7\xC3\xB5es"
@@ -318,8 +318,8 @@ pt_BR:
       age: Idade
       community: Comunidade
       home: Home
-      mixes: ""
       charts: Ranking
+      mixes: ""
       following: Seguindo
       biography: Biografia
   comments: 
@@ -369,10 +369,10 @@ pt_BR:
       edit: "Editar nome da R\xC3\xA1dio"
       delete: "Remover R\xC3\xA1dio"
       would_delete: "Voc\xC3\xAA gostaria de remover esta R\xC3\xA1dio?"
+    sign_in: entre com o seu Windows Live ID
     buylink: 
       select_store: Selecione a sua loja
       song: "Compre esta m\xC3\xBAsica"
-    sign_in: entre com o seu Windows Live ID
     record_not_found: "O item que voc\xC3\xAA est\xC3\xA1 procurando n\xC3\xA3o p\xC3\xB4de ser encontrado"
     checkout_today_polular_stations: "Ou\xC3\xA7a as r\xC3\xA1dios populares hoje"
     recengineerror_UNKNOWN: Erro desconhecido
@@ -382,9 +382,9 @@ pt_BR:
     registration: 
       success: "Sucesso! Voc\xC3\xAA foi registrado."
       email: "Seu endere\xC3\xA7o de email"
+    activate_your_account: "Ative sua conta no MSN M\xC3\xBAsica"
     album: 
       released: "Lan\xC3\xA7ado em"
-    activate_your_account: "Ative sua conta no MSN M\xC3\xBAsica"
     buy: Compre
     authentication_required: "Voc\xC3\xAA precisa estar logado na aplica\xC3\xA7\xC3\xA3o para isso"
     internal_error: "N\xC3\xA3o foi poss\xC3\xADvel executar a sua requisi\xC3\xA7\xC3\xA3o devido a um erro interno. N\xC3\xB3s j\xC3\xA1 fomos notificados sobre este problema e vamos resolv\xC3\xAA-lo assim que poss\xC3\xADvel."
@@ -404,12 +404,12 @@ pt_BR:
     push_notification_refresh: Atualize
     no_more_activity: Nenhuma atividade adicional
     push_notification: "Voc\xC3\xAA tem novas atualiza\xC3\xA7\xC3\xB5es ({{count}} no total). {{link}} as novidades para v\xC3\xAA-las."
-    twitter_you_following: "Tweets de artistas que voc\xC3\xAA est\xC3\xA1 seguindo"
     filters: 
       all: TUDO
       songs: "M\xC3\x9ASICAS"
       stations: "R\xC3\x81DIOS"
       playlists: PLAYLISTS
+    twitter_you_following: "Tweets de artistas que voc\xC3\xAA est\xC3\xA1 seguindo"
     push_notification_more_than: "Voc\xC3\xAA tem mais de {{count}} novas atualiza\xC3\xA7\xC3\xB5es. {{link}} as novidades para v\xC3\xAA-las."
     user_following: "{{user}} + Seguindo"
     created_station: "criou a r\xC3\xA1dio '{{station}}'"
@@ -426,8 +426,8 @@ pt_BR:
     change_password: ALTERAR SENHA
     email_me_following_me: "Me envie um e-mail quando algu\xC3\xA9m estiver me seguindo"
     delete: REMOVER
-    title: "CONFIGURA\xC3\x87\xC3\x95ES DE CONTA"
     cancel: Cancelar
+    title: "CONFIGURA\xC3\x87\xC3\x95ES DE CONTA"
     email_me_subscribes_mixes: ""
     email_me_reviews_mixes: ""
     delete_my_account: REMOVA MINHA CONTA
@@ -517,6 +517,9 @@ pt_BR:
       terms: deve ser aceito
     remember_me: Lembrar
     terms_of_use: "Termos e Condi\xC3\xA7\xC3\xB5es"
+    messages: 
+      terms_of_use: devem ser aceitos
+      privacy_policy: deve ser aceita
     confirmation: 
       click_here: clique aqui
       here_is_your_confirmation_link: "Aqui est\xC3\xA1 o seu link de confirma\xC3\xA7\xC3\xA3o."
@@ -546,9 +549,6 @@ pt_BR:
           {{confirm_url}}\r\n\
           \r\n\
           Lembre-se de utilizar o endere\xC3\xA7o de email {{email}} e a senha que voc\xC3\xAA criou quando se cadastrou com a gente."
-    messages: 
-      terms_of_use: devem ser aceitos
-      privacy_policy: deve ser aceita
     is_available_exclamation: "est\xC3\xA1 dispon\xC3\xADvel."
     sign_out: Sair
     your_name: Seu nome
@@ -567,8 +567,8 @@ pt_BR:
       share_text: "m\xC3\xBAsicas, mixes e r\xC3\xA1dios com os seus amigos"
       male: ele
       index: "Se voc\xC3\xAA j\xC3\xA1 possui uma conta no MSN M\xC3\xBAsica, {{link}} para fazer login."
-      max_song: "Esperamos que voc\xC3\xAA tenha gostado das m\xC3\xBAsicas que escutou. Para continuar escutando, {{link}} para fazer login."
       listen_text: "mais de {{count}} m\xC3\xBAsicas, todas de gra\xC3\xA7a"
+      max_song: "Esperamos que voc\xC3\xAA tenha gostado das m\xC3\xBAsicas que escutou. Para continuar escutando, {{link}} para fazer login."
       msn_music_is_free: "O MSN M\xC3\xBAsica \xC3\xA9 gr\xC3\xA1tis, {{link}}"
       sign_in_with_your_windows_live_id: entre com o seu Windows Live ID
       discover: Descubra
@@ -583,11 +583,12 @@ pt_BR:
     terms_and_privacy_must_be_accepted: "Termos e Condi\xC3\xA7\xC3\xB5es e a Pol\xC3\xADtica de Privacidade precisam ser aceitos"
     customize: "Personalize o seu perfil no MSN M\xC3\xBAsica"
     complete_all_fields_in_red: Complete todos os campos em vermelho
-    msn_login_error: Erro com o MSN Live Login! Tente fazer login novamente.
     complete: Completo
+    msn_login_error: Erro com o MSN Live Login! Tente fazer login novamente.
     email_address: "Endere\xC3\xA7o de email"
     thats_it: "Isso \xC3\xA9 tudo!"
     send: Enviar
+    associate_msn_login: Quase pronto. Por favor entre suas credenciais do Cyloop
     sidebar: 
       chat_text: "no p\xC3\xA9 de cada p\xC3\xA1gina voc\xC3\xAA encontra uma barra do MSN Messenger, onde pode fazer login e bater papo com seus contatos \xE2\x80\x93 tudo isso dentro do site, enquanto ouve m\xC3\xBAsica."
       radio_title: "escute r\xC3\xA1dios personalizadas"
@@ -599,14 +600,12 @@ pt_BR:
       follow_text: "com apenas um clique voc\xC3\xAA pode ver o que eles escrevem no Twitter e o que outros f\xC3\xA3s est\xC3\xA3o ouvindo."
       radio_text: "nosso sistema cria r\xC3\xA1dios sob medida para voc\xC3\xAA, com os artistas que voc\xC3\xAA gosta e novidades que podem te agradar."
       follow_title: siga seus artistas favoritos
-    associate_msn_login: Quase pronto. Por favor entre suas credenciais do Cyloop
     privacy_policy: "Pol\xC3\xADtica de privacidade"
     your_password: Sua senha
     must_be_13_years_older: "Voc\xC3\xAA deve ter no m\xC3\xADnimo 13 anos para utilizar este website"
     not_a_user: "N\xC3\xA3o est\xC3\xA1 cadastrado?"
     login_failed: "E-mail e/ou senha inv\xC3\xA1lidos"
     confirm_your_password: Confirme a sua senha
-    terms_and_privacy: "Marcando o box voc\xC3\xAA confirma que o cyloop.com \xC3\xA9 operado pela Hoodiny Entertainment Group, baseada nos EUA, e voc\xC3\xAA consente em transferir os seus dados para armazenamento nos EUA, onde eles ser\xC3\xA3o sujeitos \xC3\xA0s leis dos Estados Unidos e o n\xC3\xADvel de prote\xC3\xA7\xC3\xA3o de dados \xC3\xA9 possivelmente diferente do seu pa\xC3\xADs de origem. Voc\xC3\xAA tamb\xC3\xA9m concorda com os {{terms_link}} e a {{privacy_link}} do Cyloop, que descrevem como os seus dados pessoais ser\xC3\xA3o utilizados."
     email: 
       button: "Come\xC3\xA7ar agora!"
       title: Bem-vindo, Obrigado por se registrar no Cyloop!
@@ -622,6 +621,7 @@ pt_BR:
         <br> \r\n\
         Microsoft Corporation, One Microsoft Way, Redmond, WA 98052-6399, USA \xC2\xA9 2008 Microsoft Corporation.<br> \r\n\
         Todos os direitos reservados."
+    terms_and_privacy: "Marcando o box voc\xC3\xAA confirma que o cyloop.com \xC3\xA9 operado pela Hoodiny Entertainment Group, baseada nos EUA, e voc\xC3\xAA consente em transferir os seus dados para armazenamento nos EUA, onde eles ser\xC3\xA3o sujeitos \xC3\xA0s leis dos Estados Unidos e o n\xC3\xADvel de prote\xC3\xA7\xC3\xA3o de dados \xC3\xA9 possivelmente diferente do seu pa\xC3\xADs de origem. Voc\xC3\xAA tamb\xC3\xA9m concorda com os {{terms_link}} e a {{privacy_link}} do Cyloop, que descrevem como os seus dados pessoais ser\xC3\xA3o utilizados."
   meta: 
     title: "Cyloop | Escute m\xC3\xBAsica gr\xC3\xA1tis, descubra novos artistas e fa\xC3\xA7a amigos"
     description: "Descubra novos artistas, fa\xC3\xA7a amigos, veja fotos e v\xC3\xADdeos, escute m\xC3\xBAsica de gra\xC3\xA7a no Cyloop"
@@ -630,6 +630,8 @@ pt_BR:
     registration: 
       your_password: Sua senha
       confirm_your_password: Confirme sua senha
+    home: 
+      create_your_own_personalized_radio_station: "Crie sua pr\xC3\xB3pria r\xC3\xA1dio agora!"
   followings: 
     awaiting_approval: "Voc\xC3\xAA est\xC3\xA1 esperando a aprova\xC3\xA7\xC3\xA3o deste usu\xC3\xA1rio."
     has_blocked_you: "Voc\xC3\xAA est\xC3\xA1 sendo bloqueado por este usu\xC3\xA1rio e n\xC3\xA3o pode segui-lo."
@@ -671,8 +673,8 @@ pt_BR:
       feedback_default: "Por favor inclua o m\xC3\xA1ximo de detalhe que puder"
       faq: Perguntas Frequentes
       category_security: "A Minha Seguran\xC3\xA7a"
-      category_business: "Informac\xC3\xA3o  geral sobre Neg\xC3\xB3cios ou Rela\xC3\xA7\xC3\xB5es P\xC3\xBAblicas"
       category: Categoria
+      category_business: "Informac\xC3\xA3o  geral sobre Neg\xC3\xB3cios ou Rela\xC3\xA7\xC3\xB5es P\xC3\xBAblicas"
       submit: Envie sua mensagem
       welcome: Bem vindo ao suporte do Cyloop!
       support_form: "Formul\xC3\xA1rio de Suporte"
@@ -684,8 +686,8 @@ pt_BR:
       business_inquires: "Informac\xC3\xA3o  geral sobre Neg\xC3\xB3cios"
       os: Sistema Operacional
       business_inquires_text: Por favor entre em contato
-      header: "Queremos ajud\xC3\xA1-lo a obter as respostas que voc\xC3\xAA precisa o mais r\xC3\xA1pido poss\xC3\xADvel para que voc\xC3\xAA possa voltar a desfrutar todas os recursos inovadoras que o Cyloop tem para oferecer."
       support_form_text: "Se voc\xC3\xAA tem alguma quest\xC3\xA3o ou problema que n\xC3\xA3o foi respondida nessa p\xC3\xA1gina ou no {{link}} ou apenas quer nos enviar algum coment\xC3\xA1rio, voc\xC3\xAA pode utilizar o formul\xC3\xA1rio abaixo para nos enviar uma mensagem. "
+      header: "Queremos ajud\xC3\xA1-lo a obter as respostas que voc\xC3\xAA precisa o mais r\xC3\xA1pido poss\xC3\xADvel para que voc\xC3\xAA possa voltar a desfrutar todas os recursos inovadoras que o Cyloop tem para oferecer."
       category_other_features: Outros Recursos no Cyloop
       information: "Por favor inclua o m\xC3\xA1ximo de informa\xC3\xA7\xC3\xB5es que puder"
       new_cyloop: Novo no Cyloop?
@@ -737,8 +739,8 @@ pt_BR:
     support: Suporte
     feedback: "Sua opini\xC3\xA3o"
     about_us: Sobre a gente
-    safety_tips: "Dicas de seguran\xC3\xA7a"
     about_cyloop: Sobre o Cyloop
+    safety_tips: "Dicas de seguran\xC3\xA7a"
     about_hoodiny: Sobre a Hoodiny
     privacy_policy: "Pol\xC3\xADtica de privacidade"
     profile_not_found_sorry: "Lamentamos, mas o perfil de usu\xC3\xA1rio ou artista que voc\xC3\xAA tentou encontrar n\xC3\xA3o foi encontrado. Ele pode ter sido removido, ter tido o nome trocado ou estar temporariamente fora do ar.<br/> Obrigado pela paci\xC3\xAAncia.<br/><br/> Albumas alternativas:<ul><li> - Se voc\xC3\xAA digitou o endere\xC3\xA7o direto no seu navegador, por favor, confira novamente a veja se n\xC3\xA3o h\xC3\xA1 erros de digita\xC3\xA7\xC3\xA3o.</li><li> - Clique aqui <a href=\"http://br.msn.cyloop.com\">www.br.msn.cyloop.com</a>, volte para a home e procure l\xC3\xA1 um link para onde voc\xC3\xAA queria ir.</li><li> - Clique no bot\xC3\xA3o de \"Voltao\" (\"Back\") de seu navegador e revise o link clicado para chegar aqui.</li></ul>"
@@ -755,8 +757,8 @@ pt_BR:
   cancellation: 
     confirmation: 
       title: "Sentimos muito por voc\xC3\xAA estar deixando o Cyloop!"
-      body: "O cancelamento da sua conta no Cyloop ir\xC3\xA1 remover todas as informa\xC3\xA7\xC3\xB5es do seu perfil, incluindo fotos, novidades e sua rede pessoal de seguidores. Essa informa\xC3\xA7\xC3\xA3o n\xC3\xA3o poder\xC3\xA1 ser recuperada."
       are_you_sure: "Ainda assim, voc\xC3\xAA tem certeza que deseja cancelar sua conta?"
+      body: "O cancelamento da sua conta no Cyloop ir\xC3\xA1 remover todas as informa\xC3\xA7\xC3\xB5es do seu perfil, incluindo fotos, novidades e sua rede pessoal de seguidores. Essa informa\xC3\xA7\xC3\xA3o n\xC3\xA3o poder\xC3\xA1 ser recuperada."
       cancel_account: Sim, Cancele Minha Conta
       keep_account: "N\xC3\xA3o, Mantenha Minha Conta"
     feedback: 
@@ -789,50 +791,50 @@ pt_BR:
     support: Ajuda
     profile_not_available: "Perfil n\xC3\xA3o est\xC3\xA1 dispon\xC3\xADvel"
     feedback: "Sua opini\xC3\xA3o"
-    safety_tips: "Dicas de seguran\xC3\xA7a"
     about_cyloop: Sobre o Cyloop
+    safety_tips: "Dicas de seguran\xC3\xA7a"
     about_hoodiny: Sobre a Hoodiny
     privacy_policy: "Pol\xC3\xADtica de privacidade"
     profile_not_available_sorry: "Lamentamos, mas este perfil n\xC3\xA3o est\xC3\xA1 dispon\xC3\xADvel para o seu pa\xC3\xADs"
     sample_flag_description: "Infelizmente este conte\xC3\xBAdo est\xC3\xA1 restrito para sua localidade atual e n\xC3\xA3o pode ser reproduzido em sua totalidade. Voc\xC3\xAA poder\xC3\xA1 escutar m\xC3\xBAsicas completas deste e de outros artistas similares na se\xC3\xA7\xC3\xA3o de R\xC3\xA1dio."
     profile_not_found_sorry: "Lamentamos, mas o perfil de usu\xC3\xA1rio ou artista que voc\xC3\xAA tentou encontrar n\xC3\xA3o foi encontrado. Ele pode ter sido removido, ter tido o nome trocado ou estar temporariamente fora do ar.<br/> Obrigado pela paci\xC3\xAAncia.<br/><br/> Algumas alternativas:<ul><li> - Se voc\xC3\xAA digitou o endere\xC3\xA7o direto no seu navegador, por favor, confira novamente a veja se n\xC3\xA3o h\xC3\xA1 erros de digita\xC3\xA7\xC3\xA3o.</li><li> - Clique aqui <a href=\"http://br.msn.cyloop.com\">www.br.msn.cyloop.com</a>, volte para a home e procure l\xC3\xA1 um link para onde voc\xC3\xAA queria ir.</li><li> - Clique no bot\xC3\xA3o de \"Voltao\" (\"Back\") do seu navegador e revise o link clicado para chegar aqui.</li></ul>"
   basics: 
-    charts_for: Ranking para
     plays: !binary |
       UmVwcm9kdcOnw7Vlcw==
 
+    charts_for: Ranking para
     play: !binary |
       UmVwcm9kdcOnw7Vlcw==
 
     city: Cidade
-    comment: "Coment\xC3\xA1rio"
+    followees_of: Seguido por
     station: !binary |
       RXN0YcOnw6Nv
 
-    followees_of: Seguido por
+    comment: "Coment\xC3\xA1rio"
     artist: Artista
     albums_by: Discos por
     sorry: Desculpe!
-    previous: Anterior
     my: Meu
-    by: Por
+    previous: Anterior
     artists: Artistas
+    by: Por
     "no": !binary |
       TsOjbw==
 
     person: Pessoa
     listens: Escuta
-    songs: "M\xC3\xBAsicas"
     created_at: "{{when}} atr\xC3\xA1s"
+    songs: "M\xC3\xBAsicas"
     followwes: Seguidos
     stations: "R\xC3\xA1dios"
     welcome: Bem-vindo
     created_on: Criado em
-    me: mim
-    comments: "Coment\xC3\xA1rios"
     country: !binary |
       UGHDrXM=
 
+    comments: "Coment\xC3\xA1rios"
+    me: mim
     includes: Inclui
     my_plural: Meus
     playlists: Playlists
@@ -852,16 +854,16 @@ pt_BR:
     "yes": Sim
     played_by: Reproduzido por
     follow_requests_for: Pedidos de seguidores para
-    service_unavailable: "Este servi\xC3\xA7o est\xC3\xA1 temporariamente inacess\xC3\xADvel. Por favor, volte em breve."
     people: Gente
+    service_unavailable: "Este servi\xC3\xA7o est\xC3\xA1 temporariamente inacess\xC3\xADvel. Por favor, volte em breve."
     next: "Pr\xC3\xB3xima"
     follow_requests: Pedidos de seguidores
     message: Mensagem
     contains: "Cont\xC3\xA9m"
     chart: Ranking
     more: Mais
-    unknown: Desconhecido
     charts: Ranking
+    unknown: Desconhecido
     song: "M\xC3\xBAsica"
   users: 
     new: 
@@ -884,10 +886,10 @@ pt_BR:
     stats: 
       followers: Seguidores
       visits: Visitas
-      following: Seguindo
       song_plays: !binary |
         UmVwcm9kdcOnw7Vlcw==
 
+      following: Seguindo
   reset: 
     insert_valid_email: "Insira um endere\xC3\xA7o de email v\xC3\xA1lido."
     message_delivered: "Enviamos instru\xC3\xA7\xC3\xB5es sobre como trocar a sua senha para o seu email. Voc\xC3\xAA deve receber em breve."
@@ -918,21 +920,21 @@ pt_BR:
     search_albums: Buscar Discos
     discover: Descubra
   user: 
-    marketing_opt_out: "N\xC3\xA3o quero receber emails com novidades do Cyloop ou associados."
     city_name: Cidade
-    name: Nome
-    slug: Nome do perfil
+    marketing_opt_out: "N\xC3\xA3o quero receber emails com novidades do Cyloop ou associados."
     color_links: Cor do link
+    slug: Nome do perfil
+    name: Nome
     background_fixed_false: !binary |
       TsOjbw==
 
     forgot_message: "Podemos enviar as instru\xC3\xA7\xC3\xB5es de troca de senha para o endere\xC3\xA7o de email cadastrado na sua conta. Por favor, insira o endere\xC3\xA7o de email cadastrado no Cyloop."
-    background_align: Alinhamento do fundo
     background_repeats: 
       horizontal_repeat: Repetir na horizontal
       full_repeat: Repetir sempre
       no_repeat: "N\xC3\xA3o repetir"
       vertical_repeat: Repetir na vertical
+    background_align: Alinhamento do fundo
     receives_following_notifications: "Quero receber um alerta cada vez que algu\xC3\xA9m come\xC3\xA7ar a me seguir"
     background_fixed_true: Sim
     terms_of_use: "Termos e condi\xC3\xA7\xC3\xB5es"
@@ -951,8 +953,8 @@ pt_BR:
     current_password: Senha atual
     female: Mulher
     password_confirmation: Confirmar senha
-    background: Imagem de fundo
     color_bg: Cor de fundo
+    background: Imagem de fundo
     background_alignments: 
       left: Esquerda
       upper_right: Direita, topo
@@ -968,8 +970,8 @@ pt_BR:
     remove_avatar: Remover Foto
     background_repeat: Repetir fundo
     gender: "G\xC3\xAAnero"
-    privacy_policy_instructions: "A nossa {{link}} existe para proteger voc\xC3\xAA! Por favor, leia e concorde com os termos."
     short_bio: Biografia resumida
+    privacy_policy_instructions: "A nossa {{link}} existe para proteger voc\xC3\xAA! Por favor, leia e concorde com os termos."
     color_main_font: Cor do texto principal
     avatar: Foto
     background_fixed: Imagem de fundo fixa
@@ -978,17 +980,17 @@ pt_BR:
     male: Homem
     safety_tips: "Dicas de seguran\xC3\xA7a"
     time_zone: "Zona hor\xC3\xA1ria"
-    privacy_policy: "pol\xC3\xADtica de privacidade"
     saved: "Suas modifica\xC3\xA7\xC3\xB5es foram salvas."
-    password: Senha
+    privacy_policy: "pol\xC3\xADtica de privacidade"
     color_header_bg: Cor do topo
+    password: Senha
     born_on: Data de Nascimento
     email: E-mail
   sessions: 
     new: 
       complete_registration: Registro Completo
-      sign_in: Login
       register_link_msn: "Se voc\xC3\xAA n\xC3\xA3o possui uma conta Cyloop, v\xC3\xA1 em frente e registre-se para que possamos conecta-la em seu MSN ID"
+      sign_in: Login
       register_cyloop: Registre-se no Cyloop
       remember_me: Lembrar-me neste computador
       listener_account: Criar minha conta
@@ -1000,10 +1002,12 @@ pt_BR:
       sign_out: Sair
   home: 
     station: Station
+    start_listening: "Come\xC3\xA7ar ouvir"
     create_your_own_personalized_radio_station: "O que voc\xC3\xAA quer ouvir?"
     create_radio: "Criar r\xC3\xA1dio"
     explaing_what_is_and_why_create_a_new_radio: "Digite o nome do seu artista favorito. Cyloop criar\xC3\xA1 uma radio personalizada com m\xC3\xBAsidas de seus artistas favoritos."
     type_artist_name: Escreva o nome do artista
+    create_your_own_station_now: "Crie sua pr\xC3\xB3pria r\xC3\xA1dio agora!"
     top_songs: Mais Tocadas
     top_stations: "R\xC3\xA1dios Top"
     recommended_artists: Artistas Recomendados
