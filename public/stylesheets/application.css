@@ -1382,12 +1382,11 @@ img.artist_icon_box.tiny {
 	font-size: 11px;
 	line-height: 14px;
 	display: block; 
-	margin-top: 5px;
 }
 
 img.avatar_four_thumbs {
-  width: 35px;
-  height: 35px;
+  width: 39px;
+  height: 39px;
 }
 
 img.avatar_four_thumbs_medium {
@@ -2019,13 +2018,13 @@ img.avatar_four_thumbs_big {
   border: none;
 }
 
-.four_thubms {
+.four_thumbs {
     margin-bottom: 4px;
     width: 80px;
     zoom: 1;
 }
 
-.four_thubms img {
+.four_thumbs img {
     float: left;
     margin: 0px 1px 1px 0px;
 }
