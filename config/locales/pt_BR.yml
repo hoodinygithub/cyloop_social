@@ -356,7 +356,9 @@ pt_BR:
   custom_profiles: 
     sony_disclaimer: "O s\xC3\xADmbolo e logo Walkman&#8482; s\xC3\xA3o marcas registradas da Sony Corporation."
   messenger_player: 
-    we_hope_you_enjoyed: "N\xC3\xB3s esperamos que voc\xC3\xAA tenha gostado das m\xC3\xBAsicas que ouviu. Para ouvir mais m\xC3\xBAsicas,"
+    buylink: 
+      select_store: Selecione a sua loja
+      song: "Compre esta m\xC3\xBAsica"
     share: 
       title: Compartilhe com um amigo
       message: Mensagem
@@ -369,10 +371,8 @@ pt_BR:
       edit: "Editar nome da R\xC3\xA1dio"
       delete: "Remover R\xC3\xA1dio"
       would_delete: "Voc\xC3\xAA gostaria de remover esta R\xC3\xA1dio?"
+    we_hope_you_enjoyed: "N\xC3\xB3s esperamos que voc\xC3\xAA tenha gostado das m\xC3\xBAsicas que ouviu. Para ouvir mais m\xC3\xBAsicas,"
     sign_in: entre com o seu Windows Live ID
-    buylink: 
-      select_store: Selecione a sua loja
-      song: "Compre esta m\xC3\xBAsica"
     record_not_found: "O item que voc\xC3\xAA est\xC3\xA1 procurando n\xC3\xA3o p\xC3\xB4de ser encontrado"
     checkout_today_polular_stations: "Ou\xC3\xA7a as r\xC3\xA1dios populares hoje"
     recengineerror_UNKNOWN: Erro desconhecido
@@ -382,12 +382,12 @@ pt_BR:
     registration: 
       success: "Sucesso! Voc\xC3\xAA foi registrado."
       email: "Seu endere\xC3\xA7o de email"
-    activate_your_account: "Ative sua conta no MSN M\xC3\xBAsica"
     album: 
       released: "Lan\xC3\xA7ado em"
     buy: Compre
     authentication_required: "Voc\xC3\xAA precisa estar logado na aplica\xC3\xA7\xC3\xA3o para isso"
     internal_error: "N\xC3\xA3o foi poss\xC3\xADvel executar a sua requisi\xC3\xA7\xC3\xA3o devido a um erro interno. N\xC3\xB3s j\xC3\xA1 fomos notificados sobre este problema e vamos resolv\xC3\xAA-lo assim que poss\xC3\xADvel."
+    activate_your_account: "Ative sua conta no MSN M\xC3\xBAsica"
     recengineerror_NO_PLAYLIST: Nenhuma playlist foi encontrada
     now_playing: Tocando Agora
     station_edit_success: "Nome da r\xC3\xA1dio atualizado com sucesso"
@@ -422,9 +422,9 @@ pt_BR:
     genre: Estilo
   account_settings: 
     password_change: ALTERAR SENHA
-    email_me_subscribes_radios: ""
     change_password: ALTERAR SENHA
     email_me_following_me: "Me envie um e-mail quando algu\xC3\xA9m estiver me seguindo"
+    email_me_subscribes_radios: ""
     delete: REMOVER
     cancel: Cancelar
     title: "CONFIGURA\xC3\x87\xC3\x95ES DE CONTA"
@@ -439,10 +439,10 @@ pt_BR:
     delete_account: REMOVER CONTA
     add_update: ADICIONAR / ATUALIZAR
     save: SALVAR
-    basic_info: "INFORMA\xC3\x87\xC3\x95ES B\xC3\x81SICAS"
+    email_notifications: "NOTIFICA\xC3\x87\xC3\x95ES POR E-MAIL"
     update: ATUALIZAR
     password: Senha
-    email_notifications: "NOTIFICA\xC3\x87\xC3\x95ES POR E-MAIL"
+    basic_info: "INFORMA\xC3\x87\xC3\x95ES B\xC3\x81SICAS"
     old_password: Senha antiga
   date: 
     month_names: 
@@ -1002,9 +1002,9 @@ pt_BR:
       sign_out: Sair
   home: 
     station: Station
-    start_listening: "Come\xC3\xA7ar ouvir"
+    start_listening: "Come\xC3\xA7ar a ouvir"
     create_your_own_personalized_radio_station: "O que voc\xC3\xAA quer ouvir?"
-    text_about_radio: "Text About Radio"    
+    text_about_radio: Text About Radio
     create_radio: "Criar r\xC3\xA1dio"
     explaing_what_is_and_why_create_a_new_radio: "Digite o nome do seu artista favorito. Cyloop criar\xC3\xA1 uma radio personalizada com m\xC3\xBAsidas dele."
     type_artist_name: Escreva o nome do artista
