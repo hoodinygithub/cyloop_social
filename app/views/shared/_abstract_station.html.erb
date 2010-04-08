@@ -20,7 +20,7 @@
         </div>
 
         <div class="visible">
-          <%= button_image_to :actions__launch_radio, '/images/play_button.png', radio_path(:station_id => abstract_station.station.id), :method => :get, :class => 'play_button' %>
+          <%= link_to(image_tag('play_button.png', :title => t('actions.play')), radio_path(:station_id => abstract_station.station.id), :class => 'play_button') %>
   
           <%= link_to truncate(abstract_station.name,15), radio_path(:station_id => abstract_station.station.id), :title => abstract_station.name %>
           <% 

@@ -3,19 +3,20 @@
 
   <h1><%= t("dashboards.follows", :user_name => profile_account.name.upcase) %></h1>
 
-  <% if @followers.empty? %>
+  <% if profile_account.followee_count < 1 %>
     <div class="big_text">
       <%= t("user.is_not_following_anybody", :user_name => profile_account.name) %>
     </div>
   <% else %>
-    <% @followers.each_with_index do |follow, index| %>
+    <% followings = profile_account.followers.all(:limit => 4) %>
+    <% followings.each_with_index do |follow, index| %>
       <div class="small_thumb<%= " last_thumb" if index == 3 %>">
         <%= link_to avatar_for(follow, "spaced_img tiny", :disable_default_css => true), follow %>
         <%= link_to follow.name, follow %>
       </div>
     <% end %>
     
-    <% index = (4 - @followers.size) %>
+    <% index = (4 - followings.size) %>
     <% index.times do |i| %>
       <div class="empty_box gb_small <%= "last_box" if i == (index-1) %>">
         &nbsp;

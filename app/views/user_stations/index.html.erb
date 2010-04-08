@@ -3,38 +3,14 @@
 <% end %>
 
 <% content_for :sorting do %>
-  <%= sort_link_to(t('sort.lastest'),       :field => 'created_at', :order => 'desc') %>
-  <%= sort_link_to(t('sort.alphabetical'),  :field => 'name',       :order => 'asc' ) %>
+  <%= sort_link_to :latest %>
+  <%= sort_link_to :top %>
+  <%= sort_link_to :alphabetical %>
 <% end %>
 
 <% content_for :list do %>
   <ul class="stations_list">
-    <% @user_stations.each do |station| %>
-      <li>
-        <%= four_thumbs_to(station, :class => 'left_side', :clearer => true) %>
-        <div class="station_text">
-          <big>
-            <span class="station_name">
-              <%= link_to(station.name, station.artist) %>
-            </span>
-          </big>
-          <br/>
-          <span class="grey">
-            <%= t("activerecord.attributes.station.updated_at", :when => l(station.updated_at.to_date)) %>
-          </span>
-          <br/>
-          <%= station_contains(station) %>
-          <div class="buttons">
-            <%= link_to(image_tag('play_button.png', :class => 'png_fix'), '#') %>
-
-            <%= link_to(image_tag('edit_button.png', :class => 'png_fix'), '#', :onclick => "Base.stations.edit(#{station.id}, this); return false;") %>
-
-            <%= link_to(image_tag('close_button.png', :class => 'png_fix'), '#', :onclick => "Base.stations.remove(#{station.id}, this); return false;") %>
-          </div>
-        </div>
-        <br class="clearer" />
-      </li>
-    <% end %>
+    <%= render :partial => @user_stations %>
   </ul>
 <% end %>
 

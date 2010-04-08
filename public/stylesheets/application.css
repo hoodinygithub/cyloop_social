@@ -1378,10 +1378,23 @@ img.artist_icon_box.tiny {
     margin-bottom: 10px;
 }
 
+.medium_thumb a {
+	font-size: 11px;
+	line-height: 14px;
+	display: block; 
+	margin-top: 5px;
+}
+
 img.avatar_four_thumbs {
   width: 35px;
   height: 35px;
 }
+
+img.avatar_four_thumbs_medium {
+  width: 39px;
+  height: 39px;
+}
+
 img.avatar_four_thumbs_big {
   width: 73px;
   height: 73px;
@@ -2218,7 +2231,7 @@ img.avatar_four_thumbs_big {
     width: 150px;
     height: 150px;
     float: left;
-    margin: 0px 5px 10px 0px;
+    margin: 0px 5px 5px 0px;
 }
 
 .gb_big.last_box {

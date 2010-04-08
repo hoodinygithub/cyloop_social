@@ -81,18 +81,18 @@ class User < Account
 
   has_many :stations,  
            :foreign_key => :owner_id,
-           :order => 'user_stations.name ASC',
+           :select => "user_stations.*",
            :class_name => "UserStation",
            :include => :abstract_station,
            :source => :abstract_station,
-           :conditions => 'abstract_stations.available'
+           :conditions => 'abstract_stations.deleted_at IS NULL AND user_stations.deleted_at IS NULL'
   
   has_many :playlists, :foreign_key => :owner_id, :order => 'created_at DESC'
 
   has_many :song_listens, :foreign_key => :listener_id
 
   has_many :followings, :foreign_key => 'follower_id'
-  has_many :followees, :through => :followings, :conditions => "followings.approved_at IS NOT NULL", :order => "approved_at DESC", :source => :followee do
+  has_many :followees, :through => :followings, :conditions => "followings.approved_at IS NOT NULL", :source => :followee do
     def with_limit(limit=10)
       find(:all, :limit => limit)
     end
@@ -100,10 +100,6 @@ class User < Account
 
     def song_listens
       SongListen.for_followees_of(proxy_owner)
-    end
-
-    def alphabetical
-      find(:all, :order => 'accounts.name ASC')
     end
   end
 

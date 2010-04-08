@@ -314,6 +314,10 @@ class Account < ActiveRecord::Base
     self.class.city_db
   end
 
+  def most_played_stations(limit=3)
+    stations.all(:order => 'user_stations.total_plays DESC', :limit => limit)
+  end
+
   has_many :chats
   has_many :profile_chats, :class_name => "Chat", :foreign_key => "profile_id"
   attr_accessor :next_chat

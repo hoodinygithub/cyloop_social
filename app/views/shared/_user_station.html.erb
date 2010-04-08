@@ -2,7 +2,7 @@
   <% if user_station.artist_id.nil? %>
     <%= avatar_for(nil, :new_medium) %>
   <% else %>
-    <%= four_thumbs_to(user_station.station, {:type => :big}) %>
+    <%= four_thumbs_to(user_station.station, :type => :big) %>
   <% end %>
 
   <div class="overlay">
@@ -24,7 +24,7 @@
     </div>
 
     <div class="visible">
-      <%= button_image_to :actions__launch_radio, '/images/play_button.png', radio_path(:station_id => user_station.station.id), :method => :get, :class => 'play_button' %>
+      <%= link_to(image_tag('play_button.png', :title => t('actions.play')), radio_path(:station_id => user_station.station.id), :class => 'play_button') %>
 
       <%= link_to truncate(user_station.name,15), radio_path(:station_id => user_station.station.id), :title => user_station.name %><br/>
       <%= link_to t("home.station"), radio_path(:station_id => user_station.station.id) %>

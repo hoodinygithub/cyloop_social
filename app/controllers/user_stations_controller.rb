@@ -32,16 +32,11 @@ class UserStationsController < ApplicationController
       end
 
       format.html do
-        @sort_field = params.fetch(:sort_field, nil)
-        @sort_order = params.fetch(:sort_order, nil)
+        @sort_type = params.fetch(:sort_by, nil).to_sym rescue :latest
+
         begin
-          if @sort_field == 'name' and  @sort_order == 'asc'
-            @user_stations = profile_user.stations.paginate :page => params[:page], :per_page => 15, :order => 'stations.name ASC'
-          else
-            @sort_field = 'created_at'
-            @sort_order = 'desc'
-            @user_stations = profile_user.stations.paginate :page => params[:page], :per_page => 15, :order => 'stations.created_at ASC'
-          end
+            sort_types = { :latest => 'user_stations.created_at DESC', :top => 'user_stations.total_plays DESC', :alphabetical => 'user_stations.name'  }
+            @user_stations = profile_user.stations.paginate :page => params[:page], :per_page => 15, :order => sort_types[@sort_type]
         rescue NoMethodError
           redirect_to new_session_path
         end

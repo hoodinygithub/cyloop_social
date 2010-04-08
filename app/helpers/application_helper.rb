@@ -1,21 +1,20 @@
 module ApplicationHelper
-  def sort_link_to(link_label, options = {})
-    field = options.delete(:field)
-    order = options.delete(:order)
+  def sort_link_to(type, options = {})
+    type = type.to_s if type.is_a? Symbol
 
-    raise ArgumentError unless (field && order)
+    raise ArgumentError unless type
 
     url = request.request_uri.split('?').first
     url << "?page=#{params[:page]}" if params.fetch(:page, nil)
     url << (url.include?('?') ? '&' : '?')
-    url << "sort_field=#{field}&sort_order=#{order}"
+    url << "sort_by=#{type}"
     url = url.downcase
 
-    if @sort_field == field and @sort_order == order
+    if @sort_type.to_s == type
       options[:class] = 'active'
     end
 
-    link_to link_label, url, options
+    link_to t("sort.#{type}"), url, options
   end
 
   def following_page?
@@ -105,29 +104,33 @@ module ApplicationHelper
     html
   end
 
-  def four_thumbs_to(station, options = {})
-    station = station.try(:playable)
+  def four_thumbs_to(station, options = {})  
+    station = station.try(:playable) 
+    station_link = radio_path(:station_id => station.station.id) if station
     
-    unless station.nil?
-      station_link = station.artist
+    station_images_with_links = []
     
-      station_images_with_links = []
-    
-      if options[:type].nil?
-        station.includes(4).each do |artist|
-          station_images_with_links << link_to(image_tag(AvatarsHelper.avatar_path(artist.album, :small), :class => 'avatar_four_thumbs'), station_link)
-        end
-        station_images_with_links << content_tag(:br, "&nbsp;", :class => 'clearer') if options[:clearer]
-        html = content_tag(:div, station_images_with_links, :class => "four_thumbs #{options[:class]}")
-      elsif options[:type] == :big
-        station.includes(4).each do |artist|
-          station_images_with_links << link_to(image_tag(AvatarsHelper.avatar_path(artist.album, :small), :class => 'avatar_four_thumbs_big'), station_link)
-        end
-        station_images_with_links << content_tag(:br, "&nbsp;", :class => 'clearer') if options[:clearer]
-        html = content_tag(:div, station_images_with_links, :class => "four_thumbs_big #{options[:class]}")
+    # TODO: Handle this issue with DB showing a default image
+    if options[:type].nil?
+      station.includes(4).each do |artist|
+        station_images_with_links << link_to(image_tag(AvatarsHelper.avatar_path(artist.album, :small), :class => 'avatar_four_thumbs'), station_link)
       end
-    else
-      # TODO: Handle this issue with DB showing a default image
+      station_images_with_links << content_tag(:br, "&nbsp;", :class => 'clearer') if options[:clearer]
+      html = content_tag(:div, station_images_with_links, :class => "four_thubms #{options[:class]}")
+
+    elsif options[:type] == :medium
+      station.includes(4).each do |artist|
+        station_images_with_links << link_to(image_tag(AvatarsHelper.avatar_path(artist.album, :small), :class => 'avatar_four_thumbs_medium'), station_link)
+      end
+      station_images_with_links << content_tag(:br, "&nbsp;", :class => 'clearer') if options[:clearer]
+      html = content_tag(:div, station_images_with_links, :class => "four_thubms #{options[:class]}")
+
+    elsif options[:type] == :big
+      station.includes(4).each do |artist|
+        station_images_with_links << link_to(image_tag(AvatarsHelper.avatar_path(artist.album, :small), :class => 'avatar_four_thumbs_big'), station_link)
+      end
+      station_images_with_links << content_tag(:br, "&nbsp;", :class => 'clearer') if options[:clearer]
+      html = content_tag(:div, station_images_with_links, :class => "four_thubms_big #{options[:class]}")
     end
   end
 

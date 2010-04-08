@@ -3,8 +3,8 @@
 <% end %>
 
 <% content_for :sorting do %>
-  <%= sort_link_to('LATEST',       :field => 'created_at', :order => 'desc') %>
-  <%= sort_link_to('ALPHABETICAL', :field => 'name',       :order => 'asc' ) %>
+  <%= sort_link_to :latest %>
+  <%= sort_link_to :alphabetical %>
 <% end %>
 
 <%= render 'shared/internal_content' %>
