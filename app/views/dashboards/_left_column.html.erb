@@ -7,10 +7,6 @@
     <div class="clearer"></div>
   </div><!--/end black_boxes -->
 
-  <% if profile_account.artist? %>
-  <%= render 'dashboards/owner_buttons' if profile_account.has_station? %>
-  <% elsif profile_account.user? %>
   <%= render 'dashboards/user_buttons' %>
-  <% end %>
   <%= user_sidebar_links %>
 </div><!--/end left_column -->
