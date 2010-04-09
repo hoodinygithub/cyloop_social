@@ -249,6 +249,41 @@ Base.locale.date_difference = function(old_date, new_date) {
 /*
  * Community
  */
+Base.community.approve = function(user_slug, link) {
+  Base.community.__follow_request_handler('approve', user_slug, link, function(response) {
+    $follower_list = jQuery('ul.followers_list');
+    $li = jQuery("<li></li>").hide().append(response);
+    $follower_list.append($li.fadeIn());
+  });
+};
+
+Base.community.disapprove = function(user_slug, link) {
+  Base.community.__follow_request_handler('disapprove', user_slug, link, function(response) {
+    alert("d =>" + response);
+  });
+};
+
+Base.community.__follow_request_handler = function(type, user_slug, link, callback) {
+  var params           = {'user_slug':user_slug};
+  var $link            = jQuery(link);
+  var $main_element    = $link.parent().parent().parent().parent();
+  var $pending_title   = jQuery('li.pending');
+  var $black_ul        = $link.parent().parent();
+  var $settings_button = $main_element.find('.settings_button').children().children();
+
+  $black_ul.fadeOut();
+  $settings_button.html(Base.layout.spin_image(false, false));
+  
+  jQuery.post('/users/' + type, params, function(response, status) {
+    $main_element.slideUp();
+    $pending_items = jQuery('li.pending_item:visible');
+    if ($pending_items.length == 1) {
+      $pending_title.slideUp();
+    }
+    if (typeof(callback) == 'function') callback(response);
+  });
+};
+
 Base.community.follow = function(user_slug, button, remove_div) {
   var params = {'user_slug':user_slug}
   var $button = jQuery(button);
@@ -266,9 +301,15 @@ Base.community.follow = function(user_slug, button, remove_div) {
     if (login_required) return;
 
     if (status == 'success') {
+      $button_label.html("");
       $button.removeClass("blue_button");
       $button.addClass("green_button");
-      $button_label.html(Base.locale.t('actions.unfollow'));
+      if (response.status == 'following') {
+        $button_label.html(Base.locale.t('actions.unfollow'));
+      } else if (response.status == 'pending') {
+        $button_label.html(Base.locale.t('actions.pending'));
+      }
+      
       $button.unbind('click');
       $button.bind('click', function() { Base.community.unfollow(user_slug, this, remove_div); return false; });
     }

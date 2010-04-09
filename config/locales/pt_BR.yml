@@ -9,6 +9,9 @@ pt_BR:
     add: adicionar
     share_with_a_friend: "Envie esta m\xC3\xBAsica para um amigo"
     unfollow: Seguindo
+    pending: Pendente
+    aprove: Aprovar
+    disaprove: Cancelar
     select_playlist: Selecione a playlist
     forgot_password: Esqueceu sua senha?
     edit: Editar
@@ -144,6 +147,9 @@ pt_BR:
       message: "Acho que voc\xC3\xAA vai gostar dessa m\xC3\xBAsica."
     multiple_emails: "(separe mais de um email com v\xC3\xADrgulas)"
   dashboards: 
+    pending:
+        title: Pendentes
+    
     messages: 
       artist_not_found: "N\xC3\xA3o encontramos nenhum artista com este nome. Por favor, fa\xC3\xA7a nova busca."
     followers: 

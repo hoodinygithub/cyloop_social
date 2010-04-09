@@ -37,6 +37,8 @@ en:
       toggle_on: On
       toggle_off: Off
   dashboards:
+    pending:
+        title: Pendings
     follows: "{{user_name}} FOLLOWS"
     top_stations: "{{user_name}}'S TOP STATIONS"
     user_latest_stations:  "{{user_name}}'S LATEST STATIONS"
@@ -106,6 +108,9 @@ en:
     edit: Edit
     select_playlist: Select playlist
     unfollow: Following
+    pending: Pending
+    aprove: Aprove
+    disaprove: Disaprove
     forgot_password: Forgot Password?
     go_with_exclamation: Go!
     buy_album: Purchase Album

@@ -2,7 +2,11 @@
   <%= green_button(t('actions.unfollow'),
     :onclick => "Base.community.unfollow('#{profile_account.slug}', this, false)",
     :class => 'follower_btn full_width') %>
-<% else %>
+<% elsif current_user and profile_account.follow_requests.collect(&:follower_id).include? current_user.id %>
+  <%= green_button(t('actions.pending'),
+    :onclick => "Base.community.unfollow('#{profile_account.slug}', this, false)",
+    :class => 'follower_btn full_width') %>
+<% elsif current_user and current_user != profile_account or not current_user %>
   <%= blue_button(t('actions.follow'),
     :onclick => "Base.community.follow('#{profile_account.slug}', this, false)",
     :class => 'follower_btn full_width') %>

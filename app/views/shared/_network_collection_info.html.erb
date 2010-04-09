@@ -1,0 +1,7 @@
+<a href="#"><%= link_to (avatar_for(item, :small), item) %></a>
+<% if params[:controller] == 'activities' %>
+  <%= render :partial => 'shared/user_update_info', :locals => {:item => item} %>
+<% else %>
+  <%= render :partial => 'shared/user_details_and_setting_options', :locals => {:item => item} %>
+<% end %>
+<br class="clearer" />

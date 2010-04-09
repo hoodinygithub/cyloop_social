@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 
   include Application::MsnRedirection
 
-  before_filter :find_account_by_slug, :only => [:follow, :unfollow, :block, :unblock]
+  before_filter :find_account_by_slug, :only => [:follow, :unfollow, :block, :unblock, :approve, :disapprove]
   before_filter :xhr_login_required, :only => [:follow, :unfollow]
   before_filter :login_required, :only => [:edit, :update, :destroy, :feedback, :confirm_cancellation, :remove_avatar]
   before_filter :set_return_to, :only => [:msn_login_redirect, :msn_registration_redirect]
@@ -158,12 +158,38 @@ class UsersController < ApplicationController
   
   def follow
     current_user.follow(@account) unless current_user.follows?(@account)
-    render :layout => false, :text => ''
+    if @account.private_profile?
+      follow_status = {:status => 'pending'}
+    else
+      follow_status = {:status => 'following'}
+    end
+    render :json => follow_status
   end
   
   def unfollow
-    current_user.unfollow(@account) if current_user.follows?(@account)
+    if current_user.follows?(@account)
+      current_user.unfollow(@account) 
+    elsif @account.follow_requests.collect(&:follower_id).include? current_user.id
+      @account.follow_requests.find_by_follower_id(current_user.id).destroy
+    end
     render :layout => false, :text => ''
+  end
+  
+  def approve
+    f = current_user.follow_requests.select {|f| f.follower_id == @account.id}.first
+
+    if f
+      f.approve!
+      render :layout => false, :partial => 'shared/network_collection_info', :locals => { :item => f.follower }
+    else
+      render :text => ""
+    end
+  end
+  
+  def disapprove
+    f = current_user.follow_requests.select {|f| f.follower_id == @account.id}.first
+    f.destroy if f
+    render :json => {}
   end
   
   def block

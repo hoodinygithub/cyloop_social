@@ -11,40 +11,41 @@
     <%= link_to item.followers.size, followers_path(item) %> <%= t('profile.navegation.followers' )%>
 </div>
 
-<div class="follower_actions w_settings">
-    <% if current_user.follows?(item) %>
-      <%= green_button(t('actions.unfollow'),
-        :onclick => "Base.community.unfollow('#{item.slug}', this, #{following_page?})",
-        :class => 'follower_btn') %>
-    <% else %>
-      <%= blue_button(t('actions.follow'),
-        :onclick => "Base.community.follow('#{item.slug}', this, #{following_page?})",
-        :class => 'follower_btn') %>
-    <% end %>
-
-    <%= blue_button(image_tag('settings_button.png'), :href => '#', :class => 'settings_button') %>
-    <br/>
-
-    <div class="blocked">
-      <% if current_user.blocks?(item) %>
-      <%= image_tag('blocked.gif') %> <%= t('blocks.blocked') %>
-      <% end %>
-    </div>
-
-    <ul class="actions_settings">
-      <% if current_user.blocks?(item) %>
-        <li>
-          <a href="#" onclick="Base.community.unblock('<%= item.slug %>', this); return false;">
-            <%= t('actions.unblock') %>
-          </a>
-        </li>
+<% if current_user and current_user == profile_account %>
+  <div class="follower_actions w_settings">
+      <% if current_user.follows?(item) %>
+        <%= green_button(t('actions.unfollow'),
+          :onclick => "Base.community.unfollow('#{item.slug}', this, #{following_page?})",
+          :class => 'follower_btn') %>
       <% else %>
-        <li>
-          <a href="#" onclick="Base.community.block('<%= item.slug %>', this); return false;">
-            <%= t('actions.block') %>
-          </a>
-        </li>
+        <%= blue_button(t('actions.follow'),
+          :onclick => "Base.community.follow('#{item.slug}', this, #{following_page?})",
+          :class => 'follower_btn') %>
       <% end %>
-    </ul>
-</div>
 
+      <%= blue_button(image_tag('settings_button.png'), :href => '#', :class => 'settings_button') %>
+      <br/>
+
+      <div class="blocked">
+        <% if current_user.blocks?(item) %>
+        <%= image_tag('blocked.gif') %> <%= t('blocks.blocked') %>
+        <% end %>
+      </div>
+
+      <ul class="actions_settings">
+        <% if current_user.blocks?(item) %>
+          <li>
+            <a href="#" onclick="Base.community.unblock('<%= item.slug %>', this); return false;">
+              <%= t('actions.unblock') %>
+            </a>
+          </li>
+        <% else %>
+          <li>
+            <a href="#" onclick="Base.community.block('<%= item.slug %>', this); return false;">
+              <%= t('actions.block') %>
+            </a>
+          </li>
+        <% end %>
+      </ul>
+  </div>
+<% end %>

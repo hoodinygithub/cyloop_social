@@ -1,4 +1,9 @@
 <%= render 'shared/user_follows' %>
 <%# render 'shared/user_top_mixes' %>
 <%= render 'shared/top_stations_box'     unless profile_artist? %>
-<%= render 'shared/user_recent_activity' unless profile_artist? %>
+
+
+
+<% if params[:controller] == 'accounts' and params[:action] == 'show' %>
+  <%= render 'shared/user_recent_activity' unless profile_artist? %>
+<% end %>

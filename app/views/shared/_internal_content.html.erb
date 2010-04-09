@@ -14,15 +14,20 @@
             
             <% if @collection %>
               <ul class="followers_list">
+                <% if current_user and current_user == profile_account and !@pending.nil? and @pending.size > 0 %>
+                  <li class="pending"><b><%= t('dashboards.pending.title') %></b></li>
+                  <% @pending.each do |item| %>
+                    <li class="pending_item">
+                        <%= link_to (avatar_for(item.follower, :small), item.follower) %>
+                        <%= render :partial => 'shared/pending', :locals => {:item => item.follower} %>
+                        <br class="clearer" />
+                    </li>
+                  <% end %>
+                <% end %>
+                
                 <% @collection.each do |item| %>
                   <li>
-                      <a href="#"><%= link_to (avatar_for(item, :small), item) %></a>
-                      <% if params[:controller] == 'activities' %>
-                        <%= render :partial => 'shared/user_update_info', :locals => {:item => item} %>
-                      <% else %>
-                        <%= render :partial => 'shared/user_details_and_setting_options', :locals => {:item => item} %>
-                      <% end %>
-                      <br class="clearer" />
+                    <%= render :partial => 'shared/network_collection_info', :locals => {:item => item} %>
                   </li>
                 <% end %>
               <% else %>

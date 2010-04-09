@@ -1,0 +1,29 @@
+<div class="follower_text">
+    <b>
+      <%= link_to item, item %>
+    </b>
+    <br/>
+    <span>
+      <%= item.location %>
+    </span>
+    <br/>
+    <%= link_to item.stations.size, station_path(item) %> <%= t('profile.navegation.stations' )%> /
+    <%= link_to item.followers.size, followers_path(item) %> <%= t('profile.navegation.followers' )%>
+</div>
+
+<% if current_user and current_user == profile_account %>
+  <div class="follower_actions w_settings">
+
+    <%= blue_button(image_tag('settings_button.png'), :href => '#', :class => 'settings_button') %>
+    <ul class="actions_settings">
+      <li>
+        <%= link_to t('actions.aprove'), '#', 
+                    :onclick => "Base.community.approve('#{item.slug}', this); return false;" %>
+      </li>
+      <li>
+        <%= link_to t('actions.disaprove'), '#', 
+                    :onclick => "Base.community.disapprove('#{item.slug}', this); return false;" %>
+      </li>
+    </ul>
+  </div>
+<% end %>
