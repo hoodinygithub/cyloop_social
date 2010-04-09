@@ -697,6 +697,7 @@ Base.account_settings.add_website = function() {
    '<a href="#" class="black delete_site">[' + Base.locale.t('account_settings.delete') + ']</a></b><br/></div>');
   $('.delete_site').click(Base.account_settings.delete_website);
   $(this).val('');
+  return false;
 };
 
 Base.account_settings.delete_website = function() {
