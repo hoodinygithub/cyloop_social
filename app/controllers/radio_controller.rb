@@ -100,7 +100,7 @@ class RadioController < ApplicationController
   end
 
   def search
-    @station = Station.available.first( :conditions => {:name => params[:station_name]} )
+    @station = AbstractStation.find_by_name(params[:artist_name])
     if @station
       @station_object = if logged_in?
         user_station = current_user.stations.find_by_station_id(@station.id)
