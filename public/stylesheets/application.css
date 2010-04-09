@@ -662,6 +662,7 @@ h1 {
     line-height: 18px;
     margin-bottom: 18px;
     padding-left: 5px;
+    text-transform: uppercase;
 }
 
 .artist_box {
