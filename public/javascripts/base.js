@@ -134,12 +134,12 @@ Base.layout.spin_image = function(type, no_margin) {
   }
   $img = jQuery("<img></img>");
   $img.attr('src', '/images/' + image_name);
-  
+
 
   if (typeof(no_margin) == 'undefined' || no_margin) {
     $img.css({'margin-top':'5px'});
   }
-  
+
   return $img;
 };
 
@@ -261,10 +261,10 @@ Base.community.follow = function(user_slug, button, remove_div) {
   $button.bind('click', function() { return false; });
 
   jQuery.post('/users/follow', params, function(response, status) {
-    
+
     login_required = Base.utils.handle_redirect(response);
     if (login_required) return;
-    
+
     if (status == 'success') {
       $button.removeClass("blue_button");
       $button.addClass("green_button");
@@ -464,7 +464,7 @@ Base.network.__update_page_owner_page = function(list) {
     $share_button.fadeIn();
     return;
   }
-  
+
   first_element = list[0];
   user_slug = first_element.user_slug;
   timestamp = first_element.timestamp;
@@ -543,14 +543,14 @@ Base.network.__update_page_user_page = function(list) {
   $ul = jQuery('#user_recent_activities');
 
   $user_big_text.find('img').remove();
-  
+
   if (list.length == 0) {
     $user_big_text.find('span').fadeIn();
     return;
   }
-  
+
   $user_big_text.remove();
-  
+
   $ul.hide();
   for (var i=0; i < list.length ; i++) {
     activity = list[i];
@@ -567,21 +567,21 @@ Base.network.__update_page_user_page = function(list) {
 
     $li.append("&nbsp;");
     $li.append(activity.message);
-    
+
     $span.attr('class', 'grey');
     $span.append(activity.str_timestamp);
-    
+
     $li.append("&nbsp;");
     $li.append($span);
     $ul.append($li);
   }
-  
+
   $ul.fadeIn();
 
   // show "view more" option if list is huge
   if (list.length >= 5) {
     $parent = $ul.parent();
-    
+
     $link = jQuery("<a></a>");
     $link.attr('href', '#');
     $link.append(Base.locale.t('actions.view_more'));
@@ -596,7 +596,7 @@ Base.network.__update_page_user_page = function(list) {
 Base.network.update_page = function(list) {
   var user_page = jQuery('#user_recent_activities').length > 0;
   $form = jQuery('#network_update_form');
-  
+
   if (user_page) {
     Base.network.__update_page_user_page(list)
   } else {
@@ -609,7 +609,7 @@ Base.network.update_page = function(list) {
 Base.network.load_latest = function(params) {
   jQuery(document).ready(function() {
     if (typeof(params) != 'object') params = {};
-    
+
     jQuery.post('/activity/latest', params, function (response) {
       Base.network.update_page(response);
     });
@@ -803,6 +803,8 @@ Base.main_search.follow = function(user_slug, element) {
   var $element = jQuery(element);
   var params = {'user_slug':user_slug}
   jQuery.post('/users/follow', params, function(response, status) {
+    login_required = Base.utils.handle_redirect(response);
+    if (login_required) return;
     if (status == 'success') {
       jQuery($element).parent().parent().find('#not_following').hide();
       jQuery($element).parent().parent().find('#following').show();
