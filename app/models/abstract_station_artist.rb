@@ -5,7 +5,7 @@ class AbstractStationArtist < ActiveRecord::Base
   belongs_to :artist
   belongs_to :album
 
-  delegate :name, :to => :artist
+  delegate :name, :to => :artist, :allow_nil => true
 
 end
 
