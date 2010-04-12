@@ -24,7 +24,6 @@ pt_BR:
     cancel: Cancelar
     buy_album: "Comprar \xC3\xA1lbum"
     results_for: Resultados para
-    alphabetical: "Alfab\xC3\xA9tica"
     deny: Negar
     show_more: ""
     or: ou
@@ -34,9 +33,7 @@ pt_BR:
     view_more: Ver mais
     block_this_person: "Bloquear este usu\xC3\xA1rio"
     view_more_songs: "ver mais m\xC3\xBAsicas"
-    relevance: "Relev\xC3\xA2ncia"
     to: para
-    newest: Mais novos
     follow: Seguir
     add_to_playlist: "Adicionar \xC3\xA0 playlist"
     block: Bloquear
@@ -50,7 +47,6 @@ pt_BR:
     next: "Pr\xC3\xB3xima"
     create: Criar
     reset: Enviar
-    latest: Mais recentes
     skip: ""
     add_into_a_new_playlist: Adicionar a uma nova playlist
     login: Login
@@ -60,6 +56,12 @@ pt_BR:
     create_station: "Criar R\xC3\xA1dio"
     submitting: Enviando
     search: Buscar
+  sort:
+    top: Mais tocado
+    latest: Mais recentes
+    alphabetical: "Alfab\xC3\xA9tica"    
+    newest: Mais novos    
+    relevance: "Relev\xC3\xA2ncia"    
   number: 
     format: 
       separator: ","

@@ -152,7 +152,9 @@ en:
     create_station: CREATE MIX
     search_text: Search Music on Cyloop
     show_more: SHOW MORE
-    relevance: RELEVANCE
+  sort:
+    top: TOP
+    relevance: RELEVANCE    
     alphabetical: ALPHABETICAL
     latest: LATEST
     alphabetical: ALPHABETICAL
