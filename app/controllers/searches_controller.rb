@@ -1,12 +1,15 @@
 class SearchesController < ApplicationController
 
   def show
-    @active_scope=params[:scope]
-    @counts=cross_count(params[:q])
+    @active_scope = params[:scope]
+    @counts       = cross_count(params[:q])
     @active_scope = @counts.sort {|a,b| a[1]<=>b[1]}.last.first.downcase if params[:scope] == "any"
     @active_scope = 'station' if @active_scope == 'abstractstation'
-    @sort_type = params[:sort_by] || "relevance"    
-    @results=individual_search(params[:q],@active_scope, 20, ordering(@active_scope,params[:sort_by]), sorting(@active_scope,params[:sort_by]))
+    @sort_type    = params[:sort_by] || "relevance"    
+    @order        = ordering(@active_scope, @sort_type)
+    @sort         = sorting(@active_scope, @sort_type)
+    @results      = individual_search(params[:q],@active_scope, 20, @order, @sort)
+
   end
 
   def autocomplete
