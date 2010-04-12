@@ -79,38 +79,26 @@
     settings: {
       opacity      : 0,
       overlay      : true,
-      loadingImage : '/facebox/loading.gif',
-      closeImage   : '/facebox/closelabel.gif',
+      loadingImage : '/images/loading.gif',
+      closeImage   : '/images/popup_close.png',
       imageTypes   : [ 'png', 'jpg', 'jpeg', 'gif' ],
       faceboxHtml  : '\
-    <div id="facebox" style="display:none;"> \
-      <div class="popup"> \
-        <table> \
-          <tbody> \
-            <tr> \
-              <td class="tl"/><td class="b"/><td class="tr"/> \
-            </tr> \
-            <tr> \
-              <td class="b"/> \
-              <td class="body"> \
-                <div class="content"> \
-                </div> \
-                <div class="footer"> \
-                  <a href="#" class="close"> \
-                    <img src="/facebox/closelabel.gif" title="close" class="close_image" /> \
-                  </a> \
-                </div> \
-              </td> \
-              <td class="b"/> \
-            </tr> \
-            <tr> \
-              <td class="bl"/><td class="b"/><td class="br"/> \
-            </tr> \
-          </tbody> \
-        </table> \
-      </div> \
-    </div>'
-    },
+        <div class="popup" id="facebox"> \
+          <div class="top_shadow"> \
+            <div class="top_left corner"></div> \
+            <div class="center_shadow"></div> \
+            <div class="top_right corner"></div> \
+            <a href="#" class="close"><img src="/images/popup_close.png" class="close_image png_fix" alt="X" title="Close" /></a> \
+          </div> \
+          <div class="content"> \
+          </div> \
+          <div class="bottom_shadow"> \
+            <div class="bottom_left corner"></div> \
+            <div class="center_shadow"></div> \
+            <div class="bottom_right corner"></div> \
+          </div> \
+        </div><!--/end popup --> \
+      '},
 
     loading: function() {
       init()
@@ -122,7 +110,7 @@
         append('<div class="loading"><img src="'+$.facebox.settings.loadingImage+'"/></div>')
 
       $('#facebox').css({
-        top:	getPageScroll()[1] + 100 + (getPageHeight() / 10),
+        top:	getPageScroll()[1] + (getPageHeight() / 10),
         left:	385.5
       }).show()
 
@@ -317,4 +305,3 @@
   })
 
 })(jQuery);
-

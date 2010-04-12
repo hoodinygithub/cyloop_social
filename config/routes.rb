@@ -164,8 +164,7 @@ ActionController::Routing::Routes.draw do |map|
 
       my.resources :blocks, :only => [:create]
 
-      my.resource :cancellation, :controller => :users, :only => [:destroy, :confirm_cancellation] do |cancellation|
-        cancellation.confirm 'confirm', :controller => 'users', :action => 'confirm_cancellation'
+      my.resource :cancellation, :controller => :users, :only => [:destroy, :feedback] do |cancellation|
         cancellation.feedback 'feedback', :controller => 'users', :action => 'feedback'
       end
       my.resource :settings, :controller => :users, :only => [:show, :edit, :update], :collection => [:remove_avatar]

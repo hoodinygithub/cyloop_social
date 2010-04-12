@@ -124,25 +124,44 @@ class UsersController < ApplicationController
   end
 
   def feedback
+    feedback = params[:feedback]
+    if feedback && !feedback.empty?
+      options = {
+        :site_id      => current_site.code,
+        :mailto       => "#{request.host}@hoodiny.com",
+        :address      => params[:address],
+        :country      => params[:country],
+        :os           => params[:os],
+        :browser      => params[:browser],
+        :feedback     => params[:feedback],
+        :cancellation => true
+      }
+      UserNotification.send_feedback_message( options )
+    end
+    redirect_to params[:redirect_to]
   end
 
   def destroy
-    @user = current_user
-    @delete_account_errors = {}
-    delete_info_accepted = params[:delete_info_accepted]
-    password_valid = cyloop_login? ? @user.authenticated?(params[:delete_password]) : true
-    if delete_info_accepted and password_valid
-      @user.cancel_account!
+    result = { :user_id => current_user.id }
+    password_valid = cyloop_login? ? user.authenticated?(params[:delete_password]) : true
+    if params[:delete_info_accepted] and password_valid
+      options = {
+        :user_id => current_user.id,
+        :site_id => request.host
+      }
+      current_user.cancel_account!
+      UserNotification.send_cancellation(options)
       cookies.delete(:auth_token) if cookies.include?(:auth_token)
+      result[:success] = true
       if wlid_web_login?
-        redirect_to(msn_logout_url)
+        result[:redirect_to] = msn_logout_url
       else
-        redirect_back_or_default('/')
+        result[:redirect_to] = root_url
       end
     else
-      @delete_account_errors[:delete_password] = I18n.t('account_settings.password_required')
-      render :action => :edit
+      result[:delete_password] = I18n.t('account_settings.password_required')
     end
+    render :json => result.to_json
   end
 
   def remove_avatar

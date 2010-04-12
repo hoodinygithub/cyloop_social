@@ -1,4 +1,7 @@
 module ApplicationHelper
+
+  include PopupHelper
+
   def sort_link_to(type, options = {})
     type = type.to_s if type.is_a? Symbol
 

@@ -702,12 +702,6 @@ Base.account_settings.highlight_field_with_errors = function() {
     }
     Base.account_settings.focus_first_section_with_error($('span.fieldWithErrors input').first());
   }
-
-  if (typeof(delete_account_errors) != 'undefined') {
-    var validator = $("#delete_account_form").validate();
-    validator.showErrors(delete_account_errors);
-    Base.account_settings.focus_first_section_with_error($('label.error').first());
-  }
 };
 
 Base.account_settings.focus_first_section_with_error = function(field_error) {
@@ -751,14 +745,33 @@ Base.account_settings.update_avatar_upload_info = function() {
 };
 
 Base.account_settings.delete_account_submit = function() {
-  var validator = $(this).closest('form').validate();
   var form = $(this).closest('form');
+  var validator = form.validate();
   if (form.valid()) {
-    form.submit();
+    $.ajax({
+      type : "DELETE",
+      url  : "/my/cancellation",
+      data : { delete_info_accepted: "true"},
+      success: function(data){
+        delete_account_data = data;
+        $.facebox($('#feedback_popup').show());
+        $(document).bind('close.facebox', function() {
+          window.location = data.redirect_to;
+        });
+      },
+      failure: function(data) {
+        validator.showErrors(data.errors);
+      }
+    });
   } else {
     validator.showErrors();
   }
   return false;
+}
+
+Base.account_settings.send_feedback = function() {
+  $('#redirect_to').val(delete_account_data.redirect_to);
+  var form = $('#feedback_form').closest('form').submit();
 }
 
 /*
