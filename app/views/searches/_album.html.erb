@@ -1,9 +1,7 @@
 <h1><%= t('basics.albums')%></h1>
 
 <div class="sorting">
-  <%= sort_link_to :relevance, :class => :active %> /
-  <%= sort_link_to :alphabetical %> / 
-  <%= sort_link_to :latest %>
+   <%= link_to t('sort.relevance'), "/search/#{params[:mkt]}/album/#{params[:q]}?order=def" , :class => params[:order]=='def' ? "active": "" %> /  <%= link_to t('sort.alphabetical'), "/search/#{params[:mkt]}/album/#{params[:q]}?order=alpha" , :class => params[:order]=='alpha'? "active": "" %> / <%= link_to t('sort.latest'), "/search/#{params[:mkt]}/album/#{params[:q]}?order=rel" , :class => params[:order]=='rel' || params[:order].blank? ? "active": "" %>
 </div>
 
 
