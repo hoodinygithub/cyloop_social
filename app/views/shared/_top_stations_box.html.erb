@@ -4,7 +4,7 @@
     <% most_played_stations = profile_user.most_played_stations %>
     <%= render :partial => 'shared/mini_station', :collection => most_played_stations %>
     
-    <% index = (3 - profile_user.most_played_stations.size) %>
+    <% index = (3 - most_played_stations.size) %>
     <% index.times do |i| %>
       <div class="empty_box gb_medium <%= "last_box" if i == (index-1) %>">
         &nbsp;
