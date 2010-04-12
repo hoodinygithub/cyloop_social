@@ -5,7 +5,8 @@ class SearchesController < ApplicationController
     @counts=cross_count(params[:q])
     @active_scope = @counts.sort {|a,b| a[1]<=>b[1]}.last.first.downcase if params[:scope] == "any"
     @active_scope = 'station' if @active_scope == 'abstractstation'
-    @results=individual_search(params[:q],@active_scope, 20, ordering(@active_scope,params[:order]), sorting(@active_scope,params[:order]))
+    @sort_type = params[:sort_by] || "relevance"    
+    @results=individual_search(params[:q],@active_scope, 20, ordering(@active_scope,params[:sort_by]), sorting(@active_scope,params[:sort_by]))
   end
 
   def autocomplete
@@ -58,20 +59,20 @@ class SearchesController < ApplicationController
       result=nil
       case scope
       when 'artist'
-        result=:name if sort=='alpha'
-        result=:visit_count if sort=='rel' || sort.blank?
+        result = :name if sort=='alphabetical'
+        result = :visit_count if sort=='relevance' || sort.blank?
       when 'station'
-        result=:name if sort=='alpha'
-        result=:created_at if sort=='rel' || sort.blank?
-        result=:created_at if sort=='def'
+        result = :name if sort=='alphabetical'
+        result = :created_at if sort=='lastest'
+        result = :created_at if sort=='relevance' || sort.blank?        
       when 'album'
-        result=:name if sort=='alpha'
-        result=:year if sort=='rel' || sort.blank?
-        result=:created_at if sort=='def'
+        result = :name if sort=='alphabetical'
+        result = :created_at if sort=='lastest'
+        result = :year if sort=='relevance' || sort.blank?        
       when 'user'
-        result=:name if sort=='alpha'
-        result=:visit_count if sort=='rel' || sort.blank?
-        result=:created_at if sort=='new'
+        result = :name if sort=='alphabetical'
+        result = :created_at if sort=='lastest'
+        result = :visit_count if sort=='relevance' || sort.blank?
       end
       result
     end
@@ -80,21 +81,20 @@ class SearchesController < ApplicationController
       result=nil
       case scope
       when 'artist' || 'user'
-        result=:desc if sort=='rel' || sort.blank?
-        result=:asc if sort=='alpha'
-        result=:desc if sort=='def'
+        result=:asc if sort=='alphabetical'
+        result=:desc if sort=='relevance' || sort.blank?        
       when 'station'
-        result=:asc if sort=='alpha'
-        result=:desc if sort=='rel' || sort.blank?
-        result=:desc if sort=='def'
+        result=:asc if sort=='alphabetical'
+        result=:desc if sort=='lastest'
+        result=:desc if sort=='relevance' || sort.blank?        
       when 'album'
-        result=:asc if sort=='alpha'
-        result=:desc if sort=='rel' || sort.blank?
-        result=:desc if sort=='def'
+        result=:asc if sort=='alphabetical'
+        result=:desc if sort=='lastest'        
+        result=:desc if sort=='relevance' || sort.blank?
       when 'user'
-        result=:desc if sort=='rel' || sort.blank?
-        result=:asc if sort=='alpha'
-        result=:desc if sort=='new'
+        result=:asc if sort=='alphabetical'        
+        result=:desc if sort=='lastest'
+        result=:desc if sort=='relevance' || sort.blank?        
       end
       result
     end

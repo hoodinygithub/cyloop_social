@@ -1,7 +1,9 @@
 <h1><%= t('basics.people')%></h1>
 
 <div class="sorting">
-    <%= link_to t('sort.relevance'), "/search/#{params[:mkt]}/user/#{params[:q]}?order=rel" , :class => params[:order]=='rel' || params[:order].blank? ? "active": "" %> / <%= link_to t('sort.newest'), "/search/#{params[:mkt]}/user/#{params[:q]}?order=new" , :class => params[:order]=='new' ? "active": "" %> / <%= link_to t('sort.alphabetical'), "/search/#{params[:mkt]}/user/#{params[:q]}?order=alpha" , :class => params[:order]=='alpha'? "active": "" %>
+  <%= sort_link_to :relevance %> / 
+  <%= sort_link_to :lastest %> /   
+  <%= sort_link_to :alphabetical %>
 </div>
 
 

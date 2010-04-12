@@ -1,7 +1,8 @@
 <h1><%= t('basics.artists')%></h1>
 
 <div class="sorting">
-    <%= link_to t('sort.relevance'), "/search/#{params[:mkt]}/artist/#{params[:q]}?order=rel" , :class => params[:order]=='rel' || params[:order].blank? ? "active": "" %> / <%= link_to t('sort.alphabetical'), "/search/#{params[:mkt]}/artist/#{params[:q]}?order=alpha" , :class => params[:order]=='alpha'? "active": "" %>
+  <%= sort_link_to :relevance %> /
+  <%= sort_link_to :alphabetical %>
 </div>
 
 <ul class="followers_list">
