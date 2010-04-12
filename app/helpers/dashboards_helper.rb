@@ -28,13 +28,15 @@ module DashboardsHelper
        {:menu => :albums,        :label => "#{t('profile.navigation.albums')}",           :url => links[:albums]},
        {:menu => :activity,      :label => "#{t('profile.navigation.activity')}",         :url => links[:activities]},
        {:menu => :followers,     :label => "#{t('profile.navigation.followers')}",        :url => links[:followers] }]
-    else
+    elsif profile_user?
       [{:menu => :home,          :label => "#{t('profile.navigation.home')}",             :url => links[:home]      },
        {:menu => :stations,      :label => "#{t('profile.navigation.stations')}",         :url => links[:stations]  },
        {:menu => :activity,      :label => "#{t('profile.navigation.activity')}",         :url => links[:activities]},
        {:menu => :followers,     :label => "#{t('profile.navigation.followers')}",        :url => links[:followers] },      
        {:menu => :following,     :label => "#{t('profile.navigation.following')}",        :url => links[:following] }]
     end
+    #artists do not follow users
+    #items.pop if profile_artist?
     
     if links[:settings]
       items.push({:menu => :settings, :label => "#{t('profile.navigation.account_settings')}", :url => links[:settings]}) 
