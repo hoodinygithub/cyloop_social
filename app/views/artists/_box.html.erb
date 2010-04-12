@@ -1,17 +1,12 @@
-<div class="artist_box png_fix <%= style if defined? style %>">
-    <% if defined? node %>
-      <%= image_tag("#{ENV['ASSETS_URL']}#{node.image}", :class => 'artist_icon_box') %>
-    <% end %>
-    
+<div class="artist_box png_fix <%= style if defined? style %>">    
     <% if false %>
       <span class="close_btn <%= place_type if defined? place_type %>">Close</span>
     <% end %>
     
+    <%= four_thumbs_to(node.station, :type => :big) %>
+    
     <div class="overlay">
         <div class="hidden">
-            <% if defined? node %>
-              <%= image_tag("#{ENV['ASSETS_URL']}#{node.image}", :class => 'artist_icon_box tiny artist_icon') %>
-            <% end %>
             <span>
                 <span class="blue">
                   <% if defined? node %>

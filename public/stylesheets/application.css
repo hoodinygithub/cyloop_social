@@ -854,7 +854,7 @@ img.artist_icon_box.tiny {
     color: #00a5f8;
 }
 
-.blue_button, .green_button, .black_button {
+.yellow_button, .blue_button, .green_button, .black_button {
     display: inline-block;
     height: 28px;
     line-height: 28px;
@@ -875,7 +875,12 @@ img.artist_icon_box.tiny {
     background: url("../images/black_button_left.gif") no-repeat left top;
 }
 
-.blue_button span, .green_button span, .black_button span {
+.yellow_button {
+    background: url("../images/green_button_left.gif") no-repeat left top;
+}
+
+
+.yellow_button span, .blue_button span, .green_button span, .black_button span {
     display: inline-block;
     height: 28px;
     color: #fff;
@@ -892,7 +897,7 @@ img.artist_icon_box.tiny {
     background: url("../images/black_button_right.gif") no-repeat right top;
 }
 
-.blue_button span span, .green_button span span {
+.yellow_button span span, .blue_button span span, .green_button span span {
     background: #00a5f8;
     padding: 0px 10px;
 }
@@ -901,11 +906,15 @@ img.artist_icon_box.tiny {
     background: #33cc33;
 }
 
+.yellow_button span span {
+    background: #33cc33;
+}
+
 .black_button span span {
     background: #000;
 }
 
-.blue_button:hover, .green_button:hover, .black_button:hover {
+.yellow_button:hover, .blue_button:hover, .green_button:hover, .black_button:hover {
     text-decoration: none;
 }
 
@@ -1195,6 +1204,12 @@ img.artist_icon_box.tiny {
     overflow: hidden;
     width: 12px;
     height: 12px;
+}
+
+.chars_counter {
+  float: right; 
+  color: #cccccc; 
+  font-size: 1.5em
 }
 
 .network_update {
@@ -1592,7 +1607,7 @@ img.avatar_four_thumbs_big {
     position: relative;
 }
 
-.followers_list .follower_actions .blue_button span span, .followers_list .follower_actions .green_button span span {
+.followers_list .follower_actions .yellow_button span span, .followers_list .follower_actions .blue_button span span, .followers_list .follower_actions .green_button span span {
     padding: 0px;
     width: 100px;
 }
@@ -1608,21 +1623,21 @@ img.avatar_four_thumbs_big {
     margin-right: 1px;
 }
 
-.followers_list .follower_actions.w_settings .blue_button span span, .followers_list .follower_actions.w_settings .green_button span span, .followers_list .follower_actions.w_settings .black_button span span {
+.followers_list .follower_actions.w_settings .yellow_button span span, .followers_list .follower_actions.w_settings .blue_button span span, .followers_list .follower_actions.w_settings .green_button span span, .followers_list .follower_actions.w_settings .black_button span span {
     padding: 0px;
     width: 100px;
 }
 
-.followers_list .follower_actions.w_settings .blue_button.settings_button, .followers_list .follower_actions.w_settings .green_button.settings_button, .followers_list .follower_actions.w_settings .black_button.settings_button {
+.followers_list .follower_actions.w_settings .yellow_button.settings_button, .followers_list .follower_actions.w_settings .blue_button.settings_button, .followers_list .follower_actions.w_settings .green_button.settings_button, .followers_list .follower_actions.w_settings .black_button.settings_button {
     margin-left: 5px;
 }
 
-.followers_list .follower_actions.w_settings .blue_button.settings_button span span, .followers_list .follower_actions.w_settings .green_button.settings_button span span, .followers_list .follower_actions.w_settings .black_button.settings_button span span {
+.followers_list .follower_actions.w_settings .yellow_button.settings_button span span, .followers_list .follower_actions.w_settings .blue_button.settings_button span span, .followers_list .follower_actions.w_settings .green_button.settings_button span span, .followers_list .follower_actions.w_settings .black_button.settings_button span span {
     padding: 0px 2px;
     width: 20px;
 }
 
-.followers_list .follower_actions.w_settings .blue_button.settings_button img, .followers_list .follower_actions.w_settings .green_button.settings_button img, .followers_list .follower_actions.w_settings .black_button.settings_button img {
+.followers_list .follower_actions.w_settings .yellow_button.settings_button img, .followers_list .follower_actions.w_settings .blue_button.settings_button img, .followers_list .follower_actions.w_settings .green_button.settings_button img, .followers_list .follower_actions.w_settings .black_button.settings_button img {
     position: relative;
     vertical-align: top;
     top: 5px;

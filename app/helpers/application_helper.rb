@@ -67,6 +67,11 @@ module ApplicationHelper
   def green_button(button_label, options = {})
     special_button(:green_button, button_label, options)
   end
+  
+  def yellow_button(button_label, options = {})
+    special_button(:yellow_button, button_label, options)
+  end
+  
 
   def station_contains(item, limit=3)
     links = []

@@ -6,9 +6,14 @@ class ActivitiesController < ApplicationController
   before_filter :set_page, :except => [ :song ]
   before_filter :login_required, :only => [:update_status]
 
+  ACTIVITIES_MAX = 10
+
   def index
     @dashboard_menu = :activity
-    @collection = profile_user.followees.paginate :page => params[:page], :per_page => 15
+    # @collection = profile_user.followees.paginate :page => params[:page], :per_page => 15
+    # @collection << profile_user
+    
+    @collection = profile_user.activity_status.latest_with_followings(:limit => ACTIVITIES_MAX)
   end
 
   def get_activity
@@ -64,7 +69,7 @@ class ActivitiesController < ApplicationController
     end
 
     if @account
-      activities = @account.activity_status.latest
+      activities = @account.activity_status.latest(:limit => ACTIVITIES_MAX)
       activities.each { |a| a['str_timestamp'] = nice_elapsed_time(a['timestamp']) }
       activities
     end

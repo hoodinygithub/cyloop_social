@@ -47,8 +47,9 @@ module Activity
       result.first
     end
     
-    def latest_with_followings()
-      latest(:include_followings => true)
+    def latest_with_followings(args = {})
+      args.merge!({:include_followings => true})
+      latest(args)
     end
     
     def latest(args = {})
@@ -57,6 +58,9 @@ module Activity
       result = db.query do |q| 
         q.order_by :timestamp, :numdesc
         q.add :type, :eq, 'status'
+        
+        q.add :timestamp, :numgt, args[:after_timestamp]  if args[:after_timestamp]
+        q.add :timestamp, :numlt, args[:before_timestamp] if args[:before_timestamp]
 
         if args[:include_followings]
           accounts = @account.following_ids
@@ -70,7 +74,7 @@ module Activity
       end
       
       result.each do |r|
-        r[:user] = User.find(r['user_id'])
+        r['user'] = User.find(r['account_id'])
       end
       
       result

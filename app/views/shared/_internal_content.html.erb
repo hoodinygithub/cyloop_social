@@ -34,8 +34,10 @@
                 <%= yield :list %>
               <% end %>
             </ul><!--/end followers_list -->
-            
-            <%= will_paginate @collection, pagination_args %>
+
+            <% if false and @collection.respond_to? :total_pages %>
+              <%= will_paginate @collection, pagination_args %>
+            <% end %>
         </div><!--/end center_column -->
 
         <%= render :partial => 'dashboards/right_column' %>

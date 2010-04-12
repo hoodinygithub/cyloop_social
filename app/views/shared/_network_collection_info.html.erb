@@ -1,4 +1,9 @@
-<a href="#"><%= link_to (avatar_for(item, :small), item) %></a>
+<% if item.is_a? Hash %>
+  <a href="#"><%= link_to (avatar_for(item['user'], :small), item) %></a>
+<% elsif item.is_a? User %>
+  <a href="#"><%= link_to (avatar_for(item, :small), item) %></a>
+<% end %>
+
 <% if params[:controller] == 'activities' %>
   <%= render :partial => 'shared/user_update_info', :locals => {:item => item} %>
 <% else %>

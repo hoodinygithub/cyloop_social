@@ -1,5 +1,8 @@
 <div class="follower_text">
-  <b><%= link_to(item, item) %></b> Here goes the update
+  <b><%= link_to(item['user'], item['user']) %></b>
+  <%= item['message'] %>
   <br />
-  <span class="grey small">5 days ago</span>
+  <span class="grey small">
+    <%= nice_elapsed_time(item['timestamp']) %>
+  </span>
 </div>

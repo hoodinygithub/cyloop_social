@@ -495,6 +495,20 @@ Base.stations.close_button_handler = function(object) {
 /*
  * Comment shared
  */
+Base.network.count_chars = function() {
+  $textarea     = jQuery("#network_comment");
+  $chars_counter = jQuery(".chars_counter");
+  
+  if ($textarea.val().length < 140) {
+    $chars_counter.css({'color':'#cccccc'});
+    $chars_counter.html(140 - $textarea.val().length);
+  } else {
+    $chars_counter.css({'color':'red'});
+    $chars_counter.html("0");
+    $textarea.val( $textarea.val().substr(0, 140) );
+  }
+};
+
 Base.network.__update_page_owner_page = function(list) {
   $network_update_text = jQuery('#network_update_text');
   $show_more_button = jQuery('#show_more_comments');
@@ -624,7 +638,7 @@ Base.network.__update_page_user_page = function(list) {
     $parent = $ul.parent();
 
     $link = jQuery("<a></a>");
-    $link.attr('href', '#');
+    $link.attr('href', window.location.href + '/activities');
     $link.append(Base.locale.t('actions.view_more'));
     $bold = jQuery("<b></b>").append($link);
 
