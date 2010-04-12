@@ -6,11 +6,20 @@
   <br />
   <%= t('user.visits', :default => "visits") %>
 </div>
-<% elsif profile_artist? and false %>
+<% elsif profile_artist? %>
+<!-- Leave profile visists until include mixes -->
+<div class="black_box left_side">
+  <big class="blue">
+    <%= profile_artist.profile_visits.size %>
+  </big>
+  <br />
+  <%= t('user.visits', :default => "visits") %>
+</div>
+<!-- Remove mixes
   <div class="black_box left_side">
     <big class="blue"><a href="#">12,3698</a></big><br>
     Mixes
-  </div>
+  </div> -->
 <% end %>
 
 <div class="black_box right_side">
