@@ -5,7 +5,7 @@ class AccountsController < ApplicationController
   before_filter :auto_follow_profile, :only => [ :show ]
 
   current_tab :home
-  
+
   RECOMMENDED_STATIONS = 6
   def show
     @dashboard_menu = :home
@@ -15,15 +15,15 @@ class AccountsController < ApplicationController
     stations = recommended_stations(30)
     @recommended_stations = stations[0..(RECOMMENDED_STATIONS-1)]
     @recommended_stations_queue = stations[RECOMMENDED_STATIONS..(stations.size)]
-    @top_stations = profile_account.stations.most_created(3) 
+    @top_stations = profile_account.stations.most_created(3)
     @followers = profile_account.followers.all(:limit => 4)
     @latest_activity_status = profile_account.activity_status.latest_with_followings unless profile_account.is_a? Artist
     @last_activity_status   = profile_account.activity_status.last
-    @latest_stations = profile_account.stations.all(:limit => 6, :order => "user_stations.created_at DESC") 
-    
+    @latest_stations = profile_account.stations.all(:limit => 6, :order => "user_stations.created_at DESC")
+
     render :template => 'dashboards/show'
   end
-  
+
   def oldshow
     redirect_to( user_path( profile_account.slug ) ) && return if params[:slug] != profile_account.slug
     respond_to do |format|
@@ -44,14 +44,14 @@ class AccountsController < ApplicationController
             end
             render :template => "custom_profiles/chat_#{@chat.artist.slug}"
           else
-            # VERY TEMPORARY CONDITIONAL!!! 
+            # VERY TEMPORARY CONDITIONAL!!!
             # RADIO VIEW WITH PROFILE TRACKING FEATURES
             if profile_account.slug == "gcbaradio"
               @top_stations = current_site.summary_top_stations.limited_to(5)
               @source_ip = remote_ip
             end
-            ####################################### 
-            render :template => "custom_profiles/#{profile_account.slug}"            
+            #######################################
+            render :template => "custom_profiles/#{profile_account.slug}"
           end
         end
       end
@@ -71,7 +71,7 @@ class AccountsController < ApplicationController
       redirect_to(profile_not_available_path(params[:slug]))
     else
       true
-    end    
+    end
   end
 
   def record_visit
@@ -84,7 +84,7 @@ class AccountsController < ApplicationController
           :visitor_ip_address => remote_ip,
           :timestamp => Time.now.to_i
         }
-        #Resque.enqueue(ProfileVisitJob, tracker_payload)
+        Resque.enqueue(ProfileVisitJob, tracker_payload)
       end
     rescue Exception => e
       Rails.logger.error("*** Could not record visit! #{e}\n#{e.backtrace.join("\n")}\n#{tracker_payload}") and return true
@@ -114,3 +114,4 @@ class AccountsController < ApplicationController
   helper_method :type
 
 end
+
