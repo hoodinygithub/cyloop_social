@@ -1,18 +1,8 @@
 <div class="artist_box png_fix <%= "last_box" if (user_station_counter+1) % columns == 0 %>">  
-  <% if user_station.artist_id.nil? %>
-    <%= avatar_for(nil, :new_medium) %>
-  <% else %>
-    <%= four_thumbs_to(user_station.station, :type => :big) %>
-  <% end %>
-
+  <%= four_thumbs_to(user_station.station, :type => :big) %>
   <div class="overlay">
     <div class="hidden">
-      <% if user_station.artist_id.nil? %>
-        <%= avatar_for(nil, :artist_icon) %>
-      <% else %>
-        <%= link_to avatar_for(user_station.owner, :artist_icon), user_station.owner %>
-      <% end %>
-      
+      <%= link_to avatar_for(user_station.owner, :artist_icon), user_station.owner %>    
       <span>
         <span class="blue"><%= link_to user_station.owner.name, user_station.owner %></span><br/>
         <%= t('basics.created_at', :when => distance_of_time_in_words_to_now(user_station.created_at)) %>
