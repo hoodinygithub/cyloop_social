@@ -7,10 +7,16 @@
       </big>
       <br />
       <%= profile_account.location %>
+      <% if profile_artist? %>
+        <br />
+        <%= profile_account.genre_name %>
+      <% end %>
     </div>
   </div>
 </div>
-<div class="big_black_box">
-  <%= render 'dashboards/user_info' if profile_user? %>
-  <%= render 'dashboards/websites'  if profile_account.websites %>
-</div>
+<%  if profile_user? %> 
+  <div class="big_black_box">
+    <%= render 'dashboards/user_info'%>
+    <%= render 'dashboards/websites'  if profile_account.websites %>
+  </div>
+<% end %>

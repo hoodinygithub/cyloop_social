@@ -1,0 +1,24 @@
+<% if profile_user? %>
+<div class="black_box left_side">
+  <big class="blue">
+    <%= profile_user.profile_visits.size %>
+  </big>
+  <br />
+  <%= t('user.visits', :default => "visits") %>
+</div>
+<% elsif profile_artist? and false %>
+  <div class="black_box left_side">
+    <big class="blue"><a href="#">12,3698</a></big><br>
+    Mixes
+  </div>
+<% end %>
+
+<div class="black_box right_side">
+  <big class="blue">
+    <%= link_to("#{profile_user.total_user_stations}", my_stations_path) if profile_user? %>
+    <%= link_to("#{profile_artist.total_user_stations}", artist_stations_path) if profile_artist? %>
+  </big>
+  <br />
+  <%= t('basics.stations') %>
+</div>
+
