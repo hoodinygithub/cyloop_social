@@ -3,18 +3,17 @@
 
   <% if profile_user? %>
     <div class="black_boxes">
-      <%= render 'dashboards/user_stations_and_visits'   if profile_user?  %>
+      <%= render 'dashboards/user_stations_mixes_and_visits' %>
       <%= render 'dashboards/following_count' if profile_owner? %>
       <div class="clearer"></div>
     </div><!--/end black_boxes -->
   <% end %>
   
   <% if profile_artist? %>
-    <% if false #phase == 2 %>
-      <%= render 'dashboards/user_mixes' %>
-    <% end %>  
-    <%= render 'dashboards/user_stations' %>
-    <div class="clearer"></div>
+    <div class="black_boxes">
+      <%= render 'dashboards/user_stations_mixes_and_visits' %>
+      <div class="clearer"></div>
+    </div><!--/end black_boxes -->
   
     <%if profile_account.websites %>
       <div class="big_black_box">
