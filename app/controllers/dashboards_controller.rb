@@ -41,7 +41,7 @@ private
       account = Account.find(session[:follow_after_login])
       current_user.follow(account)
       session[:follow_after_login] = nil
-      return redirect_to user_path(account.slug)
+      return redirect_to(user_path(account.slug))
     end
   end
   

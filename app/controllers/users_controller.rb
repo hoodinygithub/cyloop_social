@@ -226,7 +226,7 @@ class UsersController < ApplicationController
   def xhr_login_required
     unless current_user
       session[:follow_after_login] = @account.id
-      return render :json => {:status => 'redirect', :url => login_path}
+      return render(:json => {:status => 'redirect', :url => login_path})
     end
   end
   
