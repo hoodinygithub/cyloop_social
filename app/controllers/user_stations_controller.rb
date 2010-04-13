@@ -13,7 +13,7 @@ class UserStationsController < ApplicationController
         user_station = current_user.stations.find_by_abstract_station_id(@station.playable_id)
         unless user_station
           current_user.create_user_station(:station_id => @station.id, :current_site => current_site)
-          record_activity(@station)
+          record_station_activity(@station)
         end
       end
     end
@@ -106,22 +106,6 @@ class UserStationsController < ApplicationController
     end
   end
 
-  def queue
-    logger.info "station id: #{params[:station_id]}"
-    if current_user.nil?
-      redirect_to radio_path
-    else
-      s = Station.find(params[:station_id])
-      if s.nil?
-        redirect_to radio_path
-      else
-        @station = current_user.create_user_station(:station_id => s.id, :current_site => current_site)
-        record_activity(s)
-        redirect_to radio_path(:station_id => s.id, :queue => "true")
-      end
-    end
-  end
-
   private
   def songs
     @songs ||= rec_engine.get_rec_engine_play_list(:artist_id => @station.amg_id)
@@ -130,20 +114,5 @@ class UserStationsController < ApplicationController
 
   def user_station_cache_key_url
     "#{CURRENT_SITE.cache_key}/#{profile_user.cache_key}/station/#{params[:id]}"
-  end
-
-  def record_activity(station)
-    begin
-      tracker_payload = {
-        :user_id => current_user.id,
-        :station_id => station.id,
-        :site_id => current_site.id,
-        :visitor_ip_address => remote_ip,
-        :timestamp => Time.now.to_i
-      }
-      Resque.enqueue(StationJob, tracker_payload)
-    rescue
-      Rails.logger.error("*** Could not record station activity! payload: #{tracker_payload}") and return true
-    end
   end
 end

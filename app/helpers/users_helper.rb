@@ -50,14 +50,15 @@ module UsersHelper
       return_to = request.request_uri
       if return_to =~ /\/radio\/info\/([0-9]+)/
         station   = Artist.find($1).station rescue nil
+        
         return_to = if station.nil?
           if current_station.nil?
             '/radio'
           else
-            my_queue_my_station_path(current_station)
+            radio_path(:station_id => current_station.id)
           end
         else
-          my_queue_my_station_path(station)
+          radio_path(:station_id => station.id)
         end
       end      
       layer_path = if user.kind_of?(User)

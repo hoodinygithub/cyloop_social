@@ -106,17 +106,16 @@ class RadioController < ApplicationController
         user_station = current_user.stations.find_by_station_id(@station.id)
         unless user_station
           user_station = current_user.create_user_station(:station_id => @station.id, :current_site => current_site)
-          record_activity(@station)
+          record_station_activity(@station)
         end
         user_station
       else
         @station
       end
 
-      #raise @station_object.kind_of?(UserStation).inspect
       respond_to do |format|
         format.html do
-          redirect_to( logged_in? ? my_queue_my_station_path(@station.id) : radio_path(:station_id => @station.id, :queue => true) )
+          redirect_to(radio_path(:station_id => @station.id, :queue => true))
         end
         block = Proc.new do
           session[:current_station] = @station_object.id
@@ -188,22 +187,4 @@ class RadioController < ApplicationController
     @most_listened_songs ||= artist.most_listened_songs(5)
   end
   helper_method :most_listened_songs
-
-  def record_activity(station)
-    begin
-      artists_contained = station.includes.map { |k| {:artist => k.name, :slug => k.slug} }.to_json rescue ''
-      tracker_payload = {
-        :user_id => current_user.id,
-        :station_id => station.id,
-        :site_id => current_site.id,
-        :visitor_ip_address => remote_ip,
-        :timestamp => Time.now.to_i,
-        :artists_contained => artists_contained
-      }
-      Resque.enqueue(StationJob, tracker_payload)
-    rescue
-      Rails.logger.error("*** Could not record station activity! payload: #{tracker_payload}") and return true
-    end
-  end
-
 end

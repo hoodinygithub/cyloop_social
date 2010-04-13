@@ -56,6 +56,23 @@ module Application::Activities
       ActivityProxy::Writer.new( current_user, song ).to_hash
     end
 
+    def record_station_activity( station )
+      begin
+        artists_contained = station.playable.includes.map { |k| {:artist => k.name, :slug => k.slug} }.to_json rescue ''
+        tracker_payload = {
+          :user_id => current_user.id,
+          :station_id => station.id,
+          :site_id => current_site.id,
+          :visitor_ip_address => remote_ip,
+          :timestamp => Time.now.utc.to_i,
+          :artists_contained => artists_contained
+        }
+        Resque.enqueue(StationJob, tracker_payload)
+      rescue
+        Rails.logger.error("*** Could not record station activity! payload: #{tracker_payload}") and return true
+      end      
+    end
+
   end
 
 end

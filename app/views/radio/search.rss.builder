@@ -2,7 +2,7 @@ xml.instruct! :xml, :version=>"1.0"
 xml.rss(:version => "2.0") do
   xml.channel do
     xml.title(@station['name'])
-    xml.link(logged_in? ? my_queue_my_station_url(@station.id) : radio_url(:station_id => @station.id, :queue => true))
+    xml.link(radio_url(:station_id => @station.id, :queue => true))
     xml.image avatar_for(@station.artist, :tiny)
     xml.description "#{t("basics.contains")}: #{@station.includes.map(&:name).join(", ")}"
     xml.language "en-us"
