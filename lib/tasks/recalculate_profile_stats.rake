@@ -46,6 +46,35 @@ namespace :db do
         connection.execute query
       end
 
+      timebox "Update user_station counts for artists..." do
+        query = <<-EOF
+        UPDATE accounts a 
+        INNER JOIN (
+          SELECT artist_id, count(*) AS total_user_stations 
+          FROM user_station_artists usa 
+          INNER JOIN user_stations us ON usa.user_station_id = us.id 
+          WHERE us.deleted_at IS NULL 
+          GROUP BY 1
+        ) AS q ON a.id = q.artist_id 
+        SET a.total_user_stations = q.total_user_stations
+        EOF
+        connection.execute query
+      end
+
+      timebox "Update user_station counts for users..." do
+        query = <<-EOF
+        UPDATE accounts a 
+        INNER JOIN (
+          SELECT owner_id, count(*) AS total_user_stations 
+          FROM user_stations 
+          WHERE deleted_at IS NULL 
+          GROUP BY 1
+        ) AS q ON a.id = q.owner_id 
+        SET a.total_user_stations = q.total_user_stations
+        EOF
+        connection.execute query
+      end
+
       timebox "Calculate and insert user song play counts into temp table..." do
         query = <<-EOF
         INSERT INTO `_cached_song_count_updates`(`id`, `song_play_count`, `total_listen_count`)
