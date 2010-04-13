@@ -49,7 +49,7 @@ module UsersHelper
       id   = user.id      
       return_to = request.request_uri
       if return_to =~ /\/radio\/info\/([0-9]+)/
-        station   = Artist.find($1).station rescue nil
+        station   = Artist.find($1).station.station rescue nil
         
         return_to = if station.nil?
           if current_station.nil?
