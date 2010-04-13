@@ -10,8 +10,8 @@ pt_BR:
     add: adicionar
     add_song_to_playlist: "Adicionar m\xC3\xBAsica \xC3\xA0 playlist"
     follow_account: "Seguir {{name}}"
-    unfollow_account: "Seguindo {{name}}"
-    unfollow: Seguindo
+    unfollow_account: "Parar de seguir {{name}}"
+    unfollow: Parar de seguir
     share_with_a_friend: "Envie esta m\xC3\xBAsica para um amigo"
     pending: Pendente
     select_playlist: Selecione a playlist
@@ -67,7 +67,7 @@ pt_BR:
       title: Seguidores
     follows: "{{user_name}} SEGUE"
     user_latest_stations: "\xC3\x9ALTIMAS ESTA\xC3\x87\xC3\x95ES DE {{name}}"
-    artist_latest_stations:  "\xC3\x9ALTIMAS ESTA\xC3\x87\xC3\x95ES FEATURING {{name}}"
+    artist_latest_stations:  "\xC3\x9ALTIMAS ESTA\xC3\x87\xC3\x95ES INCLUINDO {{name}}"
     artist_latest_albums:  "\xC3\x9ALTIMAS DISCOS DE {{name}}"
     show: 
       activity_feed_title: Novidades
