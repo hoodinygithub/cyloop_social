@@ -1778,7 +1778,21 @@ img.avatar_four_thumbs_big {
     font-size: 11px;
 }
 
+.stations_list .subcription_text {
+    float: right;
+    width: 300px;
+    line-height: 15px;
+    font-size: 11px;
+}
+
+
 .subcriptions_list big {
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 16px;
+}
+
+.stations_list big {
     font-size: 14px;
     font-weight: bold;
     line-height: 16px;
@@ -1799,6 +1813,11 @@ img.avatar_four_thumbs_big {
 
 .subcription_creator b {
     font-size: 12px;
+}
+
+.subcription_creator img.avatar {
+		width: 50px;
+		height: 50px;
 }
 
 .subcription_creator .creator_image {
@@ -2039,6 +2058,7 @@ img.avatar_four_thumbs_big {
 .four_thumbs {
     margin-bottom: 4px;
     width: 80px;
+    height: 80px;
     zoom: 1;
 }
 
@@ -2201,6 +2221,21 @@ img.avatar_four_thumbs_big {
     float: left;
     width: 230px;
     line-height: 14px;
+}
+
+.four_thumbs_big {
+    width: 152px;
+    float: left;
+    position: relative;
+    z-index: 1;
+    zoom: 1;
+}
+
+.four_thumbs_big img {
+    float: left;
+    margin: 0px 2px 2px 0px;
+    width: 73px
+    height: 73px
 }
 
 .four_thubms_big {
@@ -2572,7 +2607,7 @@ img.avatar_four_thumbs_big {
 
 .tags_contains {
     line-height: 26px;
-    margin: 4px 0px 10px;
+    margin: 2px 0px 10px;
 }
 
 .unsubscribe_mix {

@@ -4,13 +4,15 @@
 
 <% content_for :sorting do %>
   <%= sort_link_to :latest %>
+  /
   <%= sort_link_to :top %>
+  /
   <%= sort_link_to :alphabetical %>
 <% end %>
 
 <% content_for :list do %>
   <ul class="stations_list">
-    <%= render :partial => @user_stations %>
+    <%= render :partial => profile_artist? ? 'user_stations/artist_user_station' : 'user_stations/user_station', :collection =>  @user_stations %>
   </ul>
 <% end %>
 

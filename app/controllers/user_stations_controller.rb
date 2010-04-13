@@ -1,6 +1,6 @@
 class UserStationsController < ApplicationController
 
-  before_filter :profile_ownership_required, :only => :create
+  before_filter :profile_ownership_required, :only => [:create]
   # caches_action :show, :expires_in => 1.minute, :cache_path => :user_station_cache_key
 
   current_tab :stations
@@ -9,7 +9,7 @@ class UserStationsController < ApplicationController
   def create
     @station = Station.find(params[:station_id])
     unless @station.nil?
-      if @station.is_a? AbstractStation
+      if @station.playable.is_a? AbstractStation
         user_station = current_user.stations.find_by_abstract_station_id(@station.playable_id)
         unless user_station
           current_user.create_user_station(:station_id => @station.id, :current_site => current_site)
@@ -27,7 +27,7 @@ class UserStationsController < ApplicationController
     
     respond_to do |format|
       block = Proc.new do
-        @user_stations = profile_user.stations
+        @user_stations = profile_account.stations
         render :xml => Player::Station.from(@user_stations, :ip => remote_ip, :user_id => logged_in? ? current_user.id : nil).to_xml(:root => 'user_stations')
       end
 
@@ -36,7 +36,7 @@ class UserStationsController < ApplicationController
 
         begin
             sort_types = { :latest => 'user_stations.created_at DESC', :top => 'user_stations.total_plays DESC', :alphabetical => 'user_stations.name'  }
-            @user_stations = profile_user.stations.paginate :page => params[:page], :per_page => 15, :order => sort_types[@sort_type]
+            @user_stations = profile_account.stations.paginate :page => params[:page], :per_page => 15, :order => sort_types[@sort_type]
         rescue NoMethodError
           redirect_to new_session_path
         end
@@ -54,7 +54,7 @@ class UserStationsController < ApplicationController
   end
 
   def show
-    @station = profile_user.stations.find(params[:id])
+    @station = profile_account.stations.find(params[:id])
     respond_to do |format|
       format.xml do
         render :layout => false

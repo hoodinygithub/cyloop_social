@@ -3,7 +3,7 @@
   <div class="station_text">
     <big>
       <span class="station_name">
-        <%= link_to(user_station.name, user_station.artist) %>
+        <%= link_to(user_station.name, radio_path(:station_id => user_station.station.id)) %>
       </span>
     </big>
     <br/>
