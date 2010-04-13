@@ -105,11 +105,11 @@ module ApplicationHelper
   end
 
   def four_thumbs_to(station, options = {})  
-    station = station.try(:playable)
-    station_link = radio_path(:station_id => station.station.id) if station
+    station      = station.try(:playable)
+    station_link = radio_path(:station_id => station.station.id)
     
     station_images_with_links = []
-    
+  
     # TODO: Handle this issue with DB showing a default image
     if options[:type].nil?
       station.includes(4).each do |artist|

@@ -151,8 +151,8 @@ class User < Account
   #TODO MUST BE REVISITED WHEN IMPLEMENTING LOCALES
 
   def create_user_station(*args)
-    u = stations.create(args)
-    u.create_station
+    user_station = stations.create(args)
+    user_station.first.create_station
   end
 
   def block(blockee_id)
