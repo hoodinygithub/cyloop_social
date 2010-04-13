@@ -2507,6 +2507,10 @@ img.avatar_four_thumbs_big {
     vertical-align: top;
 }
 
+.form_row .delete_info label {
+  font-size: 12px;
+}
+
 .twitter_left {
     width: 420px;
     float: left;

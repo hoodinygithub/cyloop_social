@@ -6,10 +6,10 @@ class PagesController < ApplicationController
   def home
     respond_to do |format|
       format.html do        
-        @latest_stations      = UserStation.latest_stations
-        @recommended_stations = recommended_stations(6).map { |s| s.station.try(:playable) }.compact
+        @latest_stations       = UserStation.latest_stations
+        @recommended_stations  = recommended_stations(6).map { |s| s.station.try(:playable) }.compact
         @top_abstract_stations = current_site.top_abstract_stations.limited_to(6)
-        @top_user_stations = current_site.top_user_stations.limited_to(6)
+        @top_user_stations     = current_site.top_user_stations.limited_to(6)
 
         # if site_includes(:msnmx, :msnbr,:msnlatam,:msnlatino, :msnar)
         #   url_featured    = "/shared/feeds/current/#{site_code}_url_featured.xml"
