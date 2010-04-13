@@ -9,6 +9,8 @@ pt_BR:
     previous: Anterior
     add: adicionar
     add_song_to_playlist: "Adicionar m\xC3\xBAsica \xC3\xA0 playlist"
+    follow_account: "Seguir {{name}}"
+    unfollow_account: "Seguindo {{name}}"
     unfollow: Seguindo
     share_with_a_friend: "Envie esta m\xC3\xBAsica para um amigo"
     pending: Pendente

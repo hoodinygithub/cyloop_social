@@ -109,6 +109,8 @@ en:
     previous: Previous
     edit: Edit
     select_playlist: Select playlist
+    follow_account: "Follow {{name}}"
+    unfollow_account: "Stop following {{name}}"
     unfollow: Following
     pending: Pending
     aprove: Aprove
