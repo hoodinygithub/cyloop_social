@@ -1,0 +1,30 @@
+<% form_tag my_cancellation_feedback_path, :class => 'account_settings', :id => 'feedback_form' do %>
+
+  <%= hidden_field_tag :browser, browser_type %>
+  <%= hidden_field_tag :os, os_type %>
+  <%= hidden_field_tag :address %>
+  <%= hidden_field_tag :country, current_country %>
+  <%= hidden_field_tag :redirect_to %>
+
+  <div class="title"><%= t('cancellation.feedback.title') %></div>
+
+  <p><%= t('cancellation.feedback.body') %></p>
+
+  <div class="form_row">
+    <label><b><%= t('cancellation.feedback.label') %></b></label>
+    <div class="grey_round_box">
+      <textarea class="input full_width" rows="3" cols="20"></textarea>
+    </div>
+  </div>
+  <br/>
+
+  <div class="align_right">
+    <big><a href="#" class="black valign_middle popup_close_action" onclick="$(document).trigger('close.facebox');return false;"><%= t('cancellation.feedback.no_thanks') %></a></big>
+    <a href="#" class="blue_button valign_middle" onclick="Base.account_settings.send_feedback(); return false;"><span><span><%= t('cancellation.feedback.send') %></span></span></a>
+  </div>
+
+  <script type="text/javascript">
+    $("#address").val(cancelled_account_email);
+  </script>
+
+<% end %>

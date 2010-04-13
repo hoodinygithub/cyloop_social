@@ -63,7 +63,6 @@
     position: absolute;
     top: 100px;
     left: 50%;
-    margin-left: -256px;
     z-index: 110;
     display: none;
 }
@@ -177,6 +176,11 @@
 .popup p {
     font-size: 16px;
     margin-bottom: 10px;
+}
+
+.popup p.note {
+  font-size: 14px;
+  color: #999;
 }
 
 .popup .account_settings .form_row .input.full_width  {

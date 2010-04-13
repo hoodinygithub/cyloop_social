@@ -804,6 +804,7 @@ en:
       body: Cancelling your Cyloop account will permanently remove all of your profile information, including your photos, activity feeds and your personal network of followers. This information cannot be restored.
       cancel_account: Yes, Cancel My Account
       keep_account: No, Keep My Account
+      irreversible_note: This action is irreversible
     feedback:
       label: Feedback
       title: Why are you leaving Cyloop?

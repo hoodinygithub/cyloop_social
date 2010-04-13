@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   before_filter :find_account_by_slug, :only => [:follow, :unfollow, :block, :unblock, :approve, :disapprove]
   before_filter :xhr_login_required, :only => [:follow, :unfollow]
-  before_filter :login_required, :only => [:edit, :update, :destroy, :feedback, :confirm_cancellation, :remove_avatar]
+  before_filter :login_required, :only => [:edit, :update, :destroy, :confirm_cancellation, :remove_avatar]
   before_filter :set_return_to, :only => [:msn_login_redirect, :msn_registration_redirect]
   before_filter :set_dashboard_menu, :only => [:edit, :update]
 
@@ -136,30 +136,34 @@ class UsersController < ApplicationController
         :feedback     => params[:feedback],
         :cancellation => true
       }
+      puts options
       UserNotification.send_feedback_message( options )
     end
-    redirect_to params[:redirect_to]
+    redirect_to params[:redirect_to] if params[:redirect_to]
   end
 
   def destroy
-    result = { :user_id => current_user.id }
+    user = current_user
+    result = { :user_id => user.id }
     password_valid = cyloop_login? ? user.authenticated?(params[:delete_password]) : true
     if params[:delete_info_accepted] and password_valid
       options = {
-        :user_id => current_user.id,
+        :user_id => user.id,
         :site_id => request.host
       }
-      current_user.cancel_account!
-      UserNotification.send_cancellation(options)
-      cookies.delete(:auth_token) if cookies.include?(:auth_token)
-      result[:success] = true
-      if wlid_web_login?
-        result[:redirect_to] = msn_logout_url
-      else
-        result[:redirect_to] = root_url
+      if current_user.cancel_account!
+        #UserNotification.send_cancellation(options)
+        cookies.delete(:auth_token) if cookies.include?(:auth_token)
+        result[:success] = true
+        if wlid_web_login?
+          result[:redirect_to] = msn_logout_url
+          result[:email] = user.email
+        else
+          result[:redirect_to] = root_url
+        end
       end
     else
-      result[:delete_password] = I18n.t('account_settings.password_required')
+      result[:errors] = { :delete_password => I18n.t('account_settings.password_required') }
     end
     render :json => result.to_json
   end

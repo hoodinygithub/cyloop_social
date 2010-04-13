@@ -77,7 +77,7 @@
 
   $.extend($.facebox, {
     settings: {
-      opacity      : 0,
+      opacity      : 0.5,
       overlay      : true,
       loadingImage : '/images/loading.gif',
       closeImage   : '/images/popup_close.png',
@@ -106,7 +106,7 @@
       showOverlay()
 
       $('#facebox .content').empty()
-      $('#facebox .body').children().hide().end().
+      $('#facebox .content').children().hide().end().
         append('<div class="loading"><img src="'+$.facebox.settings.loadingImage+'"/></div>')
 
       $('#facebox').css({
@@ -126,8 +126,8 @@
       if (klass) $('#facebox .content').addClass(klass)
       $('#facebox .content').append(data)
       $('#facebox .loading').remove()
-      $('#facebox .body').children().fadeIn('normal')
-      $('#facebox').css('left', $(window).width() / 2 - ($('#facebox table').width() / 2))
+      $('#facebox .content').children().fadeIn('normal')
+/*      $('#facebox').css('left', $(window).width() / 2 - ($('#facebox table').width() / 2)) */
       $(document).trigger('reveal.facebox').trigger('afterReveal.facebox')
     },
 
@@ -199,9 +199,9 @@
     } else if (document.documentElement && document.documentElement.scrollTop) {	 // Explorer 6 Strict
       yScroll = document.documentElement.scrollTop;
       xScroll = document.documentElement.scrollLeft;
-    } else if (document.body) {// all other Explorers
-      yScroll = document.body.scrollTop;
-      xScroll = document.body.scrollLeft;
+    } else if (document.content) {// all other Explorers
+      yScroll = document.content.scrollTop;
+      xScroll = document.content.scrollLeft;
     }
     return new Array(xScroll,yScroll)
   }
@@ -213,8 +213,8 @@
       windowHeight = self.innerHeight;
     } else if (document.documentElement && document.documentElement.clientHeight) { // Explorer 6 Strict Mode
       windowHeight = document.documentElement.clientHeight;
-    } else if (document.body) { // other Explorers
-      windowHeight = document.body.clientHeight;
+    } else if (document.content) { // other Explorers
+      windowHeight = document.content.clientHeight;
     }
     return windowHeight
   }

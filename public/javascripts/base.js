@@ -119,11 +119,6 @@ Base.layout.bind_events = function() {
     $(this).fadeTo(100,1);
   });
 
-  //observe popup close button click
-  $('.popup_close, .popup_close_action').click(function() {
-    $(this).closest('.popup').fadeOut('fast');
-    return false;
-  });
 }
 
 Base.layout.spin_image = function(type, no_margin) {
@@ -758,28 +753,64 @@ Base.account_settings.update_avatar_upload_info = function() {
   $('#avatar_upload_info').text($(this).val());
 };
 
-Base.account_settings.delete_account_submit = function() {
+Base.account_settings.delete_account_submit_as_msn = function() {
   var form = $(this).closest('form');
   var validator = form.validate();
   if (form.valid()) {
+    $.facebox(function() {
+      jQuery.get('/my/cancellation/confirm', function(data) {
+        jQuery.facebox(data);
+      });
+    });
+  } else {
+    validator.showErrors();
+  }
+  return false;
+}
+
+Base.account_settings.delete_account_submit_as_cyloop = function() {
+  var form = $(this).closest('form');
+  var validator = form.validate();
+  if (form.valid()) {
+    password_value = $("#delete_password").val();
     $.ajax({
       type : "DELETE",
       url  : "/my/cancellation",
-      data : { delete_info_accepted: "true"},
+      data : { delete_info_accepted: "true", delete_password: password_value },
       success: function(data){
-        delete_account_data = data;
-        $.facebox($('#feedback_popup').show());
-        $(document).bind('close.facebox', function() {
+        if (data.success) {
           window.location = data.redirect_to;
-        });
-      },
-      failure: function(data) {
-        validator.showErrors(data.errors);
+        } else {
+          console.log(data.errors);
+          validator.showErrors(data.errors);
+        }
       }
     });
   } else {
     validator.showErrors();
   }
+  return false;
+}
+
+
+Base.account_settings.delete_account_confirmation = function() {
+  $.ajax({
+    type : "DELETE",
+    url  : "/my/cancellation",
+    data : { delete_info_accepted: "true"},
+    success: function(data){
+      delete_account_data = data;
+      $.facebox(function() {
+        jQuery.get('/my/cancellation/feedback', function(data) {
+          jQuery.facebox(data);
+        });
+        cancelled_account_email = data.email;
+      });
+      $(document).bind('close.facebox', function() {
+        window.location = data.redirect_to;
+      });
+    }
+  });
   return false;
 }
 

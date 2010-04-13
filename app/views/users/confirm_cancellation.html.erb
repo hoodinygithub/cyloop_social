@@ -1,0 +1,12 @@
+<form class="account_settings">
+  <div class="title"><%= t('cancellation.confirmation.title') %></div>
+  <p><%= t('cancellation.confirmation.body') %></p>
+  <br/>
+  <p class="note"><%= t('cancellation.confirmation.irreversible_note') %></p>
+  <br/>
+  <div class="align_right">
+    <big><a href="#" class="black valign_middle popup_close_action" onclick="$(document).trigger('close.facebox');return false;"><%= t('cancellation.confirmation.keep_account') %></a></big>
+    <a href="#" class="blue_button valign_middle" onclick="Base.account_settings.delete_account_confirmation(); return false;"><span><span><%= t('cancellation.confirmation.cancel_account') %></span></span></a>
+  </div>
+
+</form>
