@@ -876,7 +876,7 @@ img.artist_icon_box.tiny {
 }
 
 .yellow_button {
-    background: url("../images/green_button_left.gif") no-repeat left top;
+    background: url("../images/yellow_button_left.gif") no-repeat left top;
 }
 
 
@@ -897,6 +897,10 @@ img.artist_icon_box.tiny {
     background: url("../images/black_button_right.gif") no-repeat right top;
 }
 
+.yellow_button span {
+    background: url("../images/yellow_button_right.gif") no-repeat left top;
+}
+
 .yellow_button span span, .blue_button span span, .green_button span span {
     background: #00a5f8;
     padding: 0px 10px;
@@ -907,7 +911,7 @@ img.artist_icon_box.tiny {
 }
 
 .yellow_button span span {
-    background: #33cc33;
+    background: #F88000;
 }
 
 .black_button span span {
