@@ -63,6 +63,7 @@
 #  has_custom_profile               :boolean(1)
 #  ip_address                       :string(255)
 #  country_id                       :integer(4)
+#  total_user_stations              :integer(4)      default(0), not null
 #
 
 class Account < ActiveRecord::Base

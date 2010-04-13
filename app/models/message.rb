@@ -2,15 +2,16 @@
 #
 # Table name: messages
 #
-#  id         :integer(4)      not null, primary key
-#  chat_id    :integer(4)
-#  question   :string(255)
-#  location   :string(255)
-#  name       :string(255)
-#  user_id    :integer(4)
-#  created_at :datetime
-#  updated_at :datetime
-#  status     :string(255)
+#  id            :integer(4)      not null, primary key
+#  chat_id       :integer(4)
+#  question      :string(255)
+#  location      :string(255)
+#  name          :string(255)
+#  user_id       :integer(4)
+#  created_at    :datetime
+#  updated_at    :datetime
+#  status        :string(255)
+#  pre_submitted :boolean(1)
 #
 
 class Message < ActiveRecord::Base

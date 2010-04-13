@@ -1,3 +1,30 @@
+# == Schema Information
+#
+# Table name: campaigns
+#
+#  id                       :integer(4)      not null, primary key
+#  name                     :string(255)
+#  start                    :datetime
+#  end                      :datetime
+#  active                   :boolean(1)      default(FALSE)
+#  hexcolor                 :string(255)
+#  adcode                   :text
+#  created_at               :datetime
+#  updated_at               :datetime
+#  site_id                  :integer(4)
+#  player_id                :integer(4)
+#  code                     :string(255)
+#  notes                    :text
+#  main_image_file_name     :string(255)
+#  main_image_content_type  :string(255)
+#  main_image_file_size     :integer(4)
+#  main_image_updated_at    :datetime
+#  footer_logo_file_name    :string(255)
+#  footer_logo_content_type :string(255)
+#  footer_logo_file_size    :integer(4)
+#  footer_logo_updated_at   :datetime
+#
+
 class Campaign < ActiveRecord::Base
   ALLOWED_IMAGE_CONTENT_TYPES = ["image/jpeg", "image/png", "image/gif", "image/pjpeg", "image/x-png", "image/jpg"]
   

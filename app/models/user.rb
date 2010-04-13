@@ -31,7 +31,7 @@
 #  color_main_font                  :string(6)
 #  color_links                      :string(6)
 #  color_bg                         :string(6)
-#  private_profile                  :boolean(1)
+#  private_profile                  :boolean(1)      default(FALSE)
 #  cell_index                       :integer(4)
 #  background_file_name             :string(255)
 #  background_content_type          :string(255)
@@ -60,9 +60,10 @@
 #  twitter_username                 :string(255)
 #  twitter_id                       :integer(4)
 #  songs_count                      :integer(4)      default(0)
-#  has_custom_profile               :boolean(1)
+#  has_custom_profile               :boolean(1)      default(FALSE)
 #  ip_address                       :string(255)
 #  country_id                       :integer(4)
+#  total_user_stations              :integer(4)      default(0), not null
 #
 
 class User < Account

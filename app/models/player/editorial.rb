@@ -1,3 +1,25 @@
+# == Schema Information
+#
+# Table name: player_bases
+#
+#  site_id     :integer
+#  account_id  :integer
+#  station_id  :integer
+#  playlist_id :integer
+#  station_url :string
+#  name        :string
+#  logo_path   :string
+#  ip          :string
+#  site_id     :integer
+#  account_id  :integer
+#  station_id  :integer
+#  playlist_id :integer
+#  station_url :string
+#  name        :string
+#  logo_path   :string
+#  ip          :string
+#
+
 class Player::Editorial < Player::Base
 
   column :site_id,     :integer

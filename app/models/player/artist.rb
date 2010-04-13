@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: player_bases
+#
+#  name             :string
+#  avatar_file_name :
+#  slug             :
+#  name             :string
+#  avatar_file_name :
+#  slug             :
+#
+
 
 class Player::Artist < Player::Base
 

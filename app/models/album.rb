@@ -22,6 +22,7 @@
 #  deleted_at          :datetime
 #  total_time          :integer(4)      default(0)
 #  buylink_count       :integer(4)      default(0)
+#  music_label         :string(255)
 #
 
 class Album < ActiveRecord::Base

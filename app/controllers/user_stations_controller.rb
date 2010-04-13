@@ -8,16 +8,7 @@ class UserStationsController < ApplicationController
 
   def create
     @station = Station.find(params[:station_id])
-    unless @station.nil?
-      if @station.playable.is_a? AbstractStation
-        user_station = current_user.stations.find_by_abstract_station_id(@station.playable_id)
-        unless user_station
-          current_user.create_user_station(:station_id => @station.id, :current_site => current_site)
-          record_station_activity(@station)
-        end
-      end
-    end
-
+    create_user_station(@station)
     redirect_to :action => :index
   end
 

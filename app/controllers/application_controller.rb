@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
 
-  include Application::Sites, Application::Rescues, Application::Paginator, Application::Activities, Application::MsnMessenger
+  include Application::Sites, Application::Rescues, Application::Paginator, 
+          Application::Activities, Application::MsnMessenger, Application::Stations
   include AuthenticatedSystem
   include SslRequirement
   extend ActiveSupport::Memoizable

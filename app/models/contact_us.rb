@@ -8,6 +8,12 @@
 #  os       :string
 #  browser  :string
 #  country  :string
+#  category :string
+#  address  :string
+#  message  :string
+#  os       :string
+#  browser  :string
+#  country  :string
 #
 
 class ContactUs < Tableless

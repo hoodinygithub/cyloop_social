@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: stations
+# Table name: abstract_stations
 #
 #  id             :integer(4)      not null, primary key
 #  name           :string(255)
@@ -11,6 +11,8 @@
 #  created_at     :datetime
 #  updated_at     :datetime
 #  deleted_at     :datetime
+#  total_plays    :integer(4)      default(0), not null
+#  total_artists  :integer(4)      default(0), not null
 #
 
 class AbstractStation < ActiveRecord::Base

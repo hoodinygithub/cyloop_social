@@ -2,11 +2,12 @@
 #
 # Table name: countries
 #
-#  id        :integer(4)      not null, primary key
-#  name      :string(255)
-#  code      :string(2)
-#  latitude  :integer(4)
-#  longitude :integer(4)
+#  id           :integer(4)      not null, primary key
+#  name         :string(255)
+#  code         :string(2)
+#  latitude     :integer(4)
+#  longitude    :integer(4)
+#  enable_radio :boolean(1)      default(FALSE), not null
 #
 
 class Country < ActiveRecord::Base

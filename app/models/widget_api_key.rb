@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: widget_api_keys
+#
+#  id          :integer(4)      not null, primary key
+#  api_key     :string(255)     not null
+#  name        :string(255)
+#  description :text
+#  available   :boolean(1)      default(TRUE), not null
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+
 require "digest/sha1"
 
 class WidgetApiKey < ActiveRecord::Base

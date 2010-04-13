@@ -2,15 +2,18 @@
 #
 # Table name: user_stations
 #
-#  id             :integer(4)      not null, primary key
-#  name           :string(255)
-#  owner_id       :integer(4)
-#  comments_count :integer(4)      default(0)
-#  created_at     :datetime
-#  updated_at     :datetime
-#  site_id        :integer(4)
-#  station_id     :integer(4)
-#  referrer_id    :integer(4)
+#  id                  :integer(4)      not null, primary key
+#  name                :string(255)
+#  owner_id            :integer(4)
+#  comments_count      :integer(4)      default(0)
+#  created_at          :datetime
+#  updated_at          :datetime
+#  site_id             :integer(4)
+#  abstract_station_id :integer(4)
+#  referrer_id         :integer(4)
+#  total_plays         :integer(4)      default(0), not null
+#  total_artists       :integer(4)      default(0), not null
+#  deleted_at          :datetime
 #
 
 class UserStation < ActiveRecord::Base

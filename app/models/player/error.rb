@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: player_bases
+#
+#  code        :integer
+#  error       :string
+#  description :string
+#  code        :integer
+#  error       :string
+#  description :string
+#
+
 
 class Player::Error < Player::Base
 

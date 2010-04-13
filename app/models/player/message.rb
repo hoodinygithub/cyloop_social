@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: player_bases
+#
+#  code        :integer         default(200)
+#  message     :string
+#  description :string
+#  code        :integer         default(200)
+#  message     :string
+#  description :string
+#
+
 
 class Player::Message < Player::Base
 

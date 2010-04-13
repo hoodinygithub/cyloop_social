@@ -10,7 +10,6 @@
 #  duration            :integer(4)
 #  copyright           :string(255)
 #  label               :string(255)
-#  distributor         :string(255)
 #  file_name           :string(255)
 #  album_id            :integer(4)
 #  position            :integer(4)

@@ -17,6 +17,8 @@ class RadioController < ApplicationController
       @station_obj = AbstractStation.find_by_name(params[:artist_name])
     end
     
+    create_user_station(@station_obj)
+    
     @station_obj.playable.track_a_play if @station_obj and @station_obj.playable
     
     if site_includes(:msnlatam, :msnmx)
