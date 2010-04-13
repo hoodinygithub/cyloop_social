@@ -642,7 +642,7 @@ pt_BR:
     delete_info: "Marcando essa op\xC3\xA7\xC3\xA3o, Eu entendo que removendo minha conta significa que minha p\xC3\xA1gina Cyloop, biblioteca de m\xC3\xBAsicas e foto ser\xC3\xA3o removidas. Eu entendo que para retornar ao Cyloop, eu terei que crirar uma nova conta com um novo nome de usu\xC3\xA1rio."
     password_required: "Voc\xC3\xAA deve utilizar uma senha v\xC3\xA1lida"
     new_password: Nova Senha
-    delete_info_required: "Voc\xC3\xAA deve clicar sobre a caixa de sele\xC3\xA7\xC3\xA3o para continuar"
+    delete_info_required: "Marque a opção ao lado para continuar"
     save: SALVAR
     delete_account: REMOVER CONTA
     add_update: ADICIONAR / ATUALIZAR
