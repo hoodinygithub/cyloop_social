@@ -158,6 +158,10 @@ class Artist < Account
     Artist.find(id)
   end
 
+  def increment_total_user_stations
+    increment!(:total_user_stations)
+  end
+
   def has_station?
     !station.nil?
   end

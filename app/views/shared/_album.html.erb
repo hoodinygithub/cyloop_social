@@ -1,0 +1,21 @@
+<div class="artist_box png_fix <%= "last_box" if (album_counter+1) % columns == 0 %>">  
+  <%= link_to avatar_for(album, :new_medium), album %>
+    <div class="overlay">
+        <div class="hidden">
+         <% if false %>
+            <%= link_to avatar_for(album.owner), album.owner %>
+            <!--a href="#"><img src="images/artist_icon.gif" class="artist_icon" alt="" /></a-->
+            <span>
+                <span class="blue"><%= album.owner.name %></span><br/>
+                <%= l(album.released_on) %>
+            </span>
+            <br class="clearer" />
+          <% end %>
+        </div>
+        <div class="visible">
+            <%= link_to image_tag('play_button.png', :class => 'play_button'), album %>
+            <%= link_to album.name, album %>
+            <br/>
+        </div>
+    </div><!--/end overlay -->
+</div><!--/end artist_box -->

@@ -4,10 +4,8 @@
     <%= t("user.hasnt_create_any_station", :user_name => profile_account.name.upcase) %>
   </div>
 <% else %>
-  <% @latest_stations.each_with_index do |user_station, index| %>
-    <%= render :partial => 'shared/user_station', :object => user_station, :locals => { :columns => 3, :user_station_counter => index } %>
-  <% end %>
-  <% index = 6 - @latest_stations.size %>
+  <%= render :partial => 'shared/user_station', :collection => @latest_stations, :locals => { :columns => 3 } %>
+  <% index = max_stations - @latest_stations.size %>
   <% index.times do |i| %>
     <div class="empty_box gb_big <%= "last_box" if i == (index-1) or (i+1+@latest_stations.size) == 3 %>">
       &nbsp;

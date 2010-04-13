@@ -1,0 +1,13 @@
+<b class="right_side"><a href="#">view all</a></b>
+<h1><%= t('dashboards.user_latest_albums', :user_name => profile_account.first_name.upcase) %></h1>
+<% latest_albums = profile_account.albums(6).uniq_by { |a| a.name }[0..2] %>
+<%= render :partial => 'shared/album', :collection => latest_albums, :locals => { :columns => 3 } %>
+<% index = 3 -  latest_albums.size %>
+<% index.times do |i| %>
+  <div class="empty_box gb_big <%= "last_box" if i == (index-1) or (i+1+ latest_albums.size) == 3 %>">
+    &nbsp;
+  </div>
+  <% if (i+1+ latest_albums.size) == 3 %>
+    <br class="clearer" />
+  <% end %>
+<% end %>

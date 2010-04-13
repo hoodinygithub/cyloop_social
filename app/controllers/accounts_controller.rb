@@ -19,7 +19,8 @@ class AccountsController < ApplicationController
     @followers = profile_account.followers.all(:limit => 4)
     @latest_activity_status = profile_account.activity_status.latest_with_followings unless profile_account.is_a? Artist
     @last_activity_status   = profile_account.activity_status.last
-    @latest_stations = profile_account.stations.all(:limit => 6, :order => "user_stations.created_at DESC")
+    station_limit = profile_account.is_a?(Artist) ? 3 : 6
+    @latest_stations = profile_account.stations.all(:limit => station_limit , :order => "user_stations.created_at DESC")
 
     render :template => 'dashboards/show'
   end

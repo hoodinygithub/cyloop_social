@@ -15,7 +15,10 @@
         <%= render 'dashboards/network_activity' %>
         <%= render 'dashboards/comment_list' if profile_user? %>
       <% else %>
-        <%=  render 'dashboards/user_latest_stations' %>
+        <%=  render :partial => 'dashboards/user_latest_stations', :locals => { :max_stations => profile_artist? ? 3 : 6 } %>
+        <br />
+        <br />
+        <%=  render :partial => 'dashboards/artist_latest_albums' if profile_artist? %>
       <% end %>
     </div><!--/end center_column -->
 
