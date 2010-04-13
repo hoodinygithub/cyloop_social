@@ -64,7 +64,9 @@ pt_BR:
     followers: 
       title: Seguidores
     follows: "{{user_name}} SEGUE"
-    user_latest_stations: "\xC3\x9ALTIMAS ESTA\xC3\x87\xC3\x95ES DE {{user_name}}"
+    user_latest_stations: "\xC3\x9ALTIMAS ESTA\xC3\x87\xC3\x95ES DE {{name}}"
+    artist_latest_stations:  "\xC3\x9ALTIMAS ESTA\xC3\x87\xC3\x95ES FEATURING {{name}}"
+    artist_latest_albums:  "\xC3\x9ALTIMAS DISCOS DE {{name}}"
     show: 
       activity_feed_title: Novidades
       what_do_you_want_to_listen_to: "O que voc\xC3\xAA quer escutar?"

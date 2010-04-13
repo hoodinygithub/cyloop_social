@@ -41,7 +41,9 @@ en:
         title: Pendings
     follows: "{{user_name}} FOLLOWS"
     top_stations: "{{user_name}}'S TOP STATIONS"
-    user_latest_stations:  "{{user_name}}'S LATEST STATIONS"
+    user_latest_stations:  "{{name}}'S LATEST STATIONS"
+    artist_latest_stations:  "LATEST STATIONS FEATURING {{name}}"
+    artist_latest_albums:  "LATEST ALBUMS BY {{name}}"
     recent_activity: "RECENT ACTIVITY"
     messages:
       artist_not_found: We couldn't find an artist by that name. Please search again.

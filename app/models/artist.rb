@@ -138,6 +138,10 @@ class Artist < Account
     name
   end
 
+  def latest_albums(limit=3)
+    @latest_albums ||= artist_albums.find(:all, :limit => limit + 3).uniq_by { |a| a.name }[0..limit-1]
+  end
+
   def albums(limit = 20)
     artist_albums.find(:all, :limit => limit)
   end

@@ -46,6 +46,20 @@ namespace :db do
         connection.execute query
       end
 
+      timebox "Update album counts for artists..." do
+        query = <<-EOF
+        UPDATE accounts a 
+        INNER JOIN (
+          SELECT owner_id, count(*) AS total_albums
+          FROM albums 
+          WHERE deleted_at IS NULL 
+          GROUP BY 1
+        ) AS q ON a.id = q.owner_id 
+        SET a.total_albums = q.total_albums
+        EOF
+        connection.execute query
+      end
+
       timebox "Update user_station counts for artists..." do
         query = <<-EOF
         UPDATE accounts a 
