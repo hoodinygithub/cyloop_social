@@ -482,7 +482,7 @@ pt_BR:
     - :day
     - :year
     formats: 
-      default: "%d-%m-%Y"
+      default: "%d/%m/%Y"
       short: "%b %d"
       long: "%B %d, %Y"
     day_names: 

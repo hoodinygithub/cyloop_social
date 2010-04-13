@@ -150,9 +150,9 @@ class User < Account
 
   #TODO MUST BE REVISITED WHEN IMPLEMENTING LOCALES
 
-  def create_user_station(params = {})
-    u = UserStation.create(:owner => self, :abstract_station_id => params[:station_id], :site_id => params[:current_site].id)
-    u.station.create
+  def create_user_station(*args)
+    u = stations.create(args)
+    u.create_station
   end
 
   def block(blockee_id)
