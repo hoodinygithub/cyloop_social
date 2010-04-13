@@ -1508,6 +1508,10 @@ img.avatar_four_thumbs_big {
     padding-top: 3px;
 }
 
+#network_comment {
+  outline: 0;
+}
+
 .recent_activity_list {
     list-style-type: none;
 }

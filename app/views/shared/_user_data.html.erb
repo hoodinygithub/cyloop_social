@@ -6,7 +6,7 @@
       <%= link_to("Anon", my_dashboard_path, :class => "user_name") %>    
     <% else %>
       <%= avatar_for(current_user, :tiny, :class => "avatar") %>
-      <%= link_to(truncate(current_user.try(:name), 10), my_dashboard_path, :class => "user_name") %>
+      <%= link_to(current_user.first_name, my_dashboard_path, :class => "user_name") %>
     <% end %>
   </div>
 

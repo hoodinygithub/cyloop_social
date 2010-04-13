@@ -564,7 +564,7 @@ Base.network.__update_page_owner_page = function(list) {
     $text_div.append('<br />');
     $text_div.append($timestamp_span);
 
-    $avatar_image = jQuery('<img></img>');
+    $avatar_image = jQuery('<img width="50" height="50"></img>');
     $avatar_image.attr('src', activity.user_avatar);
     $link_to_user = jQuery('<a></a>');
     $link_to_user.attr('href', '#');
@@ -661,6 +661,7 @@ Base.network.load_latest = function(params) {
     if (typeof(params) != 'object') params = {};
 
     jQuery.post('/activity/latest', params, function (response) {
+      jQuery(".chars_counter").show();
       Base.network.update_page(response);
     });
   });
@@ -681,6 +682,7 @@ Base.network.push_update = function() {
   if (comment && comment.length > 0) {
     jQuery.post('/activity/update/status', {'message':comment}, function (response) {
       $comment_field.val("");
+      jQuery(".chars_counter").html(140);
       Base.network.update_page(response);
     });
   } else {

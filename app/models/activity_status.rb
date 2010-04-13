@@ -3,7 +3,7 @@ module Activity
   class UndefinedKeyMember < StandardError; end
 
   class Status
-    def initialize(account)
+    def initialize(account, id=nil)
       raise "Expecting an Account class but got a #{account.class}" unless account.is_a? Account
       @account    = account
       @account_id = account.id

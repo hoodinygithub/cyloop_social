@@ -1,12 +1,12 @@
 <h1>
   <%= t('home.network_update') %>
-  <span class="chars_counter">140</span>
+  <span class="chars_counter" style="display: none">140</span>
 </h1>
 <% if page_owner? %>
   <div class="network_update">
       <form id="network_update_form" style="display:none;">
           <div>
-              <%= image_tag('network_icon.gif', :class => 'network_icon') %>
+              <%= avatar_for(profile_account, :small, {:class => 'network_icon'}) %>
               <textarea id="network_comment" onkeyup="Base.network.count_chars();" onchange="Base.network.count_chars();" name="comment" rows="3" cols="20"></textarea>
               <%= image_tag('network_arrow.gif', :class => 'network_arrow') %>
               <div class="clearer"></div>
