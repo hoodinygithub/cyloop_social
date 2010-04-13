@@ -3,11 +3,6 @@ class PagesController < ApplicationController
   before_filter :authenticate, :only => [:x46b]
   layout "logged_out"
 
-  def banner
-    @options = params
-    render :layout => false
-  end
-
   def home
     respond_to do |format|
       format.html do        
