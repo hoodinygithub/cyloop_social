@@ -1,22 +1,26 @@
 <div class="box_content">
   <span class="follows_count"><%= profile_account.follower_count %></span>
 
-  <h1><%= t("dashboards.followers", :user_name => profile_account.name.upcase) %></h1>
+  <h1><%= t("dashboards.followers.title") %></h1>
 
   <% if profile_account.follower_count < 1 %>
     <div class="big_text">
       <%= t("user.has_no_followers", :user_name => profile_account.name) %>
     </div>
   <% else %>
-    <% followings = profile_account.followers.all(:limit => 4) %>
+    <% followings = profile_account.followers.all(:limit => 8) %>
     <% followings.each_with_index do |follow, index| %>
-      <div class="small_thumb<%= " last_thumb" if index == 3 %>">
-        <%= link_to avatar_for(follow, "spaced_img tiny", :disable_default_css => true), follow %>
-        <%= link_to follow.name, follow %>
+      <div class="small_thumb<%= " last_thumb" if index == 3 or index == 7 %>">
+        <%= link_to avatar_for(follow, "spaced_img tiny", :disable_default_css => true, :width => "50px", :height => "50px"), follow %>
+        <%= link_to truncate(follow.name,:length => 18), follow %>
       </div>
+      <% if index == 3 %>
+        <br class="clearer" />
+      <% end %>
     <% end %>
     
-    <% if profile_account.follower_count > 4 %>
+    
+    <% if profile_account.follower_count > 8 %>
       <div class="align_right">
         <b>
           <%= link_to(t('actions.view_more'), profile_owner? ? my_followers_path : followers_path ) %>
@@ -24,11 +28,15 @@
       </div>
     <% end %>
 
-    <% index = (4 - followings.size) %>
+    <% index = (8 - followings.size) %>
     <% index.times do |i| %>
       <div class="empty_box gb_small <%= "last_box" if i == (index-1) %>">
         &nbsp;
       </div>
+
+      <% if i == index-5 %>
+        <br class="clearer" />
+      <% end %>
     <% end %>
   
   <% end %>
