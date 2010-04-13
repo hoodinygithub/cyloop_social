@@ -150,9 +150,9 @@ class User < Account
 
   #TODO MUST BE REVISITED WHEN IMPLEMENTING LOCALES
 
-  def create_user_station(*args)
-    user_station = stations.create(args)
-    user_station.first.create_station
+  def create_user_station(options={})
+    user_station = UserStation.create(options.merge({:owner => self}))
+    user_station.create_station
   end
 
   def block(blockee_id)
