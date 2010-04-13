@@ -1,7 +1,6 @@
 <div class="box_content">
   <span class="follows_count"><%= profile_account.followee_count %></span>
-
-  <h1><%= t("dashboards.follows", :user_name => profile_account.name.upcase) %></h1>
+  <h1><%= t("dashboards.followers.title", :user_name => profile_account.name.upcase) %></h1>
 
   <% if profile_account.followee_count < 1 %>
     <div class="big_text">
@@ -15,14 +14,15 @@
         <%= link_to follow.name, follow %>
       </div>
     <% end %>
-    
+
     <% index = (4 - followings.size) %>
     <% index.times do |i| %>
       <div class="empty_box gb_small <%= "last_box" if i == (index-1) %>">
         &nbsp;
       </div>
     <% end %>
-  
+
   <% end %>
   <br class="clearer" />
 </div>
+
