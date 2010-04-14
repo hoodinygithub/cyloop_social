@@ -60,8 +60,35 @@
  *   $(document).bind('reveal.facebox', function() { ...stuff to do after the facebox and contents are revealed... })
  *
  */
+
+var facebox_default_settings = {
+  opacity      : 0.5,
+  overlay      : true,
+  loadingImage : '/images/loading.gif',
+  closeImage   : '/images/closelabel.gif',
+  imageTypes   : [ 'png', 'jpg', 'jpeg', 'gif' ],
+  faceboxHtml  : '\
+    <div class="popup" id="facebox"> \
+      <div class="top_shadow"> \
+        <div class="top_left corner"></div> \
+        <div class="center_shadow"></div> \
+        <div class="top_right corner"></div> \
+        <a href="#" class="close"><img src="/images/popup_close.png" class="close_image png_fix" alt="X" title="Close" /></a> \
+      </div> \
+      <div class="content"> \
+      </div> \
+      <div class="bottom_shadow"> \
+        <div class="bottom_left corner"></div> \
+        <div class="center_shadow"></div> \
+        <div class="bottom_right corner"></div> \
+      </div> \
+    </div><!--/end popup --> \
+  '
+};
+
 (function($) {
   $.facebox = function(data, klass) {
+    $.facebox.settings = facebox_default_settings;
     $.facebox.loading()
 
     if (data.ajax) fillFaceboxFromAjax(data.ajax)
@@ -76,29 +103,7 @@
    */
 
   $.extend($.facebox, {
-    settings: {
-      opacity      : 0.5,
-      overlay      : true,
-      loadingImage : '/images/loading.gif',
-      closeImage   : '/images/popup_close.png',
-      imageTypes   : [ 'png', 'jpg', 'jpeg', 'gif' ],
-      faceboxHtml  : '\
-        <div class="popup" id="facebox"> \
-          <div class="top_shadow"> \
-            <div class="top_left corner"></div> \
-            <div class="center_shadow"></div> \
-            <div class="top_right corner"></div> \
-            <a href="#" class="close"><img src="/images/popup_close.png" class="close_image png_fix" alt="X" title="Close" /></a> \
-          </div> \
-          <div class="content"> \
-          </div> \
-          <div class="bottom_shadow"> \
-            <div class="bottom_left corner"></div> \
-            <div class="center_shadow"></div> \
-            <div class="bottom_right corner"></div> \
-          </div> \
-        </div><!--/end popup --> \
-      '},
+    settings: facebox_default_settings,
 
     loading: function() {
       init()
@@ -172,9 +177,6 @@
 
   // called one time to setup facebox on this page
   function init(settings) {
-    if ($.facebox.settings.inited) return true
-    else $.facebox.settings.inited = true
-
     $(document).trigger('init.facebox')
     makeCompatible()
 
@@ -182,6 +184,7 @@
     $.facebox.settings.imageTypesRegexp = new RegExp('\.' + imageTypes + '$', 'i')
 
     if (settings) $.extend($.facebox.settings, settings)
+    $('body #facebox').remove();
     $('body').append($.facebox.settings.faceboxHtml)
 
     var preload = [ new Image(), new Image() ]
@@ -317,27 +320,26 @@
 
   $.fn.simplefacebox = function() {
     var template = '\
-      <div class="simple_popup" id="facebox"> \
-        <table> \
-          <tbody> \
-            <tr> \
-              <td class="tl"/><td class="b"/><td class="tr"/> \
-            </tr> \
-            <tr> \
-              <td class="b"/> \
-              <td class="body"> \
-                <div class="content"> \
-                </div> \
-              </td> \
-              <td class="b"/> \
-            </tr> \
-            <tr> \
-              <td class="bl"/><td class="b"/><td class="br"/> \
-            </tr> \
-          </tbody> \
-        </table> \
-      </div> \
-      '
+    <div id="facebox" class="simple_popup"> \
+      <table> \
+        <tbody> \
+          <tr> \
+            <td class="tl"/><td class="b"/><td class="tr"/> \
+          </tr> \
+          <tr> \
+            <td class="b"/> \
+            <td class="body"> \
+              <div class="content"> \
+              </div> \
+            </td> \
+            <td class="b"/> \
+          </tr> \
+          <tr> \
+            <td class="bl"/><td class="b"/><td class="br"/> \
+          </tr> \
+        </tbody> \
+      </table> \
+    </div>'
     this.facebox({ faceboxHtml : template });
   }
 

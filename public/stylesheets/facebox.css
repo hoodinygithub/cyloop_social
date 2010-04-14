@@ -67,6 +67,11 @@
     display: none;
 }
 
+.simple_popup {
+    display: none;
+}
+
+
 .popup .top_shadow, .popup .bottom_shadow {
     height: 17px;
     font-size: 0px;
