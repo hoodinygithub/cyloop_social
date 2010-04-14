@@ -1,6 +1,6 @@
 <% unless abstract_station.nil? %>
-  <% artist = abstract_station.artist rescue nil %>
-  <% unless artist.nil? %>      
+  <% unless abstract_station.artist.nil? %>      
+    <% artist = abstract_station.artist %>  
     <div class="artist_box png_fix <%= "last_box" if (abstract_station_counter+1) % columns == 0 %>">
       <%= four_thumbs_to(abstract_station.station, {:type => :big}) %>
       <div class="overlay">

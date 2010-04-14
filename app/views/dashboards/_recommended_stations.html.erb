@@ -1,2 +1,5 @@
 <h1><%= t('home.recommended_stations') %></h1>
-<%= render 'shared/recommended_stations' %>
+<%= render :partial => 'shared/abstract_station', :collection => @recommended_stations, :locals => { :columns => 3 } %>
+
+<br class="clearer" />
+<br/>

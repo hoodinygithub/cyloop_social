@@ -23,7 +23,7 @@ class DashboardsController < ApplicationController
       end
     end
 
-    stations = recommended_stations(30)
+    stations = recommended_stations(30).map{|s| s.station.playable unless s.artist_id.nil? || s.station.nil? }.compact
     @recommended_stations = stations[0..(RECOMMENDED_STATIONS-1)]
     @recommended_stations_queue = stations[RECOMMENDED_STATIONS..(stations.size)]
     
