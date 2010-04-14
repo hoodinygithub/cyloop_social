@@ -80,7 +80,7 @@
           </div> \
         </div><!--/end popup --> \
       ';
-    $.facebox.settings.closeImage = '/images/closelabel.gif'
+    $.facebox.settings.closeImage = '/images/popup_close.png'
     $.facebox.loading()
 
     if (data.ajax) fillFaceboxFromAjax(data.ajax)
@@ -99,7 +99,7 @@
       opacity      : 0.5,
       overlay      : true,
       loadingImage : '/images/loading.gif',
-      closeImage   : '/images/closelabel.gif',
+      closeImage   : '/images/popup_close.png',
       imageTypes   : [ 'png', 'jpg', 'jpeg', 'gif' ],
       faceboxHtml  : '\
         <div class="popup" id="facebox"> \
@@ -153,7 +153,7 @@
       $('#facebox .content').append(data)
       $('#facebox .loading').remove()
       $('#facebox .content').children().fadeIn('normal')
-      $('#facebox').css('left', $(window).width() / 2 - ($("#facebox div.content div:first").width() / 2))
+      /* $('#facebox').css('left', $(window).width() / 2 - ($("#facebox div.content div:first").width() / 2)) */
       $(document).trigger('reveal.facebox').trigger('afterReveal.facebox')
       $('#facebox .close').click($.facebox.close);
     },
