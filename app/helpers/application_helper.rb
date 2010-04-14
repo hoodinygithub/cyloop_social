@@ -55,8 +55,14 @@ module ApplicationHelper
     else
       options[:href] = '#' unless options[:href]
     end
+  
+    if options[:width]
+      span_label = content_tag(:span, button_label, :style => "width: #{options.delete(:width)}")
+    else
+      span_label = content_tag(:span, button_label)
+    end
 
-    button = content_tag(:span, content_tag(:span, button_label))
+    button = content_tag(:span, span_label)
     link_to button, options[:href], options
   end
 

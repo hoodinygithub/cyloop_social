@@ -176,9 +176,7 @@ Base.layout.span_button = function(content) {
   return "<span><span>" + content + "</span></span>";
 };
 
-Base.layout.blue_button = function(label) {
-  //<a href="/radio" class="full_width blue_button"><span><span>Criar Rádio</span></span></a>
-
+Base.layout.blue_button = function(label, options) {
   link = document.createElement('a');
   link.setAttribute('href', '#');
   link.setAttribute('class', 'blue_button');
@@ -190,6 +188,10 @@ Base.layout.blue_button = function(label) {
   span2.appendChild(button_label);
   span1.appendChild(span2);
   link.appendChild(span1);
+  
+  if (typeof(options) == 'object' && typeof(options.width) != 'undefined') {
+    link.setAttribute('style', "width: " + options.width + ";");
+  }
 
   return link;
 };
@@ -514,17 +516,30 @@ Base.stations.close_button_handler = function(object) {
 /*
  * Comment shared
  */
-Base.network.show_more = function(timestamp, button) {
+Base.network.show_more = function(button) {
   $button = jQuery(button);
+
+  $span_label = $button.find('span').find('span');
+  old_button_label = $span_label.html();
+  $span_label.html(Base.layout.spin_image());
+
+  // activities page
   $list   = jQuery('.followers_list');
   
-  old_button_html = $button.html();
-  $button.html(Base.layout.spanned_spin_image());
+  if ($list.length == 0) {
+    $list = jQuery(".comments_list");
+  }
 
-  jQuery.get('/my/activities', {'after':timestamp}, function(response) {
-    $list.append(response);
-    $button.html(old_button_html);
-  }); 
+  if ($list.length == 0) {
+    throw("Could not find a valid list element.");
+  }
+  
+  $last_li  = $list.find('li:last');
+  timestamp = $last_li.attr('timestamp');
+  jQuery.post("/activity/latest", {'after':timestamp}, function (response) {
+    $list.html(response).fadeIn();
+    $span_label.html(old_button_label);
+  });
 };
 
 Base.network.count_chars = function() {

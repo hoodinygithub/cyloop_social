@@ -33,7 +33,7 @@
             
             <div class="align_right" id="show_more_comments">
               <% if @has_more %>
-                <%= blue_button(t('actions.show_more'), :onclick => "Base.network.show_more(1, this);") %>
+                <%= blue_button(t('actions.show_more'), :onclick => "Base.network.show_more(this)", :width => "120px") %>
               <% end %>
             </div>
 

@@ -9,12 +9,18 @@ class ActivitiesController < ApplicationController
 
   ACTIVITIES_MAX           = 5
   ACTIVITIES_DASHBOARD_MAX = 5
+  ACTIVITY_SHOW_MORE_SIZE  = 3
 
   def index
+    @collection = @collection[0..ACTIVITIES_MAX-1]
     @dashboard_menu = :activity
     if request.xhr?
       return render :partial => 'shared/collection_to_li'
     end
+  end
+  
+  def more
+    @collection = @collection[0..ACTIVITIES_DASHBOARD_MAX-1]
   end
 
   def get_activity
@@ -59,7 +65,13 @@ class ActivitiesController < ApplicationController
   end
 
   def latest
-    @collection = @collection[0..ACTIVITIES_DASHBOARD_MAX-1]
+    if params[:after]
+      last_element_index = @collection.collect {|a| a['timestamp']}.index(params[:after])
+      @collection        = @collection.slice(0, last_element_index + ACTIVITY_SHOW_MORE_SIZE)
+    else
+      @collection = @collection[0..ACTIVITIES_DASHBOARD_MAX-1]
+    end
+    
     if params[:public]
       return render :partial => 'shared/public_user_activity_content'
     else
@@ -74,6 +86,8 @@ class ActivitiesController < ApplicationController
 
   private
   def load_user_activities
+    @has_more = true
+    
     if profile_account
       @account = profile_account
     else
