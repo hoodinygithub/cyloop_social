@@ -2,6 +2,9 @@
   <b><%= link_to(item['account'], item['account']) %></b>
     <% if item['type'] == 'status' %>
       <%= item['message'] %>
+    <% elsif item['type'] == 'twitter' %>
+      <%= item['text'] %>
+      <%= link_to("Twitter / #{item['screen_name']}", "http://twitter.com/#{item['screen_name']}", :target => "_blank") %>
     <% elsif item['type'] == 'station' %>
       <div class="station_activity">
         <%= link_to(avatar_for(item['artist'], :tiny), item['artist']) %>

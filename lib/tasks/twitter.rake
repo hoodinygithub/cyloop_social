@@ -33,6 +33,7 @@ namespace :twitter do
       ignore = ENV['IGNORE'].split(',').join("','")
       conditions << "twitter_username NOT IN ('#{ignore}')"
     end
+    
     Account.find_each(
       :conditions => conditions.join(" AND "),
       :select => 'id, twitter_username, avatar_content_type') do |account|

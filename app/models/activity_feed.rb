@@ -29,7 +29,7 @@ module Activity
       options = args.extract_options!
       page = PER_PAGE * (options[:page] - 1)
       activity_type_for_query = if options[:for] == :all
-        %w(station playlist twitter status).join(' ')
+        %w(station twitter status).join(' ')
       else
         options[:for].to_s
       end
