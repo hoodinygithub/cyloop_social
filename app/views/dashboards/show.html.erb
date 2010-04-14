@@ -1,9 +1,4 @@
-<% content_for :javascript do %>
-  var recommended_stations_queue = [<%= @recommended_stations_queue.collect(&:artist_id).join(", ") if @recommended_stations_queue %>];
-  Base.network.load_latest_tweet(<%= params.to_json %>);
-  Base.network.load_latest(<%= params.to_json %>);
-<% end %>
-
+<%= render 'shared/ajax_modules' %>
 <div id="internal_content">
   <div id="main_content">
 

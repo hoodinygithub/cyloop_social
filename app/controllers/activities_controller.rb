@@ -12,8 +12,7 @@ class ActivitiesController < ApplicationController
 
   def index
     @dashboard_menu = :activity
-    
-    if request.xhr? 
+    if request.xhr?
       return render :partial => 'shared/collection_to_li'
     end
   end
@@ -79,14 +78,14 @@ class ActivitiesController < ApplicationController
     else
       @account = get_account_by_slug(params[:slug])
     end
-    
+
     collection      = @account.activity_feed
     @collection     = collection.sort_by {|a| a['timestamp'].to_i}.reverse
-    
+
     if collection.size - ACTIVITIES_MAX > 0
       @has_more = true
     end
-    
+
     @collection.each do |a|
       a['account']  = profile_account
       if a['type'] == 'station'
@@ -96,7 +95,7 @@ class ActivitiesController < ApplicationController
       end
     end
   end
-  
+
   def set_page
     params[:page]   ||= 1
     @type             = params[:type] || nil
