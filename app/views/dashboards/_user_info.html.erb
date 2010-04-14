@@ -5,10 +5,15 @@
   <%= profile_account.age %>
 <br />
 <br />
+<%
+  # Phase 2
+  if false 
+%>
 <b class="blue">
   <%= link_to(t('profile.navigation.biography') + " //") %>
 </b>
 <br />
-  <%= h(profile_account.bio) %>
+  <%= h(profile_account.biography) %>
 <br />
 <br />
+<% end %>
