@@ -26,7 +26,7 @@ class Following < ActiveRecord::Base
 
   validate :check_follower_not_blocked
 
-  named_scope :approved, :conditions => "followings.approved_at IS NOT NULL and accounts.status = 'registered'"
+  named_scope :approved, :conditions => "followings.approved_at IS NOT NULL"
   named_scope :pending, :conditions => {:approved_at => nil, :accounts => {:deleted_at => nil}},  :joins => "INNER JOIN accounts ON accounts.deleted_at IS NULL and accounts.id = followings.follower_id"
 
   def after_create_callback
