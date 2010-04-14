@@ -735,6 +735,10 @@ img.artist_icon_box.tiny {
   height: 30px;
 }
 
+.artist_box .overlay a,
+.overlay_content a {
+  color: #FFF;
+}
 
 .blue {
     color: #00a5f8;
