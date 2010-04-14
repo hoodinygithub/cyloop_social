@@ -6,9 +6,6 @@
 */
 
 /* Registration Form */
-body{
-  background: url("../images/grey_bg.gif") repeat-x scroll left top #FFFFFF
-}
 .label_based{
   border-top: 1px #ccc solid
 }
