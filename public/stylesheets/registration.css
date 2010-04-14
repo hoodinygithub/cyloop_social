@@ -150,6 +150,8 @@ body.users #sidebar ul li span {
   font-size: 18px;
   line-height: 23px;
 }
+
+
 body.users #sidebar ul .discover { 
   background: transparent url(../images/registration/discover.png) no-repeat 0 0;
 }
@@ -254,7 +256,7 @@ body.users_create .errors {
 .registration_layer .top a { color: white; text-decoration: underline; }
 .registration_layer .top { height: 390px; background: #fff url(../images/layers/cyloop/1.jpg) no-repeat; }
 .registration_layer .top h2 { border: 0; font-size: 19px; padding: 0; color: white; font-weight: bolder; text-align: left; margin: 20px; width: 350px; padding-right: 210px; line-height: 25px; float: left; height: 210px; background: transparent url(../images/layers/cyloop_powered.png) no-repeat top right; }
-.registration_layer .stats ul { margin: 0; padding: 0; clear: both; height: 140px; background: url(../images/layers/transparency.png); }
+.registration_layer .stats ul { margin: 0; padding: 0; clear: both; height: 140px; background: url(../images/layers/transparency.png); list-style: none; }
 .registration_layer .stats li { float: left; padding: 0; margin: 0; width: 130px; padding: 10px; color: #999; font-weight: normal; font-family: Tahoma; font-size: 11px; }
 .registration_layer .stats em { color: #0294DF; font-style: normal; }
 .registration_layer .stats li span {
