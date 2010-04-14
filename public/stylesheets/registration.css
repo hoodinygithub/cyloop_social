@@ -316,10 +316,6 @@ body.cyloopes .registration_layer .bottom h2 a {
   color: #666;  
 }
 
-.account_settings .form_row{
-  border: none;
-  width: 45%
-}
 #sidebar ul {
   padding: 0;
   margin: 0;
@@ -352,9 +348,6 @@ body.cyloopes .registration_layer .bottom h2 a {
   background: transparent url(../images/registration/chat.png) no-repeat 0 0;
 }
 
-.half_width2 {
-  width:375px;
-}
 button.registration_complete {
   margin-left: 20px;
   font-family: "Helvetica", sans-serif;

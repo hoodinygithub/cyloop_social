@@ -160,7 +160,7 @@
     top: -11px;
 }
 
-pupup .content {
+.popup .content {
     background: url("/images/popup_h_bg.png") repeat-y left top;
     padding: 35px 45px;
     text-align: left;
