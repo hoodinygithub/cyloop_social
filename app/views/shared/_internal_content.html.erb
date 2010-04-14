@@ -37,7 +37,7 @@
               <% end %>
             </div>
 
-            <% if false and @collection.respond_to? :total_pages %>
+            <% if @collection.respond_to? :total_pages %>
               <%= will_paginate @collection, pagination_args %>
             <% end %>
         </div><!--/end center_column -->
