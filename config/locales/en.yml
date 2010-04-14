@@ -886,6 +886,9 @@ en:
     recommended_artists: Recommended Artists
     latest_stations:  "LATEST RADIO STATIONS"
     cyloop_recommends: CYLOOP RECOMMENDS
+    recommended_stations: STATIONS RECOMMENDED BY CYLOOP
+    recommended_mixes: MIXES RECOMMENDED BY CYLOOP
+    network_update: NETWORK UPDATE
   sessions:
     new:
       sign_in: Log in
