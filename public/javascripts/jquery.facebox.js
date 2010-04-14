@@ -316,11 +316,28 @@
 (function($) {
 
   $.fn.simplefacebox = function() {
-    var template = '<div id="facebox" class="simple_popup"> \
-                      <div class="content"> \
-                      </div> \
-                    </div><!--/end popup --> \
-    '
+    var template = '\
+      <div class="simple_popup" id="facebox"> \
+        <table> \
+          <tbody> \
+            <tr> \
+              <td class="tl"/><td class="b"/><td class="tr"/> \
+            </tr> \
+            <tr> \
+              <td class="b"/> \
+              <td class="body"> \
+                <div class="content"> \
+                </div> \
+              </td> \
+              <td class="b"/> \
+            </tr> \
+            <tr> \
+              <td class="bl"/><td class="b"/><td class="br"/> \
+            </tr> \
+          </tbody> \
+        </table> \
+      </div> \
+      '
     this.facebox({ faceboxHtml : template });
   }
 
