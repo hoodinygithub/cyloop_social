@@ -12,7 +12,7 @@ class ActivitiesController < ApplicationController
     @dashboard_menu = :activity
     # @collection = profile_user.followees.paginate :page => params[:page], :per_page => 15
     # @collection << profile_user
-    
+
     @collection = profile_user.activity_status.latest_with_followings(:limit => ACTIVITIES_MAX)
   end
 
@@ -42,31 +42,32 @@ class ActivitiesController < ApplicationController
       :partial => "modules/activity/listen_activity",
       :collection => [ @activity ])
   end
-  
+
   def update
     if request.post? and request.xhr?
       if params[:type] == 'status'
         item = {:message => params[:message]}
       end
-      
+
       activity_status = Activity::Status.new(current_user)
       hash_added = activity_status.put(item)
-      
+
       render :json => latest_activities
     end
   end
-  
+
   def latest
     render :json => latest_activities
   end
 
-  private  
+  def latest_tweet
+    @account = get_account_by_slug(params[:slug])
+    render :json => @account.transformed_activity_feed.first
+  end
+
+  private
   def latest_activities
-    if params[:slug]
-      @account = AccountSlug.find_by_slug(params[:slug]).account
-    elsif current_user
-      @account = current_user
-    end
+    @account = get_account_by_slug(params[:slug])
 
     if @account
       activities = @account.activity_status.latest(:limit => ACTIVITIES_MAX)
@@ -74,7 +75,7 @@ class ActivitiesController < ApplicationController
       activities
     end
   end
-  
+
   def set_page
     params[:page]   ||= 1
     @type             = params[:type] || nil
@@ -87,7 +88,7 @@ class ActivitiesController < ApplicationController
   end
 
   def activity_group
-    return :just_following if artist? || @type == "twitter"    
+    return :just_following if artist? || @type == "twitter"
     if params[:su] == 'true' && params[:sf] == 'true'
       :all
     elsif params[:su] == 'false' && params[:sf] == 'true'
@@ -104,4 +105,14 @@ class ActivitiesController < ApplicationController
   def account
     @account = params[:user] ? Account.find(params[:user]) : nil
   end
+
+  def get_account_by_slug(slug)
+    if slug
+      @account = AccountSlug.find_by_slug(slug).account
+    elsif current_user
+      @account = current_user
+    end
+  end
+
 end
+

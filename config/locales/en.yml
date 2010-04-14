@@ -45,6 +45,7 @@ en:
     artist_latest_stations:  "LATEST STATIONS FEATURING {{name}}"
     artist_latest_albums:  "LATEST ALBUMS BY {{name}}"
     recent_activity: "RECENT ACTIVITY"
+    latest_tweet: LATEST TWEET
     messages:
       artist_not_found: We couldn't find an artist by that name. Please search again.
     followers:
@@ -158,7 +159,7 @@ en:
     show_more: SHOW MORE
   sort:
     top: TOP
-    relevance: RELEVANCE    
+    relevance: RELEVANCE
     alphabetical: ALPHABETICAL
     latest: LATEST
     alphabetical: ALPHABETICAL
@@ -905,6 +906,7 @@ en:
       sign_out: Log out
   user:
     has_no_activity: "{{user_name}} has no activity"
+    has_no_tweet: "{{user_name}} has no tweet"
     is_not_following_anybody: "{{user_name}} is not following anybody"
     hasnt_create_any_station: "{{user_name}} hasn't created any stations"
     background_align: Background Align

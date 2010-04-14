@@ -19,11 +19,11 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users,
                 :only => [ :new, :create ],
                 :member => { :resend_confirmation_email => :get },
-                :collection => { :errors_on => :get, :msn_registration_redirect => :get, 
-                :msn_login_redirect => :get, 
+                :collection => { :errors_on => :get, :msn_registration_redirect => :get,
+                :msn_login_redirect => :get,
                 :follow => :post, :unfollow => :post, :approve => :post, :disapprove => :post,
                 :block => :post, :unblock => :post }
-                
+
   map.resources :registration_layers, :collection => {
      :test            => :any,
      :follow_artist   => :any,
@@ -112,6 +112,7 @@ ActionController::Routing::Routes.draw do |map|
     url.get_activity 'activity/activity/:type', :action => 'get_activity'
     url.push_activity 'activity/update/:type', :action => 'update'
     url.get_latest    'activity/latest', :action => 'latest'
+    url.get_latest_tweet 'activity/latest_tweet', :action => 'latest_tweet'
   end
 
   map.messenger_player '/messengerplayer', :controller => 'messenger_player/player', :action => 'index'
@@ -211,7 +212,7 @@ ActionController::Routing::Routes.draw do |map|
   map.special_followee_update '/my/following/:id/update/:skip_auto_width', :controller => 'followees', :action => 'update'
   map.special_followee_destroy '/my/following/:id/destroy/:skip_auto_width', :controller => 'followees', :action => 'destroy'
   map.followee_destroy '/my/following/:id/destroy', :controller => 'followees', :action => 'destroy'
-  
+
   # Mapping javascript locale file
   map.javascript_locale '/javascripts/locale.js', :controller => :javascripts, :action => :locale
 end

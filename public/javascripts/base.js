@@ -292,7 +292,7 @@ Base.community.__follow_request_handler = function(type, user_slug, link, callba
 
   $black_ul.fadeOut();
   $settings_button.html(Base.layout.spin_image(false, false));
-  
+
   jQuery.post('/users/' + type, params, function(response, status) {
     $main_element.slideUp();
     $pending_items = jQuery('li.pending_item:visible');
@@ -328,7 +328,7 @@ Base.community.follow = function(user_slug, button, remove_div) {
       } else if (response.status == 'pending') {
         $button_label.html(Base.locale.t('actions.pending'));
       }
-      
+
       $button.unbind('click');
       $button.bind('click', function() { Base.community.unfollow(user_slug, this, remove_div); return false; });
     }
@@ -517,7 +517,7 @@ Base.stations.close_button_handler = function(object) {
 Base.network.count_chars = function() {
   $textarea     = jQuery("#network_comment");
   $chars_counter = jQuery(".chars_counter");
-  
+
   if ($textarea.val().length < 140) {
     $chars_counter.css({'color':'#cccccc'});
     $chars_counter.html(140 - $textarea.val().length);
@@ -589,8 +589,8 @@ Base.network.__update_page_owner_page = function(list) {
     $text_div.append($timestamp_span);
 
     $avatar_image = jQuery('<img></img>');
-    $avatar_image.attr('width', 50);    
-    $avatar_image.attr('height', 50);        
+    $avatar_image.attr('width', 50);
+    $avatar_image.attr('height', 50);
     $avatar_image.attr('src', activity.user_avatar);
     $link_to_user = jQuery('<a></a>');
     $link_to_user.attr('href', '#');
@@ -689,6 +689,72 @@ Base.network.load_latest = function(params) {
     jQuery.post('/activity/latest', params, function (response) {
       jQuery(".chars_counter").show();
       Base.network.update_page(response);
+    });
+  });
+};
+
+Base.network.__artist_latest_tweet = function(list) {
+  $user_big_text = jQuery("#tweet_big_text");
+  $ul = jQuery('#tweet_recent_activities');
+
+  $user_big_text.find('img').remove();
+
+  if (list == null) {
+    $user_big_text.find('span').fadeIn();
+    return;
+  }
+
+  $user_big_text.remove();
+  $ul.hide();
+
+  $li   = jQuery("<li></li>");
+  $link = jQuery("<a></a>");
+  $span = jQuery("<span></span>");
+  $span.attr('class', 'latest_tweet');
+  var text = list.text;
+  if (text.length >140){
+    var text = list.text.substring(0,140) +'...';
+  } else{
+    var text = list.text;
+  }
+
+  $link.attr('href', '#');
+  $span.append(' &#8220; &nbsp; '+text+' &nbsp; &#8221;');
+  $li.append($span);
+
+  $li.append("&nbsp;");
+  var timestamp = new Date(list.timestamp*1000);
+  var month = timestamp.getMonth()+1
+  if (Base.locale.current =='en' || Base.locale.current =='en_CA'){
+    var date = month +"/"+ timestamp.getDate()  +"/"+timestamp.getFullYear();
+  }{
+    var date = timestamp.getDate() +"/"+ month +"/"+timestamp.getFullYear();
+  }
+  $li.append("&nbsp; &nbsp;"+date);
+
+  $span.attr('class', 'latest_tweet');
+
+  $li.append("&nbsp;");
+  $ul.append($li);
+
+  $parent = $ul.parent();
+
+  $link = jQuery("<a></a>");
+  $link.attr('href', window.location.href + '/activities');
+  $link.append(Base.locale.t('actions.view_more'));
+  $bold = jQuery("<b></b>").append($link);
+
+  $view_more_div = jQuery("<div></div>").attr('class', 'align_right').append($bold);
+  $parent.append($view_more_div);
+
+  $ul.fadeIn();
+}
+
+Base.network.load_latest_tweet = function(params) {
+  jQuery(document).ready(function() {
+    if (typeof(params) != 'object') params = {};
+    jQuery.post('/activity/latest_tweet', params, function (response) {
+      Base.network.__artist_latest_tweet(response);
     });
   });
 };

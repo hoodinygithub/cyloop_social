@@ -508,7 +508,7 @@ a:hover {
 #userdata_arrow {
     position: absolute;
     bottom: -8px;
-    left: -1px;    
+    left: -1px;
 }
 
 #userdata_box .links {
@@ -1215,8 +1215,8 @@ img.artist_icon_box.tiny {
 }
 
 .chars_counter {
-  float: right; 
-  color: #cccccc; 
+  float: right;
+  color: #cccccc;
   font-size: 1.5em
 }
 
@@ -1406,7 +1406,7 @@ img.artist_icon_box.tiny {
 .medium_thumb a {
 	font-size: 11px;
 	line-height: 14px;
-	display: block; 
+	display: block;
 }
 
 img.avatar_four_thumbs {
@@ -3247,6 +3247,13 @@ label.label_holder{
   color: green;
 }
 
+.latest_tweet{
+  font-size: 12px;
+  font-weight: bold;
+  font-style: italic;
+}
+
 /* User Data */
 .user_data_logged_in  { }
 .user_data_logged_out { display: none!important; }
+
