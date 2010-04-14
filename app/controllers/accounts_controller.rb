@@ -8,6 +8,8 @@ class AccountsController < ApplicationController
 
   RECOMMENDED_STATIONS = 6
   def show
+    return redirect_to( user_path( profile_account.slug ) ) if params[:slug] != profile_account.slug    
+    
     @dashboard_menu = :home
     @mixes_recommended = (1..6).to_a
     @comments = (1..3).to_a
@@ -22,50 +24,20 @@ class AccountsController < ApplicationController
     station_limit = profile_account.is_a?(Artist) ? 3 : 6
     @latest_stations = profile_account.stations.all(:limit => station_limit , :order => "user_stations.created_at DESC")
 
-    render :template => 'dashboards/show'
-  end
-
-  def oldshow
-    redirect_to( user_path( profile_account.slug ) ) && return if params[:slug] != profile_account.slug
     respond_to do |format|
-      format.html do
-        unless profile_account.has_custom_profile?
-          render :template => "#{profile_account.class.model_name.plural}/show"
-        else
-          if profile_account.has_chat?(current_site)
-            @chat           = profile_account.next_chat
-            @follow_profile = @chat.profile.id
-            if @chat.promotion?
-              @followers_limit = 88
-            elsif @chat.live? || @chat.finished? || @chat.down? || @chat.ustream?
-              @messages = @chat.messages.not_pending
-              @message  = @chat.messages.build
-            elsif @chat.post?
-              @followers_limit = 216
-            end
-            render :template => "custom_profiles/chat_#{@chat.artist.slug}"
-          else
-            # VERY TEMPORARY CONDITIONAL!!!
-            # RADIO VIEW WITH PROFILE TRACKING FEATURES
-            if profile_account.slug == "gcbaradio"
-              @top_stations = current_site.summary_top_stations.limited_to(5)
-              @source_ip = remote_ip
-            end
-            #######################################
-            render :template => "custom_profiles/#{profile_account.slug}"
-          end
-        end
-      end
+      format.html { render :template => 'dashboards/show' }
       format.rss do
         @activities = load_related_item_activity(
           profile_account.transformed_activity_feed(
             :kind => :listen,
-            :group => :just_me))
+            :group => :just_me
+          )
+        )
       end
     end
   end
 
-  private
+private
 
   def assert_profile_is_available
     unless profile_account.visible?

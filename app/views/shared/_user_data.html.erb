@@ -1,7 +1,7 @@
 <% logged_out = false unless local_assigns[:logged_out] %>
 <div id="userdata_box" class="<%= current_user && !logged_out ? "user_data_logged_in" : "user_data_logged_out" %>">
   <div class="user">
-    <% if logged_out %>
+    <% unless logged_in? %>
       <%= avatar_for(nil, :tiny, :class => "avatar") %>
       <%= link_to("Anon", my_dashboard_path, :class => "user_name") %>    
     <% else %>

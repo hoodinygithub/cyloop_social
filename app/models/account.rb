@@ -72,6 +72,7 @@ class Account < ActiveRecord::Base
   include AvatarImporter
   include BackgroundImporter
   include Commentable
+  include Account::Website  
   include Account::AccountActivity
   include SongListen::Most
   include ProfileVisit::Most

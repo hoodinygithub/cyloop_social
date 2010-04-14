@@ -70,7 +70,6 @@ class User < Account
 
   include Account::ProfileColors
   include Account::FolloweeCache
-  include Account::Website
   include Account::SingleShortBio
   include Account::RegistrationStates
   include Searchable::ByNameAndSlug

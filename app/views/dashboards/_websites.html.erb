@@ -1,4 +1,4 @@
 <b class="blue"><a href="#">Websites //</a></b><br>
 <% profile_account.websites.each do |website| %>
-  <%= link_to url_for(website), url_for(website) %><br />
+  <%= link_to url_for(website), url_for(website), :class => "white" %><br />
 <% end %>
