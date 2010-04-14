@@ -47,9 +47,10 @@ en:
     recent_activity: "RECENT ACTIVITY"
     latest_tweet: LATEST TWEET
     messages:
-      artist_not_found: We couldn't find an artist by that name. Please search again.
+      artist_not_found: "We couldn't find an artist by that name. Please search again."
     followers:
       title: Followers
+      my_followers: MY FOLLOWERS
     show:
       activity_feed_title: Activity Feed
       what_do_you_want_to_listen_to: What Do You Want To Listen To?

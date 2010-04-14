@@ -7,8 +7,8 @@
       <%= item.location %>
     </span>
     <br/>
-    <%= link_to item.stations.size, station_path(item) %> <%= t('profile.navegation.stations' )%> /
-    <%= link_to item.followers.size, user_followers_path(item) %> <%= t('profile.navegation.followers' )%>
+    <%= link_to item.stations.size, station_path(item) %> <%= t('profile.navigation.stations')%> /
+    <%= link_to item.followers.size, user_followers_path(item) %> <%= t('profile.navigation.followers')%>
 </div>
 
 <% if logged_in? %>

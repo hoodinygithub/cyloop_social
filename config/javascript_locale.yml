@@ -3,6 +3,7 @@ keys:
   actions.unfollow
   actions.follow
   actions.block
+  actions.unblock
   actions.view_more
   blocks.blocked
   datetime.distance_in_words.less_than_x_minutes
