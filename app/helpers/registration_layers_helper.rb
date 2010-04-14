@@ -1,6 +1,6 @@
 module RegistrationLayersHelper  
   def onclick_to_with_gat_code(url, code)
-    "redirectLayerTo('#{url}', '#{code}', event)"
+    "Base.utils.redirect_layer_to('#{url}', '#{code}', event)"
   end
   
   def gat_code(code)

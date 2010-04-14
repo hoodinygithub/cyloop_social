@@ -109,8 +109,14 @@
       $('#facebox .content').children().hide().end().
         append('<div class="loading"><img src="'+$.facebox.settings.loadingImage+'"/></div>')
 
+      top_position = getPageScroll()[1] + (getPageHeight() / 10);
+
+      if (!top_position) {
+        top_position = 60;
+      }
+
       $('#facebox').css({
-        top:	getPageScroll()[1] + (getPageHeight() / 10),
+        top:	top_position,
         left:	385.5
       }).show()
 
@@ -127,8 +133,9 @@
       $('#facebox .content').append(data)
       $('#facebox .loading').remove()
       $('#facebox .content').children().fadeIn('normal')
-/*      $('#facebox').css('left', $(window).width() / 2 - ($('#facebox table').width() / 2)) */
+      $('#facebox').css('left', $(window).width() / 2 - ($("#facebox div.content div:first").width() / 2))
       $(document).trigger('reveal.facebox').trigger('afterReveal.facebox')
+      $('#facebox .close').click($.facebox.close);
     },
 
     close: function() {
@@ -303,5 +310,18 @@
       $('#facebox .loading').remove()
     })
   })
+
+})(jQuery);
+
+(function($) {
+
+  $.fn.simplefacebox = function() {
+    var template = '<div id="facebox" class="simple_popup"> \
+                      <div class="content"> \
+                      </div> \
+                    </div><!--/end popup --> \
+    '
+    this.facebox({ faceboxHtml : template });
+  }
 
 })(jQuery);

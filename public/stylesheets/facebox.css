@@ -155,7 +155,7 @@
     top: -11px;
 }
 
-.content {
+pupup .content {
     background: url("/images/popup_h_bg.png") repeat-y left top;
     padding: 35px 45px;
     text-align: left;
@@ -193,5 +193,14 @@
 
 .popup .account_settings .form_row textarea.input {
     height: auto;
+}
+
+div.simple_popup {
+  border: 2px solid #000000;
+  background: #ffffff;
+}
+
+.simple_popup .content{
+  min-width: 370px;
 }
 

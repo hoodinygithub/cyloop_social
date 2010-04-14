@@ -37,6 +37,26 @@ Base.utils.handle_redirect = function(response) {
   return false;
 };
 
+Base.utils.redirect_layer_to = function(url, code, event) {
+  var targ = Base.utils.get_target(event);
+  if (targ && targ.tagName != "A") {
+    pageTracker._trackPageview(code);
+    location.href = url;
+  }
+}
+
+Base.utils.get_target = function(e) {
+  var targ;
+  if (!e) var e = window.event;
+  if (e.target) targ = e.target;
+  else if (e.srcElement) targ = e.srcElement;
+  if (targ.nodeType == 3) // defeat Safari bug
+    targ = targ.parentNode;
+  return targ;
+}
+
+
+
 /*
  * Layout shared behavior
  */
@@ -118,6 +138,9 @@ Base.layout.bind_events = function() {
     $(this).stop();
     $(this).fadeTo(100,1);
   });
+
+  //observe .facebox layer
+  $('.facebox').simplefacebox();
 
 }
 
@@ -939,7 +962,6 @@ Base.main_search.select_scope = function() {
     });
     Base.main_search.highlight_scope()
 };
-
 
 /*
  * Register and triggers
