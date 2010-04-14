@@ -29,7 +29,7 @@ module Activity
       db.merge!({key => content.merge({
         :id => id,  
         :user_id => @account_id,
-        :user_avatar => @account.avatar.url(:tiny),
+        :user_avatar => @account.avatar.url(:medium),
         :account_id => @account_id,
         :type => 'status',
         :user_slug => @account.slug,

@@ -564,7 +564,9 @@ Base.network.__update_page_owner_page = function(list) {
     $text_div.append('<br />');
     $text_div.append($timestamp_span);
 
-    $avatar_image = jQuery('<img width="50" height="50"></img>');
+    $avatar_image = jQuery('<img></img>');
+    $avatar_image.attr('width', 50);    
+    $avatar_image.attr('height', 50);        
     $avatar_image.attr('src', activity.user_avatar);
     $link_to_user = jQuery('<a></a>');
     $link_to_user.attr('href', '#');
