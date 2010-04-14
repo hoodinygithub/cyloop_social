@@ -53,7 +53,8 @@ class ActivitiesController < ApplicationController
       activity_status = Activity::Status.new(current_user)
       hash_added = activity_status.put(item)
 
-      render :json => latest_activities
+      load_user_activities
+      latest
     end
   end
 

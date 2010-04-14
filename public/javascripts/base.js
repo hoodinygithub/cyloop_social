@@ -541,12 +541,16 @@ Base.network.count_chars = function() {
   }
 };
 
-Base.network.__update_page_owner_page = function(response) {
+Base.network.__update_page_owner_page = function(response, options) {
   $show_more_button = jQuery('#show_more_comments');
   $comment_list        = jQuery('#network_comment_list');
   $share_button = jQuery('a.compartir_button');
   
-  $comment_list.hide().append(response).fadeIn();
+  if (typeof(options) == 'object' && typeof(options.replace) != 'undefined' && options.replace) {
+    $comment_list.hide().html(response).fadeIn();
+  } else {
+    $comment_list.hide().append(response).fadeIn();  
+  }
 
   if (response.length > 0) {
     $show_more_button.fadeIn();
@@ -673,7 +677,7 @@ Base.network.push_update = function() {
     jQuery.post('/activity/update/status', {'message':comment}, function (response) {
       $comment_field.val("");
       jQuery(".chars_counter").html(140);
-      Base.network.update_page(response);
+      Base.network.__update_page_owner_page(response, {'replace':true});
     });
   } else {
     $comment_field.css({'border':'10px solid red'});
