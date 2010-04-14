@@ -6,7 +6,7 @@
     <% cache("#{site_cache_key}/#{profile_artist.slug}/similar", :expires_in => EXPIRATION_TIMES['artist_similar_artists']) do %>
       <% if profile_artist.similar(8).size < 1 %>
         <div class="big_text">
-          <%= t("user.is_not_following_anybody", :user_name => profile_account.name) %>
+          <%= t("user.is_not_following_anybody", :user_name => profile_account.first_name) %>
         </div>
       <% else %>
         <% profile_artist.similar(8).each_with_index do |artist, index| %>

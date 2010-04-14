@@ -5,7 +5,7 @@
 
   <% if profile_account.follower_count < 1 %>
     <div class="big_text">
-      <%= t("user.has_no_followers", :user_name => profile_account.name) %>
+      <%= t("user.has_no_followers", :user_name => profile_account.first_name) %>
     </div>
   <% else %>
     <% followings = profile_account.followers.all(:limit => 8) %>

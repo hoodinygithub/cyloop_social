@@ -50,7 +50,7 @@ pt_BR:
     search_text: "Buscar M\xC3\xBAsica no Cyloop"
     reset: Enviar
     add_into_a_new_playlist: Adicionar a uma nova playlist
-    skip: ""
+    skip: "Pular"
     login: Login
     select_store: Selecione a loja
     submitting: Enviando
@@ -243,7 +243,7 @@ pt_BR:
             followee: 
               has_blocked_you: "bloqueou voc\xC3\xAA"
       messages: 
-        record_invalid: ""
+        record_invalid: "registro inválido"
         greater_than_or_equal_to: deve ser maior ou igual a {{count}}
         less_than_or_equal_to: deve ser menor ou igual a {{count}}
         confirmation: "n\xC3\xA3o confere com a confirma\xC3\xA7\xC3\xA3o"
