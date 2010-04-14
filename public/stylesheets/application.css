@@ -1314,6 +1314,18 @@ img.artist_icon_box.tiny {
     border-bottom: solid 1px #d9d9d9;
 }
 
+.comments_list .follower_image {
+  float: left;
+  width: 90%;
+}
+
+
+.comments_list .follower_text {
+  margin: 0px 0px 0px 10px;
+  float: left;
+}
+
+
 .comments_list .comment_icon {
     float: left;
 }
@@ -3257,3 +3269,7 @@ label.label_holder{
 .user_data_logged_in  { }
 .user_data_logged_out { display: none!important; }
 
+.station_activity img {
+  float: left;
+  margin: 0px 10px 0px 0px;
+}

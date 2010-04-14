@@ -1,0 +1,5 @@
+<% @collection.each do |item| %>
+  <li>
+    <%= render :partial => 'shared/network_collection_info', :locals => {:item => item} %>
+  </li>
+<% end %>

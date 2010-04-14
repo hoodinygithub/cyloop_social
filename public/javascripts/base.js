@@ -514,6 +514,19 @@ Base.stations.close_button_handler = function(object) {
 /*
  * Comment shared
  */
+Base.network.show_more = function(timestamp, button) {
+  $button = jQuery(button);
+  $list   = jQuery('.followers_list');
+  
+  old_button_html = $button.html();
+  $button.html(Base.layout.spanned_spin_image());
+
+  jQuery.get('/my/activities', {'after':timestamp}, function(response) {
+    $list.append(response);
+    $button.html(old_button_html);
+  }); 
+};
+
 Base.network.count_chars = function() {
   $textarea     = jQuery("#network_comment");
   $chars_counter = jQuery(".chars_counter");
@@ -528,167 +541,52 @@ Base.network.count_chars = function() {
   }
 };
 
-Base.network.__update_page_owner_page = function(list) {
-  $network_update_text = jQuery('#network_update_text');
+Base.network.__update_page_owner_page = function(response) {
   $show_more_button = jQuery('#show_more_comments');
   $comment_list        = jQuery('#network_comment_list');
-  var $share_button = jQuery('a.compartir_button');
+  $share_button = jQuery('a.compartir_button');
+  
+  $comment_list.hide().append(response).fadeIn();
 
-  if (list.length == 0) {
-    $share_button.fadeIn();
-    return;
-  }
-
-  first_element = list[0];
-  user_slug = first_element.user_slug;
-  timestamp = first_element.timestamp;
-  str_timestamp = first_element.str_timestamp;
-
-  username = user_slug;
-  bold_username = document.createElement('b');
-  bold_username.appendChild(document.createTextNode(username));
-  break_line = document.createElement('br');
-  time_ago = document.createElement('span')
-  time_ago.setAttribute('class', 'grey');
-  time_ago.setAttribute('timestamp', timestamp);
-  time_ago.appendChild(document.createTextNode(str_timestamp));
-  spanned_comment = document.createElement('span');
-  spanned_comment.setAttribute('class', 'comment_text_container');
-  spanned_comment.appendChild(document.createTextNode(first_element.message));
-
-  $network_update_text.html("").hide();
-  $network_update_text.append(bold_username);
-  $network_update_text.append(document.createTextNode(" - "));
-  $network_update_text.append(spanned_comment);
-  $network_update_text.append(break_line);
-  $network_update_text.append(time_ago);
-  $network_update_text.fadeIn();
-
-  $comment_list.html("");
-  for (var i=1; i < list.length ; i++) {
-    activity = list[i];
-
-    $text_div = jQuery('<div></div>');
-    $text_div.attr('class', 'comment_text');
-
-    $bold_username = jQuery('<b></b>');
-    $link_to_user_str = jQuery('<a></a>');
-    $link_to_user_str.attr('href', '#');
-    $link_to_user_str.append(activity.user_slug);
-    $bold_username.append($link_to_user_str);
-
-    $timestamp_span = jQuery('<span></span>');
-    $timestamp_span.attr('timestamp', activity.timestamp);
-    $timestamp_span.attr('class', 'grey');
-    $timestamp_span.append(activity.str_timestamp);
-
-    $text_div.append($bold_username);
-    $text_div.append('<br />');
-    $text_div.append(activity.message);
-    $text_div.append('<br />');
-    $text_div.append($timestamp_span);
-
-    $avatar_image = jQuery('<img></img>');
-    $avatar_image.attr('width', 50);
-    $avatar_image.attr('height', 50);
-    $avatar_image.attr('src', activity.user_avatar);
-    $link_to_user = jQuery('<a></a>');
-    $link_to_user.attr('href', '#');
-    $link_to_user.append($avatar_image);
-
-    $clearer = jQuery('<div></div>');
-    $clearer.attr('class', 'clearer');
-
-    $new_li = jQuery('<li></li>');
-    $new_li.append($link_to_user);
-    $new_li.append($text_div);
-    $new_li.append($clearer);
-
-    $comment_list.append($new_li);
-  }
-
-  $share_button.fadeIn();
-
-  if ($comment_list.find('li').length >= 5) {
-    $show_more_button.show();
+  if (response.length > 0) {
+    $show_more_button.fadeIn();
   }
 };
 
-Base.network.__update_page_user_page = function(list) {
+Base.network.__update_page_user_page = function(response) {
   $user_big_text = jQuery("#user_activity_big_text");
   $ul = jQuery('#user_recent_activities');
 
   $user_big_text.find('img').remove();
 
-  if (list.length == 0) {
+  if (response.length == 0) {
     $user_big_text.find('span').fadeIn();
     return;
   }
 
   $user_big_text.remove();
-
-  $ul.hide();
-  for (var i=0; i < list.length ; i++) {
-    activity = list[i];
-
-    $li   = jQuery("<li></li>");
-    $bold = jQuery("<b></b>");
-    $link = jQuery("<a></a>");
-    $span = jQuery("<span></span>");
-
-    $link.attr('href', '#');
-    $link.append(activity.user_slug);
-    $bold.append($link);
-    $li.append($bold);
-
-    $li.append("&nbsp;");
-    $li.append(activity.message);
-
-    $span.attr('class', 'grey');
-    $span.append(activity.str_timestamp);
-
-    $li.append("&nbsp;");
-    $li.append($span);
-    $ul.append($li);
-  }
-
-  $ul.fadeIn();
-
-  // show "view more" option if list is huge
-  if (list.length >= 5) {
-    $parent = $ul.parent();
-
-    $link = jQuery("<a></a>");
-    $link.attr('href', window.location.href + '/activities');
-    $link.append(Base.locale.t('actions.view_more'));
-    $bold = jQuery("<b></b>").append($link);
-
-    $view_more_div = jQuery("<div></div>").attr('class', 'align_right').append($bold);
-    $parent.append($view_more_div);
-  }
-};
-
-
-Base.network.update_page = function(list) {
-  var user_page = jQuery('#user_recent_activities').length > 0;
-  $form = jQuery('#network_update_form');
-
-  if (user_page) {
-    Base.network.__update_page_user_page(list)
-  } else {
-    $form.show();
-    Base.network.__update_page_owner_page(list);
-  }
+  $ul.html(response);
 };
 
 
 Base.network.load_latest = function(params) {
   jQuery(document).ready(function() {
+    var user_page = jQuery('#user_recent_activities').length > 0;
+    
     if (typeof(params) != 'object') params = {};
+    
+    if (user_page) {
+      params.public = true;
+    }
 
     jQuery.post('/activity/latest', params, function (response) {
-      jQuery(".chars_counter").show();
-      Base.network.update_page(response);
+      if (user_page) {
+        Base.network.__update_page_user_page(response);
+      } else {
+        jQuery(".chars_counter").show();
+        jQuery('#network_update_form').show();
+        Base.network.__update_page_owner_page(response);
+      }
     });
   });
 };

@@ -5,15 +5,17 @@ class ActivitiesController < ApplicationController
   before_filter :account, :except => [:latest_activities]
   before_filter :set_page, :except => [ :song ]
   before_filter :login_required, :only => [:update_status]
+  before_filter :load_user_activities, :only => [:index, :latest]
 
-  ACTIVITIES_MAX = 10
+  ACTIVITIES_MAX           = 5
+  ACTIVITIES_DASHBOARD_MAX = 5
 
   def index
     @dashboard_menu = :activity
-    # @collection = profile_user.followees.paginate :page => params[:page], :per_page => 15
-    # @collection << profile_user
-
-    @collection = profile_user.activity_status.latest_with_followings(:limit => ACTIVITIES_MAX)
+    
+    if request.xhr? 
+      return render :partial => 'shared/collection_to_li'
+    end
   end
 
   def get_activity
@@ -57,7 +59,12 @@ class ActivitiesController < ApplicationController
   end
 
   def latest
-    render :json => latest_activities
+    @collection = @collection[0..ACTIVITIES_DASHBOARD_MAX-1]
+    if params[:public]
+      return render :partial => 'shared/public_user_activity_content'
+    else
+      return render :partial => 'shared/collection_to_li'
+    end
   end
 
   def latest_tweet
@@ -66,16 +73,30 @@ class ActivitiesController < ApplicationController
   end
 
   private
-  def latest_activities
-    @account = get_account_by_slug(params[:slug])
-
-    if @account
-      activities = @account.activity_status.latest(:limit => ACTIVITIES_MAX)
-      activities.each { |a| a['str_timestamp'] = nice_elapsed_time(a['timestamp']) }
-      activities
+  def load_user_activities
+    if profile_account
+      @account = profile_account
+    else
+      @account = get_account_by_slug(params[:slug])
+    end
+    
+    collection      = @account.activity_feed
+    @collection     = collection.sort_by {|a| a['timestamp'].to_i}.reverse
+    
+    if collection.size - ACTIVITIES_MAX > 0
+      @has_more = true
+    end
+    
+    @collection.each do |a|
+      a['account']  = profile_account
+      if a['type'] == 'station'
+        station      = Station.find(a['item_id']).playable
+        a['station'] = station
+        a['artist']  = station.artist
+      end
     end
   end
-
+  
   def set_page
     params[:page]   ||= 1
     @type             = params[:type] || nil

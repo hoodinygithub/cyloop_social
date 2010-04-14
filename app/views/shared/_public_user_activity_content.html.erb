@@ -1,0 +1,17 @@
+<% @collection.each do |item| %>
+  <li>
+    <b>
+      <%= link_to(item['account'], item['account'])%>
+    </b> 
+
+    <% if item['type'] == 'station' %>
+      <%= t('activity.created_station', :station => link_to(item['artist'], item['artist'])) %>
+    <% else %>
+      <%= item['message'] %>
+    <% end %>
+
+    <span class="grey">
+      <%= nice_elapsed_time(item['timestamp']) %>
+    </span>
+  </li>
+<% end %>

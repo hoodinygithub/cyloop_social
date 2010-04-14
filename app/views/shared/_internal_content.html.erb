@@ -24,16 +24,18 @@
                     </li>
                   <% end %>
                 <% end %>
-                
-                <% @collection.each do |item| %>
-                  <li>
-                    <%= render :partial => 'shared/network_collection_info', :locals => {:item => item} %>
-                  </li>
-                <% end %>
+
+                <%= render :partial => 'shared/collection_to_li' %>
               <% else %>
                 <%= yield :list %>
               <% end %>
             </ul><!--/end followers_list -->
+            
+            <div class="align_right" id="show_more_comments">
+              <% if @has_more %>
+                <%= blue_button(t('actions.show_more'), :onclick => "Base.network.show_more(1, this);") %>
+              <% end %>
+            </div>
 
             <% if false and @collection.respond_to? :total_pages %>
               <%= will_paginate @collection, pagination_args %>

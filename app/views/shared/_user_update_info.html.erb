@@ -1,6 +1,18 @@
 <div class="follower_text">
-  <b><%= link_to(item['user'], item['user']) %></b>
-  <%= item['message'] %>
+  <b><%= link_to(item['account'], item['account']) %></b>
+    <% if item['type'] == 'status' %>
+      <%= item['message'] %>
+    <% elsif item['type'] == 'station' %>
+      <div class="station_activity">
+        <%= link_to(avatar_for(item['artist'], :tiny), item['artist']) %>
+        <%= link_to(item['account'], item['account']) %>
+        <%= t('activity.created_station', :station => link_to(item['artist'], item['artist'])) %>
+        <p>
+          <%= "#{t('basics.contains')}: " if item['station'].includes.size > 0 %>
+          <%= item['station'].includes.map {|s| link_to(s.artist, s.artist)}.join(", ") %>
+        </p>
+      </div>
+    <% end %>
   <br />
   <span class="grey small">
     <%= nice_elapsed_time(item['timestamp']) %>

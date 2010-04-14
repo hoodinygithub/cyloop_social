@@ -62,5 +62,4 @@ namespace :activity do
     end
     puts "Completed!"
   end
-
 end
