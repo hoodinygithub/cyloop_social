@@ -9,7 +9,8 @@ var Base = {
   main_search: {},
   community: {},
   locale: {},
-  utils: {}
+  utils: {},
+  registration: {}
 };
 
 /*
@@ -962,6 +963,19 @@ Base.main_search.select_scope = function() {
     });
     Base.main_search.highlight_scope()
 };
+
+Base.registration.layers = {
+  removeSomeFaceboxStyles: function() {
+    $('#facebox .body').css("padding", 0);
+    $('#facebox .body').css("background-color", "transparent");
+    $(document).bind("close.facebox", function(){
+      setTimeout(function() {
+        $('#facebox .body').css("padding", "10px");
+        $('#facebox .body').css("background-color", "white");
+      }, 600);
+    });
+  }
+}
 
 /*
  * Register and triggers
