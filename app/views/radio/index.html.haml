@@ -1,7 +1,10 @@
 - if !logged_in? && @station_obj
   - content_for :head do
+    = javascript_include_tag 'AC_OETags'
+    = javascript_include_tag 'history'
+    = javascript_include_tag 'swf_utils'
     %script
-      = "station_obj = #{@station_json}"
+      /= "station_obj = #{@station_json}"
 
 #content
   -if params[:queue] == "true"
@@ -62,26 +65,32 @@
       });
     });
 
-  #create_station_form
-    - form_for :station, :url => search_radio_path do |f|
-      = f.label :artist, t('radio.create_new_station')
-      = text_field_tag :station_name, t('home.type_artist_name'), {:class => 'radio_create'}
-      = f.submit t("actions.create_station"), :type => :submit, :class => 'submit_button'
+  /#create_station_form
+  /  - form_for :station, :url => search_radio_path do |f|
+  /    = f.label :artist, t('radio.create_new_station')
+  /    = text_field_tag :station_name, t('home.type_artist_name'), {:class => 'radio_create'}
+  /    = f.submit t("actions.create_station"), :type => :submit, :class => 'submit_button'
+
 
   :javascript
-    var flashvars = {
-      BASEURI:"#{RecEngine::BASE_URI}",
-      MARKET:"#{current_site.code}",
-      LOGGEDIN:"#{logged_in?}",
-      USERID:"#{!current_user.nil? ? current_user.id : nil}",
-      QUEUE:"#{params[:station_id]}",
-      LOCALE:"#{current_site.default_locale == :es_ES ? 'es' : current_site.default_locale}"
-    };
-    var params = {wmode:"transparent"};
-    var attributes = {id:"radio_engine", name:"radio_engine"};
-    swfobject.embedSWF("flash/radio_engine.swf?1", "radio_player", "612", "309", "9", false, flashvars, params, attributes);
+    var flashvars = "urlContext=/&market=msnbr&playerId=messengerradio_msnbr";
+    flashvars += "&stationId=#{@station_queue[:id]}&station=#{@station_queue[:queue]}";
+    AC_FL_RunContent(
+      "src", "/flash/cyloop_radio",
+      "width", "628",
+      "height", "196",
+      "align", "middle",
+      "id", "cyloop_radio",
+      "quality", "high",
+      "bgcolor", "#f7f7f7",
+      "name", "cyloop_radio",
+      "allowScriptAccess", "sameDomain",
+      "type", "application/x-shockwave-flash",
+      "pluginspage", "http://www.adobe.com/go/getflashplayer",
+      "flashVars", flashvars
+    );
 
-  #radio_player
+  /#radio_player
 
   - cache("#{site_cache_key}/radio/default_artist_info", :expires_in => EXPIRATION_TIMES['radio_default_artist_info']) do
     .artist_radio_info

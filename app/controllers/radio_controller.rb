@@ -8,19 +8,23 @@ class RadioController < ApplicationController
     @source_ip = remote_ip
     if params[:station_id]
       @station_obj = Station.find(params[:station_id])
+      @station_queue = {:id => @station_obj.id, :queue => CGI::escape("#{RecEngine::BASE_URI}?request=getRecEnginePlayList&artistID=#{@station_obj.playable.amg_id}&ipAddress=#{@source_ip}")}
+
       @station_json = if @station_obj.playable.is_a? AbstractStation      
         "{type:'99',station_url:'#{RecEngine::BASE_URI}?request=getRecEnginePlayList&artistID=#{@station_obj.playable.amg_id}&ipAddress=#{@source_ip}',idpl:'#{@station_obj.id}',nom:'#{@station_obj.playable.name}'};"
       elsif @station_obj.playable.is_a? UserStation      
         "{type:'99',station_url:'#{RecEngine::BASE_URI}?request=getRecEnginePlayList&artistID=#{@station_obj.playable.amg_id}&ipAddress=#{@source_ip}',idpl:'#{@station_obj.id}',nom:'#{@station_obj.playable.name}',userID:#{@station_obj.playable.owner_id}};"
-      end        
+      @station_queue = {:id => @station_obj.id, :queue => CGI::escape("#{RecEngine::BASE_URI}?request=getRecEnginePlayList&artistID=#{@station_obj.playable.amg_id}&ipAddress=#{@source_ip}&userID=#{@station_obj.playable.owner_id}")}
+
+      end
     elsif params[:artist_name]
       @station_obj = AbstractStation.find_by_name(params[:artist_name])
     end
-    
-    create_user_station(@station_obj)
-    
+
+    #create_user_station(@station_obj)
+
     @station_obj.playable.track_a_play if @station_obj and @station_obj.playable
-    
+
     if site_includes(:msnlatam, :msnmx)
       render :template => 'radio/custom'
     end
