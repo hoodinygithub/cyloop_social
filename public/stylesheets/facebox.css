@@ -220,14 +220,6 @@ pupup .content {
   background:url(/facebox/br.png);
 }
 
-#facebox {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 100;
-  text-align: left;
-}
-
 #facebox .simple_popup {
   position: relative;
 }
@@ -258,13 +250,6 @@ pupup .content {
 #facebox img {
   border: 0;
   margin: 0;
-}
-
-#facebox .footer {
-  border-top: 1px solid #DDDDDD;
-  padding-top: 5px;
-  margin-top: 10px;
-  text-align: right;
 }
 
 #facebox .tl, #facebox .tr, #facebox .bl, #facebox .br {

@@ -61,34 +61,26 @@
  *
  */
 
-var facebox_default_settings = {
-  opacity      : 0.5,
-  overlay      : true,
-  loadingImage : '/images/loading.gif',
-  closeImage   : '/images/closelabel.gif',
-  imageTypes   : [ 'png', 'jpg', 'jpeg', 'gif' ],
-  faceboxHtml  : '\
-    <div class="popup" id="facebox"> \
-      <div class="top_shadow"> \
-        <div class="top_left corner"></div> \
-        <div class="center_shadow"></div> \
-        <div class="top_right corner"></div> \
-        <a href="#" class="close"><img src="/images/popup_close.png" class="close_image png_fix" alt="X" title="Close" /></a> \
-      </div> \
-      <div class="content"> \
-      </div> \
-      <div class="bottom_shadow"> \
-        <div class="bottom_left corner"></div> \
-        <div class="center_shadow"></div> \
-        <div class="bottom_right corner"></div> \
-      </div> \
-    </div><!--/end popup --> \
-  '
-};
-
 (function($) {
   $.facebox = function(data, klass) {
-    $.facebox.settings = facebox_default_settings;
+    $.facebox.settings.faceboxHtml = '\
+        <div class="popup" id="facebox"> \
+          <div class="top_shadow"> \
+            <div class="top_left corner"></div> \
+            <div class="center_shadow"></div> \
+            <div class="top_right corner"></div> \
+            <a href="#" class="close"><img src="/images/popup_close.png" class="close_image png_fix" alt="X" title="Close" /></a> \
+          </div> \
+          <div class="content"> \
+          </div> \
+          <div class="bottom_shadow"> \
+            <div class="bottom_left corner"></div> \
+            <div class="center_shadow"></div> \
+            <div class="bottom_right corner"></div> \
+          </div> \
+        </div><!--/end popup --> \
+      ';
+    $.facebox.settings.closeImage = '/images/closelabel.gif'
     $.facebox.loading()
 
     if (data.ajax) fillFaceboxFromAjax(data.ajax)
@@ -103,7 +95,30 @@ var facebox_default_settings = {
    */
 
   $.extend($.facebox, {
-    settings: facebox_default_settings,
+    settings: {
+      opacity      : 0.5,
+      overlay      : true,
+      loadingImage : '/images/loading.gif',
+      closeImage   : '/images/closelabel.gif',
+      imageTypes   : [ 'png', 'jpg', 'jpeg', 'gif' ],
+      faceboxHtml  : '\
+        <div class="popup" id="facebox"> \
+          <div class="top_shadow"> \
+            <div class="top_left corner"></div> \
+            <div class="center_shadow"></div> \
+            <div class="top_right corner"></div> \
+            <a href="#" class="close"><img src="/images/popup_close.png" class="close_image png_fix" alt="X" title="Close" /></a> \
+          </div> \
+          <div class="content"> \
+          </div> \
+          <div class="bottom_shadow"> \
+            <div class="bottom_left corner"></div> \
+            <div class="center_shadow"></div> \
+            <div class="bottom_right corner"></div> \
+          </div> \
+        </div><!--/end popup --> \
+      '
+    },
 
     loading: function() {
       init()
