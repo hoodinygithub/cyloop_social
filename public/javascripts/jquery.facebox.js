@@ -153,7 +153,7 @@
       $('#facebox .content').append(data)
       $('#facebox .loading').remove()
       $('#facebox .content').children().fadeIn('normal')
-      /* $('#facebox').css('left', $(window).width() / 2 - ($("#facebox div.content div:first").width() / 2)) */
+      $('#facebox').css('left', $(window).width() / 2 - ($("#facebox div.content div:first").width() / 2))
       $(document).trigger('reveal.facebox').trigger('afterReveal.facebox')
       $('#facebox .close').click($.facebox.close);
     },
