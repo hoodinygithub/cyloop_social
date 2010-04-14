@@ -11,7 +11,7 @@
     <%= link_to item.followers.size, user_followers_path(item) %> <%= t('profile.navegation.followers' )%>
 </div>
 
-<% if current_user and current_user == profile_account %>
+<% if logged_in? %>
   <div class="follower_actions w_settings">
       <% if current_user.follows?(item) %>
         <%= green_button(t('actions.unfollow'),
