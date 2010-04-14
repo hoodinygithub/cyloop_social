@@ -63,11 +63,11 @@
       });
     });
 
-  /#create_station_form
-  /  - form_for :station, :url => search_radio_path do |f|
-  /    = f.label :artist, t('radio.create_new_station')
-  /    = text_field_tag :station_name, t('home.type_artist_name'), {:class => 'radio_create'}
-  /    = f.submit t("actions.create_station"), :type => :submit, :class => 'submit_button'
+  #create_station_form
+    - form_for :station, :url => search_radio_path do |f|
+      = f.label :artist, t('radio.create_new_station')
+      = text_field_tag :station_name, t('home.type_artist_name'), {:class => 'radio_create'}
+      = f.submit t("actions.create_station"), :type => :submit, :class => 'submit_button'
 
 
   :javascript
@@ -87,8 +87,6 @@
       "pluginspage", "http://www.adobe.com/go/getflashplayer",
       "flashVars", flashvars
     );
-
-  /#radio_player
 
   - cache("#{site_cache_key}/radio/default_artist_info", :expires_in => EXPIRATION_TIMES['radio_default_artist_info']) do
     .artist_radio_info
