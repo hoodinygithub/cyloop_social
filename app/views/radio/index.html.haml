@@ -1,10 +1,7 @@
-- if !logged_in? && @station_obj
-  - content_for :head do
-    = javascript_include_tag 'AC_OETags'
-    = javascript_include_tag 'history'
-    = javascript_include_tag 'swf_utils'
-    %script
-      /= "station_obj = #{@station_json}"
+- content_for :head do
+  = javascript_include_tag 'AC_OETags'
+  = javascript_include_tag 'history'
+  = javascript_include_tag 'swf_utils'
 
 #content
   -if params[:queue] == "true"
