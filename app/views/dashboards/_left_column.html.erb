@@ -15,7 +15,7 @@
       <div class="clearer"></div>
     </div><!--/end black_boxes -->
   
-    <% if profile_account.websites %>
+    <% unless profile_account.websites.empty? %>
       <div class="big_black_box">
         <%= render 'dashboards/websites' %>
       </div>
@@ -24,7 +24,7 @@
     <div class="big_black_box">
       <%= link_to(image_tag('play_button.png', :title => t('actions.play')), radio_path(:station_id => profile_artist.station.id), :class => 'play_button') %>
       <span>
-        <b><span class="blue"><%= link_to profile_artist.station.name, profile_artist %></span></b>
+        <b>&nbsp;&nbsp;<span class="blue"><%= link_to profile_artist.station.name, radio_path(:station_id => profile_artist.station.id) %></span></b>
         <br/>
       </span>
       <br class="clearer" />
