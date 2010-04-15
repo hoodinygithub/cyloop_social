@@ -14,7 +14,7 @@
 <% if current_user and current_user == profile_account %>
   <div class="follower_actions w_settings">
 
-    <%= green_button(t('actions.pending'),
+    <%= yellow_button(t('actions.pending'),
       :onclick => "#', this, #{following_page?})",
       :class => 'follower_btn') %>
     

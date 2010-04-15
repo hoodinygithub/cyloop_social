@@ -510,8 +510,8 @@ h1 {
     padding-right: 4px;
 }
 
-.green_button span {
-    background: url("../images/yellow_button_right.gif") no-repeat left top;
+.yellow_button span {
+    background: url("../images/yellow_button_right.gif") no-repeat right top;
 }
 
 .green_button span {
@@ -537,6 +537,9 @@ h1 {
 
 .green_button span span {
     background: #33cc33;
+}
+.yellow_button span span {
+    background: #f68004;
 }
 
 .black_button span span {
