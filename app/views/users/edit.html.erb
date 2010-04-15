@@ -18,16 +18,14 @@
   });
 <% end %>
 
-<div id="internal_content">
-  <div id="main_content">
-    <%= render :partial => 'dashboards/left_column' %>
-    <div class="settings_column">
-      <h1><%= t('account_settings.title') %></h1>
-      <%= render :partial => 'basic_info' %>
-      <%= render :partial => 'password_change' if cyloop_login? %>
-      <%= render :partial => 'email_notifications' %>
-      <%= render :partial => 'delete_account' %>
-    </div><!--/end settings_column -->
-    <div class="clearer"></div>
-  </div><!--/end main_content -->
-</div><!--/end internal_content -->
+<div id="main_content">
+  <%= render :partial => 'dashboards/left_column' %>
+  <div class="settings_column">
+    <h1><%= t('account_settings.title') %></h1>
+    <%= render :partial => 'basic_info' %>
+    <%= render :partial => 'password_change' if cyloop_login? %>
+    <%= render :partial => 'email_notifications' %>
+    <%= render :partial => 'delete_account' %>
+  </div><!--/end settings_column -->
+  <div class="clearer"></div>
+</div><!--/end main_content -->

@@ -1,50 +1,46 @@
-<div id="internal_content">
-    <div id="main_content">
+<div id="main_content">
+  <%= render :partial => 'dashboards/left_column' %>
 
-        <%= render :partial => 'dashboards/left_column' %>
-        
-        <div id="center_column">
-            <h1>
-              <%= yield :title %>
-            </h1>
-            
-            <div class="sorting">
-              <%= yield :sorting %>
-            </div>
-            
-            <% if @collection %>
-              <ul class="followers_list">
-                <% if current_user and current_user == profile_account and !@pending.nil? and @pending.size > 0 %>
-                  <li class="pending"><b><%= t('dashboards.pending.title') %></b></li>
-                  <% @pending.each do |item| %>
-                    <li class="pending_item">
-                        <%= link_to (avatar_for(item.follower, :small), item.follower) %>
-                        <%= render :partial => 'shared/pending', :locals => {:item => item.follower} %>
-                        <br class="clearer" />
-                    </li>
-                  <% end %>
-                <% end %>
+  <div id="center_column">
+    <h1>
+      <%= yield :title %>
+    </h1>
 
-                <%= render :partial => 'shared/collection_to_li' %>
-              <% else %>
-                <%= yield :list %>
-              <% end %>
-            </ul><!--/end followers_list -->
-            
-            <div class="align_right" id="show_more_comments">
-              <% if @has_more %>
-                <%= blue_button(t('actions.show_more'), :onclick => "Base.network.show_more(this)", :width => "120px") %>
-              <% end %>
-            </div>
+    <div class="sorting">
+      <%= yield :sorting %>
+    </div>
 
-            <% if @collection.respond_to? :total_pages %>
-              <%= will_paginate @collection, pagination_args %>
-            <% end %>
-        </div><!--/end center_column -->
+    <% if @collection %>
+    <ul class="followers_list">
+      <% if current_user and current_user == profile_account and !@pending.nil? and @pending.size > 0 %>
+      <li class="pending"><b><%= t('dashboards.pending.title') %></b></li>
+      <% @pending.each do |item| %>
+      <li class="pending_item">
+        <%= link_to (avatar_for(item.follower, :small), item.follower) %>
+        <%= render :partial => 'shared/pending', :locals => {:item => item.follower} %>
+        <br class="clearer" />
+      </li>
+      <% end %>
+      <% end %>
 
-        <%= render :partial => 'dashboards/right_column' %>
-        
-        <div class="clearer"></div>
-    </div><!--/end main_content -->
-    
-</div><!--/end internal_content -->
+      <%= render :partial => 'shared/collection_to_li' %>
+      <% else %>
+      <%= yield :list %>
+      <% end %>
+    </ul><!--/end followers_list -->
+
+    <div class="align_right" id="show_more_comments">
+      <% if @has_more %>
+      <%= blue_button(t('actions.show_more'), :onclick => "Base.network.show_more(this)", :width => "120px") %>
+      <% end %>
+    </div>
+
+    <% if @collection.respond_to? :total_pages %>
+    <%= will_paginate @collection, pagination_args %>
+    <% end %>
+  </div><!--/end center_column -->
+
+  <%= render :partial => 'dashboards/right_column' %>
+
+  <div class="clearer"></div>
+</div><!--/end main_content -->

@@ -1,0 +1,20 @@
+<% content_for :head do %>
+  <%= javascript_include_tag "AC_OETags", "history", "swf_utils", "radio" %>
+<% end %>
+<div id="main_content">
+  <%= render @station_obj.nil? && 'search' || 'radio' %>
+
+  <div id="right_column">
+    <div class="ad_box">
+      <%= banner_ad("square_banner") %>
+    </div>
+    <div class="grey_box">
+      <div class="box_content" id="top_stations">
+        <h1><%= t('modules.top_stations.title') %></h1>
+        <%= render :partial => 'shared/abstract_station_simple', :collection => @top_abstract_stations %>
+      </div>
+    </div>
+  </div><!--/end right_column -->
+
+  <div class="clearer"></div>
+</div>

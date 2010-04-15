@@ -37,10 +37,14 @@ module ApplicationHelper
   end
 
   def main_content(content)
-    if params[:controller] == 'pages' and params[:action] != 'home'
-      content_tag(:div, content_tag(:div, content_tag(:div, content, :id => 'pages_internal'), :id => 'internal_content'), :id => 'pages')
+    if params[:controller] == 'pages'
+      if params[:action] != 'home'
+        content_tag(:div, content_tag(:div, content_tag(:div, content, :id => 'pages_internal'), :id => 'internal_content'), :id => 'pages')
+      else
+        content
+      end
     else
-      content
+      content_tag(:div, content, :id => 'internal_content')
     end
   end
 

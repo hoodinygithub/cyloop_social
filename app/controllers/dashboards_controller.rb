@@ -14,16 +14,7 @@ class DashboardsController < ApplicationController
     @dashboard_menu = :home
     @mixes_recommended = (1..6).to_a
     
-    @latest_activity_status = current_user.activity_status.latest_with_followings
-    @last_activity_status   = current_user.activity_status.last
-    
-    if @latest_activity_status and @latest_activity_status.size > 0
-      if @latest_activity_status.first['message'] == @last_activity_status['message']
-        @latest_activity_status.shift
-      end
-    end
-
-    stations = recommended_stations(30).map{|s| s.station.playable unless s.artist_id.nil? || s.station.nil? }.compact
+    stations = transformed_recommended_stations(30)
     @recommended_stations = stations[0..(RECOMMENDED_STATIONS-1)]
     @recommended_stations_queue = stations[RECOMMENDED_STATIONS..(stations.size)]
     

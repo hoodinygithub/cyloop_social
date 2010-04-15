@@ -1,0 +1,35 @@
+
+<!-- 
+- cache("#{site_cache_key}/radio/default_artist_info", :expires_in => EXPIRATION_TIMES['radio_default_artist_info']) do
+  .artist_radio_info
+    = render :partial => "default_artist_info"
+     -->
+
+<div class="two_columns">
+    <div class="search_box light_grey">
+        <form action="" method="post">
+            <div align="center"><img src="images/cyloop_mixes.gif" alt="" /></div>
+            
+            <br/>
+            <div class="title">To get started simply enter an artist name</div>
+            
+            <span class="text_input_placeholder">
+                <input type="text" value="Enter artist name" onfocus="clearInput('Enter artist name', this);" onblur="restoreInput('Enter artist name', this);" />
+            </span>
+            
+            <span class="btn_placeholder">
+                <a href="#" class="blue_button"><span><span>LISTEN!</span></span></a>
+            </span>
+            <br/><br/><br/>
+            
+            <div class="medium_text grey2">
+                Or if you can’t think of any,<br/>
+                select a recommended mix from below
+            </div>
+        </form>
+    </div><!--/end search_box -->
+
+    <h1><%= t('modules.recommended_stations.title') %></h1>
+    <%= render :partial => 'shared/abstract_station', :collection => @recommended_stations, :locals => { :columns => 4 } %>    
+    <br class="clearer" />
+</div><!--/end two_columns -->

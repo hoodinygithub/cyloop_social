@@ -1,0 +1,21 @@
+<% unless abstract_station_simple.nil? %>
+  <% unless abstract_station_simple.artist.nil? %>      
+    <% artist = abstract_station_simple.artist %>  
+    <div class="station">
+      <div class="avatar">
+        <% if artist.nil? %>
+          <%= avatar_for(nil, :artist_icon) %>
+        <% else %>
+          <%= link_to avatar_for(artist, :artist_icon), radio_path(:station_id => abstract_station_simple.station.id) %>
+        <% end %>
+      </div>
+      <div class="station_info">
+        <h2><%= 
+          link_to(abstract_station_simple.name, radio_path(:station_id => abstract_station_simple.station.id)) 
+        %></h2>
+        <%= station_contains(abstract_station_simple) %>
+      </div>
+    </div>
+    <br class="clearer" />    
+  <% end %>
+<% end %>

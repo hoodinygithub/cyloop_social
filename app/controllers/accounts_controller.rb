@@ -18,8 +18,6 @@ class AccountsController < ApplicationController
     @recommended_stations_queue = stations[RECOMMENDED_STATIONS..(stations.size)]
     @top_stations = profile_account.stations.most_created(3)
     @followers = profile_account.followers.all(:limit => 4)
-    @latest_activity_status = profile_account.activity_status.latest_with_followings unless profile_account.is_a? Artist
-    @last_activity_status   = profile_account.activity_status.last
     station_limit = profile_account.is_a?(Artist) ? 3 : 6
     @latest_stations = profile_account.stations.all(:limit => station_limit , :order => "user_stations.created_at DESC")
 

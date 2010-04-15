@@ -9,8 +9,7 @@ class PagesController < ApplicationController
         @latest_stations       = UserStation.latest_stations
         
         # Hack to handle nil values from rec engine
-        @recommended_stations  = recommended_stations(20).map{|s| s.station.playable unless s.artist_id.nil? || s.station.nil? }.compact
-        @recommended_stations  = @recommended_stations[0..5]
+        @recommended_stations = transformed_recommended_stations(6, 20)
         
         @top_abstract_stations = current_site.top_abstract_stations.limited_to(6)
         @top_user_stations     = current_site.top_user_stations.limited_to(6)

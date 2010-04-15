@@ -317,6 +317,12 @@ class ApplicationController < ActionController::Base
     logger.error "Catch-all error"
     []
   end
+  
+  def transformed_recommended_stations(limit = 3, fetch=nil)
+    fetch ||= limit
+    stations = recommended_stations(fetch).map{|s| s.station.playable unless s.artist_id.nil? || s.station.nil? }.compact
+    stations = stations[0..(limit-1)]
+  end
 
   helper_method :rec_engine, :recommended_artists, :recommended_stations, :recommended_artists_existing
 

@@ -21,13 +21,14 @@ class RadioController < ApplicationController
       @station_obj = AbstractStation.find_by_name(params[:artist_name])
     end
 
-    #create_user_station(@station_obj)
-
-    @station_obj.playable.track_a_play if @station_obj and @station_obj.playable
-
-    if site_includes(:msnlatam, :msnmx)
-      render :template => 'radio/custom'
+    if @station_obj
+      create_user_station(@station_obj)
+      @station_obj.playable.track_a_play if @station_obj.playable      
+    else 
+      @recommended_stations  = transformed_recommended_stations(12, 30)
     end
+    
+    @top_abstract_stations = current_site.top_abstract_stations.limited_to(8)
   end
 
   def twitstation
