@@ -29,15 +29,15 @@
                   </div>
 
                   <div class="visible">
-                      <%= link_to image_tag("/images/play_button.png", :class => "play_button"), artist_album_path(album.owner, album, :autoplay => "true") %>
-                      <%= link_to album.name, artist_album_path(album.owner, album, :autoplay => "true") %><br/>
+                      <%= link_to image_tag("/images/play_button.png", :class => "play_button"), artist_album_path(album.owner, album, :autoplay => "true" ) rescue "" %>
+                      <%= link_to album.name, artist_album_path(album.owner, album, :autoplay => "true") rescue "" %><br/>
                       <span class="white"><%= album.released_on.strftime("%Y") rescue"" %></span>
                   </div>
               </div><!--/end overlay -->
           </div><!--/end artist_box -->
 
           <div class="reviews">
-            <big><b><%= link_to album.name, artist_album_path(album.owner, album, :autoplay => "true") %></b><br/>
+            <big><b><%= link_to album.name, artist_album_path(album.owner, album, :autoplay => "true") rescue "" %></b><br/>
             <%= "Label: #{album.music_label} (#{album.released_on.strftime("%Y")})" rescue ""%>
             </big><br/>
             Contains:
