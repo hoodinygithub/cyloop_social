@@ -9,42 +9,43 @@
     color: grey;
     font-size: 13px;
     font-weight: bold;
-    padding: 5px;
+    padding: 2px;
     line-height: 14px;
-    margin-bottom: 8px;
 }
 
-ol.two_columns
-{
-  width: 30em;  /* room for 3 columns */
+.album_info p {
+  margin-top: 10px;
 }
-ol.two_columns li
+
+.album_info .contains {
+    height: 90px;
+    margin-left: 175px;
+}
+
+/* position list chunks side by side */
+div.column_wrapper
 {
   float: left;
-  width: 10em;  /* accommodate the widest item */
-  border-bottom: none;
+  width: 11em;
 }
-/* stop the floating after the list */
+
+/* clear float after lists */
 br
 {
   clear: left;
 }
-/* separate the list from what follows it */
-div.ol_wrapper
+
+.column_wrapper li
 {
-  margin-bottom: 1em;
+  margin-bottom: 0px;
+  border-bottom: none;
+  padding: 1px;
+  font-size: 10px;
 }
 
-/* anchor styling */
-ol.two_column li a
+.column_wrapper ol li a
 {
   display: block;
-  width: 7em;
+  width: 10em;
   text-decoration: none;
 }
-ol.two_column li a:hover
-{
-  color: #FFF; /* white */
-  background-color: #A52A2A; /* brown */
-}
-

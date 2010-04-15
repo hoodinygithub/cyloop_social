@@ -27,8 +27,11 @@
       <div class="note">
           <div><%= item.year%> <%=item.music_label%></div>
       </div>
+      <p>
+        <%= t('basics.contains') %>:
+      </p>
       <div class="contains">
-          <div><%= album_contains(item) %></div>
+        <%= album_contains(item) %>
       </div>
     </div><!--/end reviews -->
 </div><!--/end albums_item -->
