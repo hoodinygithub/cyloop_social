@@ -1,10 +1,10 @@
-<div class="artist_box png_fix <%= "last_box" if (user_station_counter+1) % columns == 0 %>">  
+<div class="artist_box png_fix <%= "last_box" if (user_station_counter+1) % columns == 0 %>">
   <%= four_thumbs_to(user_station.station, :type => :big) %>
   <div class="overlay">
     <div class="hidden">
-      <%= link_to avatar_for(user_station.owner, :artist_icon), user_station.owner %>    
+      <%= link_to avatar_for(user_station.owner, :artist_icon), user_station.owner %>
       <span>
-        <span class="blue"><%= link_to user_station.owner.name, user_station.owner %></span><br/>
+        <span class="blue"><%= link_to user_station.owner.name, user_station.owner rescue ""%></span><br/>
         <%= t('basics.created_at', :when => distance_of_time_in_words_to_now(user_station.created_at)) %>
       </span>
       <br class="clearer" />
@@ -20,4 +20,5 @@
 </div><!--/end artist_box -->
 <% if (user_station_counter+1) % columns == 0 %>
   <br class="clearer" />
-<% end %>  
+<% end %>
+

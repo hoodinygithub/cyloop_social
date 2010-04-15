@@ -93,10 +93,6 @@ function alertLayers(layer)
     url = "/registration_layers/radio_add_song";
     break;
   }
-  
-  if (follow_profile) {
-    url += "?follow_profile="+follow_profile;
-  }
 
   $.facebox(function()
   {
