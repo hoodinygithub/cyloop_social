@@ -1,6 +1,10 @@
 <%= render 'shared/ajax_modules' %>
 <% content_for :title do %>
-  <%= t('dashboards.followers.my_followers') %>
+  <% if current_user == profile_account %>
+    <%= t('dashboards.followers.my_followers') %>
+  <% else %>
+    <%= t('dashboards.followers.user_followers', :user_name => profile_account.first_name.upcase) %>
+  <% end %>
 <% end %>
 
 <% content_for :sorting do %>

@@ -51,6 +51,7 @@ en:
     followers:
       title: Followers
       my_followers: MY FOLLOWERS
+      user_followers: "{{user_name}}'S FOLLOWERS"
     show:
       activity_feed_title: Activity Feed
       what_do_you_want_to_listen_to: What Do You Want To Listen To?
