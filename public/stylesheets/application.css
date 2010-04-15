@@ -1552,7 +1552,7 @@ h1 {
 }
 
 .review_creator_large {
-    width: 240px;
+    width: 235px;
     float: left;
     padding-left: 10px;
 }
@@ -3101,3 +3101,4 @@ h2 {
 .radio_tabs_content .small_thumb {
     margin-right: 15px;
 }
+

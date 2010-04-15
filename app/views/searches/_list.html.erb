@@ -80,6 +80,6 @@
 </div><!--/end oveflow_list -->
 
 <div class="search_term">
-  search for <%= query %>
+  <%= link_to "search for #{query}", "javascript: return null", :onclick => "javascript: return Base.header_search.buildSearchUrl();" %>
 </div>
 
