@@ -1,0 +1,7 @@
+<% unless  @collection.nil? || @collection['text'].nil? %>
+  <a style="color:#333333;" href="<%= slug %>/activities"><i>&#8220;<%= truncate(@collection['text'],150)%>&#8221;</i></a>
+  <span class="grey">
+    <%= nice_elapsed_time(@collection['timestamp']) %>
+  </span>
+<% end %>
+

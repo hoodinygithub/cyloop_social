@@ -1,4 +1,3 @@
-<%= render 'shared/tweets'  if profile_artist? %>
 <%= render profile_artist? ? 'shared/sidebar_followers' : 'shared/user_follows' %>
 <%# render 'shared/user_top_mixes' %>
 <%= render 'shared/top_stations_box'     unless profile_artist? %>

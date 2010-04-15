@@ -188,7 +188,7 @@ Base.layout.blue_button = function(label, options) {
   span2.appendChild(button_label);
   span1.appendChild(span2);
   link.appendChild(span1);
-  
+
   if (typeof(options) == 'object' && typeof(options.width) != 'undefined') {
     link.setAttribute('style', "width: " + options.width + ";");
   }
@@ -264,7 +264,7 @@ Base.locale.date_difference = function(old_date, new_date) {
     old_time_ago_str = Base.locale.t('datetime.distance_in_words.less_than_x_seconds', {'count':seconds});
   }
 
-  return old_time_ago_str + " ago";
+  return old_time_ago_str + " "+Base.locale.t('datetime.ago');
 };
 
 /*
@@ -525,7 +525,7 @@ Base.network.show_more = function(button) {
 
   // activities page
   $list   = jQuery('.followers_list');
-  
+
   if ($list.length == 0) {
     $list = jQuery(".comments_list");
   }
@@ -533,7 +533,7 @@ Base.network.show_more = function(button) {
   if ($list.length == 0) {
     throw("Could not find a valid list element.");
   }
-  
+
   $last_li  = $list.find('li:last');
   timestamp = $last_li.attr('timestamp');
   jQuery.post("/activity/latest", {'after':timestamp}, function (response) {
@@ -560,11 +560,11 @@ Base.network.__update_page_owner_page = function(response, options) {
   $show_more_button = jQuery('#show_more_comments');
   $comment_list        = jQuery('#network_comment_list');
   $share_button = jQuery('a.compartir_button');
-  
+
   if (typeof(options) == 'object' && typeof(options.replace) != 'undefined' && options.replace) {
     $comment_list.hide().html(response).fadeIn();
   } else {
-    $comment_list.hide().append(response).fadeIn();  
+    $comment_list.hide().append(response).fadeIn();
   }
 
   if (response.length > 0) {
@@ -591,9 +591,9 @@ Base.network.__update_page_user_page = function(response) {
 Base.network.load_latest = function(params) {
   jQuery(document).ready(function() {
     var user_page = jQuery('#user_recent_activities').length > 0;
-    
+
     if (typeof(params) != 'object') params = {};
-    
+
     if (user_page) {
       params.public = true;
     }
@@ -610,61 +610,19 @@ Base.network.load_latest = function(params) {
   });
 };
 
-Base.network.__artist_latest_tweet = function(list) {
+Base.network.__artist_latest_tweet = function(response) {
   $user_big_text = jQuery("#tweet_big_text");
-  $ul = jQuery('#tweet_recent_activities');
-
+  $msg = jQuery('#tweet_recent_activities');
   $user_big_text.find('img').remove();
 
-  if (list == null) {
-    $user_big_text.find('span').fadeIn();
-    return;
-  }
+  //if (list == null) {
+  //  jQuery("#loading_tweet").hide();
+  //  return;
+  //}
 
   $user_big_text.remove();
-  $ul.hide();
+  $msg.html(response).fadeIn();
 
-  $li   = jQuery("<li></li>");
-  $link = jQuery("<a></a>");
-  $span = jQuery("<span></span>");
-  $span.attr('class', 'latest_tweet');
-  var text = list.text;
-  if (text.length >140){
-    var text = list.text.substring(0,140) +'...';
-  } else{
-    var text = list.text;
-  }
-
-  $link.attr('href', '#');
-  $span.append(' &#8220; &nbsp; '+text+' &nbsp; &#8221;');
-  $li.append($span);
-
-  $li.append("&nbsp;");
-  var timestamp = new Date(list.timestamp*1000);
-  var month = timestamp.getMonth()+1
-  if (Base.locale.current =='en' || Base.locale.current =='en_CA'){
-    var date = month +"/"+ timestamp.getDate()  +"/"+timestamp.getFullYear();
-  }{
-    var date = timestamp.getDate() +"/"+ month +"/"+timestamp.getFullYear();
-  }
-  $li.append("&nbsp; &nbsp;"+date);
-
-  $span.attr('class', 'latest_tweet');
-
-  $li.append("&nbsp;");
-  $ul.append($li);
-
-  $parent = $ul.parent();
-
-  $link = jQuery("<a></a>");
-  $link.attr('href', window.location.href + '/activities');
-  $link.append(Base.locale.t('actions.view_more'));
-  $bold = jQuery("<b></b>").append($link);
-
-  $view_more_div = jQuery("<div></div>").attr('class', 'align_right').append($bold);
-  $parent.append($view_more_div);
-
-  $ul.fadeIn();
 }
 
 Base.network.load_latest_tweet = function(params) {

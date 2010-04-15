@@ -18,7 +18,7 @@ class ActivitiesController < ApplicationController
       return render :partial => 'shared/collection_to_li'
     end
   end
-  
+
   def more
     @collection = @collection[0..ACTIVITIES_DASHBOARD_MAX-1]
   end
@@ -71,7 +71,7 @@ class ActivitiesController < ApplicationController
     else
       @collection = @collection[0..ACTIVITIES_DASHBOARD_MAX-1]
     end
-    
+
     if params[:public]
       return render :partial => 'shared/public_user_activity_content'
     else
@@ -80,14 +80,15 @@ class ActivitiesController < ApplicationController
   end
 
   def latest_tweet
-    @account = get_account_by_slug(params[:slug])
-    render :json => @account.transformed_activity_feed.first
+    account = get_account_by_slug(params[:slug])
+    @collection = account.transformed_activity_feed.first
+    return render :partial => 'shared/tweet_msg', :locals => {:slug => params[:slug]}
   end
 
   private
   def load_user_activities
     @has_more = true
-    
+
     if profile_account
       @account = profile_account
     else
