@@ -1,0 +1,38 @@
+<div class="albums_item">
+    <div class="artist_box png_fix">
+      <%= link_to avatar_for(item, :new_medium), item %>
+      <div class="overlay">
+          <div class="hidden">
+           <% if false %>
+              <%= link_to avatar_for(item.owner), item.owner %>
+              <!--a href="#"><img src="images/artist_icon.gif" class="artist_icon" alt="" /></a-->
+              <span>
+                  <span class="blue"><%= item.owner.name %></span><br/>
+                  <%= l(item.released_on) %>
+              </span>
+              <br class="clearer" />
+            <% end %>
+          </div>
+          <div class="visible">
+              <%= link_to image_tag('play_button.png', :class => 'play_button'), item %>
+              <br/>
+          </div>
+      </div><!--/end overlay -->
+    </div><!--/end artist_box -->
+  
+    <div class="album_info"> 
+      <div class="title">
+          <div><%= link_to item.name, item %></div>
+      </div>
+      <div class="note">
+          <div><%= item.year%> <%=item.music_label%></div>
+      </div>
+      <p>
+        <%= t('basics.contains') %>:
+      </p>
+      <div class="contains">
+        <%= album_contains(item) %>
+      </div>
+    </div><!--/end reviews -->
+</div><!--/end albums_item -->
+

@@ -1,0 +1,51 @@
+.album_info .title {
+    font-size: 14px;
+    font-weight: bold;
+    padding: 5px;
+    line-height: 14px;
+}
+
+.album_info .note {
+    color: grey;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 2px;
+    line-height: 14px;
+}
+
+.album_info p {
+  margin-top: 10px;
+}
+
+.album_info .contains {
+    height: 90px;
+    margin-left: 175px;
+}
+
+/* position list chunks side by side */
+div.column_wrapper
+{
+  float: left;
+  width: 11em;
+}
+
+/* clear float after lists */
+br
+{
+  clear: left;
+}
+
+.column_wrapper li
+{
+  margin-bottom: 0px;
+  border-bottom: none;
+  padding: 1px;
+  font-size: 10px;
+}
+
+.column_wrapper ol li a
+{
+  display: block;
+  width: 10em;
+  text-decoration: none;
+}

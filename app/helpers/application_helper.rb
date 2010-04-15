@@ -94,7 +94,6 @@ module ApplicationHelper
     "#{t('basics.contains')}: #{links.join(", ")}..."
   end
 
-
   def render_flash_messages
     if flash[:success]
       message = flash[:success]
