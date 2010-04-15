@@ -5,7 +5,7 @@ class AlbumsController < ApplicationController
 
   def index
     @all_albums = profile_artist.artist_albums
-    @albums = paginate( @all_albums )
+    @collection = paginate( @all_albums )
   end
 
   def show

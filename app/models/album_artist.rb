@@ -21,6 +21,7 @@
 #
 
 class AlbumArtist < ActiveRecord::Base
+  include Db::Predicates::LimitedTo
   belongs_to :artist
   belongs_to :album
 end

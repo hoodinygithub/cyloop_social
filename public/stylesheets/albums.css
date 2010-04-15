@@ -1,0 +1,50 @@
+.album_info .title {
+    font-size: 14px;
+    font-weight: bold;
+    padding: 5px;
+    line-height: 14px;
+}
+
+.album_info .note {
+    color: grey;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 5px;
+    line-height: 14px;
+    margin-bottom: 8px;
+}
+
+ol.two_columns
+{
+  width: 30em;  /* room for 3 columns */
+}
+ol.two_columns li
+{
+  float: left;
+  width: 10em;  /* accommodate the widest item */
+  border-bottom: none;
+}
+/* stop the floating after the list */
+br
+{
+  clear: left;
+}
+/* separate the list from what follows it */
+div.ol_wrapper
+{
+  margin-bottom: 1em;
+}
+
+/* anchor styling */
+ol.two_column li a
+{
+  display: block;
+  width: 7em;
+  text-decoration: none;
+}
+ol.two_column li a:hover
+{
+  color: #FFF; /* white */
+  background-color: #A52A2A; /* brown */
+}
+

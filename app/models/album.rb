@@ -92,5 +92,10 @@ class Album < ActiveRecord::Base
   def to_s
     name
   end
+
+  def includes(limit=3)
+   artists.limited_to(limit)
+  end
+
 end
 
