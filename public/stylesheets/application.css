@@ -613,8 +613,11 @@ h1 {
     padding: 10px 0px 0px;
     display: none;
     z-index: 5;
+<<<<<<< HEAD
     margin-left:512px;
     margin-top:-14px;
+=======
+>>>>>>> Radio - Main - Recommended stations and Radio - Main - Top Stations
 }
 
 .search_results_box h1 {
@@ -1148,8 +1151,13 @@ h1 {
     position: relative;
 }
 
+<<<<<<< HEAD
 .followers_list .follower_actions .blue_button span span,
 .followers_list .follower_actions .green_button span span,
+=======
+.followers_list .follower_actions .blue_button span span, 
+.followers_list .follower_actions .green_button span span, 
+>>>>>>> Radio - Main - Recommended stations and Radio - Main - Top Stations
 .followers_list .follower_actions .yellow_button span span {
     padding: 0px;
     width: 100px;
@@ -1166,32 +1174,55 @@ h1 {
     margin-right: 1px;
 }
 
+<<<<<<< HEAD
 .followers_list .follower_actions.w_settings .blue_button span span,
 .followers_list .follower_actions.w_settings .yellow_button span span,
 .followers_list .follower_actions.w_settings .green_button span span,
+=======
+.followers_list .follower_actions.w_settings .blue_button span span, 
+.followers_list .follower_actions.w_settings .yellow_button span span, 
+.followers_list .follower_actions.w_settings .green_button span span, 
+>>>>>>> Radio - Main - Recommended stations and Radio - Main - Top Stations
 .followers_list .follower_actions.w_settings .black_button span span {
     padding: 0px;
     width: 100px;
 }
 
 .followers_list .follower_actions.w_settings .blue_button.settings_button,
+<<<<<<< HEAD
 .followers_list .follower_actions.w_settings .yellow_button.settings_button,
 .followers_list .follower_actions.w_settings .green_button.settings_button,
+=======
+.followers_list .follower_actions.w_settings .yellow_button.settings_button, 
+.followers_list .follower_actions.w_settings .green_button.settings_button, 
+>>>>>>> Radio - Main - Recommended stations and Radio - Main - Top Stations
 .followers_list .follower_actions.w_settings .black_button.settings_button {
     margin-left: 5px;
 }
 
+<<<<<<< HEAD
 .followers_list .follower_actions.w_settings .blue_button.settings_button span span,
 .followers_list .follower_actions.w_settings .yellow_button.settings_button span span,
 .followers_list .follower_actions.w_settings .green_button.settings_button span span,
+=======
+.followers_list .follower_actions.w_settings .blue_button.settings_button span span, 
+.followers_list .follower_actions.w_settings .yellow_button.settings_button span span, 
+.followers_list .follower_actions.w_settings .green_button.settings_button span span, 
+>>>>>>> Radio - Main - Recommended stations and Radio - Main - Top Stations
 .followers_list .follower_actions.w_settings .black_button.settings_button span span {
     padding: 0px 2px;
     width: 20px;
 }
 
+<<<<<<< HEAD
 .followers_list .follower_actions.w_settings .blue_button.settings_button img,
 .followers_list .follower_actions.w_settings .yellow_button.settings_button img,
 .followers_list .follower_actions.w_settings .green_button.settings_button img,
+=======
+.followers_list .follower_actions.w_settings .blue_button.settings_button img, 
+.followers_list .follower_actions.w_settings .yellow_button.settings_button img, 
+.followers_list .follower_actions.w_settings .green_button.settings_button img, 
+>>>>>>> Radio - Main - Recommended stations and Radio - Main - Top Stations
 .followers_list .follower_actions.w_settings .black_button.settings_button img {
     position: relative;
     vertical-align: top;
@@ -2805,6 +2836,7 @@ h2 {
     float: right;
     font-size: 11px;
     line-height: 15px;
+<<<<<<< HEAD
 }
 
 .contains_col {
@@ -2886,6 +2918,89 @@ h2 {
     color: #333;
 }
 
+=======
+}
+
+.contains_col {
+    width: 140px;
+    float: left;
+    padding-right: 10px;
+}
+
+.popup_mix_image {
+    float: left;
+    margin-right: 10px;
+}
+
+.popup_mix_text {
+    width: 300px;
+    float: left;
+    line-height: 20px;
+    font-size: 13px;
+}
+
+.popup_mix_text big {
+    line-height: 26px;
+    font-size: 20px;
+}
+
+.songs_list .headers div.mix_name {
+    width: 140px;
+    padding: 0px 20px;
+}
+
+.songs_list .headers div.includes2 {
+    width: 180px;
+    padding: 0px 10px;
+}
+
+.add_to_mix_list {
+    font-size: 11px;
+}
+
+.add_to_mix_list.songs_box {
+    height: 123px;
+}
+
+.add_to_mix_list.songs_box ul li {
+    background: #fff;
+}
+
+.songs_box ul.size3 {
+    width: 384px;
+}
+
+.songs_list .songs_box div.mix_name {
+    width: 160px;
+    padding: 0px 10px;
+    overflow: hidden;
+}
+
+.songs_list .songs_box div.includes2 {
+    width: 180px;
+    padding: 0px 10px;
+    overflow: hidden;
+}
+
+.edit_radio_thumb {
+    float: left;
+    margin-right: 10px;
+}
+
+.popup .network_update {
+    margin-bottom: 0px;
+}
+
+.popup .network_update textarea {
+    width: 320px;
+}
+
+.popup .network_update textarea.red_borders {
+    margin-bottom: 0px;
+    color: #333;
+}
+
+>>>>>>> Radio - Main - Recommended stations and Radio - Main - Top Stations
 .red_msg {
     background: #CC0000;
     font-size: 11px;
@@ -2899,6 +3014,7 @@ h2 {
 .popup .account_settings .form_row textarea.input {
     height: auto;
 }
+<<<<<<< HEAD
 
 .large_item .songs_box {
     background: #fafafa;
@@ -3102,3 +3218,207 @@ h2 {
     margin-right: 15px;
 }
 
+=======
+
+.large_item .songs_box {
+    background: #fafafa;
+}
+
+.large_item .songs_box ul li div {
+    height: 115px;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+}
+
+.songs_box ul.light_bg li {
+    background: #fafafa;
+}
+
+.inside_item {
+    display: inline-block;
+    text-align: center;
+    width: 80px;
+    line-height: 12px;
+    float: left;
+    margin-right: 15px;
+}
+
+.action_links a img {
+    margin-bottom: 10px;
+}
+
+.songs_list.my_mix.large_item  .headers div.song_name_large {
+    width: 170px;
+}
+
+.songs_list.my_mix.large_item  .headers div.includes {
+    width: 280px;
+}
+
+.my_mix.large_item .songs_box .song_name_large {
+    width: 170px;
+}
+
+.my_mix.large_item .songs_box .includes {
+    padding-right: 0px;
+    width: 285px;
+}
+
+.large_item .songs_box.large_height {
+    height: 400px;
+}
+
+.top_padd {
+    padding-top: 7px;
+}
+
+.top_padd .grey_button {
+    vertical-align: middle;
+    margin-left: 5px;
+}
+
+.radio_left_side {
+    width: 150px;
+    float: left;
+}
+
+.radio_row {
+    padding: 15px 20px;
+}
+
+.mix_box.grey_accents {
+    background-position: left bottom;
+}
+
+.mix_box.grey_accents .top_buttons {
+    background: none;
+}
+
+.mix_box.grey_accents .album_detail {
+    background: none;
+}
+
+.radio_row .overlay_content {
+    padding: 5px 10px;
+}
+
+.radio_row .overlay_content small {
+    line-height: 12px;
+    font-size: 11px;
+}
+
+.radio_right_side {
+    width: 418px;
+    float: right;
+}
+
+.radio_tabs {
+    position: relative;
+    z-index: 10;
+}
+
+.radio_tabs a {
+    display: inline-block;
+    color: #00a5f8;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: bold;
+    margin: 0px 10px;
+    line-height: 31px;
+}
+
+.radio_tabs a span {
+    display: inline-block;
+}
+
+.radio_tabs a.active {
+    background: url("../images/tab_left.gif") no-repeat left top;
+    padding-left: 8px;
+    margin-right: 15px;
+    color: #000;
+}
+
+.radio_tabs a.active.first {
+    margin-left: 0px;
+    background: url("../images/tab_left_first.gif") no-repeat left top;
+    padding-left: 4px;
+}
+
+.radio_tabs a.active span {
+    background: url("../images/tab_right.gif") no-repeat right top;
+    padding-right: 8px;
+}
+
+.radio_tabs a.active span span {
+    background: url("../images/tab_bg.gif") repeat-x left top;
+    padding: 0px 12px;
+}
+
+.radio_tabs_content {
+    position: relative;
+    z-index: 2;
+    top: -1px;
+    background: #fff;
+    border: solid 1px #e3e3e3;
+    padding: 10px 13px;
+    overflow: auto;
+    height: 195px;
+}
+
+.radio_station_row {
+    border-bottom: solid 1px #e3e3e3;
+    padding: 10px 0px;
+}
+
+.radio_station_row .station_icon {
+    float: left;
+    margin-right: 8px;
+}
+
+.radio_station_row .station_text {
+    float: left;
+    width: 190px;
+    font-size: 12px;
+    line-height: 14px;
+}
+
+.radio_station_row .station_text small {
+    font-size: 11px;
+}
+
+.radio_station_row .reviews_stars {
+    display: inline-block;
+    padding-top: 3px;
+}
+
+.radio_station_row .station_buttons {
+    float: right;
+    padding-top: 10px;
+}
+
+.album_detail .album_text2 {
+    float:left;
+    font-size:14px;
+    line-height:16px;
+    padding-left:10px;
+    width:350px;
+}
+
+.album_detail .album_text2 small {
+    font-size: 11px;
+    line-height: 14px;
+}
+
+.album_detail .album_actions2 {
+    float: right;
+    text-align: right;
+}
+
+.album_detail .album_actions2 .blue_button {
+    margin-bottom: 5px;
+}
+
+.radio_tabs_content .small_thumb {
+    margin-right: 15px;
+}
+>>>>>>> Radio - Main - Recommended stations and Radio - Main - Top Stations
