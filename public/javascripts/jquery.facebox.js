@@ -369,7 +369,7 @@
     this.facebox(attributes);
   }
 
-  $.fn.popup = function() {
+  $.fn.popup = function(attributes) {
     $(this).attr('template', 'popup');
     this.facebox(attributes);
   }
