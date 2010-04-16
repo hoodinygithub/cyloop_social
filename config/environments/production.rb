@@ -35,3 +35,5 @@ ActionController::Base.session = {
 }
 config.middleware.use "SetCookieDomain", ".cyloop.com"
 config.cache_store = :mem_cache_store, '10.6.64.128:11211', '10.6.64.129:11211', '10.6.64.130:11211', '10.6.64.131:11211', '10.6.64.132:11211', '10.6.64.133:11211', '10.6.64.134:11211', '10.6.64.135:11211', '10.6.64.136:11211', '10.6.64.137:11211', '10.6.64.138:11211'
+
+config.gem 'hoptoad_notifier'
