@@ -1,0 +1,13 @@
+<%= four_thumbs_to(@station_obj, :class => 'left_side', :clearer => true, :type => :small) %>
+<div class="album_text2">
+  <b><%= @station_obj.playable.artist.name %></b>
+  <a href="#" onclick="alert('TBD'); return false;"><img src="images/edit_button_small.png" class="png_fix valign_middle" alt="" /></a>
+  <br/>
+  <small class="grey"><%= t("basics.last_modified") %>: <%= l(@station_obj.updated_at.to_date) %></small><br/>
+  <small><%= station_contains(@station_obj.playable) %></small>
+</div><!--/end top_buttons -->
+
+<div class="album_actions2">
+  <%= blue_button(t("radio.create_new_station"), :href => "#create_new_station", :class => "create_new_station") %><br/>
+  <b><%= t("basics.created_by") %>: <%= link_to(@station_obj.playable.owner.name, "/#{@station_obj.playable.owner.slug}") %></b>
+</div>

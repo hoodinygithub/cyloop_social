@@ -56,7 +56,7 @@ pt_BR:
     submitting: Enviando
     add_song: "Adicionar m\xC3\xBAsica"
     add_more: Adicionar mais
-    create_station: "Criar R\xC3\xA1dio"
+    create_station: "Criar Nova R\xC3\xA1dio"
     search: Buscar
   dashboards: 
     pending: 
@@ -449,7 +449,9 @@ pt_BR:
     influences: "Influ\xC3\xAAncias"
     genre: Estilo
   radio: 
-    create_new_station: Digite o nome do artista
+    create_new_station: "Criar nova r\xC3\xA1dio"
+    msn_stations: "R\xC3\xA1dios MSN"
+    now_playing: Tocando Agora
   titles: 
     awaiting_approval: "Esperando aprova\xC3\xA7\xC3\xA3o para seguir este usu\xC3\xA1rio"
     unfollow: "Clique aqui para parar de seguir este usu\xC3\xA1rio"
@@ -732,9 +734,9 @@ pt_BR:
       create_your_own_personalized_radio_station: "Crie sua pr\xC3\xB3pria r\xC3\xA1dio agora!"
       create_radio: ""
       recommended_stations: ""
-      network_update: ""
+      network_update: "Atualização da Rede"
       recommended_mixes: ""
-      type_artist_name: ""
+      type_artist_name: "Escreva o nome do artista"
       top_songs: ""
       top_stations: ""
       recommended_artists: ""

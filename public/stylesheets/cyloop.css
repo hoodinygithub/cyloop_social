@@ -2,6 +2,11 @@
   margin-top: 5px;
 }
 
+.yellow_button, 
+.blue_button, 
+.green_button, 
+.black_button, 
+.grey_button_big,
 h1 {
   text-transform: uppercase;  
 }
@@ -470,6 +475,11 @@ img.artist_icon_box.tiny {
     font-size: 11px;
     line-height: 14px;
     display: block;
+}
+
+img.avatar_four_thumbs_small {
+  width: 25px;
+  height: 25px;
 }
 
 img.avatar_four_thumbs {

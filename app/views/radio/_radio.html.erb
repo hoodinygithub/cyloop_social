@@ -1,34 +1,17 @@
+<% content_for :javascript do %>
+  jQuery(document).ready(function() { Base.radio.initialize(); });
+<% end %>
+
 <div class="two_columns">
   <div class="mix_box grey_accents">
-    <div class="top_buttons">
-      <div class="left_side">
-        <a href="#" class="blue_button"><span><span>MY STATIONS</span></span></a>
-        <a href="#" class="blue_button"><span><span>MSN STATIONS</span></span></a>
-      </div>
-
-      <a href="#" class="blue_button right_side"><span><span><img src="images/now_playing.png" class="png_fix now_playing" alt="" /> NOW PLAYING</span></span></a>
-
-      <div class="clearer"></div>
-    </div>
-
-    <form action="" method="post" class="account_settings">
-      <div class="album_detail">
-        <img src="images/comment_icon.gif" class="album_image" alt="" />
-
-        <div class="album_text2">
-          <b>Juanes Radio</b> <a href="#"><img src="images/edit_button_small.png" class="png_fix valign_middle" alt="" /></a> <a href="#"><img src="images/share_button_small.png" class="png_fix valign_middle" alt="" /></a><br/>
-          <small class="grey">Last modified: 09/10/10</small><br/>
-          <small>Contains: <a href="#">Metallica</a>, <a href="#">Someone Else</a>, <a href="#">Alice in Chains</a>...</small>
-        </div><!--/end top_buttons -->
-
-        <div class="album_actions2">
-          <a href="#" class="blue_button"><span><span>CREATE NEW STATION</span></span></a><br/>
-          <b>Created by: <a href="#">Jason Calleiro</a></b>
-        </div>
-
-        <br class="clearer" />
-      </div><!--/end album_detail -->
-    </form>
+    <%= render 'top_buttons' %>
+    
+    <div class="album_detail" id="current_station_info">
+      <%= render @station_obj.playable.is_a?(AbstractStation) && 'abstract_station' || 'user_station' %>
+      <br class="clearer" />
+    </div><!--/end album_detail -->
+      
+    <%= render 'create_new_station' %>
 
     <div id="radio_player">
       <script type="text/javascript" charset="utf-8">
@@ -47,11 +30,11 @@
           "type", "application/x-shockwave-flash",
           "pluginspage", "http://www.adobe.com/go/getflashplayer",
           "flashVars", flashvars
-        );        
+        );
       </script>
     </div>
 
-    <div id="radio_label"></div>
+    <div class="artist_radio_info"></div>
   </div><!--/end mix_box -->
 
 </div><!--/end two_columns -->

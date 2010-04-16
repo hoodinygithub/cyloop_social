@@ -1,0 +1,11 @@
+<div class="top_buttons">
+  <div class="left_side">
+    <%= blue_button(t("possessives.first_person.stations"), :id => 'my_stations_anchor', :href => my_stations_path(:anchor => :my_stations)) %>
+    <% if @msn_stations %>
+      <%= blue_button(t("radio.msn_stations"), :id => 'msn_stations_anchor', :href => "#msn_stations") %>
+    <% end %>
+  </div>
+
+  <%= blue_button("<img src=\"images/now_playing.png\" class=\"png_fix now_playing\" alt=\"#{t("radio.now_playing")}\" /> #{t("radio.now_playing")}", :class => "right_side", :id => 'now_playing_anchor', :href => "#now_playing") %>
+  <div class="clearer"></div>
+</div>

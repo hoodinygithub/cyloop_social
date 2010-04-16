@@ -94,11 +94,11 @@ function alertLayers(layer)
     break;
   }
 
-  $.facebox(function()
+  $.simplefacebox(function()
   {
     $.get(url, function(response)
     {
-      $.facebox(response);
+      $.simplefacebox(response);
     });
   });
 }

@@ -589,6 +589,8 @@ en:
     follow: Click here to follow this user
   radio:
     create_new_station: Create New Station
+    msn_stations: MSN Stations
+    now_playing: Now Playing    
   information:
     location: Location
     influences: Influences

@@ -1,0 +1,16 @@
+<form action="" method="post" class="account_settings">
+  <div class="album_detail" id="create_new_station_form" style="display: none">
+    <div class="form_row last">
+      <div class="grey_round_box left_side">
+        <input type="text" class="input half_width4" value="<%= t('home.type_artist_name') %>" onfocus="clearInput('<%= t('home.type_artist_name') %>', this);" onblur="restoreInput('<%= t('home.type_artist_name') %>', this);" />
+      </div>
+
+      <div class="top_padd">
+        <%= blue_button(t("radio.create_new_station"), :onclick => "alert('TBD');") %>
+        <a href="#" id="collapse_create_new_station" class="grey_button"><span><span><img src="images/close_red.gif" alt="" /></span></span></a>
+      </div>
+
+      <br class="clearer" />
+    </div>
+  </div><!--/end album_detail -->
+</form>

@@ -10,7 +10,8 @@ var Base = {
   community: {},
   locale: {},
   utils: {},
-  registration: {}
+  registration: {},
+  radio: {}
 };
 
 /*

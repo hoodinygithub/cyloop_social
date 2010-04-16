@@ -1597,6 +1597,18 @@ h1 {
     margin: 0px 1px 1px 0px;
 }
 
+.four_thumbs_small {
+    margin-bottom: 0px;
+    width: 50px;
+    height: 50px;
+    zoom: 1;
+}
+
+.four_thumbs_small img {
+    float: left;
+    margin: 0px;
+}
+
 .songs_list {
     border: solid 1px #cccccc;
     margin-bottom: 20px;
