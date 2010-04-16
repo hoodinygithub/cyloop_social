@@ -5,25 +5,17 @@ class RadioController < ApplicationController
 
   def index
     @top_stations = current_site.top_abstract_stations.limited_to(5)
-    if params[:station_id]
-      @station_obj = Station.find(params[:station_id])
+    if @station_obj = Station.find(params[:station_id])
       @station_queue = @station_obj.playable.station_queue(:ip_address => remote_ip)
-
-      # @station_json = if @station_obj.playable.is_a? AbstractStation      
-      #   "{type:'99',station_url:'#{RecEngine::BASE_URI}?request=getRecEnginePlayList&artistID=#{@station_obj.playable.amg_id}&ipAddress=#{@source_ip}',idpl:'#{@station_obj.id}',nom:'#{@station_obj.playable.name}'};"
-      # elsif @station_obj.playable.is_a? UserStation      
-      #   "{type:'99',station_url:'#{RecEngine::BASE_URI}?request=getRecEnginePlayList&artistID=#{@station_obj.playable.amg_id}&ipAddress=#{@source_ip}',idpl:'#{@station_obj.id}',nom:'#{@station_obj.playable.name}',userID:#{@station_obj.playable.owner_id}};"
-      #   @station_queue = 
-      # end
     elsif params[:artist_name]
       @station_obj = AbstractStation.find_by_name(params[:artist_name])
     end
 
     if @station_obj
       create_user_station(@station_obj)
-      @station_obj.playable.track_a_play if @station_obj.playable      
-    else 
-      @recommended_stations  = transformed_recommended_stations(12, 30)
+      @station_obj.playable.track_a_play if @station_obj.playable
+    else
+      @recommended_stations = transformed_recommended_stations(12, 30)
     end
     @top_abstract_stations = current_site.top_abstract_stations.limited_to(8)
   end
