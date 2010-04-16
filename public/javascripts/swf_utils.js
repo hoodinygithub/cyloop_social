@@ -94,11 +94,11 @@ function alertLayers(layer)
     break;
   }
 
-  $.simplefacebox(function()
+  $.simple_popup(function()
   {
     $.get(url, function(response)
     {
-      $.simplefacebox(response);
+      $.simple_popup(response);
     });
   });
 }

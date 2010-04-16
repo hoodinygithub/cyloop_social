@@ -209,7 +209,7 @@ class UsersController < ApplicationController
     end
   end
   
-  def disapprove
+  def disaprove
     f = current_user.follow_requests.select {|f| f.follower_id == @account.id}.first
     f.destroy if f
     render :json => {}

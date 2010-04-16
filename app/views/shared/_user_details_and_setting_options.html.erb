@@ -13,16 +13,7 @@
 
 <% if logged_in? %>
   <div class="follower_actions w_settings">
-      <% if current_user.follows?(item) %>
-        <%= green_button(t('actions.unfollow'),
-          :onclick => "Base.community.unfollow('#{item.slug}', this, #{following_page?})",
-          :class => 'follower_btn') %>
-      <% else %>
-        <%= blue_button(t('actions.follow'),
-          :onclick => "Base.community.follow('#{item.slug}', this, #{following_page?})",
-          :class => 'follower_btn') %>
-      <% end %>
-
+      <%= follow_button(:account => item) %>
       <%= blue_button(image_tag('settings_button.png'), :href => '#', :class => 'settings_button') %>
       <br/>
 

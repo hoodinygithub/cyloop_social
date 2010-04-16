@@ -29,10 +29,17 @@ var restoreInput = function(value, input) {
  }
 }
 
-Base.utils.handle_redirect = function(response) {
+Base.utils.handle_login_required = function(response, url, button_label) {
   if (typeof(response) == 'object') {
-    if (typeof(response.status) != 'undefined' && typeof(response.url) != 'undefined') {
-      window.location = response.url;
+    if (typeof(response.status) != 'undefined') {
+      $.simple_popup(function()
+      {
+        $.get(url, function(response)
+        {
+          $.simple_popup(response);
+          $button_label.html(Base.locale.t('actions.follow'));
+        });
+      });
       return true;
     }
   }
@@ -280,8 +287,8 @@ Base.community.approve = function(user_slug, link) {
   });
 };
 
-Base.community.disapprove = function(user_slug, link) {
-  Base.community.__follow_request_handler('disapprove', user_slug, link, function(response) {
+Base.community.disaprove = function(user_slug, link) {
+  Base.community.__follow_request_handler('disaprove', user_slug, link, function(response) {
     alert("d =>" + response);
   });
 };
@@ -307,7 +314,7 @@ Base.community.__follow_request_handler = function(type, user_slug, link, callba
   });
 };
 
-Base.community.follow = function(user_slug, button, remove_div) {
+Base.community.follow = function(user_slug, button, remove_div, layer_path) {
   var params = {'user_slug':user_slug}
   var $button = jQuery(button);
   var old_onclick = $button.attr('onclick');
@@ -319,10 +326,7 @@ Base.community.follow = function(user_slug, button, remove_div) {
   $button.bind('click', function() { return false; });
 
   jQuery.post('/users/follow', params, function(response, status) {
-
-    login_required = Base.utils.handle_redirect(response);
-    if (login_required) return;
-
+    if (Base.utils.handle_login_required(response, layer_path, $button_label)) return;
     if (status == 'success') {
       $button_label.html("");
       $button.removeClass("blue_button");

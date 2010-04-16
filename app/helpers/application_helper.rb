@@ -54,6 +54,8 @@ module ApplicationHelper
       :onclick => "#{options[:onclick]}; return false;"
     })
 
+    options[:class] << " full_width" if options[:full_width]
+
     if options[:href]
       options.delete(:onclick)
     else
@@ -79,9 +81,109 @@ module ApplicationHelper
   end
   
   def yellow_button(button_label, options = {})
+    options.merge!({:onclick => nil})
     special_button(:yellow_button, button_label, options)
   end
   
+  def follow_button(attrs = {})
+    account = attrs.delete(:account)
+
+    if current_user and current_user.follow_requests.collect(&:follower_id).include? account.id
+      action       = 'follow'
+      key          = 'pending'
+      button_color = 'yellow'
+    elsif current_user and current_user.follows?(account)
+      action       = 'unfollow'
+      key          = 'unfollow'
+      button_color = 'green'
+    else
+      action       = 'follow'
+      key          = 'follow'
+      button_color = 'blue'
+    end
+        
+    locale_key = "actions.#{key}"
+    
+    layer_path = send("follow_#{account.class.name.downcase}_registration_layers_path",
+                      :return_to => request.request_uri, 
+                      :account_id => account.id, 
+                      :follow_profile => account.id)  
+    
+    onclick_cb = "Base.community.#{action}('#{account.slug}', this, #{following_page?}, '#{layer_path}')"      
+    
+    attrs.merge!({:onclick => onclick_cb, :class => 'follower_btn'})
+    button = send("#{button_color}_button", t(locale_key), attrs)
+  end
+  
+  def follow_button2(user, options={})
+    is_following    = options.fetch(:is_following, nil)
+    skip_auto_width = options.fetch(:skip_auto_width, false)
+    current_station = options.fetch(:current_station, session[:current_station])    
+    
+    if logged_in?
+      id = user.kind_of?(Account) ? user.id : user      
+      if is_following ||= current_user.follows?(id)
+        unless is_following == true
+          is_following.followee.private_profile??message = t("actions.awaiting_approval"): message = :unfollow
+        else
+          message = :unfollow
+        end
+        method = :post
+      elsif current_user.awaiting_follow_approval?(id)
+        message = t("actions.awaiting_approval")
+        method = :post
+      else
+        message = :follow
+        method = :put
+      end
+      right_follow_path = if skip_auto_width
+        if method == :put
+          special_followee_update_path(:id => id, :skip_auto_width => 1)
+        else
+          special_followee_destroy_path(:id => id, :skip_auto_width => 1)
+        end          
+      else
+        if method == :put
+          my_following_path(id)
+        else
+          followee_destroy_path(id)
+        end
+      end
+      follow_button_element = button_to(
+        message, 
+        right_follow_path, 
+        {
+          :method          => method,
+          :title           => message, 
+          :class           => 'follow'
+        }
+      )
+      content_tag(:div, follow_button_element)
+    else
+      user = Account.find(user) unless user.kind_of?(Account)
+      id   = user.id      
+      return_to = request.request_uri
+      if return_to =~ /\/radio\/info\/([0-9]+)/
+        station   = Artist.find($1).station.station rescue nil
+        
+        return_to = if station.nil?
+          if current_station.nil?
+            '/radio'
+          else
+            radio_path(:station_id => current_station.id)
+          end
+        else
+          radio_path(:station_id => station.id)
+        end
+      end      
+      layer_path = if user.kind_of?(User)
+        follow_user_registration_layers_path(:return_to => return_to, :account_id => id, :follow_profile => id)
+      else
+        follow_artist_registration_layers_path(:return_to => return_to, :account_id => id, :follow_profile => id)
+      end
+      pill_link_to :follow, layer_path, :title => :follow, :class => "facebox follow"
+    end
+  end
 
   def station_contains(item, limit=3)
     links = []
