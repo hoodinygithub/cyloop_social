@@ -51,7 +51,6 @@ Rails::Initializer.run do |config|
   config.gem 'moomerman-twitter_oauth', :version => '0.2.1', :lib => 'twitter_oauth', :source => 'http://gems.github.com'
   config.gem 'httparty',                :version => '0.4.5'
   config.gem 'ar_mailer',               :version => '1.5.0', :lib => 'action_mailer/ar_mailer', :source => 'http://gemcutter.org'
-  config.gem 'hoptoad_notifier'
   config.gem "block_helpers",           :source => "http://gemcutter.org"
 
     
