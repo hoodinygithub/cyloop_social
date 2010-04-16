@@ -40,6 +40,7 @@ class AbstractStation < ActiveRecord::Base
   validates_uniqueness_of :artist_id, :scope => :id
   delegate :avatar, :to => :artist, :allow_nil => true
 
+  #this is not correct. TODO: Fix
   def top_station
     TopStation.first( :conditions => { :station_id => self.id, :site_id => Application::Sites::CURRENT_SITE.id } )
   end
@@ -71,6 +72,11 @@ class AbstractStation < ActiveRecord::Base
       new_artists.each { |x| abstract_station_artists << AbstractStationArtist.find_or_create_by_artist_id_and_abstract_station_id(:artist_id => x.artist_id, :abstract_station_id => self.id, :album_id => x.album_id) } 
     end
     update_attribute(:total_artists, new_artists.size)
+  end
+
+  def station_queue(params={})
+    params[:ip_address] ||= '67.63.37.2'
+    {:id => station.id, :queue => CGI::escape("#{RecEngine::BASE_URI}?request=getRecEnginePlayList&artistID=#{amg_id}&ipAddress=#{params[:ip_address]}")}
   end
 
   def to_s

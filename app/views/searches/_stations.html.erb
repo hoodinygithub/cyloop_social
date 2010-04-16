@@ -1,0 +1,12 @@
+<h1><%= t('basics.stations')%></h1>
+
+<div class="sorting">
+  <%= sort_link_to :relevance %> / 
+  <%= sort_link_to :alphabetical %>
+</div>
+
+
+<ul class="subcriptions_list">
+<%= render :partial => 'shared/artist_abstract_station', :collection => @results[:stations] %>
+</ul>
+

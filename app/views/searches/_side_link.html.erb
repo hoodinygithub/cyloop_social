@@ -1,7 +1,6 @@
 <ul class="side_links">
-  <li><%= link_to " #{t('basics.artists')} (#{@counts["Artist"].to_s})", "/search/#{params[:mkt]}/artist/#{params[:q]}" , :class => @active_scope=='artist'? "active": "" %></li>
-  <li><%= link_to "#{t('basics.stations')} (#{@counts["AbstractStation"].to_s})", "/search/#{params[:mkt]}/station/#{params[:q]}" , :class => @active_scope=='station'? "active": "" %></li>
-  <li><%= link_to "#{t('basics.albums')} (#{@counts["Album"].to_s})", "/search/#{params[:mkt]}/album/#{params[:q]}" , :class => @active_scope=='album'? "active": "" %></li>
-  <li class="last"><%= link_to "#{t('basics.people')} (#{@counts["User"].to_s})", "/search/#{params[:mkt]}/user/#{params[:q]}" , :class => @active_scope=='user'? "active": "" %></a></li>
+  <% @search_types.each_with_index do |type, index| %>
+  <li <%= index == @search_types.size - 1 ? 'class = "last"' : "" %>><%= link_to "#{t("basics.#{type}")} (#{@counts[type]})", "/search/#{type.to_s}/#{params[:q]}" , :class => @active_scope == type ? "active": "" %></li>
+  <% end %>
 </ul>
 

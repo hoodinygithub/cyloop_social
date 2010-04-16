@@ -6,13 +6,17 @@
 </div>
 
 <ul class="followers_list">
-  <% @results.each do |artist|%>
+  <% @results[:artists].each do |artist|%>
     <li>
-        <div id="logo"><%= link_to(avatar_for(artist, :search, {:alt => " #{artist.name}", :class =>"follower_image"}),artist) %></div>
+        <%= link_to(avatar_for(artist, :search, {:alt => " #{artist.name}", :class =>"follower_image"}),artist) %>
         <div class="follower_text">
             <b><%= link_to artist.name, artist %></b><br/>
-            <span><%= "#{artist.city}" %></span><br/>
-            <span><%= "#{artist.genre.name}" unless artist.genre.nil? %></span>
+            <% unless artist.city.nil? %>
+            <span><%= artist.city %></span><br/>
+            <% end %>
+            <% unless artist.genre.nil? %>
+            <span><%= artist.genre.name %></span>
+            <% end %>
         </div>
 
         <div class="follower_actions w_settings">
@@ -29,7 +33,7 @@
             <br/>
         </div>
         <br class="clearer" />
-        <div class="long_text"><a href="#"><%= artist.stations.size %></a> <%= t('basics.stations') %> / <a href="#"><%= artist.followers.size %></a> <%= t('users.stats.followers') %></div>
+        <div class="long_text"><a href="#"><%= artist.total_user_stations %></a> <%= t('basics.stations') %> / <a href="#"><%= artist.follower_count %></a> <%= t('users.stats.followers') %></div>
     </li>
   <% end %>
 </ul><!--/end followers_list -->

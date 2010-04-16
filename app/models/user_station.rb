@@ -57,7 +57,7 @@ class UserStation < ActiveRecord::Base
     all(:limit => limit, :joins => [:owner, :abstract_station], :conditions => 'user_stations.deleted_at IS NULL AND accounts.deleted_at IS NULL AND abstract_stations.available', :order => 'user_stations.created_at DESC', :select => 'user_stations.*' )
   end
 
-  def refresh_included_artists(params={} )
+  def refresh_included_artists(params={})
     params[:ip_address] ||= '67.63.37.2'
     options = params.merge(:userID => owner_id, :artistID => amg_id)
 
@@ -79,6 +79,11 @@ class UserStation < ActiveRecord::Base
   def includes(limit=3)
     refresh_included_artists unless total_artists > 0
     user_station_artists.limited_to(limit)
+  end
+
+  def station_queue(params={})
+    params[:ip_address] ||= '67.63.37.2'
+    {:id => station.id, :queue => CGI::escape("#{RecEngine::BASE_URI}?request=getRecEnginePlayList&artistID=#{amg_id}&ipAddress=#{params[:ip_address]}&userID=#{owner_id}")}
   end
 
   def set_deleted

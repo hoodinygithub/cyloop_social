@@ -4,25 +4,6 @@
   <span class="text_input_placeholder">
       <%= text_field_tag :q, query.nil? ? "Enter artist name" : query ,  {:id => :search_query, :class => "search_input", :onfocus => "clearInput('Enter artist name', this);", :onblur => "restoreInput('Enter artist name', this);"} %>
       <%= f.hidden_field :scope, :name => :scope, :value => params[:scope] %>
-      <% if site_includes(:msnbr)%>
-        <%= f.hidden_field :market, :name => :mkt, :value => 'pt-BR'%>
-      <% elsif site_includes(:msnmx)%>
-        <%= f.hidden_field :market, :name => :mkt, :value => 'es-MX'%>
-        <%= f.hidden_field :FORM, :name => "FORM", :value => "MSNH74" %>
-      <% elsif site_includes(:msnlatam, :msnar)%>
-        <%= f.hidden_field :market, :name => :mkt, :value => 'es-XL'%>
-      <% elsif site_includes(:msnlatino)%>
-        <%= f.hidden_field :market, :name => :mkt, :value => 'es-us'%>
-        <%= f.hidden_field :FORM, :name => "FORM", :value => "MSNHES"%>
-      <% elsif site_includes(:msncafr, :msncaen)%>
-        <% f.hidden_field :FORM, :value => 'SBENTE' %>
-      <% elsif site_includes(:msncaen)%>
-        <%= f.hidden_field :market, :name => :mkt, :value => 'en-ca'%>
-      <% elsif site_includes(:msncafr)            %>
-        <%= f.hidden_field :market, :name => :mkt, :value => 'fr-ca' %>
-      <% else %>
-        <%= f.hidden_field :market, :name => :mkt, :value => 'es-us' %>
-      <% end %>
   </span>
 
   <span class="btn_placeholder">
@@ -31,10 +12,9 @@
   <br/>
 
   <div class="sorting scope">
-      <%= link_to(t('navigation.search_artists'), search_url(:scope => :songs), :id => "search_artist")%> /
-      <%= link_to(t('navigation.search_stations'), search_url(:scope => :songs), :id => "search_station")%> /
-      <%= link_to(t('navigation.search_albums'), search_url(:scope => :songs), :id => "search_album")%> /
-      <%= link_to(t('navigation.search_users'), search_url(:scope => :songs), :id => "search_user")%>
+      <% @search_types.each_with_index do |type, index| %>
+      <%= link_to(t("basics.#{type}"), search_url(:scope => type), :id => "search_#{type.to_s}")%> <%= index == @search_types.size - 1 ? "" : "/" %>
+      <% end %>
   </div>
 <% end %>
 

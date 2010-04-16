@@ -2,21 +2,21 @@
 
 <div class="sorting">
   <%= sort_link_to :relevance %> / 
-  <%= sort_link_to :lastest %> /   
+  <%= sort_link_to :latest %> /   
   <%= sort_link_to :alphabetical %>
 </div>
 
 
 <ul class="followers_list">
-  <% @results.each do |user|%>
+  <% @results[:users].each do |user| %>
     <li>
         <div id="logo"><a href="#"><%= link_to(avatar_for(user, :search, {:alt => "", :class =>"follower_image"}), user) %></a></div>
         <div class="follower_text">
             <b><%= link_to user.name, user %></b><br/>
             <span><%= user.city %></span><br/>
-            <a href="#"><%= user.total_user_stations %></a> <%= t('basics.stations') %> / <a href="#"><%= user.followers.size.to_s %></a> <%= t('users.stats.followers') %>
+            <%= link_to user.total_user_stations, user_stations_path(user) %> <%= t('basics.stations') %> / <%= link_to user.follower_count, followers_path(user) %> <%= t('users.stats.followers') %>
         </div>
-        <div class="follower_actions w_settings"">
+        <div class="follower_actions w_settings">
             <% if current_user && current_user.follows?(user) %>
               <%= green_button(t('actions.unfollow'),
                 :onclick => "Base.community.unfollow('#{user.slug}', this, #{following_page?})",

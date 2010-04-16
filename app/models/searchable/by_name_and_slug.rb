@@ -19,9 +19,12 @@ module Searchable::ByNameAndSlug
 
       define_index do
         where "deleted_at IS NULL"
-        indexes :name, :slug
+        indexes :name, :sortable => true
+        indexes :created_at, :sortable => true
+        indexes :slug
         set_property :min_prefix_len => 1
         set_property :enable_star => 1
+        set_property :allow_star => 1
       end
     end
     base.extend ClassMethods

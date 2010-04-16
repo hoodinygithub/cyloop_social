@@ -2,6 +2,8 @@
    $(document).ready(function() {
       Base.main_search.select_scope();
     });
+
+
 </script>
 <div id="main_content">
   <div class="two_columns">
@@ -10,13 +12,12 @@
     </div><!--/end search_box -->
     <h3 class="search_result"><%= "#{t('search.search_results_for')} \"#{params[:q]}\"" %></h3>
     <div id="left_column">
-      <%= render 'side_link', :object =>@counts , :locals => {:active_scope => @active_scope} %>
+      <%= render 'side_link', :object => @counts , :locals => {:active_scope => @active_scope} %>
     </div><!--/end left_column -->
-
     <div id="center_column" class="search_results">
-      <%= render @active_scope.to_s, :object => @results %>
+      <%= render @active_scope.to_s %>
       <div class="pagination">
-        <%= will_paginate @results, pagination_args%>
+        <%= will_paginate @results[@active_scope], pagination_args %>
       </div>
     </div><!--/end center_column -->
   </div><!--/end two_columns -->

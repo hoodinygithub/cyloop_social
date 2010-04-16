@@ -1,0 +1,28 @@
+<li>
+    <%= link_to(avatar_for(account, :search, {:alt => " #{account.name}", :class =>"follower_image"}),account) %>
+    <div class="follower_text">
+        <b><%= link_to account.name, account %></b><br/>
+        <% unless account.city.nil? %>
+        <span><%= account.city %></span><br/>
+        <% end %>
+        <% unless account.artist? and account.genre.nil? %>
+        <span><%= account.genre.name %></span>
+        <% end %>
+    </div>
+
+    <div class="follower_actions w_settings">
+        <!-- phase 2 <a href="#"><img src="/images/play_button.png" class="png_fix" alt="" /></a> -->
+        <% if current_user && current_user.follows?(account) %>
+          <%= green_button(t('actions.unfollow'),
+            :onclick => "Base.community.unfollow('#{account.slug}', this, #{following_page?})",
+            :class => 'follower_btn') %>
+        <% else %>
+          <%= blue_button(t('actions.follow'),
+            :onclick => "Base.community.follow('#{account.slug}', this, #{following_page?})",
+            :class => 'follower_btn') %>
+        <% end %>
+        <br/>
+    </div>
+    <br class="clearer" />
+    <div class="long_text"><a href="#"><%= account.total_user_stations %></a> <%= t('basics.stations') %> / <a href="#"><%= account.follower_count %></a> <%= t('users.stats.followers') %></div>
+</li>

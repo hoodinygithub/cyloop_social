@@ -15,7 +15,7 @@
 
     <div id="radio_player">
       <script type="text/javascript" charset="utf-8">
-        var flashvars = "urlContext=/&market=msnbr&playerId=messengerradio_msnbr";
+        var flashvars = "urlContext=/&market=<%= current_site.code %>&playerId=radio_<%= current_site.code %>";
         flashvars += "&stationId=<%=@station_queue[:id]%>&station=<%=@station_queue[:queue]%>";
         AC_FL_RunContent(
           "src", "/flash/cyloop_radio",

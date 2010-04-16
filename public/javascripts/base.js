@@ -853,9 +853,9 @@ Base.header_search.autocomplete = function(last_value) {
 Base.main_search.buildSearchUrl = function () {
   var form_values = jQuery("#main_search_form").serializeArray();
   var q     = Base.header_search.getFieldValue(form_values,'q');
-  var mkt   = Base.header_search.getFieldValue(form_values,'mkt');
+  //var mkt   = Base.header_search.getFieldValue(form_values,'mkt');
   var scope = Base.header_search.getFieldValue(form_values,'scope');
-  var url   = "/search/"+(q=="" ? "empty/" : "")+mkt+"/"+scope+"/"+q;
+  var url   = "/search/"+(q=="" ? "empty/" : "") + scope +"/"+q;
   location.href = url;
   return false;
 };
