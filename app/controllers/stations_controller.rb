@@ -5,7 +5,8 @@ class StationsController < ApplicationController
     respond_to do |format|
       format.txt  { render :text => @stations.join("\n") }
       format.xml  { render :xml => @stations.to_xml(:only => [:id, :name], :skip_types => true) }
-      format.js   { render :text => @stations.collect{|s| {:id => s.id, :name => s.name} }.to_json }
+      format.js  { render :text => @stations.collect{|s| "#{s.station.id}|#{s.name}" }.join("\n") }
+      #format.js   { render :json => @stations.collect{|s| {:id => s.id, :name => s.name} }.to_json }
     end
   end
 

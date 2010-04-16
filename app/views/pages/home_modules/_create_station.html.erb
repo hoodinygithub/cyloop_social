@@ -5,7 +5,18 @@
   <script type="text/javascript">
     $(document).ready(function() {
       var artistSearch = $("input[name='station_name']");
-      artistSearch.autocomplete("/stations.txt");
+      var stationID = $("input[name='station_id']");
+      artistSearch.autocomplete("/stations.js", {
+        formatItem: function(item) {
+          return item[1];
+        },        
+        formatResult: function(item) {
+          return item[1];
+        }        
+      }).result(function(event, item) {
+          stationID.val(item[0]);
+        });
+        
       artistSearch.css('color', '#c0d6e2');
       artistSearch.focus(function() {
         if (artistSearch.attr("touched") != 'true') {
@@ -35,6 +46,7 @@
     </div>
 
     <% form_for(:station, :html => {:class => "new_station"}, :url => search_radio_path) do %>
+    <%= hidden_field_tag :station_id %>
       <div>
         <label><%= t("home.create_your_own_station_now") %></label><br/>
       </div>

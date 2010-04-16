@@ -14,8 +14,7 @@ class RadioController < ApplicationController
         "{type:'99',station_url:'#{RecEngine::BASE_URI}?request=getRecEnginePlayList&artistID=#{@station_obj.playable.amg_id}&ipAddress=#{@source_ip}',idpl:'#{@station_obj.id}',nom:'#{@station_obj.playable.name}'};"
       elsif @station_obj.playable.is_a? UserStation      
         "{type:'99',station_url:'#{RecEngine::BASE_URI}?request=getRecEnginePlayList&artistID=#{@station_obj.playable.amg_id}&ipAddress=#{@source_ip}',idpl:'#{@station_obj.id}',nom:'#{@station_obj.playable.name}',userID:#{@station_obj.playable.owner_id}};"
-      @station_queue = {:id => @station_obj.id, :queue => CGI::escape("#{RecEngine::BASE_URI}?request=getRecEnginePlayList&artistID=#{@station_obj.playable.amg_id}&ipAddress=#{@source_ip}&userID=#{@station_obj.playable.owner_id}")}
-
+        @station_queue = {:id => @station_obj.id, :queue => CGI::escape("#{RecEngine::BASE_URI}?request=getRecEnginePlayList&artistID=#{@station_obj.playable.amg_id}&ipAddress=#{@source_ip}&userID=#{@station_obj.playable.owner_id}")}
       end
     elsif params[:artist_name]
       @station_obj = AbstractStation.find_by_name(params[:artist_name])
@@ -107,7 +106,7 @@ class RadioController < ApplicationController
   end
 
   def search
-    @station = Station.available.first( :conditions => {:name => params[:station_name]} )
+    @station = Station.find(params[:station_id]) rescue nil
     if @station
       @station_object = if logged_in?
         user_station = current_user.stations.find_by_station_id(@station.id)

@@ -461,8 +461,8 @@ h1 {
 
 .tabs_content p {
     font-family: Arial, sans-serif;
-    font-size: 18px;
-    line-height: 24px;
+    font-size: 16px;
+    line-height: 23px;
 }
 
 .tabs_content .title {
@@ -556,7 +556,7 @@ h1 {
 
 .new_station {
     border-top: solid 1px #fff;
-    padding: 20px 28px 0px 22px;
+    padding: 14px 28px 0px 22px;
     position: relative;
 }
 
