@@ -4,11 +4,11 @@
     <% if @follow_profile %>
       <%= link_to t("sessions.new.sign_in"), site_login_url(:return_to => nav_aux_login_url, :follow_profile => @follow_profile) %>
       <span class="spacer">|</span> 
-      <%=  link_to t("registration.sign_up"), registration_layers_path(:return_to => my_dashboard_path, :follow_profile => @follow_profile), :class => "facebox" %>
+      <%= registered_link_to t("registration.sign_up"), :return_to => my_dashboard_path, :follow_profile => @follow_profile %>
     <% else %>
       <%= link_to t("sessions.new.sign_in"), site_login_url(:return_to => nav_aux_login_url) %>
       <span class="spacer">|</span> 
-      <%= link_to t("registration.sign_up"), registration_layers_path(:return_to => my_dashboard_path), :class => "facebox" %>
+      <%= registered_link_to t("registration.sign_up"),  :return_to => my_dashboard_path %>
     <% end %>
   <% else %>
     <%= link_to t("sessions.destroy.sign_out"), site_logout_url %>

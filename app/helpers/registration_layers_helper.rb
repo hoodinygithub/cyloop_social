@@ -27,4 +27,9 @@ module RegistrationLayersHelper
     # end
     "#{current_site.code}/#{(image + 1)}.jpg"
   end
+
+  def registered_link_to(text, params)
+    link_to text, registration_layers_path(params), :class => "simple_popup"
+  end
+
 end

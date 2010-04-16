@@ -61,28 +61,61 @@
  *
  */
 
-(function($) {
-  $.facebox = function(data, klass) {
-    $.facebox.settings.faceboxHtml = '\
-        <div class="popup" id="facebox"> \
-          <div class="top_shadow"> \
-            <div class="top_left corner"></div> \
-            <div class="center_shadow"></div> \
-            <div class="top_right corner"></div> \
-            <a href="#" class="close"><img src="/images/popup_close.png" class="close_image png_fix" alt="X" title="Close" /></a> \
-          </div> \
-          <div class="content"> \
-          </div> \
-          <div class="bottom_shadow"> \
-            <div class="bottom_left corner"></div> \
-            <div class="center_shadow"></div> \
-            <div class="bottom_right corner"></div> \
-          </div> \
-        </div><!--/end popup --> \
-      ';
-    $.facebox.settings.closeImage = '/images/popup_close.png'
-    $.facebox.loading()
 
+(function($) {
+
+  var templates = {};
+
+  templates.popup = '\
+      <div class="popup" id="facebox"> \
+        <div class="top_shadow"> \
+          <div class="top_left corner"></div> \
+          <div class="center_shadow"></div> \
+          <div class="top_right corner"></div> \
+          <a href="#" class="close"><img src="/images/popup_close.png" class="close_image png_fix" alt="X" title="Close" /></a> \
+        </div> \
+        <div class="content"> \
+        </div> \
+        <div class="bottom_shadow"> \
+          <div class="bottom_left corner"></div> \
+          <div class="center_shadow"></div> \
+          <div class="bottom_right corner"></div> \
+        </div> \
+      </div><!--/end popup --> \
+      ';
+
+  templates.simple_popup = '\
+      <div id="facebox" class="simple_popup"> \
+        <table> \
+          <tbody> \
+            <tr> \
+              <td class="tl"/><td class="b"/><td class="tr"/> \
+            </tr> \
+            <tr> \
+              <td class="b"/> \
+              <td class="body"> \
+                <div class="content"> \
+                </div> \
+              </td> \
+              <td class="b"/> \
+            </tr> \
+            <tr> \
+              <td class="bl"/><td class="b"/><td class="br"/> \
+            </tr> \
+          </tbody> \
+        </table> \
+      </div>';
+
+  $.simple_popup = function(data, klass) {
+    $.facebox(data,klass);
+  }
+
+  $.popup = function(data, klass) {
+    $.facebox(data, klass);
+  }
+
+  $.facebox = function(data, klass) {
+    $.facebox.loading()
     if (data.ajax) fillFaceboxFromAjax(data.ajax)
     else if (data.image) fillFaceboxFromImage(data.image)
     else if (data.div) fillFaceboxFromHref(data.div)
@@ -99,7 +132,6 @@
       opacity      : 0.5,
       overlay      : true,
       loadingImage : '/images/loading.gif',
-      closeImage   : '/images/popup_close.png',
       imageTypes   : [ 'png', 'jpg', 'jpeg', 'gif' ],
       faceboxHtml  : '\
         <div class="popup" id="facebox"> \
@@ -172,8 +204,8 @@
     init(settings)
 
     function clickHandler() {
+      $.facebox.settings.faceboxHtml = templates[$(this).attr('template')];
       $.facebox.loading(true)
-
       // support for rel="facebox.inline_popup" syntax, to add a class
       // also supports deprecated "facebox[.inline_popup]" syntax
       var klass = this.rel.match(/facebox\[?\.(\w+)\]?/)
@@ -259,7 +291,7 @@
   //     div: #id
   //   image: blah.extension
   //    ajax: anything else
-  function fillFaceboxFromHref(href, klass) {
+  function fillFaceboxFromHref(href, klass, template) {
     // div
     if (href.match(/#/)) {
       var url    = window.location.href.split('#')[0]
@@ -329,33 +361,14 @@
     })
   })
 
-})(jQuery);
+  $.fn.simple_popup = function() {
+    $(this).attr('template', 'simple_popup');
+    this.facebox();
+  }
 
-(function($) {
-
-  $.fn.simplefacebox = function() {
-    var template = '\
-    <div id="facebox" class="simple_popup"> \
-      <table> \
-        <tbody> \
-          <tr> \
-            <td class="tl"/><td class="b"/><td class="tr"/> \
-          </tr> \
-          <tr> \
-            <td class="b"/> \
-            <td class="body"> \
-              <div class="content"> \
-              </div> \
-            </td> \
-            <td class="b"/> \
-          </tr> \
-          <tr> \
-            <td class="bl"/><td class="b"/><td class="br"/> \
-          </tr> \
-        </tbody> \
-      </table> \
-    </div>'
-    this.facebox({ faceboxHtml : template });
+  $.fn.popup = function() {
+    $(this).attr('template', 'popup');
+    this.facebox();
   }
 
 })(jQuery);

@@ -142,7 +142,8 @@ Base.layout.bind_events = function() {
   });
 
   //observe .facebox layer
-  $('.facebox').simplefacebox();
+  $('.simple_popup').simple_popup();
+  $('.popup').popup();
 
 }
 
@@ -727,9 +728,9 @@ Base.account_settings.delete_account_submit_as_msn = function() {
   var form = $(this).closest('form');
   var validator = form.validate();
   if (form.valid()) {
-    $.facebox(function() {
+    $.popup(function() {
       jQuery.get('/my/cancellation/confirm', function(data) {
-        jQuery.facebox(data);
+        jQuery.popup(data);
       });
     });
   } else {
@@ -751,7 +752,6 @@ Base.account_settings.delete_account_submit_as_cyloop = function() {
         if (data.success) {
           window.location = data.redirect_to;
         } else {
-          console.log(data.errors);
           validator.showErrors(data.errors);
         }
       }
@@ -770,9 +770,9 @@ Base.account_settings.delete_account_confirmation = function() {
     data : { delete_info_accepted: "true"},
     success: function(data){
       delete_account_data = data;
-      $.facebox(function() {
+      $.popup(function() {
         jQuery.get('/my/cancellation/feedback', function(data) {
-          jQuery.facebox(data);
+          jQuery.popup(data);
         });
         cancelled_account_email = data.email;
       });
