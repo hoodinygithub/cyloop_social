@@ -107,15 +107,17 @@
       </div>';
 
   $.simple_popup = function(data, klass) {
+    $.facebox.settings.faceboxHtml = templates.simple_popup;
     $.facebox(data,klass);
   }
 
   $.popup = function(data, klass) {
+    $.facebox.settings.faceboxHtml = templates.popup;
     $.facebox(data, klass);
   }
 
   $.facebox = function(data, klass) {
-    $.facebox.loading()
+    $.facebox.loading(true);
     if (data.ajax) fillFaceboxFromAjax(data.ajax)
     else if (data.image) fillFaceboxFromImage(data.image)
     else if (data.div) fillFaceboxFromHref(data.div)
@@ -180,6 +182,7 @@
     },
 
     reveal: function(data, klass) {
+      $.facebox.loading(true);
       $(document).trigger('beforeReveal.facebox')
       if (klass) $('#facebox .content').addClass(klass)
       $('#facebox .content').append(data)
@@ -361,14 +364,14 @@
     })
   })
 
-  $.fn.simple_popup = function() {
+  $.fn.simple_popup = function(attributes) {
     $(this).attr('template', 'simple_popup');
-    this.facebox();
+    this.facebox(attributes);
   }
 
   $.fn.popup = function() {
     $(this).attr('template', 'popup');
-    this.facebox();
+    this.facebox(attributes);
   }
 
 })(jQuery);
