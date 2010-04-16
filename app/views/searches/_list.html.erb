@@ -1,6 +1,5 @@
 <% @results.each_pair do |key, value| %>
   <% @artists = value if key=='Artist'%>
-  <% @albums = value if key=='Album'%>
   <% @songs = value if key=='Song'%>
   <% @users = value if key=='User'%>
   <% @stations = value if key=='AbstractStation'%>
@@ -17,23 +16,6 @@
         <a href="/<%= artist.slug %>">
           <%= avatar_for(artist, :search, {:alt => " #{artist.name}"}) %>
           <b> <%= artist.name %> </b><br/>
-          <br class="clearer" />
-        </a>
-      </li>
-    <% end %>
-  </ul>
-
-  <div class="grey_spacer"></div>
-
-  <h1><%= t('basics.albums')%></h1>
-
-  <ul class="search_list">
-   <% @albums.each do |album|  %>
-      <li>
-        <a href="<%= artist_album_path(album.owner, album, :autoplay => "true") %>">
-          <%= avatar_for(album, :search, {:alt => " #{album.name}"}) %>
-          <b> <%= album.name %> </b><br/>
-          <%= album.owner.name unless album.owner.nil?%>
           <br class="clearer" />
         </a>
       </li>
@@ -82,4 +64,3 @@
 <div class="search_term">
   <%= link_to "search for #{query}", "javascript: return null", :onclick => "javascript: return Base.header_search.buildSearchUrl();" %>
 </div>
-

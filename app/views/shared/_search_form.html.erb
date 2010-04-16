@@ -4,7 +4,7 @@
 <div id="search_form">
   <% form_for :search, :url => search_path, :html => { :onsubmit => 'return Base.header_search.buildSearchUrl();', :method => :get, :id => :header_search_form, :class =>:line } do |f| %>
     <div>
-      <%= text_field_tag :q, t('search.search_hint', :default => 'Search for your favorite artist & music'),  {:id => :search_query, :class => "search_input", :onfocus => " clearInput(msg, this); $('.search_results_box').show(); ", :onblur => "restoreInput(msg, this); setTimeout(function() {$('.search_results_box').hide();}, 300);", :autocomplete => :off } %>
+      <%= text_field_tag :q, t('search.search_hint', :default => 'Search for your favorite artist & music'),  {:id => :search_query, :class => "search_input", :onfocus => " clearInput(msg, this);", :onblur => "restoreInput(msg, this); setTimeout(function() {$('.search_results_box').hide();}, 300);", :autocomplete => :off } %>
       <% if site_includes(:msnbr)%>
         <%= f.hidden_field :market, :name => :mkt, :value => 'pt-BR'%>
       <% elsif site_includes(:msnmx)%>
@@ -36,14 +36,6 @@
   <div class="search_results_ajax"><%= image_tag "/images/ajax_activity_indicators_download_animated_icon_animated_busy.gif" %></div>
   <div class="clearer"></div>
 
-
-  <ul class="search_list">
-
-  </ul>
-
-  <div class="grey_spacer"></div>
-
-  <h1><%= t('basics.albums')%></h1>
 
   <ul class="search_list">
 

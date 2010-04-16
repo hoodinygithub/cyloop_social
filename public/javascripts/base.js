@@ -820,7 +820,7 @@ Base.header_search.dropdown = function() {
       if(keyCode == 37 || keyCode == 38 || keyCode == 39 || keyCode == 40){
         return;
 	  }
-      if(keyCode == 13 || keyCode == 27 || q.length==1){
+      if(keyCode == 13 || keyCode == 27 || q.length <= 1){
         jQuery('.search_results_ajax').show();
         jQuery('.search_results_box').hide();
         return;

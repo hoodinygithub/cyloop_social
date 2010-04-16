@@ -32,10 +32,10 @@ class SearchesController < ApplicationController
 
     def cross_search (q, per_page = 20)
       results={}
-      ["User","AbstractStation", "Album", "Artist" ].each do |scope|
+      ["User","AbstractStation", "Artist" ].each do |scope|
         @scope = scope.classify.constantize
         query="#{q}"
-        query="#{q}*" if scope.downcase=="song" || scope.downcase=="album" || scope.downcase=="artist"
+        query="#{q}*" if scope.downcase=="song" || scope.downcase=="artist"
         partial_results = @scope.search query, :per_page => per_page
         results.store(scope,partial_results)
       end
