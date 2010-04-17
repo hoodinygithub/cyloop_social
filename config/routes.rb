@@ -52,8 +52,10 @@ ActionController::Routing::Routes.draw do |map|
   #map.friendly_empty_search '/search', :controller => 'searches', :action => 'index'
   #map.friendly_empty_search_with_page '/search/empty/:mkt/:scope/:page', :controller => 'searches', :action => 'show'
   map.friendly_search '/search/:scope/:q', :controller => 'searches', :action => 'show'
-  map.friendly_search_with_page '/search/:scope/:q/:page', :controller => 'searches', :action => 'show'
-  map.autocomplete_search '/search/autocomplete/:q', :controller => 'searches', :action => 'autocomplete'
+  map.empty_search '/search/:scope', :controller => 'searches', :action => 'show'
+
+  #map.friendly_search_with_page '/search/:scope/:q/', :controller => 'searches', :action => 'show'
+  #map.autocomplete_search '/search/auto/:scope/:q', :controller => 'searches', :action => 'autocomplete'
 
   map.resources :stations, :collection => {:top => :get, :top_station_html => :get}
 

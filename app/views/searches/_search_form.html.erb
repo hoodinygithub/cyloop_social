@@ -2,7 +2,7 @@
   <div class="title"><%= t('actions.search_text') %></div>
 
   <span class="text_input_placeholder">
-      <%= text_field_tag :q, @query.nil? ? t('actions.search_text_box_default') : @query ,  {:id => :search_query, :class => "search_input", :onfocus => "clearInput('#{t('actions.search_text_box_default')}', this);", :onblur => "restoreInput('#{t('actions.search_text_box_default')}', this);"} %>
+      <%= text_field_tag :q, @query.nil? ? t('search.search_hint') : @query ,  {:id => :search_query, :class => "search_input", :onfocus => "clearInput('#{t('search.search_hint')}', this);", :onblur => "restoreInput('#{t('search.search_hint')}', this);"} %>
       <%= f.hidden_field :scope, :name => :scope, :value => @active_scope.to_s %>
       <%= f.hidden_field :sort, :name => :sort, :value => @sort_type.to_s %>
   </span>

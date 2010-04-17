@@ -1,66 +1,16 @@
-<% @results.each_pair do |key, value| %>
-  <% @artists = value if key=='Artist'%>
-  <% @songs = value if key=='Song'%>
-  <% @users = value if key=='User'%>
-  <% @stations = value if key=='AbstractStation'%>
-<% end %>
 <div class="oveflow_list">
-  <div class="search_results_header"><h1><%= t('basics.artists')%> </h1></div>
+  <% @search_types.each_with_index do |type, index| %>
+  <div class="search_results_header"><h1><%= t("basics.#{type}")%> (<%= @counts[type] %>) </h1></div>
+  <% if index < 1 %>
   <div class="search_results_ajax"><%= image_tag "/images/ajax_activity_indicators_download_animated_icon_animated_busy.gif" %></div>
+  <% end %>
   <div class="clearer"></div>
-
-
   <ul class="search_list">
-   <% @artists.each do |artist|  %>
-      <li>
-        <a href="/<%= artist.slug %>">
-          <%= avatar_for(artist, :search, {:alt => " #{artist.name}"}) %>
-          <b> <%= artist.name %> </b><br/>
-          <br class="clearer" />
-        </a>
-      </li>
-    <% end %>
+    <%= render :partial => "searches/list_#{type.to_s.singularize}", :collection => @results[type] %>
   </ul>
-
   <div class="grey_spacer"></div>
-
-  <h1><%= t('basics.stations')%></h1>
-
-  <ul class="search_list">
-   <% @stations.each do |station|  %>
-      <li>
-        <a href="<%= radio_path(:station_id => station.id) %>">
-          <%= avatar_for(station.artist, :search, {:alt => " #{station.name}"}) %>
-          <b> <%= station.name %> </b><br/>
-          <%= station.artist.name unless station.artist.nil? %>
-          <br class="clearer" />
-        </a>
-      </li>
-    <% end %>
-  </ul>
-
-  <div class="grey_spacer"></div>
-
-  <h1><%= t('basics.people')%></h1>
-
-  <ul class="search_list">
-   <% @users.each do |user|  %>
-      <li>
-        <a href="/<%= user.slug%>">
-          <%= avatar_for(user, :search, {:alt => " #{user.name}"}) %>
-          <b> <%= user.name %> </b><br/>
-          <br class="clearer" />
-        </a>
-      </li>
-    <% end %>
-  </ul>
-
-  <div class="grey_spacer"></div>
-
-
-
+  <% end %>
 </div><!--/end oveflow_list -->
-
 <div class="search_term">
-  <%= link_to "search for #{query}", "javascript: return null", :onclick => "javascript: return Base.header_search.buildSearchUrl();" %>
+  <%= link_to("search for #{@query}", "#", :onclick => "javascript: return Base.header_search.buildSearchUrl();") %>
 </div>

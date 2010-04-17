@@ -1,8 +1,10 @@
 class SearchesController < ApplicationController
-  
+
   def show
-    @query = params[:q]
+    @query = params[:q]    
     @search_types ||= [:artists, :stations, :users]    
+    @sort_type = params.fetch(:sort_by, nil).to_sym rescue :relevance
+    @sort_types = { :latest => 'created_at DESC', :alphabetical => 'name ASC', :relevance => nil }
     
     @active_scope = if params[:scope].nil?
       @search_types[0]
@@ -13,24 +15,22 @@ class SearchesController < ApplicationController
         params[:scope].to_sym 
       end
     end
-
-    @sort_type = params.fetch(:sort_by, nil).to_sym rescue :relevance
-    @sort_types = { :latest => 'created_at DESC', :alphabetical => 'name ASC', :relevance => nil }
         
-    unless @query.nil?
-      @results = search_all_types 
-      #@active_scope = @results.sort { |a,b| b[1].size <=> a[1].size }.first[0]
-      @counts = {}
+    @counts = {}
+    if request.xhr?
+      @results = search_all_types(4)
       @results.each_pair { |k, v| @counts.store(k, v.size) }  
+      render :partial => 'searches/list'
+    else
+      unless @query.nil?
+        @results = search_all_types 
+        @results.each_pair { |k, v| @counts.store(k, v.size) }  
+      end      
     end
   end
 
-  def autocomplete
-    @results=cross_search(params[:q], per_page = 4)
-    render :partial => 'searches/list', :object => @results, :locals => {:query => @query}
-  end
-
-  private
+  private  
+  
     def search_all_types (per_page = 20)
       results = {}
       opts = { :page => params[:page], :per_page => per_page }

@@ -808,8 +808,7 @@ Base.header_search.getFieldValue =  function(arr, fieldName) {
 Base.header_search.buildSearchUrl = function () {
   var form_values = jQuery("#header_search_form").serializeArray();
   var q     = Base.header_search.getFieldValue(form_values,'q');
-  var scope = 'any'
-  var url   = "/search/"+(q=="" ? "empty/" : "") +"/"+scope+"/"+q;
+  var url   = "/search/all/" + ( q == msg ? "" : q) ;
   location.href = url;
   return false;
 };
@@ -819,7 +818,7 @@ Base.header_search.dropdown = function() {
       jQuery('.search_results_ajax').show();
       var keyCode = e.keyCode || window.event.keyCode;
       var form_values = jQuery("#header_search_form").serializeArray();
-      var q           = Base.header_search.getFieldValue(form_values,'q');
+      var q = Base.header_search.getFieldValue(form_values,'q');
       if(keyCode == 37 || keyCode == 38 || keyCode == 39 || keyCode == 40){
         return;
 	  }
@@ -838,12 +837,12 @@ Base.header_search.dropdown = function() {
 Base.header_search.autocomplete = function(last_value) {
   jQuery('.search_results_ajax').show();
   var form_values = jQuery("#header_search_form").serializeArray();
-  var q           = Base.header_search.getFieldValue(form_values,'q');
+  var q = Base.header_search.getFieldValue(form_values,'q');
   if( last_value != q || q == ''){
     jQuery('search_results_ajax').hide();
     return;
   }
-  jQuery.get('/search/autocomplete/'+q, function(data) {
+  jQuery.get('/search/all/' + q, function(data) {
       jQuery('.search_results_box').html(data);
       jQuery('search_results_ajax').hide();
   });
@@ -858,7 +857,7 @@ Base.main_search.buildSearchUrl = function () {
   var q     = Base.header_search.getFieldValue(form_values,'q');
   var scope = Base.header_search.getFieldValue(form_values,'scope');
   var sort = Base.header_search.getFieldValue(form_values,'sort');
-  var url   = "/search/"+(q=="" ? "empty/" : "") + scope + "/" + q + "?sort_by=" + sort;
+  var url   = "/search" + (scope == "" ? "/all" : "/" + scope) + "/" + q + "?sort_by=" + sort;
   location.href = url;
   return false;
 };

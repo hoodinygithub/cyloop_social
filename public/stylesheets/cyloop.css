@@ -395,10 +395,27 @@ img.artist_icon_box.tiny {
   margin: 10px auto;
 }
 
-.search_results_header { display: block; float: left; text-transform: uppercase; }
-.search_result { line-height: 35px; margin: 0 0 10px 0; height: 35px; }
-.search_results h1 { text-transform: uppercase; }
-.search_results_ajax { display: none; float: right; }
+.search_results_header { 
+	display: block; 
+	float: left; 
+	text-transform: uppercase; 
+}
+
+.search_result { 
+	line-height: 35px; 
+	margin: 0 0 10px 0; 
+	height: 35px; 
+}
+
+.search_results h1 { 
+	text-transform: uppercase; 
+}
+
+.search_results_ajax { 
+	display: none; 
+	float: right; 
+	margin-right: 10px; 
+}
 
 #pages {
   width: 950px;
