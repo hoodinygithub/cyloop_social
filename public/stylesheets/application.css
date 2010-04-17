@@ -902,7 +902,7 @@ h1 {
     font-size: 11px;
     line-height: 14px;
     position: relative;
-    margin-right: 19px;
+    margin-right: 16px;
     margin-bottom: 12px;
 }
 
@@ -1837,7 +1837,6 @@ h1 {
 }
 
 .gb_small.last_box {
-    float: right;
     margin-right: 0px;
 }
 
@@ -1849,7 +1848,6 @@ h1 {
 }
 
 .gb_medium.last_box {
-    float: right;
     margin-right: 0px;
 }
 
@@ -2983,6 +2981,10 @@ h2 {
     float: left;
 }
 
+#radio_label {
+    height: 252px;
+}
+
 .radio_row {
     padding: 15px 20px;
 }
@@ -3102,7 +3104,7 @@ h2 {
     font-size:14px;
     line-height:16px;
     padding-left:10px;
-    width:350px;
+    width:280px;
 }
 
 .album_detail .album_text2 small {
@@ -3123,3 +3125,6 @@ h2 {
     margin-right: 15px;
 }
 
+.radio_tabs_content .small_thumb.last_box {
+  	margin-right: 0px !important;
+}

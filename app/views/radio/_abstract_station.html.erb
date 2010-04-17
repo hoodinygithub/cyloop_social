@@ -1,7 +1,6 @@
 <%= four_thumbs_to(@station_obj, :class => 'left_side', :clearer => true, :type => :small) %>
 <div class="album_text2">
-  <b><%= @station_obj.playable.artist.name %></b>
-  <br/>
+  <b><%= @station_obj.playable.name %></b>
   <br/>
   <small><%= station_contains(@station_obj.playable) %></small>
 </div><!--/end top_buttons -->

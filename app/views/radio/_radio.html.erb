@@ -7,7 +7,7 @@
     <%= render 'top_buttons' %>
     
     <div class="album_detail" id="current_station_info">
-      <%= render @station_obj.playable.is_a?(AbstractStation) && 'abstract_station' || 'user_station' %>
+      <%= render @station_obj.playable.class.to_s.underscore %>
       <br class="clearer" />
     </div><!--/end album_detail -->
       
@@ -34,7 +34,7 @@
       </script>
     </div>
 
-    <div class="artist_radio_info"></div>
+    <div class="artist_radio_info radio_row hide"></div>
   </div><!--/end mix_box -->
 
 </div><!--/end two_columns -->

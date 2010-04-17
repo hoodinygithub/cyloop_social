@@ -137,6 +137,7 @@ class RadioController < ApplicationController
     if(artist.nil?)
       render :nothing => true
     else
+      @tabs = [:similar_artists, :recent_listeners]
       render :partial => "radio/artist_info"
     end
   end

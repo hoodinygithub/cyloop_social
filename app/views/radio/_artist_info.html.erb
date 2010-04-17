@@ -1,14 +1,12 @@
 <div id="radio_label">
   <div class="radio_left_side">
     <div class="side_user_box">
-      <img src="images/juanes.jpg" class="side_user_image" alt="" />
-
+      <%= avatar_for(artist, :album, :class => 'side_user_image', :width => "150", :height => "150", :disable_default_css => true) %>
       <div class="overlay png_fix">
         <div class="overlay_content">
-          <big><a href="#">Juanes</a></big><br/>
-          <small>
-            Bogotá, Colombia<br/>
-            Rock / Pop
+          <big><%= artist.name %></big><br/>
+          <small><%= artist.country unless artist.country.nil? %><br/>
+            <%= artist.genre.name unless artist.genre.nil? %>
           </small>
         </div>
       </div>
@@ -16,100 +14,32 @@
 
     <div class="black_boxes">
       <div class="black_box left_side">
-        <big class="blue"><a href="#">12,3698</a></big><br/>
-        Stations
+        <big class="blue"><a href="#"><%= number_with_delimiter(artist.total_user_stations) %></a></big><br/>
+        <%= t('basics.stations') %>
       </div>
 
       <div class="black_box right_side">
-        <big class="blue"><a href="#">3,849</a></big><br/>
-        Followers
+        <big class="blue"><a href="#"><%= number_with_delimiter(artist.follower_count) %></a></big><br/>
+        <%= t('basics.followers') %>        
       </div>
 
       <div class="clearer"></div>
     </div><!--/end black_boxes -->
 
-    <a href="#" class="blue_button full_width"><span><span>FOLLOW</span></span></a>
+    <%= follow_button(:account => artist, :full_width => true) %>
+    <!--a href="#" class="blue_button full_width"><span><span>FOLLOW</span></span></a-->
   </div><!--/end radio_left_side -->
 
   <div class="radio_right_side">
     <div class="radio_tabs">
-      <a href="#" class="first active"><span><span>Albums</span></span></a>
-      <a href="#"><span><span>Recent Listeners</span></span></a>
-      <a href="#"><span><span>Similar Artists</span></span></a>
-      <a href="#"><span><span>Mixes</span></span></a>
+      <% @tabs.each_with_index do |tab, index| %>
+        <a href="#" <%= index < 1 ? 'class="first active"': "" %>><span><span><%= tab.to_s.titleize %></span></span></a>
+      <% end %>
     </div><!--/end radio_tabs -->
 
     <div class="radio_tabs_content">
-      <div class="radio_station_row">
-        <a href="#"><img src="images/comment_icon.gif" class="station_icon" alt="" /></a>
-        <div class="station_text">
-          <b><a href="#">La Vida...Es Un Ratico</a></b><br/>
-          <small class="grey">2007</a></small><br/>
-          <span class="reviews_stars"><a href="#"><img src="images/star_blue.png" class="png_fix" alt="" /></a> <a href="#"><img src="images/star_blue.png" class="png_fix" alt="" /></a> <a href="#"><img src="images/star_grey.png" class="png_fix" alt="" /></a> <a href="#"><img src="images/star_grey.png" class="png_fix" alt="" /></a> <a href="#"><img src="images/star_grey.png" class="png_fix" alt="" /></a></span>
-        </div>
-        <div class="station_buttons">
-          <a href="#"><img src="images/share_button.png" class="png_fix" alt="" /></a>
-          <a href="#"><img src="images/dollar_button.png" class="png_fix" alt="" /></a>
-        </div>
-        <div class="clearer"></div>
-      </div><!--/end radio_station_row -->
-
-      <div class="radio_station_row">
-        <a href="#"><img src="images/comment_icon.gif" class="station_icon" alt="" /></a>
-        <div class="station_text">
-          <b><a href="#">La Vida...Es Un Ratico</a></b><br/>
-          <small class="grey">2007</a></small><br/>
-          <span class="reviews_stars"><a href="#"><img src="images/star_blue.png" class="png_fix" alt="" /></a> <a href="#"><img src="images/star_blue.png" class="png_fix" alt="" /></a> <a href="#"><img src="images/star_grey.png" class="png_fix" alt="" /></a> <a href="#"><img src="images/star_grey.png" class="png_fix" alt="" /></a> <a href="#"><img src="images/star_grey.png" class="png_fix" alt="" /></a></span>
-        </div>
-        <div class="station_buttons">
-          <a href="#"><img src="images/share_button.png" class="png_fix" alt="" /></a>
-          <a href="#"><img src="images/dollar_button.png" class="png_fix" alt="" /></a>
-        </div>
-        <div class="clearer"></div>
-      </div><!--/end radio_station_row -->
-
-      <div class="radio_station_row">
-        <a href="#"><img src="images/comment_icon.gif" class="station_icon" alt="" /></a>
-        <div class="station_text">
-          <b><a href="#">La Vida...Es Un Ratico</a></b><br/>
-          <small class="grey">2007</a></small><br/>
-          <span class="reviews_stars"><a href="#"><img src="images/star_blue.png" class="png_fix" alt="" /></a> <a href="#"><img src="images/star_blue.png" class="png_fix" alt="" /></a> <a href="#"><img src="images/star_grey.png" class="png_fix" alt="" /></a> <a href="#"><img src="images/star_grey.png" class="png_fix" alt="" /></a> <a href="#"><img src="images/star_grey.png" class="png_fix" alt="" /></a></span>
-        </div>
-        <div class="station_buttons">
-          <a href="#"><img src="images/share_button.png" class="png_fix" alt="" /></a>
-          <a href="#"><img src="images/dollar_button.png" class="png_fix" alt="" /></a>
-        </div>
-        <div class="clearer"></div>
-      </div><!--/end radio_station_row -->
-
-      <div class="radio_station_row">
-        <a href="#"><img src="images/comment_icon.gif" class="station_icon" alt="" /></a>
-        <div class="station_text">
-          <b><a href="#">La Vida...Es Un Ratico</a></b><br/>
-          <small class="grey">2007</a></small><br/>
-          <span class="reviews_stars"><a href="#"><img src="images/star_blue.png" class="png_fix" alt="" /></a> <a href="#"><img src="images/star_blue.png" class="png_fix" alt="" /></a> <a href="#"><img src="images/star_grey.png" class="png_fix" alt="" /></a> <a href="#"><img src="images/star_grey.png" class="png_fix" alt="" /></a> <a href="#"><img src="images/star_grey.png" class="png_fix" alt="" /></a></span>
-        </div>
-        <div class="station_buttons">
-          <a href="#"><img src="images/share_button.png" class="png_fix" alt="" /></a>
-          <a href="#"><img src="images/dollar_button.png" class="png_fix" alt="" /></a>
-        </div>
-        <div class="clearer"></div>
-      </div><!--/end radio_station_row -->
-
-      <div class="radio_station_row">
-        <a href="#"><img src="images/comment_icon.gif" class="station_icon" alt="" /></a>
-        <div class="station_text">
-          <b><a href="#">La Vida...Es Un Ratico</a></b><br/>
-          <small class="grey">2007</a></small><br/>
-          <span class="reviews_stars"><a href="#"><img src="images/star_blue.png" class="png_fix" alt="" /></a> <a href="#"><img src="images/star_blue.png" class="png_fix" alt="" /></a> <a href="#"><img src="images/star_grey.png" class="png_fix" alt="" /></a> <a href="#"><img src="images/star_grey.png" class="png_fix" alt="" /></a> <a href="#"><img src="images/star_grey.png" class="png_fix" alt="" /></a></span>
-        </div>
-        <div class="station_buttons">
-          <a href="#"><img src="images/share_button.png" class="png_fix" alt="" /></a>
-          <a href="#"><img src="images/dollar_button.png" class="png_fix" alt="" /></a>
-        </div>
-        <div class="clearer"></div>
-      </div><!--/end radio_station_row -->
-    </div><!--/end radio_tabs_content -->
+      <%= render :partial => "similar_artists", :locals => { :seed_artist => artist, :limit => 12, :columns => 6 } %>
+    <div>
   </div><!--/end radio_right_side -->
 
   <div class="clearer"></div>
