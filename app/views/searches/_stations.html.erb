@@ -9,4 +9,7 @@
 <ul class="subcriptions_list">
 <%= render :partial => 'shared/artist_abstract_station', :collection => @results[:stations] %>
 </ul>
+<div class="pagination">
+  <%= will_paginate @results[:stations], pagination_args %>
+</div>
 

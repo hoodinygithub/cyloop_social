@@ -2083,7 +2083,13 @@ h1 {
     zoom: 1;
 }
 
+.hide {
+    display: none;
+}
 
+.show {
+    display: block;
+}
 
 .play_button2 {
     margin: 0px 8px 5px 0px;

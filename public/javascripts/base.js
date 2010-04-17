@@ -808,9 +808,8 @@ Base.header_search.getFieldValue =  function(arr, fieldName) {
 Base.header_search.buildSearchUrl = function () {
   var form_values = jQuery("#header_search_form").serializeArray();
   var q     = Base.header_search.getFieldValue(form_values,'q');
-  var mkt   = Base.header_search.getFieldValue(form_values,'mkt');
   var scope = 'any'
-  var url   = "/search/"+(q=="" ? "empty/" : "")+mkt+"/"+scope+"/"+q;
+  var url   = "/search/"+(q=="" ? "empty/" : "") +"/"+scope+"/"+q;
   location.href = url;
   return false;
 };
@@ -857,9 +856,9 @@ Base.header_search.autocomplete = function(last_value) {
 Base.main_search.buildSearchUrl = function () {
   var form_values = jQuery("#main_search_form").serializeArray();
   var q     = Base.header_search.getFieldValue(form_values,'q');
-  //var mkt   = Base.header_search.getFieldValue(form_values,'mkt');
   var scope = Base.header_search.getFieldValue(form_values,'scope');
-  var url   = "/search/"+(q=="" ? "empty/" : "") + scope +"/"+q;
+  var sort = Base.header_search.getFieldValue(form_values,'sort');
+  var url   = "/search/"+(q=="" ? "empty/" : "") + scope + "/" + q + "?sort_by=" + sort;
   location.href = url;
   return false;
 };
@@ -871,6 +870,25 @@ Base.main_search.highlight_scope = function() {
     value = jQuery("#search_scope").get(0).value;
     jQuery("#search_" + value).addClass('active')
   };
+
+Base.main_search.toggle_scope = function() {
+		Base.main_search.highlight_scope();
+  	value = jQuery("#search_scope").get(0).value;
+ 	  jQuery(".scope_toggle a").each(function(el) {
+	    if(this.id != "scope_" + value + "_toggle") {
+				jQuery(this).removeClass('active');
+			}
+	  });
+		jQuery("#scope_" + value + "_toggle").addClass('active');
+
+	  jQuery(".scope_result").each(function(el) {
+	    if(this.id != value + "_result") {
+	    	jQuery(this).addClass('hide');
+			}
+	  });
+		jQuery("#" + value + "_result").removeClass('hide');
+  };
+
 
 Base.main_search.follow = function(user_slug, element) {
   var $element = jQuery(element);
@@ -901,13 +919,29 @@ Base.main_search.select_scope = function() {
   jQuery(".scope a").click(function() {
       value = this.id.match(/search_(.*)/)[1];
       $('#search_scope').attr('value', value);
-      Base.main_search.highlight_scope()
+      Base.main_search.highlight_scope();
       return false;
     });
     $('#main_search_form').submit(function() {
       scope = $('#search_scope').attr('value');
     });
-    Base.main_search.highlight_scope()
+    Base.main_search.highlight_scope();
+};
+
+Base.main_search.initialize_scope_toggle = function() {
+	Base.main_search.select_scope();
+  jQuery(".scope_toggle a").click(function() {
+      value = this.id.match(/scope_(.*)_toggle/)[1];
+      $('#search_scope').attr('value', value);      
+			Base.main_search.toggle_scope();
+      return false;
+    });
+  jQuery(".sorting a").click(function() {						
+      $('#search_sort').attr('value', this.href.match(/sort_by\=(.*)/)[1]);
+			Base.main_search.buildSearchUrl();
+      return false;
+    });
+
 };
 
 Base.registration.layers = {

@@ -2,7 +2,6 @@
 
 <div class="sorting">
   <%= sort_link_to :relevance %> / 
-  <%= sort_link_to :latest %> /   
   <%= sort_link_to :alphabetical %>
 </div>
 
@@ -13,7 +12,9 @@
         <div id="logo"><a href="#"><%= link_to(avatar_for(user, :search, {:alt => "", :class =>"follower_image"}), user) %></a></div>
         <div class="follower_text">
             <b><%= link_to user.name, user %></b><br/>
-            <span><%= user.city %></span><br/>
+            <% unless user.country.nil? %>
+            <span><%= user.country.name %></span><br/>
+            <% end %>
             <%= link_to user.total_user_stations, user_stations_path(user) %> <%= t('basics.stations') %> / <%= link_to user.follower_count, followers_path(user) %> <%= t('users.stats.followers') %>
         </div>
         <div class="follower_actions w_settings">
@@ -37,4 +38,7 @@
     </li>
   <% end %>
 </ul><!--/end followers_list -->
+<div class="pagination">
+  <%= will_paginate @results[:users], pagination_args %>
+</div>
 

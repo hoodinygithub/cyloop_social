@@ -1,6 +1,6 @@
 <ul class="side_links">
   <% @search_types.each_with_index do |type, index| %>
-  <li <%= index == @search_types.size - 1 ? 'class = "last"' : "" %>><%= link_to "#{t("basics.#{type}")} (#{@counts[type]})", "/search/#{type.to_s}/#{params[:q]}" , :class => @active_scope == type ? "active": "" %></li>
+  <li class="scope_toggle <%= index == @search_types.size - 1 ? 'last' : "" %>"><%= link_to "#{t("basics.#{type}")} (#{@counts[type]})", "#", :id => "scope_#{type.to_s}_toggle", :class => @active_scope == type ? "active": "" %></li>
   <% end %>
 </ul>
 

@@ -5,25 +5,6 @@
   <% form_for :search, :url => search_path, :html => { :onsubmit => 'return Base.header_search.buildSearchUrl();', :method => :get, :id => :header_search_form, :class =>:line } do |f| %>
     <div>
       <%= text_field_tag :q, t('search.search_hint', :default => 'Search for your favorite artist & music'),  {:id => :search_query, :class => "search_input", :onfocus => " clearInput(msg, this);", :onblur => "restoreInput(msg, this); setTimeout(function() {$('.search_results_box').hide();}, 300);", :autocomplete => :off } %>
-      <% if site_includes(:msnbr)%>
-        <%= f.hidden_field :market, :name => :mkt, :value => 'pt-BR'%>
-      <% elsif site_includes(:msnmx)%>
-        <%= f.hidden_field :market, :name => :mkt, :value => 'es-MX'%>
-        <%= f.hidden_field :FORM, :name => "FORM", :value => "MSNH74" %>
-      <% elsif site_includes(:msnlatam, :msnar)%>
-        <%= f.hidden_field :market, :name => :mkt, :value => 'es-XL'%>
-      <% elsif site_includes(:msnlatino)%>
-        <%= f.hidden_field :market, :name => :mkt, :value => 'es-us'%>
-        <%= f.hidden_field :FORM, :name => "FORM", :value => "MSNHES"%>
-      <% elsif site_includes(:msncafr, :msncaen)%>
-        <% f.hidden_field :FORM, :value => 'SBENTE' %>
-      <% elsif site_includes(:msncaen)%>
-        <%= f.hidden_field :market, :name => :mkt, :value => 'en-ca'%>
-      <% elsif site_includes(:msncafr)            %>
-        <%= f.hidden_field :market, :name => :mkt, :value => 'fr-ca' %>
-      <% else %>
-        <%= f.hidden_field :market, :name => :mkt, :value => 'es-us' %>
-      <% end %>
       <input type="image" src="/images/search_icon.gif" class="search_button" />
       <div class="clearer"></div>
     </div>

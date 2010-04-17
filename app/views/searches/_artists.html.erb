@@ -11,8 +11,8 @@
         <%= link_to(avatar_for(artist, :search, {:alt => " #{artist.name}", :class =>"follower_image"}),artist) %>
         <div class="follower_text">
             <b><%= link_to artist.name, artist %></b><br/>
-            <% unless artist.city.nil? %>
-            <span><%= artist.city %></span><br/>
+            <% unless artist.country.nil? %>
+            <span><%= artist.country.name %></span><br/>
             <% end %>
             <% unless artist.genre.nil? %>
             <span><%= artist.genre.name %></span>
@@ -37,4 +37,7 @@
     </li>
   <% end %>
 </ul><!--/end followers_list -->
+<div class="pagination">
+  <%= will_paginate @results[:artists], pagination_args %>
+</div>
 

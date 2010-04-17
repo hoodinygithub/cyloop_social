@@ -1,6 +1,6 @@
 <script type="text/javascript">
    $(document).ready(function() {
-      Base.main_search.select_scope();
+      Base.main_search.initialize_scope_toggle();
     });
 
 
@@ -15,10 +15,11 @@
       <%= render 'side_link', :object => @counts , :locals => {:active_scope => @active_scope} %>
     </div><!--/end left_column -->
     <div id="center_column" class="search_results">
-      <%= render @active_scope.to_s %>
-      <div class="pagination">
-        <%= will_paginate @results[@active_scope], pagination_args %>
+      <% @search_types.each do |type| %>
+      <div id="<%= type.to_s %>_result" class="scope_result<%= @active_scope == type ? '' : ' hide' %>">
+      <%= render type.to_s %>
       </div>
+      <% end %>
     </div><!--/end center_column -->
   </div><!--/end two_columns -->
 
