@@ -9,22 +9,18 @@
     <div class="search_box light_grey">
         <form action="" method="post">
             <div align="center"><img src="images/cyloop_mixes.gif" alt="" /></div>
-            
             <br/>
-            <div class="title">To get started simply enter an artist name</div>
-            
+            <div class="title"><%= t('radio.getting_started') %></div>
             <span class="text_input_placeholder">
-                <input type="text" value="Enter artist name" onfocus="clearInput('Enter artist name', this);" onblur="restoreInput('Enter artist name', this);" />
+                <input type="text" value="<%= t('radio.search_hint') %>" onfocus="clearInput('<%= t('radio.search_hint') %>', this);" onblur="restoreInput('<%= t('radio.search_hint') %>', this);" />
             </span>
             
             <span class="btn_placeholder">
-                <a href="#" class="blue_button"><span><span>LISTEN!</span></span></a>
+                <a href="#" class="blue_button"><span><span><%= t('actions.listen').upcase %></span></span></a>
             </span>
             <br/><br/><br/>
-            
             <div class="medium_text grey2">
-                Or if you can’t think of any,<br/>
-                select a recommended mix from below
+              <%= t('radio.select_recommended_stations_below') %>                
             </div>
         </form>
     </div><!--/end search_box -->

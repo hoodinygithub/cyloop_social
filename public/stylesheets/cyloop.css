@@ -645,7 +645,28 @@ label.label_holder{
   text-transform: uppercase;
 }
 
-#container .station { margin-bottom: 10px; }
-#container .station .avatar { float: left; width: 64px; height: 64px; }
-#container .station_info { margin-left: 75px; }
-#container .station_info h2 { padding: 0; margin: 0; font-size: 14px; }
+#container .station { 
+	width: 258px;
+	height: 65px;
+}
+
+#container .station .avatar { 
+	float: left; 
+	width: 64px; 
+	height: 64px; 
+}
+
+#container .station_info { 
+	float: right; 
+	width: 180px; 
+}
+
+#container .station_info h2 { 
+	padding: 0; 
+	margin: 0; 
+	font-size: 14px; 
+}
+
+#top_stations h1 {
+	margin-bottom: 21px;
+}

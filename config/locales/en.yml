@@ -159,6 +159,7 @@ en:
     create_station: CREATE MIX
     search_text: Search Music on Cyloop
     show_more: SHOW MORE
+    listen: listen
   sort:
     top: TOP
     relevance: RELEVANCE
@@ -876,7 +877,11 @@ en:
       following: Following
       song_plays: Song Plays
 
-
+  radio:
+    getting_started: To get started simply enter an artist name
+    search_hint: Enter artist's name
+    select_recommended_stations_below: "Or if you can’t think of any, select a recommended station from below"
+    
   home:
     create_your_own_personalized_radio_station: Create Your Own Personalized Radio Station
     create_your_own_station_now: Create Your Own Station now!

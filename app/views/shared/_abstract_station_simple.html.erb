@@ -10,9 +10,7 @@
         <% end %>
       </div>
       <div class="station_info">
-        <h2><%= 
-          link_to(abstract_station_simple.name, radio_path(:station_id => abstract_station_simple.station.id)) 
-        %></h2>
+        <h2><%= link_to(abstract_station_simple.name, radio_path(:station_id => abstract_station_simple.station.id)) %></h2>
         <%= station_contains(abstract_station_simple) %>
       </div>
     </div>
