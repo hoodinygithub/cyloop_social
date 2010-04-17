@@ -1067,6 +1067,9 @@ h1 {
     background: #000;
     margin-bottom: 6px;
     position: relative;
+		width: 150px;
+		height: 150px;
+		overflow: hidden;
     zoom: 1;
 }
 
