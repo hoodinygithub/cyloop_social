@@ -2,23 +2,27 @@
    $(document).ready(function() {
       Base.main_search.initialize_scope_toggle();
     });
-
-
 </script>
 <div id="main_content">
   <div class="two_columns">
     <div class="search_box">
-      <%= render  :partial =>'search_form',  :locals => {:query => params[:q]} %>
+      <%= render :partial =>'search_form' %>
     </div><!--/end search_box -->
-    <h3 class="search_result"><%= "#{t('search.search_results_for')} \"#{params[:q]}\"" %></h3>
+    <% unless @query.nil? %>
+      <h3 class="search_result"><%= "#{t('search.search_results_for')} \"#{@query.nil? ? '' : @query}\"" %></h3>
+    <% end %>
     <div id="left_column">
-      <%= render 'side_link', :object => @counts , :locals => {:active_scope => @active_scope} %>
+      <% unless @query.nil? %>
+        <%= render 'scope_toggle' %>
+      <% end %>
     </div><!--/end left_column -->
     <div id="center_column" class="search_results">
-      <% @search_types.each do |type| %>
-      <div id="<%= type.to_s %>_result" class="scope_result<%= @active_scope == type ? '' : ' hide' %>">
-      <%= render type.to_s %>
-      </div>
+      <% unless @query.nil? %>
+        <% @search_types.each do |type| %>
+        <div id="<%= type.to_s %>_result" class="scope_result<%= @active_scope == type ? '' : ' hide' %>">
+        <%= render type.to_s %>
+        </div>
+        <% end %>
       <% end %>
     </div><!--/end center_column -->
   </div><!--/end two_columns -->

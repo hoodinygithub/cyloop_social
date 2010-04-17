@@ -2,9 +2,9 @@
   <div class="title"><%= t('actions.search_text') %></div>
 
   <span class="text_input_placeholder">
-      <%= text_field_tag :q, query.nil? ? t('actions.search_text_box_default') : query ,  {:id => :search_query, :class => "search_input", :onfocus => "clearInput('#{t('actions.search_text_box_default')}', this);", :onblur => "restoreInput('#{t('actions.search_text_box_default')}', this);"} %>
-      <%= f.hidden_field :scope, :name => :scope, :value => params[:scope] %>
-      <%= f.hidden_field :sort, :name => :sort, :value => params[:sort_by] %>
+      <%= text_field_tag :q, @query.nil? ? t('actions.search_text_box_default') : @query ,  {:id => :search_query, :class => "search_input", :onfocus => "clearInput('#{t('actions.search_text_box_default')}', this);", :onblur => "restoreInput('#{t('actions.search_text_box_default')}', this);"} %>
+      <%= f.hidden_field :scope, :name => :scope, :value => @active_scope.to_s %>
+      <%= f.hidden_field :sort, :name => :sort, :value => @sort_type.to_s %>
   </span>
 
   <span class="btn_placeholder">
@@ -14,8 +14,7 @@
 
   <div class="sorting scope">
       <% @search_types.each_with_index do |type, index| %>
-      <%= link_to(t("basics.#{type}"), friendly_search_url(:scope => type, :q => query), :id => "search_#{type.to_s}")%> <%= index == @search_types.size - 1 ? "" : "/" %>
+      <%= link_to(t("basics.#{type}"), "#", :id => "search_#{type.to_s}")%> <%= index == @search_types.size - 1 ? "" : "/" %>
       <% end %>
   </div>
 <% end %>
-
