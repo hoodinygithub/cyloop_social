@@ -879,7 +879,7 @@ en:
 
   radio:
     getting_started: To get started simply enter an artist name
-    search_hint: Enter artist's name
+    search_hint: Enter the name of an artist
     select_recommended_stations_below: "Or if you can’t think of any, select a recommended station from below"
     
   home:

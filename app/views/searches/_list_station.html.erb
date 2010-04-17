@@ -2,7 +2,6 @@
   <a href="<%= radio_path(:station_id => list_station.station.id) %>">
     <%= avatar_for(list_station.artist, :search, {:alt => " #{list_station.name}"}) %>
     <b> <%= list_station.name %> </b><br/>
-    <%= list_station.artist.name unless list_station.artist.nil? %>
     <br class="clearer" />
   </a>
 </li>

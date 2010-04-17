@@ -4,25 +4,56 @@
   .artist_radio_info
     = render :partial => "default_artist_info"
      -->
+<% content_for :head do %>
+ <%= stylesheet_link_tag 'jquery.autocomplete' %>
+ <%= javascript_include_tag 'jquery.autocomplete' %>
+
+ <script type="text/javascript">
+   $(document).ready(function() {
+     var artistSearch = $("input[name='station_name']");
+     var stationID = $("input[name='station_id']");
+     artistSearch.autocomplete("/stations.js", {
+       formatItem: function(item) {
+         return item[1];
+       },        
+       formatResult: function(item) {
+         return item[1];
+       }        
+     }).result(function(event, item) {
+         stationID.val(item[0]);
+       });
+
+     artistSearch.css('color', '#c0d6e2');
+     artistSearch.focus(function() {
+       if (artistSearch.attr("touched") != 'true') {
+         artistSearch.attr("touched", 'true');
+         artistSearch.css('color', '#025d8c');
+         artistSearch.attr('value', '')
+       }
+     })
+   });
+ </script>
+
+<% end %>
 
 <div class="two_columns">
     <div class="search_box light_grey">
-        <form action="" method="post">
-            <div align="center"><img src="images/cyloop_mixes.gif" alt="" /></div>
-            <br/>
-            <div class="title"><%= t('radio.getting_started') %></div>
-            <span class="text_input_placeholder">
-                <input type="text" value="<%= t('radio.search_hint') %>" onfocus="clearInput('<%= t('radio.search_hint') %>', this);" onblur="restoreInput('<%= t('radio.search_hint') %>', this);" />
-            </span>
-            
-            <span class="btn_placeholder">
-                <a href="#" class="blue_button"><span><span><%= t('actions.listen').upcase %></span></span></a>
-            </span>
-            <br/><br/><br/>
-            <div class="medium_text grey2">
-              <%= t('radio.select_recommended_stations_below') %>                
-            </div>
-        </form>
+      <% form_for(:abstractstation, :html => {:class => "search_station"}, :url => search_radio_path) do %>
+          <div align="center"><img src="images/cyloop_mixes.gif" alt="" /></div>
+          <br/>
+          <div class="title"><%= t('radio.getting_started') %></div>
+          <%= hidden_field_tag :station_id %>
+          <span class="text_input_placeholder">
+              <input type="text" name="station_name" value="<%= t('radio.search_hint') %>" onfocus="clearInput('<%= t('radio.search_hint') %>', this);" onblur="restoreInput('<%= t('radio.search_hint') %>', this);">
+          </span>            
+          <span class="btn_placeholder">
+              <a href="#" onclick="$('form.search_station').submit(); return false;" class="blue_button"><span><span><%= t('actions.listen').upcase %></span></span></a>
+          </span>
+          <br/><br/>
+          <div class="medium_text grey2">
+            <%= t('radio.select_recommended_stations_below') %>                
+          </div>
+      <% end %>
     </div><!--/end search_box -->
 
     <h1><%= t('modules.recommended_stations.title') %></h1>
