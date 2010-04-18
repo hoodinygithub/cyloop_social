@@ -33,13 +33,18 @@
   <div class="radio_right_side">
     <div class="radio_tabs">
       <% @tabs.each_with_index do |tab, index| %>
-        <a href="#" <%= index < 1 ? 'class="first active"': "" %>><span><span><%= tab.to_s.titleize %></span></span></a>
+        <a href="#" id="radio_<%= tab.to_s %>_tab" <%= index < 1 ? 'class="first active"': "" %>><span><span><%= tab.to_s.titleize %></span></span></a>
       <% end %>
     </div><!--/end radio_tabs -->
 
-    <div class="radio_tabs_content">
+    <div id="recent_listeners_content" class="radio_tabs_content hide">
+      <%= render :partial => "recent_listeners", :locals => { :station => @station_obj, :limit => 12, :columns => 6 } %>
+    </div>
+
+    <div id="similar_artists_content" class="radio_tabs_content">
       <%= render :partial => "similar_artists", :locals => { :seed_artist => artist, :limit => 12, :columns => 6 } %>
-    <div>
+    </div>
+
   </div><!--/end radio_right_side -->
 
   <div class="clearer"></div>

@@ -90,6 +90,13 @@ class UserStation < ActiveRecord::Base
     update_attribute(:deleted_at, Time.now)
   end
 
+  def owner_is?(user)
+    is_owner = false
+    unless user.nil?
+      is_owner = owner == user 
+    end
+  end
+
   delegate :avatar, :to => :artist, :allow_nil => true
 
   def to_s
@@ -107,3 +114,4 @@ class UserStation < ActiveRecord::Base
   end
 
 end
+

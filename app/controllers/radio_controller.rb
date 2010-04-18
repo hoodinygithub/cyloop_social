@@ -13,7 +13,7 @@ class RadioController < ApplicationController
     if @station_obj
         @station_queue = @station_obj.playable.station_queue(:ip_address => remote_ip)
         create_user_station(@station_obj)
-        @station_obj.playable.track_a_play if @station_obj.playable
+        @station_obj.playable.track_a_play_for(current_user) if @station_obj.playable
     else
       @recommended_stations = transformed_recommended_stations(12, 30)
     end
@@ -137,7 +137,8 @@ class RadioController < ApplicationController
     if(artist.nil?)
       render :nothing => true
     else
-      @tabs = [:similar_artists] #others are coming.
+      @tabs = [:similar_artists, :recent_listeners] #others are coming.
+      @station_obj = Station.find(params[:station_id]) rescue nil
       render :partial => "radio/artist_info"
     end
   end

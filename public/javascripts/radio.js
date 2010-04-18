@@ -149,13 +149,40 @@ function initArtistInfo() {
   });
 }
 
-function load_artist_info(artist_id)
-{
+function initRadioTabs() {
+	$(".radio_tabs a").click(function() {
+     value = this.id.match(/radio_(.*)_tab/)[1];
+     $('#radio_tab_scope').attr('value', value);      
+		 toggleRadioTabs();
+     return false;
+  });
+}
+
+function toggleRadioTabs() {
+	value = $("#radio_tab_scope").get(0).value;
+  $(".radio_tabs a").each(function(el) {
+    if(this.id != "radio_" + value + "_tab") {
+			$(this).removeClass('active');
+		}
+  });
+	$("#radio_" + value + "_tab").addClass('active');
+
+  $(".radio_tabs_content").each(function(el) {
+    if(this.id != value + "_content") {
+    	$(this).addClass('hide');
+		}
+  });
+	$("#" + value + "_content").removeClass('hide');
+	
+}
+
+function load_artist_info(artist_id) {
+	station_id = $('#station_id').val() 
   $('.artist_radio_info').fadeOut("fast", function(){
     if(artist_id){
       $.ajax({
         type: "POST",
-        url: "/radio/info/" + artist_id,
+        url: "/radio/info/" + station_id + "/" + artist_id,
         error: function() 
         {
           alert("error!");
@@ -163,6 +190,7 @@ function load_artist_info(artist_id)
         success: function(response, status) 
         {
           $('.artist_radio_info').html(response);
+					initRadioTabs();
           if(response.indexOf("<") > -1) $('.artist_radio_info').fadeIn("fast");
         }
       });

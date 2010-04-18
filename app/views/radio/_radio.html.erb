@@ -4,6 +4,10 @@
 
 <div class="two_columns">
   <div class="mix_box grey_accents">
+    <form name='station_form' action="">
+      <input type="hidden" id="station_id" value="<%= @station_obj.id %>" />
+      <input type="hidden" id="radio_tab_scope" value="" />
+    </form>
     <%= render 'top_buttons' %>
     
     <div class="album_detail" id="current_station_info">
@@ -12,7 +16,6 @@
     </div><!--/end album_detail -->
       
     <%= render 'create_new_station' %>
-
     <div id="radio_player">
       <script type="text/javascript" charset="utf-8">
         var flashvars = "urlContext=/&market=<%= current_site.code %>&playerId=radio_<%= current_site.code %>";

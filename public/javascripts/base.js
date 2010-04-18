@@ -943,6 +943,7 @@ Base.main_search.initialize_scope_toggle = function() {
 
 };
 
+
 Base.registration.layers = {
   removeSomeFaceboxStyles: function() {
     $('#facebox .body').css("padding", 0);

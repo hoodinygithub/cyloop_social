@@ -1,7 +1,9 @@
 <%= four_thumbs_to(@station_obj, :class => 'left_side', :clearer => true, :type => :small) %>
-<div class="album_text2">
-  <b><%= @station_obj.playable.artist.name %></b>
-  <a href="#" onclick="alert('TBD'); return false;"><img src="images/edit_button_small.png" class="png_fix valign_middle" alt="" /></a>
+<div id="now_playing_user_station" class="album_text2">
+  <span class="station_name"><%= @station_obj.playable.artist.name %></span>
+  <% if @station_obj.playable.owner_is? current_user %>
+  <a href="#" onclick="Base.stations.edit(<%= @station_obj.id %>, this); return false;"><img src="images/edit_button_small.png" class="png_fix valign_middle" alt="<%= t('actions.edit') %>" /></a>
+  <% end %>
   <br/>
   <small class="grey"><%= t("basics.last_modified") %>: <%= l(@station_obj.updated_at.to_date) %></small><br/>
   <small><%= station_contains(@station_obj.playable) %></small>

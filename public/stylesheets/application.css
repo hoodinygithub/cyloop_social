@@ -3131,3 +3131,7 @@ h2 {
 .radio_tabs_content .small_thumb.last_box {
   	margin-right: 0px !important;
 }
+
+#now_playing_user_station span.station_name{
+		font-weight: bold;
+}

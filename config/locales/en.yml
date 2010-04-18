@@ -880,6 +880,8 @@ en:
 
   radio:
     getting_started: To get started simply enter an artist name
+    now_playing: Now Playing
+    create_new_station: Create New Station
     search_hint: Enter the name of an artist
     select_recommended_stations_below: "Or if you can’t think of any, select a recommended station from below"
     
