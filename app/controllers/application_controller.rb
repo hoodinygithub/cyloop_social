@@ -321,7 +321,7 @@ class ApplicationController < ActionController::Base
   def transformed_recommended_stations(limit = 3, fetch=nil)
     fetch ||= limit
     stations = recommended_stations(fetch).map do |s| 
-      unless s.station.nil? or s.station.playable.nil?
+      if s and s.station and s.station.playable
         if s.station.playable.artist and s.station.playable.total_artists > 1
           s.station.playable
         end
