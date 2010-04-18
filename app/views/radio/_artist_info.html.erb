@@ -33,7 +33,7 @@
   <div class="radio_right_side">
     <div class="radio_tabs">
       <% @tabs.each_with_index do |tab, index| %>
-        <a href="#" id="radio_<%= tab.to_s %>_tab" <%= index < 1 ? 'class="first active"': "" %>><span><span><%= tab.to_s.titleize %></span></span></a>
+        <a href="#" id="radio_<%= tab.to_s %>_tab" <%= index < 1 ? 'class="first active"': "" %>><span><span><%= t("modules.#{tab.to_s}.title") %></span></span></a>
       <% end %>
     </div><!--/end radio_tabs -->
 

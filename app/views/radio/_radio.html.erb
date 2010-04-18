@@ -8,6 +8,7 @@
       <input type="hidden" id="station_id" value="<%= @station_obj.id %>" />
       <input type="hidden" id="radio_tab_scope" value="" />
     </form>
+    <%= render 'my_stations' if false && @station_obj.playable.owner_is?(current_user) %>
     <%= render 'top_buttons' %>
     
     <div class="album_detail" id="current_station_info">
