@@ -3,9 +3,9 @@
   <% cache("#{site_cache_key}/#{seed_artist.slug}/similar_radio_page", :expires_in => EXPIRATION_TIMES['artist_similar_artists']) do %>
     <% similars.each_with_index do |artist, index| %>
     <% end_box = index > 0 && (index + 1) % columns == 0 %>
-      <div class="small_thumb<%= " last_box" if end_box %>">
+      <div class="small_thumb<%= " last_box" if end_box %>" title="<%= artist.name %>">
         <%= link_to avatar_for(artist, "spaced_img tiny", :disable_default_css => true), artist %>
-        <%= link_to artist.name, artist %>
+        <%= link_to truncate(artist.name, :length => 15), artist %>
       </div>
       <% if end_box %>
         <br class="clearer" />

@@ -1836,7 +1836,7 @@ h1 {
     width: 50px;
     height: 50px;
     float: left;
-    margin: 0px 16px 12px 0px;
+    margin: 0px 15px 12px 0px;
 }
 
 .gb_small.last_box {
@@ -3066,7 +3066,7 @@ h2 {
     top: -1px;
     background: #fff;
     border: solid 1px #e3e3e3;
-    padding: 10px 13px;
+    padding: 22px 10px 10px 22px;
     overflow: auto;
     height: 195px;
 }
