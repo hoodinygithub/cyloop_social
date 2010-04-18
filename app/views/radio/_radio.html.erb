@@ -3,14 +3,13 @@
 <% end %>
 
 <div class="two_columns">
+  <%= render 'my_stations' if false && @station_obj.playable.owner_is?(current_user) %>
   <div class="mix_box grey_accents">
     <form name='station_form' action="">
       <input type="hidden" id="station_id" value="<%= @station_obj.id %>" />
       <input type="hidden" id="radio_tab_scope" value="" />
     </form>
-    <%= render 'my_stations' if false && @station_obj.playable.owner_is?(current_user) %>
-    <%= render 'top_buttons' %>
-    
+    <%= render 'top_buttons' %>    
     <div class="album_detail" id="current_station_info">
       <%= render @station_obj.playable.class.to_s.underscore %>
       <br class="clearer" />
