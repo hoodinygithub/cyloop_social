@@ -21,15 +21,7 @@
 
         <div class="follower_actions w_settings">
             <!-- phase 2 <a href="#"><img src="/images/play_button.png" class="png_fix" alt="" /></a> -->
-            <% if current_user && current_user.follows?(artist) %>
-              <%= green_button(t('actions.unfollow'),
-                :onclick => "Base.community.unfollow('#{artist.slug}', this, #{following_page?})",
-                :class => 'follower_btn') %>
-            <% else %>
-              <%= blue_button(t('actions.follow'),
-                :onclick => "Base.community.follow('#{artist.slug}', this, #{following_page?})",
-                :class => 'follower_btn') %>
-            <% end %>
+            <%= follow_button(:account => artist) %>
             <br/>
         </div>
         <br class="clearer" />

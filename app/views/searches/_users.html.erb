@@ -18,16 +18,7 @@
             <%= link_to user.total_user_stations, user_stations_path(user) %> <%= t('basics.stations') %> / <%= link_to user.follower_count, followers_path(user) %> <%= t('users.stats.followers') %>
         </div>
         <div class="follower_actions w_settings">
-            <% if current_user && current_user.follows?(user) %>
-              <%= green_button(t('actions.unfollow'),
-                :onclick => "Base.community.unfollow('#{user.slug}', this, #{following_page?})",
-                :class => 'follower_btn') %>
-            <% else %>
-              <%= blue_button(t('actions.follow'),
-                :onclick => "Base.community.follow('#{user.slug}', this, #{following_page?})",
-                :class => 'follower_btn') %>
-            <% end %>
-            <br/>
+            <%= follow_button(:account => user) %>
             <div class="blocked">
               <% if current_user && current_user.blocks?(user) %>
               <%= image_tag('blocked.gif') %> <%= t('blocks.blocked') %>
