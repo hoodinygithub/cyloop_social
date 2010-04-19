@@ -37,7 +37,7 @@ Base.utils.handle_login_required = function(response, url, button_label) {
         $.get(url, function(response)
         {
           $.simple_popup(response);
-          $button_label.html(Base.locale.t('actions.follow'));
+          button_label.html(Base.locale.t('actions.follow'));
         });
       });
       return true;
@@ -326,7 +326,16 @@ Base.community.follow = function(user_slug, button, remove_div, layer_path) {
   $button.bind('click', function() { return false; });
 
   jQuery.post('/users/follow', params, function(response, status) {
-    if (Base.utils.handle_login_required(response, layer_path, $button_label)) return;
+    if (Base.utils.handle_login_required(response, layer_path, $button_label)) {
+      $button.attr('onclick', old_onclick);
+      $button.unbind('click');
+      $button.bind('click', function() {
+        Base.community.follow(user_slug, button, remove_div, layer_path);
+        return false;
+      });
+      return;
+    }
+    
     if (status == 'success') {
       $button_label.html("");
       $button.removeClass("blue_button");

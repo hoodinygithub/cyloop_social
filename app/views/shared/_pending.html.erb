@@ -23,8 +23,7 @@
                     :onclick => "Base.community.approve('#{item.slug}', this); return false;" %>
       </li>
       <li>
-        <%= link_to t('actions.deny'), '#', 
-                    :onclick => "Base.community.disaprove('#{item.slug}', this); return false;" %>
+        <%= link_to t('actions.deny'), '#', :onclick => "Base.community.disaprove('#{item.slug}', this); return false;" %>
       </li>
     </ul>
   </div>
