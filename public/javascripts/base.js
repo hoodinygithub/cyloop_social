@@ -328,7 +328,6 @@ Base.community.follow = function(user_slug, button, remove_div, layer_path) {
 
   jQuery.post('/users/follow', params, function(response, status) {
     if (Base.utils.handle_login_required(response, layer_path, $button_label)) {
-      $button.attr('onclick', old_onclick);
       $button.unbind('click');
       $button.bind('click', function() {
         Base.community.follow(user_slug, button, remove_div, layer_path);
