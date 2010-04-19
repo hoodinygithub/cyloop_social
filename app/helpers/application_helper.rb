@@ -185,7 +185,7 @@ module ApplicationHelper
     end
   end
 
-  def station_contains(item, limit=3)
+  def station_contains(item, limit=3, include_text=true)
     links = []
     station_artists = item.includes(limit)
 
@@ -193,7 +193,11 @@ module ApplicationHelper
       links << link_to(station_artist.artist.name, artist_path(station_artist.artist))
     end
 
-    "#{t('basics.contains')}: #{links.join(", ")}..."
+    if include_text
+      "#{t('basics.contains')}: #{links.join(", ")}..."
+    else
+      "#{links.join(", ")}..."
+    end
   end
 
   def render_flash_messages

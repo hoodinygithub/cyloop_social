@@ -721,7 +721,7 @@ h1 {
     font-weight: bold;
 }
 
-.yellow_button.full_width, .yellow_button.full_width span, .blue_button.full_width, .blue_button.full_width span {
+.yellow_button.full_width, .yellow_button.full_width span, .blue_button.full_width, .blue_button.full_width span, .green_button.full_width, .green_button.full_width span {
     display: block;
     margin-bottom: 7px;
 }
@@ -1615,6 +1615,8 @@ h1 {
 .songs_list {
     border: solid 1px #cccccc;
     margin-bottom: 20px;
+		position:absolute;
+		z-index:999;
     zoom: 1;
 }
 
@@ -2334,6 +2336,7 @@ h1 {
 }
 
 .my_mix .songs_box .includes {
+		overflow:hidden;
     padding: 0px 5px;
     width: 215px;
 }
@@ -2406,8 +2409,11 @@ h1 {
 }
 
 .songs_box.large_height {
-    height: 495px;
+/*    height: 495px;*/
     position: relative;
+		height:575px;
+		width:627px;
+		background-color: #fff;
 }
 
 .songs_box.medium_height {

@@ -152,6 +152,7 @@ class User < Account
   def create_user_station(options={})
     user_station = UserStation.create(options.merge({:owner => self}))
     user_station.create_station
+    user_station.station
   end
 
   def block(blockee_id)

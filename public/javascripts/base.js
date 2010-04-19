@@ -882,7 +882,7 @@ Base.main_search.toggle_scope = function() {
 
 	  jQuery(".scope_result").each(function(el) {
 	    if(this.id != value + "_result") {
-	    	jQuery(this).addClass('hide');
+	     jQuery(this).addClass('hide');
 			}
 	  });
 		jQuery("#" + value + "_result").removeClass('hide');

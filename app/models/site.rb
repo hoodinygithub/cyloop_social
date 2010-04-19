@@ -41,6 +41,9 @@ class Site < ActiveRecord::Base
   has_many :summary_top_user_stations, :order => 'total_requests DESC', :class_name => 'TopUserStation', :include => :user_station
   has_many :top_user_stations, :through => :summary_top_user_stations, :class_name => 'UserStation', :foreign_key => 'user_station_id', :source => :user_station, :order => 'top_user_stations.total_requests DESC'
 
+  has_many :editorial_stations_sites
+  has_many :stations, :through => :editorial_stations_sites, :class_name => 'EditorialStation', :source => :editorial_station, :conditions => "editorial_stations.deleted_at IS NULL"
+
   has_many :users, :foreign_key => 'entry_point_id'
   has_one :site_statistic
   has_many :campaigns

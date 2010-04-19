@@ -1,6 +1,6 @@
 <%= four_thumbs_to(@station_obj, :class => 'left_side', :clearer => true, :type => :small) %>
 <div id="now_playing_user_station" class="album_text2">
-  <span class="station_name"><%= @station_obj.playable.artist.name %></span>
+  <span class="station_name"><%= @station_obj.playable.name %></span>
   <% if @station_obj.playable.owner_is? current_user %>
   <a href="#" onclick="Base.stations.edit(<%= @station_obj.id %>, this); return false;"><img src="images/edit_button_small.png" class="png_fix valign_middle" alt="<%= t('actions.edit') %>" /></a>
   <% end %>

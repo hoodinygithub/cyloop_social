@@ -11,13 +11,14 @@ class RadioController < ApplicationController
     end
     
     if @station_obj
+        @station_obj = create_user_station(@station_obj)
         @station_queue = @station_obj.playable.station_queue(:ip_address => remote_ip)
-        create_user_station(@station_obj)
         @station_obj.playable.track_a_play_for(current_user) if @station_obj.playable
     else
       @recommended_stations = transformed_recommended_stations(12, 30)
     end
     @top_abstract_stations = current_site.top_abstract_stations.limited_to(5)
+    @msn_stations = current_site.stations
   end
 
   def twitstation

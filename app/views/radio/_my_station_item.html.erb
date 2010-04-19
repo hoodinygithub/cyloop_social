@@ -1,0 +1,11 @@
+<li>
+  <div class="song_name_large">
+    <a href="<%= radio_path(:station_id => my_station_item.station.id)%>" class="grey_button"><span><span><img src="images/icon_play_small.gif" alt="" /></span></span></a> &nbsp; &nbsp; <b><%= link_to my_station_item.name, radio_path(:station_id => my_station_item.station.id) %></b>
+  </div>
+  <div class="includes"><%= station_contains(my_station_item, 3, false)%></div>
+  <div class="large_bnt2">
+    <a href="#" class="grey_button"><span><span class="blue"><i>edit <img src="images/edit_btn_grey.gif" alt="" /></i></span></span></a>
+    <a href="#" class="grey_button"><span><span class="blue"><img src="images/close_red.gif" alt="" /></span></span></a>
+  </div>
+  <br class="clearer" />
+</li>

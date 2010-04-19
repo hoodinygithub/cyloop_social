@@ -176,6 +176,36 @@ function toggleRadioTabs() {
 	
 }
 
+function initTopButtons() {
+  $("#my_stations_button").click(function() {
+		value = parseInt($("#my_stations_toggle").get(0).value, 10);
+		if(value) {
+			$('#my_stations_toggle').attr('value', "0");      
+			$(this).removeClass('grey_button_big').addClass('blue_button');
+			$('#my_stations_list').addClass('hide');      				
+		} else {
+			$('#my_stations_toggle').attr('value', "1");      
+			$(this).removeClass('blue_button').addClass('grey_button_big');
+			$('#my_stations_list').removeClass('hide');      
+		}			
+    return false;
+    });	
+  $("#msn_stations_button").click(function() {
+		value = parseInt($("#msn_stations_toggle").get(0).value, 10);
+		if(value) {
+			$('#msn_stations_toggle').attr('value', "0");      
+			$(this).removeClass('grey_button_big').addClass('blue_button');
+			$('#msn_stations_list').addClass('hide');      				
+		} else {
+			$('#msn_stations_toggle').attr('value', "1");      
+			$(this).removeClass('blue_button').addClass('grey_button_big');
+			$('#msn_stations_list').removeClass('hide');      
+		}			
+    return false;
+    });	
+	}
+
+
 function load_artist_info(artist_id) {
 	station_id = $('#station_id').val() 
   $('.artist_radio_info').fadeOut("fast", function(){

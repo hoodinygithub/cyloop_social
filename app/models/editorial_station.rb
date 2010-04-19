@@ -12,13 +12,12 @@
 #  total_plays   :integer(4)      default(0), not null
 #  total_artists :integer(4)      default(0), not null
 #
-
 class EditorialStation < ActiveRecord::Base
   include Station::Playable
-  include EditorialStation::SitesAvailable
 
   belongs_to :mix, :class_name => 'Playlist', :foreign_key => :mix_id
-
+  delegate :name, :to => :mix
+  
   def playlist
     mix.try(:songs)
   end

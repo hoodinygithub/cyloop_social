@@ -8,10 +8,14 @@ module Application::Stations
       if logged_in? && station && station.playable && station.playable.is_a?(AbstractStation)
         user_station = current_user.stations.find_by_abstract_station_id(station.playable_id)
         unless user_station
-          current_user.create_user_station(:abstract_station => station.playable, :site => current_site)
+          user_station = current_user.create_user_station(:abstract_station => station.playable, :site => current_site)
+          station = user_station if user_station
           record_station_activity(station)
+        else
+          station = user_station.station
         end
       end
+    station  
     end
   end  
 end
