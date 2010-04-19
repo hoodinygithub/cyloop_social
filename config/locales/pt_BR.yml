@@ -11,7 +11,7 @@ pt_BR:
     add: adicionar
     add_song_to_playlist: "Adicionar m\xC3\xBAsica \xC3\xA0 playlist"
     share_with_a_friend: "Envie esta m\xC3\xBAsica para um amigo"
-    unfollow: Parar de seguir
+    unfollow: "N\xC3\xA3o seguir"
     pending: Pendente
     select_playlist: Selecione a playlist
     edit: Editar
@@ -51,6 +51,7 @@ pt_BR:
     add_into_a_new_playlist: Adicionar a uma nova playlist
     follow_account: Seguir {{name}}
     skip: Pular
+    listen: Escute
     login: Login
     select_store: Selecione a loja
     add_song: "Adicionar m\xC3\xBAsica"
@@ -65,6 +66,8 @@ pt_BR:
       artist_not_found: "N\xC3\xA3o encontramos nenhum artista com este nome. Por favor, fa\xC3\xA7a nova busca."
     followers: 
       title: Seguidores
+      user_followers: SEGUIDORES DE {{user_name}}
+      my_followers: MEUS SEGUIDORES
     artist_latest_albums: "\xC3\x9ALTIMAS DISCOS DE {{name}}"
     follows: "{{user_name}} SEGUE"
     user_latest_stations: "\xC3\x9ALTIMAS ESTA\xC3\x87\xC3\x95ES DE {{name}}"
@@ -140,10 +143,10 @@ pt_BR:
       title: !binary |
         SW5mb3JtYcOnw6Nv
 
-    recent_listeners: 
-      title: Ouvintes recentes
     recommended_stations: 
       title: "R\xC3\xA1dios recomendadas"
+    recent_listeners: 
+      title: Ouvintes recentes
     top_activity: 
       title: Novidades
     similar_artists: 
@@ -328,10 +331,10 @@ pt_BR:
       songs: "M\xC3\xBAsicas"
       artists: Artistas
       dashboard: Painel
-      stations: "R\xC3\xA1dios"
       subscriptions: !binary |
         SW5zY3Jpw6fDtWVz
 
+      stations: "R\xC3\xA1dios"
       playlists: Playlists
       followers: Seguidores
       activity: Novidades
@@ -455,8 +458,8 @@ pt_BR:
     email_me_subscribes_radios: ""
     email_me_subscribes_mixes: ""
     delete: REMOVER
-    title: "CONFIGURA\xC3\x87\xC3\x95ES DE CONTA"
     email_me_reviews_mixes: ""
+    title: "CONFIGURA\xC3\x87\xC3\x95ES DE CONTA"
     cancel: Cancelar
     email_me_communications: "Envie-me boletins peri\xC3\xB3dicos do Cyloop e comunicados"
     delete_my_account: REMOVA MINHA CONTA
@@ -674,10 +677,10 @@ pt_BR:
       close: Fechar
       delete: ""
       save: ""
-    edit_station: ""
     buylink: 
       select_store: ""
       song: ""
+    edit_station: ""
     click_here: ""
     missing_api_key: ""
     checkout_today_polular_stations: ""
@@ -685,6 +688,8 @@ pt_BR:
       label: ""
     msn_stations: ""
     registration: 
+      listen_text: ""
+      listen: Escute
       your_password: Sua senha
       confirm_your_password: Confirme sua senha
     activate_your_account: ""
@@ -701,7 +706,6 @@ pt_BR:
       message_sent: ""
       contains: ""
     create_new_station: ""
-    continue: ""
     home: 
       create_your_own_personalized_radio_station: "Crie sua pr\xC3\xB3pria r\xC3\xA1dio agora!"
       create_radio: ""
@@ -712,6 +716,7 @@ pt_BR:
       top_songs: ""
       top_stations: ""
       recommended_artists: ""
+    continue: ""
     my_stations: ""
   support: 
     array: 
@@ -849,6 +854,7 @@ pt_BR:
     playlists: Playlists
     click_to_unfollow: Clique {{follow_link}} para parar de seguir
     my_plural: Meus
+    followers: Seguidores
     time: !binary |
       RHVyYcOnw6Nv
 
@@ -1089,8 +1095,8 @@ pt_BR:
     has_no_activity: "{{user_name}} n\xC3\xA3o tem nenhuma atividade"
   sessions: 
     new: 
-      sign_in: Login
       register_link_msn: "Se voc\xC3\xAA n\xC3\xA3o possui uma conta Cyloop, v\xC3\xA1 em frente e registre-se para que possamos conecta-la em seu MSN ID"
+      sign_in: Login
       register_cyloop: Registre-se no Cyloop
       complete_registration: Registro Completo
       remember_me: Lembrar-me neste computador
@@ -1113,8 +1119,8 @@ pt_BR:
     type_artist_name: Escreva o nome do artista
     top_songs: Mais Tocadas
     create_your_own_station_now: "Crie sua pr\xC3\xB3pria r\xC3\xA1dio agora!"
-    top_stations: "ESTA\xC3\x87\xC3\x95ES MAIS TOCADAS"
     radios_recomended_for_you: "R\xC3\x81DIOS RECOMENDADAS PARA VOC\xC3\x8A"
+    top_stations: "ESTA\xC3\x87\xC3\x95ES MAIS TOCADAS"
     recommended_artists: Artistas Recomendados
     cyloop_recommends: CYLOOP RECOMENDA
   datetime: 
