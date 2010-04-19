@@ -1,0 +1,94 @@
+#!/usr/bin/env ruby
+
+require 'open-uri'
+require 'fileutils'
+
+OUTPUT_LOCATION = "shared/feeds/current"
+URL_MAPS = [
+  {:url => "http://cm.cyloop.com/feeds/msnbr/msnbr_cysocial_home_featured.xml", :output => "msnbr_url_featured_cysocial.xml"},
+  {:url => "http://cm.cyloop.com/feeds/msnbr/msnbr_home_invasion.xml", :output => "msnbr_url_invasion.xml"},
+  {:url => "http://cm.cyloop.com/feeds/msnbr/msnbr_home_detour.xml", :output => "msnbr_url_detour.xml"},
+  {:url => "http://cm.cyloop.com/feeds/msnbr/msnbr_home_promo.xml", :output => "msnbr_url_promo.xml"},
+  {:url => "http://www.skolbeats.com.br/news/msn/", :output => "msnbr_url_noticias.xml"},
+  {:url => "http://www.skolbeats.com.br/discos/msn/", :output => "msnbr_url_albums.xml"},
+  {:url => "http://www.guiadasemana.com.br/xml/msn/musica.xml", :output => "msnbr_url_baladas.xml"},
+  {:url => "http://cm.cyloop.com/feeds/msnmx/msnmx_cysocial_home_featured.xml", :output => "msnmx_url_featured_cysocial.xml"},
+  {:url => "http://cm.cyloop.com/feeds/msnmx/msnmx_home_invasion_es.xml", :output => "msnmx_url_invasion.xml"},
+  {:url => "http://cm.cyloop.com/feeds/msnmx/msnmx_home_detour_es.xml", :output => "msnmx_url_invasion.xml"},
+  # {:url => "http://entretenimiento.prodigy.msn.com/rss-cyloop-homepage-v2.aspx", :output => "msnmx_url_homepage.xml"},
+  {:url => "http://cm.cyloop.com/feeds/msnlatino/msnlatino_cysocial_home_featured.xml", :output => "msnlatino_url_featured_cysocial.xml"},
+  {:url => "http://cm.cyloop.com/feeds/msnlatino/msnlatino_home_invasion.xml", :output => "msnlatino_url_invasion.xml"},
+  {:url => "http://cm.cyloop.com/feeds/msnlatino/msnlatino_home_detour.xml", :output => "msnlatino_url_detour.xml.xml"},
+  {:url => "http://cm.cyloop.com/feeds/msnlatino/msnlatino_home_promo.xml", :output => "msnlatino_url_promo.xml"},
+  {:url => "http://musica.latino.msn.com/rss_Musica.aspx", :output => "msnlatino_url_noticias.xml"},
+  {:url => "http://entretenimiento.latam.msn.com/XL_RSS_Cyloop_Musica.aspx", :output => "msnlatam_url_promo.xml"},
+  {:url => "http://cm.cyloop.com/feeds/msnlatam/msnlatam_cysocial_home_featured.xml", :output => "msnlatam_url_featured_cysocial.xml"},
+  {:url => "http://entretenimiento.latam.msn.com/XL_RSS_Cyloop_Musica.aspx", :output => "msnar_url_promo.xml"},
+  {:url => "http://cm.cyloop.com/feeds/msnlatino/msnlatino_cysocial_home_featured.xml", :output => "msnar_url_featured_cysocial.xml"},
+  {:url => "http://cm.cyloop.com/feeds/msncanada/msnca_home_invasion_en.xml", :output => "msncaen_url_invasion.xml"},
+  {:url => "http://cm.cyloop.com/feeds/msncanada/msnca_home_detour_en.xml", :output => "msncaen_url_detour.xml"},
+  {:url => "http://cm.cyloop.com/feeds/msncanada/msncaen_cysocial_home_featured.xml", :output => "msncaen_url_featured_cysocial.xml"},
+  {:url => "http://entertainment.ca.msn.com/music/rss-cp-msn-news.aspx", :output => "msncaen_url_news.xml"},
+  {:url => "http://entertainment.ca.msn.com/music/rss-music-promotions.aspx", :output => "msncaen_url_promo.xml"},
+  {:url => "http://entertainment.ca.msn.com/music/rss-msn-gallery.aspx", :output => "msncaen_url_photos.xml"},
+  {:url => "http://entertainment.ca.msn.com/music/rss-cp-reviews.aspx", :output => "msncaen_url_reviews.xml"},
+  {:url => "http://feeds2.feedburner.com/MsnCaMusicen", :output => "msncaen_url_blog.xml"},
+  {:url => "http://edge5.catalog.video.msn.com/videoByTag.aspx?tag=ENCA_MTV%3AENCA_MTV_News&ns=VC_Source&mk=en-ca&sf=ActiveStartDate&sd=-1&vs=0&ind=&ps=&rct=&ff=88&responseEncoding=rss&title=MSN%20Video%3A%20Entertainment%20%3E%20Featured%20Content%20%3E%20MTV%20News", :output => "msncaen_url_videos.xml"},
+  {:url => "http://cm.cyloop.com/feeds/msncanada/msnca_home_detour_fr.xml", :output => "msncafr_url_detour.xml"},
+  {:url => "http://cm.cyloop.com/feeds/msncanada/msnca_home_invasion_fr.xml", :output => "msncafr_url_invasion.xml"},
+  {:url => "http://cm.cyloop.com/feeds/msncanada/msncafr_cysocial_home_featured.xml", :output => "msncafr_url_featured_cysocial.xml"},
+  {:url => "http://divertissement.ca.msn.com/musique/rss/rss-musique-branchez-nouvelles.aspx", :output => "msncafr_url_news.xml"},
+  {:url => "http://divertissement.ca.msn.com/musique/rss/rss-music-promotions.aspx", :output => "msncafr_url_promo.xml"},
+  {:url => "http://divertissement.ca.msn.com/musique/rss/rss-msn-gallery.aspx", :output => "msncafr_url_photos.xml"},
+  {:url => "http://divertissement.ca.msn.com/musique/rss/rss-musique-branchez-critiques.aspx", :output => "msncafr_url_reviews.xml"},
+  {:url => "http://edge5.catalog.video.msn.com/videoByTag.aspx?tag=frcamusique&ns=msnvideo_top&mk=fr-ca&sf=ActiveStartDate&sd=-1&vs=0&responseencoding=rss", :output => "msncafr_url_videos.xml"},
+  {:url => "http://cm.cyloop.com/feeds/drupal/cyloop_cysocial_home_featured_en.xml", :output => "cyloop_url_featured_cysocial.xml"},
+  {:url => "http://cm.cyloop.com/feeds/drupal/cyloop_cysocial_home_featured_es.xml", :output => "cyloopes_url_featured_cysocial.xml"},
+]
+
+timestamp = Time.now.strftime("%m%d%Y%I%M%p")
+
+FileUtils.mkdir_p("#{OUTPUT_LOCATION}/#{timestamp}")
+
+def log(msg)
+  File.open("#{OUTPUT_LOCATION}/fetch_log", "a") do |log|
+    log.puts "#{Time.now} #{msg}"
+  end
+end
+
+URL_MAPS.each do |item|
+  begin
+    log "Fetching #{item[:url]}"
+    xml = open(item[:url])
+    log "Got response: #{xml.size} bytes"
+    if xml.size > 0
+      File.open("#{OUTPUT_LOCATION}/#{timestamp}/#{item[:output]}", "w") do |f|
+        f.puts xml.read
+      end
+      log "Wrote #{OUTPUT_LOCATION}/#{timestamp}/#{item[:output]}\n"
+    end
+  rescue Exception => e
+    log "Error fetching #{item.inspect}"
+    log e.inspect
+    log "\n"
+    next
+  end
+end
+
+valid_fetch = true
+URL_MAPS.each do |item|
+  if File.size("#{OUTPUT_LOCATION}/#{timestamp}/#{item[:output]}") == 0
+    valid_fetch = false 
+    log "Didn't write output due to #{item.inspect}"
+    log "File size of #{OUTPUT_LOCATION}/#{timestamp}/#{item[:output]} was 0\n"
+  end
+end
+
+if valid_fetch
+  system "ln -nsf #{OUTPUT_LOCATION}/#{timestamp} #{OUTPUT_LOCATION}/current"
+  log "Finished #{timestamp} fetch"
+  log "\n\n"
+else
+  log "Fetch invalid! valid_fetch false\n\n"
+end
+
