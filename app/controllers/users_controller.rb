@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   include Application::MsnRedirection
 
   before_filter :find_account_by_slug, :only => [:follow, :unfollow, :block, :unblock, :approve, :disapprove]
-  before_filter :xhr_login_required, :only => [:follow, :unfollow]
+  before_filter :xhr_login_required, :only => [:follow]
   before_filter :login_required, :only => [:edit, :update, :destroy, :confirm_cancellation, :remove_avatar]
   before_filter :set_return_to, :only => [:msn_login_redirect, :msn_registration_redirect]
   before_filter :set_dashboard_menu, :only => [:edit, :update]
@@ -184,7 +184,7 @@ class UsersController < ApplicationController
     if @account.private_profile?
       follow_status = {:status => 'pending'}
     else
-      follow_status = {:status => 'following'}
+      follow_status = {:status => 'following'}      
     end
     render :json => follow_status
   end
@@ -229,7 +229,6 @@ class UsersController < ApplicationController
   private
   def xhr_login_required
     unless current_user
-      session[:follow_after_login] = @account.id
       return render(:json => {:status => 'redirect', :url => login_path})
     end
   end

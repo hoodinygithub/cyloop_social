@@ -32,7 +32,7 @@ var restoreInput = function(value, input) {
 
 Base.utils.handle_login_required = function(response, url, button_label) {
   if (typeof(response) == 'object') {
-    if (typeof(response.status) != 'undefined') {
+    if (typeof(response.status) && response.status == 'redirect') {
       $.simple_popup(function()
       {
         $.get(url, function(response)
