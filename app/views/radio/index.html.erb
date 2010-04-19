@@ -1,5 +1,6 @@
 <% content_for :head do %>
-  <%= javascript_include_tag "AC_OETags", "history", "swf_utils", "radio" %>
+  <%= stylesheet_link_tag "history" %>
+  <%= javascript_include_tag "AC_OETags", "history", "swf_utils", "radio", "htmlcomponent" %>
 <% end %>
 <div id="main_content">
   <%= render @station_obj.nil? && 'search' || 'radio' %>
