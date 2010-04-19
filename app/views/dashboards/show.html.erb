@@ -5,15 +5,17 @@
 
   <div id="center_column">
     <% if profile_owner? %>
-    <%= render'dashboards/recommended_stations' %>
-    <%= render 'dashboards/network_activity' %>
-    <%= render 'dashboards/comment_list' if profile_user? %>
-    <% else %>
-    <%=  render :partial => 'dashboards/user_latest_stations', :locals => { :max_stations => profile_artist? ? 3 : 6 } %>
-    <br />
-    <br />
-    <%=  render :partial => 'dashboards/artist_latest_albums' if profile_artist? %>
+      <%= render'dashboards/recommended_stations' %>
+      <%= render 'dashboards/network_activity' %>
     <% end %>
+
+    <% unless profile_owner? %>
+      <%=  render :partial => 'dashboards/user_latest_stations', :locals => { :max_stations => profile_artist? ? 3 : 6 } %>
+      <br /><br />
+      <%=  render :partial => 'dashboards/artist_latest_albums' if profile_artist? %>
+    <% end %>
+    
+    <%= render 'dashboards/comment_list', :with_title => !profile_owner? %>
   </div><!--/end center_column -->
 
   <%= render 'dashboards/right_column' %>

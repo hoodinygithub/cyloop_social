@@ -11,7 +11,8 @@ var Base = {
   locale: {},
   utils: {},
   registration: {},
-  radio: {}
+  radio: {},
+  account: {}
 };
 
 /*
@@ -551,7 +552,7 @@ Base.network.show_more = function(button) {
 
   $last_li  = $list.find('li:last');
   timestamp = $last_li.attr('timestamp');
-  jQuery.post("/activity/latest", {'after':timestamp}, function (response) {
+  jQuery.post("/activity/latest", {'after':timestamp, 'slug':Base.account.slug}, function (response) {
     $list.html(response).fadeIn();
     $span_label.html(old_button_label);
   });
@@ -581,7 +582,7 @@ Base.network.__update_page_owner_page = function(response, options) {
   } else {
     $comment_list.hide().append(response).fadeIn();
   }
-
+  
   if (response.length > 0) {
     $show_more_button.fadeIn();
   }

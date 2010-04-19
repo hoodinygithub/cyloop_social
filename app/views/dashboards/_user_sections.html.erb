@@ -4,7 +4,7 @@
 
 <%= render 'shared/similar_artists'  if profile_artist? %>
 
-<% if (params[:controller] == 'accounts' and params[:action] == 'show') || profile_artist? %>
+<% if false and (params[:controller] == 'accounts' and params[:action] == 'show') || profile_artist? %>
   <%= render 'shared/user_recent_activity'  %>
 <% end %>
 
