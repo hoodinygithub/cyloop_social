@@ -13,7 +13,6 @@
     <% if @collection %>
       <ul class="followers_list">
         <% if current_user and current_user == profile_account and !@pending.nil? and @pending.size > 0 %>
-          <li class="pending"><b><%= t('dashboards.pending.title') %></b></li>
           <% @pending.each do |item| %>
             <li class="pending_item">
               <%= link_to (avatar_for(item.follower, :small), item.follower) %>
