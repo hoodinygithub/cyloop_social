@@ -235,7 +235,7 @@ function initTopButtons() {
 
 
 function load_artist_info(artist_id) {
-	station_id = $('#station_id').val() 
+  station_id = $('#station_id').val();
   $('.artist_radio_info').fadeOut("fast", function(){
     if(artist_id){
       $.ajax({

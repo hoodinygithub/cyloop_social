@@ -10,6 +10,7 @@
   <% if @station_obj.playable.owner_is? current_user %>
   <%= link_to_function(image_tag('edit_button_small.png', :class => "png_fix valign_middle", :alt => t('actions.edit')), "Base.stations.launch_edit_layer(#{@station_obj.id})"  )%>
   <% end %>
+  <a href="#" onclick="Base.stations.share(<%= @station_obj.id %>, this); return false;"><img src="images/share_button_small.png" class="png_fix valign_middle" alt="<%= t('actions.share') %>" /></a>
   <br/>
   <small class="grey"><%= t("basics.last_modified") %>: <%= l(@station_obj.updated_at.to_date) %></small><br/>
   <small><%= station_contains(@station_obj.playable) %></small>

@@ -30,6 +30,13 @@ var restoreInput = function(value, input) {
  }
 }
 
+$(document).ready(function() {
+  $("#facebox a.close_after_click").live("click", function() {
+      $(document).trigger("close.facebox");
+      return true;
+  });
+});
+
 var swf = function(objname) 
 {
   if(navigator.appName.indexOf("Microsoft") != -1)
