@@ -24,11 +24,13 @@ class FeedManager
         Nokogiri::XML.parse(body)
       end
     rescue Timeout::Error => e
-      HoptoadNotifier.notify(
-        :error_class => e.class.name,
-        :error_message => "Feed Loading error - #{e.message}",
-        :backtrace => e.backtrace,
-        :request => { :params => { :url => @url.to_s } })
+      if Rails.env.staging? || Rails.env.production?
+        HoptoadNotifier.notify(
+          :error_class => e.class.name,
+          :error_message => "Feed Loading error - #{e.message}",
+          :backtrace => e.backtrace,
+          :request => { :params => { :url => @url.to_s } })
+      end
       []
     end
   end
