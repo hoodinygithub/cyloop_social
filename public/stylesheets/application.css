@@ -1594,9 +1594,12 @@ h1 {
 }
 
 .band_ad_box {
-    position: absolute;
-    top: 20px;
-    right: 5px;
+  position: absolute;
+  top: 20px;
+  width: 320px;
+  left: 50%;
+  margin-left: 150px;
+  z-index: 999;
 }
 
 .spaced_img {
