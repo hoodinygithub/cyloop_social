@@ -1,8 +1,14 @@
+<script type="text/javascript">
+   $(document).ready(function() {
+     // $('a[rel*=facebox]').facebox();
+     // Base.radio.init_edit_station_layer();
+    });
+</script>  
 <%= four_thumbs_to(@station_obj, :class => 'left_side', :clearer => true, :type => :small) %>
 <div id="now_playing_user_station" class="album_text2">
-  <span class="station_name"><%= @station_obj.playable.name %></span>
+  <span id="station_name" class="station_name"><%= @station_obj.playable.name %></span>
   <% if @station_obj.playable.owner_is? current_user %>
-  <a href="#" onclick="Base.stations.edit(<%= @station_obj.id %>, this); return false;"><img src="images/edit_button_small.png" class="png_fix valign_middle" alt="<%= t('actions.edit') %>" /></a>
+  <%= link_to_function(image_tag('edit_button_small.png', :class => "png_fix valign_middle", :alt => t('actions.edit')), "Base.stations.launch_edit_layer(#{@station_obj.id})"  )%>
   <% end %>
   <br/>
   <small class="grey"><%= t("basics.last_modified") %>: <%= l(@station_obj.updated_at.to_date) %></small><br/>

@@ -16,7 +16,7 @@ class EditorialStation < ActiveRecord::Base
   include Station::Playable
 
   belongs_to :mix, :class_name => 'Playlist', :foreign_key => :mix_id
-  delegate :name, :to => :mix
+  delegate :name, :owner, :to => :mix
   
   def playlist
     mix.try(:songs)
@@ -24,6 +24,13 @@ class EditorialStation < ActiveRecord::Base
 
   def includes(limit=3)
     mix.songs.all(:limit => limit).uniq_by { |s| s.artist_id } if mix.songs
+  end
+  
+  def owner_is?(user)
+    is_owner = false
+    unless user.nil?
+      is_owner = owner == user 
+    end
   end
 
 end

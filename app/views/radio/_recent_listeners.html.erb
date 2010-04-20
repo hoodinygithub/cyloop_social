@@ -4,7 +4,7 @@
   <% end_box = index > 0 && (index + 1) % columns == 0 %>
     <div class="small_thumb<%= " last_box" if end_box %>">
       <%= link_to avatar_for(user, "spaced_img tiny", :disable_default_css => true), user %>
-      <%= link_to user.name, user %>
+      <%= link_to truncate(user.name, :length => 15), user, :target => '_blank' %>
     </div>
     <% if end_box %>
       <br class="clearer" />

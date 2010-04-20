@@ -102,6 +102,11 @@ en:
       title: Biography
     recommended_artists:
       title: Recommended Artists
+    edit_station:
+        title: Edit Station
+        new_name: New Name
+        blank_station_name_message: You must enter a name for this station.
+        no_edit_rights: You don't have rights to edit this station.
   actions:
     awaiting_approval: Awaiting Approval
     play: Play

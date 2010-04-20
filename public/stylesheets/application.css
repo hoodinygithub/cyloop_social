@@ -531,6 +531,20 @@ h1 {
     padding: 0px 10px;
 }
 
+
+.blue_button:hover {
+ 		background: url("../images/grey_button_big_left.gif") no-repeat left top;
+}
+
+.blue_button:hover span {
+ 		background: url("../images/grey_button_big_right.gif") no-repeat right top;
+}
+
+.blue_button:hover span span {
+    background: #bdbdbd;
+}
+
+
 .green_button span span {
     background: #F88000;
 }
@@ -1615,8 +1629,8 @@ h1 {
 .songs_list {
     border: solid 1px #cccccc;
     margin-bottom: 20px;
-		position:absolute;
-		z-index:999;
+		position: absolute;
+		z-index: 99;
     zoom: 1;
 }
 
@@ -2851,6 +2865,8 @@ h2 {
     float: left;
     line-height: 20px;
     font-size: 13px;
+		margin-left:15px;
+		margin-top:-43px;
 }
 
 .popup_mix_text big {

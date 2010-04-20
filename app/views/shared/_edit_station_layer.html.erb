@@ -1,0 +1,48 @@
+<div class="popup facebox" id="edit_station_layer">
+    <div class="top_shadow">
+        <div class="top_left corner"></div>
+        <div class="center_shadow"></div>
+        <div class="top_right corner"></div>
+        <a href="$(document).trigger('close.facebox'); return false;"><span class="popup_close span_fix" title="<%= t('actions.close') %>">&nbsp;</span></a>
+    </div>
+
+    <div class="popup_content">
+        <form action="" method="post" class="account_settings">
+            <div class="title"><%= t('modules.edit_station.title')%></div>
+
+            <div class="form_row">
+                <% four_thumbs_to(@station_obj, :type => :small) %>
+
+                <div class="popup_mix_text">
+                    <big><%= link_to @station_obj.playable.name, radio_path(:station_id => @station_obj.id) %></big><br/>
+                    <%= t("basics.created_by") %>: <%= link_to(@station_obj.playable.owner.name, "/#{@station_obj.playable.owner.slug}") %><br />
+                    <%= station_contains(@station_obj.playable) %>
+                </div>
+
+                <div class="clearer"></div>
+                <br/>
+            </div><!--/end form_row -->
+
+            <div class="form_row">
+                <label><b><%= t('modules.edit_station.what_do_you_want_to_name_title')%></b></label>
+
+                <div class="grey_round_box">
+                    <input id="new_station_name" type="text" class="input full_width" />
+                </div>
+            </div><!--/end form_row -->
+            <br/>
+
+            <div class="align_right">
+                <big><a href="$(document).trigger('close.facebox'); return false;" class="black valign_middle popup_close_action"><%= t('actions.cancel').upcase %></a></big>
+
+                <a href="#" id="save_station_name_button" class="blue_button valign_middle"><span><span><%= t('actions.save').upcase %></span></span></a>
+            </div>
+        </form>
+    </div>
+
+    <div class="bottom_shadow">
+        <div class="bottom_left corner"></div>
+        <div class="center_shadow"></div>
+        <div class="bottom_right corner"></div>
+    </div>
+</div><!--/end popup -->

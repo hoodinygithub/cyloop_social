@@ -76,6 +76,10 @@ module ApplicationHelper
     special_button(:blue_button, button_label, options)
   end
 
+  def grey_button(button_label, options = {})
+    special_button(:grey_button_big, button_label, options)
+  end
+
   def green_button(button_label, options = {})
     special_button(:green_button, button_label, options)
   end

@@ -510,6 +510,72 @@ Base.stations.edit = function(user_station_id, button) {
   $station_name_container.html(station_name_input);
 };
 
+Base.stations.init_edit_layer = function() {
+
+  save_button = jQuery(Base.layout.blue_button('Done'));
+  jQuery("#save_station_name_button").click(function() {
+		
+    playable_id = $('#playable_id').val();
+    new_station_name = $('#new_station_name').val();
+
+    if(new_station_name == '') { alert(blank_station_alert); return false; }
+		jQuery('#edit_loading').removeClass('hide')
+
+    $('#new_station_name').attr('readOnly', true);
+
+    params = {'_method' : 'put', 'user_station' : {'name': new_station_name} };
+    jQuery.post('/my/stations/' + playable_id, params, function(response) {
+			jQuery('#station_name').html(new_station_name)
+			jQuery(document).trigger('close.facebox');
+    });
+
+    return false;
+  });
+
+/*  cancel_button = jQuery(Base.layout.blue_button('Cancel'));
+  cancel_button.bind('click', function() {
+    $station_name_container.html(old_station_name_content);
+    $buttons.html(old_buttons_content);
+    return false;
+  });
+*/};
+
+Base.stations.launch_edit_layer = function(station_id) {
+	  $.popup(function() {
+			url = '/stations/' + station_id + '/edit';
+   		jQuery.get(url, function(data) {
+	      jQuery.popup(data);
+	    });
+		});
+/*  jQuery("#save_station_name_button").click(function() {
+    playable_id = $('#playable_id').val();
+    new_station_name = $('#new_station_name').val();
+
+    if(new_station_name == '') { alert(blank_station_alert); return false; }
+
+    $('#new_station_name').attr('readOnly', true);
+
+    params = {'_method' : 'put', 'user_station' : {'name': new_station_name} };
+    jQuery.post('/my/stations/' + playable_id, params, function(response) {
+			jQuery('#station_name').html(new_station_name)
+    });
+	});
+
+*/   
+ 	return false;
+};
+
+
+Base.stations.remove_from_layer = function(user_station_id) {
+	li = $('#my_station_item_' + user_station_id)
+  alert(li.id)
+  jQuery.post('/my/stations/' + user_station_id, {'_method':'delete'}, function(response) {
+    if (response == 'destroyed') {
+      li.slideUp();
+    } 
+  });
+	return false;
+};
 
 Base.stations.remove = function(user_station_id, button) {
   $button = jQuery(button);
@@ -995,6 +1061,33 @@ Base.registration.layers = {
     });
   }
 }
+
+
+Base.radio.init_edit_station_layer = function() {
+
+	jQuery("#edit_station_name").click(function() {
+	  $.popup(function() {
+			url = '/stations/' + jQuery('#station_id').val() + '/edit';
+   		jQuery.get(url, function(data) {
+	      jQuery.popup(data);
+	    });
+		});
+	});
+	return false;
+/*	jQuery("#station_name").click(function() {
+		jQuery('.popup').popup();
+	});
+*/	
+  save_button.bind('click', function() {
+    params = {'_method' : 'put', 'user_station' : {'name': new_station_name } };
+    jQuery.post('/my/stations/' + user_station_id, params, function(response) {			
+      jQuery("#station_name").html(new_station_name);
+			jQuery(document).trigger('close.facebox');
+    });
+
+    return false;
+  });
+};
 
 /*
  * Register and triggers

@@ -176,31 +176,59 @@ function toggleRadioTabs() {
 	
 }
 
+function toggleButton(button, show) {
+	if(show) {
+		$('#' + button + '_toggle').attr('value', "1");      
+		$('#' + button + '_button').removeClass('blue_button').addClass('grey_button_big');
+		$('#' + button + '_list').removeClass('hide');      		
+	} else {
+		$('#' + button + '_toggle').attr('value', "0");      
+		$('#' + button + '_button').removeClass('grey_button_big').addClass('blue_button');
+		$('#' + button + '_list').addClass('hide');      						
+	}
+}
 function initTopButtons() {
   $("#my_stations_button").click(function() {
 		value = parseInt($("#my_stations_toggle").get(0).value, 10);
+		msn_value = parseInt($("#msn_stations_toggle").get(0).value, 10);
+
 		if(value) {
-			$('#my_stations_toggle').attr('value', "0");      
-			$(this).removeClass('grey_button_big').addClass('blue_button');
-			$('#my_stations_list').addClass('hide');      				
+			if(msn_value) { toggleButton('msn_stations', 0); }
+			toggleButton('my_stations', 0);
+			$('#now_playing_button').removeClass('blue_button').addClass('grey_button_big');			
 		} else {
-			$('#my_stations_toggle').attr('value', "1");      
-			$(this).removeClass('blue_button').addClass('grey_button_big');
-			$('#my_stations_list').removeClass('hide');      
+			if(msn_value) { toggleButton('msn_stations', 0); }
+			toggleButton('my_stations', 1);
+			$('#now_playing_button').removeClass('grey_button_big').addClass('blue_button');			
 		}			
     return false;
     });	
+
   $("#msn_stations_button").click(function() {
 		value = parseInt($("#msn_stations_toggle").get(0).value, 10);
+		my_value = parseInt($("#my_stations_toggle").get(0).value, 10);
+		
 		if(value) {
-			$('#msn_stations_toggle').attr('value', "0");      
-			$(this).removeClass('grey_button_big').addClass('blue_button');
-			$('#msn_stations_list').addClass('hide');      				
+			if(my_value) { toggleButton('my_stations', 0);}
+			toggleButton('msn_stations', 0);
+			$('#now_playing_button').removeClass('blue_button').addClass('grey_button_big');			
 		} else {
-			$('#msn_stations_toggle').attr('value', "1");      
-			$(this).removeClass('blue_button').addClass('grey_button_big');
-			$('#msn_stations_list').removeClass('hide');      
+			if(my_value) { toggleButton('my_stations', 0); }
+			toggleButton('msn_stations', 1);
+			$('#now_playing_button').removeClass('grey_button_big').addClass('blue_button');			
 		}			
+    return false;
+    });	
+
+  $("#now_playing_button").click(function() {
+		msn_value = parseInt($("#msn_stations_toggle").get(0).value, 10);
+		my_value = parseInt($("#my_stations_toggle").get(0).value, 10);
+
+		if(msn_value || my_value) {
+			toggleButton('msn_stations', 0);
+			toggleButton('my_stations', 0);			
+			$('#now_playing_button').removeClass('blue_button').addClass('grey_button_big');			
+		}
     return false;
     });	
 	}

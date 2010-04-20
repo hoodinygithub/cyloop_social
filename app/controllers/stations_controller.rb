@@ -1,4 +1,5 @@
 class StationsController < ApplicationController
+  before_filter :login_required, :only => [:edit]
   # TODO: Let's keep this as a reminder of the refactoring we *must* do
   def index
     @stations = AbstractStation.search(params[:q], :per_page => params[:limit] || 15, :page => 1)
@@ -7,6 +8,14 @@ class StationsController < ApplicationController
       format.xml  { render :xml => @stations.to_xml(:only => [:id, :name], :skip_types => true) }
       format.js  { render :text => @stations.collect{|s| "#{s.station.id}|#{s.name}" }.join("\n") }
       #format.js   { render :json => @stations.collect{|s| {:id => s.id, :name => s.name} }.to_json }
+    end
+  end
+
+  def edit
+    @station = Station.find(params[:id]) rescue nil
+    if @station and @station.playable.owner_is?(current_user)
+    else
+      render :partial => 'no_edit_rights'
     end
   end
 

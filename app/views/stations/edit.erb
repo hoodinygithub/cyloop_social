@@ -1,0 +1,41 @@
+<script type='text/javascript'>
+  var blank_station_alert = "<%= t('modules.edit_station.blank_station_name_message') %>";
+  $(document).ready(function() {
+    Base.stations.init_edit_layer();
+  });
+</script>
+<form action="" method="post" class="account_settings">
+    <%= hidden_field_tag :playable_id, @station.playable.id %>
+    <div class="title" style="float:left"><%= t('modules.edit_station.title')%></div>
+    <div id="edit_loading" style="float:right;" class="hide">
+        <img src="/images/loading.gif" />
+    </div>
+    <br class="clearer" />
+    <div class="form_row">
+        <%= four_thumbs_to(@station, :type => :medium) %>
+
+        <div class="popup_mix_text">
+            <big><%= link_to @station.playable.name, radio_path(:station_id => @station.id) %></big><br/>
+            <%= t("basics.created_by") %>: <%= link_to(@station.playable.owner.name, "/#{@station.playable.owner.slug}") %><br />
+            <%= station_contains(@station.playable) %>
+        </div>
+
+        <div class="clearer"></div>
+        <br/>
+    </div><!--/end form_row -->
+
+    <div class="form_row">
+        <label><b><%= t('modules.edit_station.new_name')%></b></label>
+
+        <div class="grey_round_box">
+            <input id="new_station_name" type="text" class="input full_width" />
+        </div>
+    </div><!--/end form_row -->
+    <br/>
+
+    <div class="align_right">
+        <big><a href="#" class="black valign_middle popup_close_action" onclick="$(document).trigger('close.facebox');return false;"><%= t('actions.cancel').upcase %></a></big>
+
+        <a href="#" id="save_station_name_button" class="blue_button valign_middle"><span><span><%= t('actions.save').upcase %></span></span></a>
+    </div>
+</form>

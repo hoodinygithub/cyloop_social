@@ -74,6 +74,11 @@ class AbstractStation < ActiveRecord::Base
     update_attribute(:total_artists, new_artists.size)
   end
 
+
+  def owner_is?(user)
+    false
+  end
+  
   def station_queue(params={})
     params[:ip_address] ||= '67.63.37.2'
     {:id => station.id, :queue => CGI::escape("#{RecEngine::BASE_URI}?request=getRecEnginePlayList&artistID=#{amg_id}&ipAddress=#{params[:ip_address]}")}
