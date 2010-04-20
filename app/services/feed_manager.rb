@@ -45,11 +45,13 @@ class FeedManager
       items = limit.nil? ? items.to_a : items.to_a[0,limit]
       items.map { |x| kind.new(x) }
     rescue => e
-      HoptoadNotifier.notify(
-        :error_class => e.class.name,
-        :error_message => "Feed Loading error - #{e.message}",
-        :backtrace => e.backtrace,
-        :request => { :params => { :key => key, :kind => kind, :limit => limit, :url => @url.to_s } })
+      if Rails.env.staging? || Rails.env.production?
+        HoptoadNotifier.notify(
+          :error_class => e.class.name,
+          :error_message => "Feed Loading error - #{e.message}",
+          :backtrace => e.backtrace,
+          :request => { :params => { :key => key, :kind => kind, :limit => limit, :url => @url.to_s } })
+      end
       []
     end
   end
