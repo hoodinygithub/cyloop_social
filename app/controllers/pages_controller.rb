@@ -14,6 +14,17 @@ class PagesController < ApplicationController
         @top_abstract_stations = current_site.top_abstract_stations.limited_to(6)
         @top_user_stations     = current_site.top_user_stations.limited_to(6)
 
+        
+        @feed_featured ||= []
+        url_featured = ""
+        if !site_includes(:cyloop, :cyloopes)
+          url_featured    = "/shared/feeds/current/#{site_code}_url_featured_cysocial.xml"
+        elsif site_includes(:cyloop)
+          url_featured    = "/shared/feeds/current/cyloop_url_featured_cysocial.xml"
+        elsif site_includes(:cyloopes)
+          url_featured    = "/shared/feeds/current/cyloopes_url_featured_cysocial.xml"
+        end
+        @feed_featured  = drupal_feed(url_featured, 5)
         # if site_includes(:msnmx, :msnbr,:msnlatam,:msnlatino, :msnar)
         #   url_featured    = "/shared/feeds/current/#{site_code}_url_featured.xml"
         #   url_invasion    = "/shared/feeds/current/#{site_code}_url_invasion.xml"
@@ -103,7 +114,6 @@ class PagesController < ApplicationController
         #   @feed_blog      = blog_feed(        url_blog,     1)
         # end
 
-        @feed_featured ||= []
       end
 
       format.js do

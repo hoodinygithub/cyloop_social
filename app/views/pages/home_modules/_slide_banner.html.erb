@@ -1,11 +1,11 @@
 <div id="slides_banner">
   <ul id="slides">
-    <% (1..3).to_a.each do |slide| %>
-        <li class="slide">
-          <img src="images/slide1.jpg" alt="" />
+    <% @feed_featured.each_with_index do |slide, index| %>
+      <li class="slide">
+        <%= link_to image_tag(slide.image("424x182", msn_site_code)), slide.link %>
           <div class="band_details">
-            <div class="band_name">underoath</div>
-            <div class="band_slogan">Pissed off rednecks fight back with quitar</div>
+            <div class="band_name"><%= slide.artist %></div>
+            <div class="band_slogan"><%= slide.text %></div>
           </div>
           <div class="band_ad_box">
             <%= banner_ad("square_banner") %>
