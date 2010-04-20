@@ -1788,17 +1788,21 @@ h1 {
 }
 
 .four_thumbs_big {
-    width: 152px;
-    float: left;
-    position: relative;
+    width: 150px;
     z-index: 1;
     zoom: 1;
 }
 
-.four_thumbs_big img {
-    float: left;
-    margin: 0px 2px 2px 0px;
+.four_thumbs_big .avatar_0 {
+    margin: 0 2px 2px 0;
 }
+.four_thumbs_big .avatar_1 {
+    margin: 0 0 2px 0;
+}
+.four_thumbs_big .avatar_2 {
+    margin: 0 2px 0 0;
+}
+
 
 .big_round_box {
     background: url("../images/big_round_box.png") no-repeat left top;

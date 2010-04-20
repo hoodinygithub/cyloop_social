@@ -33,3 +33,17 @@ label.label_holder {
   color: green;
   position:absolute;
 }
+
+.artist_box {
+  width: 150px;
+  overflow: hidden;
+}
+
+.last_box {
+  float: right;
+  margin-right: 0!important;
+}
+
+.four_thumbs_big {
+  overflow: hidden;
+}

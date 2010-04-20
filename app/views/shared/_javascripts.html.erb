@@ -15,12 +15,10 @@
 
 <script>
   <% if profile_account %>
-    Base.account.slug        = "<%= profile_account.slug %>";
-    Base.account.type        = "<%= profile_account.artist? ? "artist" : "user" %>";
+    Base.account.slug = "<%= profile_account.slug %>";
+    Base.account.type = "<%= profile_account.artist? ? "artist" : "user" %>";
   <% end %>
 
-  <% if yield :javascript %>
-    <%= yield :javascript %>
-  <% end %>
+  <%= yield(:javascript) %>
 </script>
 
