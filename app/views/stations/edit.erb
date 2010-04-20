@@ -6,6 +6,7 @@
 </script>
 <form action="" method="post" class="account_settings">
     <%= hidden_field_tag :playable_id, @station.playable.id %>
+    <%= hidden_field_tag :layer_station_id, @station.id %>
     <div class="title" style="float:left"><%= t('modules.edit_station.title')%></div>
     <div id="edit_loading" style="float:right;" class="hide">
         <img src="/images/loading.gif" />
