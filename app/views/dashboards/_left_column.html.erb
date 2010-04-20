@@ -8,32 +8,34 @@
       <div class="clearer"></div>
     </div><!--/end black_boxes -->
   <% end %>
-  
+
   <% if profile_artist? %>
     <div class="black_boxes">
       <%= render 'dashboards/user_stations_mixes_and_visits' %>
       <div class="clearer"></div>
     </div><!--/end black_boxes -->
-  
+
     <% unless profile_account.websites.empty? %>
       <div class="big_black_box">
         <%= render 'dashboards/websites' %>
       </div>
     <% end %>
-    
-    <div class="big_black_box">
-      <%= link_to(image_tag('play_button.png', :title => t('actions.play')), radio_path(:station_id => profile_artist.station.id), :class => 'play_button') %>
-      <span>
-        <b>&nbsp;&nbsp;<span class="blue"><%= link_to profile_artist.station.name, radio_path(:station_id => profile_artist.station.id) %></span></b>
-        <br/>
-      </span>
-      <br class="clearer" />
-      <%= station_contains(profile_artist.station) %>
-    </div>
+    <% if profile_artist.has_station? %>
+      <div class="big_black_box">
+        <%= link_to(image_tag('play_button.png', :title => t('actions.play')), radio_path(:station_id => profile_artist.station.id), :class => 'play_button') %>
+        <span>
+          <b>&nbsp;&nbsp;<span class="blue"><%= link_to profile_artist.station.name, radio_path(:station_id => profile_artist.station.id) %></span></b>
+          <br/>
+        </span>
+        <br class="clearer" />
+        <%= station_contains(profile_artist.station) %>
+      </div>
+    <% end %>
   <% end %>
 
-  
-  
+
+
   <%= render 'dashboards/user_buttons' %>
   <%= user_sidebar_links %>
 </div><!--/end left_column -->
+

@@ -4,7 +4,7 @@ class RadioController < ApplicationController
   #caches_action :show, :expires_in => EXPIRATION_TIMES['radio_show'], :cache_path => :radio_show_cache_key
 
   def index
-    @station_obj = if params[:station_id] 
+    @station_obj = if params[:station_id]
       Station.find(params[:station_id]) rescue nil
     elsif params[:artist_name]
       AbstractStation.find_by_name(params[:artist_name]) rescue nil
@@ -15,7 +15,7 @@ class RadioController < ApplicationController
         @station_queue = @station_obj.playable.station_queue(:ip_address => remote_ip)
         @station_obj.playable.track_a_play_for(current_user) if @station_obj.playable
     else
-      @recommended_stations = transformed_recommended_stations(12, 30)
+      @recommended_stations = transformed_recommended_stations(12, 40)
     end
     @top_abstract_stations = current_site.top_abstract_stations.limited_to(5)
     @msn_stations = current_site.stations
@@ -46,7 +46,7 @@ class RadioController < ApplicationController
       end
     end
   end
-  
+
   def show
     @station = Station.find(params[:station_id]).playable
     @songs = if @station.kind_of? AbstractStation
@@ -76,8 +76,8 @@ class RadioController < ApplicationController
         end
         block = Proc.new do
           session[:current_station] = @station.id
-          render :xml => Player::Station.from(@station, 
-                 :ip => remote_ip, 
+          render :xml => Player::Station.from(@station,
+                 :ip => remote_ip,
                  :user_id => @station.kind_of?(UserStation) ? @station.owner_id : nil).to_xml(:root => @station.kind_of?(UserStation) ? 'user_station' : 'station')
         end
         format.xml(&block)
@@ -96,8 +96,8 @@ class RadioController < ApplicationController
         format.js { render :text => not_found_message, :layout => false }
         format.xml { render :xml => Player::Error.new(:error => not_found_message, :code => 404) }
         format.rss do
-          feed_site = site_code.match(/^msnca.*/) ? "msncanada" : site_code 
-          redirect_to "http://cm.cyloop.com/feeds/#{feed_site}/feed_top_stations_#{site_code}.xml" 
+          feed_site = site_code.match(/^msnca.*/) ? "msncanada" : site_code
+          redirect_to "http://cm.cyloop.com/feeds/#{feed_site}/feed_top_stations_#{site_code}.xml"
         end
       end
 
@@ -114,8 +114,8 @@ class RadioController < ApplicationController
         end
         block = Proc.new do
           session[:current_station] = @station.id
-          render :xml => Player::Station.from(@station.playable, 
-           :ip => remote_ip, 
+          render :xml => Player::Station.from(@station.playable,
+           :ip => remote_ip,
            :user_id => logged_in? ? current_user.id : nil).to_xml(:root => @station.playable.kind_of?(UserStation) ? 'user_station' : 'station')
         end
         format.xml(&block)
@@ -134,8 +134,8 @@ class RadioController < ApplicationController
         format.js { render :text => not_found_message, :layout => false }
         format.xml { render :xml => Player::Error.new(:error => not_found_message, :code => 404) }
         format.rss do
-          feed_site = site_code.match(/^msnca.*/) ? "msncanada" : site_code 
-          redirect_to "http://cm.cyloop.com/feeds/#{feed_site}/feed_top_stations_#{site_code}.xml" 
+          feed_site = site_code.match(/^msnca.*/) ? "msncanada" : site_code
+          redirect_to "http://cm.cyloop.com/feeds/#{feed_site}/feed_top_stations_#{site_code}.xml"
         end
       end
 
@@ -185,3 +185,4 @@ class RadioController < ApplicationController
   end
   helper_method :most_listened_songs
 end
+

@@ -5,16 +5,16 @@ class PagesController < ApplicationController
 
   def home
     respond_to do |format|
-      format.html do        
+      format.html do
         @latest_stations       = UserStation.latest_stations
-        
+
         # Hack to handle nil values from rec engine
-        @recommended_stations = transformed_recommended_stations(6, 20)
-        
+        @recommended_stations = transformed_recommended_stations(6, 40)
+
         @top_abstract_stations = current_site.top_abstract_stations.limited_to(6)
         @top_user_stations     = current_site.top_user_stations.limited_to(6)
 
-        
+
         @feed_featured ||= []
         url_featured = ""
         if !site_includes(:cyloop, :cyloopes)
@@ -33,18 +33,18 @@ class PagesController < ApplicationController
         #   @feed_detour    = FeedManager.new(site_code, url_detour, true).get_drupal_feed(1).first
         #   @feed_invasion  = FeedManager.new(site_code, url_invasion, true).get_drupal_feed(1).first
         # end
-        # 
+        #
         # if site_includes(:msnlatino, :msnbr)
         #   # url_promo         = "/shared/feeds/current/#{site_code}/#{site_code}_home_promo.xml"
         #   url_promo = "/shared/feeds/current/#{site_code}_url_promo.xml"
         #   @feed_promo       = FeedManager.new(site_code, url_promo, true).get_drupal_feed(1).first
         # end
-        # 
+        #
         # if site_includes(:msnlatam, :msnar)
         #   url_promo         = "/shared/feeds/current/#{site_code}_url_promo.xml"
         #   @feed_promo       = FeedManager.new(site_code, url_promo, true).get_single_msn_feed(1).first
         # end
-        # 
+        #
         # if site_includes(:msnmx)
         #   url_homepage = "/shared/feeds/current/#{site_code}_url_homepage.xml"
         #   fm = FeedManager.new(site_code, url_homepage, true)
@@ -54,7 +54,7 @@ class PagesController < ApplicationController
         #   @feed_conciertos  = fm.get_mixed_msn_feed(1, 'Flash - Reseñas').first
         #   @feed_promo       = fm.get_mixed_msn_feed(1, 'Flash - INFOPANE - NEW').first
         # end
-        # 
+        #
         # if site_includes(:msnbr)
         #   url_noticias      = "/shared/feeds/current/#{site_code}_url_noticias.xml"
         #   url_albums        = "/shared/feeds/current/#{site_code}_url_albums.xml"
@@ -63,12 +63,12 @@ class PagesController < ApplicationController
         #   @feed_albums      = FeedManager.new(site_code, url_albums, true).get_single_msn_feed(4)
         #   #@feed_baladas     = FeedManager.new(site_code, url_baladas, true).get_single_msn_cp_feed(4).rand
         # end
-        # 
+        #
         # if site_includes(:msnlatino)
         #   url_noticias      = "/shared/feeds/current/#{site_code}_url_noticias.xml"
         #   @feed_noticias    = FeedManager.new(site_code, url_noticias, true).get_single_msn_feed(6)
         # end
-        # 
+        #
         # if site_includes(:msncafr)
         #   # Live feeds
         #   url_detour   = "/shared/feeds/current/#{site_code}_url_detour.xml"
@@ -79,7 +79,7 @@ class PagesController < ApplicationController
         #   url_photos   = "/shared/feeds/current/#{site_code}_url_photos.xml"
         #   url_reviews  = "/shared/feeds/current/#{site_code}_url_reviews.xml"
         #   url_videos   = "/shared/feeds/current/#{site_code}_url_videos.xml"
-        # 
+        #
         #   @feed_detour    = drupal_feed(      url_detour,   1).first
         #   @feed_invasion  = drupal_feed(      url_invasion, 1).first
         #   @feed_featured  = featured_feed(    url_featured, 5)
@@ -88,9 +88,9 @@ class PagesController < ApplicationController
         #   @feed_videos    = video_feed(       url_videos,   7)
         #   @feed_reviews   = reviews_msn_feed( url_reviews,  6)
         #   @feed_photos    = photos_msn_feed(  url_photos,  10)
-        # 
+        #
         # end
-        # 
+        #
         # if site_includes(:msncaen)
         #   # Live feeds
         #   url_detour   = "/shared/feeds/current/#{site_code}_url_detour.xml"
@@ -102,7 +102,7 @@ class PagesController < ApplicationController
         #   url_reviews  = "/shared/feeds/current/#{site_code}_url_reviews.xml"
         #   url_videos   = "/shared/feeds/current/#{site_code}_url_videos.xml"
         #   url_blog     = "/shared/feeds/current/#{site_code}_url_blog.xml"
-        # 
+        #
         #   @feed_news      = single_msn_feed(  url_news,     6)
         #   @feed_featured  = featured_feed(    url_featured, 5)
         #   @feed_detour    = drupal_feed(      url_detour,   1).first
