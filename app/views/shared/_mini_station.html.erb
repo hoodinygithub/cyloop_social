@@ -1,4 +1,4 @@
-<div class="medium_thumb">
+<div class="medium_thumb<%= " last_thumb" if mini_station_counter == 2 %>">
   <%= four_thumbs_to(mini_station.station) %>
   <br class="clearer">
   <%= link_to(truncate(mini_station.name, 13), radio_path(:station_id => mini_station.station.id), :title => mini_station.name) %>
