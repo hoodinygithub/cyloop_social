@@ -30,6 +30,36 @@ var restoreInput = function(value, input) {
  }
 }
 
+var swf = function(objname) 
+{
+  if(navigator.appName.indexOf("Microsoft") != -1)
+    return window[objname];
+  else
+    return document[objname];
+}
+
+Base.radio.initialize = function() {
+  var elems  = "div#top_stations .station .avatar a";
+      elems += ", div#top_stations .station .station_info h2 a";
+  $(elems).click(function(e){
+      e.preventDefault();
+      var stationId = $(this).attr("station_id");
+      var station   = $(this).attr("station");
+      $.ajax({
+        type: "GET",
+        url:  "/radio/album_detail",
+        data: {station_id: stationId},
+        success: function(result)
+        {
+          $("div.album_detail").empty();
+          $("div.album_detail").append(result);
+          $("div.album_detail").append("<br class='clearer' />");
+          swf("cyloop_radio").queueStation(stationId, station);
+        }
+      });
+  });
+}
+
 Base.utils.handle_login_required = function(response, url, button_label) {
   if (typeof(response) == 'object') {
     if (typeof(response.status) && response.status == 'redirect') {

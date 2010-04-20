@@ -89,6 +89,7 @@ ActionController::Routing::Routes.draw do |map|
 #  unless RAILS_ENV =~ /production/
   map.with_options(:controller => 'radio') do |url|
     url.radio 'radio', :action => 'index'
+    url.album_detail 'radio/album_detail', :action => 'album_detail'
     url.twitstation 'twitstation', :action => 'twitstation'
     url.search_radio 'radio/search.:format', :action => 'search'
     url.play_station 'radio/play.:format', :action => 'play'

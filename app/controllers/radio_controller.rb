@@ -9,7 +9,7 @@ class RadioController < ApplicationController
     elsif params[:artist_name]
       AbstractStation.find_by_name(params[:artist_name]) rescue nil
     end
-    
+
     if @station_obj
         @station_obj = create_user_station(@station_obj)
         @station_queue = @station_obj.playable.station_queue(:ip_address => remote_ip)
@@ -19,6 +19,15 @@ class RadioController < ApplicationController
     end
     @top_abstract_stations = current_site.top_abstract_stations.limited_to(5)
     @msn_stations = current_site.stations
+  end
+
+  def album_detail
+    if request.xhr?
+      @station_obj = Station.find(params[:station_id]) rescue nil
+      render :partial => @station_obj.playable.class.to_s.underscore
+    else
+      redirect_to radio_path
+    end
   end
 
   def twitstation
