@@ -31,7 +31,7 @@ module ApplicationHelper
   def profile_user?
     profile_account.kind_of? User
   end
-  
+
   def profile_artist?
     profile_account.kind_of? Artist
   end
@@ -61,7 +61,7 @@ module ApplicationHelper
     else
       options[:href] = '#' unless options[:href]
     end
-  
+
     if options[:width]
       span_label = content_tag(:span, button_label, :style => "width: #{options.delete(:width)}")
     else
@@ -83,12 +83,12 @@ module ApplicationHelper
   def green_button(button_label, options = {})
     special_button(:green_button, button_label, options)
   end
-  
+
   def yellow_button(button_label, options = {})
     options.merge!({:onclick => nil})
     special_button(:yellow_button, button_label, options)
   end
-  
+
   def follow_button(attrs = {})
     account = attrs.delete(:account)
 
@@ -105,27 +105,32 @@ module ApplicationHelper
       key          = 'follow'
       button_color = 'blue'
     end
-        
+
     locale_key = "actions.#{key}"
-    
+
     layer_path = send("follow_#{account.class.name.downcase}_registration_layers_path",
-                      :return_to => request.request_uri, 
-                      :account_id => account.id, 
-                      :follow_profile => account.id)  
-    
-    onclick_cb = "Base.community.#{action}('#{account.slug}', this, #{following_page?}, '#{layer_path}')"      
-    
+                      :return_to => request.request_uri,
+                      :account_id => account.id,
+                      :follow_profile => account.id)
+
+    onclick_cb = "Base.community.#{action}('#{account.slug}', this, #{following_page?}, '#{layer_path}')"
+
     attrs.merge!({:onclick => onclick_cb, :class => 'follower_btn'})
     button = send("#{button_color}_button", t(locale_key), attrs)
   end
-  
+
+  def create_radio_button(attrs = {})
+    attrs.merge!({:href => radio_path})
+    button = send("blue_button", t("home.create_radio"), attrs)
+  end
+
   def follow_button2(user, options={})
     is_following    = options.fetch(:is_following, nil)
     skip_auto_width = options.fetch(:skip_auto_width, false)
-    current_station = options.fetch(:current_station, session[:current_station])    
-    
+    current_station = options.fetch(:current_station, session[:current_station])
+
     if logged_in?
-      id = user.kind_of?(Account) ? user.id : user      
+      id = user.kind_of?(Account) ? user.id : user
       if is_following ||= current_user.follows?(id)
         unless is_following == true
           is_following.followee.private_profile??message = t("actions.awaiting_approval"): message = :unfollow
@@ -145,7 +150,7 @@ module ApplicationHelper
           special_followee_update_path(:id => id, :skip_auto_width => 1)
         else
           special_followee_destroy_path(:id => id, :skip_auto_width => 1)
-        end          
+        end
       else
         if method == :put
           my_following_path(id)
@@ -154,22 +159,22 @@ module ApplicationHelper
         end
       end
       follow_button_element = button_to(
-        message, 
-        right_follow_path, 
+        message,
+        right_follow_path,
         {
           :method          => method,
-          :title           => message, 
+          :title           => message,
           :class           => 'follow'
         }
       )
       content_tag(:div, follow_button_element)
     else
       user = Account.find(user) unless user.kind_of?(Account)
-      id   = user.id      
+      id   = user.id
       return_to = request.request_uri
       if return_to =~ /\/radio\/info\/([0-9]+)/
         station   = Artist.find($1).station.station rescue nil
-        
+
         return_to = if station.nil?
           if current_station.nil?
             '/radio'
@@ -179,7 +184,7 @@ module ApplicationHelper
         else
           radio_path(:station_id => station.id)
         end
-      end      
+      end
       layer_path = if user.kind_of?(User)
         follow_user_registration_layers_path(:return_to => return_to, :account_id => id, :follow_profile => id)
       else
@@ -193,7 +198,7 @@ module ApplicationHelper
     links = []
     station_artists = item.includes(limit)
 
-    station_artists.each do |station_artist|      
+    station_artists.each do |station_artist|
       links << link_to(station_artist.artist.name, artist_path(station_artist.artist))
     end
 
@@ -223,12 +228,12 @@ module ApplicationHelper
     html
   end
 
-  def four_thumbs_to(station, options = {})  
+  def four_thumbs_to(station, options = {})
     station      = station.try(:playable)
     station_link = radio_path(:station_id => station.station.id)
-    
+
     station_images_with_links = []
-  
+
     # TODO: Handle this issue with DB showing a default image
     if options[:type].nil?
       station.includes(4).each do |artist|
@@ -254,7 +259,7 @@ module ApplicationHelper
     elsif options[:type] == :big
       station.includes(4).each do |artist|
         station_images_with_links << link_to(image_tag(AvatarsHelper.avatar_path(artist.album, :small), :class => 'avatar_four_thumbs_big'), station_link)
-      end      
+      end
       station_images_with_links << content_tag(:br, "&nbsp;", :class => 'clearer') if options[:clearer]
       html = content_tag(:div, station_images_with_links, :class => "four_thumbs_big #{options[:class]}")
     end
@@ -762,7 +767,7 @@ module ApplicationHelper
     end
     "/images/msn_#{path}_music#{sufix}.png"
   end
-  
+
   def nice_elapsed_time(timestamp)
     time = Time.at(timestamp.to_i)
     distance_of_time_in_words_to_now(time, true)
