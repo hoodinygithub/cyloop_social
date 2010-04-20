@@ -909,7 +909,7 @@ en:
     cyloop_recommends: CYLOOP RECOMMENDS
     recommended_stations: STATIONS RECOMMENDED BY CYLOOP
     recommended_mixes: MIXES RECOMMENDED BY CYLOOP
-    network_update: NETWORK UPDATE
+    network_update: "{{user_name}}'S RECENT ACTIVITY" 
   sessions:
     new:
       sign_in: Log in
@@ -1125,7 +1125,6 @@ en:
       recommended_artists: Recommended Artists
       recommended_stations: STATIONS RECOMMENDED BY CYLOOP
       recommended_mixes: MIXES RECOMMENDED BY CYLOOP
-      network_update: NETWORK UPDATE
     registration:
       discover: Discover
       discover_text: more than {{count}} artists, all free

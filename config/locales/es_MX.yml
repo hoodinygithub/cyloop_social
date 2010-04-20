@@ -1138,7 +1138,7 @@ es_MX:
     latest_stations: RADIOS MAS RECIENTES
     recommended_stations: RADIOS RECOMENDADAS POR CYLOOP
     user_latest_stations: RADIOS MAS RECIENTES
-    network_update: ACTUALIZACION DE RED
+    network_update: "ACTUALIZACION DE RED  {{user_name}}"
     recommended_mixes: MIXES RECOMENDADOS POR CYLOOP
     type_artist_name: Escribe el nombre de un artista
     top_songs: Top Canciones

@@ -1116,7 +1116,7 @@ pt_BR:
     top_radios: "R\xC3\x81DIOS MAIS TOCADAS"
     explaing_what_is_and_why_create_a_new_radio: "Digite o nome do seu artista favorito. Cyloop criar\xC3\xA1 uma radio personalizada com m\xC3\xBAsidas dele."
     latest_stations: "\xC3\x9ALTIMAS ESTA\xC3\x87\xC3\x95ES DE R\xC3\x81DIO"
-    network_update: "Atualiza\xC3\xA7\xC3\xA3o da Rede"
+    network_update: "Atualiza\xC3\xA7\xC3\xA3o da Rede de {{user_name}}"
     type_artist_name: Escreva o nome do artista
     top_songs: Mais Tocadas
     create_your_own_station_now: "Crie sua pr\xC3\xB3pria r\xC3\xA1dio agora!"

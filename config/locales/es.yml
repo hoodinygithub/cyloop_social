@@ -1097,7 +1097,7 @@ es:
     latest_stations: RADIOS MAS RECIENTES
     user_latest_stations: RADIO MAS RECIENTE DE {{user_name}}
     recommended_stations: RADIOS RECOMENDADAS POR CYLOOP
-    network_update: ACTUALIZACION DE RED
+    network_update: "ACTUALIZACION DE RED  {{user_name}}"
     type_artist_name: Escribe el nombre de un artista
     recommended_mixes: MIXES RECOMENDADOS POR CYLOOP
     create_your_own_station_now: "\xC2\xA1Crea tu propia radio ahora!"
