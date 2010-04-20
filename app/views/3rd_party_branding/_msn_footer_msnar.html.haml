@@ -1,17 +1,15 @@
 #msn_footer
   .inner.clearfix
     %ul.left
-      %li= link_to "Privacidad", "http://privacy.microsoft.com/es-xl/default.mspx"
-      %li= link_to "Legal", "http://privacy2.msn.com/tou/es-us/default.aspx"
-      %li= link_to "Publicidad", "http://advertising.msn.com/home/home.asp"
+      %li= link_to "Privacidad", "http://privacy2.msn.com/es-la/default.aspx"
+      %li= link_to "Términos y condiciones", "http://g.msn.com/0TO_/esar"
+      %li= link_to "Publicidad", "http://www.advertising.microsoft.com/latinoamerica"
     %ul.right
-      %li
-        %a{:href => "http://help.msn.com/es_us/frameset.asp?ini=msn_msncomv9.ini",:onclick => "return Msn.Navigation.OpenPopup(event,this,'width=800,height=600,resizeable=no,status=no,titlebar=no,toolbar=no')"}Ayuda
-      %li= link_to "Tus Comentarios", "http://feedback.msn.com/"
+      %li= link_to "Directiva contra correo no deseado", "http://privacy2.msn.com/anti-spam/es-la/default.aspx"
+      %li= link_to "Comentarios", "http://feedback.msn.com/"
+      %li= link_to "Ayuda", "https://support.msn.com/default.aspx?locale=es-xl"
   %ul.copyright_info
     %li.copyright
       &copy; 2010 Microsoft
     %li.logo
       Microsoft
-  = render "shared/msn_code"
-
