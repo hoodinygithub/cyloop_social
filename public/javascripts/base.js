@@ -519,7 +519,6 @@ Base.stations.edit = function(user_station_id, button) {
 
 Base.stations.init_edit_layer = function() {
 
-  save_button = jQuery(Base.layout.blue_button('Done'));
   jQuery("#save_station_name_button").click(function() {
 		
     station_id = $('#layer_station_id').val();
@@ -531,10 +530,10 @@ Base.stations.init_edit_layer = function() {
 
     params = {'_method' : 'put', 'user_station' : {'name': new_station_name} };
     jQuery.post('/my/stations/' + playable_id, params, function(response) {
-			if(parseInt(station_id,10) == parseInt($('#station_id').val(), 10)) {
+			if(parseInt(station_id, 10) == parseInt($('#station_id').val(), 10)) {
 				jQuery('#station_name').html(new_station_name);
 			}
-			jQuery('#my_station_name_' + playable_id).html(new_station_name);
+			jQuery('#my_station_name_' + station_id).html(new_station_name);
 			jQuery(document).trigger('close.facebox');
     });
 
