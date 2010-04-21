@@ -1,7 +1,7 @@
 <div class="top_buttons">
   <div class="left_side">
     <% if logged_in? && current_user && current_user.total_user_stations > 0 %>
-    <%= blue_button(t("possessives.first_person.stations"), :id => 'my_stations_button', :href => "#edit_station_layer") %>
+    <%= blue_button(t("possessives.first_person.stations"), :id => 'my_stations_button') %>
     <% end %>
     <% unless @msn_stations.empty? %>
       <%= blue_button(t("radio.msn_stations"), :id => 'msn_stations_button', :href => "#") %>

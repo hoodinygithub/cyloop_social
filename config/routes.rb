@@ -58,6 +58,8 @@ ActionController::Routing::Routes.draw do |map|
   #map.autocomplete_search '/search/auto/:scope/:q', :controller => 'searches', :action => 'autocomplete'
 
   map.resources :stations, :collection => {:top => :get, :top_station_html => :get}
+  map.delete_station_confirmation '/stations/:id/delete_confirmation', :controller => 'stations', :action => 'delete_confirmation'
+  map.delete_station '/stations/:id/delete', :controller => 'stations', :action => 'delete'
 
   map.resource :activity
   map.resource :artist_recommendations

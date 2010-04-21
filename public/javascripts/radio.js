@@ -187,6 +187,7 @@ function toggleButton(button, show) {
 		$('#' + button + '_list').addClass('hide');      						
 	}
 }
+
 function initTopButtons() {
   $("#my_stations_button").click(function() {
 		value = parseInt($("#my_stations_toggle").get(0).value, 10);
@@ -235,8 +236,8 @@ function initTopButtons() {
 
 
 function load_artist_info(artist_id) {
-  station_id = $('#station_id').val();
-  $('.artist_radio_info').fadeOut("fast", function(){
+	station_id = $('#station_id').val() 
+  $('.artist_radio_info').slideUp(function(){
     if(artist_id){
       $.ajax({
         type: "POST",
@@ -249,7 +250,7 @@ function load_artist_info(artist_id) {
         {
           $('.artist_radio_info').html(response);
 					initRadioTabs();
-          if(response.indexOf("<") > -1) $('.artist_radio_info').fadeIn("fast");
+          if(response.indexOf("<") > -1) $('.artist_radio_info').slideDown();
         }
       });
     }

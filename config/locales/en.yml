@@ -102,11 +102,17 @@ en:
       title: Biography
     recommended_artists:
       title: Recommended Artists
+    my_stations:
+      station_name: Station Name
+      includes: Includes
     edit_station:
-        title: Edit Station
-        new_name: New Name
-        blank_station_name_message: You must enter a name for this station.
-        no_edit_rights: You don't have rights to edit this station.
+      title: Edit Station
+      new_name: New Name
+      blank_station_name_message: You must enter a name for this station.
+      no_edit_rights: You don't have rights to edit this station.
+    delete_station:
+      title: Delete Station
+      confirmation_text: "Are you sure you want to delete {{station_name}}?"
   actions:
     awaiting_approval: Awaiting Approval
     play: Play

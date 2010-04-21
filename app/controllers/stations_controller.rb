@@ -1,5 +1,5 @@
 class StationsController < ApplicationController
-  before_filter :login_required, :only => [:edit]
+  before_filter :login_required, :only => [:edit, :delete]
   # TODO: Let's keep this as a reminder of the refactoring we *must* do
   def index
     @stations = AbstractStation.search(params[:q], :per_page => params[:limit] || 15, :page => 1)
@@ -19,6 +19,29 @@ class StationsController < ApplicationController
     end
   end
 
+  def delete
+    @station = Station.find(params[:id]) rescue nil
+    if @station and @station.playable.owner_is?(current_user)
+      @station.playable.set_deleted
+      render :text => 'destroyed'
+    else
+      render :partial => 'no_edit_rights'
+    end
+  end
+
+  def delete_confirmation
+    @station = Station.find(params[:id]) rescue nil    
+    if @station and @station.playable.owner_is?(current_user)
+      respond_to do |format|
+        format.html do
+          render :layout => false
+        end
+      end
+    else
+      render :partial => 'no_edit_rights'
+    end
+  end
+  
   def top
     limit = params[:limit].to_i == 0 ? 4 : params[:limit].to_i
     @stations = current_site.summary_top_stations.limited_to( limit ).map { |t| t.station }.compact
