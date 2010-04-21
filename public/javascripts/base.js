@@ -704,7 +704,7 @@ Base.network.__update_page_user_page = function(response) {
 };
 
 
-Base.network.load_latest = function(params) {
+Base.network.load_latest = function(params, profile_owner) {
   jQuery(document).ready(function() {
     var user_page = jQuery('#user_recent_activities').length > 0;
 
@@ -713,6 +713,8 @@ Base.network.load_latest = function(params) {
     if (user_page) {
       params.public = true;
     }
+    
+    params.profile_owner = profile_owner;
 
     jQuery.post('/activity/latest', params, function (response) {
       if (user_page) {

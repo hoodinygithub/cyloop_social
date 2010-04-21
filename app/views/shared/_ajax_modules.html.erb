@@ -3,6 +3,7 @@
   <% if profile_artist? %>
     Base.network.load_latest_tweet(<%= params.to_json %>);
   <% end %>
-  Base.network.load_latest(<%= params.to_json %>);
+
+  Base.network.load_latest(<%= params.to_json %>, <%= profile_owner? ? 1 : 0 %>);
 <% end %>
 

@@ -95,15 +95,15 @@ class ActivitiesController < ApplicationController
       @account = get_account_by_slug(params[:slug])
     end
 
-    if params[:controller] == 'accounts' and params[:action] == 'show'
-      activity_group = :just_me
+    if params[:profile_owner] and params[:profile_owner].to_i == 0
+      group = :just_me
     else
-      activity_group = :all
+      group = :all
     end
     
-    collection      = @account.activity_feed(:group => activity_group)
+    collection      = @account.activity_feed(:group => group)
     @collection     = collection.sort_by {|a| a['timestamp'].to_i}.reverse
-
+    
     if collection.size - ACTIVITIES_MAX > 0
       @has_more = true
     end
