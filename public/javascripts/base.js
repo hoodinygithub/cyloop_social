@@ -673,7 +673,7 @@ Base.network.count_chars = function() {
 Base.network.__update_page_owner_page = function(response, options) {
   $show_more_button = jQuery('#show_more_comments');
   $comment_list        = jQuery('#network_comment_list');
-  $share_button = jQuery('a.compartir_button');
+  $share_button = jQuery('a.compartir_button');  
 
   if (typeof(options) == 'object' && typeof(options.replace) != 'undefined' && options.replace) {
     $comment_list.hide().html(response).fadeIn();
@@ -684,6 +684,8 @@ Base.network.__update_page_owner_page = function(response, options) {
   if (response.length > 0) {
     $show_more_button.fadeIn();
   }
+  
+  $share_button.fadeIn();
 };
 
 Base.network.__update_page_user_page = function(response) {
@@ -751,8 +753,9 @@ Base.network.load_latest_tweet = function(params) {
 
 Base.network.push_update = function() {
   $network_update_text = jQuery('#network_update_text');
-  $show_more_button = jQuery('#show_more_comments');
+  $show_more_button    = jQuery('#show_more_comments');
   $comment_field       = jQuery("#network_comment");
+  $chars_counter       = jQuery(".chars_counter");
   $comment_field.css({'border':'10px solid #EDEDED'});
 
   var comment = jQuery.trim($comment_field.val());
@@ -765,6 +768,7 @@ Base.network.push_update = function() {
       $comment_field.val("");
       jQuery(".chars_counter").html(140);
       Base.network.__update_page_owner_page(response, {'replace':true});
+      $chars_counter.css({'color':'#cccccc'});
     });
   } else {
     $comment_field.css({'border':'10px solid red'});

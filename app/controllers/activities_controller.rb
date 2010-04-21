@@ -9,7 +9,7 @@ class ActivitiesController < ApplicationController
 
   ACTIVITIES_MAX           = 5
   ACTIVITIES_DASHBOARD_MAX = 5
-  ACTIVITY_SHOW_MORE_SIZE  = 3
+  ACTIVITY_SHOW_MORE_SIZE  = 5
 
   def index
     @collection = @collection[0..ACTIVITIES_MAX-1]
@@ -67,7 +67,7 @@ class ActivitiesController < ApplicationController
   def latest
     if params[:after]
       last_element_index = @collection.collect {|a| a['timestamp']}.index(params[:after])
-      @collection        = @collection.slice(0, last_element_index + ACTIVITY_SHOW_MORE_SIZE)
+      @collection        = @collection.slice(0, last_element_index + ACTIVITY_SHOW_MORE_SIZE + 1)
     else
       @collection = @collection[0..ACTIVITIES_DASHBOARD_MAX-1]
     end
@@ -109,7 +109,8 @@ class ActivitiesController < ApplicationController
     end
 
     @collection.each do |a|
-      a['account']  = profile_account
+      a['account']  =  User.find(a['account_id'])
+
       if a['type'] == 'station'
         station      = Station.find(a['item_id']).playable
         a['station'] = station
