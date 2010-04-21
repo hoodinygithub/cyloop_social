@@ -8,7 +8,7 @@
     </big>
     <br/>
     <span class="grey">
-      <%= t("activerecord.attributes.station.updated_at", :when => l(user_station.updated_at.to_date)) %>
+      <%= t("basics.last_modified") %>: <%= l(user_station.updated_at.to_date) %>
     </span>
     <br/>
     <%= station_contains(user_station) %>
