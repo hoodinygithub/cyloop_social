@@ -54,24 +54,25 @@
         %li= link_to "Message boards", "http://entertainment.ca.msn.com/messageboards/"
         %li.last= link_to "Music Store", "http://musicstore.ca.msn.com/"
          
-#msn_nav_extension               
-  .ca_msn_nav_language
-    =link_to "Français", "http://musique.ca.msn.cyloop.com"
-  %ul
-    - if params[:controller] != "radio"
-      %li
-        %strong= link_to "Music Home", "#"
-    - else
-      %li= link_to "Music Home", "/"  
-    %li= link_to "Features", "http://entertainment.ca.msn.com/music/features/"
-    %li= link_to "Reviews", "http://entertainment.ca.msn.com/music/reviews/"
-    - if params[:controller] == "radio"
-      %li
-        %strong= link_to "Cyloop Radio", "#"
-    - else
-      %li= link_to "Cyloop Radio", "/radio"
-    %li= link_to "Photos", "http://entertainment.ca.msn.com/music/photos/"
-    %li= link_to "Video", "http://entertainment.ca.msn.com/music/video/"
-    %li= link_to "Blog", "http://blogs.music.msn.ca"
-    %li= link_to "Music Store", "http://musicstore.ca.msn.com/"
+#msn_nav_extension
+  #msn_second_nav_bar
+    .ca_msn_nav_language
+      =link_to "Français", "http://musique.ca.msn.cyloop.com"
+    %ul
+      - if params[:controller] != "radio"
+        %li
+          %strong= link_to "Music Home", "#"
+      - else
+        %li= link_to "Music Home", "/"  
+      %li= link_to "Features", "http://entertainment.ca.msn.com/music/features/"
+      %li= link_to "Reviews", "http://entertainment.ca.msn.com/music/reviews/"
+      - if params[:controller] == "radio"
+        %li
+          %strong= link_to "Cyloop Radio", "#"
+      - else
+        %li= link_to "Cyloop Radio", "/radio"
+      %li= link_to "Photos", "http://entertainment.ca.msn.com/music/photos/"
+      %li= link_to "Video", "http://entertainment.ca.msn.com/music/video/"
+      %li= link_to "Blog", "http://blogs.music.msn.ca"
+      %li= link_to "Music Store", "http://musicstore.ca.msn.com/"
 

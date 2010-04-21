@@ -369,7 +369,17 @@ img.avatar.album {
 #msn_header {
   background: url("/images/msn_header_bg.gif") repeat-x scroll 0 bottom #333333;
 }
-
+#msn_second_nav_bar{
+  width: 950px;
+  margin: 0 auto;
+}
+.ca_msn_nav_language{
+  float: right;
+  margin-right: 20px;
+}
+#msn_nav_extension a{
+  color: #025D8C
+}
 .artist_box img.artist_icon  {
   width: 25px;
   height: 25px;
@@ -468,12 +478,9 @@ img.artist_icon_box.tiny {
 
 
 .chars_counter {
-  margin: 0px 10px 0px 0px;
-  text-align: right;
   float: right;
   color: #cccccc;
-  font-size: 1.5em;
-  width: 20px;
+  font-size: 1.5em
 }
 
 .grey.small {
@@ -487,10 +494,8 @@ img.artist_icon_box.tiny {
 
 
 .comments_list .follower_text {
-  width: 350px;
   margin: 0px 0px 0px 10px;
   float: left;
-  word-wrap: break-word;
 }
 
 .medium_thumb a {

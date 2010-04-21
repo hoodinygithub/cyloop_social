@@ -47,3 +47,7 @@ label.label_holder {
 .four_thumbs_big {
   overflow: hidden;
 }
+#msn_second_nav_bar ul{
+  margin: 0;
+  width: 860px !important;
+}
