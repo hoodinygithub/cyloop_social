@@ -16,7 +16,6 @@ module DashboardsHelper
         :stations => user_stations_path,
         :settings => nil,
         :activities => activities_path,
-        :albums =>  artist_albums_path,
         :followers  => followers_path,
         :following  => following_index_path
         }
@@ -25,7 +24,6 @@ module DashboardsHelper
     items = if profile_artist?
       [{:menu => :home,          :label => "#{t('profile.navigation.home')}",             :url => links[:home]      },
        {:menu => :stations,      :label => "#{t('profile.navigation.stations')}",         :url => links[:stations]  },
-       {:menu => :albums,        :label => "#{t('profile.navigation.albums')}",           :url => links[:albums]},
        {:menu => :activity,      :label => "#{t('profile.navigation.activity')}",         :url => links[:activities]},
        {:menu => :followers,     :label => "#{t('profile.navigation.followers')}",        :url => links[:followers] }]
     else
