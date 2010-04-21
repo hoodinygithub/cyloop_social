@@ -367,7 +367,7 @@ img.avatar.album {
 /* End - Avatar related style */
 
 #msn_header {
-  background: #333333;
+  background: url("/images/msn_header_bg.gif") repeat-x scroll 0 bottom #333333;
 }
 
 .artist_box img.artist_icon  {
