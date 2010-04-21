@@ -12,9 +12,10 @@
     <% unless profile_owner? %>
       <%=  render :partial => 'dashboards/user_latest_stations', :locals => { :max_stations => profile_artist? ? 3 : 6 } %>
       <br /><br />
-      <%=  render :partial => 'dashboards/artist_latest_albums' if profile_artist? %>
+      <%# phase 2%>
+      <%=  render :partial => 'dashboards/artist_latest_albums' if profile_artist? && false  %>
     <% end %>
-    
+
     <%= render 'dashboards/comment_list', :with_title => !profile_owner? %>
   </div><!--/end center_column -->
 
@@ -22,3 +23,4 @@
 
   <div class="clearer"></div>
 </div><!--/end main_content -->
+
