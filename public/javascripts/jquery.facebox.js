@@ -220,6 +220,16 @@
 
     return this.click(clickHandler)
   }
+  
+  $.fn.simple_popup = function(attributes) {
+    $(this).attr('template', 'simple_popup');
+    $(this).facebox(attributes);
+  }
+  
+  $.fn.popup = function(attributes) {
+    $(this).attr('template', 'popup');
+    $(this).facebox(attributes);
+  }
 
   /*
    * Private methods
@@ -363,15 +373,5 @@
       $('#facebox .loading').remove()
     })
   })
-
-  $.fn.simple_popup = function(attributes) {
-    $(this).attr('template', 'simple_popup');
-    this.facebox(attributes);
-  }
-
-  $.fn.popup = function(attributes) {
-    $(this).attr('template', 'popup');
-    this.facebox(attributes);
-  }
 
 })(jQuery);

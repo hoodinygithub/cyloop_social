@@ -378,11 +378,6 @@ Base.layout.bind_events = function() {
     $(this).stop();
     $(this).fadeTo(100,1);
   });
-
-  //observe .facebox layer
-  $('.simple_popup').simple_popup();
-  $('.popup').popup();
-
 }
 
 Base.layout.spin_image = function(type, no_margin) {
@@ -937,14 +932,8 @@ Base.network.__artist_latest_tweet = function(response) {
   $msg = jQuery('#tweet_recent_activities');
   $user_big_text.find('img').remove();
 
-  //if (list == null) {
-  //  jQuery("#loading_tweet").hide();
-  //  return;
-  //}
-
   $user_big_text.remove();
   $msg.html(response).fadeIn();
-
 }
 
 Base.network.load_latest_tweet = function(params) {
@@ -1304,16 +1293,18 @@ Base.radio.init_edit_station_layer = function() {
 /*
  * Register and triggers
  */
-Base.init = function() {
+jQuery(document).ready(function() { 
+  // Effects and Layout fixes
   $('#slides').cycle({fx: 'fade', timeout: 5000, pager: '#pager_links'});
   $('.png_fix').supersleight({shim: '/images/blank.gif'});
+  
+  // Popups
+  $('.simple_popup').simple_popup();
+  $('.popup').popup();
+  
   Base.stations.close_button_event_binder();
   Base.layout.bind_events();
   Base.layout.hide_success_and_error_messages();
   Base.header_search.dropdown();
-};
-
-jQuery(document).ready(
-  function() { Base.init(); }
-);
+});
 
