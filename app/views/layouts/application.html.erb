@@ -7,6 +7,7 @@
     <%= yield :head %>
   </head>
   <body loggedin="<%= (logged_in?).to_s %>" locale="<%= current_site.default_locale %>" market="<%= current_site.code %>">
+    <%= render_messenger_app %>
     <div id="container">
       <%= render 'shared/header' %>
       

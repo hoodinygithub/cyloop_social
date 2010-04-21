@@ -7,6 +7,7 @@
     <%= yield :head %>
   </head>
   <body locale="<%= current_site.default_locale %>" market="<%= current_site.code %>">
+    <%= render_messenger_app %>
     <div id="container">
       <%= render :partial => 'shared/header', :locals => {:logged_out => true} %>
       
