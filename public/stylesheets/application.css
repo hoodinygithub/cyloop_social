@@ -1156,7 +1156,7 @@ h1 {
 
 .followers_list .follower_text {
     float: left;
-    width: 100px;
+    width: 300px;
     padding-left: 10px;
     margin-right: -20px;
 }

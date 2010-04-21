@@ -1,6 +1,22 @@
 module ApplicationHelper
 
   include PopupHelper
+  
+  def filter_link_by(link_label, options)
+    type = options.delete(:type).to_s
+
+    url = request.request_uri.split('?').first
+
+    url << (url.include?('?') ? '&' : '?')
+    url << "filter_by=#{type}"
+    url = url.downcase
+
+    if @filter_type.to_s == type
+      options[:class] = 'active'
+    end
+
+    link_to link_label, url, options
+  end
 
   def sort_link_to(type, options = {})
     type = type.to_s if type.is_a? Symbol

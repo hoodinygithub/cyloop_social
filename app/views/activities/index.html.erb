@@ -1,12 +1,19 @@
+<% if @filter_type %>
+  <% content_for :javascript do %>
+    Base.network.FILTER_BY = "<%= @filter_type.to_s %>";
+  <% end %>
+<% end %>
+
 <%= render 'shared/ajax_modules' %>
+
 <% content_for :title do %>
   ACTIVITY
 <% end %>
 
 <% content_for :sorting do %>
-  <%= link_to("#{profile_account.name} + FOLLOWING", '') %> /
-  <%= link_to("#{profile_account.name}", '', :class => '') %> /
-  <%= link_to("JUST FOLLOWING", '', :class => 'active') %>
+  <%= filter_link_by( t('activity.user_following', :user => profile_account.slug), :type => :all ) %> /
+  <%= filter_link_by( profile_account.slug, :type => :me ) %> /
+  <%= filter_link_by( t('activity.just_following', :user => profile_account.slug), :type => :following ) %> 
 <% end %>
 
 <%= render 'shared/internal_content' %>

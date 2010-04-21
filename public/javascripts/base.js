@@ -650,7 +650,13 @@ Base.network.show_more = function(button) {
 
   $last_li  = $list.find('li:last');
   timestamp = $last_li.attr('timestamp');
-  jQuery.post("/activity/latest", {'after':timestamp, 'slug':Base.account.slug}, function (response) {
+  
+  var params = {'after':timestamp, 'slug':Base.account.slug};
+  if (typeof(Base.network.FILTER_BY) != 'undefined') {
+    params.filter_by = Base.network.FILTER_BY;
+  }
+  
+  jQuery.post("/activity/latest", params, function (response) {
     $list.html(response).fadeIn();
     $span_label.html(old_button_label);
   });

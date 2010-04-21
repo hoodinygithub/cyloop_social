@@ -7,7 +7,7 @@ class ActivitiesController < ApplicationController
   before_filter :login_required, :only => [:update_status]
   before_filter :load_user_activities, :only => [:index, :latest]
 
-  ACTIVITIES_MAX           = 5
+  ACTIVITIES_MAX           = 15
   ACTIVITIES_DASHBOARD_MAX = 5
   ACTIVITY_SHOW_MORE_SIZE  = 5
 
@@ -95,10 +95,17 @@ class ActivitiesController < ApplicationController
       @account = get_account_by_slug(params[:slug])
     end
 
+    group = :all
+    
     if params[:profile_owner] and params[:profile_owner].to_i == 0
       group = :just_me
-    else
-      group = :all
+    end
+    
+    if params[:filter_by]
+      @filter_type = params[:filter_by]
+      group        = :all            if @filter_type == 'all'
+      group        = :just_me        if @filter_type == 'me'
+      group        = :just_following if @filter_type == 'following'
     end
     
     collection      = @account.activity_feed(:group => group)
