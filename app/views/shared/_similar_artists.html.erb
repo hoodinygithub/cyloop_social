@@ -14,7 +14,7 @@
           <br class="clearer" />
          <% end %>
           <div class="small_thumb<%= " last_thumb" if index == 7 || index == 3 %>">
-            <%= link_to avatar_for(artist, :tiny, :class => "spaced_img", :disable_default_css => true), artist %>
+            <%= link_to avatar_for(artist, :tiny, :class => "spaced_img tiny", :disable_default_css => true), artist %>
             <%= link_to artist.name, artist %>
           </div>
         <% end %>

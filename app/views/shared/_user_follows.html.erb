@@ -10,7 +10,7 @@
     <% followings = profile_account.followees.all(:limit => 8) %>
     <% followings.each_with_index do |follow, index| %>
       <div class="small_thumb<%= " last_thumb" if index == 3 or index == 7 %>">
-        <%= link_to avatar_for(follow, :tiny, :class => "spaced_img", :disable_default_css => true, :width => "50px", :height => "50px"), follow %>
+        <%= link_to avatar_for(follow, :tiny, :class => "spaced_img tiny", :disable_default_css => true, :width => "50px", :height => "50px"), follow %>
         <%= link_to truncate(follow.name,:length => 18), follow %>
       </div>
       <% if index == 3 %>
