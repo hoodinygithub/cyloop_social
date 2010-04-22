@@ -15,7 +15,7 @@ class ActivitiesController < ApplicationController
     @collection = @collection[0..ACTIVITIES_MAX-1]
     @dashboard_menu = :activity
     if request.xhr?
-      return render :partial => 'shared/collection_to_li'
+      render :partial => 'shared/collection_to_li'
     end
   end
 
@@ -73,16 +73,16 @@ class ActivitiesController < ApplicationController
     end
 
     if params[:public]
-      return render :partial => 'shared/public_user_activity_content'
+      render :partial => 'shared/public_user_activity_content'
     else
-      return render :partial => 'shared/collection_to_li'
+      render :partial => 'shared/collection_to_li'
     end
   end
 
   def latest_tweet
     account = get_account_by_slug(params[:slug])
     @collection = account.transformed_activity_feed.first
-    return render :partial => 'shared/tweet_msg', :locals => {:slug => params[:slug]}
+    render :partial => 'shared/tweet_msg', :locals => {:slug => params[:slug]}
   end
 
   private
@@ -134,7 +134,6 @@ class ActivitiesController < ApplicationController
     @before_timestamp = params[:bts]
     @after_timestamp  = params[:ats]
     @just_update_qty  = (params[:juq] == "true")
-    return
   end
 
   def activity_group
