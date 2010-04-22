@@ -30,10 +30,118 @@ var restoreInput = function(value, input) {
  }
 }
 
+/*
+ * Simple validation utility.  I want to refactor this
+ */
+var validateSubmission = function(form, elem)
+{
+  var errors = [];
+  var validate;
+  var element_value;
+
+  for(var x = 0; x < elem.length; x++)
+  {
+    for(var i in elem[x])
+    {
+      validate = elem[x][i];
+      element = form.find('#' + i);
+      element_value = form.find('#' + i).attr('value');
+
+      if(validate == 'required')
+      {
+        if(element_value == '')
+        {
+          errors.push(error_codes[i + '_blank']);
+          element.parent().attr("class", "red_round_box");
+        }
+        else
+        {
+          element.parent().attr("class", "grey_round_box");
+        }
+      }
+
+      if(validate == 'required_email')
+      {
+        if(element_value == '')
+        {
+          errors.push(error_codes[i + '_blank']);
+          element.parent().attr("class", "red_round_box");
+        }
+        else if(element_value != '')
+        {
+          element.parent().attr("class", "grey_round_box");
+          var reg = /^([A-Za-z0-9_\-\.\+])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+          if(!reg.test(element_value))
+          {
+            errors.push(error_codes[i + '_invalid']);
+            element.parent().attr("class", "red_round_box");
+          }
+        }
+      }
+
+      if(validate == 'required_multiemail')
+      {
+        if(element_value == '')
+        {
+          errors.push(error_codes[i + '_blank']);
+          element.parent().attr("class", "red_round_box");
+        }
+        else if(element_value != '')
+        {
+          element.parent().attr("class", "grey_round_box");
+          var reg = /^([A-Za-z0-9_\-\.\+])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+          var multi = element_value.split(',');
+          for(var j = 0; j < multi.length; j++)
+          {
+            if(!reg.test(multi[j].replace(/^\s*|\s*$/g,'')))
+            {
+              errors.push(error_codes[i + '_invalid']);
+              element.parent().attr("class", "red_round_box");
+              break;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  if(errors.length > 0)
+  {
+    return false;
+  }
+  else
+  {
+    return true;
+  }
+}
+
 $(document).ready(function() {
   $("#facebox a.close_after_click").live("click", function() {
       $(document).trigger("close.facebox");
       return true;
+  });
+
+  /*
+   * Capture share station submission
+   */
+  $("#facebox .share_station form").live("submit", function(e) {
+      e.preventDefault();
+      var validations = [
+                          {user_name:'required'},
+                          {user_email:'required_email'},
+                          {friend_email:'required_multiemail'}
+                        ];
+
+      if(validateSubmission($(this), validations))
+      {
+        $.ajax({
+          url: $(this).attr('action'),
+          type: $(this).attr('method'),
+          data: $(this).serialize(),
+          success: function(r) {$.facebox( r );},
+          error: function(r)   {$('#facebox. .share_station .content').html(r.responseText);}
+        });
+      }
   });
 });
 
@@ -48,6 +156,11 @@ var swf = function(objname)
 Base.radio.initialize = function() {
   var elems  = "div#top_stations .station .avatar a";
       elems += ", div#top_stations .station .station_info h2 a";
+
+
+  /*
+   * Grab required data for ajax generated stations
+   */
   $(elems).click(function(e){
       e.preventDefault();
       var stationId = $(this).attr("station_id");
@@ -65,6 +178,7 @@ Base.radio.initialize = function() {
         }
       });
   });
+
 }
 
 Base.utils.handle_login_required = function(response, url, button_label) {
@@ -515,6 +629,17 @@ Base.stations.edit = function(user_station_id, button) {
   $buttons.append(cancel_button);
 
   $station_name_container.html(station_name_input);
+};
+
+Base.stations.share = function(station_id) {
+  var url = "/share/station/" + station_id;
+  $.popup(function()
+  {
+    $.get(url, function(response)
+    {
+      $.popup(response);
+    });
+  });
 };
 
 Base.stations.init_edit_layer = function() {

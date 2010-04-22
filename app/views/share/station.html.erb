@@ -1,0 +1,60 @@
+<script>
+  var error_codes = {
+                      user_name_blank:"#{t('share.errors.message.user_name_blank')} \n",
+                      user_email_blank:"#{t('share.errors.message.user_email_blank')}",
+                      user_email_invalid:"#{t('share.errors.message.user_email_invalid')}",
+                      friend_email_blank:"#{t('share.errors.message.friend_email_blank')}",
+                      friend_email_invalid:"#{t('share.errors.message.friend_email_invalid')}"
+                    };
+</script>
+<div class="share_station">
+<% form_tag share_with_friend_path(:media => "station"), :method => :post, :class => "account_settings" do -%>
+
+  <%= hidden_field_tag "item_id", @item.id %>
+  <% if logged_in? %>
+    <%= hidden_field_tag "user_name", current_user.name %>
+    <%= hidden_field_tag "user_email", current_user.email %>
+  <% end %>
+
+  <div class="title"><%= t('actions.share_with_a_friend') %></div>
+  <div class="form_row">
+    <%= four_thumbs_to(@item, :class => "left_side", :clearer => true, :type => :medium) %>
+    <div class="popup_mix_text">
+      <big><a href="#"><%= @item.playable.name %></a></big><br/>
+      <%= t("basics.created_by") %>: <a href="#"><%= @item.playable.owner.name %></a>
+    </div>
+
+    <div class="clearer"></div>
+    <br/>
+  </div><!--/end form_row -->
+  <div class="form_row">
+    <label><b><%= t("share.friend_email") %></b><small class="grey"><%= t("share.multiple_emails") %></small></label>
+    <div class="grey_round_box">
+      <%= text_field_tag "friend_email", nil, :class => "input full_width" %>
+    </div>
+
+    <% unless logged_in? %>
+      <label><b><%= t("share.email") %></b>
+      <div class="grey_round_box">
+        <%= text_field_tag "user_email", nil, :class => "input full_width" %>
+      </div>
+
+      <label><b><%= t("share.name") %></b>
+      <div class="grey_round_box">
+        <%= text_field_tag "user_name", nil, :class => "input full_width" %>
+      </div>
+    <% end %>
+
+    <label><b><%= t("share.message") %></b></label>
+    <div class="grey_round_box">
+      <%= text_area_tag "message", nil, :rows => "3", :cols => "20", :class => "input full_width" %>
+    </div>
+  </div><!--/end form_row -->
+  <br/>
+
+  <div class="align_right">
+    <big><a href="#" class="black valign_middle close">CANCEL</a></big>
+      <a href="#" class="blue_button valign_middle" onclick="$('.share_station form').submit();"><span><span>SAVE</span></span></a>
+  </div>
+<% end -%>
+</div>

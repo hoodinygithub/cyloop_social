@@ -37,6 +37,14 @@ class UserNotification < BaseMailer
     content_type  "text/html"
   end
 
+  def share_station(options)
+    subject options[:subject_line]
+    bcc options[:mailto]
+    from ActionMailer::Base.smtp_settings[:default_from]
+    body options
+    content_type  "text/html"
+  end
+
   def feedback_message(options)
     reply_to options[:address]
     if options[:cancellation]
@@ -105,6 +113,19 @@ class UserNotification < BaseMailer
 
       I18n.with_locale(options[:locale]) do
         UserNotification.deliver_share_song(options)
+      end
+    end
+
+    def send_share_station( options )
+      begin
+        return [true, nil] if options[:mailto].blank?
+        TMail::Address.parse(options[:mailto])
+      rescue TMail::SyntaxError
+        return [true, nil]
+      end
+
+      I18n.with_locale(options[:locale]) do
+        UserNotification.deliver_share_station(options)
       end
     end
 

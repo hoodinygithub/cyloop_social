@@ -1,3 +1,5 @@
+/* @override http://localhost:3000/stylesheets/application.css */
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -2872,8 +2874,7 @@ h2 {
     float: left;
     line-height: 20px;
     font-size: 13px;
-		margin-left:15px;
-		margin-top:-43px;
+    margin-left:15px;
 }
 
 .popup_mix_text big {

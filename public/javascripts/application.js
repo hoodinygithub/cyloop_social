@@ -77,6 +77,11 @@ jQuery(document).ready(function($){
     return true;
   } );
 
+  $("#facebox .share_station form").livequery("submit", function(e) {
+      e.preventDefault();
+      alert("captured");
+  });
+
   $('#facebox .share_song form').livequery('submit', function(e) {
       e.preventDefault();
       var validations = [

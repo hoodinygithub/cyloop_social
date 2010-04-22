@@ -40,35 +40,72 @@ class ShareController < ApplicationController
     recipients.map { |i| i.strip! }
     recipients.reject! { |i| i.blank? }
     unless params[:item_id].blank?
-      @song = Song.find( params[:item_id] )
-      params[:share_link] ||= "http://www.cyloop.com#{queue_song_path(:slug => @song.artist.slug, :id => @song.album, :song_id => @song)}"
-      params[:item_title] ||= @song.title
-      params[:item_author] ||= @song.artist.name
+      if params[:media] == "song"
+        @song = Song.find( params[:item_id] )
+        share_link = "http://www.cyloop.com#{queue_song_path(:slug => @song.artist.slug, :id => @song.album, :song_id => @song)}"
+        params[:item_title] ||= @song.title
+        params[:item_author] ||= @song.artist.name
+      elsif params[:media] == "station"
+        station = Station.find(params[:item_id])
+        share_link = "http://#{global_url}/radio?station_id=#{params[:item_id]}"
+        station_author = station.playable.owner.name
+        station_name = station.playable.name
+        station_images = []
+        station_includes = []
+        station.playable.includes(4).each do |artist|
+          station_images << AvatarsHelper.avatar_path(artist.album, :small)
+          station_includes << {:artist => artist.artist.name, :slug => artist.artist.slug}
+        end
+      end
     end
 
-    subject_line = t('share.song.subject', :user => sender_name)
+    if params[:media] == "song"
+      subject_line = t('share.song.subject', :user => sender_name)
+    elsif params[:media] == "station"
+      subject_line = t('share.station.subject', :user => sender_name)
+    end
 
     recipients.each do |email|
-      UserNotification.send_share_song(
-        :locale => current_site.default_locale,
-        :mailto => email,
-        :subject_line => subject_line,
-        :sender => user_email,
-        :sender_name => sender_name,
-        :sender_avatar => sender_avatar,
-        :sender_slug => sender_slug,
-        :share_link => params[:share_link],
-        :item_author => params[:item_author],
-        :item_title => params[:item_title],
-        :message => params[:message],
-        :global_url => global_url)
+      if params[:media] == "song"
+        UserNotification.send_share_song(
+          :locale => current_site.default_locale,
+          :mailto => email,
+          :subject_line => subject_line,
+          :sender => user_email,
+          :sender_name => sender_name,
+          :sender_avatar => sender_avatar,
+          :sender_slug => sender_slug,
+          :share_link => params[:share_link],
+          :item_author => params[:item_author],
+          :item_title => params[:item_title],
+          :message => params[:message],
+          :global_url => global_url)
+      elsif params[:media] == "station"
+        UserNotification.send_share_station(
+          :locale => current_site.default_locale,
+          :mailto => email,
+          :subject_line => subject_line,
+          :sender => user_email,
+          :sender_name => sender_name,
+          :sender_avatar => sender_avatar,
+          :sender_slug => sender_slug,
+          :share_link => share_link,
+          :item_author => station_author,
+          :item_title => station_name,
+          :item_includes => station_includes,
+          :item_images => station_images,
+          :message => params[:message],
+          :global_url => global_url)
+      end
     end
 
-    SharedSong.create(
-      :account_id => account_id,
-      :sender_email => user_email,
-      :recipient_email => params[:friend_email],
-      :song_id => params[:item_id])
+    if params[:media] == "song"
+      SharedSong.create(
+        :account_id => account_id,
+        :sender_email => user_email,
+        :recipient_email => params[:friend_email],
+        :song_id => params[:item_id])
+    end
 
     respond_to do |format|
       format.html do
