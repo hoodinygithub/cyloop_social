@@ -1,9 +1,3 @@
-<script type='text/javascript'>
-  var blank_station_alert = "<%= t('modules.edit_station.blank_station_name_message') %>";
-  $(document).ready(function() {
-    Base.stations.init_edit_layer();
-  });
-</script>
 <form action="" method="post" class="account_settings">
     <%= hidden_field_tag :playable_id, @station.playable.id %>
     <%= hidden_field_tag :layer_station_id, @station.id %>
@@ -37,6 +31,6 @@
     <div class="align_right">
         <big><a href="#" class="black valign_middle popup_close_action" onclick="$(document).trigger('close.facebox');return false;"><%= t('actions.cancel').upcase %></a></big>
 
-        <a href="#" id="save_station_name_button" class="blue_button valign_middle"><span><span><%= t('actions.save').upcase %></span></span></a>
+        <a href="#" onclick="Base.stations.edit_from_layer(); return false;"id="save_station_name_button" class="blue_button valign_middle"><span><span><%= t('actions.save').upcase %></span></span></a>
     </div>
 </form>

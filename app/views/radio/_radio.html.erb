@@ -1,8 +1,9 @@
 <script type="text/javascript">
-   $(document).ready(function() {
-     Base.radio.initialize();
-     initTopButtons();
-    });
+  var blank_station_alert = "<%= t('modules.edit_station.blank_station_name_message') %>";
+  $(document).ready(function() {
+    Base.radio.initialize();
+    initTopButtons();
+  });
 </script>
 <div class="two_columns">
   <div class="mix_box grey_accents">
@@ -26,7 +27,7 @@
     <div id="radio_player">
       <script type="text/javascript" charset="utf-8">
         var flashvars = "urlContext=/&market=<%= current_site.code %>&playerId=radio_<%= current_site.code %>";
-        flashvars += "&stationId=<%=@station_queue[:id]%>&station=<%=@station_queue[:queue]%>";
+        flashvars += "&stationId=<%= @station_obj.id %>&station=<%= @station_queue %>";
         AC_FL_RunContent(
           "src", "/flash/cyloop_radio",
           "width", "628",
