@@ -44,7 +44,7 @@
               <td width="439">
                 <strong><font face="Arial, Helvetica, sans-serif" color="#00A5F8" size="+2"><%= @item_title %></font></strong>
                 <br>
-                <font face="Arial, Helvetica, sans-serif" color="#025D8C" size="3"><%= t('basics.by') %>: </font><font color="#00A5F8"><%= @item_author %></font>
+                <font face="Arial, Helvetica, sans-serif" color="#025D8C" size="3"><%= t('basics.created_by') %>: </font><font color="#00A5F8"><%= @item_author %></font>
                 <br/>
                 <font face="Arial, Helvetica, sans-serif" color="#666666" size="3"><%= t("basics.contains") %>: </font><font color="#00A5F8"><%= @item_includes.map { |i| "<a href='http://#{@global_url}/#{i[:slug]}'><font color='#00A5F8'>#{i[:artist]}</font></a>" }.join(", ") %></font></td>
 
