@@ -139,8 +139,9 @@ class RadioController < ApplicationController
       end
 
     else
-
-      not_found_message = t('stations.could_not_find_artist', :artist => params[:station_name])
+      params[:search_station_name] = params[:station_name] if params.has_key?(:station_name) #this is for backwards compatibility
+      
+      not_found_message = t('stations.could_not_find_artist', :artist => params[:search_station_name])
       respond_to do |format|
         format.html do
           flash[:error] = not_found_message
