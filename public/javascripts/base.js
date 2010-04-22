@@ -206,10 +206,6 @@ Base.radio.play_station = function(from_list, from_create_station, list, list_pl
 			if(is_owner){
 			  Base.radio.refresh_my_stations();
 			}
-
-      console.log("ID: " + id);
-      console.log("QUEUE: " + queue);
-
       swf("cyloop_radio").queueStation(id, queue);
     }
   });
