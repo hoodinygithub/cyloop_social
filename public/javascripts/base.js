@@ -195,6 +195,7 @@ Base.radio.play_station = function(from_list, from_create_station, list, list_pl
 				toggleButton(list, 0);
 			}
 			if(from_create_station) {
+        $('#create_station_submit').html(Base.layout.span_button(Base.locale.t('radio.create_new_station')));
 				$('#collapse_create_new_station').click();
 			}
       $("div#current_station_info").empty();
@@ -225,6 +226,10 @@ Base.radio.initialize = function() {
 				list = this.id.match(/(.*)_list(.*)/)[1];
 				list_play_button = li.find('img.list_play_button');
 				if(list_play_button) { list_play_button.attr('src', "/images/grey_loading.gif"); }
+			}
+			
+			if(is_create_station_submit){
+			  $(this).html(Base.layout.spanned_spin_image());
 			}
 			Base.radio.set_station_details($(this).attr('station_id'), $(this).attr('station_queue'), false);
 			Base.radio.play_station(is_station_list_item, is_create_station_submit, list, list_play_button)

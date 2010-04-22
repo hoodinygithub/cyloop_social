@@ -5,6 +5,7 @@ keys:
   actions.block
   actions.unblock
   actions.view_more
+  radio.create_new_station
   blocks.blocked
   datetime.distance_in_words.less_than_x_minutes
   datetime.distance_in_words.x_days

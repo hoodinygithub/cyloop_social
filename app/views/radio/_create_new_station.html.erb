@@ -36,9 +36,9 @@
         <input type="text" name="search_station_name" class="input half_width4" value="<%= t('radio.search_hint') %>" onfocus="clearInput('<%= t('radio.search_hint') %>', this);" onblur="restoreInput('<%= t('radio.search_hint') %>', this);">
       </div>
 
-      <div class="top_padd">
-        <%= blue_button( t("radio.create_new_station"), :id => "create_station_submit") %>
-        <a href="#" id="collapse_create_new_station" class="grey_button"><span><span><img src="images/close_red.gif" alt="<%= t('actions.close') %>" /></span></span></a>
+      <div class="top_padd left_side">
+        <%= blue_button( t("radio.create_new_station"), :full_width => true, :id => "create_station_submit", :class => "radio_left_side") %>
+        <a href="#" id="collapse_create_new_station" class="grey_button left_side"><span><span><img src="images/close_red.gif" alt="<%= t('actions.close') %>" /></span></span></a>
       </div>
 
       <br class="clearer" />
