@@ -68,6 +68,10 @@ class Site < ActiveRecord::Base
     #default_locale.to_s[0..1].to_sym
     default_locale == :pt_BR ? :pt_BR : default_locale.to_s[0..1].to_sym
   end
+
+  def is_msn?
+    (code =~ /msn(.*)/).nil? ? false : true
+  end
   
   def calendar_locale
     locale = default_locale
