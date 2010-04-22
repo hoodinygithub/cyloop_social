@@ -218,7 +218,7 @@ module ApplicationHelper
     station_artists = item.includes(limit)
 
     station_artists.each do |station_artist|
-      links << link_to(station_artist.artist.name, artist_path(station_artist.artist))
+      links << link_to(station_artist.artist.name, artist_path(station_artist.artist)) unless station_artist.artist.nil?
     end
 
     if include_text
