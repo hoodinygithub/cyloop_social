@@ -467,6 +467,7 @@ en:
     - Nov
     - Dec
   registration:
+    birth_date: Birth Date
     you_are: You are...
     artist_login_denied: Artist login is coming soon!
     sign_up: Sign up

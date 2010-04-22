@@ -3161,6 +3161,33 @@ h2 {
   	margin-right: 0px !important;
 }
 
-#now_playing_user_station span.station_name{
+#now_playing_user_station span.station_name {
 		font-weight: bold;
+}
+
+.with_error {
+  color: white;
+  background: red;
+  border: 2px solid red;
+}
+
+.with_error span {
+  color: white;
+}
+
+
+.field_message {
+  color : white;
+  font-size: 0.8em
+}
+
+div.checkbox div.with_error {
+  background: white;
+  border-bottom: 2px solid red;
+}
+
+div.checkbox div.with_error .field_message {
+  color : red;
+  font-size: 1em;
+  margin-left: 10px;
 }

@@ -799,9 +799,8 @@ Base.account_settings.highlight_field_with_errors = function() {
       field = jQuery('#user_' + field_name);
       grey_box = field.parent().parent();
       field.css({'border':'1px solid white'});
-      grey_box.css({'color':'white', 'background':'red', 'border':'2px solid red'});
-      message = jQuery("<br /><span>" +  field_error + "</span>")
-      message.css({'color':'white', 'font-size':'0.8em'});
+      grey_box.toggleClass('with_error');
+      message = jQuery("<br /><span class=\"field_message\">" +  field_error + "</span>")
       grey_box.append(message);
     }
     Base.account_settings.focus_first_section_with_error($('span.fieldWithErrors input').first());

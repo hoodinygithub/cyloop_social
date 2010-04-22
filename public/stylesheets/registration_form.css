@@ -1,0 +1,103 @@
+.form_row {
+  width: 445px;
+}
+
+span.complete {
+  font-size: 18px;
+  color: grey;
+}
+
+.account_settings .form_row span.grey {
+  font-size:18px;
+}
+
+.last div.right_side {
+  margin-right: 10px;
+}
+
+span.slug {
+  padding: 0px 20px 0px 25px;
+}
+
+span.terms_and_privacy {
+  display: inline-block;
+  width: 410px;
+  line-height: 14px;
+  vertical-align: top;
+  color: grey;
+}
+
+label.checkbox {
+  margin-left: 20px;
+  width: 100px;
+}
+
+#internal_content {
+  width: 950px;
+  margin: 0 auto;
+}
+
+#container #content {
+  border-right:1px solid #DDDDDD;
+  float:left;
+  padding:0 0px;
+  width:450px !important;
+}
+
+.account_settings .form_row {
+  border-bottom: none;
+  padding: 8px 0;
+}
+
+#container h2 {
+  padding: 0px 0px 30px 0px;
+  color:#191919;
+  font-size:20px;
+  font-weight:bold;
+  line-height:22px;
+  text-align:left;
+  border-bottom: 1px solid #DDDDDD;
+  width: 950px;
+  margin: 0 auto;
+}
+
+#sidebox {
+  padding: 30px;
+  padding-right: 0px;
+  float: left;
+  width: 450px;
+  text-align: left;
+}
+
+#sidebox ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+#sidebox ul li {
+  padding: 0 10px 40px 80px;
+}
+#sidebox ul li span {
+  display: block;
+  font-weight: bolder;
+  color: black;
+  font-size: 18px;
+  line-height: 23px;
+}
+
+#sidebox ul .discover {
+  background: transparent url(../images/registration/discover.png) no-repeat 0 0;
+}
+#sidebox ul .radio {
+  background: transparent url(../images/registration/radio.png) no-repeat 0 0;
+}
+#sidebox ul .playlist {
+  background: transparent url(../images/registration/playlist.png) no-repeat 0 0;
+}
+#sidebox ul .follow {
+  background: transparent url(../images/registration/follow.png) no-repeat 0 0;
+}
+#sidebox ul .chat {
+  background: transparent url(../images/registration/chat.png) no-repeat 0 0;
+}

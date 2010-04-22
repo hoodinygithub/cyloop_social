@@ -1,0 +1,10 @@
+<div id="sidebox">
+  <ul>
+    <% ['discover', 'radio', 'follow', 'playlist', 'chat'].each do |item| %>
+      <li class="<%= item %>">
+        <span><%= t("registration.sidebar.#{item}_title") %></span>
+        <%= t("registration.sidebar.#{item}_text") %>
+      </li>
+    <% end %>
+  </ul>
+</div>

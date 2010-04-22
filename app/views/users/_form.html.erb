@@ -1,0 +1,64 @@
+<% content_for :javascript do %>
+  <% if @user.errors.size > 0 %>
+  $(document).ready(function(){
+    field_with_errors     = <%= @user.errors.to_json %>;
+    Base.account_settings.highlight_field_with_errors();
+  });
+  <% end %>
+<% end %>
+
+<div id="registration_form">
+  <% form_for @user, :html => { :multipart => true, :class => "account_settings" } do |f| %>
+    <div class="form_row">
+      <%= f.label :name, "<b>#{t("registration.your_name")}</b>" %>
+      <div class="grey_round_box left_side">
+        <%= f.text_field :name, :class => 'input half_width3' %>
+      </div>
+      <br class="clearer" />
+    </div><!--/end form_row -->
+    <div class="form_row">
+      <%= f.label :email, "<b>#{t("registration.email_address")}</b> #{content_tag(:em, t("registration.email_address_tip"))}" %>
+      <div class="grey_round_box left_side">
+        <%= f.text_field :email, :class => 'input half_width3' %>
+      </div>
+      <br class="clearer" />
+    </div><!--/end form_row -->
+    <div class="form_row">
+      <%= f.label :slug, "<b>#{t("registration.your_profile_name")}</b> #{content_tag(:em, t("registration.your_profile_name_tip"))}" %>
+      <div class="grey_round_box left_side">
+          <span class="grey slug">cyloop.com/</span> <%= f.text_field :slug, :class => 'input half_width' %>
+      </div>
+      <br class="clearer" />
+    </div><!--/end form_row -->
+
+    <div class="form_row">
+      <%= f.label :born_on, "<b>#{t("registration.birth_date")}</b>" %>
+      <div class="grey_round_box left_side">
+        <%= f.date_select :born_on, :class => 'input half_width3' %>
+      </div>
+      <br class="clearer" />
+    </div><!--/end form_row -->
+
+    <%= render :partial => 'password', :locals => { :f => f } if cyloop_login? %>
+
+    <div class="checkbox">
+      <div class="form_row">
+        <%= f.check_box :terms_and_privacy %>
+        <span class="terms_and_privacy">
+          <label for="terms_and_privacy">
+            <%= t("registration.terms_and_privacy", :terms_link => link_to(t("registration.terms_of_use"), terms_and_conditions_url), :privacy_link => link_to(t("registration.privacy_policy"), privacy_policy_url)) %>
+          </label>
+        </span>
+        <br class="clearer" />
+      </div><!--/end form_row -->
+    </div>
+    <div class="form_row last checkbox">
+      <div class="right_side">
+        <span class="complete"><%= t("registration.thats_it") %></span>
+        <a href="#" class="blue_button submit_button" onclick="$(this).closest('form').submit();return false;"><span><span><%= t("registration.complete") %></span></span></a>
+      </div>
+
+      <br class="clearer" />
+    </div><!--/end form_row -->
+  <% end %>
+</div>

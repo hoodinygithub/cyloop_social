@@ -1,0 +1,14 @@
+<% content_for :head do %>
+  <%= stylesheet_link_tag 'registration_form' %>
+<% end %>
+
+<h2 class="page_title"><%= t('registration.customize')%></h2>
+
+<div id="content">
+  <div id="main_content">
+    <%= render 'form' %>
+  </div>
+</div>
+
+<%= render 'sidebox' %>
+<br class="clearer" />
