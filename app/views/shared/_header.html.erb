@@ -1,5 +1,5 @@
 <% logged_out = false unless local_assigns[:logged_out] %>
-<div id="msn_header">
+<div id="msn_header" <%= "class='cyloop_msn_header'" if site_includes(:cyloop, :cyloopes) %> >
   <div id="msn_header_container">
     <%= banner_ad("top_banner") %>
     <% if site_includes(:msnmx, :msnbr, :msnlatam, :msnlatino, :msnar, :msncaen, :msncafr) %>
