@@ -85,6 +85,7 @@ pt_BR:
       title: Pendentes
     messages: 
       artist_not_found: "N\xC3\xA3o encontramos nenhum artista com este nome. Por favor, fa\xC3\xA7a nova busca."
+    latest_tweet: "\xC3\x9Altimo tweet"
     followers: 
       title: Seguidores
       user_followers: SEGUIDORES DE {{user_name}}
@@ -129,8 +130,16 @@ pt_BR:
     multiple_emails: "(separe mais de um email com v\xC3\xADrgulas)"
     email: Seu email
   modules: 
+    edit_station: 
+      new_name: Novo nome
+      title: "Editar r\xC3\xA1dio"
+      no_edit_rights: "Voc\xC3\xAA voc\xC3\xAA n\xC3\xA3o tem privil\xC3\xA9gios para editar essa r\xC3\xA1dio."
+      blank_station_name_message: "Voc\xC3\xAA deve digitar um nome para esta esta\xC3\xA7\xC3\xA3o"
     photos: 
       title: Fotos
+    delete_station: 
+      title: "Remover r\xC3\xA1dio"
+      confirmation_text: "Voc\xC3\xAA tem certeza que quer remover {{station_name}}?"
     user_info: 
       title: "Informa\xC3\xA7\xC3\xA3o do usu\xC3\xA1rio"
     recently_created_stations: 
@@ -161,12 +170,15 @@ pt_BR:
       title: "\xC3\x81lbums"
     news: 
       title: "Not\xC3\xADcias"
+    my_stations: 
+      includes: "Cont\xC3\xA9m"
+      station_name: "Nome da R\xC3\xA1dio"
     top_stations: 
       title: "R\xC3\xA1dios mais tocadas"
-    interviews: 
-      title: Entrevistas
     top_songs: 
       title: Mais Tocadas
+    interviews: 
+      title: Entrevistas
     recommended_artists: 
       title: Artistas recomendados
     recent_activity: 
@@ -349,7 +361,7 @@ pt_BR:
       age: Idade
       community: Comunidade
       home: Home
-      mixes: ""
+      mixes: Mixes
       charts: Ranking
       following: Seguindo
       biography: Biografia
@@ -462,12 +474,12 @@ pt_BR:
     password_change: ALTERAR SENHA
     change_password: ALTERAR SENHA
     email_me_following_me: "Me envie um e-mail quando algu\xC3\xA9m estiver me seguindo"
-    email_me_subscribes_radios: ""
-    email_me_reviews_mixes: ""
+    email_me_subscribes_radios: "Envie-me um e-mail quando algu\xC3\xA9m se inscrever em uma de minhas r\xC3\xA1dios"
+    email_me_reviews_mixes: "Envie-me um e-mail quando algu\xC3\xA9m avaliar um de meus mixes"
     delete: REMOVER
     title: "CONFIGURA\xC3\x87\xC3\x95ES DE CONTA"
     cancel: Cancelar
-    email_me_subscribes_mixes: ""
+    email_me_subscribes_mixes: "Envie-me um e-mail quando algu\xC3\xA9m se inscrever em um de meus mixes"
     email_me_communications: "Envie-me boletins peri\xC3\xB3dicos do Cyloop e comunicados"
     delete_my_account: REMOVA MINHA CONTA
     delete_info: "Marcando essa op\xC3\xA7\xC3\xA3o, Eu entendo que removendo minha conta significa que minha p\xC3\xA1gina Cyloop, biblioteca de m\xC3\xBAsicas e foto ser\xC3\xA3o removidas. Eu entendo que para retornar ao Cyloop, eu terei que crirar uma nova conta com um novo nome de usu\xC3\xA1rio."
@@ -698,6 +710,8 @@ pt_BR:
     internal_error: ""
     activate_your_account: ""
     buy: ""
+    recengineerror_NO_PLAYLIST: ""
+    now_playing: ""
     msn_music_is_free: ""
     basics: 
       by: ""
@@ -838,6 +852,9 @@ pt_BR:
       body: "O cancelamento da sua conta no Cyloop ir\xC3\xA1 remover todas as informa\xC3\xA7\xC3\xB5es do seu perfil, incluindo fotos, novidades e sua rede pessoal de seguidores. Essa informa\xC3\xA7\xC3\xA3o n\xC3\xA3o poder\xC3\xA1 ser recuperada."
       are_you_sure: "Ainda assim, voc\xC3\xAA tem certeza que deseja cancelar sua conta?"
       cancel_account: Sim, Cancele Minha Conta
+      irreversible_note: !binary |
+        RXN0w6EgYcOnw6NvIMOpIGlycmV2ZXJzw612ZWw=
+
       keep_account: "N\xC3\xA3o, Mantenha Minha Conta"
     feedback: 
       label: Devolutiva
@@ -950,13 +967,15 @@ pt_BR:
     follow_requests_for: Pedidos de seguidores para
     service_unavailable: "Este servi\xC3\xA7o est\xC3\xA1 temporariamente inacess\xC3\xADvel. Por favor, volte em breve."
     people: Gente
+    users: "Usu\xC3\xA1rios"
     next: "Pr\xC3\xB3xima"
     click_to_follow: Clique {{follow_link}} para seguir
     follow_requests: Pedidos de seguidores
+    and_more: e mais...
     message: Mensagem
     last_modified: "Modificado pela \xC3\xBAltima vez"
     contains: "Cont\xC3\xA9m"
-    mixes: ""
+    mixes: Mixes
     chart: Ranking
     charts: Ranking
     more: Mais
@@ -1025,22 +1044,22 @@ pt_BR:
     discover: Descubra
   user: 
     marketing_opt_out: "N\xC3\xA3o quero receber emails com novidades do Cyloop ou associados."
-    slug: Nome do perfil
-    name: Nome
     color_links: Cor do link
+    name: Nome
+    slug: Nome do perfil
     background_fixed_false: !binary |
       TsOjbw==
 
-    background_align: Alinhamento do fundo
     forgot_message: "Podemos enviar as instru\xC3\xA7\xC3\xB5es de troca de senha para o endere\xC3\xA7o de email cadastrado na sua conta. Por favor, insira o endere\xC3\xA7o de email cadastrado no Cyloop."
+    background_align: Alinhamento do fundo
     background_repeats: 
       horizontal_repeat: Repetir na horizontal
       full_repeat: Repetir sempre
       no_repeat: "N\xC3\xA3o repetir"
       vertical_repeat: Repetir na vertical
     receives_following_notifications: "Quero receber um alerta cada vez que algu\xC3\xA9m come\xC3\xA7ar a me seguir"
-    is_not_following_anybody: "{{user_name}} n\xC3\xA3o est\xC3\xA1 seguindo ningu\xC3\xA9m"
     city_name: Cidade
+    is_not_following_anybody: "{{user_name}} n\xC3\xA3o est\xC3\xA1 seguindo ningu\xC3\xA9m"
     background_fixed_true: Sim
     terms_of_use: "Termos e condi\xC3\xA7\xC3\xB5es"
     confirmation: 
@@ -1056,8 +1075,8 @@ pt_BR:
     private_profile: Manter o perfil privado?
     cyloop_email: E-mail Cyloop
     female: Mulher
-    current_password: Senha atual
     background: Imagem de fundo
+    current_password: Senha atual
     color_bg: Cor de fundo
     password_confirmation: Confirmar senha
     background_alignments: 
@@ -1076,18 +1095,19 @@ pt_BR:
     gender: "G\xC3\xAAnero"
     avatar: Foto
     privacy_policy_instructions: "A nossa {{link}} existe para proteger voc\xC3\xAA! Por favor, leia e concorde com os termos."
-    negative_captcha: "N\xC3\xA3o preencha este campo"
     short_bio: Biografia resumida
+    negative_captcha: "N\xC3\xA3o preencha este campo"
     color_main_font: Cor do texto principal
     background_fixed: Imagem de fundo fixa
     background_repeat: Repetir fundo
+    has_no_tweet: "{{user_name}} n\xC3\xA3o tem tweet"
     new_password: Nova senha
     male: Homem
     safety_tips: "Dicas de seguran\xC3\xA7a"
     time_zone: "Zona hor\xC3\xA1ria"
     saved: "Suas modifica\xC3\xA7\xC3\xB5es foram salvas."
-    password: Senha
     color_header_bg: Cor do topo
+    password: Senha
     privacy_policy: "pol\xC3\xADtica de privacidade"
     hasnt_create_any_station: "{{user_name}} n\xC3\xA3o criou nenhuma esta\xC3\xA7\xC3\xA3o"
     born_on: Data de Nascimento
@@ -1116,8 +1136,10 @@ pt_BR:
     top_radios: "R\xC3\x81DIOS MAIS TOCADAS"
     explaing_what_is_and_why_create_a_new_radio: "Digite o nome do seu artista favorito. Cyloop criar\xC3\xA1 uma radio personalizada com m\xC3\xBAsidas dele."
     latest_stations: "\xC3\x9ALTIMAS ESTA\xC3\x87\xC3\x95ES DE R\xC3\x81DIO"
+    recommended_stations: "R\xC3\xA1dios Recomendadas pelo Cyloop"
     network_update: "Atualiza\xC3\xA7\xC3\xA3o da Rede de {{user_name}}"
     type_artist_name: Escreva o nome do artista
+    recommended_mixes: ""
     create_your_own_station_now: "Crie sua pr\xC3\xB3pria r\xC3\xA1dio agora!"
     top_stations: "ESTA\xC3\x87\xC3\x95ES MAIS TOCADAS"
     radios_recomended_for_you: "R\xC3\x81DIOS RECOMENDADAS PARA VOC\xC3\x8A"
