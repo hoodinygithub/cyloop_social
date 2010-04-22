@@ -1809,6 +1809,7 @@ h1 {
     width: 150px;
     z-index: 1;
     zoom: 1;
+    float: left;
 }
 
 .four_thumbs_big .avatar_0 {
@@ -3210,3 +3211,4 @@ div.checkbox div.with_error .field_message {
   font-size: 1em;
   margin-left: 10px;
 }
+

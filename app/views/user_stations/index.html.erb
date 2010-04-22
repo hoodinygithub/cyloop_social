@@ -15,7 +15,9 @@
   <ul class="stations_list">
     <%= render :partial => profile_artist? ? 'user_stations/artist_user_station' : 'user_stations/user_station', :collection =>  @user_stations %>
   </ul>
+  <%= will_paginate @user_stations, pagination_args %>
 <% end %>
+
 
 <%= render 'shared/internal_content' %>
 
