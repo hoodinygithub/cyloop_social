@@ -47,15 +47,16 @@ h1 {
   padding: 5px;
 }
 
+/* Banner Header */
+#top_banner_container {
+ padding: 10px 0;
+ background-color: #333;
+}
 
 /* MSN header content */
 #msn_header {
   background: #333 url("../images/msn_header_bg.gif") repeat-x 0 bottom;
   border-bottom: 2px solid #ccc;
-}
-
-#msn_header_container {
-  padding-top: 10px;
 }
 
 #msn_header .wrapper, #msn_nav_extension ul {
@@ -684,7 +685,4 @@ label.label_holder{
 
 #delete_confirm big {
 	margin-right: 10px;
-}
-.cyloop_msn_header{
-background: #333333 !important;
 }
