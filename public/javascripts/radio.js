@@ -239,8 +239,31 @@ function initTopButtons() {
 		}			
     return false;
   });	
+	
+  $("#collapse_create_new_station").click(function() {
+		toggleButton('create_station', 0, toggleCreateStation);
+		$('#now_playing_button').removeClass('blue_button').addClass('grey_button_big');			
+    return false;
+  });	
 
-  $("#create_station_button").click(function() {
+	initCreateStationButton();
+
+  $("#now_playing_button").click(function() {
+		msn_value = parseInt($("#msn_stations_toggle").get(0).value, 10);
+		my_value = parseInt($("#my_stations_toggle").get(0).value, 10);
+
+		if(msn_value || my_value) {
+			toggleButton('msn_stations', 0);
+			toggleButton('my_stations', 0);			
+			$('#now_playing_button').removeClass('blue_button').addClass('grey_button_big');			
+		}
+    return false;
+    });	
+	}
+
+function initCreateStationButton() {
+	$("#search_station_name").trigger('blur');
+	$("#create_station_button").click(function() {
 		value = parseInt($("#create_station_toggle").get(0).value, 10);
 		my_value = parseInt($("#my_stations_toggle").get(0).value, 10);
 		msn_value = parseInt($("#msn_stations_toggle").get(0).value, 10);
@@ -257,27 +280,8 @@ function initTopButtons() {
 			$('#now_playing_button').removeClass('grey_button_big').addClass('blue_button');			
 		}			
     return false;
-	});	
-	
-  $("#collapse_create_new_station").click(function() {
-		toggleButton('create_station', 0, toggleCreateStation);
-		$('#now_playing_button').removeClass('blue_button').addClass('grey_button_big');			
-    return false;
-  });	
-
-  $("#now_playing_button").click(function() {
-		msn_value = parseInt($("#msn_stations_toggle").get(0).value, 10);
-		my_value = parseInt($("#my_stations_toggle").get(0).value, 10);
-
-		if(msn_value || my_value) {
-			toggleButton('msn_stations', 0);
-			toggleButton('my_stations', 0);			
-			$('#now_playing_button').removeClass('blue_button').addClass('grey_button_big');			
-		}
-    return false;
-    });	
-	}
-
+	});
+}
 
 function load_artist_info(artist_id) {
 	station_id = $('#station_id').val() 

@@ -78,7 +78,7 @@ module ApplicationHelper
       options[:href] = '#' unless options[:href]
     end
 
-    if options["onclick"].nil?
+    if options[:onclick].nil?
       options.delete(:onclick)
     end
 
@@ -111,7 +111,6 @@ module ApplicationHelper
 
   def follow_button(attrs = {})
     account = attrs.delete(:account)
-
     if current_user and current_user.follow_requests.collect(&:follower_id).include? account.id
       action       = 'follow'
       key          = 'pending'

@@ -172,6 +172,7 @@ Base.radio.refresh_my_stations = function() {
 				var is_station_list_item = $(this).hasClass('launch_station');
 				var is_create_station_submit = $(this).attr("id") == "create_station_submit";
 				var list;
+				var list_play_button;
 				if(is_station_list_item) {
 					var li = $(this).parentsUntil('li');
 					list = this.id.match(/(.*)_list(.*)/)[1];
@@ -202,10 +203,11 @@ Base.radio.play_station = function(from_list, from_create_station, list, list_pl
 			if(from_create_station) {
 				$('#collapse_create_new_station').click();
 			}
-      $("div.album_detail").empty();
-      $("div.album_detail").append(result);
-      $("div.album_detail").append("<br class='clearer' />");
-
+      $("div#current_station_info").empty();
+      $("div#current_station_info").append(result);
+      $("div#current_station_info").append("<br class='clearer' />");
+			initCreateStationButton();
+			
 			if(is_owner){
 				Base.radio.refresh_my_stations();
 			}
@@ -223,6 +225,7 @@ Base.radio.initialize = function() {
 			var is_station_list_item = $(this).hasClass('launch_station');
 			var is_create_station_submit = $(this).attr("id") == "create_station_submit";
 			var list;
+			var list_play_button;			
 			if(is_station_list_item) {
 				var li = $(this).parentsUntil('li');
 				list = this.id.match(/(.*)_list(.*)/)[1];
