@@ -1,0 +1,32 @@
+<% content_for :head do %>
+ <%= stylesheet_link_tag 'jquery.autocomplete' %>
+ <%= javascript_include_tag 'jquery.autocomplete' %>
+
+ <script type="text/javascript">
+   $(document).ready(function() {
+     var artistSearch = $("input[name='search_station_name']");
+     var stationID = $("input[name='search_station_id']");
+     var stationQueue = $("input[name='search_station_queue']");
+     artistSearch.autocomplete("/stations.js", {
+       formatItem: function(item) {
+         return item[1];
+       },        
+       formatResult: function(item) {
+         return item[1];
+       }        
+     }).result(function(event, item) {
+         stationID.val(item[0]);
+         stationQueue.val(item[2]);
+       });
+
+     artistSearch.css('color', '#c0d6e2');
+     artistSearch.focus(function() {
+       if (artistSearch.attr("touched") != 'true') {
+         artistSearch.attr("touched", 'true');
+         artistSearch.css('color', '#025d8c');
+         artistSearch.attr('value', '')
+       }
+     })
+   });
+ </script>
+<% end %>

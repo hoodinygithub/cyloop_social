@@ -151,35 +151,69 @@ var swf = function(objname)
     return window[objname];
   else
     return document[objname];
-}
+};
+
+Base.radio.set_station_details = function(id, queue, init) {
+  $("#station_id").val(id);
+  $("#station_queue").val(queue);
+	if(init || typeof(init)=='undefined') { Base.radio.initialize(); }
+};
+
+Base.radio.refresh_my_stations = function() {
+  $.ajax({
+    type: "GET",
+    url:  "/radio/my_stations_list",
+    data: {station_id: $("#station_id").val()},
+    success: function(result) {
+      $("div#my_stations_container").empty();
+      $("div#my_stations_container").append(result);
+    }
+  });
+};
 
 Base.radio.initialize = function() {
-  var elems  = "div#top_stations .station .avatar a";
-      elems += ", div#top_stations .station .station_info h2 a";
+  var elems = "div#my_stations_list .songs_box ul li a.launch_station, div#msn_stations_list .songs_box ul li a.launch_station, #create_station_submit";
 
-
-  /*
-   * Grab required data for ajax generated stations
-   */
   $(elems).click(function(e){
       e.preventDefault();
-      var stationId = $(this).attr("station_id");
-      var station   = $(this).attr("station");
+      var stationId = parseInt($("#station_id").val(), 10);
+      var station   = $("#station_queue").val();
+			var is_station_list_item = $(this).hasClass('launch_station');
+			var is_create_station_submit = $(this).attr("id") == "create_station_submit";
+			var is_owner = $("#owner").val() == 'true';
+			var list_play_button;
+			var list;
+			if(is_station_list_item) {
+				var li = $(this).parentsUntil('li');
+				list = this.id.match(/(.*)_list(.*)/)[1];
+				list_play_button = li.find('img.list_play_button');
+				if(list_play_button) { list_play_button.attr('src', "/images/grey_loading.gif"); }
+			}
       $.ajax({
         type: "GET",
         url:  "/radio/album_detail",
         data: {station_id: stationId},
-        success: function(result)
-        {
+        success: function(result) {
+					if(is_station_list_item) {
+						if(list_play_button) { list_play_button.attr('src', "/images/icon_play_small.gif"); }
+						toggleButton(list, 0);
+					}
+					if(is_create_station_submit) {
+						$('#collapse_create_new_station').click();
+					}
           $("div.album_detail").empty();
           $("div.album_detail").append(result);
           $("div.album_detail").append("<br class='clearer' />");
+
+					if(is_owner){
+						Base.radio.refresh_my_stations();
+					}
+
           swf("cyloop_radio").queueStation(stationId, station);
         }
       });
   });
-
-}
+};
 
 Base.utils.handle_login_required = function(response, url, button_label) {
   if (typeof(response) == 'object') {
@@ -658,7 +692,7 @@ Base.stations.init_edit_layer = function() {
 			if(parseInt(station_id, 10) == parseInt($('#station_id').val(), 10)) {
 				jQuery('#station_name').html(new_station_name);
 			}
-			jQuery('#my_station_name_' + station_id).html(new_station_name);
+			jQuery('#my_stations_list_name_' + station_id).html(new_station_name);
 			jQuery(document).trigger('close.facebox');
     });
 

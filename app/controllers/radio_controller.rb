@@ -24,9 +24,24 @@ class RadioController < ApplicationController
   def album_detail
     if request.xhr?
       @station_obj = Station.find(params[:station_id]) rescue nil
-      render :partial => @station_obj.playable.class.to_s.underscore
+      if @station_obj
+        @station_obj = create_user_station(@station_obj)
+        @station_obj.playable.track_a_play_for(current_user) if @station_obj.playable
+        render :partial => @station_obj.playable.class.to_s.underscore
+      end
     else
-      redirect_to radio_path
+      redirect_to radio_path(:station_id => params[:station_id])
+    end
+  end
+
+  def my_stations_list
+    if request.xhr?
+      if logged_in? 
+        @station_obj = Station.find(params[:station_id]) rescue nil
+        render :partial => 'my_stations'
+      end
+    else
+      redirect_to radio_path(:station_id => params[:station_id])
     end
   end
 

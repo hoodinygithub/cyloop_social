@@ -1,13 +1,44 @@
+<% content_for :head do %>
+<%= stylesheet_link_tag 'jquery.autocomplete' %>
+<%= javascript_include_tag 'jquery.autocomplete' %>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    var artistSearch = $("input[name='search_station_name']");
+    var stationID = $("input[name='search_station_id']");
+    artistSearch.autocomplete("/stations.js", {
+      formatItem: function(item) {
+        return item[1];
+      },        
+      formatResult: function(item) {
+        return item[1];
+      }        
+    }).result(function(event, item) {
+      Base.radio.set_station_details(item[0], item[2], false)
+    });
+
+    artistSearch.css('color', '#c0d6e2');
+    artistSearch.focus(function() {
+      if (artistSearch.attr("touched") != 'true') {
+        artistSearch.attr("touched", 'true');
+        artistSearch.css('color', '#025d8c');
+        artistSearch.attr('value', '')
+      }
+    })
+  });
+</script>
+<% end %>
 <form action="" method="post" class="account_settings">
-  <div class="album_detail" id="create_new_station_form" style="display: none">
+  <div class="album_detail hide" id="create_new_station_form">
     <div class="form_row last">
       <div class="grey_round_box left_side">
-        <input type="text" class="input half_width4" value="<%= t('home.type_artist_name') %>" onfocus="clearInput('<%= t('home.type_artist_name') %>', this);" onblur="restoreInput('<%= t('home.type_artist_name') %>', this);" />
+        <%= hidden_field_tag :search_station_id %>
+        <input type="text" name="search_station_name" class="input half_width4" value="<%= t('radio.search_hint') %>" onfocus="clearInput('<%= t('radio.search_hint') %>', this);" onblur="restoreInput('<%= t('radio.search_hint') %>', this);">
       </div>
 
       <div class="top_padd">
-        <%= blue_button(t("radio.create_new_station"), :onclick => "alert('TBD');") %>
-        <a href="#" id="collapse_create_new_station" class="grey_button"><span><span><img src="images/close_red.gif" alt="" /></span></span></a>
+        <%= blue_button( t("radio.create_new_station"), :id => "create_station_submit") %>
+        <a href="#" id="collapse_create_new_station" class="grey_button"><span><span><img src="images/close_red.gif" alt="<%= t('actions.close') %>" /></span></span></a>
       </div>
 
       <br class="clearer" />

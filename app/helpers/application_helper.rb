@@ -67,7 +67,7 @@ module ApplicationHelper
   def special_button(type, button_label, options = {})
     options.merge!({
       :class => "#{options[:class]} #{type}",
-      :onclick => "#{options[:onclick]}; return false;"
+      :onclick => options[:onclick].nil? ? nil : "#{options[:onclick]}; return false;" 
     })
 
     options[:class] << " full_width" if options[:full_width]
@@ -76,6 +76,10 @@ module ApplicationHelper
       options.delete(:onclick)
     else
       options[:href] = '#' unless options[:href]
+    end
+
+    if options["onclick"].nil?
+      options.delete(:onclick)
     end
 
     if options[:width]

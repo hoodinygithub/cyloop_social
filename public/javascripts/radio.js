@@ -176,15 +176,28 @@ function toggleRadioTabs() {
 	
 }
 
-function toggleButton(button, show) {
+function toggleCreateStation(show) {
+	if(show) {
+		$('#current_station_info').addClass('hide');
+		$('#create_new_station_form').removeClass('hide');
+	} else {
+		$('#create_new_station_form').addClass('hide');
+		$('#current_station_info').removeClass('hide');
+	}
+}
+
+function toggleButton(button, show, callback) {
 	if(show) {
 		$('#' + button + '_toggle').attr('value', "1");      
 		$('#' + button + '_button').removeClass('blue_button').addClass('grey_button_big');
-		$('#' + button + '_list').removeClass('hide');      		
+		$('#' + button + '_list').removeClass('hide').slideDown();      		
 	} else {
 		$('#' + button + '_toggle').attr('value', "0");      
 		$('#' + button + '_button').removeClass('grey_button_big').addClass('blue_button');
-		$('#' + button + '_list').addClass('hide');      						
+		$('#' + button + '_list').addClass('hide').slideUp();      						
+	}
+	if (typeof(callback)=="function") {		
+		callback(show);
 	}
 }
 
@@ -192,34 +205,65 @@ function initTopButtons() {
   $("#my_stations_button").click(function() {
 		value = parseInt($("#my_stations_toggle").get(0).value, 10);
 		msn_value = parseInt($("#msn_stations_toggle").get(0).value, 10);
+		create_station_value = parseInt($("#create_station_toggle").get(0).value, 10);
 
 		if(value) {
-			if(msn_value) { toggleButton('msn_stations', 0); }
+			if(msn_value) { toggleButton('msn_stations', 0, null); }
+			if(create_station_value) { toggleButton('create_station', 0); }
 			toggleButton('my_stations', 0);
 			$('#now_playing_button').removeClass('blue_button').addClass('grey_button_big');			
 		} else {
-			if(msn_value) { toggleButton('msn_stations', 0); }
+			if(msn_value) { toggleButton('msn_stations', 0, null); }
+			if(create_station_value) { toggleButton('create_station', 0); }
 			toggleButton('my_stations', 1);
 			$('#now_playing_button').removeClass('grey_button_big').addClass('blue_button');			
 		}			
     return false;
-    });	
+  });	
 
   $("#msn_stations_button").click(function() {
 		value = parseInt($("#msn_stations_toggle").get(0).value, 10);
 		my_value = parseInt($("#my_stations_toggle").get(0).value, 10);
+		create_station_value = parseInt($("#create_station_toggle").get(0).value, 10);
 		
 		if(value) {
-			if(my_value) { toggleButton('my_stations', 0);}
+			if(my_value) { toggleButton('my_stations', 0, null);}
+			if(create_station_value) { toggleButton('create_station', 0, null); }
 			toggleButton('msn_stations', 0);
 			$('#now_playing_button').removeClass('blue_button').addClass('grey_button_big');			
 		} else {
-			if(my_value) { toggleButton('my_stations', 0); }
+			if(my_value) { toggleButton('my_stations', 0, null); }
+			if(create_station_value) { toggleButton('create_station', 0, null); }
 			toggleButton('msn_stations', 1);
 			$('#now_playing_button').removeClass('grey_button_big').addClass('blue_button');			
 		}			
     return false;
-    });	
+  });	
+
+  $("#create_station_button").click(function() {
+		value = parseInt($("#create_station_toggle").get(0).value, 10);
+		my_value = parseInt($("#my_stations_toggle").get(0).value, 10);
+		msn_value = parseInt($("#msn_stations_toggle").get(0).value, 10);
+
+		if(value) {
+			if(my_value) { toggleButton('my_stations', 0);}
+			if(msn_value) { toggleButton('msn_stations', 0); }
+			toggleButton('create_station', 0, toggleCreateStation);
+			$('#now_playing_button').removeClass('blue_button').addClass('grey_button_big');			
+		} else {
+			if(my_value) { toggleButton('my_stations', 0); }
+			if(msn_value) { toggleButton('msn_stations', 0); }
+			toggleButton('create_station', 1, toggleCreateStation);
+			$('#now_playing_button').removeClass('grey_button_big').addClass('blue_button');			
+		}			
+    return false;
+	});	
+	
+  $("#collapse_create_new_station").click(function() {
+		toggleButton('create_station', 0, toggleCreateStation);
+		$('#now_playing_button').removeClass('blue_button').addClass('grey_button_big');			
+    return false;
+  });	
 
   $("#now_playing_button").click(function() {
 		msn_value = parseInt($("#msn_stations_toggle").get(0).value, 10);

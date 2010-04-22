@@ -7,20 +7,21 @@
 <div class="two_columns">
   <div class="mix_box grey_accents">
     <form name='station_form' action="">
-      <input type="hidden" id="station_id" value="<%= @station_obj.id %>" />
       <input type="hidden" id="station_to_delete" value="" />
       <input type="hidden" id="radio_tab_scope" value="" />
       <input type="hidden" id="my_stations_toggle" value="0" />
       <input type="hidden" id="msn_stations_toggle" value="0" />
+      <input type="hidden" id="create_station_toggle" value="0" />
     </form>
     <%= render 'top_buttons' %>    
-    <%= render 'my_stations' if @station_obj.playable.owner_is?(current_user)  %>
+    <div id="my_stations_container">
+      <%= render 'my_stations' if @station_obj.playable.owner_is?(current_user)  %>
+    </div>
     <%= render 'msn_stations' unless @msn_stations.empty? %>
     <%= render 'create_new_station' %>
     <div class="album_detail" id="current_station_info">
       <%= render @station_obj.playable.class.to_s.underscore %>
       <br class="clearer" />
-    <%= render 'create_new_station' %>
     </div><!--/end album_detail -->
     <div id="radio_player">
       <script type="text/javascript" charset="utf-8">

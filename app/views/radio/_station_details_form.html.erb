@@ -1,0 +1,5 @@
+<form action="" name="station_details">
+<%= hidden_field_tag :station_id, @station_obj.id %>
+<%= hidden_field_tag :station_queue, @station_obj.playable.station_queue %>
+<%= hidden_field_tag :owner, @station_obj.playable.owner_is?(current_user) %>
+</form>

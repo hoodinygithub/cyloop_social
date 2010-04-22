@@ -1,9 +1,4 @@
-<script type="text/javascript">
-   $(document).ready(function() {
-     // $('a[rel*=facebox]').facebox();
-     // Base.radio.init_edit_station_layer();
-    });
-</script>  
+<%= render :partial => 'station_details_form' %>
 <%= four_thumbs_to(@station_obj, :class => 'left_side', :clearer => true, :type => :small) %>
 <div id="now_playing_user_station" class="album_text2">
   <span id="station_name" class="station_name"><%= @station_obj.playable.name %></span>
@@ -17,6 +12,6 @@
 </div><!--/end top_buttons -->
 
 <div class="album_actions2">
-  <%= blue_button(t("radio.create_new_station"), :href => "#create_new_station", :class => "create_new_station") %><br/>
+  <%= blue_button(t("radio.create_new_station"), :class => "create_new_station", :id => "create_station_button") %><br/>
   <b><%= t("basics.created_by") %>: <%= link_to(@station_obj.playable.owner.name, "/#{@station_obj.playable.owner.slug}") %></b>
 </div>

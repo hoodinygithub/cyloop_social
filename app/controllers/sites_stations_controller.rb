@@ -5,9 +5,10 @@ class SitesStationsController < ApplicationController
     # NIL account_id     => sites_stations returns for the current site
     # NOT NIL account_id => sites_stations returns for the defined account on the current site
     block = Proc.new do
-      @editorial_playlist = current_site.sites_stations.find_all_by_account_id(params["account_id"], :conditions => ['station_id > 0'])
+      @editorial_playlist = current_site.editorial_stations_sites.find_all_by_profile_id(params["account_id"], :conditions => ['editorial_station_id > 0'])
       if !@editorial_playlist.empty?
         render :xml => Player::Editorial.from(@editorial_playlist, :ip => remote_ip).to_xml(:root => 'editorial_stations')
+        #@editorial_playlist.to_xml(:root => 'editorial_stations') 
       else
         render :xml => { :alert => 'Market does not contain editorial stations' }.to_xml(:root => 'response')
       end
@@ -20,7 +21,7 @@ class SitesStationsController < ApplicationController
   end
 
   def show
-    @playlist = current_site.sites_stations.find(params[:id]).playlist
+    @playlist = current_site.stations.find(params[:id])
     respond_to do |format|
       format.html {}
       format.xml { render :layout => false }

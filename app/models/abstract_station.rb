@@ -81,7 +81,7 @@ class AbstractStation < ActiveRecord::Base
   
   def station_queue(params={})
     params[:ip_address] ||= '67.63.37.2'
-    {:id => station.id, :queue => CGI::escape("#{RecEngine::BASE_URI}?request=getRecEnginePlayList&artistID=#{amg_id}&ipAddress=#{params[:ip_address]}")}
+    CGI::escape("#{RecEngine::BASE_URI}?request=getRecEnginePlayList&artistID=#{amg_id}&ipAddress=#{params[:ip_address]}")
   end
 
   def to_s

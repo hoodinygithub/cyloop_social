@@ -27,10 +27,11 @@ class EditorialStation < ActiveRecord::Base
   end
   
   def owner_is?(user)
-    is_owner = false
-    unless user.nil?
-      is_owner = owner == user 
-    end
+    false
+  end
+
+  def station_queue(params={})
+    "/sites_stations/#{id}.xml"
   end
 
 end

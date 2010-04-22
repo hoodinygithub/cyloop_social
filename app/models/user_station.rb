@@ -83,7 +83,7 @@ class UserStation < ActiveRecord::Base
 
   def station_queue(params={})
     params[:ip_address] ||= '67.63.37.2'
-    {:id => station.id, :queue => CGI::escape("#{RecEngine::BASE_URI}?request=getRecEnginePlayList&artistID=#{amg_id}&ipAddress=#{params[:ip_address]}&userID=#{owner_id}")}
+    CGI::escape("#{RecEngine::BASE_URI}?request=getRecEnginePlayList&artistID=#{amg_id}&ipAddress=#{params[:ip_address]}&userID=#{owner_id}")
   end
 
   def set_deleted

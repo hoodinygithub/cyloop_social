@@ -1,3 +1,4 @@
+<%= render :partial => 'station_details_form' %>
 <%= four_thumbs_to(@station_obj, :class => 'left_side', :clearer => true, :type => :small) %>
 <div class="album_text2">
   <b><%= @station_obj.playable.name %></b>
@@ -6,5 +7,5 @@
 </div><!--/end top_buttons -->
 
 <div class="album_actions2">
-  <%= blue_button(t("radio.create_new_station"), :href => "#create_new_station", :class => "create_new_station") %><br/>
+  <%= blue_button(t("radio.create_new_station"), :id => "create_station_button", :class => "create_new_station") %><br/>
 </div>
