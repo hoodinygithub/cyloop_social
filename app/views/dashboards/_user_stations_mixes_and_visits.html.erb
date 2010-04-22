@@ -1,16 +1,7 @@
-<% if profile_user? %>
-<div class="black_box left_side">
-  <big class="blue">
-    <%= profile_user.profile_visits.size %>
-  </big>
-  <br />
-  <%= t('users.stats.visits', :default => "visits") %>
-</div>
-<% elsif profile_artist? %>
 <!-- Leave profile visists until include mixes -->
 <div class="black_box left_side">
   <big class="blue">
-    <%= profile_artist.profile_visits.size %>
+    <%= number_with_delimiter(profile_account.visit_count) %>
   </big>
   <br />
   <%= t('user.visits', :default => "visits") %>
@@ -20,7 +11,6 @@
     <big class="blue"><a href="#">12,3698</a></big><br>
     Mixes
   </div> -->
-<% end %>
 
 <div class="black_box right_side">
   <big class="blue">
