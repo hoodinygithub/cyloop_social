@@ -190,11 +190,11 @@ function toggleButton(button, show, callback) {
 	if(show) {
 		$('#' + button + '_toggle').attr('value', "1");      
 		$('#' + button + '_button').removeClass('blue_button').addClass('grey_button_big');
-		$('#' + button + '_list').removeClass('hide').slideDown();      		
+		$('#' + button + '_list').removeClass('hide');
 	} else {
 		$('#' + button + '_toggle').attr('value', "0");      
 		$('#' + button + '_button').removeClass('grey_button_big').addClass('blue_button');
-		$('#' + button + '_list').addClass('hide').slideUp();      						
+		$('#' + button + '_list').addClass('hide');
 	}
 	if (typeof(callback)=="function") {		
 		callback(show);

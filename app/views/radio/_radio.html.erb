@@ -17,7 +17,7 @@
     </form>
     <%= render 'top_buttons' %>    
     <div id="my_stations_container">
-      <%= render 'my_stations' if @station_obj.playable.owner_is?(current_user)  %>
+      <%= render 'my_stations' if logged_in? && current_user && current_user.total_user_stations > 0 %>
     </div>
     <%= render 'msn_stations' unless @msn_stations.empty? %>
     <%= render 'create_new_station' %>
