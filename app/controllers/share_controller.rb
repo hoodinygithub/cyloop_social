@@ -94,6 +94,7 @@ class ShareController < ApplicationController
           :item_title => station_name,
           :item_includes => station_includes,
           :item_images => station_images,
+          :is_msn => current_site.is_msn?,
           :message => params[:message],
           :global_url => global_url)
       end

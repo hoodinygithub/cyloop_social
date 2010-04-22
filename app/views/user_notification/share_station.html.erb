@@ -10,7 +10,7 @@
         <tr>
           <td>
             <a href="http://<%= @global_url %>" target="_blank">
-              <% if current_site.is_msn? %>
+              <% if @is_msn %>
                 <img src="http://<%= @global_url %>/images/share_email/top.gif" width="560" height="62" border="0">
               <% else %>
                 <img src="http://<%= @global_url %>/images/share_email/top_cyloop.gif" width="560" height="62" border="0">
