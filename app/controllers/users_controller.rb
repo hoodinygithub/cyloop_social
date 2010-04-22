@@ -185,9 +185,8 @@ class UsersController < ApplicationController
       follow_status = {:status => 'pending'}
     else
       follow_status = {:status => 'following'}  
-      
-      deliver_friend_request_email(@account) if @account.receives_following_notifications?
     end
+    deliver_friend_request_email(@account) if @account.receives_following_notifications?
     render :json => follow_status
   end
   
