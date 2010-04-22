@@ -1,7 +1,9 @@
 <div class="follower_text">
-  <b><%= link_to(item['account'], item['account']) %></b>
+  <b class="follower_slug"><%= link_to(item['account'], item['account']) %></b>
     <% if item['type'] == 'status' %>
-      <%= item['message'] %>
+      <div class="message_content">
+        <%= item['message'] %>
+      </div>
     <% elsif item['type'] == 'twitter' %>
       <%= item['text'] %>
       <%= link_to("Twitter / #{item['screen_name']}", "http://twitter.com/#{item['screen_name']}", :target => "_blank") %>

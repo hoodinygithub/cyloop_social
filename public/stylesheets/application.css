@@ -1156,11 +1156,23 @@ h1 {
     float: left;
 }
 
-.followers_list .follower_text {
-    float: left;
-    width: 300px;
-    padding-left: 10px;
-    margin-right: -20px;
+.follower_text img {
+  float: left;
+  padding: 5px;
+}
+
+.follower_text .follower_slug {
+  float: left;
+  width: 70%;
+  margin-left: 10px;
+}
+
+.followers_list .follower_text, .comments_list .message_content {
+  float: left;
+  word-wrap: break-word;
+  width: 300px;
+  margin-right: -20px;
+  margin-left: 10px;
 }
 
 .followers_list .follower_actions {
@@ -1168,6 +1180,10 @@ h1 {
     width: 155px;
     text-align: right;
     position: relative;
+}
+
+.comments_list .follower_text {
+  width: 500px;
 }
 
 .followers_list .follower_actions .blue_button span span,
