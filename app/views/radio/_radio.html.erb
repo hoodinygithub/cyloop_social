@@ -1,5 +1,6 @@
+<% blank_msg = t('modules.edit_station.blank_station_name_message').gsub(/\"/, '\"') %>
 <script type="text/javascript">
-  var blank_station_alert = "<%= t('modules.edit_station.blank_station_name_message') %>";
+  var blank_station_alert = "<%= blank_msg  %>";
   $(document).ready(function() {
     Base.radio.initialize();
     initTopButtons();
