@@ -4,7 +4,7 @@
     </b>
     <br/>
     <span>
-      <%= item.location %>
+      <%= item.is_a?(Artist) ? item.country : item.location %>
     </span>
     <br/>
     <%= link_to item.stations.size, user_stations_path(item) %> <%= t('profile.navigation.stations')%> /
