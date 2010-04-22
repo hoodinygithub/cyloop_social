@@ -31,6 +31,7 @@
         flashvars += "&stationId=<%= @station_obj.id %>&station=<%= @station_queue %>";
         AC_FL_RunContent(
           "src", "/flash/cyloop_radio",
+          "wmode", "opaque",
           "width", "628",
           "height", "196",
           "align", "middle",

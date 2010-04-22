@@ -2,15 +2,15 @@
     <% if false #phase 2 - subscriptions %>
     <a href="#"><img src="images/listen_icon.png" class="listen_icon png_fix" alt="" title="Listen" /></a>
     <% end %>
-    <%= four_thumbs_to(artist_user_station.station, :type => :big) %>
-    <div class="transparency_thumbanils png_fix">
-      <%= link_to(image_tag('play_button.png', :title => t('actions.play'), :class => 'png_fix'), radio_path(:station_id => artist_user_station.station.id)) %>
-    </div>
+      <%= four_thumbs_to(artist_user_station.station, :type => :big) %>
+      <div class="transparency_thumbanils png_fix">
+        <%= link_to(image_tag('play_button.png', :title => t('actions.play'), :class => 'png_fix'), radio_path(:station_id => artist_user_station.station.id)) %>
+      </div>
 
     <div class="subcription_text">
         <big><%= link_to(artist_user_station.name, radio_path(:station_id => artist_user_station.station)) %></big>
         <br/>
-        <span class="grey">                             
+        <span class="grey">
           <%= t("basics.last_modified") %>: <%= l(artist_user_station.updated_at.to_date) %>
         </span>
         <br/>
@@ -20,7 +20,7 @@
         <br/>
         <br/>
         <div class="subcription_creator">
-            <%= link_to avatar_for(artist_user_station.owner, :artist_icon), artist_user_station.owner %>    
+            <%= link_to avatar_for(artist_user_station.owner, :artist_icon), artist_user_station.owner %>
             <!--img src="images/network_icon.gif" class="creator_image" alt="" /-->
             <div class="creator_text">
                 <b><%= t("basics.created_by") %>: <%= link_to artist_user_station.owner.name, user_path(artist_user_station.owner) %></b><br/>
@@ -34,3 +34,4 @@
     </div><!--/end subcription_text -->
     <br class="clearer" />
 </li>
+

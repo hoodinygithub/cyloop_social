@@ -11,6 +11,8 @@ module ApplicationHelper
     url << "filter_by=#{type}"
     url = url.downcase
 
+    options[:class] = 'active' if (type == 'all' && !@filter_type)
+
     if @filter_type.to_s == type
       options[:class] = 'active'
     end
@@ -37,7 +39,7 @@ module ApplicationHelper
   end
 
   def following_page?
-    params[:controller] == 'followees'
+    params[:controller] == 'followees' && params[:slug]
   end
 
   def profile_owner?
@@ -132,7 +134,7 @@ module ApplicationHelper
                       :account_id => account.id,
                       :follow_profile => account.id)
 
-    onclick_cb = "Base.community.#{action}('#{account.slug}', this, #{following_page?}, '#{layer_path}')"
+    onclick_cb = "Base.community.#{action}('#{account.slug}', this, #{!following_page?}, '#{layer_path}')"
 
     attrs.merge!({:onclick => onclick_cb, :class => 'follower_btn'})
     button = send("#{button_color}_button", t(locale_key), attrs)
@@ -800,4 +802,3 @@ module ApplicationHelper
   end
 
 end
-

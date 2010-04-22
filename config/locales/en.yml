@@ -190,6 +190,8 @@ en:
     friend_email: Friend(s) Email
     message: Message
     multiple_emails: (seperate multiple emails with commas)
+    station:
+      subject: "{{user}} would like you to share this station with you."
     song:
       submit: Compartilhar
       subject: "{{user}} would like you to share this song with you."

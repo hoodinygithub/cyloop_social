@@ -134,6 +134,7 @@
       opacity      : 0.5,
       overlay      : true,
       loadingImage : '/images/loading.gif',
+      closeImage   : '/images/popup_close.png',
       imageTypes   : [ 'png', 'jpg', 'jpeg', 'gif' ],
       faceboxHtml  : '\
         <div class="popup" id="facebox"> \

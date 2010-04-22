@@ -2,13 +2,13 @@
   margin-top: 5px;
 }
 
-.yellow_button, 
-.blue_button, 
-.green_button, 
-.black_button, 
+.yellow_button,
+.blue_button,
+.green_button,
+.black_button,
 .grey_button_big,
 h1 {
-  text-transform: uppercase;  
+  text-transform: uppercase;
 }
 
 /* Rails error explanation */
@@ -406,26 +406,26 @@ img.artist_icon_box.tiny {
   margin: 10px auto;
 }
 
-.search_results_header { 
-	display: block; 
-	float: left; 
-	text-transform: uppercase; 
+.search_results_header {
+	display: block;
+	float: left;
+	text-transform: uppercase;
 }
 
-.search_result { 
-	line-height: 35px; 
-	margin: 0 0 10px 0; 
-	height: 35px; 
+.search_result {
+	line-height: 35px;
+	margin: 0 0 10px 0;
+	height: 35px;
 }
 
-.search_results h1 { 
-	text-transform: uppercase; 
+.search_results h1 {
+	text-transform: uppercase;
 }
 
-.search_results_ajax { 
-	display: none; 
-	float: right; 
-	margin-right: 10px; 
+.search_results_ajax {
+	display: none;
+	float: right;
+	margin-right: 10px;
 }
 
 #pages {
@@ -540,10 +540,11 @@ img.avatar_four_thumbs_big {
     font-weight: bold;
     line-height: 16px;
 }
- 
+
 .subcription_creator img.avatar {
-        width: 50px;
-        height: 50px;
+    float: left;
+    width: 50px;
+    height: 50px;
 }
 
 .spaced_img.tiny {
@@ -576,13 +577,13 @@ img.avatar_four_thumbs_big {
 #delete_account_form div div label.error {
   margin-right: 15px;
 }
- 
+
 #avatar_upload_button {
   position: absolute;
   top: 0px;
   left: 0px;
 }
- 
+
 label.label_holder input.file{
   position: relative;
   height: 100%;
@@ -594,7 +595,7 @@ label.label_holder input.file{
   z-index:2;
   filter: alpha(opacity=0)!important; /* fix for ie */
 }
- 
+
 label.label_holder{
   width: 125px;
   height: 40px;
@@ -604,7 +605,7 @@ label.label_holder{
   position: absolute;
   z-index: 1;
 }
- 
+
 #avatar_delete {
   margin-left: 135px;
   position:absolute;
@@ -615,25 +616,25 @@ label.label_holder{
 #basic_info_form .avatar {
   float : left;
  }
- 
+
 #avatar_image img {
   height: 150px;
   width: 150px;
 }
- 
+
 #avatar_upload_info {
   margin-top: 60px;
   margin-left: 10px;
   font-weight: bold;
   color: green;
  }
- 
+
 .latest_tweet{
   font-size: 12px;
   font-weight: bold;
   font-style: italic;
 }
- 
+
 /* User Data */
 .user_data_logged_in  { }
 .user_data_logged_out { display: none!important; }
@@ -651,26 +652,26 @@ label.label_holder{
   text-transform: uppercase;
 }
 
-#container .station { 
+#container .station {
 	width: 258px;
 	height: 65px;
 }
 
-#container .station .avatar { 
-	float: left; 
-	width: 64px; 
-	height: 64px; 
+#container .station .avatar {
+	float: left;
+	width: 64px;
+	height: 64px;
 }
 
-#container .station_info { 
-	float: right; 
-	width: 180px; 
+#container .station_info {
+	float: right;
+	width: 180px;
 }
 
-#container .station_info h2 { 
-	padding: 0; 
-	margin: 0; 
-	font-size: 14px; 
+#container .station_info h2 {
+	padding: 0;
+	margin: 0;
+	font-size: 14px;
 }
 
 #top_stations h1 {
@@ -686,3 +687,8 @@ label.label_holder{
 #delete_confirm big {
 	margin-right: 10px;
 }
+
+.cyloop_msn_header{
+background: #333333 !important;
+}
+

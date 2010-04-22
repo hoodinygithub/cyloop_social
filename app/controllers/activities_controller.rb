@@ -116,7 +116,7 @@ class ActivitiesController < ApplicationController
     end
 
     @collection.each do |a|
-      a['account']  =  User.find(a['account_id'])
+      a['account']  =  Account.find(a['account_id'])
 
       if a['type'] == 'station'
         station      = Station.find(a['item_id']).playable

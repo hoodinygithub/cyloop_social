@@ -24,9 +24,9 @@
         <tr>
           <% if !@sender_slug.nil? %>
             <td><a href="http://<%= @global_url %>/<%= @sender_slug %>" target="_blank"><img src="<%= @sender_avatar %>" width="50" height="50"/></a></td>
-            <td width="540" valign="top"><font face="Arial, Helvetica, sans-serif" color="#666666" size="17px"><%= t("share.song.subject", {:user => "<font color='#00A5F8'>#{@sender_name}</font>" }) %></font></td>
+            <td width="540" valign="top"><font face="Arial, Helvetica, sans-serif" color="#666666" size="+2"><%= t("share.station.subject", {:user => "<font color='#00A5F8'>#{@sender_name}</font>" }) %></font></td>
           <% else %>
-            <td colspan="2" width="560" valign="top"><font face="Arial, Helvetica, sans-serif" color="#666666" size="17px"><%= t("share.song.subject", {:user => @sender_name }) %></font></td>
+            <td colspan="2" width="560" valign="top"><font face="Arial, Helvetica, sans-serif" color="#666666" size="+2"><%= t("share.song.subject", {:user => @sender_name }) %></font></td>
           <% end %>
         </tr>
 
@@ -40,17 +40,17 @@
               <td>
                 <table>
                   <tr>
-                    <td><img src="<%=@item_images[0]%>" width="39" height="39"></td>
-                    <td><img src="<%=@item_images[1]%>" width="39" height="39"></td>
+                    <td><a href="<%= @share_link %>" target="_blank"><img src="<%=@item_images[0]%>" width="39" height="39" border="0"></a></td>
+                    <td><a href="<%= @share_link %>" target="_blank"><img src="<%=@item_images[1]%>" width="39" height="39" border="0"></a></td>
                   </tr>
                   <tr>
-                    <td><img src="<%=@item_images[2]%>" width="39" height="39"></td>
-                    <td><img src="<%=@item_images[3]%>" width="39" height="39"></td>
+                    <td><a href="<%= @share_link %>" target="_blank"><img src="<%=@item_images[2]%>" width="39" height="39" border="0"></a></td>
+                    <td><a href="<%= @share_link %>" target="_blank"><img src="<%=@item_images[3]%>" width="39" height="39" border="0"></a></td>
                   </tr>
                 </table>
               </td>
               <td width="439">
-                <strong><font face="Arial, Helvetica, sans-serif" color="#00A5F8" size="+2"><%= @item_title %></font></strong>
+                <a href="<%= @share_link %>" target="_blank"><strong><font face="Arial, Helvetica, sans-serif" color="#00A5F8" size="+2"><%= @item_title %></font></strong></a>
                 <br>
                 <font face="Arial, Helvetica, sans-serif" color="#025D8C" size="3"><%= t('basics.created_by') %>: </font><font color="#00A5F8"><%= @item_author %></font>
                 <br/>
@@ -63,24 +63,28 @@
         <tr>
           <td colspan="2"><img src="http://<%=@global_url%>/images/share_email/line.gif" width="520" height="1"></td>
         </tr>
-        <tr>
-          <td colspan="2"><br>
 
-            <table width="520" border="0" cellspacing="10" cellpadding="0">
-            <tr>
-              <td width="77" valign="top"><font face="Arial, Helvetica, sans-serif" color="#00A5F8" size="+2"><strong><%= t('basics.message') %>: </strong></font></td>
-              <td width="413"><font face="Arial, Helvetica, sans-serif" color="#666666" size="+2"><%= @message %></font></td>
-            </tr>
-          </table>
+        <% if @message %>
+          <tr>
+            <td colspan="2">
               <br>
-              <br></td>
+              <table width="520" border="0" cellspacing="10" cellpadding="0">
+                <tr>
+                  <td width="77" valign="top"><font face="Arial, Helvetica, sans-serif" color="#00A5F8" size="+2"><strong><%= t('basics.message') %>: </strong></font></td>
+                  <td width="413"><font face="Arial, Helvetica, sans-serif" color="#666666" size="+2"><%= @message %></font></td>
+                </tr>
+              </table>
+              <br>
+              <br>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2"><img src="http://<%=@global_url%>/images/share_email/line.gif" width="520" height="1"></td>
+          </tr>
+        <% end %>
 
-        </tr>
         <tr>
-          <td colspan="2"><img src="http://<%=@global_url%>/images/share_email/line.gif" width="520" height="1"></td>
-        </tr>
-        <tr>
-          <td colspan="2" align="center"><font face="Arial, Helvetica, sans-serif" color="#00A5F8" size="+2">Cyloop | <%= t('dashboards.show.what_do_you_want_to_listen_to') %></font></td>
+          <td colspan="2" align="center"><a href="http://<%= @global_url %>" target="_blank"><font face="Arial, Helvetica, sans-serif" color="#00A5F8" size="+2">Cyloop</font></a> | <a href="http://<%= @global_url %>/radio" target="_blank"><font face="Arial, Helvetica, sans-serif" color="#00A5F8" size="+2"><%= t('dashboards.show.what_do_you_want_to_listen_to') %></font></a></td>
         </tr>
       </table>
 
