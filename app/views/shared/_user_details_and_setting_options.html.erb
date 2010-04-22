@@ -21,10 +21,8 @@
           <% if current_user.blocks?(item) %>
           <%= image_tag('blocked.gif') %> <%= t('blocks.blocked') %>
           <% end %>
-        </div>
-  
+        </div>  
         <%= render :partial => 'shared/action_settings', :locals => { :item => item } unless item.is_a?(Artist)  %>
-
       <% end %>
       
   </div>
