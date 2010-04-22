@@ -126,12 +126,6 @@ $(document).ready(function() {
    */
   $("#facebox .share_station form").live("submit", function(e) {
       e.preventDefault();
-      var validations = [
-                          {user_name:'required'},
-                          {user_email:'required_email'},
-                          {friend_email:'required_multiemail'}
-                        ];
-
       if(validateSubmission($(this), validations))
       {
         $.ajax({
