@@ -54,7 +54,7 @@ class ShareController < ApplicationController
         station_includes = []
         station.playable.includes(4).each do |artist|
           station_images << AvatarsHelper.avatar_path(artist.album, :small)
-          station_includes << {:artist => artist.artist.name, :slug => artist.artist.slug}
+          station_includes << {:artist => artist.artist.name, :slug => artist.artist.slug} unless artist.artist.nil?
         end
       end
     end
