@@ -262,7 +262,7 @@ class Account < ActiveRecord::Base
     when :all
       self.is_a?(Artist) ? [self.id].concat(self.follower_ids) : [self.id].concat(self.followee_cache_not_deleted)
     end
-    accounts
+    accounts - self.blocker_ids
   end
   
   def activity_status(args = {})

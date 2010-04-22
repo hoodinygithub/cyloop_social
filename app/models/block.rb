@@ -14,6 +14,7 @@ class Block < ActiveRecord::Base
   belongs_to :blockee, :class_name => 'User'
   validates_presence_of :blocker, :blockee
   validates_uniqueness_of :blockee_id, :scope => :blocker_id, :message => :already_blocked
+  after_create :unfollow_blocker
   
   protected 
     def unfollow_blocker
