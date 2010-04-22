@@ -1,0 +1,16 @@
+<ul class="actions_settings">
+  <% if current_user.blocks?(item) %>
+    <li>
+      <a href="#" onclick="Base.community.unblock('<%= item.slug %>', this); return false;">
+        <%= t('actions.unblock') %>
+      </a>
+    </li>
+  <% else %>
+    <li>
+      <a href="#" onclick="Base.community.block('<%= item.slug %>', this); return false;">
+        <%= t('actions.block') %>
+      </a>
+    </li>
+  <% end %>
+</ul>
+
