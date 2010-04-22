@@ -11,6 +11,8 @@ module ApplicationHelper
     url << "filter_by=#{type}"
     url = url.downcase
 
+    options[:class] = 'active' if (type == 'all' && !@filter_type)
+
     if @filter_type.to_s == type
       options[:class] = 'active'
     end
