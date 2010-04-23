@@ -9,7 +9,7 @@
 
   <div class="songs_box large_height iefix">
     <ul class="size2">
-      <%= render :partial => 'my_station_item', :collection => current_user.stations if logged_in? %>
+      <%= render :partial => 'my_station_item', :collection => current_user.stations.all(:order => 'user_stations.name') if logged_in? %>
     </ul>
   </div><!--/end songs_box -->
 </div><!--/end songs_list -->

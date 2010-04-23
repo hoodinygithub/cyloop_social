@@ -216,12 +216,12 @@ module ApplicationHelper
     end
   end
 
-  def station_contains(item, limit=3, include_text=true)
+  def station_contains(item, limit=3, include_text=true, link_options={})
     links = []
     station_artists = item.includes(limit)
 
     station_artists.each do |station_artist|
-      links << link_to(station_artist.artist.name, artist_path(station_artist.artist)) unless station_artist.artist.nil?
+      links << link_to(station_artist.artist.name, artist_path(station_artist.artist), link_options) unless station_artist.artist.nil?
     end
 
     if include_text

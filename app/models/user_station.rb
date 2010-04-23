@@ -28,7 +28,6 @@ class UserStation < ActiveRecord::Base
     end
   end
 
-
   belongs_to :abstract_station
   
   delegate :artist, :artist_id, :amg_id, :top_station, :to => :abstract_station, :allow_nil => true

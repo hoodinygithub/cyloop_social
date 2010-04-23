@@ -7,11 +7,11 @@
   <% end %>
   <a href="#" onclick="Base.stations.share(<%= @station_obj.id %>); return false;"><img src="images/share_button_small.png" class="png_fix valign_middle" alt="<%= t('actions.share') %>" /></a>
   <br/>
-  <small class="grey"><%= t("basics.last_modified") %>: <%= l(@station_obj.updated_at.to_date) %></small><br/>
-  <small><%= station_contains(@station_obj.playable) %></small>
+  <small class="grey"><%= t('basics.created_at', :when => distance_of_time_in_words_to_now(@station_obj.created_at)) %></small><br/>
+  <small><%= station_contains(@station_obj.playable, 3, true, :target => "_blank") %></small>
 </div><!--/end top_buttons -->
 
 <div class="album_actions2">
   <%= blue_button(t("radio.create_new_station"), :class => "create_new_station", :id => "create_station_button") %><br/>
-  <b><%= t("basics.created_by") %>: <%= link_to(@station_obj.playable.owner.name, "/#{@station_obj.playable.owner.slug}") %></b>
+  <b><%= t("basics.created_by") %>: <%= link_to(@station_obj.playable.owner.name, @station_obj.playable.owner, :target => '_blank') %></b>
 </div>
