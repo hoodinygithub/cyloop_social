@@ -1,6 +1,12 @@
 <ul class="side_links">
   <% @search_types.each_with_index do |type, index| %>
-  <li class="scope_toggle <%= index == @search_types.size - 1 ? 'last' : "" %>"><%= link_to "#{t("basics.#{type}")} (#{@counts[type]})", "#", :id => "scope_#{type.to_s}_toggle", :class => @active_scope == type ? "active": "" %></li>
+  <li class="scope_toggle <%= index == @search_types.size - 1 ? 'last' : "" %>">
+    <div class="left_side">
+      <%= link_to "#{t("basics.#{type}")} (#{@counts[type]})", "#", :id => "scope_#{type.to_s}_toggle", :class => @active_scope == type ? "active": "" %>
+    </div>
+    <%= image_tag "loading.gif", :id => "#{type.to_s}_loader",:class => "mini_loader left_side hide" %>
+    <br class="clearer" />
+  </li>
   <% end %>
 </ul>
 

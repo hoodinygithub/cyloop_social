@@ -69,10 +69,9 @@
 
 class Artist < Account
 
+  index [:slug, :type]
   include SongListen::Most
   include Searchable::ByName
-
-  index [:slug, :type]
 
   has_one :station, :class_name => 'AbstractStation', :foreign_key => 'artist_id', :conditions => 'deleted_at IS NULL'
   has_many :abstract_station_artists
@@ -98,7 +97,6 @@ class Artist < Account
 
   has_many :band_members
 
-  named_scope :starts_with, lambda {|prefix|{:conditions => ["name LIKE ?", "#{prefix}%"], :limit => 10}}
   named_scope :ordered_by_slug, :order => "slug asc"
 
   belongs_to :locale

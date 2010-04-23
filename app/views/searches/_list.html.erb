@@ -5,8 +5,8 @@
   <div class="search_results_ajax"><%= image_tag "/images/ajax_activity_indicators_download_animated_icon_animated_busy.gif" %></div>
   <% end %>
   <div class="clearer"></div>
-  <ul class="search_list">
-    <%= render :partial => "searches/list_#{type.to_s.singularize}", :collection => @results[type] %>
+  <ul id="<%= "#{type.to_s}_list" %>" class="search_list">
+    <%= render :partial => "searches/list_#{type.to_s.singularize}", :collection => @results[type] unless @results[type].empty? %> 
   </ul>
   <div class="grey_spacer"></div>
   <% end %>

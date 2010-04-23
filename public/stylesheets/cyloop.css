@@ -692,3 +692,10 @@ label.label_holder{
 background: #333333 !important;
 }
 
+li.scope_toggle .mini_loader{
+	width: 18px; 
+	height: 18px; 
+	margin-left: 10px; 
+	margin-top: 3px;
+}
+

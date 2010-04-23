@@ -24,7 +24,6 @@ module Searchable::ByName
         set_property :min_prefix_len => 1
         set_property :enable_star => 1
         set_property :allow_star => 1
-        has created_at
       end
     end
     base.extend ClassMethods
