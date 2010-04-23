@@ -14,8 +14,8 @@
 
 <div class="black_box right_side">
   <big class="blue">
-    <%= link_to("#{profile_user.total_user_stations}", my_stations_path) if profile_user? %>
-    <%= link_to("#{profile_artist.total_user_stations}", artist_stations_path) if profile_artist? %>
+    <%= link_to("#{profile_user.total_user_stations}", user_stations_path(profile_account)) if profile_user? %>
+    <%= link_to("#{profile_artist.total_user_stations}", artist_stations_path(profile_account)) if profile_artist? %>
   </big>
   <br />
   <%= t('basics.stations') %>
