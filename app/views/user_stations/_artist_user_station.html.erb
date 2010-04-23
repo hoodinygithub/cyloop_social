@@ -11,7 +11,7 @@
         <big><%= link_to(artist_user_station.name, radio_path(:station_id => artist_user_station.station)) %></big>
         <br/>
         <span class="grey">
-          <%= t("basics.last_modified") %>: <%= l(artist_user_station.updated_at.to_date) %>
+          <%= t("basics.last_modified") %>: <%= nice_elapsed_time(artist_user_station.updated_at) %>
         </span>
         <br/>
         <div class="tags_contains">
@@ -24,11 +24,15 @@
             <!--img src="images/network_icon.gif" class="creator_image" alt="" /-->
             <div class="creator_text">
                 <b><%= t("basics.created_by") %>: <%= link_to artist_user_station.owner.name, user_path(artist_user_station.owner) %></b><br/>
-                  <% if current_user && current_user.follows?(artist_user_station.owner) %>
+
+                <%= render :partial =>'shared/user_following', :locals => {:current_user => current_user, :user =>artist_user_station.owner} if current_user %>
+
+<!--                  <% if current_user && current_user.follows?(artist_user_station.owner) %>
                   <%= link_to_function( t("actions.unfollow_account", :name =>  artist_user_station.owner.first_name), "Base.community.unfollow('#{artist_user_station.owner.slug}', this, false); return false;") %>
                   <% else %>
                   <%= link_to_function( t("actions.follow_account", :name =>  artist_user_station.owner.first_name), "Base.community.follow('#{artist_user_station.owner.slug}', this, false); return false;") %>
                   <% end %>
+                  -->
             </div>
         </div>
     </div><!--/end subcription_text -->

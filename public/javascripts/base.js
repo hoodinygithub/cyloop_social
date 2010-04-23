@@ -139,7 +139,7 @@ $(document).ready(function() {
   });
 });
 
-var swf = function(objname) 
+var swf = function(objname)
 {
   if(navigator.appName.indexOf("Microsoft") != -1)
     return window[objname];
@@ -184,7 +184,7 @@ Base.radio.play_station = function(from_list, from_create_station, list, list_pl
 	var id =  $("#station_id").val();
 	var queue =  $("#station_queue").val();
 	var is_owner = $("#owner").val() == 'true';
-	
+
   $.ajax({
     type: "GET",
     url:  "/radio/album_detail",
@@ -202,7 +202,7 @@ Base.radio.play_station = function(from_list, from_create_station, list, list_pl
       $("div#current_station_info").append(result);
       $("div#current_station_info").append("<br class='clearer' />");
 			initCreateStationButton();
-			
+
 			if(is_owner){
 			  Base.radio.refresh_my_stations();
 			}
@@ -213,20 +213,20 @@ Base.radio.play_station = function(from_list, from_create_station, list, list_pl
 
 Base.radio.initialize = function() {
 	var elems = "div.songs_box ul li a.launch_station, #create_station_submit";
-	
+
   $(elems).click(function(e){
       e.preventDefault();
 			var is_station_list_item = $(this).hasClass('launch_station');
 			var is_create_station_submit = $(this).attr("id") == "create_station_submit";
 			var list;
-			var list_play_button;			
+			var list_play_button;
 			if(is_station_list_item) {
 				var li = $(this).parentsUntil('li');
 				list = this.id.match(/(.*)_list(.*)/)[1];
 				list_play_button = li.find('img.list_play_button');
 				if(list_play_button) { list_play_button.attr('src', "/images/grey_loading.gif"); }
 			}
-			
+
 			if(is_create_station_submit){
 			  $(this).html(Base.layout.spanned_spin_image());
 			}
@@ -558,7 +558,7 @@ Base.community.follow = function(user_slug, button, remove_div, layer_path) {
       });
       return;
     }
-    
+
     if (status == 'success') {
       $button_label.html("");
       $button.removeClass("blue_button");
@@ -600,6 +600,34 @@ Base.community.unfollow = function(user_slug, button, remove_div) {
     }
   });
 };
+
+Base.community.text_follow = function(user_slug, element, layer_path) {
+  var $element = jQuery(element);
+  var params = {'user_slug':user_slug}
+  jQuery.post('/users/follow', params, function(response, status) {
+    if (Base.utils.handle_login_required(response, layer_path, null)) {
+      //JQuery($element).parent().parent().find('#not_following').hide();
+      //jQuery($element).parent().parent().find('#following').show();
+      return false;
+    }
+    if (status == 'success') {
+      jQuery($element).parent().parent().find('#not_following').hide();
+      jQuery($element).parent().parent().find('#following').show();
+    }
+  });
+};
+
+Base.community.text_unfollow = function(user_slug, element) {
+  var $element = jQuery(element);
+  var params = {'user_slug':user_slug}
+  jQuery.post('/users/unfollow', params, function(response, status) {
+    if (status == 'success') {
+      jQuery($element).parent().parent().find('#not_following').show();
+      jQuery($element).parent().parent().find('#following').hide();
+    }
+  });
+};
+
 
 Base.community.block = function(user_slug, button) {
   var params = {'user_slug':user_slug}
@@ -714,7 +742,7 @@ Base.stations.share = function(station_id) {
   });
 };
 
-Base.stations.edit_from_layer = function() {	
+Base.stations.edit_from_layer = function() {
   station_id = $('#layer_station_id').val();
   playable_id = $('#playable_id').val();
   new_station_name = $('#new_station_name').val();
@@ -736,13 +764,13 @@ Base.stations.init_delete_layer = function() {
   jQuery("#delete_station_button").click(function() {
 		var station_id = parseInt(jQuery("#station_to_delete").val(), 10);
 		if(station_id > 0) {
-			jQuery('#delete_loading').removeClass('hide');	
+			jQuery('#delete_loading').removeClass('hide');
 		  jQuery.post('/stations/' + station_id + "/delete", {'_method':'delete'}, function(response) {
 				jQuery(document).trigger('close.facebox');
 		    if (response == 'destroyed') {
 					jQuery('#station_to_delete').attr('value', 0);
 		      $('#my_station_item_' + station_id).slideUp('fast');
-		    } 
+		    }
 			});
 		}
 	  return false;
@@ -755,7 +783,7 @@ Base.stations.launch_edit_layer = function(station_id) {
   		jQuery.get(url, function(data) {
       jQuery.popup(data);
     });
-	});  
+	});
  	return false;
 };
 
@@ -767,8 +795,8 @@ Base.stations.remove_from_layer = function(station_id) {
   		jQuery.get(url, function(data) {
       jQuery.popup(data);
     });
-	});  
-	
+	});
+
 };
 
 Base.stations.remove = function(user_station_id, button) {
@@ -841,12 +869,12 @@ Base.network.show_more = function(button) {
 
   $last_li  = $list.find('li:last');
   timestamp = $last_li.attr('timestamp');
-  
+
   var params = {'after':timestamp, 'slug':Base.account.slug};
   if (typeof(Base.network.FILTER_BY) != 'undefined') {
     params.filter_by = Base.network.FILTER_BY;
   }
-  
+
   jQuery.post("/activity/latest", params, function (response) {
     $list.html(response).fadeIn();
     $span_label.html(old_button_label);
@@ -870,18 +898,18 @@ Base.network.count_chars = function() {
 Base.network.__update_page_owner_page = function(response, options) {
   $show_more_button = jQuery('#show_more_comments');
   $comment_list        = jQuery('#network_comment_list');
-  $share_button = jQuery('a.compartir_button');  
+  $share_button = jQuery('a.compartir_button');
 
   if (typeof(options) == 'object' && typeof(options.replace) != 'undefined' && options.replace) {
     $comment_list.hide().html(response).fadeIn();
   } else {
     $comment_list.hide().append(response).fadeIn();
   }
-  
+
   if (response.length > 0) {
     $show_more_button.fadeIn();
   }
-  
+
   $share_button.fadeIn();
 };
 
@@ -910,7 +938,7 @@ Base.network.load_latest = function(params, profile_owner) {
     if (user_page) {
       params.public = true;
     }
-    
+
     params.profile_owner = profile_owner;
 
     jQuery.post('/activity/latest', params, function (response) {
@@ -1193,31 +1221,6 @@ Base.main_search.toggle_scope = function() {
   };
 
 
-Base.main_search.follow = function(user_slug, element) {
-  var $element = jQuery(element);
-  var params = {'user_slug':user_slug}
-  jQuery.post('/users/follow', params, function(response, status) {
-    login_required = Base.utils.handle_redirect(response);
-    if (login_required) return;
-    if (status == 'success') {
-      jQuery($element).parent().parent().find('#not_following').hide();
-      jQuery($element).parent().parent().find('#following').show();
-    }
-  });
-};
-
-Base.main_search.unfollow = function(user_slug, element) {
-  var $element = jQuery(element);
-  var params = {'user_slug':user_slug}
-  jQuery.post('/users/unfollow', params, function(response, status) {
-    if (status == 'success') {
-      jQuery($element).parent().parent().find('#not_following').show();
-      jQuery($element).parent().parent().find('#following').hide();
-    }
-  });
-};
-
-
 Base.main_search.select_scope = function() {
   jQuery(".scope a").click(function() {
       value = this.id.match(/search_(.*)/)[1];
@@ -1235,11 +1238,11 @@ Base.main_search.initialize_scope_toggle = function() {
 	Base.main_search.select_scope();
   jQuery(".scope_toggle a").click(function() {
       value = this.id.match(/scope_(.*)_toggle/)[1];
-      $('#search_scope').attr('value', value);      
+      $('#search_scope').attr('value', value);
 			Base.main_search.toggle_scope();
       return false;
     });
-  jQuery(".sorting a").click(function() {						
+  jQuery(".sorting a").click(function() {
       $('#search_sort').attr('value', this.href.match(/sort_by\=(.*)/)[1]);
 			Base.main_search.buildSearchUrl();
       return false;
@@ -1276,10 +1279,10 @@ Base.radio.init_edit_station_layer = function() {
 /*	jQuery("#station_name").click(function() {
 		jQuery('.popup').popup();
 	});
-*/	
+*/
   save_button.bind('click', function() {
     params = {'_method' : 'put', 'user_station' : {'name': new_station_name } };
-    jQuery.post('/my/stations/' + user_station_id, params, function(response) {			
+    jQuery.post('/my/stations/' + user_station_id, params, function(response) {
       jQuery("#station_name").html(new_station_name);
 			jQuery(document).trigger('close.facebox');
     });
@@ -1291,15 +1294,15 @@ Base.radio.init_edit_station_layer = function() {
 /*
  * Register and triggers
  */
-jQuery(document).ready(function() { 
+jQuery(document).ready(function() {
   // Effects and Layout fixes
   $('#slides').cycle({fx: 'fade', timeout: 5000, pager: '#pager_links'});
   $('.png_fix').supersleight({shim: '/images/blank.gif'});
-  
+
   // Popups
   $('.simple_popup').simple_popup();
   $('.popup').popup();
-  
+
   Base.stations.close_button_event_binder();
   Base.layout.bind_events();
   Base.layout.hide_success_and_error_messages();
