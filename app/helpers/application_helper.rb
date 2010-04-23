@@ -38,10 +38,6 @@ module ApplicationHelper
     link_to t("sort.#{type}"), url, options
   end
 
-  def following_page?
-    params[:controller] == 'followees' && params[:slug]
-  end
-
   def profile_owner?
     current_user == profile_account
   end
@@ -134,7 +130,8 @@ module ApplicationHelper
                       :account_id => account.id,
                       :follow_profile => account.id)
 
-    onclick_cb = "Base.community.#{action}('#{account.slug}', this, #{following_page?}, '#{layer_path}')"
+    puts "Base.community.#{action}('#{account.slug}', this, #{page_owner?}, '#{layer_path}')"
+    onclick_cb = "Base.community.#{action}('#{account.slug}', this, #{page_owner?}, '#{layer_path}')"
     attrs.merge!({:onclick => onclick_cb, :class => 'follower_btn'})
     if account.is_a?(User) && !account.blocks?(current_user)
       send("#{button_color}_button", t(locale_key), attrs)
