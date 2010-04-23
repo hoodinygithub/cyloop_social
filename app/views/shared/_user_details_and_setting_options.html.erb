@@ -17,27 +17,29 @@
         <%= blue_button(image_tag('settings_button.png'), :href => '#', :class => 'settings_button') %>
         <br/>
       
-        <div class="blocked">
-          <% if current_user.blocks?(item) %>
-          <%= image_tag('blocked.gif') %> <%= t('blocks.blocked') %>
-          <% end %>
-        </div>
+        <% if item.is_a?(User) %>
+          <div class="blocked">
+            <% if current_user.blocks?(item) %>
+            <%= image_tag('blocked.gif') %> <%= t('blocks.blocked') %>
+            <% end %>
+          </div>
 
-        <ul class="actions_settings">
-          <% if current_user.blocks?(item) %>
-            <li>
-              <a href="#" onclick="Base.community.unblock('<%= item.slug %>', this); return false;">
-                <%= t('actions.unblock') %>
-              </a>
-            </li>
-          <% else %>
-            <li>
-              <a href="#" onclick="Base.community.block('<%= item.slug %>', this); return false;">
-                <%= t('actions.block') %>
-              </a>
-            </li>
-          <% end %>
-        </ul>
+          <ul class="actions_settings">
+            <% if current_user.blocks?(item) %>
+              <li>
+                <a href="#" onclick="Base.community.unblock('<%= item.slug %>', this); return false;">
+                  <%= t('actions.unblock') %>
+                </a>
+              </li>
+            <% else %>
+              <li>
+                <a href="#" onclick="Base.community.block('<%= item.slug %>', this); return false;">
+                  <%= t('actions.block') %>
+                </a>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
       <% end %>
       
   </div>
