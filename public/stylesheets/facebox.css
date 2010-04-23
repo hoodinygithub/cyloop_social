@@ -1,205 +1,3 @@
-#facebox {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 999;
-  text-align: left;
-}
-
-#facebox .popup {
-  position: relative;
-}
-
-#facebox .body {
-  padding: 10px;
-  background: #fff;
-  width: 370px;
-}
-
-#facebox .loading {
-  text-align: center;
-}
-
-#facebox .image {
-  text-align: center;
-}
-
-#facebox img {
-  border: 0;
-  margin: 0;
-}
-
-#facebox .footer {
-  border-top: 1px solid #DDDDDD;
-  padding-top: 5px;
-  margin-top: 10px;
-  text-align: right;
-}
-
-#facebox_overlay {
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  height:100%;
-  width:100%;
-}
-
-.facebox_hide {
-  z-index:-100;
-}
-
-.facebox_overlayBG {
-  background-color: #000;
-  z-index: 99;
-}
-
-* html #facebox_overlay { /* ie6 hack */
-  position: absolute;
-  height: expression(document.body.scrollHeight > document.body.offsetHeight ? document.body.scrollHeight : document.body.offsetHeight + 'px');
-}
-
-.popup {
-    width: 512px;
-    position: absolute;
-    top: 100px;
-    left: 50%;
-    z-index: 110;
-    display: none;
-}
-
-.simple_popup {
-    display: none;
-}
-
-
-.popup .top_shadow, .popup .bottom_shadow {
-    height: 17px;
-    font-size: 0px;
-    position: relative;
-}
-
-.layer {
-  display:none;
-}
-
-.popup .top_shadow .center_shadow {
-    margin: 0px 17px;
-    height: 17px;
-    background: url("/images/popup_top_bg.png") repeat-x left top;
-}
-
-* html .popup .top_shadow .center_shadow {
-    background: none;
-    filter:progid:dximagetransform.microsoft.alphaimageloader(src='/images/popup_top_bg.png', sizingMethod='scale');
-}
-
-.popup .bottom_shadow .center_shadow {
-    margin: 0px 17px;
-    height: 17px;
-    background: url("/images/popup_bottom_bg.png") repeat-x left top;
-}
-
-* html .popup .bottom_shadow .center_shadow {
-    background: none;
-    filter:progid:dximagetransform.microsoft.alphaimageloader(src='/images/popup_bottom_bg.png', sizingMethod='scale');
-}
-
-.popup .corner {
-    width: 17px;
-    height: 17px;
-    position: absolute;
-}
-
-.popup .top_left {
-    background: url("/images/popup_corner_top_left.png") no-repeat left top;
-    left: 0px;
-    top: 0px;
-}
-
-* html .popup .top_left {
-    background: none;
-    filter:progid:dximagetransform.microsoft.alphaimageloader(src='/images/popup_corner_top_left.png', sizingMethod='crop');
-}
-
-.popup .top_right {
-    background: url("/images/popup_corner_top_right.png") no-repeat left top;
-    top: 0px;
-    right: 0px;
-}
-
-* html .popup .top_right {
-    background: none;
-    filter:progid:dximagetransform.microsoft.alphaimageloader(src='images/popup_corner_top_right.png', sizingMethod='crop');
-}
-
-.popup .bottom_left {
-    background: url("/images/popup_corner_bottom_left.png") no-repeat left top;
-    left: 0px;
-    bottom: 0px;
-}
-
-* html .popup .bottom_left {
-    background: none;
-    filter:progid:dximagetransform.microsoft.alphaimageloader(src='/images/popup_corner_bottom_left.png', sizingMethod='crop');
-}
-
-.popup .bottom_right {
-    background: url("/images/popup_corner_bottom_right.png") no-repeat left top;
-    bottom: 0px;
-    right: 0px;
-}
-
-* html .popup .bottom_right {
-    background: none;
-    filter:progid:dximagetransform.microsoft.alphaimageloader(src='/images/popup_corner_bottom_right.png', sizingMethod='crop');
-}
-
-.close_image {
-    position: absolute;
-    right: -12px;
-    top: -11px;
-}
-
-.popup .content {
-    background: url("/images/popup_h_bg.png") repeat-y left top;
-    padding: 35px 45px;
-    text-align: left;
-    color: #1b1b1b;
-}
-
-* html .content {
-    background: none;
-    zoom: 1;
-    filter:progid:dximagetransform.microsoft.alphaimageloader(src='/images/popup_h_bg.png', sizingMethod='scale');
-}
-
-.popup .title {
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-
-.popup p {
-    font-size: 16px;
-    margin-bottom: 10px;
-}
-
-.popup p.note {
-  font-size: 14px;
-  color: #999;
-}
-
-.popup .account_settings .form_row .input.full_width  {
-    width: 390px;
-}
-
-.popup .grey_round_box {
-    margin-bottom: 10px;
-}
-
-.popup .account_settings .form_row textarea.input {
-    height: auto;
-}
-
 #facebox .b {
   background:url(/facebox/b.png);
 }
@@ -220,7 +18,15 @@
   background:url(/facebox/br.png);
 }
 
-#facebox .simple_popup {
+#facebox {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  text-align: left;
+}
+
+#facebox .popup {
   position: relative;
 }
 
@@ -250,6 +56,13 @@
 #facebox img {
   border: 0;
   margin: 0;
+}
+
+#facebox .footer {
+  border-top: 1px solid #DDDDDD;
+  padding-top: 5px;
+  margin-top: 10px;
+  text-align: right;
 }
 
 #facebox .tl, #facebox .tr, #facebox .bl, #facebox .br {
