@@ -314,11 +314,12 @@ module ApplicationHelper
   end
 
   def application_html_attrs
-    if is_msn_messenger_enabled?
+    attrs = if is_msn_messenger_enabled?
       html_attrs.merge( 'xmlns:msgr' => 'http://messenger.live.com/2009/ui-tags', 'xml:lang' => current_site.default_locale.to_s.downcase.split('_').join('-') )
     else
       html_attrs
     end
+    attrs.map{|k,v| "#{k}='#{v}'"}.join(" ")
   end
 
   def twitter_date_activity(date)
