@@ -15,7 +15,7 @@ class UserStationsController < ApplicationController
   def index
 
     @dashboard_menu = :stations
-    
+
     respond_to do |format|
       block = Proc.new do
         @user_stations = profile_account.stations
@@ -68,11 +68,11 @@ class UserStationsController < ApplicationController
           redirect_to my_stations_path
         end
       end
-      
+
       format.xml do
         render :xml => Player::Message.new( :message => t('messenger_player.station_edit_success') )
       end
-      
+
       format.js
     end
   end
@@ -107,3 +107,4 @@ class UserStationsController < ApplicationController
     "#{CURRENT_SITE.cache_key}/#{profile_user.cache_key}/station/#{params[:id]}"
   end
 end
+

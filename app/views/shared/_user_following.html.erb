@@ -1,3 +1,7 @@
+<% layer_path = send("follow_user_registration_layers_path",
+                      :return_to => request.request_uri,
+                      :account_id => user.id,
+                      :follow_profile => user.id) %>
 <% if current_user %>
   <div id="following" style="display:<%= current_user.follows?(user) ? 'block' : 'none' %>" >
     <%= t("basics.you_are", :default => "You are") %> <span class="green_highlight"><%= t('basics.following', :default => "following").downcase %></span> <%= user.name rescue "" %>
@@ -6,10 +10,6 @@
           :onclick => "Base.community.text_unfollow('#{user.slug}', this)"), :default =>  "Click {{follow_link}} to stop following") rescue "" %>.
   </div>
   <div id="not_following" style="display:<%= current_user.follows?(user) ? 'none' : 'block' %>" >
-      <% layer_path = send("follow_user_registration_layers_path",
-                      :return_to => request.request_uri,
-                      :account_id => user.id,
-                      :follow_profile => user.id) %>
       <%= t("basics.click_to_follow",
           :follow_link => link_to(t("basics.here", :default => "here"), "javascript: ",
           :onclick => "Base.community.text_follow('#{user.slug}', this, '#{layer_path}')"), :default => "Click {{follow_link}} to follow") rescue "" %>
@@ -19,7 +19,7 @@
   <div id="not_following" style="display: block" >
       <%= t("basics.click_to_follow",
           :follow_link => link_to(t("basics.here", :default => "here"), "javascript: ",
-          :onclick => "Base.community.text_follow('#{user.slug}', this)"), :default => "Click {{follow_link}} to follow") rescue "" %>
+          :onclick => "Base.community.text_follow('#{user.slug}', this, '#{layer_path}')"), :default => "Click {{follow_link}} to follow") rescue "" %>
       <%= user.name rescue "" %>.
   </div>
 <% end %>
