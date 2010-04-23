@@ -13,33 +13,31 @@
 
   <div class="follower_actions w_settings">
       <%= follow_button(:account => item) %>
-      <% if logged_in? %>
+      <% if logged_in? && item.is_a?(User) %>
         <%= blue_button(image_tag('settings_button.png'), :href => '#', :class => 'settings_button') %>
         <br/>
-      
-        <% if item.is_a?(User) %>
-          <div class="blocked">
-            <% if current_user.blocks?(item) %>
-            <%= image_tag('blocked.gif') %> <%= t('blocks.blocked') %>
-            <% end %>
-          </div>
 
-          <ul class="actions_settings">
-            <% if current_user.blocks?(item) %>
-              <li>
-                <a href="#" onclick="Base.community.unblock('<%= item.slug %>', this); return false;">
-                  <%= t('actions.unblock') %>
-                </a>
-              </li>
-            <% else %>
-              <li>
-                <a href="#" onclick="Base.community.block('<%= item.slug %>', this); return false;">
-                  <%= t('actions.block') %>
-                </a>
-              </li>
-            <% end %>
-          </ul>
-        <% end %>
+        <div class="blocked">
+          <% if current_user.blocks?(item) %>
+          <%= image_tag('blocked.gif') %> <%= t('blocks.blocked') %>
+          <% end %>
+        </div>
+
+        <ul class="actions_settings">
+          <% if current_user.blocks?(item) %>
+            <li>
+              <a href="#" onclick="Base.community.unblock('<%= item.slug %>', this); return false;">
+                <%= t('actions.unblock') %>
+              </a>
+            </li>
+          <% else %>
+            <li>
+              <a href="#" onclick="Base.community.block('<%= item.slug %>', this); return false;">
+                <%= t('actions.block') %>
+              </a>
+            </li>
+          <% end %>
+        </ul>
       <% end %>
       
   </div>
