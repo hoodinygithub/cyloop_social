@@ -13,6 +13,14 @@
     var artistSearch = $("input[name='search_station_name']");
     var stationID = $("input[name='search_station_id']");
     var stationQueue = $("input[name='search_station_queue']");
+    var listenButton = $("#listen_button");
+
+    listenButton.click(function(e) {
+      if(parseInt($(this).attr('can_post'), 10)) {
+        $('form.search_station').submit();
+      }
+    });
+
     artistSearch.autocomplete("/stations.js", {
       formatItem: function(item) {
         return item[1];
@@ -23,6 +31,8 @@
     }).result(function(event, item) {
         stationID.val(item[0]);
         stationQueue.val(item[2]);
+        listenButton.attr('can_post', 1);
+        listenButton.removeClass('grey_button_big').addClass('blue_button');
       });
 
     artistSearch.css('color', '#c0d6e2');
@@ -47,7 +57,7 @@
               <input type="text" name="search_station_name" value="<%= t('radio.search_hint') %>" onfocus="clearInput('<%= t('radio.search_hint') %>', this);" onblur="restoreInput('<%= t('radio.search_hint') %>', this);">
           </span>            
           <span class="btn_placeholder">
-              <a href="#" onclick="$('form.search_station').submit(); return false;" class="blue_button"><span><span><%= t('actions.listen').upcase %></span></span></a>
+              <%= grey_button(t('actions.listen').upcase, :id => 'listen_button', :can_post => 0) %>
           </span>
           <br/><br/>
           <div class="medium_text grey2">

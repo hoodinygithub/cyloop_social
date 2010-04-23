@@ -121,7 +121,9 @@ class RadioController < ApplicationController
   end
 
   def search
-    @station = Station.find(params[:station_id]) rescue nil
+    params[:search_station_id] = params[:station_id] if params.has_key?(:station_id) #this is for backwards compatibility
+    
+    @station = Station.find(params[:search_station_id]) rescue nil
     if @station
       respond_to do |format|
         format.html do
