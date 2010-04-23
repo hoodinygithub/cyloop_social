@@ -1,6 +1,6 @@
 <% if item.is_a? Hash %>
   <a href="#"><%= link_to (avatar_for(item['account'], :small), item) %></a>
-<% elsif item.is_a? User %>
+<% elsif item.is_a? User or item.is_a? Artist %>
   <a href="#"><%= link_to (avatar_for(item, :small), item) %></a>
 <% end %>
 
