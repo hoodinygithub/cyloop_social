@@ -605,7 +605,7 @@ en:
   radio:
     create_new_station: Create New Station
     msn_stations: MSN Stations
-    now_playing: Now Playing    
+    now_playing: Now Playing
   information:
     location: Location
     influences: Influences
@@ -820,6 +820,7 @@ en:
     here: here
     click_to_unfollow: Click {{follow_link}} to stop following
     you_are: You are
+    following: following
   cancellation:
     confirmation:
       are_you_sure: Are you sure still want to cancel your account?
@@ -899,7 +900,7 @@ en:
     create_new_station: Create New Station
     search_hint: Enter the name of an artist
     select_recommended_stations_below: "Or if you can’t think of any, select a recommended station from below"
-    
+
   home:
     create_your_own_personalized_radio_station: Create Your Own Personalized Radio Station
     create_your_own_station_now: Create Your Own Station now!
@@ -918,7 +919,7 @@ en:
     cyloop_recommends: CYLOOP RECOMMENDS
     recommended_stations: STATIONS RECOMMENDED BY CYLOOP
     recommended_mixes: MIXES RECOMMENDED BY CYLOOP
-    network_update: "{{user_name}}'S RECENT ACTIVITY" 
+    network_update: "{{user_name}}'S RECENT ACTIVITY"
   sessions:
     new:
       sign_in: Log in
