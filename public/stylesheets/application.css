@@ -1613,7 +1613,7 @@ h1 {
 
 .band_ad_box {
   position: absolute;
-  top: 20px;
+  top: 0px;
   width: 320px;
   left: 50%;
   margin-left: 150px;
