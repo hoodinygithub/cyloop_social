@@ -130,7 +130,6 @@ module ApplicationHelper
                       :account_id => account.id,
                       :follow_profile => account.id)
 
-    puts "Base.community.#{action}('#{account.slug}', this, #{page_owner?}, '#{layer_path}')"
     onclick_cb = "Base.community.#{action}('#{account.slug}', this, #{page_owner?}, '#{layer_path}')"
     attrs.merge!({:onclick => onclick_cb, :class => 'follower_btn'})
     if account.is_a?(User) && !account.blocks?(current_user) || account.is_a?(Artist)

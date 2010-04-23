@@ -14,7 +14,7 @@
   <div class="follower_actions w_settings">
       <%= follow_button(:account => item) %>
       <% if logged_in? && item.is_a?(User) %>
-        <%= blue_button(image_tag('settings_button.png'), :href => '#', :class => 'settings_button') %>
+        <%= blue_button(image_tag('settings_button.png'), :href => '#', :class => 'settings_button png_fix') %>
         <br/>
 
         <div class="blocked">

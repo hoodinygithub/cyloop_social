@@ -129,3 +129,12 @@ label.label_holder {
   text-align: left;
 }
 
+a.settings_button {
+  position: relative;
+  top: 5px !important;
+}
+
+.actions_settings {
+  position: relative;
+  top: 5px !important;
+}
