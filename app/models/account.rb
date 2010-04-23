@@ -72,7 +72,7 @@ class Account < ActiveRecord::Base
   include AvatarImporter
   include BackgroundImporter
   include Commentable
-  include Account::Website  
+  include Account::Website
   include Account::AccountActivity
   include SongListen::Most
   include ProfileVisit::Most
@@ -262,9 +262,9 @@ class Account < ActiveRecord::Base
     when :all
       self.is_a?(Artist) ? [self.id].concat(self.follower_ids) : [self.id].concat(self.followee_cache_not_deleted)
     end
-    accounts - self.blocker_ids
+    self.is_a?(Artist) ? accounts : accounts - self.blocker_ids
   end
-  
+
   def activity_status(args = {})
     activity_status = Activity::Status.new(self)
   end
