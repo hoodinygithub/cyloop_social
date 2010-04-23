@@ -109,7 +109,7 @@ module ApplicationHelper
 
   def follow_button(attrs = {})
     account = attrs.delete(:account)
-    if current_user and current_user.follow_requests.collect(&:follower_id).include? account.id
+    if current_user and account.follow_requests.collect(&:follower_id).include? current_user.id
       action       = 'follow'
       key          = 'pending'
       button_color = 'yellow'
