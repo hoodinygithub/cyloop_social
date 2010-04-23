@@ -165,8 +165,8 @@ h1 {
   display: block;
 }
 
-#msn_header .portal .msn_sisters li.messenger a {
-  background-image: url("http://tk2.stb00.s-msn.com/i/DE/73EA3A497EB807310219A1C4D1E9E.gif");
+#msn_header .portal ul.msn_sisters{
+  list-style: none;
 }
 
 #msn_header .portal .msn_sisters li.messenger_ca a {
@@ -213,6 +213,7 @@ h1 {
 #msn_header .portal .msn_sections li {
   width: 20%;
   float:  left;
+  padding-bottom:3px;
 }
 
 #msn_header .portal .msn_sections li.last {

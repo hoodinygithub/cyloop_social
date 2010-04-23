@@ -1350,6 +1350,14 @@ jQuery(document).ready(function() {
   // Popups
   $('.simple_popup').simple_popup();
   $('.popup').popup();
+  
+  //MSN header behaviors
+  $('#msn_header .portal').hide();
+  $('#msn_header li.more a').click(function() {
+    $("#msn_header .portal").toggle();
+    $("#msn_header li.more").toggleClass('open');
+    return false;
+  });
 
   Base.stations.close_button_event_binder();
   Base.layout.bind_events();
