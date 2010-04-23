@@ -644,11 +644,11 @@ Base.community.block = function(user_slug, button) {
   jQuery.post('/users/block', params, function(response, status) {
     if (status == 'success') {
       $main_div.find('.blocked').html("<img src='/images/blocked.gif'></img> " + Base.locale.t('blocks.blocked'));
+      $settings_button.html("<img src='/images/settings_button.png'></img>");      
       $button.attr('onclick', "");
       $button.unbind('click');
       $button.bind('click', function() { Base.community.unblock(user_slug, this); return false; });
       $button.html(Base.locale.t('actions.unblock'));
-      $settings_button.html("<img src='/images/settings_button.png'></img>");
     }
   });
 };
@@ -668,11 +668,11 @@ Base.community.unblock = function(user_slug, button) {
   jQuery.post('/users/unblock', params, function(response, status) {
     if (status == 'success') {
       $main_div.find('.blocked').html("");
+      $settings_button.html("<img src='/images/settings_button.png'></img>");      
       $button.attr('onclick', "");
       $button.unbind('click');
       $button.bind('click', function() { Base.community.block(user_slug, this); return false; });
       $button.html(Base.locale.t('actions.block'));
-      $settings_button.html("<img src='/images/settings_button.png'></img>");
     }
   });
 };
