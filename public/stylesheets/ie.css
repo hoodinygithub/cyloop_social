@@ -51,3 +51,48 @@ label.label_holder {
   margin: 0;
   width: 860px !important;
 }
+
+/* Registration Layers */
+.registration_layer .stats ul {
+  background-image: none;
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale, src='/images/layers/transparency.png');  
+}
+.registration_layer .stats li.listen span {
+  background-image: url(../images/layers/listen.gif);
+}
+.registration_layer .stats li.discover span {
+  background-image: url(../images/layers/discover.gif);
+}
+.registration_layer .stats li.know span {
+  background-image: url(../images/layers/know.gif);
+}
+.registration_layer .stats li.share span {
+  background: transparent url(../images/layers/share.gif) no-repeat top center;
+}
+.registration_layer .close { 
+  background-image: url(../images/layers/close.gif); 
+  margin-top: -236px;
+  height: 14px;
+}
+.registration_layer .top h2 { 
+  background: transparent url(../images/layers/cyloop_powered.gif) no-repeat top 465px;
+  height: 200px;
+  margin-left: 10px;
+}
+.registration_layer .bottom {
+  margin: 0;
+  padding-bottom: 0;
+}
+.registration_layer .bottom p {
+  margin-top: 10px;
+}
+
+/* Facebox fix */
+#facebox .b,
+#facebox .tl,
+#facebox .tr,
+#facebox .bl,
+#facebox .br {
+  background-image: none;
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale, src='/images/layers/transparency.png');  
+}
