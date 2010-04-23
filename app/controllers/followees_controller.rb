@@ -34,7 +34,9 @@ class FolloweesController < ApplicationController
         :locals => {:following => @following, :artist_id => params[:id], :skip_auto_width => params[:skip_auto_width]}
     end
 
-    deliver_friend_request_email if @following.approved? && profile_user.receives_following_notifications?
+    if @following.approved? && profile_user.receives_following_notifications?
+      deliver_friend_request_email
+    end
   end
 
   alias :show :update
@@ -55,14 +57,16 @@ class FolloweesController < ApplicationController
 
   def deliver_friend_request_email
     if followee = Account.find(params[:id])
-      user_domain = followee.site.domain rescue "www.cyloop.com"
-      user_link   = user_url(current_account, :host => user_domain)
-      UserNotification.send_following_request(
-        :followee_id => followee.id,
-        :follower_id => current_account.id,
-        :user_link => user_link,
-        :my_community => my_follow_requests_url,
-        :site_id => request.host)
+      unless followee.is_a?(Artist)
+        user_domain = followee.site.domain rescue "www.cyloop.com"
+        user_link   = user_url(current_account, :host => user_domain)
+        UserNotification.send_following_request(
+          :followee_id => followee.id,
+          :follower_id => current_account.id,
+          :user_link => user_link,
+          :my_community => my_follow_requests_url,
+          :site_id => request.host)
+      end
     end
   end
 
