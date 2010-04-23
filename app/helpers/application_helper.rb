@@ -312,6 +312,10 @@ module ApplicationHelper
     end
     all_classes.join(" ")
   end
+  
+  def html_attrs(lang = 'en-US')
+    {:xmlns => "http://www.w3.org/1999/xhtml", 'xml:lang' => lang, :lang => lang}
+  end  
 
   def application_html_attrs
     attrs = if is_msn_messenger_enabled?
