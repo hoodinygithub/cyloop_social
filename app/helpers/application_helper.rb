@@ -136,7 +136,7 @@ module ApplicationHelper
 
     onclick_cb = "Base.community.#{action}('#{account.slug}', this, #{following_page?}, '#{layer_path}')"
     attrs.merge!({:onclick => onclick_cb, :class => 'follower_btn'})
-    unless account.blocks? current_user
+    if account.is_a?(User) && !account.blocks?(current_user)
       send("#{button_color}_button", t(locale_key), attrs)
     end
   end
