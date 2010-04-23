@@ -10,7 +10,6 @@
       </div>
     <% elsif item['type'] == 'twitter' %>
       <div class="message_content">
-        <b><%= link_to(item['account'], item['account']) %></b>
         <%= item['text'] %>
         <%= link_to("Twitter / #{item['screen_name']}", "http://twitter.com/#{item['screen_name']}", :target => "_blank") %>
       </div>
