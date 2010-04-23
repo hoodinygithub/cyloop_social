@@ -562,11 +562,12 @@ Base.community.follow = function(user_slug, button, remove_div, layer_path) {
     if (status == 'success') {
       $button_label.html("");
       $button.removeClass("blue_button");
-      $button.addClass("green_button");
       if (response.status == 'following') {
         $button_label.html(Base.locale.t('actions.unfollow'));
+        $button.addClass("green_button");
       } else if (response.status == 'pending') {
         $button_label.html(Base.locale.t('actions.pending'));
+        $button.addClass("yellow_button");
       }
 
       $button.unbind('click');
