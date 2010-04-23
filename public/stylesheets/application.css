@@ -1617,7 +1617,7 @@ h1 {
   width: 320px;
   left: 50%;
   margin-left: 150px;
-  z-index: 999;
+  z-index: 2;
 }
 
 .spaced_img {
