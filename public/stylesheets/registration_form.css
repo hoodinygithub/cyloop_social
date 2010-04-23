@@ -21,15 +21,10 @@ span.slug {
 
 span.terms_and_privacy {
   display: inline-block;
-  width: 410px;
+  width: 405px;
   line-height: 14px;
   vertical-align: top;
-  color: grey;
-}
-
-label.checkbox {
-  margin-left: 20px;
-  width: 100px;
+  color: black !important;
 }
 
 #internal_content {
@@ -42,6 +37,7 @@ label.checkbox {
   float:left;
   padding:0 0px;
   width:450px !important;
+  width: 10px;
 }
 
 .account_settings .form_row {
@@ -100,4 +96,8 @@ label.checkbox {
 }
 #sidebox ul .chat {
   background: transparent url(../images/registration/chat.png) no-repeat 0 0;
+}
+
+div.checkbox div.form_row {
+  width : 430px !important;
 }

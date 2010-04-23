@@ -96,3 +96,36 @@ label.label_holder {
   background-image: none;
   filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale, src='/images/layers/transparency.png');  
 }
+
+#sidebox ul .discover {
+  background-image: url(../images/registration/discover.gif) !important;
+}
+
+#sidebox ul .radio {
+  background-image: url(../images/registration/radio.gif) !important;
+}
+#sidebox ul .playlist {
+  background-image: url(../images/registration/playlist.gif) !important;
+}
+#sidebox ul .follow {
+  background-image: url(../images/registration/follow.gif) !important;
+}
+#sidebox ul .chat {
+  background-image: url(../images/registration/chat.gif) !important;
+}
+
+#main_content {
+  border-right: 1px solid #ddd;
+  width: 0px !important;
+  padding: 0px 30px !important;
+  float: left;
+}
+
+#sidebox {
+  padding: 0px;
+  padding-right: 0px;
+  float: right !important;
+  width: 400px !important;
+  text-align: left;
+}
+
