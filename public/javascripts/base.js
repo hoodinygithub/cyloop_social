@@ -982,7 +982,11 @@ Base.network.push_update = function() {
   var comment = jQuery.trim($comment_field.val());
   var $old_network_update_text = $network_update_text.clone();
   var $share_button = jQuery('a.compartir_button');
-  $share_button.fadeOut();
+  
+  var old_button_content = $share_button.html();
+  $share_button.removeClass('blue_button').addClass('blue_button_wo_hover');
+  $share_button_label = $share_button.children().children();
+  $share_button_label.html(Base.layout.spanned_spin_image());
 
   if (comment && comment.length > 0) {
     jQuery.post('/activity/update/status', {'message':comment}, function (response) {
@@ -990,10 +994,11 @@ Base.network.push_update = function() {
       jQuery(".chars_counter").html(140);
       Base.network.__update_page_owner_page(response, {'replace':true});
       $chars_counter.css({'color':'#cccccc'});
+      $share_button.removeClass('blue_button_wo_hover').addClass('blue_button').html(old_button_content);
     });
   } else {
     $comment_field.css({'border':'10px solid red'});
-    $share_button.fadeIn();
+    $share_button.removeClass('blue_button_wo_hover').addClass('blue_button').html(old_button_content);
   }
 
   return false;

@@ -474,7 +474,7 @@ h1 {
     color: #00a5f8;
 }
 
-.yellow_button, .blue_button, .green_button, .black_button, .grey_button_big {
+.yellow_button, .blue_button, .green_button, .black_button, .grey_button_big, .blue_button_wo_hover {
     display: inline-block;
     height: 28px;
     line-height: 28px;
@@ -503,7 +503,7 @@ h1 {
     background: url("../images/grey_button_big_left.gif") no-repeat left top;
 }
 
-.yellow_button span, .blue_button span, .green_button span, .black_button span, .grey_button_big span {
+.yellow_button span, .blue_button span, .green_button span, .black_button span, .grey_button_big span, .blue_button_wo_hover span {
     display: inline-block;
     height: 28px;
     color: #fff;
@@ -528,7 +528,7 @@ h1 {
     background: url("../images/grey_button_big_right.gif") no-repeat right top;
 }
 
-.yellow_button span span, .blue_button span span, .green_button span span, .grey_button_big span span {
+.yellow_button span span, .blue_button span span, .green_button span span, .grey_button_big span span, .blue_button_wo_hover span span {
     background: #00a5f8;
     padding: 0px 10px;
 }
@@ -3212,3 +3212,7 @@ div.checkbox div.with_error .field_message {
   margin-left: 10px;
 }
 
+.chars_counter {
+  width: 100px;
+  text-align: right;
+}

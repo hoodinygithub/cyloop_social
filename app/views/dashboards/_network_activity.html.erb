@@ -14,7 +14,9 @@
               <div class="update_text" id="network_update_text">
               </div>
             
-              <%= blue_button(t('actions.share'), :class => 'compartir_button', :onclick => 'Base.network.push_update()') %>
+              <span class="share_button_container">
+                <%= blue_button(t('actions.share'), :class => 'compartir_button', :onclick => 'Base.network.push_update()') %>
+              </span>
             
               <% if false %>
                 <div class="network_twitter">
