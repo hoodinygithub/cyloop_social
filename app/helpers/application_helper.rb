@@ -133,7 +133,7 @@ module ApplicationHelper
     puts "Base.community.#{action}('#{account.slug}', this, #{page_owner?}, '#{layer_path}')"
     onclick_cb = "Base.community.#{action}('#{account.slug}', this, #{page_owner?}, '#{layer_path}')"
     attrs.merge!({:onclick => onclick_cb, :class => 'follower_btn'})
-    if account.is_a?(User) && !account.blocks?(current_user)
+    if account.is_a?(User) && !account.blocks?(current_user) || account.is_a?(Artist)
       send("#{button_color}_button", t(locale_key), attrs)
     end
   end
