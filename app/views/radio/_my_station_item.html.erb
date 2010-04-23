@@ -2,7 +2,7 @@
   <div class="song_name_large">
     <%= link_to("<span><span>" + image_tag("icon_play_small.gif", :title => t('actions.play'), :class => 'list_play_button' ) + "</span></span>", "#", :station_id => my_station_item.station.id, :station_queue => my_station_item.station_queue, :class => "grey_button launch_station", :id => "my_stations_list_play_#{my_station_item.station.id}" ) %>&nbsp;&nbsp;<b><%= link_to(my_station_item.name, "#", :station_id => my_station_item.station.id, :station_queue => my_station_item.station_queue, :id => "my_stations_list_name_#{my_station_item.station.id}", :class => 'launch_station') %></b>
   </div>
-  <div class="includes"><%= station_contains(my_station_item, 3, false)%></div>
+  <div class="includes"><%= station_contains(my_station_item, 3, false, :target => '_blank')%></div>
   <div class="large_bnt2">
     <%= link_to_function("<span><span class=\"blue\"><i>#{t('actions.edit').downcase}&nbsp;" + image_tag('edit_btn_grey.gif', :alt => t('actions.edit')) + "</i></span></span>", "Base.stations.launch_edit_layer(#{my_station_item.station.id})", :class => "grey_button" )%>
     <%= link_to_function("<span><span class=\"blue\">" + image_tag('close_red.gif', :alt => t('actions.delete')) + "</span></span>", "Base.stations.remove_from_layer(#{my_station_item.station.id})", :class => "grey_button" ) unless my_station_item == @station_obj.playable %>
