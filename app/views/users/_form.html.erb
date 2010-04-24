@@ -1,3 +1,7 @@
+<% content_for :head do %>
+  <%= javascript_include_tag 'registration' %>
+<% end %>
+
 <% content_for :javascript do %>
   <% if @user.errors.size > 0 %>
   $(document).ready(function(){
@@ -32,7 +36,7 @@
     </div><!--/end form_row -->
 
     <div class="form_row">
-      <%= f.label :born_on, "<b>#{t("registration.birth_date")}</b>" %>
+      <%= f.label :born_on, "<b>#{t("user.born_on")}</b>" %>
       <div class="grey_round_box left_side">
         <%= f.date_select :born_on, :class => 'input half_width3' %>
       </div>

@@ -1011,20 +1011,30 @@ Base.network.push_update = function() {
 Base.account_settings.highlight_field_with_errors = function() {
   if (typeof(field_with_errors) != 'undefined') {
     for(i=0; i < field_with_errors.length; i++) {
-
       field_name = field_with_errors[i][0];
-      field_error = field_with_errors[i][1];
-
+      error = field_with_errors[i][1];
       field = jQuery('#user_' + field_name);
-      grey_box = field.parent().parent();
-      field.css({'border':'1px solid white'});
-      grey_box.addClass('with_error');
-      message = jQuery("<br /><span class=\"field_message\">" +  field_error + "</span>")
-      grey_box.append(message);
+      Base.account_settings.add_message_on(field, error, 'error');
     }
     Base.account_settings.focus_first_section_with_error($('span.fieldWithErrors input').first());
   }
 };
+
+Base.account_settings.clear_info_and_errors_on = function(field) {
+  field.removeClass('with_error').removeClass('with_info');
+  rounded_box = field.parent().parent();
+  rounded_box.removeClass('with_error').removeClass('with_info');
+  $("span.field_message[for=\"" + field.attr('id') + "\"]").prev().remove();
+  $("span.field_message[for=\"" + field.attr('id') + "\"]").remove();
+}
+
+Base.account_settings.add_message_on = function(field, message, type) {
+  field.addClass('with_' + type);
+  rounded_box = field.parent().parent();
+  rounded_box.addClass('with_' + type);
+  message_span = jQuery("<br /><span class=\"field_message\" for=\"" + field.attr('id') + "\">" + message + "</span>");
+  rounded_box.append(message_span);
+}
 
 Base.account_settings.focus_first_section_with_error = function(field_error) {
   $('div.accordion_box').hide().prev().removeClass('expanded');

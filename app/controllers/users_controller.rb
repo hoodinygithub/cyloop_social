@@ -116,8 +116,17 @@ class UsersController < ApplicationController
   def errors_on
     field = params[:field].to_sym
     user  = User.new(field => params[:value])
+
+    field_name  = params[:field] == 'slug' ? t("registration.your_profile_name") : t("registration.email_address")
+    exclamation = params[:field] == 'slug' ? t('registration.slug_available_exclamation') : t('registration.is_available_exclamation')
+
     user.valid?
-    render :json => Array(user.errors.on(field)).to_json
+    if user.errors.on(field)
+      render :json => [user.errors.on(field), 'error'].to_json
+    else
+      message = "#{field_name} #{exclamation}"
+      render :json => [message, 'info'].to_json
+    end
   end
 
   def confirm_cancellation

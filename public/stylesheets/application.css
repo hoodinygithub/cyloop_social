@@ -3191,7 +3191,17 @@ h2 {
   border: 2px solid red;
 }
 
-.with_error span {
+.with_info {
+  color: white;
+  background: green;
+  border: 2px solid green;
+}
+
+input.with_error, input.with_info {
+  border:1px solid white !important;
+}
+
+.with_error span, .with_info span {
   color: white;
 }
 
