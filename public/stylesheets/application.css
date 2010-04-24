@@ -3019,18 +3019,22 @@ h2 {
 
 .top_padd {
     padding-top: 7px;
-		width: 200px;
+		width: 215px;
 }
 
 .top_padd .grey_button {
     vertical-align: middle;
-    margin-left: 10px;
-    margin-top: 3px;
+		margin-left: 5px;
+		margin-top: 3px;
 }
 
 .radio_left_side {
-    width: 150px;
-    float: left;
+	margin-left: 10px;
+	width: 150px;
+	float: left;
+}
+a.radio_left_side {
+	width: 158px;
 }
 
 #radio_label {

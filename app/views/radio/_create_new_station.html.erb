@@ -6,6 +6,17 @@
   $(document).ready(function() {
     var artistSearch = $("input[name='search_station_name']");
     var stationID = $("input[name='search_station_id']");
+    var stationQueue = $("input[name='search_station_queue']");
+    var listenButton = $("#create_station_submit");
+
+
+    listenButton.click(function(e) {
+      if(parseInt($(this).attr('can_post'), 10)) {
+        Base.radio.launch_station_handler(this, e);
+        listenButton.attr('can_post', 0);
+    	}
+    });
+
     artistSearch.autocomplete("/stations.js", {
       formatItem: function(item) {
         return item[1];
@@ -14,17 +25,33 @@
         return item[1];
       }        
     }).result(function(event, item) {
-      Base.radio.set_station_details(item[0], item[2], false)
+      Base.radio.set_station_search_details(item[0], item[2], false);
+      listenButton.attr('can_post', 1);
+      listenButton.removeClass('grey_button_big').addClass('blue_button');
     });
 
     artistSearch.css('color', '#c0d6e2');
     artistSearch.focus(function() {
+      if(artistSearch.val() == "<%= t('radio.search_hint') %>") {
+        artistSearch.attr('value', '')
+      }
       if (artistSearch.attr("touched") != 'true') {
         artistSearch.attr("touched", 'true');
         artistSearch.css('color', '#025d8c');
         artistSearch.attr('value', '')
       }
-    })
+    });
+    
+    artistSearch.blur(function() {
+      if(artistSearch.val() == "") {
+        artistSearch.attr("touched", 'false');
+        artistSearch.css('color', '#c0d6e2');
+        artistSearch.attr('value', "<%= t('radio.search_hint') %>")
+        listenButton.attr('can_post', 0);
+        stationID.val("");
+        stationQueue.val("");
+      }
+    });
   });
 </script>
 <% end %>
@@ -33,12 +60,13 @@
     <div class="form_row last">
       <div class="grey_round_box left_side">
         <%= hidden_field_tag :search_station_id %>
-        <input type="text" name="search_station_name" class="input half_width4" value="<%= t('radio.search_hint') %>" onfocus="clearInput('<%= t('radio.search_hint') %>', this);" onblur="restoreInput('<%= t('radio.search_hint') %>', this);">
+        <%= hidden_field_tag :search_station_queue %>
+        <input type="text" name="search_station_name" class="input half_width4" value="<%= t('radio.search_hint') %>">
       </div>
 
       <div class="top_padd left_side">
-        <%= blue_button( t("radio.create_new_station"), :full_width => true, :id => "create_station_submit", :class => "radio_left_side") %>
-        <a href="#" id="collapse_create_new_station" class="grey_button left_side"><span><span><img src="images/close_red.gif" alt="<%= t('actions.close') %>" /></span></span></a>
+        <%= grey_button( t("radio.create_new_station"), :full_width => true, :id => "create_station_submit", :class => "radio_left_side", :can_post => 0) %>
+        <a href="#" id="collapse_create_new_station" class="grey_button left_side"><span><span><img src="/images/close_red.gif" alt="<%= t('actions.close') %>" /></span></span></a>
       </div>
 
       <br class="clearer" />

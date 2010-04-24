@@ -160,6 +160,17 @@ var swf = function(objname)
     return document[objname];
 };
 
+Base.radio.launchRadio = function(station_id) {
+	if(parseInt(station_id, 10) > 0) {
+		location.href = '/radio?station_id=' + station_id;
+	}
+}
+Base.radio.set_station_search_details = function(id, queue, play) {
+  $("#create_station_submit").attr('station_id', id);
+  $("#create_station_submit").attr('station_queue', queue);
+	if(play || typeof(play)=='undefined') { Base.radio.set_station_details(id, queue, play); }
+};
+
 Base.radio.set_station_details = function(id, queue, play) {
   $("#station_id").val(id);
   $("#station_queue").val(queue);
@@ -208,8 +219,9 @@ Base.radio.play_station = function(from_list, from_create_station, list, list_pl
 				toggleButton(list, 0);
 			}
 			if(from_create_station) {
-        $('#create_station_submit').html(Base.layout.span_button(Base.locale.t('radio.create_new_station')));
 				$('#collapse_create_new_station').click();
+        $('#create_station_submit').html(Base.layout.span_button(Base.locale.t('radio.create_new_station'))).attr('station_id', '').attr('station_queue', '').removeClass('blue_button').addClass('grey_button_big');
+        $("input[name='search_station_name']").val("").blur();
 			}
       $("div#current_station_info").empty();
       $("div#current_station_info").append(result);
@@ -224,51 +236,38 @@ Base.radio.play_station = function(from_list, from_create_station, list, list_pl
   });
 };
 
+Base.radio.launch_station_handler = function(obj, e) {
+  e.preventDefault();
+	var is_station_list_item = $(obj).hasClass('launch_station');
+	var is_create_station_submit = $(obj).attr("id") == "create_station_submit";
+	var list;
+	var list_play_button;
+	if(is_station_list_item) {
+		var li = $(obj).parentsUntil('li');
+		list = obj.id.match(/(.*)_list(.*)/)[1];
+		list_play_button = li.find('img.list_play_button');
+		if(list_play_button) { list_play_button.attr('src', "/images/grey_loading.gif"); }
+	}
+
+	if(is_create_station_submit){
+	  $(obj).html(Base.layout.spanned_spin_image());
+	}
+	Base.radio.set_station_details($(obj).attr('station_id'), $(obj).attr('station_queue'), false);
+	Base.radio.play_station(is_station_list_item, is_create_station_submit, list, list_play_button)
+
+};
+
+Base.radio.resetSearchInput = function(value) {
+	$("#search_station_name").val(value);
+	$("#create_search_submit").attr('can_post', 0);
+};
+
 Base.radio.initialize = function() {
-	var elems = "div.songs_box ul li a.launch_station, #create_station_submit";
+	var elems = "div.songs_box ul li a.launch_station";
 
   $(elems).click(function(e){
-      e.preventDefault();
-			var is_station_list_item = $(this).hasClass('launch_station');
-			var is_create_station_submit = $(this).attr("id") == "create_station_submit";
-			var list;
-			var list_play_button;
-			if(is_station_list_item) {
-				var li = $(this).parentsUntil('li');
-				list = this.id.match(/(.*)_list(.*)/)[1];
-				list_play_button = li.find('img.list_play_button');
-				if(list_play_button) { list_play_button.attr('src', "/images/grey_loading.gif"); }
-			}
-
-			if(is_create_station_submit){
-			  $(this).html(Base.layout.spanned_spin_image());
-			}
-			Base.radio.set_station_details($(this).attr('station_id'), $(this).attr('station_queue'), false);
-			Base.radio.play_station(is_station_list_item, is_create_station_submit, list, list_play_button)
-/*      $.ajax({
-        type: "GET",
-        url:  "/radio/album_detail",
-        data: {station_id: stationId},
-        success: function(result) {
-					if(is_station_list_item) {
-						if(list_play_button) { list_play_button.attr('src', "/images/icon_play_small.gif"); }
-						toggleButton(list, 0);
-					}
-					if(is_create_station_submit) {
-						$('#collapse_create_new_station').click();
-					}
-          $("div.album_detail").empty();
-          $("div.album_detail").append(result);
-          $("div.album_detail").append("<br class='clearer' />");
-
-					if(is_owner){
-						Base.radio.refresh_my_stations();
-					}
-
-          swf("cyloop_radio").queueStation(stationId, station);
-        }
-      });
-*/  });
+			Base.radio.launch_station_handler(e);
+  });
 };
 
 Base.utils.handle_login_required = function(response, url, button_label) {

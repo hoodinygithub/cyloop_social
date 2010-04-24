@@ -15,10 +15,10 @@
             <% unless user.country.nil? %>
             <span><%= user.country.name %></span><br/>
             <% end %>
-            <%= link_to user.total_user_stations, user_stations_path(user) %> <%= t('basics.stations') %> / <%= link_to user.follower_count, followers_path(user) %> <%= t('users.stats.followers') %>
+            <%= link_to number_with_delimiter(user.total_user_stations), user_stations_path(user) %> <%= t('basics.stations') %> / <%= link_to number_with_delimiter(user.follower_count), user_followers_path(user) %> <%= t('users.stats.followers') %>
         </div>
         <div class="follower_actions w_settings">
-            <%= follow_button(:account => user) %>
+            <%= follow_button(:account => user, :remove_div => false) %>
             <div class="blocked">
               <% if current_user && current_user.blocks?(user) %>
               <%= image_tag('blocked.gif') %> <%= t('blocks.blocked') %>

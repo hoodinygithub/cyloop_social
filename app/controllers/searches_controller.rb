@@ -33,7 +33,6 @@ class SearchesController < ApplicationController
         else
           search_only_active_type
         end      
-        #@results.each_key { |k| @counts.store(k, ) }  
       end      
     end
   end
@@ -48,13 +47,8 @@ class SearchesController < ApplicationController
         obj_scope = scope == :stations ? :abstract_stations : scope
         obj = obj_scope.to_s.classify.constantize
 
-        #need a real fix for the duplicates issue in the artists search result
-        if scope == @active_scope
-          @results.store(scope, (scope == :artists) ? obj.search(@query, opts.merge(:per_page => opts[:per_page].to_i * 2)).uniq : obj.search(@query, opts))
-        else
-          @results.store(scope, [])          
-        end        
-        @counts.store(scope, (scope == :artists) ? obj.search_count("#{@query}*") / 2: obj.search_count("#{@query}*"))
+        @results.store(scope, (scope == @active_scope) ? obj.search(@query, opts) : [])
+        @counts.store(scope, obj.search_count("#{@query}*"))
       end
     end
   
@@ -66,9 +60,8 @@ class SearchesController < ApplicationController
         obj_scope = scope == :stations ? :abstract_stations : scope
         obj = obj_scope.to_s.classify.constantize
 
-        #need a real fix for the duplicates issue in the artists search result
-        @results.store(scope, (scope == :artists) ? obj.search(@query, opts.merge(:per_page => opts[:per_page].to_i * 2)).uniq : obj.search(@query, opts))
-        @counts.store(scope, (scope == :artists) ? obj.search_count("#{@query}*") / 2: obj.search_count("#{@query}*"))
+        @results.store(scope, obj.search(@query, opts))
+        @counts.store(scope, obj.search_count("#{@query}*"))
       end
     end
 end
