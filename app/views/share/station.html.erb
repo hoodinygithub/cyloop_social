@@ -31,7 +31,9 @@
     <%= four_thumbs_to(@item, :class => "left_side", :clearer => true, :type => :medium) %>
     <div class="popup_mix_text">
       <big><a href="#"><%= @item.playable.name %></a></big><br/>
-      <%= t("basics.created_by") %>: <a href="#"><%= @item.playable.owner.name %></a>
+      <% unless @item.playable.owner.nil? %>
+        <%= t("basics.created_by") %>: <a href="#"><%= @item.playable.owner.name %></a>
+      <% end %>
     </div>
     <div class="clearer"></div>
     <br/>
