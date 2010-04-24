@@ -48,7 +48,8 @@ class ShareController < ApplicationController
       elsif params[:media] == "station"
         station = Station.find(params[:item_id])
         share_link = "http://#{global_url}/radio?station_id=#{params[:item_id]}"
-        station_author = station.playable.owner.name
+        station_author = nil
+        station_author = station.playable.owner.name unless station.playable.kind_of? AbstractStation
         station_name = station.playable.name
         station_images = []
         station_includes = []

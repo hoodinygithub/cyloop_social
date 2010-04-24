@@ -51,9 +51,11 @@
               </td>
               <td width="439">
                 <a href="<%= @share_link %>" style="text-decoration:none;" target="_blank"><strong><font face="Arial, Helvetica, sans-serif" color="#00A5F8" size="+2"><%= @item_title %></font></strong></a>
-                <br>
-                <font face="Arial, Helvetica, sans-serif" color="#025D8C" size="3"><%= t('basics.created_by') %>: </font><font color="#00A5F8"><%= @item_author %></font>
                 <br/>
+                <% unless @item_author.nil? %>
+                  <font face="Arial, Helvetica, sans-serif" color="#025D8C" size="3"><%= t('basics.created_by') %>: </font><font color="#00A5F8"><%= @item_author %></font>
+                  <br/>
+                <% end %>
                 <font face="Arial, Helvetica, sans-serif" color="#666666" size="3"><%= t("basics.contains") %>: </font><font color="#00A5F8"><%= @item_includes.map { |i| "<a href='http://#{@global_url}/#{i[:slug]}' style='text-decoration:none;'><font color='#00A5F8'>#{i[:artist]}</font></a>" }.join(", ") %></font></td>
 
               <td width="51"><a href="<%= @share_link %>" target="_blank"><img src="http://<%=@global_url%>/images/share_email/btn_play_new.gif" width="60" height="68" border="0"></a></td>
