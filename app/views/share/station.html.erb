@@ -9,12 +9,12 @@
 
   var error_codes = {
                       <% unless logged_in? %>
-                        user_name_blank:"#{t('share.errors.message.user_name_blank')} \n",
-                        user_email_blank:"#{t('share.errors.message.user_email_blank')}",
-                        user_email_invalid:"#{t('share.errors.message.user_email_invalid')}",
+                        user_name_blank:"<%= t('share.errors.message.user_name_blank') %> \n",
+                        user_email_blank:"<%= t('share.errors.message.user_email_blank') %>",
+                        user_email_invalid:"<%= t('share.errors.message.user_email_invalid') %>",
                       <% end %>
-                      friend_email_blank:"#{t('share.errors.message.friend_email_blank')}",
-                      friend_email_invalid:"#{t('share.errors.message.friend_email_invalid')}"
+                      friend_email_blank:"<%= t('share.errors.message.friend_email_blank') %>",
+                      friend_email_invalid:"<%= t('share.errors.message.friend_email_invalid') %>"
                     };
 </script>
 <div class="share_station">
@@ -26,17 +26,17 @@
     <%= hidden_field_tag "user_email", current_user.email %>
   <% end %>
 
-  <div class="title"><%= t('actions.share_with_a_friend') %></div>
+  <div class="title"><%= t('actions.share_station') %></div>
   <div class="form_row">
     <%= four_thumbs_to(@item, :class => "left_side", :clearer => true, :type => :medium) %>
     <div class="popup_mix_text">
       <big><a href="#"><%= @item.playable.name %></a></big><br/>
       <%= t("basics.created_by") %>: <a href="#"><%= @item.playable.owner.name %></a>
     </div>
-
     <div class="clearer"></div>
     <br/>
   </div><!--/end form_row -->
+  <ul class="error" />
   <div class="form_row">
     <label><b><%= t("share.friend_email") %></b><small class="grey"><%= t("share.multiple_emails") %></small></label>
     <div class="grey_round_box">
@@ -64,7 +64,7 @@
 
   <div class="align_right">
     <big><a href="#" class="black valign_middle close"><%= t("actions.cancel") %></a></big>
-    <a href="#" class="blue_button valign_middle" onclick="$('.share_station form').submit();"><span><span><%= t("actions.save") %></span></span></a>
+    <a href="#" class="blue_button valign_middle" onclick="$('.share_station form').submit();"><span><span><%= t("actions.send") %></span></span></a>
   </div>
 <% end -%>
 </div>

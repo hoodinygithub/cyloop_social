@@ -35,6 +35,8 @@ var restoreInput = function(value, input) {
  */
 var validateSubmission = function(form, elem)
 {
+  $('ul.error').css('display', 'none');
+
   var errors = [];
   var validate;
   var element_value;
@@ -107,11 +109,22 @@ var validateSubmission = function(form, elem)
 
   if(errors.length > 0)
   {
+    printErrors(errors);
     return false;
   }
   else
   {
     return true;
+  }
+}
+
+function printErrors(err)
+{
+  if($('ul.error li').length > 0) $('ul.error').empty();
+  $('ul.error').css('display', 'block');
+  for(var i = 0; i < err.length; i++)
+  {
+    $('ul.error').append('<li>' + err[i] + '</li>');
   }
 }
 

@@ -3225,3 +3225,11 @@ div.checkbox div.with_error .field_message {
   width: 100px;
   text-align: right;
 }
+
+ul.error {
+	display: none;
+	background-color: #FF0000;
+	list-style: none;
+	color: #FFF;
+	padding: 3px;
+}

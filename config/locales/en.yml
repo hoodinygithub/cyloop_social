@@ -117,9 +117,11 @@ en:
     awaiting_approval: Awaiting Approval
     play: Play
     share: Share
+    send: Send
     add: add
     add_song_to_playlist: Add Song to Playlist
     share_with_a_friend: Share this song with a friend
+    share_station: Share this station with a friend
     previous: Previous
     edit: Edit
     select_playlist: Select playlist
