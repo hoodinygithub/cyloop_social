@@ -1170,7 +1170,7 @@ h1 {
 .followers_list .follower_text, .comments_list .message_content {
   float: left;
   word-wrap: break-word;
-  width: 350px;
+  width: 250px;
   margin-right: -20px;
   margin-left: 10px;
 }
