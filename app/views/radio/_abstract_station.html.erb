@@ -2,6 +2,7 @@
 <%= four_thumbs_to(@station_obj, :class => 'left_side', :clearer => true, :type => :small) %>
 <div class="album_text2">
   <b><%= @station_obj.playable.name %></b>
+  <a href="#" onclick="Base.stations.share(<%= @station_obj.id %>); return false;"><img src="images/share_button_small.png" class="png_fix valign_middle" alt="<%= t('actions.share') %>" /></a>
   <br/>
   <small><%= station_contains(@station_obj.playable) %></small>
 </div><!--/end top_buttons -->
