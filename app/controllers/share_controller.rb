@@ -25,7 +25,7 @@ class ShareController < ApplicationController
           sender_avatar = sender_avatar.sub(%r{/hires/}, '/thumbnail/')
           sender_avatar = sender_avatar
         else
-          sender_avatar = File.join('system/avatars/', PartitionedPath.path_for(current_user.id), 'small', sender_avatar)
+          sender_avatar = File.join("http://", request.host, "/system/avatars/", PartitionedPath.path_for(current_user.id), "small", sender_avatar)
         end
       else
         if current_user.gender=='Male'
