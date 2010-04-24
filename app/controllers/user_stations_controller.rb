@@ -1,6 +1,7 @@
 class UserStationsController < ApplicationController
 
   before_filter :profile_ownership_required, :only => [:create]
+  before_filter :auto_follow_profile, :only => [ :index ]
   # caches_action :show, :expires_in => 1.minute, :cache_path => :user_station_cache_key
 
   current_tab :stations
