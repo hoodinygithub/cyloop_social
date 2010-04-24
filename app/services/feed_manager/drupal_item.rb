@@ -35,7 +35,11 @@ class FeedManager::DrupalItem < FeedManager::Abstract
   protected
 
     def image_path(size, site)
-      "http://cm-msn#{site}.cyloop.com/cms/files/imagecache/#{size}/"
+      if site == "caen" or site == "cafr"
+        "http://cm-msncanada.cyloop.com/cms/files/imagecache/#{size}/"
+      else
+        "http://cm-msn#{site}.cyloop.com/cms/files/imagecache/#{size}/"
+      end
     end
 
 end
