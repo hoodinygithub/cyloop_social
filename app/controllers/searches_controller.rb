@@ -6,21 +6,13 @@ class SearchesController < ApplicationController
     @sort_type = params.fetch(:sort_by, nil).to_sym rescue :relevance
     @sort_types = { :latest => 'created_at DESC', :alphabetical => 'name ASC', :relevance => nil }
 
-    @active_scope = if params[:scope].nil?
-      @search_types[0]
-    else
-      unless @search_types.include? params[:scope].to_sym 
-        @search_types[0] 
-      else
-        params[:scope].to_sym 
-      end
-    end
+    @active_scope = params[:scope].to_sym unless params[:scope].nil?
 
     @counts = {}
     @results = {}
     if request.xhr?
-      params[:scope].to_sym == :all ? search_all_types(4) : search_only_active_type(20)
-
+      @active_scope == :all ? search_all_types(4) : search_only_active_type(20)
+      
       if params.has_key? :result_only
         render :partial => "searches/#{@active_scope.to_s}"
       else
@@ -28,17 +20,16 @@ class SearchesController < ApplicationController
       end      
     else
       unless @query.nil?
-        if params[:scope].to_sym == :all
-          search_all_types 
-        else
-          search_only_active_type
-        end      
-      end      
+        @active_scope == :all ? search_all_types : search_only_active_type
+      end
     end
   end
 
   private  
-
+    def default_active_scope
+      @active_scope = @counts.sort{ |a, b| b[1] <=> a[1] }.first[0] unless @search_types.include? @active_scope
+    end
+    
     def search_only_active_type (per_page = 20)
       opts = { :page => params[:page], :per_page => per_page }
       opts.merge!(:order => @sort_types[@sort_type]) unless @sort_types[@sort_type].nil?
@@ -63,6 +54,7 @@ class SearchesController < ApplicationController
         @results.store(scope, obj.search(@query, opts))
         @counts.store(scope, obj.search_count("#{@query}*"))
       end
+      default_active_scope
     end
 end
 
