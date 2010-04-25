@@ -1,0 +1,28 @@
+<div class="account_settings">
+  <div class="title"><%= t("actions.buy_song") %></div>
+  <div class="form_row">
+    <%= avatar_for(@song, :medium, {:alt => "#{@song.artist.name} - #{@song.album.name}", :class => "left_side"}) %>
+    <div class="popup_mix_text">
+      <big><a href="#"><%= @song.title %></a></big><br/>
+      <%= t("basics.by") %>: <a href="#"><%= @song.artist.name %></a><br/>
+      <%= t("basics.album") %>: <a href="#"><%= @song.album.name %></a>
+    </div>
+    <div class="clearer"></div>
+  </div>
+  <div class="form_row">
+    <p class="buylink_info">
+      <%= t("actions.select_store") %>
+      <div class="buylinks">
+        <br/>
+        <% @buylinks.each do |link| -%>
+          <%= link_to image_tag(link.store_image), link.url, :class => "#{link.buylink_provider.name} close_after_click", :target => :new %>
+        <% end -%>
+        <br/>
+      </div>
+    </p>
+  </div>
+  <br/>
+  <div class="align_right">
+    <big><a href="#" class="black valign_middle close"><%= t("actions.cancel") %></a></big>
+  </div>
+</div>
