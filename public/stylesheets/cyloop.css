@@ -700,3 +700,6 @@ li.scope_toggle .mini_loader{
 	margin-top: 3px;
 }
 
+#artists_result .followers_list .follower_text{
+	width: 200px;
+}
