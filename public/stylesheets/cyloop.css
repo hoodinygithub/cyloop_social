@@ -702,4 +702,5 @@ li.scope_toggle .mini_loader{
 
 #artists_result .followers_list .follower_text, #users_result .followers_list .follower_text {
 	width: 200px;
+	margin-left: 0px;
 }
