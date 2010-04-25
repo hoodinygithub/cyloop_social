@@ -132,7 +132,6 @@ module ApplicationHelper
 
     remove_div = attrs.has_key?(:remove_div) ? attrs[:remove_div] : page_owner?
     
-    puts "Base.community.#{action}('#{account.slug}', this, #{remove_div}, '#{layer_path}')"
     onclick_cb = "Base.community.#{action}('#{account.slug}', this, #{remove_div}, '#{layer_path}')"
     attrs.merge!({:onclick => onclick_cb, :class => 'follower_btn'})
     if account.is_a?(User) && !account.blocks?(current_user) || account.is_a?(Artist)
