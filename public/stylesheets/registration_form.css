@@ -101,3 +101,7 @@ span.terms_and_privacy {
 div.checkbox div.form_row {
   width : 430px !important;
 }
+
+label.radio_label {
+  display: inline-block !important;
+}
