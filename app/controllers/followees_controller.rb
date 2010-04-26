@@ -35,7 +35,7 @@ class FolloweesController < ApplicationController
     end
 
     if @following.approved? && profile_user.receives_following_notifications?
-      deliver_friend_request_email
+      deliver_friend_request_email(@following)
     end
   end
 

@@ -452,8 +452,8 @@ class ApplicationController < ActionController::Base
     end
   end
   
-  def deliver_friend_request_email
-    if followee = Account.find(params[:id])
+  def deliver_friend_request_email(followee)
+    if followee
       unless followee.is_a?(Artist)
         user_domain = followee.site.domain rescue "www.cyloop.com"
         user_link   = user_url(current_account, :host => user_domain)
