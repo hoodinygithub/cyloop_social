@@ -266,7 +266,7 @@ Base.radio.initialize = function() {
 	var elems = "div.songs_box ul li a.launch_station";
 
   $(elems).click(function(e){
-			Base.radio.launch_station_handler(e);
+			Base.radio.launch_station_handler(this, e);
   });
 };
 
