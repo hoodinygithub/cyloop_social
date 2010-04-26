@@ -47,7 +47,7 @@
     <div class="form_row">
       <%= f.label :born_on, "<b>#{t("user.born_on")}</b>" %>
       <div class="grey_round_box left_side">
-        <%= f.date_select :born_on, :start_year => 10.years.ago.year, :end_year => 1900, :use_month_numbers => true, :class => 'input half_width3' %>
+        <%= f.date_select :born_on, :start_year => Time.now.year, :end_year => 1900, :use_month_numbers => true, :class => 'input half_width3' %>
       </div>
       <br class="clearer" />
     </div><!--/end form_row -->

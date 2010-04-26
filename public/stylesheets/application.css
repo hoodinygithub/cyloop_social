@@ -3205,6 +3205,11 @@ input.with_error, input.with_info {
   border:1px solid white !important;
 }
 
+.with_error select {
+  background-color: #FFF !important;
+  color: black;
+}
+
 .with_error span, .with_info span {
   color: white;
 }
