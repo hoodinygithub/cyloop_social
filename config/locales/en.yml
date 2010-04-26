@@ -936,9 +936,12 @@ en:
       recover_cyloop_password: Recover Cyloop Password
     destroy:
       sign_out: Log out
+  artist:
+    be_the_first_to_create_station: "Be the first to create a station for {{user_name}}"
   user:
     has_no_activity: "{{user_name}} has no activity"
     has_no_tweet: "{{user_name}} has no tweet"
+    has_no_followers: "{{user_name}} has no followers"    
     is_not_following_anybody: "{{user_name}} is not following anybody"
     hasnt_create_any_station: "{{user_name}} hasn't created any stations"
     background_align: Background Align
