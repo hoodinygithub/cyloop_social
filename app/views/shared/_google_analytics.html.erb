@@ -1,3 +1,7 @@
+<% if action_name == "analytics" && controller_name == "radio" %>
+  <%= google_analytics_js_include_tag %>
+<% end %>
+
 <% if gatracker_id %>
   <% @code = flash[:google_code] unless flash[:google_code].blank? %>
   <script type="text/javascript">
