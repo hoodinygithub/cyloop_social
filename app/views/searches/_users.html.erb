@@ -8,6 +8,7 @@
 
 <ul class="followers_list">
   <% @results[:users].each do |user| %>
+  <% is_self = (current_user and current_user == user) %>
     <li>
         <div id="logo"><a href="#"><%= link_to(avatar_for(user, :search, {:alt => "", :class =>"follower_image"}), user) %></a></div>
         <div class="follower_text">
@@ -15,10 +16,10 @@
             <% unless user.country.nil? %>
             <span><%= user.country.name %></span><br/>
             <% end %>
-            <%= link_to number_with_delimiter(user.total_user_stations), user_stations_path(user) %> <%= t('basics.stations') %> / <%= link_to number_with_delimiter(user.follower_count), user_followers_path(user) %> <%= t('users.stats.followers') %>
+            <%= link_to number_with_delimiter(user.total_user_stations), is_self ? my_stations_path : user_stations_path(user) %> <%= t('basics.stations') %> / <%= link_to number_with_delimiter(user.follower_count), is_self ? my_followers_path : user_followers_path(user) %> <%= t('users.stats.followers') %>
         </div>
-        <div class="follower_actions w_settings">
-            <%= follow_button(:account => user, :remove_div => false) %>
+        <div class="follower_actions w_settings">            
+            <%= follow_button(:account => user, :remove_div => false) unless is_self %>
             <div class="blocked">
               <% if current_user && current_user.blocks?(user) %>
               <%= image_tag('blocked.gif') %> <%= t('blocks.blocked') %>
