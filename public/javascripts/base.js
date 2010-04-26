@@ -1046,7 +1046,7 @@ Base.account_settings.highlight_field_with_errors = function() {
       field_name = field_with_errors[i][0];
       error = field_with_errors[i][1];
 
-      field = jQuery(":input[name*='" + field_name + "']");
+      field = jQuery(":input[name*='" + field_name + "']").first();
       Base.account_settings.add_message_on(field, error, 'error');
     }
     Base.account_settings.focus_first_section_with_error($('span.fieldWithErrors input').first());

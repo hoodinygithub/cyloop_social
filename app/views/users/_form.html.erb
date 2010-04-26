@@ -57,7 +57,7 @@
     <div class="checkbox">
       <div class="form_row">
         <%= f.check_box :terms_and_privacy %>
-        <span class="terms_and_privacy">
+        <span class="checkbox">
           <label for="terms_and_privacy">
             <%= t("registration.terms_and_privacy", :terms_link => link_to(t("registration.terms_of_use"), terms_and_conditions_url), :privacy_link => link_to(t("registration.privacy_policy"), privacy_policy_url)) %>
           </label>
