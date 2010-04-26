@@ -1055,7 +1055,7 @@ Base.account_settings.highlight_field_with_errors = function() {
 
 Base.account_settings.clear_info_and_errors_on = function(field) {
   field.removeClass('with_error').removeClass('with_info');
-  rounded_box = field.parent().parent();
+  rounded_box = field.closest('.grey_round_box');
   rounded_box.removeClass('with_error').removeClass('with_info');
   $("span.field_message[for=\"" + field.attr('id') + "\"]").prev().remove();
   $("span.field_message[for=\"" + field.attr('id') + "\"]").remove();
@@ -1063,7 +1063,7 @@ Base.account_settings.clear_info_and_errors_on = function(field) {
 
 Base.account_settings.add_message_on = function(field, message, type) {
   field.addClass('with_' + type);
-  rounded_box = field.parent().parent();
+  rounded_box = field.closest('.grey_round_box');
   rounded_box.addClass('with_' + type);
   message_span = jQuery("<br /><span class=\"field_message\" for=\"" + field.attr('id') + "\">" + message + "</span>");
   rounded_box.append(message_span);
