@@ -6,6 +6,7 @@ ActionController::Routing::Routes.draw do |map|
   map.cyloop_ads '/cyloop/ads', :controller => 'ads', :action => 'show'
 
   map.messenger_analytics 'messenger_analytics', :controller => 'messenger_radio', :action => 'analytics'
+  map.radio_analytics 'radio_analytics', :controller => 'radio', :action => 'analytics'
   map.fitter_happier 'fitter_happier', :controller => 'fitter_happier'
   map.site_check 'fitter_happier/site_check', :controller => 'fitter_happier', :action => "site_check"
   map.site_and_database_check 'fitter_happier/site_and_database_check', :controller => 'fitter_happier' , :action => "site_and_database_check"
