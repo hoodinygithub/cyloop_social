@@ -62,6 +62,7 @@ pt_BR:
     play: Tocar
     disaprove: Cancelar
     share: Compartilhar
+    send: Enviar
     unfollow_account: Parar de seguir {{name}}
     add: adicionar
     previous: Anterior
