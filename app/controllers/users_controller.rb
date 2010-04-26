@@ -251,19 +251,4 @@ class UsersController < ApplicationController
   def set_dashboard_menu
     @dashboard_menu = :settings
   end
-  
-  private
-
-  def deliver_friend_request_email(account)
-    if followee = account
-      user_domain = followee.site.domain rescue "www.cyloop.com"
-      user_link   = user_url(current_account, :host => user_domain)
-      UserNotification.send_following_request(
-        :followee_id => followee.id,
-        :follower_id => current_account.id,
-        :user_link => user_link,
-        :my_community => my_follow_requests_url,
-        :site_id => request.host)
-    end
-  end
 end

@@ -451,4 +451,19 @@ class ApplicationController < ActionController::Base
       File.unlink(locale_fp)
     end
   end
+  
+  def deliver_friend_request_email
+    if followee = Account.find(params[:id])
+      unless followee.is_a?(Artist)
+        user_domain = followee.site.domain rescue "www.cyloop.com"
+        user_link   = user_url(current_account, :host => user_domain)
+        UserNotification.send_following_request(
+          :followee_id => followee.id,
+          :follower_id => current_account.id,
+          :user_link => user_link,
+          :my_community => my_follow_requests_url,
+          :site_id => request.host)
+      end
+    end
+  end
 end
