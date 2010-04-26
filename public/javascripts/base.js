@@ -262,12 +262,24 @@ Base.radio.resetSearchInput = function(value) {
 	$("#create_search_submit").attr('can_post', 0);
 };
 
+var BANNERS = {};
 Base.radio.initialize = function() {
-	var elems = "div.songs_box ul li a.launch_station";
-
+  var elems = "div.songs_box ul li a.launch_station";
   $(elems).click(function(e){
-			Base.radio.launch_station_handler(this, e);
+    Base.radio.launch_station_handler(this, e);
   });
+
+  // STATIC MAPPINGS OF BANNER SRC
+  BANNERS.top   = {elem: $("#top_banner"), src: $("#top_banner").attr("src")};
+  BANNERS.right = {elem: $("#square_banner"), src: $("#square_banner").attr("src")};
+};
+
+Base.radio.refreshBanner = function(attr)
+{
+  for(key in BANNERS)
+  {
+    BANNERS[key].elem.attr("src", BANNERS[key].src + attr);
+  }
 };
 
 Base.utils.handle_login_required = function(response, url, button_label) {
