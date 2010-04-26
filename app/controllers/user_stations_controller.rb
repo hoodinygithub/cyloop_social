@@ -28,7 +28,7 @@ class UserStationsController < ApplicationController
 
         begin
             sort_types = { :latest => 'user_stations.created_at DESC', :top => 'user_stations.total_plays DESC', :alphabetical => 'user_stations.name'  }
-            @user_stations = profile_account.stations.paginate :page => params[:page], :per_page => 15, :order => sort_types[@sort_type]
+            @user_stations = profile_account.stations.paginate :page => params[:page], :per_page => 6, :order => sort_types[@sort_type]
         rescue NoMethodError
           redirect_to new_session_path
         end
