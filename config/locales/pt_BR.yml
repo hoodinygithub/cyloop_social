@@ -152,7 +152,7 @@ pt_BR:
     show:
       activity_feed_title: Novidades
       what_do_you_want_to_listen_to: "O que voc\xC3\xAA quer escutar?"
-    artist_latest_stations: "\xC3\x9ALTIMAS ESTA\xC3\x87\xC3\x95ES INCLUINDO {{name}}"
+    artist_latest_stations: "\xC3\x9ALTIMAS ESTA\xC3\x87\xC3\x95ES COM {{name}}"
     top_stations: MAIS TOCADAS DE {{user_name}}
     recommended_artists:
       title: Artistas Recomendados
@@ -758,7 +758,7 @@ pt_BR:
       create_your_own_personalized_radio_station: "Crie sua pr\xC3\xB3pria r\xC3\xA1dio agora!"
       create_radio: ""
       recommended_stations: ""
-      network_update: "Atualiza\xC3\xA7\xC3\xA3o da Rede"
+      network_update: "Atividade Recente de {{user_name}}"
       type_artist_name: Escreva o nome do artista
       recommended_mixes: ""
       top_stations: ""
@@ -1126,7 +1126,7 @@ pt_BR:
     recommended_stations: "R\xC3\xA1dios Recomendadas pelo Cyloop"
     explaing_what_is_and_why_create_a_new_radio: "Digite o nome do seu artista favorito. Cyloop criar\xC3\xA1 uma radio personalizada com m\xC3\xBAsidas dele."
     latest_stations: "\xC3\x9ALTIMAS ESTA\xC3\x87\xC3\x95ES DE R\xC3\x81DIO"
-    network_update: "Atualiza\xC3\xA7\xC3\xA3o da Rede de {{user_name}}"
+    network_update: "Atividade Recente de {{user_name}}"
     type_artist_name: Escreva o nome do artista
     recommended_mixes: ""
     create_your_own_station_now: "Crie sua pr\xC3\xB3pria r\xC3\xA1dio agora!"

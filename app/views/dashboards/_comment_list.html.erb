@@ -9,6 +9,10 @@
   <% if profile_owner? %>
     <%= blue_button(t('actions.show_more'), :onclick => "Base.network.show_more(this)", :width => "120px") %>
   <% else %>
-    <%= link_to t('actions.view_more'), activities_path %>
+    <div class="align_right">
+      <b>
+        <%= link_to t('actions.view_more'), activities_path %>
+      </b>
+    </div>
   <% end %>
 </div>
