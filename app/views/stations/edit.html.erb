@@ -1,11 +1,8 @@
-<form action="" method="post" class="account_settings">
+<form action="" method="post" class="account_settings edit_station_form">
     <%= hidden_field_tag :playable_id, @station.playable.id %>
-    <%= hidden_field_tag :layer_station_id, @station.id %>
-    <div class="title" style="float:left"><%= t('modules.edit_station.title')%></div>
-    <div id="edit_loading" style="float:right;" class="hide">
-        <img src="/images/loading.gif" />
-    </div>
-    <br class="clearer" />
+    <%= hidden_field_tag :layer_station_id, @station.id %>  
+    <div class="title"><%= t('modules.edit_station.title')%></div>
+    
     <div class="form_row">
         <%= four_thumbs_to(@station, :type => :medium) %>
 
@@ -14,23 +11,23 @@
             <%= t("basics.created_by") %>: <%= link_to(@station.playable.owner.name, "/#{@station.playable.owner.slug}") %><br />
             <%= station_contains(@station.playable) %>
         </div>
-
+        
         <div class="clearer"></div>
         <br/>
     </div><!--/end form_row -->
-
+    
     <div class="form_row">
-        <label><b><%= t('modules.edit_station.new_name')%></b></label>
-
+        <label><b>New name</b></label>
+        
         <div class="grey_round_box">
-            <input id="new_station_name" type="text" class="input full_width" />
+            <input type="text" class="input full_width" />
         </div>
     </div><!--/end form_row -->
     <br/>
-
+    
     <div class="align_right">
-        <big><a href="#" class="black valign_middle popup_close_action" onclick="$(document).trigger('close.facebox');return false;"><%= t('actions.cancel').upcase %></a></big>
-
-        <a href="#" onclick="Base.stations.edit_from_layer(); return false;"id="save_station_name_button" class="blue_button valign_middle"><span><span><%= t('actions.save').upcase %></span></span></a>
+        <big><a href="#" class="black valign_middle popup_close_action">CANCEL</a></big>
+        
+        <a href="#" class="blue_button valign_middle" onclick="$(this).closest('form').submit();"><span><span>SAVE</span></span></a>
     </div>
 </form>
