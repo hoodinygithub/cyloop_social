@@ -1,5 +1,5 @@
 <% if defined? with_title and with_title %>
-  <h1><%= t('home.network_update', :user_name => profile_account.first_name) %></h1>
+  <h1><%= t('home.network_update', :user_name => artist_or_user_name(profile_account)) %></h1>
 <% end %>
 
 <ul class="comments_list" id="network_comment_list">

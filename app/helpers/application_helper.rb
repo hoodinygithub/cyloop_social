@@ -804,5 +804,13 @@ module ApplicationHelper
     image = image_tag(cyloop_logo_path(false), :id => 'logo', :class => 'png_fix')
     link_to(image, msn_home_page_link_path)
   end
+  
+  def artist_or_user_name(artist_or_user)
+    if artist_or_user.is_a?(Artist)
+      artist_or_user.name
+    else
+      artist_or_user.first_name
+    end
+  end
 
 end

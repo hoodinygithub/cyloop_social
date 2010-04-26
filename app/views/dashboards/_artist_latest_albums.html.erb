@@ -1,7 +1,7 @@
 <% if profile_artist.total_albums > 3 %>
 <b class="right_side"><%= link_to(t('actions.view_more'), artist_albums_path) %></b>
 <% end %>
-<h1><%= t('dashboards.artist_latest_albums', :name => profile_artist.first_name.upcase) %></h1>
+<h1><%= t('dashboards.artist_latest_albums', :name => artist_or_user_name(profile_account)) %></h1>
 <%= render :partial => 'shared/album', :collection => profile_artist.latest_albums, :locals => { :columns => 3 } %>
 <% index = 3 -  profile_artist.latest_albums.size %>
 <% index.times do |i| %>

@@ -1,5 +1,5 @@
 <h1>
-  <h1><%= t('home.network_update', :user_name => profile_account.first_name) %></h1>
+  <h1><%= t('home.network_update', :user_name => artist_or_user_name(profile_account)) %></h1>
   <span class="chars_counter" style="display: none">140</span>
 </h1>
 <% if page_owner? %>
