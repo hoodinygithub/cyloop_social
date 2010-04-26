@@ -262,6 +262,13 @@ Base.radio.resetSearchInput = function(value) {
 	$("#create_search_submit").attr('can_post', 0);
 };
 
+String.prototype.cleanupURL = function(regex, sub) {
+  var cleanup = this.replace(regex, sub);
+  cleanup = cleanup.replace(/&&/g, "&");
+  cleanup = cleanup.replace(/\?&/g, "?");
+  return cleanup;
+}
+
 var BANNERS = {};
 Base.radio.initialize = function() {
   var elems = "div.songs_box ul li a.launch_station";
@@ -270,8 +277,9 @@ Base.radio.initialize = function() {
   });
 
   // STATIC MAPPINGS OF BANNER SRC
-  BANNERS.top   = {elem: $("#top_banner"), src: $("#top_banner").attr("src")};
-  BANNERS.right = {elem: $("#square_banner"), src: $("#square_banner").attr("src")};
+  var regex = new RegExp(/v_folder=|v_songgenre=|v_songlabel=/g);
+  BANNERS.top   = {elem: $("#top_banner"), src: String( $("#top_banner").attr("src") ).cleanupURL(regex, "")};
+  BANNERS.right = {elem: $("#square_banner"), src: String( $("#square_banner").attr("src") ).cleanupURL(regex, "")};
 };
 
 Base.radio.refreshBanner = function(attr)
