@@ -64,6 +64,8 @@ en:
       title: Photos
     user_info:
       title: User Information
+    network_activity:
+      title: Network Activity
     recent_activity:
       title: RECENT ACTIVITY
     recently_created_stations:
@@ -303,6 +305,7 @@ en:
     play_confirmation: Enjoy {{title}}!
   possessives:
     third_person:
+      network_activity: "{{subject}}'s Network Activity"
       stations: "{{subject}}'s Stations"
       followers: People that are following {{subject}}
       playlists: "{{subject}}'s Playlists"
@@ -311,6 +314,7 @@ en:
       follow_requests: "{{subject}}'s Follow Requests"
       charts: "{{subject}}'s Charts"
     first_person:
+      network_activity: "My Network Activity"
       stations: My Stations
       followers: People that are following me
       playlists: My Playlists
@@ -414,7 +418,7 @@ en:
     twitter_you_following: Tweets from artists you are following
     no_more_activity: No more activity
     push_notification_more_than: You have more than {{count}} new updates. {{link}} your feed to view them.
-    created_station: Created radio station '{{station}}'
+    created_station: "{{creator}} created radio station '{{station}}'"
     twitter_following: Tweets from artist {{user}} is following
     user_following: "{{user}} + Following"
   date:

@@ -68,10 +68,10 @@ module Application::Activities
           :artists_contained => artists_contained
         }
         Resque.enqueue(StationJob, tracker_payload)
-      rescue
-        Rails.logger.error("*** Could not record station activity! payload: #{tracker_payload}") and return true
-      end      
-    end
+      rescue Exception => e
+        Rails.logger.error("*** Could not record station activity! payload: #{tracker_payload}") and return true
+        Rails.logger.error("#{e}\n#{e.backtrace.join("\n")}")
+      end
 
   end
 
