@@ -7,11 +7,11 @@ module Application::Activities
 
   module InstanceMethods
 
-    TYPES = { 
+    TYPES = {
       'listen' => {:class => Song, :options => { :include => :album } },
       'twitter' => Account,
       'station' => Station,
-      'playlist' => Playlist }
+    'playlist' => Playlist }
 
     def load_related_item_activity( data )
       data.group_by { |a| a['type'] }.each do |activity_type, group|
@@ -50,7 +50,7 @@ module Application::Activities
         TYPES[ activity['type'] ] && activity['record'].nil?
       end
       data
-    end  
+    end
 
     def record_listen_song_activity( song )
       ActivityProxy::Writer.new( current_user, song ).to_hash
@@ -69,9 +69,10 @@ module Application::Activities
         }
         Resque.enqueue(StationJob, tracker_payload)
       rescue Exception => e
-        Rails.logger.error("*** Could not record station activity! payload: #{tracker_payload}") and return true
-        Rails.logger.error("#{e}\n#{e.backtrace.join("\n")}")
+                Rails.logger.error("*** Could not record station activity! payload: #{tracker_payload}") and return true
       end
+
+    end
 
   end
 
