@@ -76,5 +76,3 @@ module Application::Activities
     end
 
   end
-
-end
