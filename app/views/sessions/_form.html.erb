@@ -1,0 +1,31 @@
+<div id="registration_form">
+  <% form_tag session_path, :class => "account_settings" do %>
+    <div class="form_row">
+      <label for="email"><b><%= t("user.email") %></b></label>
+      <div class="grey_round_box left_side">
+        <%= text_field_tag 'email', params[:email], :class => 'input half_width3' %>
+      </div>
+      <br class="clearer" />
+    </div><!--/end form_row -->
+    <div class="form_row">
+      <label for="password"><b><%= t("user.password") %></b></label>
+      <div class="grey_round_box left_side">
+        <%= password_field_tag 'password', nil, :class => 'input half_width3' %>
+      </div>
+      <%= link_to t("actions.forgot_password"), forgot_path, :class => "forgot_link" %>
+      <br class="clearer" />
+    </div><!--/end form_row -->
+    <div class="form_row last">
+      <div class="left_side">
+        <%= check_box_tag 'remember_me' %>
+        <span class="checkbox">
+          <label for="remember_me" class="checkbox"><%= t("sessions.new.remember_me")%></label>
+        </span>
+      </div>
+      <div class="right_side">
+        <a href="#" class="blue_button submit_button" onclick="$(this).closest('form').submit();return false;"><span><span><%= t("actions.login") %></span></span></a>
+      </div>
+      <br class="clearer" />
+    </div><!--/end form_row -->
+  <% end %>
+</div>

@@ -262,6 +262,13 @@ Base.radio.resetSearchInput = function(value) {
 	$("#create_search_submit").attr('can_post', 0);
 };
 
+String.prototype.cleanupURL = function(regex, sub) {
+  var cleanup = this.replace(regex, sub);
+  cleanup = cleanup.replace(/&&/g, "&");
+  cleanup = cleanup.replace(/\?&/g, "?");
+  return cleanup;
+}
+
 var BANNERS = {};
 Base.radio.initialize = function() {
   var elems = "div.songs_box ul li a.launch_station";
@@ -270,8 +277,9 @@ Base.radio.initialize = function() {
   });
 
   // STATIC MAPPINGS OF BANNER SRC
-  BANNERS.top   = {elem: $("#top_banner"), src: $("#top_banner").attr("src")};
-  BANNERS.right = {elem: $("#square_banner"), src: $("#square_banner").attr("src")};
+  var regex = new RegExp(/v_folder=|v_songgenre=|v_songlabel=/g);
+  BANNERS.top   = {elem: $("#top_banner"), src: String( $("#top_banner").attr("src") ).cleanupURL(regex, "")};
+  BANNERS.right = {elem: $("#square_banner"), src: String( $("#square_banner").attr("src") ).cleanupURL(regex, "")};
 };
 
 Base.radio.refreshBanner = function(attr)
@@ -1038,7 +1046,7 @@ Base.account_settings.highlight_field_with_errors = function() {
       field_name = field_with_errors[i][0];
       error = field_with_errors[i][1];
 
-      field = jQuery(":input[name*='" + field_name + "']");
+      field = jQuery(":input[name*='" + field_name + "']").first();
       Base.account_settings.add_message_on(field, error, 'error');
     }
     Base.account_settings.focus_first_section_with_error($('span.fieldWithErrors input').first());
@@ -1047,7 +1055,7 @@ Base.account_settings.highlight_field_with_errors = function() {
 
 Base.account_settings.clear_info_and_errors_on = function(field) {
   field.removeClass('with_error').removeClass('with_info');
-  rounded_box = field.parent().parent();
+  rounded_box = field.closest('.grey_round_box');
   rounded_box.removeClass('with_error').removeClass('with_info');
   $("span.field_message[for=\"" + field.attr('id') + "\"]").prev().remove();
   $("span.field_message[for=\"" + field.attr('id') + "\"]").remove();
@@ -1055,7 +1063,7 @@ Base.account_settings.clear_info_and_errors_on = function(field) {
 
 Base.account_settings.add_message_on = function(field, message, type) {
   field.addClass('with_' + type);
-  rounded_box = field.parent().parent();
+  rounded_box = field.closest('.grey_round_box');
   rounded_box.addClass('with_' + type);
   message_span = jQuery("<br /><span class=\"field_message\" for=\"" + field.attr('id') + "\">" + message + "</span>");
   rounded_box.append(message_span);

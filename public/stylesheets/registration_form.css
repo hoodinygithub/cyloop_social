@@ -1,3 +1,8 @@
+#registration_form {
+  margin-top: 20px;
+  width: 445px;
+}
+
 .form_row {
   width: 445px;
 }
@@ -19,12 +24,16 @@ span.slug {
   padding: 0px 20px 0px 25px;
 }
 
-span.terms_and_privacy {
+span.checkbox {
   display: inline-block;
-  width: 405px;
-  line-height: 14px;
   vertical-align: top;
-  color: black !important;
+  margin-top: 1px;
+  color: grey !important;
+  width: 405px;
+}
+
+.last span.checkbox {
+  width: 300px;
 }
 
 #internal_content {
@@ -98,10 +107,24 @@ span.terms_and_privacy {
   background: transparent url(../images/registration/chat.png) no-repeat 0 0;
 }
 
+#sidebox ul .sign_up {
+  background: transparent url(../images/registration/signup.png) no-repeat 0 0;
+}
+
+#sidebox ul .forgot {
+  background: transparent url(../images/registration/forgot.png) no-repeat 0 0;
+}
+
+
 div.checkbox div.form_row {
   width : 430px !important;
 }
 
 label.radio_label {
   display: inline-block !important;
+}
+
+a.forgot_link {
+  margin-top: 52px !important;
+  display: block;
 }

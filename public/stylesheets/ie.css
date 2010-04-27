@@ -138,3 +138,8 @@ a.settings_button {
   position: relative;
   top: 5px !important;
 }
+
+span.checkbox {
+  color: black !important;
+}
+

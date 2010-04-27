@@ -444,14 +444,14 @@ class ApplicationController < ActionController::Base
     else                    "Other Browser"
     end
   end
-  
+
   def check_javascript_locale
     locale_fp = File.join(RAILS_ROOT, 'public/javascripts/locale.js')
     if File.exists? locale_fp and RAILS_ENV == 'development'
       File.unlink(locale_fp)
     end
   end
-  
+
   def deliver_friend_request_email(followee)
     if followee
       unless followee.is_a?(Artist)

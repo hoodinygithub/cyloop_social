@@ -34,6 +34,11 @@ class RadioController < ApplicationController
     end
   end
 
+  def analytics
+    @code = params.fetch(:pageTracker, '/radio')
+    render :layout => false, :partial => 'shared/google_analytics', :locale => @code
+  end
+
   def my_stations_list
     if request.xhr?
       if logged_in? 

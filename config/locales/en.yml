@@ -965,6 +965,7 @@ en:
       still_pending: Your account has not been confirmed. Please check your e-mail and follow the confirmation instructions, or {{click_here}} to resend your confirmation link.
       email_resent: Your confirmation e-mail has been resent.
     forgot_your_password: Forgot your password?
+    dont_stay_locked_out: Don\xE2\x80\x99t stay locked out!
     cyloop_password: Cyloop Password
     terms_of_use_instructions: By signing up, you accept the {{link}} and confirm you're 13 or older
     private_profile: Keep profile private?
