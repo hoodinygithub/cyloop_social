@@ -65,7 +65,7 @@ class UserStation < ActiveRecord::Base
     remove_artists
     unless new_artists.empty? 
       new_artists.each do |x|
-        artist = Artist.find(:first, ["id = ?", x.artist_id])
+        artist = Artist.find(x.artist_id.to_i) rescue nil 
         if artist
           artist.increment_total_user_stations
           user_station_artists << UserStationArtist.find_or_create_by_artist_id_and_user_station_id(:artist_id => x.artist_id, :user_station_id => self.id, :album_id => x.album_id)

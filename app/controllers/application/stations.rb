@@ -5,7 +5,7 @@ module Application::Stations
 
   module InstanceMethods
     def create_user_station(station)
-      if logged_in? && station && station.playable && station.playable.is_a?(AbstractStation)
+      if logged_in? && station && station.playable && station.playable.is_a?(AbstractStation) && station.playable.deleted_at.nil?
         user_station = current_user.stations.find_by_abstract_station_id(station.playable_id)
         unless user_station
           user_station = current_user.create_user_station(:abstract_station => station.playable, :site => current_site)
