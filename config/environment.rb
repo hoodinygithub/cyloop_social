@@ -52,7 +52,7 @@ Rails::Initializer.run do |config|
   config.gem 'httparty',                :version => '0.4.5'
   config.gem 'ar_mailer',               :version => '1.5.0', :lib => 'action_mailer/ar_mailer', :source => 'http://gemcutter.org'
   config.gem "block_helpers",           :source => "http://gemcutter.org"
-
+  config.gem 'resque', :version => '1.2.3'
     
   
   # config.gem "methodmissing-scrooge", :lib => 'scrooge', :source => 'http://gems.github.com'

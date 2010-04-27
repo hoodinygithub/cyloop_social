@@ -29,7 +29,7 @@ class ListenMetal
       end
 
       Resque.enqueue(RecordListenJob, options)
-      Rails.logger.info "Enqued: RecordListenJob, options: #{options}"
+      Rails.logger.info "Enqued: RecordListenJob, options: #{options.inspect}"
       [200, {"Content-Type" => "text/html"}, ""]
     else
       [404, {"Content-Type" => "text/html"}, "Not Found"]
