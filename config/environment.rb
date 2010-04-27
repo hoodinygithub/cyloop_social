@@ -43,7 +43,7 @@ Rails::Initializer.run do |config|
   config.gem "nokogiri",                :version => '1.4.1', :source => 'http://gemcutter.org'
   config.gem "rubyist-aasm",            :version => "2.1.1", :lib => "aasm", :source => 'http://gems.github.com'
   config.gem "newrelic_rpm",            :version => '2.9.5'
-  config.gem 'fast_xs',                 :version => '0.7.3' unless RAILS_ENV == 'test'
+  # config.gem 'fast_xs',                 :version => '0.7.3' unless RAILS_ENV == 'test'
   config.gem 'htmlentities',            :version => "4.2.0"
   config.gem 'mislav-will_paginate',    :version => '2.3.11', :lib => 'will_paginate'
   config.gem 'rufus-tokyo',             :version => '1.0.5'
@@ -66,11 +66,13 @@ Rails::Initializer.run do |config|
 
   # Add additional load paths for your own custom dirs
 
-  config.load_paths += [ :observers, :middlewares, :mailers, :services ].map do |i|
-    "#{RAILS_ROOT}/app/#{i}"
-  end
-  
-  config.load_paths += ["#{RAILS_ROOT}/vendor/cyqueue/app/jobs"]
+  config.load_paths += %W(
+    #{RAILS_ROOT}/app/observers
+    #{RAILS_ROOT}/app/middlewares
+    #{RAILS_ROOT}/app/mailers
+    #{RAILS_ROOT}/app/services
+  )
+  # config.load_paths += ["#{RAILS_ROOT}/vendor/cyqueue/app/jobs"]
 
   # Make Time.zone default to the specified zone, and make Active Record store time values
   # in the database in UTC, and return them converted to the specified local zone.
@@ -94,9 +96,9 @@ Rails::Initializer.run do |config|
 
   config.action_controller.session_store = :cookie_store
 
-  config.after_initialize do
-    require 'ruby_core_extensions' # Look here for Hash and String additions
-    require 'iconv'
-  end
+  # config.after_initialize do
+  #   require 'ruby_core_extensions' # Look here for Hash and String additions
+  #   require 'iconv'
+  # end
 
 end
