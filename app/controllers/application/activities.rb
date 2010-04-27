@@ -71,7 +71,6 @@ module Application::Activities
       rescue Exception => e
                 Rails.logger.error("*** Could not record station activity! payload: #{tracker_payload}") and return true
       end
-
     end
 
   end
