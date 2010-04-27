@@ -96,9 +96,9 @@ Rails::Initializer.run do |config|
 
   config.action_controller.session_store = :cookie_store
 
-  # config.after_initialize do
-  #   require 'ruby_core_extensions' # Look here for Hash and String additions
-  #   require 'iconv'
-  # end
+  config.after_initialize do
+    require 'ruby_core_extensions' # Look here for Hash and String additions
+    require 'iconv'
+  end
 
 end
