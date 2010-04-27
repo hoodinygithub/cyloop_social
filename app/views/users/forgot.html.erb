@@ -1,0 +1,38 @@
+<% content_for :head do %>
+  <%= stylesheet_link_tag 'registration_form' %>
+<% end %>
+
+<h2 class="page_title"><%= t("user.forgot_your_password")%></h2>
+
+<div id="content">
+  <div id="main_content" class="registration">
+    <div id="registration_form">
+      <% form_for :user, :html => { :class => "account_settings" } do |f| %>
+        <div class="form_row">
+          <%= f.label :email, "<b>#{t('user.email')}</b>" %>
+          <div class="grey_round_box left_side">
+            <%= f.text_field :email, :class => 'input half_width3' %>
+          </div>
+          <br class="clearer" />
+        </div><!--/end form_row -->
+        <div class="form_row last">
+          <div class="right_side">
+            <a href="#" class="blue_button submit_button" onclick="$(this).closest('form').submit();return false;"><span><span><%= t("actions.login") %></span></span></a>
+          </div>
+          <br class="clearer" />
+        </div><!--/end form_row -->
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div id="sidebox">
+  <ul>
+    <li class="forgot">
+      <span><%= t("user.dont_stay_locked_out") %></span>
+      <%= t("user.forgot_message") %>
+    </li>
+  </ul>
+</div>
+
+<br class="clearer" />
