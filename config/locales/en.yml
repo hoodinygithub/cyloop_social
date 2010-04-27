@@ -418,7 +418,7 @@ en:
     twitter_you_following: Tweets from artists you are following
     no_more_activity: No more activity
     push_notification_more_than: You have more than {{count}} new updates. {{link}} your feed to view them.
-    created_station: "{{creator}} created radio station '{{station}}'"
+    created_station: "{{creator}} created a new station called: {{station}}"
     twitter_following: Tweets from artist {{user}} is following
     user_following: "{{user}} + Following"
   date:
