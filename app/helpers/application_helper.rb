@@ -648,7 +648,7 @@ module ApplicationHelper
     elsif site_includes(:msnlatino)
       'http://latino.msn.com/'
     elsif site_includes(:msncaen)
-      'http://music.ca.msn.cyloop.com/'
+      'http://entertainment.ca.msn.com/music'
     elsif site_includes(:msncafr)
       'http://musique.ca.msn.cyloop.com/'
     elsif site_includes(:msnar)

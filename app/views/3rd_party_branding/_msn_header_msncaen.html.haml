@@ -40,7 +40,7 @@
 
         %li= link_to "Entertainment", "http://entertainment.ca.msn.com/"
         %li= link_to "Horoscopes", "http://astrology.ca.msn.com/"          
-        %li= link_to "Music", "http://music.ca.msn.cyloop.com/"
+        %li= link_to "Music", "http://entertainment.ca.msn.com/music"
         %li= link_to "Tech &amp; Gadgets", "http://tech.ca.msn.com/"
         %li= link_to "<strong>MORE…</strong>", "http://ca.msn.com/directory.aspx"
         
@@ -63,7 +63,7 @@
         %li
           %strong= link_to "Music Home", "#"
       - else
-        %li= link_to "Music Home", "/"  
+        %li= link_to "Music Home", "http://entertainment.ca.msn.com/music"  
       %li= link_to "Features", "http://entertainment.ca.msn.com/music/features/"
       %li= link_to "Reviews", "http://entertainment.ca.msn.com/music/reviews/"
       - if params[:controller] == "radio"
