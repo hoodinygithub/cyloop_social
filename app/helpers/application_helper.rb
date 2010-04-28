@@ -65,7 +65,7 @@ module ApplicationHelper
   def special_button(type, button_label, options = {})
     options.merge!({
       :class => "#{options[:class]} #{type}",
-      :onclick => options[:onclick].nil? ? nil : "#{options[:onclick]}; return false;" 
+      :onclick => options[:onclick].nil? ? "return false;" : "#{options[:onclick]}; return false;" 
     })
 
     options[:class] << " full_width" if options[:full_width]
@@ -103,14 +103,17 @@ module ApplicationHelper
   end
 
   def yellow_button(button_label, options = {})
-    options.merge!({:onclick => nil})
     special_button(:yellow_button, button_label, options)
   end
-
+  
   def follow_button(attrs = {})
     account = attrs.delete(:account)
     if current_user and account.follow_requests.collect(&:follower_id).include? current_user.id
-      action       = 'follow'
+      action       = nil
+      key          = 'pending'
+      button_color = 'yellow'
+    elsif current_user and current_user.follow_requests.collect(&:follower_id).include? account.id
+      action       = 'approve'
       key          = 'pending'
       button_color = 'yellow'
     elsif current_user and current_user.follows?(account)
@@ -131,8 +134,7 @@ module ApplicationHelper
                       :follow_profile => account.id)
 
     remove_div = attrs.has_key?(:remove_div) ? attrs[:remove_div] : page_owner?
-    
-    onclick_cb = "Base.community.#{action}('#{account.slug}', this, #{remove_div}, '#{layer_path}')"
+    onclick_cb = "Base.community.#{action}('#{account.slug}', this, #{remove_div}, '#{layer_path}')" if action
     attrs.merge!({:onclick => onclick_cb, :class => 'follower_btn'})
     if account.is_a?(User) && !account.blocks?(current_user) || account.is_a?(Artist)
       send("#{button_color}_button", t(locale_key), attrs)

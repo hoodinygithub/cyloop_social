@@ -13,18 +13,6 @@
 
 <% if profile_owner? %>
   <div class="follower_actions w_settings">
-
     <%= follow_button(:account => item) %>
-
-    <%= blue_button(image_tag('settings_button.png'), :href => '#', :class => 'settings_button') %>
-    <ul class="actions_settings">
-      <li>
-        <%= link_to t('actions.approve'), '#', 
-                    :onclick => "Base.community.approve('#{item.slug}', this); return false;" %>
-      </li>
-      <li>
-        <%= link_to t('actions.deny'), '#', :onclick => "Base.community.disaprove('#{item.slug}', this); return false;" %>
-      </li>
-    </ul>
   </div>
 <% end %>
