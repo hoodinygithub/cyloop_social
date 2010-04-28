@@ -211,8 +211,7 @@ class UsersController < ApplicationController
   def approve
     f = current_user.follow_requests.select {|f| f.follower_id == @account.id}.first
 
-    if f
-      f.approve!
+    if f and f.approve!
       render :layout => false, :partial => 'shared/network_collection_info', :locals => { :item => f.follower }
     else
       render :text => ""

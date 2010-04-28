@@ -535,17 +535,28 @@ Base.locale.date_difference = function(old_date, new_date) {
 /*
  * Community
  */
-Base.community.approve = function(user_slug, link) {
-  Base.community.__follow_request_handler('approve', user_slug, link, function(response) {
-    $follower_list = jQuery('ul.followers_list');
-    $li = jQuery("<li></li>").hide().append(response);
-    $follower_list.append($li.fadeIn());
+Base.community.approve = function(user_slug, button) {
+  var params = {'user_slug':user_slug};
+  $list      = jQuery('.followers_list');
+  
+  $approve_button = jQuery(button);
+  var old_button_content = $approve_button.html();
+  $approve_button.removeClass('yellow_button').addClass('yellow_button_wo_hover');
+  $approve_button_label = $approve_button.children().children();
+  $approve_button_label.html(Base.layout.spanned_spin_image('yellow'));
+  
+  
+  jQuery.post("/users/approve", params, function(response) {
+    $li   = $approve_button.parent().parent();
+    $li.slideUp();
+    $list.prepend(jQuery("<li></li>").append(response));
+
+    Base.layout.bind_events();
   });
 };
 
 Base.community.disaprove = function(user_slug, link) {
   Base.community.__follow_request_handler('disaprove', user_slug, link, function(response) {
-    alert("d =>" + response);
   });
 };
 
@@ -553,21 +564,19 @@ Base.community.__follow_request_handler = function(type, user_slug, link, callba
   var params           = {'user_slug':user_slug};
   var $link            = jQuery(link);
   var $main_element    = $link.parent().parent().parent().parent();
-  var $pending_title   = jQuery('li.pending');
   var $black_ul        = $link.parent().parent();
   var $settings_button = $main_element.find('.settings_button').children().children();
+  
+  console.log($link);
+  return;
 
-  $black_ul.fadeOut();
-  $settings_button.html(Base.layout.spin_image(false, false));
-
-  jQuery.post('/users/' + type, params, function(response, status) {
-    $main_element.slideUp();
-    $pending_items = jQuery('li.pending_item:visible');
-    if ($pending_items.length == 1) {
-      $pending_title.slideUp();
-    }
-    if (typeof(callback) == 'function') callback(response);
-  });
+  // $black_ul.fadeOut();
+  // $settings_button.html(Base.layout.spin_image(false, false));
+  // 
+  // jQuery.post('/users/' + type, params, function(response, status) {
+  //   $main_element.slideUp();
+  //   if (typeof(callback) == 'function') callback(response);
+  // });
 };
 
 Base.community.follow = function(user_slug, button, remove_div, layer_path) {

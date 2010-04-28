@@ -2,7 +2,7 @@
   <ul id="slides">
     <% @feed_featured.each_with_index do |slide, index| %>
       <li class="slide">
-        <%= link_to image_tag(slide.image("424x182", msn_site_code)), slide.link %>
+        <%= link_to image_tag(slide.image("630x250", msn_site_code)), slide.link %>
           <div class="band_details">
             <div class="band_name"><%= slide.artist %></div>
             <div class="band_slogan"><%= slide.text %></div>
