@@ -4,7 +4,7 @@ describe RadioController do
   integrate_views
 
   before do
-    TopStation.destroy_all
+    TopAbstractStation.destroy_all
     @top_stations = Factory(:top_station, :site_id => controller.send( :current_site ))
     @mock_recommendations_engine = mock('recommendations_engine')
     @songs = [ mock_model( Song ) ]

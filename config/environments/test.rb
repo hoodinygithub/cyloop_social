@@ -26,9 +26,10 @@ APP_CONFIG = {
   :support_files => "/spec/files/"
 }
 
-config.gem 'fakeweb',                 :version => '1.2.6'
+config.gem 'fakeweb'#,                 :version => '1.2.6'
 config.gem 'test-unit',               :version => '1.2.3', :lib => false
-config.gem "thoughtbot-factory_girl", :version => "1.2.2", :lib => 'factory_girl'
+# config.gem "thoughtbot-factory_girl", :version => "1.2.2", :lib => 'factory_girl'
+config.gem 'factory_girl'
 config.gem "rspec",                   :version => "1.3.0", :lib => false
 config.gem "rspec-rails",             :version => "1.3.2", :lib => false
 
