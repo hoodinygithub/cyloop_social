@@ -81,3 +81,11 @@ MSN Argentina:
     - ar.msn.cyloop.com
     - production.ar.hoodiny.com
     - staging.ar.hoodiny.com    
+    
+TVN:
+  name: TVN
+  deploy_name: tvn
+  code: tvn
+  domains:
+    - tvn.cyloop.com
+    - staging.tvn.hoodiny.com
