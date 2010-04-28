@@ -12,7 +12,7 @@ module MsnHelper
   end
 
   def render_messenger_app
-    if is_msn_messenger_enabled?
+    if is_msn_messenger_enabled? && current_site.is_msn?
       render 'msn/application'
     end
   end
