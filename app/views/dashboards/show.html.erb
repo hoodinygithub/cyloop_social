@@ -10,7 +10,7 @@
     <% end %>
 
     <% unless profile_owner? %>
-      <%=  render :partial => 'dashboards/user_latest_stations', :locals => { :max_stations => profile_artist? ? 3 : 6 } %>
+      <%=  render :partial => 'dashboards/user_latest_stations', :locals => { :max_stations => 6 } %>
       <br /><br />
       <%# phase 2%>
       <%=  render :partial => 'dashboards/artist_latest_albums' if profile_artist? && false  %>
