@@ -50,7 +50,7 @@
         %li= link_to "Movies", "http://entertainment.ca.msn.com/movies/"
         %li= link_to "TV", "http://entertainment.ca.msn.com/tv/"
         %li.before_active= link_to "Celebs", "http://entertainment.ca.msn.com/celebs/"
-        %li.active= link_to "Music", "/"
+        %li.active= link_to "Music", "http://entertainment.ca.msn.com/music"
         %li= link_to "Message boards", "http://entertainment.ca.msn.com/messageboards/"
         %li.last= link_to "Music Store", "http://musicstore.ca.msn.com/"
          
@@ -61,7 +61,7 @@
     %ul
       - if params[:controller] != "radio"
         %li
-          %strong= link_to "Music Home", "#"
+          %strong= link_to "Music Home", "http://entertainment.ca.msn.com/music"
       - else
         %li= link_to "Music Home", "http://entertainment.ca.msn.com/music"  
       %li= link_to "Features", "http://entertainment.ca.msn.com/music/features/"
@@ -70,7 +70,7 @@
         %li
           %strong= link_to "Cyloop Radio", "#"
       - else
-        %li= link_to "Cyloop Radio", "/radio"
+        %li= link_to "Cyloop Radio", "http://musique.ca.msn.cyloop.com/radio"
       %li= link_to "Photos", "http://entertainment.ca.msn.com/music/photos/"
       %li= link_to "Video", "http://entertainment.ca.msn.com/music/video/"
       %li= link_to "Blog", "http://blogs.music.msn.ca"

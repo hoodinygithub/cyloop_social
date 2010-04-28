@@ -650,7 +650,7 @@ module ApplicationHelper
     elsif site_includes(:msncaen)
       'http://entertainment.ca.msn.com/music'
     elsif site_includes(:msncafr)
-      'http://musique.ca.msn.cyloop.com/'
+      'http://divertissement.ca.msn.com/musique'
     elsif site_includes(:msnar)
       'http://ar.msn.com/'
     else

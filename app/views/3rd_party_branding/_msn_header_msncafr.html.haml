@@ -34,7 +34,7 @@
 
         %li= link_to "Cinéma", "http://divertissement.ca.msn.com/cinema/"
         %li= link_to "Horoscope", "http://astrologie.ca.msn.com/"
-        %li= link_to "Musique", "http://musique.ca.msn.cyloop.com/"
+        %li= link_to "Musique", "http://divertissement.ca.msn.com/musique"
         %li= link_to "Style de vie", "http://styledevie.ca.msn.com/"
         %li= link_to "Voyage", "http://voyage.ca.msn.com/"
 
@@ -59,16 +59,16 @@
     %ul
       - if params[:controller] != "radio"
         %li
-          %strong= link_to "Accueil Musique", "#"
+          %strong= link_to "Accueil Musique", "http://divertissement.ca.msn.com/musique"
       - else
-        %li= link_to "Accueil Musique", "/"
+        %li= link_to "Accueil Musique", "http://divertissement.ca.msn.com/musique"
       %li= link_to "Actualités", "http://divertissement.ca.msn.com/musique/dossiers/"
       %li= link_to "Critiques", "http://divertissement.ca.msn.com/musique/critiques/"
       - if params[:controller] == "radio"
         %li
           %strong= link_to "Radio Cyloop", "#"
       - else
-        %li= link_to "Radio Cyloop", "/radio"
+        %li= link_to "Radio Cyloop", "http://music.ca.msn.cyloop.com/radio"
       %li= link_to "Photos", "http://divertissement.ca.msn.com/musique/photos/"
       %li= link_to "Vidéo", "http://divertissement.ca.msn.com/musique/Video/"
       %li= link_to "Boutique Musique", "http://boutiquemusique.ca.msn.com/"
