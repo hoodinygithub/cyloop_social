@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 
   include Application::MsnRedirection
 
-  before_filter :find_account_by_slug, :only => [:follow, :unfollow, :block, :unblock, :approve, :disapprove]
+  before_filter :find_account_by_slug, :only => [:follow, :unfollow, :block, :unblock, :approve, :deny]
   before_filter :xhr_login_required, :only => [:follow]
   before_filter :login_required, :only => [:edit, :update, :destroy, :confirm_cancellation, :remove_avatar]
   before_filter :set_return_to, :only => [:msn_login_redirect, :msn_registration_redirect]
@@ -218,20 +218,20 @@ class UsersController < ApplicationController
     end
   end
   
-  def disaprove
+  def deny
     f = current_user.follow_requests.select {|f| f.follower_id == @account.id}.first
     f.destroy if f
-    render :json => {}
+    render :nothing => true
   end
   
   def block
     current_user.block(@account)
-    render :layout => false, :text => ''
+    render :nothing => true
   end
   
   def unblock
     current_user.unblock(@account) if current_user.blocks?(@account)
-    render :layout => false, :text => ''
+    render :nothing => true
   end
   
   

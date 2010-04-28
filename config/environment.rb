@@ -100,5 +100,4 @@ Rails::Initializer.run do |config|
     require 'ruby_core_extensions' # Look here for Hash and String additions
     require 'iconv'
   end
-
 end

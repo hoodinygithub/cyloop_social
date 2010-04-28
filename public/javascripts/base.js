@@ -555,8 +555,19 @@ Base.community.approve = function(user_slug, button) {
   });
 };
 
-Base.community.disaprove = function(user_slug, link) {
-  Base.community.__follow_request_handler('disaprove', user_slug, link, function(response) {
+Base.community.deny = function(user_slug, button) {
+  var params = {'user_slug':user_slug}
+  var $button = jQuery(button);
+  var old_onclick = $button.attr('onclick');
+  var $main_div = $button.parent().parent().parent().parent();
+  var $black_ul = $button.parent().parent();
+  var $settings_button = $main_div.find('.settings_button').children().children();
+
+  $black_ul.fadeOut();
+  $settings_button.html(Base.layout.spin_image(false, false));
+
+  jQuery.post('/users/deny', params, function(response, status) {
+    $main_div.slideUp();
   });
 };
 

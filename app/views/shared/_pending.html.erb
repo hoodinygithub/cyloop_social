@@ -14,5 +14,17 @@
 <% if profile_owner? %>
   <div class="follower_actions w_settings">
     <%= follow_button(:account => item) %>
+    <%= blue_button(image_tag('settings_button.png'), :href => '#', :class => 'settings_button png_fix') %>
+
+    <br/>
+
+    <ul class="actions_settings">
+      <li>
+        <a href="#" onclick="Base.community.deny('<%= item.slug %>', this); return false;">
+          <%= t('actions.deny') %>
+        </a>
+      </li>
+    </ul>
+    
   </div>
 <% end %>
