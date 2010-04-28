@@ -119,7 +119,7 @@ class PagesController < ApplicationController
       format.js do
         if logged_in?
           @artists = Artist.artists_by_recommended( rec_engine.get_recommended_artists(:number_of_records => 30), 5)
-          render :template => 'pages/home.js.erb', :layout => false
+          #render :template => 'pages/home.js.erb', :layout => false
         else
           head :ok
         end

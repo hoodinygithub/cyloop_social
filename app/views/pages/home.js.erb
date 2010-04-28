@@ -1,3 +1,5 @@
 jQuery(document).ready(function($){  
+	<% if false  #do not render this - it is calling song_listens.most_listened_songs and it shouldn't. this should be recommended stations if anything. %>
 	$('#secondary_content div.module.recommended.clearfix ul').html("<%= escape_javascript(render(:partial => 'pages/home_modules/recommended_artist.html.haml', :collection => @artists)) %>");
+	<% end %>
 });

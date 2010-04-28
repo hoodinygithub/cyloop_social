@@ -1,4 +1,4 @@
-<% unless ['status', 'twitter'].include? item['type'] %>
+<% unless ['status', 'station', 'twitter'].include? item['type'] %>
   <b><%= link_to(item['account'], item['account']) %></b>
 <% end %>
 
@@ -14,15 +14,12 @@
         <%= link_to("Twitter / #{item['screen_name']}", "http://twitter.com/#{item['screen_name']}", :target => "_blank") %>
       </div>
     <% elsif item['type'] == 'station' %>
-      <div class="station_activity">
-        <%= link_to(avatar_for(item['artist'], :tiny), item['artist']) %>
-        <%= link_to(item['account'], item['account']) %>
-        <%= t('activity.created_station', :station => link_to(item['artist'], item['artist'])) %>
-        <p>
-          <%= "#{t('basics.contains')}: " if item['station'].includes.size > 0 %>
-          <%= item['station'].includes.map {|s| link_to(s.artist, s.artist)}.join(", ") %>
-        </p>
-      </div>
+      <% playable = item['station'] %>
+      <% if playable and playable.deleted_at.nil? %>
+        <div class="message_content">
+          <%= t('activity.created_station', :creator => link_to(item['account'], item['account']), :station => link_to(playable.name, radio_path(:station_id => playable.station.id))) %>
+        </div>
+      <% end %>
     <% end %>
   <br />
   <span class="grey small">
