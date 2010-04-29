@@ -42,7 +42,7 @@ class AbstractStation < ActiveRecord::Base
 
   #this is not correct. TODO: Fix
   def top_station
-    TopStation.first( :conditions => { :station_id => self.id, :site_id => Application::Sites::CURRENT_SITE.id } )
+    TopAbstractStation.first( :conditions => { :abstract_station_id => self.id, :site_id => Application::Sites::CURRENT_SITE.id } )
   end
 
   memoize :top_station

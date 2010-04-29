@@ -26,7 +26,11 @@ class Player::Artist < Player::Base
 
     def from_one( object, options = {} )
       returning(super(object, options)) do |artist|
-        artist.avatar_file_name = AvatarsHelper.avatar_path( object, :small )
+        if(object.respond_to? :artist)
+          artist.avatar_file_name = AvatarsHelper.avatar_path( object.artist, :small )
+        else
+          artist.avatar_file_name = AvatarsHelper.avatar_path( object, :small )
+        end
       end
     end
 

@@ -44,7 +44,7 @@ class StationsController < ApplicationController
   
   def top
     limit = params[:limit].to_i == 0 ? 4 : params[:limit].to_i
-    @stations = current_site.summary_top_stations.limited_to( limit ).map { |t| t.station }.compact
+    @stations = current_site.top_abstract_stations.limited_to( limit ).compact
     @stations.reject! { |station| station.artist.nil? }
     @stations = Player::Station.from( @stations, :ip => remote_ip )
     respond_to do |format|
