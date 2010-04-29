@@ -23,6 +23,7 @@
     <% end %>
   <br />
   <span class="grey small">
-    <%= nice_elapsed_time(item['timestamp']) %>
+    <%=  t('basics.created_at', :when => nice_elapsed_time(item['timestamp'])) %>
   </span>
 </div>
+

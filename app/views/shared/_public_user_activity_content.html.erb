@@ -2,7 +2,7 @@
   <li timestamp="<%= item['timestamp'] %>">
     <b>
       <%= link_to(item['account'], item['account'])%>
-    </b> 
+    </b>
 
     <% if item['type'] == 'station' %>
       <%= t('activity.created_station', :station => link_to(item['artist'], item['artist'])) %>
@@ -14,7 +14,8 @@
     <% end %>
 
     <span class="grey">
-      <%= nice_elapsed_time(item['timestamp']) %>
+      <%=  t('basics.created_at', :when => nice_elapsed_time(item['timestamp'])) %>
     </span>
   </li>
 <% end %>
+
