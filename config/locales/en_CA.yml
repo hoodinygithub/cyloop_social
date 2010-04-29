@@ -403,37 +403,6 @@ en_CA:
       short: "%d %b %H:%M"
       long: "%B %d, %Y %H:%M"
     pm: pm
-<<<<<<< HEAD
-=======
-  activity: 
-    created_playlist: Created Playlist '{{playlist}}'
-    just_following: Just Following
-    just_user: Just {{user}}
-    listened_to: Listened to '{{song}}' by '{{artist}}'
-    push_notification_refresh: Refresh
-    twitter_you_following: Tweets from artists you are following
-    no_more_activity: No more activity
-    filters: 
-      all: ALL
-      songs: SONGS
-      stations: STATIONS
-      playlists: PLAYLISTS
-    push_notification: You have {{count}} new updates. {{link}} your feed to view them.
-    push_notification_more_than: You have more than {{count}} new updates. {{link}} your feed to view them.
-    user_following: "{{user}} + Following"
-    created_station: Created radio station '{{station}}'
-    twitter_following: Tweets from artist {{user}} is following
-  albums: 
-    label: Label
-    song_count: Song Count
-    year: Year
-    show: 
-      about_this_album: About this album
-    release_date: Release Date
-    total_plays: Total Plays
-  custom_profiles: 
-    sony_disclaimer: The Walkman&#8482; symbol and logo are trademarks from Sony Corporation.
->>>>>>> Translations for Story -> Station created date/time #3223581
   messenger_player: 
     edit_station: To edit this station,
     share: 
@@ -965,68 +934,20 @@ en_CA:
       description: Enhance your experience by providing us with some more information
   playlist: 
     edit_your_playlist: Edit your playlist
-<<<<<<< HEAD
   main: 
     navigation: 
       stations: Stations
       home: Home
       mixes: Mixes
-=======
-  settings: 
-    background_not_saved_image_too_large: Background image can't be larger than 1 MB
-    page_title: Control your Cyloop
-    customizations: 
-      header_background: Header Background
-      link_font_color: Link Font Color
-      main_background_color: Main Background Color
-      main_font_color: Main Font Color
-      reset_to_default: Your profile's customization settings have been reset to Cyloop's defaults.
-      restore_defaults: Restore Defaults
-      remove_background_image: Remove Image
-      colors: Colors
-      browse: Browse...
-    private_profile: 
-      description: Description of what 'Keep profile private?' does
-    cancel_my_account: Cancel My Account
-    not_saved: Your settings failed to save.
-    saved: Your settings have been saved.
-    tabs: 
-      account: Account
-      notifications: Notifications
-      password: Password
-  site: 
-    faq: Frequently asked questions
-    profile_not_found: Profile Not Found
-    terms_and_conditions: Terms and conditions
-    support: Support
-    about_cyloop: About Cyloop
-    safety_tips: Safety Tips
-    profile_not_available: Profile Not Available
-    feedback: Feedback
-    about_hoodiny: About Hoodiny
-    profile_not_available_sorry: Sorry but this profile is not available.
-    privacy_policy: Privacy Policy
-    profile_not_found_sorry: Sorry. We were unable to find a profile for {{profile}}.
-    sample_flag_description: |
-      Unfortunately this content is restricted for this territory and can't play in full. You should be able to listen to full songs from this artist and others similar in the Radio section.
-
->>>>>>> Translations for Story -> Station created date/time #3223581
   footer: 
     faq: FAQ
     help: Help
     terms_and_conditions: Terms and Conditions
     support: Support
-<<<<<<< HEAD
     about_us: About Us
     feedback: Contact Us
     safety_tips: Safety Tips
     about_cyloop: About Cyloop
-=======
-    about_cyloop: About Cyloop
-    safety_tips: Safety Tips
-    about_us: About Us
-    feedback: Contact Us
->>>>>>> Translations for Story -> Station created date/time #3223581
     about_hoodiny: About Hoodiny
     privacy_policy: Privacy Policy
   contact_us: 
@@ -1278,21 +1199,14 @@ en_CA:
     create_your_own_personalized_radio_station: Create Your Own Personalized Radio Station
     text_about_radio: About Radio
     create_radio: Create Station
-<<<<<<< HEAD
     top_radios: TOP RADIO STATIONS
-=======
-    recommended_stations: STATIONS RECOMMENDED BY CYLOOP
->>>>>>> Translations for Story -> Station created date/time #3223581
     explaing_what_is_and_why_create_a_new_radio: "Type the name of your favorite artist and Cyloop will generate a personalized radio station with your favorite music. "
     latest_stations: LATEST RADIO STATIONS
     recommended_stations: STATIONS RECOMMENDED BY CYLOOP
     network_update: "{{user_name}}'S RECENT ACTIVITY"
-    type_artist_name: Enter the name of an artist
-<<<<<<< HEAD
-    top_songs: Top Songs
-=======
     recommended_mixes: MIXES RECOMMENDED BY CYLOOP
->>>>>>> Translations for Story -> Station created date/time #3223581
+    type_artist_name: Enter the name of an artist
+    top_songs: Top Songs
     top_stations: Top Stations
     create_your_own_station_now: Create Your Own Station now!
     radios_recomended_for_you: RADIOS RECOMMENDED FOR YOU

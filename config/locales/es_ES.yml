@@ -923,7 +923,6 @@ es_ES:
         other: "m\xC3\xA1s de {{count}} a\xC3\xB1os"
       half_a_minute: medio minuto
   home: 
-    text_about_radio: Sobre a Radio
     create_your_own_personalized_radio_station: Crea Tu Propia Radio Personalizada
     text_about_radio: Sobre a Radio
     create_radio: Crear Radio

@@ -400,37 +400,6 @@ pt_BR:
       short: "%d de %b, %H:%M"
       long: "%d de %B de %Y, %H:%M"
     pm: pm
-<<<<<<< HEAD
-=======
-  activity: 
-    created_playlist: criou a playlist '{{playlist}}'
-    just_following: Seguindo
-    just_user: "{{user}}"
-    listened_to: escutou '{{song}}', por '{{artist}}'
-    push_notification_refresh: Atualize
-    twitter_you_following: "Tweets de artistas que voc\xC3\xAA est\xC3\xA1 seguindo"
-    no_more_activity: Nenhuma atividade adicional
-    filters: 
-      all: TUDO
-      songs: "M\xC3\x9ASICAS"
-      stations: "R\xC3\x81DIOS"
-      playlists: PLAYLISTS
-    push_notification: "Voc\xC3\xAA tem novas atualiza\xC3\xA7\xC3\xB5es ({{count}} no total). {{link}} as novidades para v\xC3\xAA-las."
-    push_notification_more_than: "Voc\xC3\xAA tem mais de {{count}} novas atualiza\xC3\xA7\xC3\xB5es. {{link}} as novidades para v\xC3\xAA-las."
-    user_following: "{{user}} + Seguindo"
-    created_station: "{{creator}} criou a r\xC3\xA1dio '{{station}}'"
-    twitter_following: "Tweets de artistas {{user}} est\xC3\xA1 seguindo"
-  custom_profiles: 
-    sony_disclaimer: "O s\xC3\xADmbolo e logo Walkman&#8482; s\xC3\xA3o marcas registradas da Sony Corporation."
-  albums: 
-    label: Gravadora
-    song_count: Faixas
-    year: Ano
-    show: 
-      about_this_album: Sobre este disco
-    release_date: "Data de lan\xC3\xA7amento"
-    total_plays: "Reprodu\xC3\xA7\xC3\xB5es totais"
->>>>>>> Translations for Story -> Station created date/time #3223581
   messenger_player: 
     edit_station: "Para editar esta r\xC3\xA1dio,"
     share: 
@@ -916,13 +885,6 @@ pt_BR:
     created_at: "Criado {{when}} atr\xC3\xA1s"
     my: Meu
     songs: "M\xC3\xBAsicas"
-<<<<<<< HEAD
-=======
-    created_at: "Criado {{when}} atr\xC3\xA1s"
-    "no": !binary |
-      TsOjbw==
-
->>>>>>> Translations
     artists: Artistas
     previous: Anterior
     by: Por
@@ -988,73 +950,20 @@ pt_BR:
       description: "Nos ajude a melhorar o site com um pouco mais de informa\xC3\xA7\xC3\xA3o sobre voc\xC3\xAA "
   playlist: 
     edit_your_playlist: Modifique a playlist
-<<<<<<< HEAD
   main: 
     navigation: 
       stations: Stations
       home: Home
       mixes: Mixes
-=======
-  settings: 
-    background_not_saved_image_too_large: "Imagem de background n\xC3\xA3o pode ser maior que 1 MB"
-    page_title: !binary |
-      T3DDp8O1ZXM=
-
-    customization: 
-      colors_reset_to_default: ""
-    customizations: 
-      header_background: Fundo do topo
-      link_font_color: Cor dos links
-      main_background_color: Cor de fundo principal
-      main_font_color: Cor do texto principal
-      reset_to_default: "O seu perfil voltou \xC3\xA0 configura\xC3\xA7\xC3\xA3o original"
-      restore_defaults: "Restaurar padr\xC3\xA3o inicial"
-      remove_background_image: Remover Imagem
-      colors: Cores
-      colors_reset_to_default: "Seu perfil foi revertido ao padr\xC3\xA3o Cyloop."
-      browse: Procurar...
-    private_profile: 
-      description: "Se o seu perfil for privado, voc\xC3\xAA precisa autorizar pedidos de seguidores."
-    cancel_my_account: Apagar meu perfil
-    not_saved: "Suas mudan\xC3\xA7as n\xC3\xA3o foram salvas."
-    notifications: Avisos
-    saved: "Suas mudan\xC3\xA7as foram salvas."
-    tabs: 
-      account: Conta
-      notifications: Avisos
-      password: Senha
-  site: 
-    faq: Perguntas frequentes
-    profile_not_found: "Perfil n\xC3\xA3o encontrado"
-    private_profile: ""
-    terms_and_conditions: "Termos e condi\xC3\xA7\xC3\xB5es"
-    support: Ajuda
-    about_cyloop: Sobre o Cyloop
-    safety_tips: "Dicas de seguran\xC3\xA7a"
-    profile_not_available: "Perfil n\xC3\xA3o est\xC3\xA1 dispon\xC3\xADvel"
-    feedback: "Sua opini\xC3\xA3o"
-    about_hoodiny: Sobre a Hoodiny
-    profile_not_available_sorry: "Lamentamos, mas este perfil n\xC3\xA3o est\xC3\xA1 dispon\xC3\xADvel para o seu pa\xC3\xADs"
-    privacy_policy: "Pol\xC3\xADtica de privacidade"
-    profile_not_found_sorry: "Lamentamos, mas o perfil de usu\xC3\xA1rio ou artista que voc\xC3\xAA tentou encontrar n\xC3\xA3o foi encontrado. Ele pode ter sido removido, ter tido o nome trocado ou estar temporariamente fora do ar.<br/> Obrigado pela paci\xC3\xAAncia.<br/><br/> Algumas alternativas:<ul><li> - Se voc\xC3\xAA digitou o endere\xC3\xA7o direto no seu navegador, por favor, confira novamente a veja se n\xC3\xA3o h\xC3\xA1 erros de digita\xC3\xA7\xC3\xA3o.</li><li> - Clique aqui <a href=\"http://br.msn.cyloop.com\">www.br.msn.cyloop.com</a>, volte para a home e procure l\xC3\xA1 um link para onde voc\xC3\xAA queria ir.</li><li> - Clique no bot\xC3\xA3o de \"Voltao\" (\"Back\") do seu navegador e revise o link clicado para chegar aqui.</li></ul>"
-    sample_flag_description: "Infelizmente este conte\xC3\xBAdo est\xC3\xA1 restrito para sua localidade atual e n\xC3\xA3o pode ser reproduzido em sua totalidade. Voc\xC3\xAA poder\xC3\xA1 escutar m\xC3\xBAsicas completas deste e de outros artistas similares na se\xC3\xA7\xC3\xA3o de R\xC3\xA1dio."
->>>>>>> Translations for Story -> Station created date/time #3223581
   footer: 
     faq: FAQ
     help: Ajuda
     terms_and_conditions: "Termos e condi\xC3\xA7\xC3\xB5es"
     support: Suporte
-<<<<<<< HEAD
     about_us: Sobre a gente
     feedback: "Sua opini\xC3\xA3o"
     safety_tips: "Dicas de seguran\xC3\xA7a"
     about_cyloop: Sobre o Cyloop
-=======
-    about_cyloop: Sobre o Cyloop
-    safety_tips: "Dicas de seguran\xC3\xA7a"
-    about_us: Sobre a gente
-    feedback: "Sua opini\xC3\xA3o"
->>>>>>> Translations for Story -> Station created date/time #3223581
     about_hoodiny: Sobre a Hoodiny
     privacy_policy: "Pol\xC3\xADtica de privacidade"
     profile_not_found_sorry: "Lamentamos, mas o perfil de usu\xC3\xA1rio ou artista que voc\xC3\xAA tentou encontrar n\xC3\xA3o foi encontrado. Ele pode ter sido removido, ter tido o nome trocado ou estar temporariamente fora do ar.<br/> Obrigado pela paci\xC3\xAAncia.<br/><br/> Albumas alternativas:<ul><li> - Se voc\xC3\xAA digitou o endere\xC3\xA7o direto no seu navegador, por favor, confira novamente a veja se n\xC3\xA3o h\xC3\xA1 erros de digita\xC3\xA7\xC3\xA3o.</li><li> - Clique aqui <a href=\"http://br.msn.cyloop.com\">www.br.msn.cyloop.com</a>, volte para a home e procure l\xC3\xA1 um link para onde voc\xC3\xAA queria ir.</li><li> - Clique no bot\xC3\xA3o de \"Voltao\" (\"Back\") de seu navegador e revise o link clicado para chegar aqui.</li></ul>"
@@ -1325,22 +1234,15 @@ pt_BR:
     create_your_own_personalized_radio_station: "O que voc\xC3\xAA quer ouvir?"
     text_about_radio: "Sobre a R\xC3\xA1dio"
     create_radio: "Criar r\xC3\xA1dio"
-<<<<<<< HEAD
     top_radios: "R\xC3\x81DIOS MAIS TOCADAS"
-=======
->>>>>>> Translations for Story -> Station created date/time #3223581
     explaing_what_is_and_why_create_a_new_radio: "Digite o nome do seu artista favorito. Cyloop criar\xC3\xA1 uma radio personalizada com m\xC3\xBAsidas dele."
-    recommended_stations: "R\xC3\xA1dios Recomendadas pelo Cyloop"
     latest_stations: "\xC3\x9ALTIMAS ESTA\xC3\x87\xC3\x95ES DE R\xC3\x81DIO"
     recommended_stations: "R\xC3\xA1dios Recomendadas pelo Cyloop"
     network_update: Atividade Recente de {{user_name}}
+    recommended_mixes: Mixes Recommendados por Cyloop
     type_artist_name: Escreva o nome do artista
-<<<<<<< HEAD
     top_songs: Mais Tocadas
     create_your_own_station_now: "Crie sua pr\xC3\xB3pria r\xC3\xA1dio agora!"
-=======
-    recommended_mixes: Mixes Recommendados por Cyloop
->>>>>>> Translations for Story -> Station created date/time #3223581
     top_stations: "ESTA\xC3\x87\xC3\x95ES MAIS TOCADAS"
     radios_recomended_for_you: "R\xC3\x81DIOS RECOMENDADAS PARA VOC\xC3\x8A"
     recommended_artists: Artistas Recomendados
