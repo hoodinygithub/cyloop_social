@@ -422,9 +422,9 @@ en_CA:
   albums: 
     label: Label
     song_count: Song Count
+    year: Year
     show: 
       about_this_album: About this album
-    year: Year
     release_date: Release Date
     total_plays: Total Plays
   custom_profiles: 
@@ -914,8 +914,8 @@ en_CA:
     profile_not_available: Profile Not Available
     feedback: Feedback
     about_hoodiny: About Hoodiny
-    privacy_policy: Privacy Policy
     profile_not_available_sorry: Sorry but this profile is not available.
+    privacy_policy: Privacy Policy
     profile_not_found_sorry: Sorry. We were unable to find a profile for {{profile}}.
     sample_flag_description: |
       Unfortunately this content is restricted for this territory and can't play in full. You should be able to listen to full songs from this artist and others similar in the Radio section.
@@ -927,8 +927,8 @@ en_CA:
     support: Support
     about_cyloop: About Cyloop
     safety_tips: Safety Tips
-    feedback: Contact Us
     about_us: About Us
+    feedback: Contact Us
     about_hoodiny: About Hoodiny
     privacy_policy: Privacy Policy
   contact_us: 
@@ -1144,8 +1144,8 @@ en_CA:
       year: Year
     distance_in_words: 
       less_than_x_minutes: 
-        one: less than a minute
-        other: less than {{count}} minutes
+        one: a minute
+        other: "{{count}} minutes"
       almost_x_years: 
         one: almost 1 year
         other: almost {{count}} years
@@ -1156,11 +1156,11 @@ en_CA:
         one: 1 second
         other: "{{count}} seconds"
       about_x_hours: 
-        one: about 1 hour
-        other: about {{count}} hours
+        one: 1 hour
+        other: "{{count}} hours"
       less_than_x_seconds: 
-        one: less than 1 second
-        other: less than {{count}} seconds
+        one: 1 second
+        other: "{{count}} seconds"
       x_months: 
         one: 1 month
         other: "{{count}} months"
@@ -1168,11 +1168,11 @@ en_CA:
         one: 1 minute
         other: "{{count}} minutes"
       about_x_years: 
-        one: about 1 year
-        other: about {{count}} years
+        one: 1 year
+        other: "{{count}} years"
       about_x_months: 
-        one: about 1 month
-        other: about {{count}} months
+        one: 1 month
+        other: "{{count}} months"
       over_x_years: 
         one: over 1 year
         other: over {{count}} years
@@ -1184,12 +1184,12 @@ en_CA:
     create_your_own_personalized_radio_station: Create Your Own Personalized Radio Station
     top_radios: TOP RADIO STATIONS
     create_radio: Create Station
-    explaing_what_is_and_why_create_a_new_radio: "Type the name of your favorite artist and Cyloop will generate a personalized radio station with your favorite music. "
     recommended_stations: STATIONS RECOMMENDED BY CYLOOP
+    explaing_what_is_and_why_create_a_new_radio: "Type the name of your favorite artist and Cyloop will generate a personalized radio station with your favorite music. "
     latest_stations: LATEST RADIO STATIONS
     network_update: "{{user_name}}'S RECENT ACTIVITY"
-    recommended_mixes: MIXES RECOMMENDED BY CYLOOP
     type_artist_name: Enter the name of an artist
+    recommended_mixes: MIXES RECOMMENDED BY CYLOOP
     top_stations: Top Stations
     radios_recomended_for_you: RADIOS RECOMMENDED FOR YOU
     create_your_own_station_now: Create Your Own Station now!

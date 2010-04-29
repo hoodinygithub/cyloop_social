@@ -417,11 +417,11 @@ es_MX:
   albums: 
     label: Disquera
     song_count: Canciones
+    show: 
+      about_this_album: "Acerca de este \xC3\xA1lbum"
     year: !binary |
       QcOxbw==
 
-    show: 
-      about_this_album: "Acerca de este \xC3\xA1lbum"
     release_date: Fecha de lanzamiento
     total_plays: Reproducciones totales
   messenger_player: 
@@ -910,8 +910,8 @@ es_MX:
     profile_not_available: Perfil No Disponible
     feedback: Feedback
     about_hoodiny: Sobre Hoodiny
-    privacy_policy: "Privacidad "
     profile_not_available_sorry: "Lamentablemente este perfil no est\xC3\xA1 disponible en tu pa\xC3\xADs"
+    privacy_policy: "Privacidad "
     profile_not_found_sorry: "Perd\xC3\xB3n, pero no hemos podido encontrar el perfil de {{profile}}."
     sample_flag_description: "Desafortunadamente este contenido tiene restricciones para el territorio desde el cual intentas esucharlo, por lo que no toca en su duraci\xC3\xB3n completa. Puedes escuchar canciones completas de este artista u otros parecidos en la secci\xC3\xB3n de Radio."
   footer: 
@@ -921,8 +921,8 @@ es_MX:
     support: Soporte
     about_cyloop: Sobre Cyloop
     safety_tips: Consejos de Seguridad
-    feedback: Sugerencias
     about_us: Sobre Nosotros
+    feedback: Sugerencias
     about_hoodiny: Sobre Hoodiny
     privacy_policy: "Pol\xC3\xADtica de Privacidad "
   contact_us: 
@@ -1158,8 +1158,8 @@ es_MX:
 
     distance_in_words: 
       less_than_x_minutes: 
-        one: menos de un minuto
-        other: menos de {{count}} minutos
+        one: un minuto
+        other: "{{count}} minutos"
       almost_x_years: 
         one: "casi 1 a\xC3\xB1o"
         other: "casi {{count}} a\xC3\xB1os"
@@ -1172,11 +1172,11 @@ es_MX:
         one: 1 segundo
         other: "{{count}} segundos"
       about_x_hours: 
-        one: aproximadamente 1 hora
-        other: aproximadamente {{count}} horas
+        one: 1 hora
+        other: "{{count}} horas"
       less_than_x_seconds: 
-        one: menos de 1 segundo
-        other: menos de {{count}} segundos
+        one: 1 segundo
+        other: "{{count}} segundos"
       x_months: 
         one: 1 mes
         other: "{{count}} meses"
@@ -1184,11 +1184,13 @@ es_MX:
         one: 1 minuto
         other: "{{count}} minutos"
       about_x_years: 
-        one: "aproximadamente 1 a\xC3\xB1o"
-        other: "aproximadamente {{count}} a\xC3\xB1os"
+        one: !binary |
+          MSBhw7Fv
+
+        other: "{{count}} a\xC3\xB1os"
       about_x_months: 
-        one: aproximadamente 1 mes
-        other: aproximadamente {{count}} meses
+        one: 1 mes
+        other: "{{count}} meses"
       over_x_years: 
         one: "m\xC3\xA1s de 1 a\xC3\xB1o"
         other: "m\xC3\xA1s de {{count}} a\xC3\xB1os"
@@ -1200,13 +1202,13 @@ es_MX:
     create_your_own_personalized_radio_station: Crea Tu Propia Radio Personalizada
     top_radios: TOP RADIOS
     create_radio: Crear Radio
-    explaing_what_is_and_why_create_a_new_radio: "Ingresa el nombre de tu artista favorito. Cyloop generar\xC3\xA1 una radio personalizada con m\xC3\xBAsica de tus artistas favoritos."
     recommended_stations: RADIOS RECOMENDADAS POR CYLOOP
+    explaing_what_is_and_why_create_a_new_radio: "Ingresa el nombre de tu artista favorito. Cyloop generar\xC3\xA1 una radio personalizada con m\xC3\xBAsica de tus artistas favoritos."
     user_latest_stations: RADIOS MAS RECIENTES
     latest_stations: RADIOS MAS RECIENTES
     network_update: ACTUALIZACION DE RED  {{user_name}}
-    type_artist_name: Escribe el nombre de un artista
     recommended_mixes: MIXES RECOMENDADOS POR CYLOOP
+    type_artist_name: Escribe el nombre de un artista
     top_stations: Top Radios
     radios_recomended_for_you: RADIOS RECOMENDADAS PARA TI
     create_your_own_station_now: "\xC2\xA1Crea tu propia radio ahora!"
