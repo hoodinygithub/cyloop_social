@@ -36,7 +36,11 @@ set :dbuser,              "hoodiny_db"
 set :dbpass,              "Q97t42WGDj8a"
 
 set :shared_path,         "#{deploy_to}/shared"
-set :sites,               ["mexico_cs", "brazil_cs", "canada_fr_cs", "canada_en_cs", "cyloop_cs"]
+set :sites,               [
+                              "mexico_cs", "brazil_cs", "canada_fr_cs", "canada_en_cs", 
+                              "cyloop_cs", "cyloopes_cs", "latino_cs", "latam_cs", "tvn_cs", 
+                              "brazil_cs", "argentina_cs"
+                          ]
 
 
 # comment out if it gives you trouble. newest net/ssh needs this set.
