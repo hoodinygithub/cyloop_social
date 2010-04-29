@@ -84,7 +84,7 @@ MSN Argentina:
     
 TVN:
   name: TVN
-  deploy_name: tvn
+  deploy_name: tvn_cs
   code: tvn
   domains:
     - tvn.cyloop.com

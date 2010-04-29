@@ -9,12 +9,12 @@ set :nginx_server_name, "staging.tvn.hoodiny.com"
 
 # This will be substituted into nginx.conf for the environment
 # wherever MARKET_ABBREV appears
-set :market_abbrev, "tvn"
+set :market_abbrev, "tvn_cs"
 set :site, "TVN"
 
 # This will be substituted into nginx.conf wherever MARKET_NAME
 # appears.
-set :market_name, "tvn"
+set :market_name, "tvn_cs"
 
 set :market_404_page, "404_mx.html"
 set :market_422_page, "422.es.html"
