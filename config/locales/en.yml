@@ -827,6 +827,7 @@ en:
     click_to_unfollow: Click {{follow_link}} to stop following
     you_are: You are
     following: following
+    last_modified_at: about {{when}} ago
   cancellation:
     confirmation:
       are_you_sure: Are you sure still want to cancel your account?
@@ -945,7 +946,7 @@ en:
   user:
     has_no_activity: "{{user_name}} has no activity"
     has_no_tweet: "{{user_name}} has no tweet"
-    has_no_followers: "{{user_name}} has no followers"    
+    has_no_followers: "{{user_name}} has no followers"
     is_not_following_anybody: "{{user_name}} is not following anybody"
     hasnt_create_any_station: "{{user_name}} hasn't created any stations"
     background_align: Background Align
