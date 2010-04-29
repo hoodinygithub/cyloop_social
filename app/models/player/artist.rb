@@ -42,5 +42,4 @@ class Player::Artist < Player::Base
 
   end
 
-
 end
