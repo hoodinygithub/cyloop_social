@@ -456,7 +456,7 @@ pt_BR:
     twitter_you_following: "Tweets de artistas que voc\xC3\xAA est\xC3\xA1 seguindo"
     no_more_activity: Nenhuma atividade adicional
     push_notification_more_than: "Voc\xC3\xAA tem mais de {{count}} novas atualiza\xC3\xA7\xC3\xB5es. {{link}} as novidades para v\xC3\xAA-las."
-    created_station: "{{creator}} criou a r\xC3\xA1dio '{{station}}'"
+    created_station: "{{creator}} criou a r\xC3\xA1dio: {{station}}"
     twitter_following: "Tweets de artistas {{user}} est\xC3\xA1 seguindo"
     user_following: "{{user}} + Seguindo"
   albums: 

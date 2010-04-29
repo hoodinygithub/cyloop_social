@@ -145,11 +145,11 @@ en_US:
       title: User Information
     recently_created_stations: 
       title: Recently Created Stations
+    top_artists: 
+      title: Top Artists
     delete_station: 
       title: Delete Station
       confirmation_text: Are you sure you want to delete {{station_name}}?
-    top_artists: 
-      title: Top Artists
     top_activity: 
       title: Top Activity
     information: 
@@ -454,7 +454,7 @@ en_US:
     twitter_you_following: Tweets from artists you are following
     no_more_activity: No more activity
     push_notification_more_than: You have more than {{count}} new updates. {{link}} your feed to view them.
-    created_station: Created radio station '{{station}}'
+    created_station: "{{creator}} created a new station called: {{station}}"
     twitter_following: Tweets from artist {{user}} is following
     user_following: "{{user}} + Following"
   albums: 

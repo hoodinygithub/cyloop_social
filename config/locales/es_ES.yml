@@ -343,7 +343,7 @@ es_ES:
     twitter_you_following: "Tweets de artistas que est\xC3\xA1s siguiendo"
     no_more_activity: "No hay m\xC3\xA1s actividad"
     push_notification_more_than: "Tienes m\xC3\xA1s de {{count}} actualizaciones nuevas. {{link}} la actividad en tu Dashboard para verlas."
-    created_station: "Cre\xC3\xB3 la Radio '{{station}}'"
+    created_station: "{{creator}} cre\xC3\xB3 la radio: {{station}}"
     twitter_following: "Tweet del artista que {{user}} est\xC3\xA1 siguiendo"
     user_following: "{{user}} + Siguiendo"
   albums: 
