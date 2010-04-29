@@ -827,7 +827,7 @@ en:
     click_to_unfollow: Click {{follow_link}} to stop following
     you_are: You are
     following: following
-    last_modified_at: about {{when}} ago
+    last_modified_at: Last modified: {{when}} ago
   cancellation:
     confirmation:
       are_you_sure: Are you sure still want to cancel your account?

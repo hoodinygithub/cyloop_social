@@ -11,7 +11,7 @@
         <big><%= link_to(artist_user_station.name, radio_path(:station_id => artist_user_station.station)) %></big>
         <br/>
         <span class="grey">
-          <%= t("basics.last_modified") %>: <%= t("basics.last_modified_at", :when => nice_elapsed_time(artist_user_station.created_at)) %>
+          <%= t("basics.last_modified_at", :when => nice_elapsed_time(artist_user_station.created_at)) %>
         </span>
         <br/>
         <div class="tags_contains">
