@@ -76,4 +76,3 @@ module DashboardsHelper
     content_tag(:ul, items.join("\n"), :class => ul_class)
   end
 end
-
