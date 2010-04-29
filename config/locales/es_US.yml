@@ -19,10 +19,10 @@ es_US:
       activity_feed_title: Canal de Actividad
       what_do_you_want_to_listen_to: "\xC2\xBFQu\xC3\xA9 te gustar\xC3\xADa escuchar?"
     top_stations: TOP RADIOS
-    artist_latest_stations: RADIOS MAS RECIENTES QUE INCLUYEN A {{name}}
-    recent_activity: a
+    artist_latest_stations: RADIOS QUE INCLUYEN A {{name}}
     recommended_artists: 
       title: Artistas Recomendados
+    recent_activity: a
     following: 
       title: Siguiendo
   actions: 
@@ -174,29 +174,29 @@ es_US:
       title: Artistas Similares
     recommendations: 
       title: Recomendaciones
-    reviews: 
-      title: Reviews
     members: 
       title: Integrantes
+    reviews: 
+      title: Reviews
     features_and_galleries: 
       title: Especiales Y Fotogalerias
     news: 
       title: Noticias
+    interviews: 
+      title: Entrevistas
     my_stations: 
       includes: Incluye
       station_name: Nombre de la radio
-    interviews: 
-      title: Entrevistas
     top_stations: 
       title: Top Radios
     top_songs: 
       title: Top Canciones
     biography: 
       title: "Biograf\xC3\xADa"
-    recommended_artists: 
-      title: Artistas Recomendados
     recent_activity: 
       title: ACTIVIDAD RECIENTE
+    recommended_artists: 
+      title: Artistas Recomendados
   songs: 
     play_confirmation: Disftuta {{title}}!
   activerecord: 
@@ -466,14 +466,10 @@ es_US:
     sign_up_exclamation: "Reg\xC3\xADstrate!"
     your_profile_name_tip: "(Tu direcci\xC3\xB3n para que puedas envi\xC3\xA1rsela a tus amigos)"
     sign_in: ""
-    remember_me: ""
     msg: 
       privacy: must be accepted
       terms: must be accepted
-    messages: 
-      terms_of_use: Debe ser aceptado
-      pivacy_policy: debe aceptarse
-      privacy_policy: Debe ser aceptado
+    remember_me: ""
     confirmation: 
       click_here: "clic aqu\xC3\xAD"
       here_is_your_confirmation_link: "Este es tu enlace para confirmaci\xC3\xB3n"
@@ -501,6 +497,10 @@ es_US:
           {{confirm_url}}\r\n\
           \r\n\
           Utiliza la direcci\xC3\xB3n de correo electr\xC3\xB3nico {{email}} y la clave que proporcionaste durante la registraci\xC3\xB3n para acceder a {{host_url}}.\r\n"
+    messages: 
+      terms_of_use: Debe ser aceptado
+      pivacy_policy: debe aceptarse
+      privacy_policy: Debe ser aceptado
     terms_of_use: "T\xC3\xA9rminos de uso"
     is_available_exclamation: "Est\xC3\xA1 disponible!"
     slug_available_exclamation: "El perfil est\xC3\xA1 disponible!"
@@ -519,11 +519,11 @@ es_US:
       male: !binary |
         w6lsIGVzdMOh
 
-      share_text: canciones, mixes, y radios con tus amigos
+      share_text: mixes, y radios con tus amigos
       sign_in_with_your_windows_live_id: ingresa con tu Windows Live ID
       index: "Si ya tienes tu cuenta de MSN M\xC3\xBAsica, {{link}} para hacer tu login."
-      max_song: "Esperamos que te hayan gustado las canciones que escuchaste. Para escuchar m\xC3\xA1s canciones, {{link}} para hacer tu login."
       listen_text: "m\xC3\xA1s de {{count}} canciones, todas gratis"
+      max_song: "Esperamos que te hayan gustado las canciones que escuchaste. Para escuchar m\xC3\xA1s canciones, {{link}} para hacer tu login."
       msn_music_is_free: "MSN M\xC3\xBAsica es gratis, {{link}}"
       place: Cyloop
       discover: Descubre
@@ -540,12 +540,10 @@ es_US:
     terms_and_privacy_must_be_accepted: "Los T\xC3\xA9rminos de Uso y la Pol\xC3\xADtica de Privacidad deben ser aceptados"
     msn_login_error: Error de Login de MSN Live! Intentar ingresar nuevamente.
     customize: "Configura tu perfil de MSN M\xC3\xBAsica"
-    complete_all_fields_in_red: Completa todos los campos en rojo
     complete: Completar
+    complete_all_fields_in_red: Completa todos los campos en rojo
     send: "Reg\xC3\xADstrate"
     thats_it: Listo!
-    email_address: "Tu direcci\xC3\xB3n de E-mail"
-    associate_msn_login: "Ya casi terminamos. Por favor, ingresa tus datos de Cyloop as\xC3\xAD podemos relacionarlos con tu Live ID de MSN"
     sidebar: 
       radio_title: Disfruta radios personalizadas
       chat_text: "En la parte inferior de cada p\xC3\xA1gina encontrar\xC3\xA1s una barra de Windows Messenger. Ingresa y puedes chatear con tus amigos mientras disfrutas de la mejor m\xC3\xBAsica."
@@ -557,6 +555,8 @@ es_US:
       follow_text: "Con s\xC3\xB3lo un clic puedes seguir a tus artistas favoritos y mantenerte al tanto de sus Twitters y otras noticias."
       radio_text: "Nuestro motor de recomendaci\xC3\xB3n crea radios hechas espec\xC3\xADficamente a tu medida con todos tus artistas favoritos."
       follow_title: Sigue a tus artistas favoritos
+    associate_msn_login: "Ya casi terminamos. Por favor, ingresa tus datos de Cyloop as\xC3\xAD podemos relacionarlos con tu Live ID de MSN"
+    email_address: "Tu direcci\xC3\xB3n de E-mail"
     your_password: "Tu contrase\xC3\xB1a"
     privacy_policy: "Pol\xC3\xADtica de Privacidad"
     must_be_13_years_older: "Debes tener 13 a\xC3\xB1os o m\xC3\xA1s de edad para usar este website."
@@ -688,24 +688,24 @@ es_US:
       edit: Modificar el nombre de esta radio
       delete: Eliminar esta radio
       would_delete: "\xC2\xBFQuieres eliminar esta radio?"
-    edit_station: Para modificar esta radio,
-    click_here: "clic aqu\xC3\xAD"
     actions: 
       edit: Modificar
       delete: Eliminar
       close: Cerrar
       submit: Enviar
       save: Guardar
-    we_hope_you_enjoyed: "Esperamos que te hayan gustado las canciones que escuchaste. Para escuchar m\xC3\xA1s canciones,"
+    click_here: "clic aqu\xC3\xAD"
+    edit_station: Para modificar esta radio,
     share: 
       title: Compartir con un amigo
       message: Mensaje
       email: "Tu correo electr\xC3\xB3nico"
       friend: "La direcci\xC3\xB3n de correo electr\xC3\xB3nico de tu amigo"
-    sign_in: ingresa con tu Live ID de Windows
+    we_hope_you_enjoyed: "Esperamos que te hayan gustado las canciones que escuchaste. Para escuchar m\xC3\xA1s canciones,"
     buylink: 
       song: "Comprar esta canci\xC3\xB3n"
       select_store: Selecciona tu tienda
+    sign_in: ingresa con tu Live ID de Windows
     record_not_found: "No se pudo encontrar ning\xC3\xBAn resultado"
     missing_api_key: "No has ingresado una clave APU, o tu la clave API ingresada es inv\xC3\xA1lida o est\xC3\xA1 desactivada"
     checkout_today_polular_stations: "Estas son las radios m\xC3\xA1s populares del d\xC3\xADa"
@@ -730,19 +730,19 @@ es_US:
       terms_and_privacy: "Al checar el casillero, est\xC3\xA1s confirmando que sabes que Cyloop.com es un sitio web operado por Hoodiny Entertainment Group en los Estados Unidos, y est\xC3\xA1s otorgando tu consentimiento de transferir todos tus datos personales a los Estados Unidos, donde tus datos personales estar\xC3\xA1n sujetos a las leyes de los Estados Unidos y donde el nivel de protecci\xC3\xB3n de datos es diferente en comparaci\xC3\xB3n con el de tu pa\xC3\xADs. Tambi\xC3\xA9n confirmas estar de acuerdo con los {{terms_link}} y la {{privacy_link}} de Cyloop, la cual describe c\xC3\xB3mo ser\xC3\xA1n usados tus datos personales."
       confirm_your_password: "Confirma tu contrase\xC3\xB1a"
     to_login: para ingresar
-    authentication_required: Necesitas ingresar para hacer eso
     album: 
       released: Lanzado
+    authentication_required: Necesitas ingresar para hacer eso
     internal_error: "No se pudo generar tu pedido debido a una falla interna. Ya estamos al tanto de esta situaci\xC3\xB3n y en breve la solucionaremos."
     activate_your_account: "Activa tu cuenta en MSN M\xC3\xBAsica"
     buy: Comprar
+    recengineerror_NO_PLAYLIST: No se pudo encontrar un playlist
     basics: 
       by: Por
       includes: Incluye
       album: Album
       message_sent: Tu mensaje ha sido enviado
       contains: Contiene
-    recengineerror_NO_PLAYLIST: No se pudo encontrar un playlist
     create_new_station: Crear una radio nueva
     now_playing: Tocando ahora
     station_edit_success: "La radio qued\xC3\xB3 actualizada efectivamente"
@@ -750,7 +750,6 @@ es_US:
     view_your_stations: Para ver tus radios,
     my_stations: Mis Radios
     continue: Continuar
-    still_dont_have: "\xC2\xBFAun no tienes una cuenta de MSN M\xC3\xBAsica?"
     home: 
       create_your_own_personalized_radio_station: "Crea tu propia estaci\xC3\xB3n de radio personalizada"
       create_radio: Crear Radio
@@ -761,6 +760,7 @@ es_US:
       top_stations: Top Radios
       top_songs: Top Canciones
       recommended_artists: Artistas Recomendados
+    still_dont_have: "\xC2\xBFAun no tienes una cuenta de MSN M\xC3\xBAsica?"
     recengineerror_NO_RADIO: No se pudo encontrar una radio
   support: 
     array: 
@@ -1173,13 +1173,13 @@ es_US:
     create_your_own_personalized_radio_station: Crea Tu Propia Radio Personalizada
     top_radios: TOP RADIOS
     create_radio: Crear Radio
-    explaing_what_is_and_why_create_a_new_radio: "Ingresa el nombre de tu artista favorito. Cyloop generar\xC3\xA1 una radio personalizada con m\xC3\xBAsica de tus artistas favoritos."
     recommended_stations: RADIOS RECOMENDADAS POR CYLOOP
+    explaing_what_is_and_why_create_a_new_radio: "Ingresa el nombre de tu artista favorito. Cyloop generar\xC3\xA1 una radio personalizada con m\xC3\xBAsica de tus artistas favoritos."
     user_latest_stations: RADIOS MAS RECIENTES
     latest_stations: RADIOS MAS RECIENTES
     network_update: ACTUALIZACION DE RED  {{user_name}}
-    type_artist_name: Escribe el nombre de un artista
     recommended_mixes: MIXES RECOMENDADOS POR CYLOOP
+    type_artist_name: Escribe el nombre de un artista
     top_stations: Top Radios
     radios_recomended_for_you: RADIOS RECOMENDADAS PARA TI
     create_your_own_station_now: "\xC2\xA1Crea tu propia radio ahora!"

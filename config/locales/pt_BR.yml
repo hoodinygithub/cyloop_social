@@ -830,7 +830,7 @@ pt_BR:
     albums_by: Discos por
     my: Meu
     songs: "M\xC3\xBAsicas"
-    created_at: "{{when}} atr\xC3\xA1s"
+    created_at: "Criado {{when}} atr\xC3\xA1s"
     "no": !binary |
       TsOjbw==
 
