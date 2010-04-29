@@ -1,9 +1,53 @@
+v2.11.2
+  * fix for unicorn not reporting when the proc line had 'master' in it
+  * fix regression for passenger 2.0 and earlier
+  * fix after_fork in the shim
+
+v2.11.1
+  * republished gem without generated rdocs
+
+v2.11.0
+  * rails3 instrumentation (no developer mode support yet)
+  * removed the ensure_worker_thread started and instead defined an after_fork
+    handler that will set up the agent properly in forked processes.
+  * change at_exit handler so the shutdown always goes after other shutdown 
+    handlers
+  * add visibility to active record db transactions in the rpm transaction
+    traces (thanks to jeremy kemper)
+  * fix regression in merb support which caused merb apps not to start
+  * added NewRelic::Agent.logger to the public api to write to the agent 
+    log file.
+  * optimizations to background thread, controller instrumentation, memory
+    usage
+  * add logger method to public_api
+  * support list notation for ignored exceptions in the newrelic.yml
+    
+v2.10.8
+  * fix bug in delayed_job instrumentation that caused the job queue sampler
+    to run in the wrong place
+  * change startup sequence and code that restarts the worker loop
+    thread
+  * detect the unicorn master and dont start the agent; hook in after_fork
+  * fix problem with the Authlogic metric names which caused errors in
+    developer mode.  Authlogic metrics now adhere to the convention of
+    prefixing the name with  'Custom'
+  * allow more correct overriding of transaction trace settings in the 
+    call to #manual_start
+  * simplify WorkerLoop and add better protection for concurrency
+  * preliminary support for rails3
+    
+v2.10.6
+  * fix missing URL and referer on some traced errors and transactions
+  * gather traced errors *after* executing the rescue chain in ActionController
+  * always load controller instrumentation
+  * pick up token validation from newrelic.yml
+  
 v2.10.5
-  * Fix bug in delayed_job instrumentation occurring when there was no DJ log
+  * fix bug in delayed_job instrumentation occurring when there was no DJ log
   
 v2.10.4
-  * Fix incompatibility with Capistrano 2.5.16
-  * Strip down URLs reported in transactions and errors to path only
+  * fix incompatibility with Capistrano 2.5.16
+  * strip down URLs reported in transactions and errors to path only
   
 v2.10.3
   * optimization to reduce overhead: move background samplers into foreground thread

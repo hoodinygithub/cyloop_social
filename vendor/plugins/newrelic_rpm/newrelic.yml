@@ -47,7 +47,7 @@ common: &default_settings
   # information separate from that of your application.  Specify its
   # log level here.
   log_level: info
-  
+
   # The newrelic agent communicates with the RPM service via http by
   # default.  If you want to communicate via https to increase
   # security, then turn on SSL by setting this value to true.  Note,
@@ -166,14 +166,14 @@ common: &default_settings
   # external resource
   # disable_samplers: true
   
-  # If you aren't interested in visibility in these areas, you can disable
-  # the instrumentation to reduce overhead.
+  # If you aren't interested in visibility in these areas, you can
+  # disable the instrumentation to reduce overhead.
   #
   # disable_view_instrumentation: true
   # disable_activerecord_instrumentation: true
   # disable_memcache_instrumentation: true
   # disable_dj: true
-  
+
   # Certain types of instrumentation such as GC stats will not work if 
   # you are running multi-threaded.  Please let us know.
   # multi_threaded = false

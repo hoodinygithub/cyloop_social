@@ -19,16 +19,22 @@ module NewRelic
     # the NewRelic hosted site.
     
     PROTOCOL_VERSION = 8
+    # 14105: v8 (tag 2.10.3)
+    # (no v7)
+    # 10379: v6 (not tagged)
+    # 4078:  v5 (tag 2.5.4)
+    # 2292:  v4 (tag 2.3.6)
+    # 1754:  v3 (tag 2.3.0)
+    # 534:   v2 (shows up in 2.1.0, our first tag)
+    
     
     attr_reader :obfuscator
     attr_reader :stats_engine
     attr_reader :transaction_sampler
     attr_reader :error_collector
-    attr_reader :task_loop
     attr_reader :record_sql
     attr_reader :histogram
     attr_reader :metric_ids
-    attr_reader :should_send_errors
     
     # Should only be called by NewRelic::Control
     def self.instance
@@ -39,26 +45,44 @@ module NewRelic
       raise "This method no longer supported.  Instead use the class method NewRelic::Agent.manual_start"
     end
     
-    # this method makes sure that the agent is running. it's important
-    # for passenger where processes are forked and the agent is
-    # dormant
+    # This method should be called in a forked process after a fork.
+    # It assumes the parent process initialized the agent, but does
+    # not assume the agent started.  
     #
-    def ensure_worker_thread_started
-      return unless control.agent_enabled? && control.monitor_mode? && !@invalid_license
-      if !running?
-        # We got some reports of threading errors in Unicorn with this.
-        log.debug "Detected that the worker loop is not running.  Restarting." rescue nil
-        # Assume we've been forked, clear out stats that are left over from parent process
-        reset_stats
-        launch_worker_thread
-        @stats_engine.spawn_sampler_thread
-      end
-    end
-    
-    # True if the worker thread has been started.  Doesn't necessarily
-    # mean we are connected
-    def running?
-      control.agent_enabled? && control.monitor_mode? && @task_loop && @task_loop.pid == $$
+    # * It clears any metrics carried over from the parent process
+    # * Restarts the sampler thread if necessary
+    # * Initiates a new agent run and worker loop unless that was done
+    #   in the parent process and +:force_reconnect+ is not true
+    # 
+    # Options:
+    # * <tt>:force_reconnect => true</tt> to force the spawned process to 
+    #   establish a new connection, such as when forking a long running process.
+    #   The default is false--it will only connect to the server if the parent
+    #   had not connected.
+    # * <tt>:keep_retrying => false</tt> if we try to initiate a new 
+    #   connection, this tells me to only try it once so this method returns
+    #   quickly if there is some kind of latency with the server.
+    def after_fork(options={})
+      
+      # @connected gets false after we fail to connect or have an error
+      # connecting.  @connected has nil if we haven't finished trying to connect.
+      # or we didn't attempt a connection because this is the master process
+
+      log.debug "Agent received after_fork notice in #$$: [#{control.agent_enabled?}; monitor=#{control.monitor_mode?}; connected: #{@connected.inspect}; thread=#{@worker_thread.inspect}]"
+      return if !control.agent_enabled? or
+                !control.monitor_mode? or
+                @connected == false or
+                @worker_thread && @worker_thread.alive?
+
+      log.debug "Detected that the worker thread is not running in #$$.  Restarting."
+
+      # Clear out stats that are left over from parent process
+      reset_stats
+      
+      # Don't ever check to see if this is a spawner.  If we're in a forked process
+      # I'm pretty sure we're not also forking new instances.
+      start_worker_thread(options.merge(:check_for_spawner => false))
+      @stats_engine.start_sampler_thread
     end
     
     # True if we have initialized and completed 'start'
@@ -69,8 +93,8 @@ module NewRelic
     # Attempt a graceful shutdown of the agent.  
     def shutdown
       return if not started?
-      if @task_loop
-        @task_loop.stop
+      if @worker_loop
+        @worker_loop.stop
         
         log.debug "Starting Agent shutdown"
         
@@ -136,7 +160,7 @@ module NewRelic
     end
 
     def log
-      NewRelic::Control.instance.log
+      NewRelic::Agent.logger
     end  
     
     # Start up the agent.  This verifies that the agent_enabled? is
@@ -149,7 +173,7 @@ module NewRelic
         return
       end
       return if !control.agent_enabled? 
-
+      @started = true
       @local_host = determine_host
       
       if control.dispatcher.nil? || control.dispatcher.to_s.empty?
@@ -159,10 +183,9 @@ module NewRelic
       end
       log.info "Application: #{control.app_names.join(", ")}" unless control.app_names.empty?
       
-      @started = true
-      
       sampler_config = control.fetch('transaction_tracer', {})
-      @use_transaction_sampler = sampler_config.fetch('enabled', true)
+      @should_send_samples = sampler_config.fetch('enabled', true)
+      log.info "Transaction tracing not enabled." if not @should_send_samples
       
       @record_sql = sampler_config.fetch('record_sql', :obfuscated).to_sym
       
@@ -178,11 +201,6 @@ module NewRelic
       end
       @slowest_transaction_threshold = @slowest_transaction_threshold.to_f
       
-      if @use_transaction_sampler
-        log.info "Transaction tracing threshold is #{@slowest_transaction_threshold} seconds." 
-      else
-        log.info "Transaction tracing not enabled."
-      end
       @explain_threshold = sampler_config.fetch('explain_threshold', 0.5).to_f
       @explain_enabled = sampler_config.fetch('explain_enabled', true)
       @random_sample = sampler_config.fetch('random_sample', false)
@@ -192,23 +210,40 @@ module NewRelic
 
       if control.monitor_mode?
         if !control.license_key
-          @invalid_license = true
           control.log! "No license key found.  Please edit your newrelic.yml file and insert your license key.", :error
         elsif  control.license_key.length != 40
-          @invalid_license = true
           control.log! "Invalid license key: #{control.license_key}", :error
         else     
-          launch_worker_thread
-          # When the VM shuts down, attempt to send a message to the
-          # server that this agent run is stopping, assuming it has
-          # successfully connected
-          # This shutdown handler doesn't work if Sinatra is running
-          # because it executes in the shutdown handler!
-          at_exit { shutdown } unless [:sinatra, :unicorn].include? NewRelic::Control.instance.dispatcher
+          # Do the connect in the foreground if we are in sync mode
+          NewRelic::Agent.disable_all_tracing { connect(:keep_retrying => false) } if control.sync_startup
+          
+          # Start the event loop and initiate connection if necessary
+          start_worker_thread
+
+          # Our shutdown handler needs to run after other shutdown handlers
+          # that may be doing things like running the app (hello sinatra).  
+          if RUBY_VERSION =~ /rubinius/i 
+            list = at_exit { shutdown }
+            # move the shutdown handler to the front of the list, to execute last:
+            list.unshift(list.pop)
+          elsif !defined?(JRuby) or !defined(Sinatra::Application)
+            at_exit { at_exit { shutdown } } 
+          end
         end
       end
-      control.log! "New Relic RPM Agent #{NewRelic::VERSION::STRING} Initialized: pid = #{$$}"
+      control.log! "New Relic RPM Agent #{NewRelic::VERSION::STRING} Initialized: pid = #$$"
       control.log! "Agent Log found in #{NewRelic::Control.instance.log_file}" if NewRelic::Control.instance.log_file
+    end
+    
+    # Clear out the metric data, errors, and transaction traces.  Reset the histogram data.
+    def reset_stats
+      @stats_engine.reset_stats
+      @unsent_errors = []
+      @traces = nil
+      @unsent_timeslice_data = {}
+      @last_harvest_time = Time.now
+      @launch_time = Time.now
+      @histogram = NewRelic::Histogram.new(NewRelic::Control.instance.apdex_t / 10)
     end
 
     private
@@ -216,71 +251,63 @@ module NewRelic
       @collector ||= control.server
     end
     
-    # Connect to the server, and run the worker loop forever.
-    # Will not return.
-    def run_task_loop
-      # determine the reporting period (server based)          
-      # note if the agent attempts to report more frequently than
-      # the specified report data, then it will be ignored.
-      
-      control.log! "Reporting performance data every #{@report_period} seconds."        
-      @task_loop.add_task(@report_period, "Timeslice Data Send") do 
-        harvest_and_send_timeslice_data
-      end
-      
-      if @should_send_samples && @use_transaction_sampler
-        @task_loop.add_task(@report_period, "Transaction Sampler Send") do 
-          harvest_and_send_slowest_sample
-        end
-      elsif !control.developer_mode?
-        # We still need the sampler for dev mode.
-        @transaction_sampler.disable
-      end
-      
-      if @should_send_errors && @error_collector.enabled
-        @task_loop.add_task(@report_period, "Error Send") do 
-          harvest_and_send_errors
-        end
-      end
-      log.debug "Running worker loop"
-      @task_loop.run
-    rescue StandardError
-      log.debug "Error in worker loop: #{$!}"
-      @connected = false
-      raise
-    end
-    
-    def launch_worker_thread
-      if (control.dispatcher == :passenger && $0 =~ /ApplicationSpawner/)
-        log.debug "Process is passenger spawner - don't connect to RPM service"
-        return
-      end
-      
-      @task_loop = WorkerLoop.new(log)
-      
+    # Try to launch the worker thread and connect to the server.
+    # 
+    # See #connect for a description of connection_options.
+    def start_worker_thread(connection_options = {})
       log.debug "Creating RPM worker thread."
       @worker_thread = Thread.new do
         begin
           NewRelic::Agent.disable_all_tracing do
-            connect
-            run_task_loop if @connected
+            # We try to connect.  If this returns false that means
+            # the server rejected us for a licensing reason and we should 
+            # just exit the thread.  If it returns nil
+            # that means it didn't try to connect because we're in the master.
+            connect(connection_options)
+            if @connected
+              # disable transaction sampling if disabled by the server and we're not in dev mode
+              if !control.developer_mode? && !@should_send_samples
+                @transaction_sampler.disable
+              end
+              log.info "Reporting performance data every #{@report_period} seconds."
+              log.debug "Running worker loop"
+              # note if the agent attempts to report more frequently than allowed by the server
+              # the server will start dropping data.
+              @worker_loop = WorkerLoop.new
+              @worker_loop.run(@report_period) do
+                harvest_and_send_timeslice_data
+                harvest_and_send_slowest_sample if @should_send_samples
+                harvest_and_send_errors if error_collector.enabled
+              end
+            else
+              log.debug "No connection.  Worker thread finished."
+            end
           end
         rescue NewRelic::Agent::ForceRestartException => e
           log.info e.message
           # disconnect and start over.
           # clear the stats engine
           reset_stats
-          @connected = false
+          @metric_ids = {}
+          @connected = nil
           # Wait a short time before trying to reconnect
           sleep 30
           retry
-        rescue IgnoreSilentlyException
-          control.log! "Unable to establish connection with the server.  Run with log level set to debug for more information."
-        rescue Exception => e
+        rescue NewRelic::Agent::ForceDisconnectException => e
+          # when a disconnect is requested, stop the current thread, which
+          # is the worker thread that gathers data and talks to the
+          # server.
+          log.error "RPM forced this agent to disconnect (#{e.message})"
           @connected = false
+        rescue NewRelic::Agent::ServerConnectionException => e
+          control.log! "Unable to establish connection with the server.  Run with log level set to debug for more information."
+          log.debug("#{e.class.name}: #{e.message}\n#{e.backtrace.first}")
+          @connected = false
+        rescue Exception => e
           log.error "Terminating worker loop: #{e.class.name}: #{e}\n  #{e.backtrace.join("\n  ")}"
-        end
-      end
+          @connected = false
+        end # begin
+      end # thread new
       @worker_thread['newrelic_label'] = 'Worker Loop'
     end
     
@@ -289,7 +316,6 @@ module NewRelic
     end
     
     def initialize
-      @connected = false
       @launch_time = Time.now
       
       @metric_ids = {}
@@ -301,8 +327,6 @@ module NewRelic
       
       @request_timeout = NewRelic::Control.instance.fetch('timeout', 2 * 60)
       
-      @invalid_license = false
-      
       @last_harvest_time = Time.now
       @obfuscator = method(:default_sql_obfuscator)
     end
@@ -312,22 +336,51 @@ module NewRelic
     # keep calling this.  Return false if we could not establish a
     # connection with the server and we should not retry, such as if
     # there's a bad license key.
-    def connect
+    #
+    # Set keep_retrying=false to disable retrying and return asap, such as when
+    # invoked in the foreground.  Otherwise this runs until a successful
+    # connection is made, or the server rejects us.
+    #
+    # * <tt>:keep_retrying => false</tt> to only try to connect once, and
+    #   return with the connection set to nil.  This ensures we may try again
+    #   later (default true).
+    # * <tt>force_reconnect => true</tt> if you want to establish a new connection
+    #   to the server before running the worker loop.  This means you get a separate
+    #   agent run and RPM sees it as a separate instance (default is false).  
+    # * <tt>:check_for_spawner => false</tt> to omit the check to see if we are
+    #   an application spawner.  We detect the spawner and stop the agent so we don't
+    #   report stats from a spawner.  You don't want to do this check if you _know_
+    #   you are not in a spawner (default is true).
+    
+    def connect(options)
+      return if @connected && !options[:force_reconnect]      
+      keep_retrying = options[:keep_retrying].nil? || options[:keep_retrying]
+      check_for_spawner = options[:check_for_spawner].nil? || options[:check_for_spawner]
+      
       # wait a few seconds for the web server to boot, necessary in development
-      connect_retry_period = 5
+      connect_retry_period = keep_retrying ? 10 : 0
       connect_attempts = 0
       @agent_id = nil
       begin
         sleep connect_retry_period.to_i
+        # Running in the Passenger or Unicorn spawners?
+        if check_for_spawner && $0 =~ /ApplicationSpawner|^unicorn\S* master/
+          log.debug "Process is master spawner (#$0) -- don't connect to RPM service"
+          @connected = nil
+          return 
+        else 
+          log.debug "Connecting Process to RPM: #$0"
+        end
         environment = control['send_environment_info'] != false ? control.local_env.snapshot : []
+        log.debug "Connecting with validation seed/token: #{control.validate_seed}/#{control.validate_token}" if control.validate_seed
         @agent_id ||= invoke_remote :start, @local_host, {
           :pid => $$, 
           :launch_time => @launch_time.to_f, 
           :agent_version => NewRelic::VERSION::STRING, 
           :environment => environment,
           :settings => control.settings,
-          :validate_seed => ENV['NR_VALIDATE_SEED'],
-          :validate_token => ENV['NR_VALIDATE_TOKEN'] }
+          :validate_seed => control.validate_seed,
+          :validate_token => control.validate_token }
         
         host = invoke_remote(:get_redirect_host)
         
@@ -340,46 +393,51 @@ module NewRelic
         
         # Ask the server for permission to send transaction samples.
         # determined by subscription license.
-        @should_send_samples = invoke_remote :should_collect_samples, @agent_id
+        @should_send_samples &&= invoke_remote :should_collect_samples, @agent_id
         
         if @should_send_samples
           sampling_rate = invoke_remote :sampling_rate, @agent_id if @random_sample
           @transaction_sampler.sampling_rate = sampling_rate
           log.info "Transaction sample rate: #{@transaction_sampler.sampling_rate}" if sampling_rate
+          log.info "Transaction tracing threshold is #{@slowest_transaction_threshold} seconds." 
         end
         
         # Ask for permission to collect error data
-        @should_send_errors = invoke_remote :should_collect_errors, @agent_id
+        error_collector.enabled &&= invoke_remote(:should_collect_errors, @agent_id)
         
-        log.info "Transaction traces will be sent to the RPM service" if @use_transaction_sampler && @should_send_samples
-        log.info "Errors will be sent to the RPM service" if @error_collector.enabled && @should_send_errors
+        log.info "Transaction traces will be sent to the RPM service." if @should_send_samples
+        log.info "Errors will be sent to the RPM service." if error_collector.enabled
         
+        @connected_pid = $$
         @connected = true
         
-      rescue LicenseException => e
+      rescue NewRelic::Agent::LicenseException => e
         control.log! e.message, :error
         control.log! "Visit NewRelic.com to obtain a valid license key, or to upgrade your account."
-        @invalid_license = true
-        return false
+        @connected = false
         
       rescue Timeout::Error, StandardError => e
         log.info "Unable to establish connection with New Relic RPM Service at #{control.server}"
-        unless e.instance_of? IgnoreSilentlyException
+        unless e.instance_of? NewRelic::Agent::ServerConnectionException
           log.error e.message
           log.debug e.backtrace.join("\n")
         end
         # retry logic
-        connect_attempts += 1
-        case connect_attempts
+        if keep_retrying
+          connect_attempts += 1
+          case connect_attempts
           when 1..2
-          connect_retry_period, period_msg = 60, "1 minute"
-          when 3..5 then
-          connect_retry_period, period_msg = 60 * 2, "2 minutes"
-        else 
-          connect_retry_period, period_msg = 10*60, "10 minutes"
+            connect_retry_period, period_msg = 60, "1 minute"
+          when 3..5 
+            connect_retry_period, period_msg = 60 * 2, "2 minutes"
+          else 
+            connect_retry_period, period_msg = 5 * 60, "5 minutes"
+          end
+          log.info "Will re-attempt in #{period_msg}" 
+          retry
+        else
+          @connected = nil
         end
-        log.info "Will re-attempt in #{period_msg}" 
-        retry
       end
     end
       
@@ -389,16 +447,6 @@ module NewRelic
     
     def determine_home_directory
       control.root
-    end
-    def reset_stats
-      @stats_engine.reset_stats
-      @metric_ids = {}
-      @unsent_errors = []
-      @traces = nil
-      @unsent_timeslice_data = {}
-      @last_harvest_time = Time.now
-      @launch_time = Time.now
-      @histogram = NewRelic::Histogram.new(NewRelic::Control.instance.apdex_t / 10)
     end
     
     def harvest_and_send_timeslice_data
@@ -540,14 +588,12 @@ module NewRelic
         raise
       end
       if response.is_a? Net::HTTPServiceUnavailable
-        log.debug(response.body || response.message)
-        raise IgnoreSilentlyException
+        raise NewRelic::Agent::ServerConnectionException, "Service unavailable: #{response.body || response.message}"
       elsif response.is_a? Net::HTTPGatewayTimeOut
         log.debug("Timed out getting response: #{response.message}")
         raise Timeout::Error, response.message
       elsif !(response.is_a? Net::HTTPSuccess)
-        log.debug "Unexpected response from server: #{response.code}: #{response.message}"
-        raise IgnoreSilentlyException
+        raise NewRelic::Agent::ServerConnectionException, "Unexpected response from server: #{response.code}: #{response.message}" 
       end
       response
     end
@@ -584,21 +630,12 @@ module NewRelic
 
       # raises the right exception if the remote server tells it to die
       return check_for_exception(response)
-    rescue ForceRestartException => e
+    rescue NewRelic::Agent::ForceRestartException => e
       log.info e.message
       raise
-    rescue ForceDisconnectException => e
-      log.error "RPM forced this agent to disconnect (#{e.message})\n" \
-      "Restart this process to resume monitoring via rpm.newrelic.com."
-      # when a disconnect is requested, stop the current thread, which
-      # is the worker thread that gathers data and talks to the
-      # server.
-      @connected = false
-      Thread.exit
     rescue SystemCallError, SocketError => e
       # These include Errno connection errors 
-      log.debug "Recoverable error connecting to the server: #{e}"
-      raise IgnoreSilentlyException
+      raise NewRelic::Agent::ServerConnectionException, "Recoverable error connecting to the server: #{e}"
     end
     
     def graceful_disconnect
@@ -606,20 +643,20 @@ module NewRelic
         begin
           log.debug "Sending graceful shutdown message to #{control.server}"
           
-          @request_timeout = 5
-          
-          log.debug "Sending RPM service agent run shutdown message"
-          harvest_and_send_timeslice_data
-#          harvest_and_send_slowest_sample
-          harvest_and_send_errors
-          invoke_remote :shutdown, @agent_id, Time.now.to_f
-          
-          log.debug "Graceful shutdown complete"
-          
+          @request_timeout = 10
+          log.debug "Flushing unsent metric data to server"
+          @worker_loop.run_task
+          if @connected_pid == $$
+            log.debug "Sending RPM service agent run shutdown message"
+            invoke_remote :shutdown, @agent_id, Time.now.to_f
+          else
+            log.debug "This agent connected from #{@connected_pid}--not sending shutdown"
+          end
+          log.debug "Graceful disconnect complete"
         rescue Timeout::Error, StandardError 
         end
       else
-        log.debug "Bypassing graceful shutdown - agent not connected"
+        log.debug "Bypassing graceful disconnect - agent not connected"
       end
     end
     def default_sql_obfuscator(sql)

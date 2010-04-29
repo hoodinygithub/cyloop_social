@@ -1,6 +1,5 @@
 module NewRelic
-  module Agent
-    module CollectionHelper
+  module CollectionHelper
   # Transform parameter hash into a hash whose values are strictly
   # strings
   def normalize_params(params)
@@ -34,7 +33,8 @@ module NewRelic
       # strip newrelic from the trace
       backtrace = backtrace.reject {|line| line =~ /new_relic\/agent\// }
       # rename methods back to their original state
-      backtrace = backtrace.collect {|line| line.gsub(/_without_(newrelic|trace)/, "")}
+      # GJV - 4/6/10 - adding .to_s call since we were seeing line as a Fixnum in some cases
+      backtrace = backtrace.collect {|line| line.to_s.gsub(/_without_(newrelic|trace)/, "")}
     end
     backtrace
   end
@@ -65,6 +65,5 @@ module NewRelic
       truncate(flatten(string), len)     
     end
   end
-end
-end
+  end
 end

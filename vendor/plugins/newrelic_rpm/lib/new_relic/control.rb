@@ -87,8 +87,8 @@ module NewRelic
       # between calling init_plugin the first time and the second time, the env
       # has been overridden
       @settings = nil
-      
-      options.each { |sym, val | self[sym.to_s] = val unless sym == :config }
+      settings
+      merge_options(options)
       if logger_override
         @log = logger_override
         # Try to grab the log filename
@@ -99,14 +99,14 @@ module NewRelic
       Module.send :include, NewRelic::Agent::MethodTracer::ClassMethods
       Module.send :include, NewRelic::Agent::MethodTracer::InstanceMethods
       init_config(options)
-      if agent_enabled? && !@started
+      NewRelic::Agent.agent = NewRelic::Agent::Agent.instance
+      if agent_enabled? && !NewRelic::Agent.instance.started?
         setup_log unless logger_override
         start_agent
         install_instrumentation
         load_samplers unless self['disable_samplers']
         local_env.gather_environment_info
         append_environment_info
-        @started = true
       elsif !agent_enabled?
         install_shim
       end
@@ -114,7 +114,6 @@ module NewRelic
     
     # Install the real agent into the Agent module, and issue the start command.
     def start_agent
-      NewRelic::Agent.agent = NewRelic::Agent::Agent.instance
       NewRelic::Agent.agent.start
     end
     
@@ -185,6 +184,10 @@ module NewRelic
     def post_size_limit
       fetch('post_size_limit', 2 * 1024 * 1024)
     end
+    
+    def sync_startup
+      fetch('sync_startup', false)
+    end
     # True if dev mode or monitor mode are enabled, and we are running
     # inside a valid dispatcher like mongrel or passenger.  Can be overridden
     # by NEWRELIC_ENABLE env variable, monitor_daemons config option when true, or
@@ -214,6 +217,12 @@ module NewRelic
     def app_names
       self['app_name'] ? self['app_name'].split(';') : []
     end
+    def validate_seed
+      self['validate_seed'] || ENV['NR_VALIDATE_SEED']   
+    end
+    def validate_token
+      self['validate_token'] || ENV['NR_VALIDATE_TOKEN']
+    end
     
     def use_ssl?
       @use_ssl ||= fetch('ssl', false)
@@ -223,7 +232,7 @@ module NewRelic
       #this can only be on when SSL is enabled
       @verify_certificate ||= ( use_ssl? ? fetch('verify_certificate', false) : false)
     end
-    
+
     def server
       @remote_server ||= server_from_host(nil)  
     end
@@ -396,7 +405,7 @@ module NewRelic
     
     # Control subclasses may override this, but it can be called multiple times.
     def setup_log
-      @log_file = "#{log_path}/newrelic_agent.log"
+      @log_file = "#{log_path}/#{log_file_name}"
       @log = Logger.new @log_file
       
       # change the format just for our logger
@@ -426,11 +435,17 @@ module NewRelic
     end
     
     def log_path
-      path = File.join(root,'log')
-      unless File.directory? path
-        path = '.'
-      end
-      File.expand_path(path)
+      @log_path ||= begin
+                      path = self['log_file_path'] || File.join(root,'log')
+                      unless File.directory? path
+                        path = '.'
+                      end
+                      File.expand_path(path)
+                    end
+    end
+
+    def log_file_name
+      @log_file_name ||= fetch('log_file_name', 'newrelic_agent.log')
     end
     
     # Create the concrete class for environment specific behavior:
@@ -440,7 +455,10 @@ module NewRelic
         require File.join(newrelic_root, "test", "config", "test_control.rb")
         NewRelic::Control::Test.new @local_env
       else
-        require "new_relic/control/#{@local_env.framework}.rb"
+        begin
+          require "new_relic/control/#{@local_env.framework}.rb"
+        rescue LoadError
+        end
         NewRelic::Control.const_get(@local_env.framework.to_s.capitalize).new @local_env
       end
     end
@@ -471,6 +489,22 @@ module NewRelic
     end
     def newrelic_root
       self.class.newrelic_root
+    end
+    
+    # Merge the given options into the config options.
+    # They might be a nested hash
+    def merge_options(options, hash=self)
+      options.each do |key, val |
+        case
+        when key == :config then next 
+        when val.is_a?(Hash)
+          merge_options(val, hash[key.to_s] ||= {})
+        when val.nil?
+          hash.delete(key.to_s)
+        else 
+          hash[key.to_s] = val
+        end
+      end
     end
     
     def load_instrumentation_files pattern

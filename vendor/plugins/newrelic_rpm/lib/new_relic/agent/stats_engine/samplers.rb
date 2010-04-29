@@ -4,7 +4,7 @@ module Agent
     module Shim # :nodoc:
       def add_sampler(*args); end
       def add_harvest_sampler(*args); end
-      def spawn_sampler_thread(*args); end
+      def start_sampler_thread(*args); end
     end
     
     module Samplers
@@ -14,9 +14,9 @@ module Agent
       # every POLL_PERIOD seconds on a background thread.
       POLL_PERIOD = 20
       
-      def spawn_sampler_thread
+      def start_sampler_thread
         
-        return if !@sampler_process.nil? && @sampler_process == $$ 
+        return if @sampler_thread && @sampler_thread.alive?
         
         # start up a thread that will periodically poll for metric samples
         return if periodic_samplers.empty?
@@ -30,7 +30,6 @@ module Agent
           end
         end
         @sampler_thread['newrelic_label'] = 'Sampler Tasks'
-        @sampler_process = $$
       end
       
       # Add an instance of Sampler to be invoked about every 10 seconds on a background

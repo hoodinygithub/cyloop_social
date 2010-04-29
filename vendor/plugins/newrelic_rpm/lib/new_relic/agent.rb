@@ -31,8 +31,8 @@
 #
 # == Configuring the Agent
 # 
-# All agent configuration is done in the <tt>newrelic.yml</tt> file.  This
-# file is by default read from the +config+ directory of the
+# All agent configuration is done in the <tt>newrelic.yml</tt> file.
+# This file is by default read from the +config+ directory of the
 # application root and is subsequently searched for in the application
 # root directory, and then in a <tt>~/.newrelic</tt> directory
 #
@@ -75,7 +75,7 @@ module NewRelic
   # support at New Relic for help.
   module Agent
     extend self
-    
+
     require 'new_relic/version'
     require 'new_relic/local_environment'
     require 'new_relic/stats'
@@ -84,6 +84,7 @@ module NewRelic
     require 'new_relic/metric_spec'
     require 'new_relic/metric_data'
     require 'new_relic/metric_parser'
+    require 'new_relic/collection_helper'
     require 'new_relic/transaction_analysis'
     require 'new_relic/transaction_sample'
     require 'new_relic/noticed_error'
@@ -95,11 +96,12 @@ module NewRelic
     require 'new_relic/agent/method_tracer'
     require 'new_relic/agent/worker_loop'
     require 'new_relic/agent/stats_engine'
-    require 'new_relic/agent/collection_helper'
     require 'new_relic/agent/transaction_sampler'
     require 'new_relic/agent/error_collector'
     require 'new_relic/agent/busy_calculator'
     require 'new_relic/agent/sampler'
+
+    require 'new_relic/agent/instrumentation/controller_instrumentation'
     
     require 'new_relic/agent/samplers/cpu_sampler'
     require 'new_relic/agent/samplers/memory_sampler'
@@ -121,11 +123,11 @@ module NewRelic
     
     # Used to blow out of a periodic task without logging a an error, such as for routine
     # failures.
-    class IgnoreSilentlyException < StandardError; end
+    class ServerConnectionException < StandardError; end
     
     # Used for when a transaction trace or error report has too much
     # data, so we reset the queue to clear the extra-large item
-    class PostTooBigException < IgnoreSilentlyException; end
+    class PostTooBigException < ServerConnectionException; end
     
     # Reserved for future use.  Meant to represent a problem on the server side.
     class ServerError < StandardError; end
@@ -160,46 +162,84 @@ module NewRelic
     
     alias get_stats_no_scope get_stats 
     
+    # Get the logger for the agent.  Available after the agent has initialized.
+    # This sends output to the agent log file.
+    def logger
+      NewRelic::Control.instance.log
+    end
+    
     # Call this to manually start the Agent in situations where the Agent does
     # not auto-start.
     # 
-    # When the app environment loads, so does the Agent. However, the Agent will
-    # only connect to RPM if a web front-end is found. If you want to selectively monitor
-    # ruby processes that don't use web plugins, then call this method in your
-    # code and the Agent will fire up and start reporting to RPM.
+    # When the app environment loads, so does the Agent. However, the
+    # Agent will only connect to RPM if a web front-end is found. If
+    # you want to selectively monitor ruby processes that don't use
+    # web plugins, then call this method in your code and the Agent
+    # will fire up and start reporting to RPM.
     #
-    # Options are passed in as overrides for values in the newrelic.yml, such
-    # as app_name.  In addition, the option +log+ will take a logger that
-    # will be used instead of the standard file logger.  The setting for
-    # the newrelic.yml section to use (ie, RAILS_ENV) can be overridden
-    # with an :env argument.
+    # Options are passed in as overrides for values in the
+    # newrelic.yml, such as app_name.  In addition, the option +log+
+    # will take a logger that will be used instead of the standard
+    # file logger.  The setting for the newrelic.yml section to use
+    # (ie, RAILS_ENV) can be overridden with an :env argument.
     #
     def manual_start(options={})
       raise unless Hash === options
-      # Ignore all args but hash options
-      options.merge! :agent_enabled => true 
-      NewRelic::Control.instance.init_plugin options
+      NewRelic::Control.instance.init_plugin({ :agent_enabled => true, :sync_startup => true }.merge(options))
     end
     
+    # Register this method as a callback for processes that fork
+    # jobs.  
+    #
+    # If the master/parent connects to the agent prior to forking the
+    # agent in the forked process will use that agent_run.  Otherwise
+    # the forked process will establish a new connection with the
+    # server.
+    # 
+    # Use this especially when you fork the process to run background
+    # jobs or other work.  If you are doing this with a web dispatcher
+    # that forks worker processes then you will need to force the
+    # agent to reconnect, which it won't do by default.  Passenger and
+    # Unicorn are already handled, nothing special needed for them.
+    #
+    # Options:
+    # * <tt>:force_reconnect => true</tt> to force the spawned process to 
+    #   establish a new connection, such as when forking a long running process.
+    #   The default is false--it will only connect to the server if the parent
+    #   had not connected.
+    # * <tt>:keep_retrying => false</tt> if we try to initiate a new 
+    #   connection, this tells me to only try it once so this method returns
+    #   quickly if there is some kind of latency with the server.
+    def after_fork(options={})
+      agent.after_fork(options)
+    end
+    
+    # Clear out any unsent metric data.
+    def reset_stats
+      agent.reset_stats
+    end
+
     # Shutdown the agent.  Call this before exiting.  Sends any queued data
     # and kills the background thread.
     def shutdown
-      @agent.shutdown
+      agent.shutdown
     end        
 
-    # Add instrumentation files to the agent.  The argument should be a glob
-    # matching ruby scripts which will be executed at the time instrumentation 
-    # is loaded.  Since instrumentation is not loaded when the agent is not
-    # running it's better to use this method to register instrumentation than
-    # just loading the files directly, although that probably also works. 
+    # Add instrumentation files to the agent.  The argument should be
+    # a glob matching ruby scripts which will be executed at the time
+    # instrumentation is loaded.  Since instrumentation is not loaded
+    # when the agent is not running it's better to use this method to
+    # register instrumentation than just loading the files directly,
+    # although that probably also works.
     def add_instrumentation file_pattern
       NewRelic::Control.instance.add_instrumentation file_pattern
     end
 
-    # This method sets the block sent to this method as a sql obfuscator. 
-    # The block will be called with a single String SQL statement to obfuscate.
-    # The method must return the obfuscated String SQL. 
-    # If chaining of obfuscators is required, use type = :before or :after
+    # This method sets the block sent to this method as a sql
+    # obfuscator.  The block will be called with a single String SQL
+    # statement to obfuscate.  The method must return the obfuscated
+    # String SQL.  If chaining of obfuscators is required, use type =
+    # :before or :after
     #
     # type = :before, :replace, :after
     #
@@ -243,9 +283,9 @@ module NewRelic
       end
     end
     
-    # Cancel the collection of the current transaction in progress, if any.
-    # Only affects the transaction started on this thread once it has started
-    # and before it has completed.
+    # Cancel the collection of the current transaction in progress, if
+    # any.  Only affects the transaction started on this thread once
+    # it has started and before it has completed.
     def abort_transaction!
       # The class may not be loaded if the agent is disabled
       if defined? NewRelic::Agent::Instrumentation::MetricFrame
@@ -253,10 +293,11 @@ module NewRelic
       end
     end
     
-    # Yield to the block without collecting any metrics or traces in any of the
-    # subsequent calls.  If executed recursively, will keep track of the first
-    # entry point and turn on tracing again after leaving that block.
-    # This uses the thread local +newrelic_untrace+
+    # Yield to the block without collecting any metrics or traces in
+    # any of the subsequent calls.  If executed recursively, will keep
+    # track of the first entry point and turn on tracing again after
+    # leaving that block.  This uses the thread local
+    # +newrelic_untrace+
     def disable_all_tracing
       agent.push_trace_execution_flag(false)
       yield
@@ -269,27 +310,34 @@ module NewRelic
       Thread.current[:newrelic_untraced].nil? || Thread.current[:newrelic_untraced].last != false      
     end
 
-    # Set a filter to be applied to errors that RPM will track.
-    # The block should evalute to the exception to track (which could be different from
-    # the original exception) or nil to ignore this exception.
+    # Set a filter to be applied to errors that RPM will track.  The
+    # block should evalute to the exception to track (which could be
+    # different from the original exception) or nil to ignore this
+    # exception.
     #
     # The block is yielded to with the exception to filter. 
     # 
-    # Do not call return.
+    # Return the new block or the existing filter Proc if no block is passed.
     #
     def ignore_error_filter(&block)
       agent.error_collector.ignore_error_filter(&block)
     end
     
-    # Record the given error in RPM.  It will be passed through the #ignore_error_filter
-    # if there is one.
+    # Record the given error in RPM.  It will be passed through the
+    # #ignore_error_filter if there is one.
     # 
     # * <tt>exception</tt> is the exception which will be recorded
-    # * <tt>extra_params</tt> is a hash of name value pairs to appear alongside
-    #   the exception in RPM.
+    # Options:
+    # * <tt>:uri</tt> => The request path, minus any request params or query string.
+    # * <tt>:referer</tt> => The URI of the referer
+    # * <tt>:metric</tt> => The metric name associated with the transaction
+    # * <tt>:request_params</tt> => Request parameters, already filtered if necessary
+    # * <tt>:custom_params</tt> => Custom parameters
     #
-    def notice_error(exception, extra_params = nil)
-      NewRelic::Agent::Instrumentation::MetricFrame.notice_error(exception, extra_params)
+    # Anything left over is treated as custom params
+    #
+    def notice_error(exception, options={})
+      NewRelic::Agent::Instrumentation::MetricFrame.notice_error(exception, options)
     end
 
     # Add parameters to the current transaction trace on the call stack.
@@ -298,15 +346,18 @@ module NewRelic
       NewRelic::Agent::Instrumentation::MetricFrame.add_custom_parameters(params)
     end
     
-    alias add_request_parameters add_custom_parameters
+    # The #add_request_parameters method is aliased to #add_custom_parameters
+    # and is now deprecated.
+    alias add_request_parameters add_custom_parameters #:nodoc:
     
-    # Yield to a block that is run with a database metric name context.  This means
-    # the Database instrumentation will use this for the metric name if it does not
-    # otherwise know about a model.  This is re-entrant.
+    # Yield to a block that is run with a database metric name
+    # context.  This means the Database instrumentation will use this
+    # for the metric name if it does not otherwise know about a model.
+    # This is re-entrant.
     #
     # * <tt>model</tt> is the DB model class
-    # * <tt>method</tt> is the name of the finder method or other method to identify the operation with.
-    #
+    # * <tt>method</tt> is the name of the finder method or other
+    #   method to identify the operation with.
     def with_database_metric_name(model, method, &block)
       if frame = NewRelic::Agent::Instrumentation::MetricFrame.current
         frame.with_database_metric_name(model, method, &block)

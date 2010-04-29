@@ -5,7 +5,7 @@ module NewRelic
   # An instance of LocalEnvironment is responsible for determining
   # three things: 
   #
-  # * Framework - :rails, :merb, :ruby, :external, :test
+  # * Framework - :rails, :rails3, :merb, :ruby, :external, :test
   # * Dispatcher - A supported dispatcher, or nil (:mongrel, :thin, :passenger, :webrick, etc)
   # * Dispatcher Instance ID, which distinguishes agents on a single host from each other
   #
@@ -17,12 +17,19 @@ module NewRelic
 
     attr_accessor :dispatcher # mongrel, thin, webrick, or possibly nil
     attr_accessor :dispatcher_instance_id # used to distinguish instances of a dispatcher from each other, may be nil
-    attr_accessor :framework # rails, merb, external, ruby, test
+    attr_accessor :framework # rails, rails3, merb, external, ruby, test
     attr_reader :mongrel    # The mongrel instance, if there is one, captured as a convenience
     attr_reader :processors # The number of cpus, if detected, or nil
     alias environment dispatcher
     
     def initialize
+      # Extend self with any any submodules of LocalEnvironment.  These can override
+      # the discover methods to discover new framworks and dispatchers.  
+      NewRelic::LocalEnvironment.constants.each do | const |
+        mod = NewRelic::LocalEnvironment.const_get const
+        self.extend mod if mod.instance_of? Module
+      end
+      
       discover_framework
       discover_dispatcher
       @dispatcher = nil if @dispatcher == :none
@@ -72,7 +79,8 @@ module NewRelic
       append_environment_value 'Framework', @framework.to_s
       append_environment_value 'Dispatcher', @dispatcher.to_s if @dispatcher
       append_environment_value 'Dispatcher instance id', @dispatcher_instance_id if @dispatcher_instance_id
-      append_environment_value('Application root') { File.expand_path(NewRelic::Control.instance.root) }
+      # This just creates a lot of keys
+      # append_environment_value('Application root') { File.expand_path(NewRelic::Control.instance.root) }
       append_environment_value('Ruby version'){ RUBY_VERSION }
       append_environment_value('Ruby description'){ RUBY_DESCRIPTION } if defined? ::RUBY_DESCRIPTION
       append_environment_value('Ruby platform') { RUBY_PLATFORM }
@@ -155,7 +163,7 @@ module NewRelic
     # Although you can override the framework with NEWRELIC_DISPATCHER this
     # is not advisable since it implies certain api's being available.
     def discover_dispatcher
-      @dispatcher = ENV['NEWRELIC_DISPATCHER'] && ENV['NEWRELIC_DISPATCHER'].to_sym
+      @dispatcher ||= ENV['NEWRELIC_DISPATCHER'] && ENV['NEWRELIC_DISPATCHER'].to_sym
       dispatchers = %w[passenger torquebox glassfish thin mongrel litespeed webrick fastcgi unicorn sinatra]
       while dispatchers.any? && @dispatcher.nil?
         send 'check_for_'+(dispatchers.shift)
@@ -168,15 +176,23 @@ module NewRelic
       #
       # Note that the odd defined? sequence is necessary to work around a bug in an older version
       # of JRuby.
-      @framework = case
+      @framework ||= case
         when ENV['NEWRELIC_FRAMEWORK'] then ENV['NEWRELIC_FRAMEWORK'].to_sym
         when defined?(::NewRelic::TEST) then :test
         when defined?(::Merb) && defined?(::Merb::Plugins) then :merb
-        when defined?(::Rails) then :rails
+        when defined?(::Rails) then check_rails_version
         when defined?(::Sinatra) && defined?(::Sinatra::Base) then :sinatra      
         when defined?(::NewRelic::IA) then :external
       else :ruby
       end      
+    end
+
+    def check_rails_version
+      if Rails::VERSION::MAJOR < 3     
+        :rails
+      else
+        :rails3
+      end
     end
 
     def check_for_torquebox
