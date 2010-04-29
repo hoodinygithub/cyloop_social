@@ -229,7 +229,7 @@ namespace :deploy do
   end
 
   task :pre_announce do
-    #campfire_notification "#{ENV['USER']} is preparing to deploy #{application} to #{rails_env} (#{branch})"
+    campfire_notification "#{ENV['USER']} is preparing to deploy #{application} to #{rails_env} (#{branch})"
   end
 
   task :post_announce do
@@ -291,7 +291,7 @@ def campfire_notification( message )
       @campfire.login '3aa7fc18eaa511bfeb21fdae602e3ec175ecab2c', 'x'
       @room = @campfire.find_room_by_name 'Team'
     end
-    @room.paste message
+    @room.speak message
   rescue => e
     puts "Error trying to paste to Campfire -> #{e.message} (#{e.class})"
   end
