@@ -708,3 +708,7 @@ li.scope_toggle .mini_loader{
 .edit_station_form .four_thumbs {	 	
   float: left;
 }
+
+.country select {
+  width: 440px;
+}

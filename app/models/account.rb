@@ -186,6 +186,11 @@ class Account < ActiveRecord::Base
   def find_country_by_ip_address
     self.country = Country.find_by_addr(ip_address) unless ip_address.nil? && !country.nil?
   end
+  
+  attr_accessor :country_name
+  def find_country_by_name
+    self.country = Country.find_by_name(country_name) if country_name && country_name.empty
+  end
 
   def city_name
     city.try(:location)

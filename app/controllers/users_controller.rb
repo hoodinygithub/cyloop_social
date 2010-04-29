@@ -53,12 +53,6 @@ class UsersController < ApplicationController
 
   # POST /users
   def create
-    # # TODO: re-enable after fixing multiple cookie mongrel issue
-    # cookies.delete :auth_token
-    # protects against session fixation attacks, wreaks havoc with
-    # request forgery protection.
-    # uncomment at your own risk
-    # reset_session
     params[:user] = trim_attributes_for_paperclip(params[:user], :avatar)
     @user = User.new(params[:user])
     @user.entry_point = current_site
