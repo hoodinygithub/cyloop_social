@@ -916,6 +916,13 @@ pt_BR:
     created_at: "Criado {{when}} atr\xC3\xA1s"
     my: Meu
     songs: "M\xC3\xBAsicas"
+<<<<<<< HEAD
+=======
+    created_at: "Criado {{when}} atr\xC3\xA1s"
+    "no": !binary |
+      TsOjbw==
+
+>>>>>>> Translations
     artists: Artistas
     previous: Anterior
     by: Por
