@@ -11,6 +11,8 @@ if Rails.env.development?
         rescue Exception
           lock.unlock
           raise
+        ensure
+          lock.unlock
         end
       end
     end

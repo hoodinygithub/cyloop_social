@@ -62,7 +62,7 @@ class Player::Station < Player::Base
   class << self
 
     def from_one( object, options = {} )
-      options[:amg_id] = object.station.amg_id if object.kind_of?(UserStation)
+      options[:amg_id] = object.abstract_station.amg_id if object.kind_of?(UserStation)
       returning( super(object, options) ) do |station|
         station.includes = object.includes(4)
         station.artist = Player::Artist.from( object.artist ) unless object.artist_id.nil?
