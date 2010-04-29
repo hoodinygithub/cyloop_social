@@ -396,6 +396,21 @@ es_MX:
       short: "%d %b %H:%M"
       long: "%B %d, %Y %H:%M"
     pm: pm
+<<<<<<< HEAD
+=======
+  custom_profiles: 
+    sony_disclaimer: El logo y s&#237;mbolo de Walkman&#8482; son marcas registrados de Sony Corporation.
+  albums: 
+    label: Disquera
+    song_count: Canciones
+    show: 
+      about_this_album: "Acerca de este \xC3\xA1lbum"
+    year: !binary |
+      QcOxbw==
+
+    release_date: Fecha de lanzamiento
+    total_plays: Reproducciones totales
+>>>>>>> Translations for Story -> Station created date/time #3223581
   messenger_player: 
     edit_station: "Para editar esta radio, "
     share: 
@@ -943,20 +958,68 @@ es_MX:
         Consejo: crea una contrase\xC3\xB1a que contenga una mezcla de caracteres tanto de letras como de n\xC3\xBAmeros, para que sea m\xC3\xA1s segura."
   playlist: 
     edit_your_playlist: Editar tu playlist
+<<<<<<< HEAD
   main: 
     navigation: 
       stations: Radios
       home: Home
       mixes: Mixes
+=======
+  settings: 
+    background_not_saved_image_too_large: "Las imagenes de fondo no pueden superar el tama\xC3\xB1de 1MB"
+    page_title: Controla tu Cyloop
+    customizations: 
+      header_background: Fondo del Encabezado
+      link_font_color: "Color para Tipograf\xC3\xADas de Enlaces"
+      main_background_color: Color del Fondo Principal
+      main_font_color: "Color de la Tipograf\xC3\xADa Principal"
+      reset_to_default: "El dise\xC3\xB1o de tu perfil ha vuelto a su formato original."
+      restore_defaults: Volver al original
+      remove_background_image: Remover Imagen
+      colors: Colores
+      browse: Navegar...
+    private_profile: 
+      description: "Descripci\xC3\xB3n de qu\xC3\xA9 hace la funci\xC3\xB3n \"Mantener Perfil Privado?\""
+    cancel_my_account: Cancelar Mi Cuenta
+    not_saved: "Tus par\xC3\xA1metros no fueron guardados correctamente."
+    notifications: ""
+    saved: "Tus par\xC3\xA1metros han sido guardados."
+    tabs: 
+      account: Cuenta
+      notifications: Notificaciones
+      password: "Contrase\xC3\xB1a"
+  site: 
+    faq: "Preguntas M\xC3\xA1s Frecuentes"
+    profile_not_found: Perfil No Encontrado
+    private_profile: "Pol\xC3\xADtica de Privacidad"
+    terms_and_conditions: "T\xC3\xA9rminos y condiciones"
+    support: Soporte
+    about_cyloop: Sobre Cyloop
+    safety_tips: Consejos de Seguridad
+    profile_not_available: Perfil No Disponible
+    feedback: Feedback
+    about_hoodiny: Sobre Hoodiny
+    profile_not_available_sorry: "Lamentablemente este perfil no est\xC3\xA1 disponible en tu pa\xC3\xADs"
+    privacy_policy: "Privacidad "
+    profile_not_found_sorry: "Perd\xC3\xB3n, pero no hemos podido encontrar el perfil de {{profile}}."
+    sample_flag_description: "Desafortunadamente este contenido tiene restricciones para el territorio desde el cual intentas esucharlo, por lo que no toca en su duraci\xC3\xB3n completa. Puedes escuchar canciones completas de este artista u otros parecidos en la secci\xC3\xB3n de Radio."
+>>>>>>> Translations for Story -> Station created date/time #3223581
   footer: 
     faq: FAQ
     help: Ayuda
     terms_and_conditions: "T\xC3\xA9rminos y Condiciones"
     support: Soporte
+<<<<<<< HEAD
     about_us: Sobre Nosotros
     feedback: Sugerencias
     safety_tips: Consejos de Seguridad
     about_cyloop: Sobre Cyloop
+=======
+    about_cyloop: Sobre Cyloop
+    safety_tips: Consejos de Seguridad
+    about_us: Sobre Nosotros
+    feedback: Sugerencias
+>>>>>>> Translations for Story -> Station created date/time #3223581
     about_hoodiny: Sobre Hoodiny
     privacy_policy: "Pol\xC3\xADtica de Privacidad "
   contact_us: 
@@ -1217,16 +1280,25 @@ es_MX:
     create_your_own_personalized_radio_station: Crea Tu Propia Radio Personalizada
     text_about_radio: Tu Radio Personalizada
     create_radio: Crear Radio
+<<<<<<< HEAD
     top_radios: TOP RADIOS
     explaing_what_is_and_why_create_a_new_radio: "Ingresa el nombre de tu artista favorito. Cyloop generar\xC3\xA1 una radio personalizada con m\xC3\xBAsica de tus artistas favoritos."
+=======
+    recommended_stations: RADIOS RECOMENDADAS POR CYLOOP
+    explaing_what_is_and_why_create_a_new_radio: "Ingresa el nombre de tu artista favorito. Cyloop generar\xC3\xA1 una radio personalizada con m\xC3\xBAsica de tus artistas favoritos."
+    user_latest_stations: RADIOS MAS RECIENTES
+>>>>>>> Translations for Story -> Station created date/time #3223581
     latest_stations: RADIOS MAS RECIENTES
     recommended_stations: RADIOS RECOMENDADAS POR CYLOOP
     user_latest_stations: RADIOS MAS RECIENTES DE {{name}}
     network_update: ACTUALIZACION DE RED  {{user_name}}
     recommended_mixes: MIXES RECOMENDADOS POR CYLOOP
     type_artist_name: Escribe el nombre de un artista
+<<<<<<< HEAD
     top_songs: Top Canciones
     create_your_own_station_now: "\xC2\xA1Crea tu propia radio ahora!"
+=======
+>>>>>>> Translations for Story -> Station created date/time #3223581
     top_stations: Top Radios
     radios_recomended_for_you: RADIOS RECOMENDADAS PARA TI
     recommended_artists: Artistas Recomendados
