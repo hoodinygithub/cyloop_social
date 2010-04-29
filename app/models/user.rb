@@ -152,6 +152,7 @@ class User < Account
   def create_user_station(options={})
     user_station = UserStation.create(options.merge({:owner => self}))
     user_station.create_station
+    self.increment!(:total_user_stations)
     user_station.station
   end
 
