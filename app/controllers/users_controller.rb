@@ -118,7 +118,7 @@ class UsersController < ApplicationController
     if user.errors.on(field)
       render :json => [user.errors.on(field), 'error'].to_json
     else
-      message = "#{field_name} #{exclamation}"
+      message = "#{exclamation}"
       render :json => [message, 'info'].to_json
     end
   end

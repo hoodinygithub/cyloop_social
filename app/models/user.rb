@@ -225,6 +225,11 @@ class User < Account
     self.save
   end
 
+  def custom_errors
+    errors_hash = self.errors.inject({}) { |h,(k,v)| h[k] = "#{self.class.human_attribute_name(k)} #{v}"; h }
+    errors_hash.to_a
+  end
+
   protected
   def check_born_on_in_future
     errors.add(:born_on, :cant_be_in_future) if born_on > Date.today

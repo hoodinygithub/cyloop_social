@@ -1060,11 +1060,11 @@ Base.network.push_update = function() {
  * Account settings page
  */
 Base.account_settings.highlight_field_with_errors = function() {
+  console.log(field_with_errors);
   if (typeof(field_with_errors) != 'undefined') {
     for(i=0; i < field_with_errors.length; i++) {
       field_name = field_with_errors[i][0];
       error = field_with_errors[i][1];
-
       field = jQuery(":input[name*='" + field_name + "']").first();
       Base.account_settings.add_message_on(field, error, 'error');
     }
@@ -1082,7 +1082,7 @@ Base.account_settings.clear_info_and_errors_on = function(field) {
 
 Base.account_settings.add_message_on = function(field, message, type) {
   field.addClass('with_' + type);
-  rounded_box = field.closest('.grey_round_box');
+  rounded_box = field.closest('.grey_round_box, div.checkbox div' );
   rounded_box.addClass('with_' + type);
   message_span = jQuery("<br /><span class=\"field_message\" for=\"" + field.attr('id') + "\">" + message + "</span>");
   rounded_box.append(message_span);
