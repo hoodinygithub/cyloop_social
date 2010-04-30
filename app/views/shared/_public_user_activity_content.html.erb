@@ -5,7 +5,10 @@
     </b>
 
     <% if item['type'] == 'station' %>
-      <%= t('activity.created_station', :station => link_to(item['artist'], item['artist'])) %>
+      <% playable = item['station'] %>
+      <% if playable and playable.deleted_at.nil? %>
+        <%= t('activity.created_station', :creator => link_to("<b>#{item['account']}</b>", item['account']), :station => link_to(playable.name, radio_path(:station_id => playable.station.id))) %>
+      <% end %>
     <% elsif item['type'] == 'twitter' %>
       <%= item['text'] %>
       <%= link_to("Twitter / #{item['screen_name']}", "http://twitter.com/#{item['screen_name']}", :target => "_blank") %>

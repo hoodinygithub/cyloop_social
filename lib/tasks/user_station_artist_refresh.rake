@@ -10,25 +10,13 @@ namespace :db do
       options = { :klass => object.to_s.classify.constantize, :batch_size => 50, :order => 'id' }
       options = options.merge (:last_batch => ENV['last_batch'].to_i) if ENV.has_key?('last_batch') 
       options.merge!(:last_batch => ENV['last_batch'].to_i) if ENV.has_key?('last_batch') 
-      options.merge!(:conditions => ENV['conditions']) if ENV.has_key?('conditions') 
-
-      #raise options.inspect
+      options.merge!(:conditions => ENV['conditions']) if ENV.has_key?('conditions')       
       
-      
-      if ENV.has_key? 'artists'
-        timebox "Running user_stations includes refresh" do
-          batch = BolingForBatches::Batch.new(options)
-          batch.run(:refresh_included_artists)
-          batch.print_results
-        end
-      else
-        timebox "Running user_stations includes refresh" do
-          batch = BolingForBatches::Batch.new(options)
-          batch.run(:refresh_included_artists)
-          batch.print_results
-        end
+      timebox "Running #{object.to_s} includes refresh" do
+        batch = BolingForBatches::Batch.new(options)
+        batch.run(:refresh_included_artists)
+        batch.print_results
       end
-
     end
     
     task :user_station_artists => :environment do      

@@ -17,7 +17,7 @@
       <% playable = item['station'] %>
       <% if playable and playable.deleted_at.nil? %>
         <div class="message_content">
-          <%= t('activity.created_station', :creator => link_to(item['account'], item['account']), :station => link_to(playable.name, radio_path(:station_id => playable.station.id))) %>
+          <%= t('activity.created_station', :creator => link_to("<b>#{item['account']}</b>", item['account']), :station => link_to(playable.name, radio_path(:station_id => playable.station.id))) %>
         </div>
       <% end %>
     <% end %>
