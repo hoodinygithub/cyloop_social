@@ -18,13 +18,6 @@
       <% end %>
     <% end %>
 
-    <% if profile_account.follower_count > 8 %>
-      <div class="align_right">
-        <b>
-          <%= link_to(t('actions.view_more'), profile_owner? ? my_followers_path : followers_path ) %>
-        </b>
-      </div>
-    <% end %>
 
     <% index = (8 - followings.size) %>
     <% index.times do |i| %>
@@ -39,5 +32,13 @@
 
   <% end %>
   <br class="clearer" />
+  <% if profile_account.follower_count > 8 %>
+      <div class="align_right">
+        <b>
+          <%= link_to(t('actions.view_more'), profile_owner? ? my_followers_path : followers_path ) %>
+        </b>
+      </div>
+    <% end %>
+
 </div>
 

@@ -19,14 +19,6 @@
 
     <% end %>
 
-    <% if profile_account.followee_count > 8 %>
-      <div class="align_right">
-        <b>
-          <%= link_to(t('actions.view_more'),  following_index_path ) %>
-        </b>
-      </div>
-    <% end %>
-
     <% index = (8 - followings.size) %>
     <% index.times do |i| %>
       <div class="empty_box gb_small <%= "last_box" if i == (index-1) or i == (index-5) %>">
@@ -39,4 +31,13 @@
 
   <% end %>
   <br class="clearer" />
+  <% if profile_account.followee_count > 8 %>
+      <div class="align_right">
+        <b>
+          <%= link_to(t('actions.view_more'),  following_index_path ) %>
+        </b>
+      </div>
+    <% end %>
+
 </div>
+
