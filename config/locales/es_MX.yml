@@ -1219,7 +1219,7 @@ es_MX:
     create_radio: Crear Radio
     latest_stations: RADIOS MAS RECIENTES
     explaing_what_is_and_why_create_a_new_radio: "Ingresa el nombre de tu artista favorito. Cyloop generar\xC3\xA1 una radio personalizada con m\xC3\xBAsica de tus artistas favoritos."
-    user_latest_stations: RADIOS MAS RECIENTES
+    user_latest_stations: RADIOS MAS RECIENTES DE {{name}}
     recommended_stations: RADIOS RECOMENDADAS POR CYLOOP
     network_update: ACTUALIZACION DE RED  {{user_name}}
     recommended_mixes: MIXES RECOMENDADOS POR CYLOOP

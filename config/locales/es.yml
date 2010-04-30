@@ -186,7 +186,7 @@ es:
     latest_tweet: "TWEET M\xC3\x81S RECIENTE"
     artist_latest_albums: ALBUMS MAS RECIENTES DE {{name}}
     follows: "{{user_name}} ESTA SIGUIENDO"
-    user_latest_stations: RADIOS MAS RECIENTES DE {{user_name}}
+    user_latest_stations: RADIOS MAS RECIENTES DE {{name}}
     show: 
       activity_feed_title: Canal de Actividad
       what_do_you_want_to_listen_to: "\xC2\xBFQu\xC3\xA9 te gustar\xC3\xADa escuchar?"
@@ -1179,7 +1179,7 @@ es:
     latest_stations: RADIOS MAS RECIENTES
     explaing_what_is_and_why_create_a_new_radio: "Ingresa el nombre de tu artista favorito. Cyloop generar\xC3\xA1 una radio personalizada con m\xC3\xBAsica de tus artistas favoritos."
     recommended_stations: RADIOS RECOMENDADAS POR CYLOOP
-    user_latest_stations: RADIO MAS RECIENTE DE {{user_name}}
+    user_latest_stations: RADIO MAS RECIENTE DE {{name}}
     network_update: ACTUALIZACION DE RED  {{user_name}}
     recommended_mixes: MIXES RECOMENDADOS POR CYLOOP
     type_artist_name: Escribe el nombre de un artista

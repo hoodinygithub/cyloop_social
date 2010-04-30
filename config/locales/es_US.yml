@@ -186,7 +186,7 @@ es_US:
     latest_tweet: "TWEET M\xC3\x81S RECIENTE"
     artist_latest_albums: ALBUMS MAS RECIENTES DE {{name}}
     follows: "{{user_name}} ESTA SIGUIENDO"
-    user_latest_stations: RADIOS MAS RECIENTES DE {{user_name}}
+    user_latest_stations: RADIOS MAS RECIENTES DE {{name}}
     show: 
       activity_feed_title: Canal de Actividad
       what_do_you_want_to_listen_to: "\xC2\xBFQu\xC3\xA9 te gustar\xC3\xADa escuchar?"
