@@ -53,7 +53,7 @@ class UserStation < ActiveRecord::Base
   end
 
   def self.latest_stations(limit = 8)
-    all(:limit => limit, :joins => [:owner, :abstract_station], :conditions => 'user_stations.deleted_at IS NULL AND accounts.deleted_at IS NULL AND abstract_stations.available', :order => 'user_stations.created_at DESC', :select => 'user_stations.*' )
+    all(:limit => limit, :joins => [:owner, :abstract_station], :conditions => 'user_stations.deleted_at IS NULL AND accounts.deleted_at IS NULL AND abstract_stations.deleted_at IS NULL', :order => 'user_stations.created_at DESC', :select => 'STRAIGHT_JOIN user_stations.*' )
   end
 
   def refresh_included_artists(params={})
