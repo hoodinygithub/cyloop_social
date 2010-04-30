@@ -3,27 +3,28 @@
 <% end %>
 
 <div class="follower_text">
-    <% if item['type'] == 'status' %>
-      <div class="message_content">
-        <b><%= link_to(item['account'], item['account']) %></b>
-        <%= item['message'] %>
-      </div>
-    <% elsif item['type'] == 'twitter' %>
-      <div class="message_content">
-        <%= item['text'] %>
-        <%= link_to("Twitter / #{item['screen_name']}", "http://twitter.com/#{item['screen_name']}", :target => "_blank") %>
-      </div>
-    <% elsif item['type'] == 'station' %>
-      <% playable = item['station'] %>
-      <% if playable and playable.deleted_at.nil? %>
-        <div class="message_content">
-          <%= t('activity.created_station', :creator => link_to("<b>#{item['account']}</b>", item['account']), :station => link_to(playable.name, radio_path(:station_id => playable.station.id))) %>
-        </div>
+    <div class="message_content"> <!-- Opens message content div -->
+
+      <% if item['type'] == 'status' %>
+          <b><%= link_to(item['account'], item['account']) %></b>
+          <%= item['message'] %>
+      <% elsif item['type'] == 'twitter' %>
+          <%= item['text'] %>
+          <%= link_to("Twitter / #{item['screen_name']}", "http://twitter.com/#{item['screen_name']}", :target => "_blank") %>
+      <% elsif item['type'] == 'station' %>
+        <% playable = item['station'] %>
+        <% if playable and playable.deleted_at.nil? %>
+            <%= t('activity.created_station', :creator => link_to("<b>#{item['account']}</b>", item['account']), :station => link_to(playable.name, radio_path(:station_id => playable.station.id))) %>
+        
+        <% end %>
       <% end %>
-    <% end %>
-  <br />
-  <span class="grey small">
-    <%=  t('basics.created_at', :when => nice_elapsed_time(item['timestamp'])) %>
-  </span>
+    
+      <br class="clearer">
+      <span class="grey small">
+        <%=  t('basics.created_at', :when => nice_elapsed_time(item['timestamp'])) %>
+      </span>
+
+    </div>  <!-- Finishes message content -->
+    
 </div>
 

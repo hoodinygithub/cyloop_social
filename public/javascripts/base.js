@@ -960,11 +960,9 @@ Base.network.__update_page_owner_page = function(response, options) {
     $comment_list.hide().append(response).fadeIn();
   }
 
-  if (response.length > 0) {
-    $show_more_button.fadeIn();
+  if ($comment_list.find('li').length >= 5) {
+   $show_more_button.fadeIn();
   }
-
-  $share_button.fadeIn();
 };
 
 Base.network.__update_page_user_page = function(response) {
