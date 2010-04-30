@@ -1,33 +1,30 @@
-<h1>
-  <h1><%= t('home.network_update', :user_name => artist_or_user_name(profile_account)) %></h1>
-  <span class="chars_counter" style="display: none">140</span>
-</h1>
-<% if page_owner? %>
-  <div class="network_update">
-      <form id="network_update_form" style="display:none;">
-          <div>
-              <%= avatar_for(profile_account, :small, {:class => 'network_icon'}) %>
-              <textarea id="network_comment" onkeyup="Base.network.count_chars();" onchange="Base.network.count_chars();" name="comment" rows="3" cols="20"></textarea>
-              <%= image_tag('network_arrow.gif', :class => 'network_arrow') %>
-              <div class="clearer"></div>
-            
-              <div class="update_text" id="network_update_text">
-              </div>
-            
-              <span class="share_button_container">
-                <%= blue_button(t('actions.share'), :class => 'compartir_button', :onclick => 'Base.network.push_update()') %>
-              </span>
-            
-              <% if false %>
-                <div class="network_twitter">
-                    <input type="checkbox" />
-                    <%= link_to(image_tag('twitter_icon.gif'), '#') %>
-                    &nbsp;
-                </div>
-              <% end %>
-            
-              <div class="clearer"></div>
-          </div>
-      </form>
-  </div><!--/end network_update -->
-<% end %>
+<h1><%= t('home.network_update', :user_name => artist_or_user_name(profile_account)) %></h1>
+<span class="chars_counter" style="display: none">140</span>
+<div class="network_update">
+  <form id="network_update_form" style="display:none;">
+    <div>
+      <%= avatar_for(profile_account, :small, {:class => 'network_icon'}) %>
+      <textarea id="network_comment" onkeyup="Base.network.count_chars();" onchange="Base.network.count_chars();" name="comment" rows="3" cols="20"></textarea>
+      <%= image_tag('network_arrow.gif', :class => 'network_arrow') %>
+      <div class="clearer"></div>
+    
+      <div class="update_text" id="network_update_text">
+      </div>
+    
+      <span class="share_button_container">
+        <%= blue_button(t('actions.share'), :class => 'compartir_button', :onclick => 'Base.network.push_update()') %>
+      </span>
+    
+      <% if false %>
+        <div class="network_twitter">
+          <input type="checkbox" />
+          <%= link_to(image_tag('twitter_icon.gif'), '#') %>
+          &nbsp;
+        </div>
+      <% end %>
+    
+      <div class="clearer"></div>
+    </div>
+  </form>
+</div><!--/end network_update -->
+
