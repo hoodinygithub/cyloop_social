@@ -37,6 +37,8 @@ class FeedManager::DrupalItem < FeedManager::Abstract
     def image_path(size, site)
       if site == "caen" or site == "cafr"
         "http://cm-msncanada.cyloop.com/cms/files/imagecache/#{size}/"
+      elsif site == "cyloop" or site == "cyloopes"
+        "http://cm.cyloop.com/drupal/files/imagecache/#{size}/"
       elsif site == "ar"
         "http://cm-msnlatam.cyloop.com/cms/files/imagecache/#{size}/"
       else
