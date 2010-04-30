@@ -68,7 +68,7 @@ module DashboardsHelper
     items = []
     nav_links.each do |item|
       link_classes = li_classes = ""
-      link_classes = active_class if @dashboard_menu == item[:menu] and request.request_uri.match(/\/my\//)
+      link_classes = active_class if @dashboard_menu == item[:menu] and (!item[:url].match(/my/) or request.request_uri.match(/\/my\//))
       li_classes << "#{item[:menu]} "
       li_classes << 'last' if nav_links.last == item
       items << content_tag(:li, link_to(item[:label], item[:url], :class => link_classes), :class => li_classes)
