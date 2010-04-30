@@ -4,15 +4,19 @@
     <% most_played_stations = profile_user.most_played_stations %>
     <%= render :partial => 'shared/mini_station', :collection => most_played_stations %>
 
-    <% index = (3 - most_played_stations.size) %>
+    <% stations_count = most_played_stations.size %>
+    <% index = 6 - stations_count %>
     <% index.times do |i| %>
-      <div class="empty_box gb_medium <%= "last_box" if i == (index-1) %>">
+      <% box_count = i + 1 %>
+      <div class="empty_box gb_medium <%= "last_box" if (box_count + stations_count) % 3 == 0 %>">
         &nbsp;
       </div>
+      <% if box_count + stations_count == 3 %>
+        <br class="clearer" />
+      <% end %>
     <% end %>
-    <br class="clearer">
 
-    <% if most_played_stations.size >= 3 %>
+    <% if most_played_stations.size >= 6 %>
       <div class="align_right">
         <b>
           <%= link_to(t('actions.view_more'), profile_owner? ? my_stations_path : user_stations_path(:sort_by=>:top) ) %>
