@@ -288,7 +288,7 @@ function load_artist_info(artist_id) {
   $('.artist_radio_info').slideUp(function(){
     if(artist_id){
       $.ajax({
-        type: "POST",
+        type: "GET",
         url: "/radio/info/" + station_id + "/" + artist_id,
         error: function() 
         {
