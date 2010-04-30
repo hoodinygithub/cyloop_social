@@ -3,5 +3,9 @@
   <%= render profile_user? ? 'users/stats'   : 'artists/stats' %>
   <%= render profile_user? ? 'users/buttons' : 'artists/buttons' %>
   <%= render 'accounts/buttons' %>
-  <%= account_sidebar_links %>
+  <%= if profile_user?
+    user_sidebar_links
+  else
+    artist_sidebar_links
+  end %>
 </div><!--/end left_column -->
