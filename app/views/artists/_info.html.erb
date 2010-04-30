@@ -1,0 +1,15 @@
+<div class="side_user_box">
+  <%= avatar_for(profile_artist, :album, :class => 'side_user_image', :width => "150", :disable_default_css => true) %>
+  <div class="overlay png_fix">
+    <div class="overlay_content">
+      <big>
+        <%= link_to(profile_artist.name, "") %>
+      </big>
+      <br />
+      <%= profile_artist.country.name if profile_artist.country %>
+      <br />
+      <%= profile_artist.genre.name if profile_artist.genre %>
+    </div>
+  </div>
+</div>
+<%= render :partial => 'accounts/websites', :locals => {:black_box => true} %>

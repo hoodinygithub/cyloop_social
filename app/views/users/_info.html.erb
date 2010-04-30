@@ -1,0 +1,22 @@
+<div class="side_user_box">
+  <%= avatar_for(profile_user, :album, :class => 'side_user_image', :width => "150", :disable_default_css => true) %>
+  <div class="overlay png_fix">
+    <div class="overlay_content">
+      <big>
+        <%= link_to(profile_user.name, "") %>
+      </big>
+      <br />
+      <%= profile_user.country.name unless profile_user.country.nil? %>
+    </div>
+  </div>
+</div>
+<div class="big_black_box">
+  <b class="blue">
+    <%= link_to(t('profile.navigation.age') + " //") %>
+  </b>
+  <br />
+    <%= profile_user.age %>
+  <br />
+  <br />
+  <%= render 'websites' %>
+</div>

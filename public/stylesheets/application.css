@@ -298,12 +298,14 @@ a:hover {
 }
 
 h1 {
-    font-size: 14px;
-    font-weight: bold;
-    border-left: solid 5px #00a5f8;
-    line-height: 18px;
-    margin-bottom: 18px;
-    padding-left: 5px;
+    border-left:5px solid #00A5F8;
+    font-size:14px;
+    font-weight:bold;
+    height:12px;
+    line-height:12px;
+    margin-bottom:18px;
+    overflow:hidden;
+    padding-left:5px;
 }
 
 .artist_box {
@@ -1635,7 +1637,7 @@ h1 {
 
 .band_ad_box {
   position: absolute;
-  top: 0px;
+  top: 20px;
   width: 320px;
   left: 50%;
   margin-left: 150px;
@@ -3268,3 +3270,4 @@ ul.error {
 .buylinks {
   text-align: center;
 }
+

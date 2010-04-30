@@ -1,0 +1,12 @@
+<div class="right_side" id="show_more_comments" style="display:none;">
+    <div class="align_right">
+      <b>
+        <%= link_to t('actions.view_more'), activities_path %>
+      </b>
+    </div>
+</div>
+
+<h1><%= t('home.network_update', :user_name => artist_or_user_name(profile_account)) %></h1>
+<ul class="comments_list" id="network_comment_list">
+</ul>
+

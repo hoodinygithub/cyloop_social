@@ -1,0 +1,23 @@
+<% if profile_user.stations %>
+  <div class="box_content">
+    <h1><%= t("dashboards.top_stations", :user_name => profile_user.first_name.upcase) %></h1>
+    <% most_played_stations = profile_user.most_played_stations %>
+    <%= render :partial => 'shared/mini_station', :collection => most_played_stations %>
+
+    <% index = (3 - most_played_stations.size) %>
+    <% index.times do |i| %>
+      <div class="empty_box gb_medium <%= "last_box" if i == (index-1) %>">
+        &nbsp;
+      </div>
+    <% end %>
+    <br class="clearer">
+
+    <% if most_played_stations.size >= 3 %>
+      <div class="align_right">
+        <b>
+          <%= link_to(t('actions.view_more'), profile_owner? ? my_stations_path : user_stations_path(:sort_by=>:top) ) %>
+        </b>
+      </div>
+    <% end %>
+  </div>
+<% end %>

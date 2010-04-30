@@ -43,7 +43,6 @@ Rails::Initializer.run do |config|
   config.gem "nokogiri",                :version => '1.4.1', :source => 'http://gemcutter.org'
   config.gem "rubyist-aasm",            :version => "2.1.1", :lib => "aasm", :source => 'http://gems.github.com'
   config.gem "newrelic_rpm",            :version => '2.9.5'
-  # config.gem 'fast_xs',                 :version => '0.7.3' unless RAILS_ENV == 'test'
   config.gem 'htmlentities',            :version => "4.2.0"
   config.gem 'mislav-will_paginate',    :version => '2.3.11', :lib => 'will_paginate'
   config.gem 'rufus-tokyo',             :version => '1.0.5'

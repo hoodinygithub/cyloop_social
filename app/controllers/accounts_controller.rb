@@ -21,7 +21,7 @@ class AccountsController < ApplicationController
     @latest_stations = profile_account.stations.all(:limit => 6 , :order => "user_stations.created_at DESC")
 
     respond_to do |format|
-      format.html { render :template => 'dashboards/show' }
+      format.html
       format.rss do
         @activities = load_related_item_activity(
           profile_account.transformed_activity_feed(

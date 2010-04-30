@@ -6,10 +6,8 @@ if Rails.env.development?
         begin
           Dispatcher.reload_application
           status, headers, body = yield
-          lock.unlock
           [status, headers, body]
         rescue Exception
-          lock.unlock
           raise
         ensure
           lock.unlock
