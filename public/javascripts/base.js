@@ -579,7 +579,6 @@ Base.community.__follow_request_handler = function(type, user_slug, link, callba
   var $black_ul        = $link.parent().parent();
   var $settings_button = $main_element.find('.settings_button').children().children();
   
-  console.log($link);
   return;
 
   // $black_ul.fadeOut();
@@ -1060,7 +1059,6 @@ Base.network.push_update = function() {
  * Account settings page
  */
 Base.account_settings.highlight_field_with_errors = function() {
-  console.log(field_with_errors);
   if (typeof(field_with_errors) != 'undefined') {
     for(i=0; i < field_with_errors.length; i++) {
       field_name = field_with_errors[i][0];
