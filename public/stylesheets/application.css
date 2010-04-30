@@ -223,7 +223,7 @@ a:hover {
 #slides {
     width: 950px;
     height: 289px;
-    margin: 10px auto;
+    margin: 0 auto;
     text-align: left;
     position: relative;
     list-style-type: none;
@@ -235,7 +235,7 @@ a:hover {
     height: 289px;
     position: absolute;
     left: 0px;
-    top: 0px;
+    top: 20px;
     background: #000;
 }
 
@@ -1640,7 +1640,7 @@ h1 {
   top: 20px;
   width: 320px;
   left: 50%;
-  margin-left: 170px;
+  margin-left: 165px;
   z-index: 2;
 }
 
