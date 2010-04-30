@@ -1,5 +1,5 @@
 <div id="main_content">
-  <%= render on_dashboard? ? 'dashboard/left_column' : 'accounts/left_column' %>
+  <%= render on_dashboard? ? 'dashboards/left_column' : 'accounts/left_column' %>
 
   <div id="center_column">
     <h1>
@@ -39,7 +39,7 @@
     <% end %>
   </div><!--/end center_column -->
 
-  <%= render on_dashboard? ? 'dashboard/right_column' : 'accounts/right_column' %>
+  <%= render on_dashboard? ? 'dashboards/right_column' : 'accounts/right_column' %>
 
   <div class="clearer"></div>
 </div><!--/end main_content -->
