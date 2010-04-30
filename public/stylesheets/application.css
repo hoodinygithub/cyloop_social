@@ -223,7 +223,7 @@ a:hover {
 #slides {
     width: 950px;
     height: 289px;
-    margin: 0px auto;
+    margin: 10px auto;
     text-align: left;
     position: relative;
     list-style-type: none;
