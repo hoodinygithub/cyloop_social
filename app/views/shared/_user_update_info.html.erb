@@ -15,16 +15,13 @@
         <% playable = item['station'] %>
         <% if playable and playable.deleted_at.nil? %>
             <%= t('activity.created_station', :creator => link_to("<b>#{item['account']}</b>", item['account']), :station => link_to(playable.name, radio_path(:station_id => playable.station.id))) %>
-        
         <% end %>
       <% end %>
-    
       <br class="clearer">
       <span class="grey small">
         <%=  t('basics.created_at', :when => nice_elapsed_time(item['timestamp'])) %>
       </span>
 
     </div>  <!-- Finishes message content -->
-    
 </div>
 
