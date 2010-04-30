@@ -220,7 +220,7 @@ Base.radio.play_station = function(from_list, from_create_station, list, list_pl
 			}
 			if(from_create_station) {
 				$('#collapse_create_new_station').click();
-        $('#create_station_submit').html(Base.layout.span_button(Base.locale.t('radio.create_new_station'))).attr('station_id', '').attr('station_queue', '').removeClass('blue_button').addClass('grey_button_big');
+        $('#create_station_submit').attr('station_id', '').attr('station_queue', '').removeClass('blue_button').addClass('grey_button_big');
         $("input[name='search_station_name']").val("").blur();
 			}
       $("div#current_station_info").empty();
@@ -249,9 +249,10 @@ Base.radio.launch_station_handler = function(obj, e) {
 		if(list_play_button) { list_play_button.attr('src', "/images/grey_loading.gif"); }
 	}
 
-	if(is_create_station_submit){
+/*	if(is_create_station_submit){
 	  $(obj).html(Base.layout.spanned_spin_image());
 	}
+*/
 	Base.radio.set_station_details($(obj).attr('station_id'), $(obj).attr('station_queue'), false);
 	Base.radio.play_station(is_station_list_item, is_create_station_submit, list, list_play_button)
 

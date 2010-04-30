@@ -712,3 +712,12 @@ li.scope_toggle .mini_loader{
 .country select {
   width: 440px;
 }
+
+#create_station_submit {
+	float: left;
+	margin-left: 10px;
+}
+
+#create_new_station_form.album_detail .form_row.last {
+	padding: 5px 0 6px 0;
+}
