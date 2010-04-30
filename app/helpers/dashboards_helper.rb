@@ -53,19 +53,11 @@ module DashboardsHelper
   end
 
   def user_sidebar_links
-<<<<<<< HEAD
     ul_list_to('side_links', 'active', user_nav_links)
   end
   
   def artist_sidebar_links
     ul_list_to('side_links', 'active', artist_nav_links)
-=======
-    ul_list_to('side_links', 'active', true)
-  end
-
-  def account_sidebar_links
-     ul_list_to('side_links', 'active')
->>>>>>> Several changes to profiles and dashboard
   end
 
   def account_sidebar_links
