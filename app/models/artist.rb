@@ -81,9 +81,9 @@ class Artist < Account
            :class_name => 'UserStation',
            :through => :user_station_artists, 
            :select => 'user_stations.*',
-           :include => :abstract_station,
+           :include => [:abstract_station, :owner],
            :source => :user_station, 
-           :conditions => 'user_stations.deleted_at IS NULL AND abstract_stations.deleted_at IS NULL', 
+           :conditions => 'user_stations.deleted_at IS NULL AND abstract_stations.deleted_at IS NULL AND accounts.deleted_at IS NULL', 
            :foreign_key => 'artist_id', 
            :uniq => true
 
