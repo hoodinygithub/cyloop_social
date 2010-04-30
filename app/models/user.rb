@@ -226,7 +226,8 @@ class User < Account
   end
 
   def custom_errors
-    errors_hash = self.errors.inject({}) { |h,(k,v)| h[k] = "#{self.class.human_attribute_name(k)} #{v}"; h }
+    on_convention = ["can't be blank", "doesn't match confirmation"]
+    errors_hash = self.errors.inject({}) { |h,(k,v)| h[k] = on_convention.include?(v) ? "#{self.class.human_attribute_name(k)} #{v}" : v; h }
     errors_hash.to_a
   end
 
