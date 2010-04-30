@@ -496,6 +496,20 @@ es_US:
     basic_info: INFORMACION BASICA
     old_password: "Vieja Contrase\xC3\xB1a"
   date: 
+    month_names: 
+    - 
+    - January
+    - February
+    - March
+    - April
+    - May
+    - June
+    - July
+    - August
+    - September
+    - October
+    - November
+    - December
     order: 
     - :month
     - :day
