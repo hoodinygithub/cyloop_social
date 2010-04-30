@@ -38,7 +38,7 @@ class FeedManager::DrupalItem < FeedManager::Abstract
       if site == "caen" or site == "cafr"
         "http://cm-msncanada.cyloop.com/cms/files/imagecache/#{size}/"
       elsif site == "ar"
-        "http://cm-msnlatino.cyloop.com/cms/files/imagecache/#{size}/"
+        "http://cm-msnlatam.cyloop.com/cms/files/imagecache/#{size}/"
       else
         "http://cm-msn#{site}.cyloop.com/cms/files/imagecache/#{size}/"
       end

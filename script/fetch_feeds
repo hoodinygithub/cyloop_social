@@ -10,7 +10,7 @@ URL_MAPS = [
   {:url => "http://cm.cyloop.com/feeds/msnmx/msnmx_cysocial_home_featured.xml", :output => "msnmx_url_featured_cysocial.xml"},
   {:url => "http://cm.cyloop.com/feeds/msnlatino/msnlatino_cysocial_home_featured.xml", :output => "msnlatino_url_featured_cysocial.xml"},
   {:url => "http://cm.cyloop.com/feeds/msnlatam/msnlatam_cysocial_home_featured.xml", :output => "msnlatam_url_featured_cysocial.xml"},
-  {:url => "http://cm.cyloop.com/feeds/msnlatino/msnlatino_cysocial_home_featured.xml", :output => "msnar_url_featured_cysocial.xml"},
+  {:url => "http://cm.cyloop.com/feeds/msnlatino/msnlatam_cysocial_home_featured.xml", :output => "msnar_url_featured_cysocial.xml"},
   {:url => "http://cm.cyloop.com/feeds/msncanada/msncaen_cysocial_home_featured.xml", :output => "msncaen_url_featured_cysocial.xml"},
   {:url => "http://cm.cyloop.com/feeds/msncanada/msncafr_cysocial_home_featured.xml", :output => "msncafr_url_featured_cysocial.xml"},  
   {:url => "http://cm.cyloop.com/feeds/drupal/cyloop_cysocial_home_featured_en.xml", :output => "cyloop_url_featured_cysocial.xml"},
