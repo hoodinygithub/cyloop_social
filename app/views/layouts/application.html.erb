@@ -6,7 +6,7 @@
     <%= render 'shared/stylesheets' %>
     <%= yield :head %>
   </head>
-  <body loggedin="<%= (logged_in?).to_s %>" locale="<%= current_site.default_locale %>" market="<%= current_site.code %>">
+  <body loggedin="<%= (logged_in?).to_s %>" locale="<%= current_site.default_locale %>" market="<%= current_site.code %>"<%= current_site.is_msn? ? ' class="msn"' : '' %>>
     <%= render_messenger_app %>
     <div id="container">
       <%= render 'shared/header' %>

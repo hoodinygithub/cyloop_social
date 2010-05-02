@@ -722,3 +722,8 @@ li.scope_toggle .mini_loader{
 	padding: 5px 0 6px 0;
 }
 
+
+body.msn div#container {
+	width: 1000px;
+	margin: 0 auto;
+}
