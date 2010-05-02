@@ -239,6 +239,10 @@ a:hover {
     background: #000;
 }
 
+#slides li img {
+	margin-top: 20px;
+}
+
 #slides .band_details {
     position: absolute;
     top: 140px;
