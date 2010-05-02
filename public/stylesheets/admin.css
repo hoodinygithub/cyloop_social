@@ -8,9 +8,14 @@
  */
 
 /* General */
-#main_content { border-top: 1px solid #ddd; margin-top: 20px; }
-h2 { display: block; width: 100%; }
-h3 { }
+#main_content { margin-top: 20px; }
+h1 { margin-top:20px; height: 14px; }
+h2 { 
+	display: block; 
+	width: 100%; 
+	font-size: 2em;
+}
+h2 .pill_button { font-size: 13px; float: right; margin-top: -5px; }
 h3 .pill_button { font-size: 13px; float: right; margin-top: -5px; }
 
 /* Forms */

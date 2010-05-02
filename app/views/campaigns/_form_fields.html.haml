@@ -1,61 +1,64 @@
 - content_for :append_to_head do
   = javascript_include_tag 'colorpicker'
   = javascript_include_tag 'campaigns'
+  = stylesheet_link_tag 'campaigns'
 
 - if campaign.errors.size > 0
   = error_messages_for :campaign
 
 %p
-  %label Name
+  %label Campaign name
   = f.text_field :name
+
+%p
+  %label Player ID
+  = f.select :player_id, @players, :prompt => "Choose one"
+  
+%p
+  %label locale
+  = f.select :locale, @locales, :prompt => "Choose one"
 
 %p
   %label Campaign Code
   = f.text_field :code
 
-%p
-  %label Start
-  = f.date_select :start, :use_month_numbers => true
-
-%p
-  %label End
-  = f.date_select :end, :use_month_numbers => true
-
-%p
-  %label Site
-  = f.select :site_id, @sites, :prompt => "Choose one"
+.fieldset
+  %h4 Style Settings
+  = custom_image_field :form => f, :label => 'Header Logo:', :field => 'header_logo', :model_instance => @campaign
+  = custom_image_field :form => f, :label => 'Index Logo:', :field => 'index_logo', :model_instance => @campaign
+  = custom_image_field :form => f, :label => 'Footer Logo:', :field => 'footer_logo', :model_instance => @campaign
   
-%p
-  %label Player
-  = f.select :player_id, @players, :prompt => "Choose one"
-
-%p
-  %label Hexcolor
-  = f.text_field :hexcolor
+  %br
   
-%p
-  %label Main image
-  - if campaign.main_image.file?
-    = image_tag campaign.main_image.url(:tiny)
-    %br
-  = f.file_field :main_image
-
-%p
-  %label Footer image
-  - if campaign.footer_logo.file?
-    = image_tag campaign.footer_logo.url(:tiny)
-    %br
-  = f.file_field :footer_logo
-
-%p
-  %label OpenX code or Ad
-  = f.text_area :adcode, :rows => 6
+  %p
+    %label Hexcolor
+    = f.text_field :hexcolor
+    = text_field 'empty', 'hexcolor', {:disabled => 'disabled'}
+        
+    
+.fieldset
+  %h4 Ad/Analytics
+  = custom_text_field :form => f, :label => 'Ad Zone ID:', :field => 'ad_zone_id', :model_instance => @campaign, :example => '"123", "205"'
   
-%p
-  %label Notes
-  = f.text_area :notes, :rows => 6
+  = custom_text_field :form => f, :label => 'Promo Code:', :field => 'promo_code', :model_instance => @campaign, :example => '"coke", "shakira"'
+  
+  = custom_text_field :form => f, :label => 'Google Profile ID:', :field => 'google_profile_id', :model_instance => @campaign, :example => 'UA-410870-40'
 
 
-%p
-  = f.check_box :active
-  Active
+.fieldset
+  %h4 Campaigns Status/Dates
+  %p
+    %label Start Date
+    = f.date_select :start, :use_month_numbers => true
+
+  %p
+    %label End Date
+    = f.date_select :end, :use_month_numbers => true
+
+  %p
+    %label Status
+    = f.select :campaign_status_id, @statuses, :prompt => "Choose one"
+
+/  %p
+/    %label Site
+/    = f.select :site_id, @sites, :prompt => "Choose one"

@@ -1,0 +1,92 @@
+table {
+  border: 1px solid #dddddd;
+}
+
+table th, table td {
+  border: 1px solid #dddddd;
+  padding: 3px 10px;
+}
+
+table th {
+  border: 1px solid gray;
+  background: #dddddd;
+}
+
+table th img.sort_arrow {
+	margin-top: 4px;
+}
+
+span.campaigns_image_size, span.campaigns_image_preview {
+  margin-left: 10px;
+  font-size: 0.8em;
+  color: black;
+}
+
+#campaign_header_logo_wxh, #campaign_index_logo_wxh, #campaign_footer_logo_wxh {width: 80px;}
+#campaign_ad_zone_id, #campaign_promo_code, #campaign_google_profile_id {
+  width: 120px;
+}
+
+.fieldset h4 {margin: 0px 0px 10px 0px;}
+
+.fieldset {
+  border: 1px solid #dddddd;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+}
+
+table.invisible_table {
+  border: 0px;
+}
+
+table.invisible_table td, table.invisible_table th, table.invisible_table tr {
+  border: 0px;
+}
+
+table.invisible_table td.row1 {
+  padding-left: 0px;
+  width: 100px;
+  /*border: 1px solid red;*/
+}
+
+table.invisible_table td.row2 {
+  width: 100px;
+  /*border: 1px solid green;*/
+}
+
+table.invisible_table td.row3 {
+  width: 140px;
+  /*border: 1px solid pink;*/
+}
+
+table.invisible_table td.row4 {
+  width: 150px;
+  /*border: 1px solid yellow;*/
+}
+
+table.invisible_table td.big {
+  width: 120px;
+  /*border: 1px solid red;*/
+}
+
+table.invisible_table td.big2 {
+  width: 200px;
+  /*border: 1px solid red;*/
+}
+
+#color_selector {
+  width: 20px; 
+  height: 20px; 
+  border: 1px solid gray;
+}
+
+#campaign_hexcolor {
+  display: inline;
+  width: 80px;
+}
+
+#empty_hexcolor {
+  width: 20px;
+  border: 1px solid gray;
+  disabled: disabled;
+}

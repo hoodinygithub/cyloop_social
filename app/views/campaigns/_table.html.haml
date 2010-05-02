@@ -1,22 +1,35 @@
+- content_for :append_to_head do
+  = stylesheet_link_tag 'campaigns'
+
 %table
   %tr
-    %th{:scope => "col", :width => "40%"} Name
-    %th{:scope => "col", :width => "20%"} Status
-    %th{:scope => "col", :width => "20%"} Actions
+    %th{:scope => "col"} 
+      = ordered_link :label => 'Campaign Name', :field => 'name', :default => 'asc', :path => campaigns_path
+
+    %th{:scope => "col"} Player ID
+    %th{:scope => "col"} Player Name
+    %th{:scope => "col"} Locale
+    %th{:scope => "col"} Start date
+    %th{:scope => "col"} End date
+    
+    %th{:scope => "col"}
+      = ordered_link :label => 'Status', :field => 'campaign_status_id', :default => 'asc', :path => campaigns_path
+    
+    %th{:scope => "col"} Actions
 
   - campaigns.each do |c|
     %tr
       %td= c.name 
-      %td
-        %strong
-          - if c.active?
-            Active
-            = link_to "(Deactivate)", deactivate_campaign_path(c), :method => :post, :confirm => "Are you sure?"
-          - else
-            Not active
-            = link_to "(Activate)", activate_campaign_path(c), :method => :post, :confirm => "Are you sure?"
+      %td= c.player_id
+      %td= c.player.player_key
+      %td= c.locale
+      %td= c.start.strftime("%m/%d/%Y")
+      %td= c.end.strftime("%m/%d/%Y")
+      %td= c.campaign_status ? c.campaign_status.value.capitalize : "-"      
           
       %td 
         = link_to 'Edit', edit_campaign_path(c)
         |
         = link_to 'Delete', campaign_path(c), :method => :delete, :confirm => "Are you sure?"
+
+%p= will_paginate @campaigns, pagination_args

@@ -48,19 +48,16 @@ module AssetsHelper
       'theme/ui.slider',
       'theme/ui.tabs',
       'theme/ui.theme',
-      'reset',
       'application',
       'jquery.infiniteCarousel',
-      'charts',
       'pages',
-      'player',
       'registration',      
       'jquery.autocomplete',
       'jcarousel/jquery.jcarousel',
       'jcarousel/skins/tango/skin',
       'facebox',
-      'colorpicker',
-      'profiles'
+      'cyloop',
+      'colorpicker'
       ]
   end
 
