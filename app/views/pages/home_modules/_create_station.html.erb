@@ -6,6 +6,15 @@
     $(document).ready(function() {
       var artistSearch = $("input[name='station_name']");
       var stationID = $("input[name='station_id']");
+      var listenButton = $("#start_listening_button");
+      
+      listenButton.click(function(e) {
+        if(parseInt($(this).attr('can_post'), 10)) {
+          $('form.new_station').submit();
+          listenButton.attr('can_post', 0);
+      	}
+      });
+      
       artistSearch.autocomplete("/stations.js", {
         formatItem: function(item) {
           return item[1];
@@ -15,16 +24,31 @@
         }        
       }).result(function(event, item) {
           stationID.val(item[0]);
+          listenButton.attr('can_post', 1);
+          listenButton.removeClass('grey_button_big').addClass('blue_button');          
         });
         
       artistSearch.css('color', '#c0d6e2');
       artistSearch.focus(function() {
+        if(artistSearch.val() == "<%= t('radio.search_hint') %>") {
+          artistSearch.attr('value', '')
+        }
         if (artistSearch.attr("touched") != 'true') {
           artistSearch.attr("touched", 'true');
           artistSearch.css('color', '#025d8c');
           artistSearch.attr('value', '')
         }
-      })
+      });
+
+      artistSearch.blur(function() {
+        if(artistSearch.val() == "") {
+          artistSearch.attr("touched", 'false');
+          artistSearch.css('color', '#c0d6e2');
+          artistSearch.attr('value', "<%= t('radio.search_hint') %>")
+          listenButton.attr('can_post', 0).removeClass('blue_button').addClass('grey_button_big');
+          stationID.val("");
+        }
+      });
     });
   </script>
 
@@ -54,7 +78,8 @@
       <div class="input_placeholder">
         <%= text_field_tag :station_name, t('home.type_artist_name'),  {:class => "text_input"} %>
         <div class="align_right">
-          <a href="#" onclick="$('form.new_station').submit();return false;" class="blue_button"><span><span><%= t("home.start_listening") %></span></span></a>
+          <%= grey_button( t("home.start_listening"), :id => "start_listening_button", :can_post => 0) %>
+          <!--a href="#" id="start_listening_button" onclick="return false;" class="blue_button" can_post="0"><span><span><%= t("home.start_listening") %></span></span></a-->
         </div>
       </div><!--/end input_placeholder -->
     <% end %><!--/end new_station -->

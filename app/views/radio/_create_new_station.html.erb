@@ -47,7 +47,7 @@
         artistSearch.attr("touched", 'false');
         artistSearch.css('color', '#c0d6e2');
         artistSearch.attr('value', "<%= t('radio.search_hint') %>")
-        listenButton.attr('can_post', 0);
+        listenButton.attr('can_post', 0).removeClass('blue_button').addClass('grey_button_big');
         stationID.val("");
         stationQueue.val("");
       }
