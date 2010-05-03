@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang='pt' xml:lang='pt' xmlns='http://www.w3.org/1999/xhtml'>
+  <head>
+    <title>Popup</title>
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type' />
+    <meta content='pt' name='lang' />
+    <script src="http://widget.cyloop.com/javascripts/swfobject.js" type="text/javascript"></script>
+    <script src="http://widget.cyloop.com/javascripts/htmlcomponent.js" type="text/javascript"></script>
+    <script src="http://widget.cyloop.com/javascripts/swf_utils.js" type="text/javascript"></script>
+  </head>
+  <body topmargin="0" leftmargin="0" marginwidth="0" marginheight="0">
+
+    <script defer="defer">
+      var HOST = "http://widget.cyloop.com/";
+      var flashvars = { urlContext: HOST, playerId: PLAYERID, market: "<%= current_site.code %>", mode: "widget" };
+      var params = { wmode: "opaque", allowScriptAccess: "always" };
+      var attrib = { id: "radio_widget", name: "radio_widget" };
+      swfobject.embedSWF( String(HOST + "flash/cyloop.swf?cb=" + Math.random(999999)), "radio_widget", "555", "450", "9", false, flashvars, params, attrib );
+      
+      window.onunload = function() { deactivateWidget(); };
+      
+      Cyloop = {};
+      Cyloop.Player = function ()
+      { 
+        this.createStation = function(s)
+        {
+          var station = {name: s};
+          swfobject.getObjectById("radio_widget").widgCreateStation(station);
+        };
+        this.playPause = function()
+        {
+          swfobject.getObjectById("radio_widget").widgPlayPause();
+        };
+        this.next = function()
+        {
+          swfobject.getObjectById("radio_widget").widgNext();
+        };
+      };
+
+      var player = new Cyloop.Player();
+      var sURL;
+      var sSong = {};
+      var reset = false;
+      setInterval( "attachToOpener()", 1000 );
+      function attachToOpener()
+      {
+        if(opener.cyloopWidget == undefined) 
+        {
+          reset = true;
+        }
+        else
+        {
+          if(reset && sSong)
+          {
+            opener.cyloopWidget.setPlayer(player, {ad: sURL, song: sSong});
+            reset = false;
+          }
+          else
+            opener.cyloopWidget.setPlayer(player);
+        }
+      }
+
+      function appReady()
+      {
+        opener.cyloopWidget.setPlayerReady(true);
+      }
+
+      function songInfo(song)
+      {
+        sSong = song;
+        opener.cyloopWidget.setState("playing", song);
+      }
+      
+      function advertisement(url)
+      {
+        sURL = url;
+        // opener.cyloopWidget.setAdvertisement(url);
+      }
+      
+      function playerState(status)
+      {
+        opener.cyloopWidget.widgetStatus(status);
+      }
+      
+      function deactivateWidget()
+      {
+        opener.cyloopWidget.deactivate();
+      }
+      
+      function editStationName(title)
+      {
+        opener.cyloopWidget.stationName(title);
+      }
+    </script>
+
+    <div id="radio_widget" />
+
+  </body>
+</html>

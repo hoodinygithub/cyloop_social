@@ -1,0 +1,2 @@
+page << render("widget")
+page.assign( "Cyloop.PopupContent", render( "player" ) )

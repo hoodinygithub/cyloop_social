@@ -1,0 +1,505 @@
+// init variables
+var WIDGHOST = "http://widget.cyloop.com";
+var READY = false;
+
+// js|css include logic
+function importJS(src, look_for, onload)
+{
+  var s = document.createElement("script");
+  s.setAttribute("type", "text/javascript");
+  s.setAttribute("src", src);
+  if(onload) waitForScriptLoad(look_for, onload);
+  var head = document.getElementsByTagName("head")[0];
+  if(head)
+    head.appendChild(s);
+  else
+    document.body.appendChild(s);
+}
+
+function importCSS(href, look_for, onload)
+{
+  var s = document.createElement("link");
+  s.setAttribute("rel", "stylesheet");
+  s.setAttribute("type", "text/css");
+  s.setAttribute("media", "screen");
+  s.setAttribute("href", href);
+  if(onload) waitForScriptLoad(look_for, onload);
+  var head = document.getElementsByTagName("head")[0];
+  if(head)
+    head.appendChild(s);
+  else
+    document.body.appendChild(s);
+}
+
+function waitForScriptLoad(look_for, callback)
+{
+  var interval = setInterval( function() {
+    if( eval("typeof " + look_for) != "undefined" )
+    {
+      clearInterval(interval);
+      callback();
+    }
+  }, 50 );
+}
+
+(function() {
+  importCSS(WIDGHOST + "/stylesheets/widget/widgStyles.css");
+  importCSS(WIDGHOST + "/stylesheets/jquery.auto-complete.css");
+  importJS("http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js", "jQuery", function() {  
+    $.noConflict();
+    importJS(WIDGHOST + "/javascripts/jquery.metadata.js");
+    importJS(WIDGHOST + "/javascripts/jquery.auto-complete.js");
+    importJS(WIDGHOST + "/javascripts/swfobject.js", "swfobject", function() { READY = true; } );
+  });
+})();
+
+// embed load command
+var intID, opt;
+function loadWidget(klass)
+{
+  intID = setInterval(checkLoaded, 1000);
+  opt = klass;
+}
+
+// check for loaded dependencies
+function checkLoaded()
+{
+  if(READY) 
+  {
+    clearInterval(intID);
+    return new Cyloop.Widget(opt);
+  }
+}
+
+// widget object
+Cyloop = {};
+Cyloop.Widget = function(options)
+{ 
+  // widget options
+  this.options = options;
+  this.mini = false;
+
+  // widget ui
+  this.element = jQuery("#" + this.options.elementId);
+
+  // widget content wrapper
+  this.element.append("<div id='widgView'></div>");
+  var content = jQuery("#widgView");
+  this.element.append("<div id='widgHandle' class='inactive' hasLayout='true'> </div>");
+  jQuery("#widgHandle").click( function() { window.cyloopWidget.setState("createStation"); } );
+  
+  // swf proxy for crossdomain requests
+  this.element.append("<div id='swfproxy'></div>");
+  var flashvars = {};
+  var params = { wmode: "transparent", allowScriptAccess: "always" };
+  var attrib = { id: "swfproxy", name: "swfproxy" };
+  swfobject.embedSWF( WIDGHOST + "/flash/swfproxy.swf" , "swfproxy", "1", "1", "9", false, flashvars, params, attrib );
+
+  ///////////////////////////////
+
+  // initial wrapper default view
+  content.append("<div id='initialWrapper' elemWidth='77'></div>");
+
+  this.initialWrapper = jQuery("div#initialWrapper");
+  this.activeView = this.initialWrapper;
+  this.init = true;
+
+  // initial body
+  this.initialWrapper.append("<div id='initialBody'></div>");
+  var initialBody = jQuery("#initialBody");
+  initialBody.append("<a></a>");
+  var a = jQuery("#initialBody a");
+
+  a.click( function() { window.cyloopWidget.setState("createStation") } );
+
+  this.initialWrapper.append("<div id='widgFooter'><span class='poweredBy'></span></div>");
+  
+  ///////////////////////////////
+  
+  content.append("<div id='minViewWrapper' elemWidth='77'></div>");
+  
+  this.minViewWrapper = jQuery("div#minViewWrapper");
+  this.minViewWrapper.append("<div id='albumCoverContainer'><a></a></div>");
+  this.minViewWrapper.append("<div id='widgFooter'><span class='poweredBy'></span></div>");
+  jQuery("#albumCoverContainer a").click( function() { window.cyloopWidget.mini = false; window.cyloopWidget.setState("return"); } )
+
+  // station wrapper
+  content.append("<div id='stationWrapper' elemWidth='287'></div>");
+  this.stationWrapper = jQuery("#stationWrapper");
+  
+  // station header
+  this.stationWrapper.append("<div id='stationHeader'><h1>Crea un radio personalizada</h1></div>");
+
+  // station body
+  this.stationWrapper.append("<div id='stationBody'></div>");
+  var stationBody = jQuery("div#stationBody");
+
+  // station form
+  stationBody.append("<form id='artistSearch' name='artistSearch'></form>");
+  form = jQuery("form#artistSearch");
+  form.append("<input type='text' id='station_name' name='station_name' class='search'/> <button name='submit' class='inactive' type='submit'/>");
+  submitActive(false);
+  this.stationWrapper.append("<div id='widgFooter'><span class='poweredBy'></span></div>");
+
+  // controls wrapper
+  content.append("<div id='controlsWrapper' elemWidth='287'></div>");
+  this.controlsWrapper = jQuery("#controlsWrapper");
+  
+  // advertisement
+  //this.controlsWrapper.append("<div id='adserv'></div>");
+  
+  // CONTROLS HEADER
+  this.controlsWrapper.append("<div id='controlsHeader'><span class='title'>Madonna</span><span class='create'>Crear una radio</span></div>");
+  jQuery("#controlsHeader .create").click( function() { window.cyloopWidget.setState("createStation"); } );
+
+  // CONTROLS BODY
+  this.controlsWrapper.append("<div id='controlsBody'></div>");
+  var controlsBody = jQuery("div#controlsBody");
+  controlsBody.append("<div id='songInfo'></div>");
+
+
+  this.controlsWrapper.append("<div id='widgFooter'><div class='controls'><span id='playpause' class='pause'></span><span id='next'></span></div><span class='poweredBy'></span></div>");
+  var playPause = jQuery("#playpause");
+  var next = jQuery("#next");
+  playPause.click( function() { window.cyloopWidget.playPause() } );
+  next.click( function() { window.cyloopWidget.next() } );
+  ////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////
+
+  // BUILD WIDGET UI /////////////////////////////////////////////////////////
+
+  // FUNCTIONS ///////////////////////////////////////////////////////////////
+
+  // FORM LOGIC
+  var artistSearch = jQuery("input[name='station_name']");
+  artistSearch.click(function(){
+    submitActive(false);
+    jQuery(this).attr("value", "");
+  });
+  
+  var delay;
+  artistSearch.keyup( function() { 
+    submitActive(false);
+    clearTimeout(delay);
+    var val = this.value;
+    if(val)
+    {
+      delay = setTimeout(function() { searchStation(val) }, 600);
+    }
+    //setTimeout(searchStation(this.value), 2000); 
+  } );
+
+  function searchStation(q)
+  { 
+    var req = "http://widget.cyloop.com/stations.js?q=" + q + "&limit=5";
+    swfobject.getObjectById("swfproxy").proxyreq(req, {});
+  }
+  
+  
+  
+  // FORM LOGIC
+
+  // INIT ACTION
+
+  // RADIO POPUP
+  this.openPopup = function() {
+    if(!this.playing)
+    {
+      this.popup = window.open("/" , "player_popup", "width=555,height=450,toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=0,resizable=0");
+      this.popup.document.open();
+      this.popup.document.write("<script>var PLAYERID='" + this.options.playerId + "';</script>");
+      this.popup.document.write( Cyloop.PopupContent );
+      this.popup.document.close();
+    }
+    // this.popup.blur();
+    // window.focus();
+  };
+
+  this.setPlayer = function ( player ) 
+  {
+    if(arguments[1])
+    {
+      this.player = player;
+      this.mini = true;
+      this.creatingStation = false;
+      this.playing = true;
+      this.setState("init");
+      this.songInfo(arguments[1].song);
+      this.setAdvertisement(arguments[1].ad);
+    }
+    else
+    {
+      this.player = player;
+    }
+  };
+
+  this.setPlayerReady = function(bool)
+  {
+    this.playerReady = bool;
+    window.cyloopWidget.createStation(this.queue);
+  };
+  // RADIO POPUP
+
+  // CREATE STATION
+  this.createStation = function(s)
+  {
+    this.creatingStation = true;
+    this.station = s;
+    if(!this.playerReady && !this.playing)
+      this.queue = s;
+    else
+      this.player.createStation(s);
+  };
+  
+  this.playPause = function()
+  {
+    this.player.playPause();
+  }
+  
+  this.widgetStatus = function(state)
+  {
+    if(state == "paused")
+      jQuery("#playpause").attr("class", "play");
+    else
+      jQuery("#playpause").attr("class", "pause");
+  }
+  
+  this.next = function()
+  {
+    this.player.next();
+  }
+
+
+  this.songInfo = function(song)
+  {
+    if(!this.mini)
+    {
+      jQuery("#stationWrapper").hide();
+      jQuery("#controlsWrapper").show();
+    }
+    
+    var title = jQuery("#controlsHeader span.title");
+    title.empty();
+    title.append(this.station);
+    var songInfo = jQuery("div#songInfo");
+    songInfo.empty();
+    songInfo.append("<img src=" + song.artist.picture.url + "></img>");
+    songInfo.append("<div id='info'></div>");
+    var info = jQuery("#info");
+    info.append("<h1>" + this.concat(song.name, 30) + "</h1>");
+    info.append("<span class='artist'><b>By: </b>" + song.artist.name + "</span>");
+    jQuery("#albumCoverContainer a").empty();
+    jQuery("#albumCoverContainer a").append("<img src=" + song.artist.picture.url + "></img>");
+  };
+  
+  this.stationName = function(title)
+  {
+    this.station = title;
+  }
+  
+  this.setAdvertisement = function(url)
+  {
+    if(!this.mini)
+    {
+      var adserv = jQuery("#adserv");
+      adserv.empty();
+      adserv.append("<iframe frameborder='0' style='width:234px; height:60px; border=0' src='" + url + "'></iframe>");
+    }
+    else
+    {
+      this.adURL = url;
+    }
+  }
+  
+  this.concat = function(str, limit)
+  {
+    if(str.length > limit)
+      return String( str.substr(0, limit) + "..." );
+    else
+      return str;
+  }
+  
+  this.setState = function(state)
+  {
+    switch(state)
+    {
+      case "createStation":
+        this.creatingStation = true;
+        jQuery("input[name='station_name']").attr("value", "Escribe el nombre de un artista");
+        jQuery("#widgHandle").attr("class", "active");
+        jQuery("#widgHandle").unbind("click");
+        jQuery("#widgHandle").click( function() { window.cyloopWidget.setState("init"); } );
+        this.animOut( this.element, 
+                      this.activeView.attr("elemWidth"),
+                      this.stationWrapper,
+                      null );
+        
+      break;
+      case "playing":
+        if(this.creatingStation || this.init)
+        {
+          jQuery("#widgHandle").attr("class", "active");
+          jQuery("#widgHandle").unbind("click");
+          //if(!this.mini)
+            jQuery("#widgHandle").click( function() { window.cyloopWidget.setState("init"); } );
+          //else
+            //jQuery("#widgHandle").click( function() { window.cyloopWidget.setState("return"); } );
+          this.creatingStation = false;
+          this.playing = true;
+          if(!this.returnEnabled)
+          {
+            jQuery("#stationHeader").append("<a id='return'></a>").click( function() { 
+              window.cyloopWidget.setState("return"); } );
+            this.returnEnabled = true;
+          }
+          this.animOut( this.element, 
+                        this.activeView.attr("elemWidth"),
+                        this.controlsWrapper,
+                        {id: "playing", song: {info: arguments[1]}} );
+          this.song = {};
+          this.song = arguments[1];
+                         
+        }
+        else
+        {
+          window.cyloopWidget.songInfo(arguments[1]);
+        }
+      break;
+      case "return":
+        this.creatingStation = false;
+        jQuery("#widgHandle").attr("class", "active");
+        jQuery("#widgHandle").unbind("click");
+        if(!this.mini)
+        {
+          jQuery("#widgHandle").click( function() { window.cyloopWidget.setState("init"); } );
+        }
+        else
+        {
+          this.mini = false;
+          jQuery("#widgHandle").click( function() { window.cyloopWidget.setState("playing", window.cyloopWidget.song); } );
+        }
+        this.animOut( this.element,
+                      this.activeView.attr("elemWidth"),
+                      this.controlsWrapper,
+                      null );
+      break;
+      case "init":
+        this.mini = true;
+        jQuery("#widgHandle").attr("class", "inactive");
+        jQuery("#widgHandle").unbind("click");
+        this.creatingStation = true;
+        if(this.playing)
+        {
+          jQuery("#widgHandle").click( function() {
+            window.cyloopWidget.mini = false;
+            window.cyloopWidget.setState("return"); 
+          } );
+          this.animOut( this.element,
+                        this.activeView.attr("elemWidth"),
+                        this.minViewWrapper,
+                        null );
+        }
+        else
+        {
+          jQuery("#widgHandle").click( function() { window.cyloopWidget.setState("createStation"); } );
+          this.animOut( this.element,
+                        this.activeView.attr("elemWidth"),
+                        this.initialWrapper,
+                        null );
+        }
+      break;
+    }
+    this.init = false;
+  };
+  
+  this.deactivate = function()
+  {
+    this.playing = false;
+    this.playerReady = false;
+    submitActive(false);
+    window.cyloopWidget.setState("init");
+    jQuery("#stationHeader a").remove();
+    window.cyloopWidget.popup = null;
+  }
+  
+  this.animOut = function(elem, dist, activate, options)
+  {
+    elem.animate(
+    {
+      left: String("-=" + dist)
+    }, 500,
+    function() 
+    {
+      if(options)
+      {
+        switch(options.id)
+        {
+          case "playing":
+            window.cyloopWidget.songInfo(options.song.info);
+          break;
+        } 
+      }
+      window.cyloopWidget.activeView.hide();
+      activate.show();
+      window.cyloopWidget.element.css( "left", String("-" + activate.attr("elemWidth") + "px") );
+      window.cyloopWidget.animIn(elem, activate);
+    });
+  };
+  
+  this.animIn = function(elem, active)
+  {
+    elem.animate(
+    {
+      left: String("+=" + active.attr("elemWidth"))
+    }, 500,
+    function() 
+    {
+      window.cyloopWidget.activeView = active;
+    });
+  };
+
+  window.cyloopWidget = this;
+  
+};
+
+// autocomplete logic
+function proxyrsp(obj)
+{ 
+  var parse = eval(obj);
+  var data = [];
+  var search = [];
+  for(var i = 0; i < parse.length; i++) 
+  { 
+    data.push( String(parse[i]["name"]) );
+    search.push( String(parse[i]["name"]).toLowerCase() );
+  }
+  
+  submitActive( jQuery.inArray(jQuery("input[name='station_name']").attr("value").toLowerCase(), search) != -1 );
+  
+  var ac = jQuery("input[name='station_name']");
+  ac.autoComplete("disable");
+  ac.autoComplete("flush", true);
+  ac.autoComplete({
+    dataSupply: data,
+    newList: true,
+    multiple: true,
+    useCache: false,
+    onSelect: function(e) { submitActive(true); }
+  });
+  ac.autoComplete("button.supply");
+}
+
+function submitActive(active)
+{
+  jQuery("form#artistSearch").unbind("submit");
+  var elem = jQuery("div#widgView div#stationWrapper div#stationBody form button");
+  active ? elem.attr("class", "active") : elem.attr("class", "inactive"); 
+  jQuery("form#artistSearch").submit( function(e) {
+    e.preventDefault();
+    if(active)
+    {
+      if( !window.cyloopWidget.popup ) window.cyloopWidget.openPopup();
+      window.cyloopWidget.createStation(jQuery(this).find('#station_name').attr('value'));
+    }
+  });
+}

@@ -1,0 +1,312 @@
+/* @override http://localhost:3000/stylesheets/widget/widgStyles.css */
+body {
+	border: 0; padding: 0; margin: 0;
+}
+
+div#widget_window {
+	position: fixed;
+	_position: absolute;
+	z-index: 99999;
+	bottom: 200px;
+	left: 0;
+}
+
+div#widget_window div#widgView {
+	float: left;
+	height: 90px;
+	clear: both;
+}
+
+/* -- INITIAL STATE WRAPPER -- */
+div#widgView div#initialWrapper {
+	display: block;
+	width: 77px;
+	background: #FFF url("/images/widget/widgInitialBackground.png") no-repeat;
+}
+
+div#widgView div#initialWrapper div#initialBody {
+	height: 60px;
+	padding-top: 5px;
+	padding-left: 5px;
+}
+
+div#widgView div#initialWrapper div#initialBody a {
+	display: block;
+	width: 67px;
+	height: 56px;
+	cursor: pointer;
+	background: #FFF url("/images/widget/widgInitPlay.png") no-repeat;
+}
+/* -- INITIAL STATE WRAPPER -- */
+
+/* -- MIN PLAYING STATE WRAPPER -- */
+div#widgView div#minViewWrapper {
+	display: none;
+	width: 77px;
+	background: #FFF url("/images/widget/widgInitialBackground.png") no-repeat;
+}
+
+div#widgView div#minViewWrapper div#albumCoverContainer {
+	height: 60px;
+	padding-top: 5px;
+	padding-left: 5px;
+}
+
+div#widgView div#minViewWrapper div#albumCoverContainer a {
+	display: block;
+	width: 67px;
+	height: 56px;
+	cursor: pointer;
+	background: #FFF url("/images/widget/widgAlbumBackground.png") no-repeat;
+}
+
+div#widgView div#minViewWrapper div#albumCoverContainer a img {
+	float: left;
+	width: 48px;
+	height: 48px;
+	margin: 3px 1px 1px 8px;
+	border: #333 1px solid;
+}
+/* -- MIN PLAYING STATE WRAPPER -- */
+
+/* -- STATION CREATE WRAPPER -- */
+/* HEADER */
+div#widgView div#stationWrapper {
+	display: none;
+	width: 287px;
+	background: #FFF url("/images/widget/widgBackground.png");
+}
+
+div#widgView div#stationWrapper div#stationHeader {
+	height: 24px;
+}
+
+div#widgView div#stationWrapper div#stationHeader h1 {
+	float: left;
+	margin: 0;
+	font: bold 12px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	padding-left: 5px;
+	padding-top: 4px;
+	color: #000;
+}
+
+div#widgView div#stationWrapper div#stationHeader a {
+	float: right;
+	cursor: pointer;
+	margin-top: 1px;
+	margin-right: 2px;
+	background: transparent url("/images/widget/widgReturn.png") no-repeat;
+	width: 27px;
+	height: 21px;
+}
+
+div#widgView div#stationWrapper div#stationHeader a:hover {
+	background: transparent url("/images/widget/widgReturnHover.png") no-repeat;
+}
+
+/* BODY */
+div#widgView div#stationWrapper div#stationBody {
+	height: 42px;
+	width: 286px;
+}
+
+div#widgView div#stationWrapper div#stationBody form {
+	position: relative;
+	margin: 0;
+	width: 285px;
+	height: 42px;
+	background-color: #000;
+}
+
+div#widgView div#stationWrapper div#stationBody form input.search {
+	position: absolute;
+	border: 1px solid #999;
+	width: 184px;
+	height: 26px;
+	_height: 22px;
+	top: 6px;
+	left: 5px;
+	_padding-top: 4px;
+	font: 12px Arial, Helvetica, Geneva, sans-serif;
+	color: #999;
+}
+
+div#widgView div#stationWrapper div#stationBody form button
+{
+	position: absolute;
+	cursor: pointer;
+	border: medium none;
+	top: 7px;
+	left: 195px;
+	width: 85px;
+	height: 26px;
+}
+
+div#widgView div#stationWrapper div#stationBody form button.active {
+	background: transparent url("/images/widget/widgSubmit.png") no-repeat left top;
+}
+
+div#widgView div#stationWrapper div#stationBody form button.inactive {
+	background: transparent url("/images/widget/widgSubmitInactive.png") no-repeat left top;
+}
+
+/* -- STATION CREATE WRAPPER -- */
+
+/* -- STATION CONTROLS WRAPPER -- */
+div#widgView div#controlsWrapper {
+	display: none;
+	width: 287px;
+	background: #FFF url("/images/widget/widgBackground.png");
+}
+
+div#widgView div#controlsWrapper div#adserv {
+	height: 68px;
+    position: absolute;
+    top: -69px;
+	overflow: hidden;
+	background-color: #E1E1E1;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	z-index: -1;
+}
+
+div#widgView div#controlsWrapper div#controlsHeader {
+	height: 24px;
+	width: 100%;
+}
+
+div#widgView div#controlsWrapper div#controlsHeader span.title {
+    float: left;
+	margin-top: 1px;
+	font: bold 12px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	padding-left: 5px;
+	padding-top: 3px;
+	color: #000;
+}
+
+div#widgView div#controlsWrapper div#controlsHeader span.create {
+	float: right;
+	cursor: pointer;
+	height: 17px;
+	font: bold 11px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	color: #00A5F8;
+	margin-top: 1px;
+	border-left: #CCC solid 1px;
+	padding-left: 5px;
+	padding-top: 4px;
+	padding-right: 5px;
+}
+
+div#widgView div#controlsWrapper div#controlsBody div#songInfo {
+	background-color: #000;
+	height: 42px;
+}
+
+div#songInfo img {
+	float: left;
+	width: 35px;
+	height: 35px;
+	margin: 2px 1px 1px 2px;
+	border: #333 1px solid;
+}
+
+div#songInfo div#info {
+	float: left;
+	margin-left: 10px;
+}
+
+div#songInfo div#info h1
+{
+	margin-top: 3px;
+	margin-bottom: 2px;
+	padding: 0;
+	font-weight: bold;
+	font: 14px Arial, Helvetica, Geneva, sans-serif;
+	color: #00A5F8;
+}
+
+div#info span {
+	display: block;
+	font: 11px Arial, Helvetica, Geneva, sans-serif;
+	line-height: 14px;
+	color: #00A5F8;
+}
+
+div#info span.label {
+	color: #FFF;
+}
+
+div#info span b{
+	font: 11px Arial, Helvetica, Geneva, sans-serif;
+	color: #FFF;
+}
+
+div#widgView div.controls {
+	float: left;
+	margin-left: 8px;
+	margin-top: 5px;
+}
+
+div#widgView div.controls span#playpause {
+	cursor: pointer;
+}
+
+div#widgView div.controls span.play {
+	display: block;
+	float: left;
+	width: 13px;
+	height: 14px;
+	background: transparent url("/images/widget/widgControlPlay.png") no-repeat;
+}
+
+div#widgView div.controls span.pause {
+	display: block;
+	float: left;
+	width: 13px;
+	height: 14px;
+	background: transparent url("/images/widget/widgControlPause.png") no-repeat;
+}
+
+div#widgView div.controls span#next {
+	cursor: pointer;
+	display: block;
+	float: left;
+	margin-left: 10px;
+	margin-top: 2px;
+	width: 13px;
+	height: 10px;
+	background: transparent url("/images/widget/widgControlNext.png") no-repeat;
+}
+/* -- STATION CONTROLS WRAPPER -- */
+
+/* FOOTER */
+div#widgView div#widgFooter {
+	height: 24px;
+}
+
+div#widgView div#widgFooter span.poweredBy {
+	float: right;
+	margin-top: 6px;
+	margin-right: 8px;
+	background: transparent url("/images/widget/widgCyloop.png") no-repeat;
+	width: 34px;
+	height: 15px;
+}
+
+/* FOOTER */
+
+div#widget_window div#widgHandle {
+	float: left;
+	width: 20px;
+	height:  90px;
+	cursor: pointer;
+}
+
+div#widget_window div.inactive {
+	background:  #000 url("/images/widget/widgHandle.png") no-repeat;
+}
+
+div#widget_window div.active {
+	background:  #000 url("/images/widget/widgHandle_deactivate.png") no-repeat;
+}

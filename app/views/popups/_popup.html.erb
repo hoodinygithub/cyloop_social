@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang='pt' xml:lang='pt' xmlns='http://www.w3.org/1999/xhtml'>
+  <head>
+    <title>Popup</title>
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type' />
+    <meta content='pt' name='lang' />
+  </head>
+  <body>
+
+    <h2> Pop-under (playing music) </h2>
+
+    <p> Radio playing music </p>
+
+    <div id="popup_contents"></div>
+
+    <input id="popup_input" type="text" onkeyup="typeOnOpener();"></input>
+
+    <script>
+
+      Cyloop = {};
+      Cyloop.Player = function () {
+        this.element = document.getElementById( "popup_contents" )
+        this.updateText = function ( text ) {
+          this.element.innerHTML = text;
+        }
+      }
+
+      var player = new Cyloop.Player();
+
+      function typeOnOpener() {
+        if ( opener.cyloopWidget != undefined ){
+          opener.cyloopWidget.updateText( document.getElementById( 'popup_input' ).value );
+        }
+      }
+
+      setInterval( "attachToOpener()", 1000 );
+
+      function attachToOpener(){
+        if ( opener.cyloopWidget != undefined ){
+          opener.cyloopWidget.setPlayer( player );
+        }
+      }
+
+      typeOnOpener();
+
+    </script>
+
+  </body>
+</html>
