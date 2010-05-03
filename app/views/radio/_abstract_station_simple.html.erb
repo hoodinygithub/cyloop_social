@@ -9,7 +9,7 @@
           <% if @station_obj.nil? %>
           <%= link_to avatar_for(artist, :artist_icon), radio_path(:station_id => abstract_station_simple.station.id) %>
           <% else %>
-          <%= link_to_function avatar_for(artist, :artist_icon), "Base.radio.set_station_details(#{abstract_station_simple.station.id}, #{abstract_station_simple.station_queue})" %>
+          <%= link_to_function avatar_for(artist, :artist_icon), "Base.radio.set_station_details(#{abstract_station_simple.station.id}, '#{abstract_station_simple.station_queue}')" %>
           <% end %>
         <% end %>
       </div>
