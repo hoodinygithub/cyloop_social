@@ -205,6 +205,9 @@ ActionController::Routing::Routes.draw do |map|
 
   # Mapping javascript locale file
   map.javascript_locale '/javascripts/locale.js', :controller => :javascripts, :action => :locale
+
+  # Widget
+  map.widget 'widget', :controller => 'popups'
   
   # Keep slug routes at the bottom
   map.user ':slug', :controller => 'accounts', :action => 'show'
