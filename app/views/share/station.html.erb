@@ -46,17 +46,16 @@
     </div>
 
     <% unless logged_in? %>
-      <label><b><%= t("share.email") %></b>
+      <label><b><%= t("share.email") %></b></label>
       <div class="grey_round_box">
         <%= text_field_tag "user_email", nil, :class => "input full_width" %>
       </div>
 
-      <label><b><%= t("share.name") %></b>
+      <label><b><%= t("share.name") %></b></label>
       <div class="grey_round_box">
         <%= text_field_tag "user_name", nil, :class => "input full_width" %>
       </div>
     <% end %>
-
     <label><b><%= t("share.message") %></b></label>
     <div class="grey_round_box">
       <%= text_area_tag "message", nil, :rows => "3", :cols => "20", :class => "input full_width" %>
