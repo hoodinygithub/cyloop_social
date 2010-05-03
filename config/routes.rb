@@ -100,6 +100,7 @@ ActionController::Routing::Routes.draw do |map|
     url.radio_xml 'radio/:station_id.:format', :action => 'show'
     url.artist_info 'radio/info/:station_id/:artist_id', :action => 'artist_info'
   end
+
 #  end
 
   # map.namespace :discover do |discover|
