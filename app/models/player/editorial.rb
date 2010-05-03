@@ -54,7 +54,7 @@ class Player::Editorial < Player::Base
   def to_xml(options = {})
     options[:root] = 'editorial_station'
     #options[:include] = :editorial_station
-    options[:except] = [:station_id, :ip, :artist, :name]
+    options[:except] = [:ip, :artist, :name]
     super(options) do |xml|
       xml << Player::EditorialItem.from(self.editorial_station, :ip => self.ip ).to_xml( :skip_instruct => true, :root => 'station', :skip_types => true )
     end
@@ -75,7 +75,6 @@ class Player::Editorial < Player::Base
         editorial.station_id = object.editorial_station.station.id
         #editorial.station.name = object.editorial_station.name
         editorial.id = object.editorial_station.id
-        editorial.station_id = object.editorial_station.station.id
         #editorial.site_id = object.site_id
       end
     end
