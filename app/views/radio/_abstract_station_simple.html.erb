@@ -6,11 +6,21 @@
         <% if artist.nil? %>
           <%= avatar_for(nil, :artist_icon) %>
         <% else %>
+          <% if @station_obj.nil? %>
+          <%= link_to avatar_for(artist, :artist_icon), radio_path(:station_id => abstract_station_simple.station.id) %>
+          <% else %>
           <%= link_to_function avatar_for(artist, :artist_icon), "Base.radio.set_station_details(#{abstract_station_simple.station.id}, #{abstract_station_simple.station_queue})" %>
+          <% end %>
         <% end %>
       </div>
       <div class="station_info">
-        <h2><%= link_to_function abstract_station_simple.name, "Base.radio.set_station_details(#{abstract_station_simple.station.id}, '#{abstract_station_simple.station_queue}')" %></h2>
+        <h2>
+          <% if @station_obj.nil? %>
+          <%= link_to abstract_station_simple.name, radio_path(:station_id => abstract_station_simple.station.id) %>
+          <% else %>
+          <%= link_to_function abstract_station_simple.name, "Base.radio.set_station_details(#{abstract_station_simple.station.id}, '#{abstract_station_simple.station_queue}')" %>
+          <% end %>
+        </h2>
         <%= station_contains(abstract_station_simple) %>
       </div>
     </div>

@@ -656,18 +656,19 @@ label.label_holder{
 
 #container .station {
 	width: 258px;
-	height: 65px;
+	height: 63px;
 }
 
 #container .station .avatar {
 	float: left;
-	width: 64px;
-	height: 64px;
+	width: 50px;
+	height: 50px;
 }
 
 #container .station_info {
-	float: right;
+	float: left;
 	width: 180px;
+	margin-left: 10px;
 }
 
 #container .station_info h2 {
