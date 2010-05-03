@@ -1,9 +1,21 @@
 class PlayersController < ApplicationController
 
+  #def show
+  #  @configs = current_site.players.find_by_player_key(params[:id])
+  #  respond_to do |format|
+  #    format.xml {render :layout => false}
+  #    format.html
+  #  end
+  #end
+
   def show
-    @configs = current_site.players.find_by_player_key(params[:id])
     respond_to do |format|
-      format.xml {render :layout => false}
+      block = Proc.new do
+        @configs = current_site.players.find_by_player_key(params[:id])
+        render :xml => Player::Player.from(@configs).to_xml(:root => "player")
+      end
+      format.xml(&block)
+      format.js(&block)
       format.html
     end
   end

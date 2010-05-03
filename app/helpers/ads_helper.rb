@@ -50,6 +50,7 @@ module AdsHelper
     # Represents the Consumers gender; required only for logged in users
     # Values: [gender] ex. “male”, “female”, etc.
     @ad_options[:v_gender] = current_user.gender rescue ''    
+
   
     # v_artistlabel
     # Represents the artists partner_label; required on all artist profiles
@@ -73,7 +74,12 @@ module AdsHelper
     @ad_options[:cb] = rand(99999999999)
         
     # Get the right Zone Id
-    @ad_options[:zoneid] = ad_get_zone_id(id)
+    @ad_options[:zoneid] = params.fetch(:cZoneId, ad_get_zone_id(id))
+    
+    # v_promocode
+    # Represent the promotion code of the active campaign
+    # Values: [promo] ex. "hoodiny", "taringa"
+    @ad_options[:v_promocode] = params.fetch(:cPromoCode, '')
     
     # Use iframe
     @ad_options[:iframe] = ["artist", "radio"].include?(ad_zone(id))
@@ -136,6 +142,8 @@ module AdsHelper
   end
 
   def banner_ad(id, options={})
+    return nil if ["top_songs_banner", "pixel_banner", "top_artists_banner"].include?(id)
+    
     options       = options.symbolize_keys    
     options       = ad_options(id, options)
     url_options   = options.to_a.map{|e| e.join("=")}.join("&")
@@ -176,3 +184,4 @@ module AdsHelper
     # end
   end  
 end
+
