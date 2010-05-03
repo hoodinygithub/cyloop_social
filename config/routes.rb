@@ -209,7 +209,7 @@ ActionController::Routing::Routes.draw do |map|
   # Widget
   map.widget 'widget', :controller => 'popups'
   map.resources :popups, :collection => {:widget => :any}
-
+  
   # Keep slug routes at the bottom
   map.user ':slug', :controller => 'accounts', :action => 'show'
   map.user_without_slug ':id', :controller => 'accounts', :action => 'show'
