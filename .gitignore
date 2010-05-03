@@ -1,3 +1,4 @@
+public/javascripts/locale.js
 /shared/
 config/database.yml
 config/resque.yml

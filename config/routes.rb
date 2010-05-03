@@ -205,7 +205,7 @@ ActionController::Routing::Routes.draw do |map|
   map.followee_destroy '/my/following/:id/destroy', :controller => 'followees', :action => 'destroy'
 
   # Mapping javascript locale file
-  map.javascript_locale '/javascripts/locale.js', :controller => :javascripts, :action => :locale
+  map.javascript_locale '/utils/locale.js', :controller => :javascripts, :action => :locale
 
   # Widget
   map.widget 'widget', :controller => 'popups'

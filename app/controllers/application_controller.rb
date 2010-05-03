@@ -10,7 +10,6 @@ class ApplicationController < ActionController::Base
 
   before_filter :do_basic_http_authentication
   before_filter :confirm_registration_code
-  before_filter :check_javascript_locale
 
   filter_parameter_logging :password, :password_confirmation
 
@@ -442,13 +441,6 @@ class ApplicationController < ActionController::Base
     when /Opera/       then "Opera"
     when /Safari/      then "Safari"
     else                    "Other Browser"
-    end
-  end
-
-  def check_javascript_locale
-    locale_fp = File.join(RAILS_ROOT, 'public/javascripts/locale.js')
-    if File.exists? locale_fp and RAILS_ENV == 'development'
-      File.unlink(locale_fp)
     end
   end
 
