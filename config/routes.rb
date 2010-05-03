@@ -186,23 +186,6 @@ ActionController::Routing::Routes.draw do |map|
     url.invasion '/invasion', :action => 'invasion'
   end
 
-  # Keep slug routes at the bottom
-  map.user ':slug', :controller => 'accounts', :action => 'show'
-  map.user_without_slug ':id', :controller => 'accounts', :action => 'show'
-  map.namespace :user do |u|
-    u.with_options :namespace => '', :path_prefix => ':slug', &profile_routes
-  end
-
-  map.artist ':slug', :controller => 'accounts', :action => 'show'
-  map.account_rss ':slug.:format', :controller => 'accounts', :action => 'show'
-
-  map.namespace :artist do |a|
-    a.with_options :namespace => '', :path_prefix => ':slug' do |artist|
-      profile_routes.call(artist)
-      artist.resources :songs, :member => {:queue => :post}, :has_many => :playlist_items
-    end
-  end
-
   map.msn_refresh '/msn/refresh', :controller => 'msn/refresh', :action => 'index'
   map.msn_channel '/msn/refresh/channel', :controller => 'msn/refresh', :action => 'channel'
 
@@ -222,5 +205,22 @@ ActionController::Routing::Routes.draw do |map|
 
   # Mapping javascript locale file
   map.javascript_locale '/javascripts/locale.js', :controller => :javascripts, :action => :locale
+  
+  # Keep slug routes at the bottom
+  map.user ':slug', :controller => 'accounts', :action => 'show'
+  map.user_without_slug ':id', :controller => 'accounts', :action => 'show'
+  map.namespace :user do |u|
+    u.with_options :namespace => '', :path_prefix => ':slug', &profile_routes
+  end
+
+  map.artist ':slug', :controller => 'accounts', :action => 'show'
+  map.account_rss ':slug.:format', :controller => 'accounts', :action => 'show'
+
+  map.namespace :artist do |a|
+    a.with_options :namespace => '', :path_prefix => ':slug' do |artist|
+      profile_routes.call(artist)
+      artist.resources :songs, :member => {:queue => :post}, :has_many => :playlist_items
+    end
+  end
 end
 
