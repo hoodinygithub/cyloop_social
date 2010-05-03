@@ -1,0 +1,36 @@
+/* @override http://localhost:3000/stylesheets/jquery.auto-complete.css */
+
+/**
+ * Auto Complete 5.0 - CSS Temp
+ * November 22, 2009
+ * Corey Hart @ http://www.codenothing.com
+ */ 
+
+ul.auto-complete-list {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	z-index: 100000;
+	max-height: 250px;
+	overflow: auto;
+	width: 185px !important;
+}
+
+ul.auto-complete-list li {
+	list-style-type: none;
+	margin: 0;
+	padding: 2px;
+	background-color: white;
+	color: #00A5F8;
+	cursor: pointer;
+	font: bold 12px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+}
+
+ul.auto-complete-list li.auto-complete-list-rollover {
+	background-color: #DFFFFF;
+}
+
+ul.auto-complete-list .auto-complete-striped {
+	background-color: #D7EEF9;
+}

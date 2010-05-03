@@ -209,7 +209,7 @@ ActionController::Routing::Routes.draw do |map|
 
   # Widget
   map.widget 'widget', :controller => 'popups'
-  map.resources :popups, :collection => {:widget => :any}
+  #map.resources :popups, :collection => {:widget => :any}
   
   # Keep slug routes at the bottom
   map.user ':slug', :controller => 'accounts', :action => 'show'
@@ -227,5 +227,6 @@ ActionController::Routing::Routes.draw do |map|
       artist.resources :songs, :member => {:queue => :post}, :has_many => :playlist_items
     end
   end
+  
+  map.connect ':controller/:action.:format'
 end
-

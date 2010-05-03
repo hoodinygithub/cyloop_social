@@ -1,5 +1,5 @@
 // init variables
-var WIDGHOST = "http://widget.cyloop.com";
+var WIDGHOST = "";
 var READY = false;
 
 // js|css include logic
@@ -191,7 +191,8 @@ Cyloop.Widget = function(options)
 
   function searchStation(q)
   { 
-    var req = "http://widget.cyloop.com/stations.js?q=" + q + "&limit=5";
+    //var req = "http://widget.cyloop.com/stations.js?q=" + q + "&limit=5";
+    var req = "/stations.js?q=" + q + "&limit=5";
     swfobject.getObjectById("swfproxy").proxyreq(req, {});
   }
   
@@ -463,15 +464,19 @@ Cyloop.Widget = function(options)
 };
 
 // autocomplete logic
+var map;
 function proxyrsp(obj)
 { 
-  var parse = eval(obj);
+  var parse = obj.split("\n");
   var data = [];
   var search = [];
+  map = {};
   for(var i = 0; i < parse.length; i++) 
   { 
-    data.push( String(parse[i]["name"]) );
-    search.push( String(parse[i]["name"]).toLowerCase() );
+    var item = parse[i].split("|");
+    data.push( item[1] );
+    search.push( item[1].toLowerCase() );
+    map[item[1]] = item[0];
   }
   
   submitActive( jQuery.inArray(jQuery("input[name='station_name']").attr("value").toLowerCase(), search) != -1 );
@@ -499,7 +504,8 @@ function submitActive(active)
     if(active)
     {
       if( !window.cyloopWidget.popup ) window.cyloopWidget.openPopup();
-      window.cyloopWidget.createStation(jQuery(this).find('#station_name').attr('value'));
+      var sn = jQuery(this).find('#station_name').attr('value');
+      window.cyloopWidget.createStation({name: sn, id: map[sn]});
     }
   });
 }
