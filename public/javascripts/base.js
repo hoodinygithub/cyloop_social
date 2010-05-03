@@ -1354,7 +1354,7 @@ Base.main_search.initialize_scope_toggle = function() {
 			}
       return false;
     });
-  jQuery(".sorting a").click(function(e) {						
+  jQuery("div.scope_result .sorting a").click(function(e) {						
 			e.preventDefault();
       $('#search_sort').attr('value', this.href.match(/sort_by\=(.*)/)[1]);
 			jQuery("#scope_" + $('#search_scope').val() + "_toggle").parentsUntil('ul').find('img.mini_loader').removeClass('hide');
