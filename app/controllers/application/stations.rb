@@ -15,7 +15,7 @@ module Application::Stations
           station = user_station.station
         end
       end
-    station  
+      station  
     end
   end  
 end

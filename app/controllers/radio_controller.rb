@@ -134,6 +134,8 @@ class RadioController < ApplicationController
         format.html do
           redirect_to(radio_path(:station_id => @station.id, :queue => true))
         end
+        @station = create_user_station(@station)
+        @station.playable.track_a_play_for(current_user) if @station.playable
         block = Proc.new do
           session[:current_station] = @station.id
           render :xml => Player::Station.from(@station.playable,

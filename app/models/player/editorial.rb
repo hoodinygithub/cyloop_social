@@ -74,7 +74,8 @@ class Player::Editorial < Player::Base
         editorial.account_id = object.profile_id if object.profile_id
         editorial.station_id = object.editorial_station.station.id
         #editorial.station.name = object.editorial_station.name
-        editorial.id = object.editorial_station.station.id
+        editorial.id = object.editorial_station.id
+        editorial.station_id = object.editorial_station.station.id
         #editorial.site_id = object.site_id
       end
     end

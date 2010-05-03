@@ -30,6 +30,7 @@ class Player::Station < Player::Base
   column :user_id, :integer
   column :artist_id, :integer
   column :station_count, :integer
+  column :tracking_id, :integer
 
   attr_accessor :includes
 
@@ -67,6 +68,7 @@ class Player::Station < Player::Base
         station.includes = object.includes(4)
         station.artist = Player::Artist.from( object.artist ) unless object.artist_id.nil?
         station.station_count = object.top_station.station_count if object.top_station
+        station.station_id = object.station.id
       end
     end
 
