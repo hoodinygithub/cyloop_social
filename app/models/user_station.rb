@@ -85,8 +85,12 @@ class UserStation < ActiveRecord::Base
     CGI::escape("#{RecEngine::BASE_URI}?request=getRecEnginePlayList&artistID=#{amg_id}&ipAddress=#{params[:ip_address]}&userID=#{owner_id}")
   end
 
-  def set_deleted
+  def deactivate!
     update_attribute(:deleted_at, Time.now)
+  end
+
+  def activate!
+    update_attribute(:deleted_at, nil)
   end
 
   def owner_is?(user)

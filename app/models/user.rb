@@ -150,10 +150,13 @@ class User < Account
   #TODO MUST BE REVISITED WHEN IMPLEMENTING LOCALES
 
   def create_user_station(options={})
-    user_station = UserStation.create(options.merge({:owner => self}))
-    user_station.create_station
-    self.increment!(:total_user_stations)
-    user_station.station
+    user_station = nil
+    transaction do
+      user_station = UserStation.create(options.merge({:owner => self}))
+      user_station.create_station
+      self.increment!(:total_user_stations)
+    end
+    user_station.station if user_station
   end
 
   def block(blockee_id)

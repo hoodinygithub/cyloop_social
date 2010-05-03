@@ -80,7 +80,7 @@ class UserStationsController < ApplicationController
 
   def destroy
     u = UserStation.find_by_id_and_owner_id!(params[:id], profile_user.id)
-    u.set_deleted
+    u.deactivate!
 
     respond_to do |format|
       format.html do

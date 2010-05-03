@@ -22,7 +22,7 @@ class StationsController < ApplicationController
   def delete
     @station = Station.find(params[:id]) rescue nil
     if @station and @station.playable.owner_is?(current_user)
-      @station.playable.set_deleted
+      @station.playable.deactivate!
       render :text => 'destroyed'
     else
       render :partial => 'no_edit_rights'
