@@ -24,7 +24,6 @@
       { 
         this.createStation = function(s)
         {
-          console.log(s.id);
           var station = {name: s.name, id: s.id};
           swfobject.getObjectById("radio_widget").widgCreateStation(station);
         };
