@@ -482,7 +482,8 @@ img.artist_icon_box.tiny {
 .chars_counter {
   float: right;
   color: #cccccc;
-  font-size: 1.5em
+  font-size: 1.5em;
+  margin-top: -27px;
 }
 
 .grey.small {
