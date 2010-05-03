@@ -1,7 +1,8 @@
 class JavascriptsController < ApplicationController
   CONFIG_PATH     = File.join(RAILS_ROOT, 'config')
   LOCALES_PATH    = File.join(CONFIG_PATH, 'locales')
-  JAVASCRIPT_PATH = File.join(RAILS_ROOT, 'public', 'javascripts')
+  
+  caches_page :locale
   
   def locale
     yml_file_path = File.join(CONFIG_PATH, 'javascript_locale.yml')
@@ -22,9 +23,6 @@ class JavascriptsController < ApplicationController
       end
     end
     
-    content = render :layout => false, :mime_type => Mime::Type.lookup("application/javascript")
-    open(File.join(JAVASCRIPT_PATH, 'locale.js'), 'w') do |file|
-      file.write(content)
-    end
+    render :layout => false, :mime_type => Mime::Type.lookup("application/javascript")
   end
 end
