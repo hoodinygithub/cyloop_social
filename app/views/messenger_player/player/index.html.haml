@@ -2,14 +2,21 @@
 %html
   %head
     = stylesheet_link_tag 'history'
-    = javascript_include_tag 'swfobject', 'htmlcomponent', 'history', :cache => 'flex_app_cached'
+    = stylesheet_link_tag 'defaults'
+    
+    = javascript_include_tag 'history'
+    = javascript_include_tag 'swf_utils'
+    = javascript_include_tag 'swfobject', 'htmlcomponent', :cache => 'flex_app_cached'
+
     %title Messenger Player
-  %body
+		
+  %body{:style => "padding: 0; margin: 0;"}
     - player_key = current_site.players.find_by_player_key("messengerradio_#{current_site.code}").id unless (current_site.players.find_by_player_key("messengerradio_#{current_site.code}")).nil?
     :javascript
       var flashvars = {
         urlContext:"/",
-        market:"#{current_site.code}"
+        market:"#{current_site.code}",
+        playerId:"messengerradio_#{current_site.code}"
       };
       var params = {wmode:"opaque"};
       var attributes = {id:"radio_engine", name:"radio_engine"};

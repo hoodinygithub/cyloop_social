@@ -14,4 +14,8 @@
 class Player < ActiveRecord::Base
   belongs_to :site
   has_many :campaigns
+
+  def active_campaign
+    self.campaigns.active.first
+  end
 end

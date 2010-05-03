@@ -34,6 +34,8 @@ xml.translations( :locale => I18n.locale ) do
     'messenger_player.share.email',
     'messenger_player.share.friend',
     'messenger_player.share.message',
+    'messenger_player.station_deleted',
+    'messenger_player.station_edit_success',
     'messenger_player.buylink.song',
     'messenger_player.buylink.select_store',
     'messenger_player.continue',
@@ -46,10 +48,11 @@ xml.translations( :locale => I18n.locale ) do
     'messenger_player.sign_in',
     'messenger_player.click_here',
     'messenger_player.we_hope_you_enjoyed',
-    'messenger_player.view_your_stations',
     'messenger_player.edit_station',
     'messenger_player.msn_music_is_free',
+    'messenger_player.view_your_stations',
     'messenger_player.to_login',
+    'stations.deleted',
     
     'possessives.first_person.stations',
 
