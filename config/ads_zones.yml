@@ -94,18 +94,18 @@ cyloop:
   radio_728x90: 19
   user_300x250: 12
   user_728x90: 82
-argentina:
-  artist_300x250: 111
-  artist_728x90: 112
-  home_300x250: 111
-  home_728x90: 112
-  messenger_234x60: 113
-  other_300x250: 111
-  other_728x90: 112
-  radio_300x250: 111
-  radio_728x90: 112
-  user_300x250: 111
-  user_728x90: 112
+msnar:
+  artist_300x250: 115
+  artist_728x90: 120
+  home_300x250: 116
+  home_728x90: 122
+  messenger_234x60: 108
+  other_300x250: 118
+  other_728x90: 125
+  radio_300x250: 117
+  radio_728x90: 123
+  user_300x250: 119
+  user_728x90: 121
 staging:
   artist_300x250: 111
   artist_728x90: 112
