@@ -113,8 +113,6 @@ es_ES:
     view: Mostrar
     filter_by: Filtrar por
     send: Enviar
-    filter_by: Filtrar por
-    send: Enviar
     approve: Aprobar
     create: Crear
     next: "Pr\xC3\xB3ximo"
@@ -669,8 +667,6 @@ es_ES:
     here: !binary |
       YXF1w60=
 
-    followers_of: Seguidores de
-    in: en
     followers_of: Seguidores de
     in: en
     created_by: Creada por
