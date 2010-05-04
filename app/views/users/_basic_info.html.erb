@@ -18,7 +18,7 @@
       </div>
       <div class="right_s">
         <b><%= f.label :slug %></b>
-        <div class="grey_round_box align_left slug_box">            
+        <div class="grey_round_box align_left slug_box">
           <span class="grey"><small>cyloop.com/</small></span>
           <b class='half_width'><%= @user.slug %></b>
         </div>
@@ -30,7 +30,7 @@
       <div class="left_side">
         <b><%= f.label :gender %></b>
         <div class="grey_round_box">
-          <%= f.select :gender, [['Male', 'Male'], ['Female', 'Female']] %>
+          <%= f.select :gender, [[t('user.male'), 'Male'], [t('user.female'), 'Female']] %>
         </div>
       </div>
       <div class="left_side">
@@ -63,7 +63,7 @@
         <div class="website_row">
           <%= hidden_field_tag "user[websites][]", h(site) %>
           <b>
-            <big><a href="http://<%= site %>"><%= site %></a></big> &nbsp; 
+            <big><a href="http://<%= site %>"><%= site %></a></big> &nbsp;
             <a href="#" class="black delete_site">[ <%= t('account_settings.delete') %> ]</a>
           </b>
         </div>
@@ -75,7 +75,7 @@
     <div class="form_row">
       <div id="avatar_image">
         <%= avatar_for(profile_account, :small) %>
-      </div> 
+      </div>
       <div class="add_update">
         <label class='label_holder'>
           <a href="#" id="avatar_upload_button" class="blue_button"><span><span><%= t('account_settings.add_update') %></span></span></a>
@@ -104,3 +104,4 @@
     </div><!--/end form_row -->
   <% end %><!--/end account_settings -->
 </div><!--/end accordion_box -->
+
