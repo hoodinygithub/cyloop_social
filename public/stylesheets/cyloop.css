@@ -732,3 +732,28 @@ body.msn div#container {
 #pager {
 	margin-left: -210px;
 }
+
+div#homepage_content .tabs_column {
+	margin-top: 30px;
+}
+
+div#homepage_content .tabs_column .tabs {
+	display: none;
+}
+
+div#top_stations {
+	padding-top: 22px;
+}
+
+div#top_stations {
+	padding-top: 22px;
+}
+
+div#now_playing_user_station {
+	width: 350px;	
+}
+
+#top_stations .station {
+	height: 51px;
+	font-size: 11px;
+}
