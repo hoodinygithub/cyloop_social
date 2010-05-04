@@ -114,6 +114,7 @@ es_ES:
     filter_by: Filtrar por
     send: Enviar
     filter_by: Filtrar por
+    send: Enviar
     approve: Aprobar
     create: Crear
     next: "Pr\xC3\xB3ximo"
@@ -444,8 +445,8 @@ es_ES:
     your_name: Tu nombre
     slug_available_exclamation: "Perfil est\xC3\xA1 disponible!"
     sign_out: ""
-    terms_and_conditions: "T\xC3\xA9rminos y condiciones"
     your_profile_name: El nombre de tu perfil
+    terms_and_conditions: "T\xC3\xA9rminos y condiciones"
     layers: 
       do_not_have_account: "Registrarte es muy f\xC3\xA1cil, s\xC3\xB3lo {{link}}"
       share: Comparte
@@ -456,7 +457,6 @@ es_ES:
       female: "ella est\xC3\xA1"
       add_mixer: Para guardar este mix, {{link}} para hacer tu login.
       know_text: "m\xC3\xA1s de {{count}} usuarios en {{place}}"
-      share_text: canciones, mixes, y radios con tus amigos
       male: !binary |
         w6lsIGVzdMOh
 
@@ -662,7 +662,6 @@ es_ES:
     click_to_unfollow: Pincha {{follow_link}} para dejar de seguir
     playlists: Playlists
     time: Hora
-    last_modified_at: "Ultima modificaci\xC3\xB3n hace {{when}}"
     done: Listo
     last_modified_at: "Ultima modificaci\xC3\xB3n hace {{when}}"
     albums: Albumes
@@ -673,6 +672,7 @@ es_ES:
     followers_of: Seguidores de
     in: en
     followers_of: Seguidores de
+    in: en
     created_by: Creada por
     radio: Radio
     album: Album
@@ -713,8 +713,8 @@ es_ES:
       category_business: Informacion sobre Negocios Generales o Relaciones Publicas
       category_security: Mi Seguridad
       category: Categoria
-      submit: Enviar mensaje
       support_form: Formulario de Soporte Tecnico
+      submit: Enviar mensaje
       welcome: Bienvenido a la seccion de Soporte Tecnico de Cyloop
       country: Pais
       category_account: Mi Cuenta
