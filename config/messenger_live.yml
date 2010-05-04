@@ -23,19 +23,19 @@
   appid: 000000004401CD43
   secret: WgStT8OsyLXOmh8Vi2Mspmhy73aZcWGW
   consenturl: http://consent.messenger.services.live.com/
-'www.cyloop.es':
-  appid: 00000000480210C4
-  secret: APMzTYhVi6i66iamk2W4eMhfGEhSMBfQ
-  consenturl: http://consent.messenger.services.live.com/
-'cyloop.es':
-  appid: 000000004401EDD9
-  secret: 6741tUhiF7QVHRVHqpK5TCtKDQeSrtNd
-  consenturl: http://consent.messenger.services.live.com/
+# 'www.cyloop.es':
+#   appid: 00000000480210C4
+#   secret: APMzTYhVi6i66iamk2W4eMhfGEhSMBfQ
+#   consenturl: http://consent.messenger.services.live.com/
+# 'cyloop.es':
+#   appid: 000000004401EDD9
+#   secret: 6741tUhiF7QVHRVHqpK5TCtKDQeSrtNd
+#   consenturl: http://consent.messenger.services.live.com/
 #staging servers
-'staging.cyloop.es':
-  appid: 00000000480214D9
-  secret: p23wjOYSMob5A6x5DF79TvE4BgFXA8ka
-  consenturl: http://consent.messenger.services.live.com/
+# 'staging.cyloop.es':
+#   appid: 00000000480214D9
+#   secret: p23wjOYSMob5A6x5DF79TvE4BgFXA8ka
+#   consenturl: http://consent.messenger.services.live.com/
 'staging.latino.hoodiny.com':
   appid: 000000004801DD98
   secret: J4kyx9TxrgFQ4bCbyb3BQlprQPupLz2Z
@@ -56,11 +56,11 @@
   secret: hn6mrbXXRddzPkTaLPQLZUOlif4FUw7n
   consenturl: http://consent.messenger.services.live.com/
   debug: true
-'staging.cyloop.com':
-  appid: 000000004801E738
-  secret: Jv8nIMrxBkCqLGMiKjlgb7yDGhFfjc8K
-  consenturl: http://consent.messenger.services.live.com/
-  debug: true
+# 'staging.cyloop.com':
+#   appid: 000000004801E738
+#   secret: Jv8nIMrxBkCqLGMiKjlgb7yDGhFfjc8K
+#   consenturl: http://consent.messenger.services.live.com/
+#   debug: true
 'staging.latam.hoodiny.com':
   appid: 000000004C01AF41
   secret: t3cfXHssBPyEPmEmmbUPehmnS6CtUZTa
