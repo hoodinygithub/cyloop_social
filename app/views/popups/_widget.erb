@@ -1,5 +1,5 @@
 // init variables
-var WIDGHOST = "http://staging.widget.hoodiny.com";
+var WIDGHOST = "http://widget.cyloop.com";
 var READY = false;
 
 // js|css include logic
@@ -191,8 +191,7 @@ Cyloop.Widget = function(options)
 
   function searchStation(q)
   { 
-    //var req = "http://widget.cyloop.com/stations.js?q=" + q + "&limit=5";
-    var req = "http://staging.widget.hoodiny.com/stations.js?q=" + q + "&limit=5";
+    var req = "http://widget.cyloop.com/stations.js?q=" + q + "&limit=5";
     swfobject.getObjectById("swfproxy").proxyreq(req, {});
   }
   
