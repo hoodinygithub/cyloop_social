@@ -15,6 +15,7 @@ class AlbumsController < ApplicationController
 
     @album = profile_artist.artist_albums.find( params[:id] )
     if !params[:song_id].blank? && params[:page].blank?
+      redirect_to "/#{params[:slug]}"
       @page = (songs.map(&:id).index(params[:song_id].to_i) / 15) + 1 rescue 1
     end
     
