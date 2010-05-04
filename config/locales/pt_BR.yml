@@ -643,8 +643,8 @@ pt_BR:
     - November
     - December
     order: 
-    - :month
     - :day
+    - :month
     - :year
     abbr_day_names: 
     - Sun
