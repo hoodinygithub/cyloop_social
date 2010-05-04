@@ -66,7 +66,7 @@
   secret: t3cfXHssBPyEPmEmmbUPehmnS6CtUZTa
   consenturl: http://consent.messenger.services.live.com/
   debug: true
-'staging.mx.hoodiny.com':
+'staging.cyloopsocial.mx.hoodiny.com':
   appid: 000000004C01AD6F
   secret: lzIYNqd2RBXT67a2zpE4wgfseElE9ajs
   consenturl: http://consent.messenger.services.live.com/
