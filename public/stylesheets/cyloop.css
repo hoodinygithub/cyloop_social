@@ -729,3 +729,6 @@ body.msn div#container {
 	width: 1000px;
 	margin: 0 auto;
 }
+#pager {
+	margin-left: -210px;
+}
