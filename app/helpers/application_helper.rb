@@ -790,7 +790,7 @@ module ApplicationHelper
     when 'msnlatino'
       'latino'
     when 'msnar'
-      'ar'
+      'argentina'
     else
       return '/images/cyloop_logo.png'
     end
