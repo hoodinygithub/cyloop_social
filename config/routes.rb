@@ -146,9 +146,11 @@ ActionController::Routing::Routes.draw do |map|
     end
     profile.queue_my_station '/stations/:station_id/queue', :controller => 'user_stations', :action => "queue"
     profile.resources :albums, :controller => 'albums', :only => [:index, :show]
+
     map.with_options(:controller => 'albums') do |url|
       url.queue_song ':slug/albums/:id/:song_id', :action => 'show'
     end
+
     profile.resources :stations, :controller => 'user_stations'
 
     profile.resources :biography, :only => :index

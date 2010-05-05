@@ -89,3 +89,12 @@ TVN:
   domains:
     - tvn.cyloop.com
     - staging.tvn.hoodiny.com
+
+Widget:
+  name: Widget
+  deploy_name: widget
+  code: widget
+  domains:
+    - widget.cyloop.com
+    - production.widget.hoodiny.com
+    - staging.widget.hoodiny.com

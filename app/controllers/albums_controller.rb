@@ -10,6 +10,11 @@ class AlbumsController < ApplicationController
   end
 
   def show
+    # Temporary fix
+    if !params[:song_id].blank? && params[:page].blank?
+      redirect_to "/#{params[:slug]}"
+    end
+
     # This stops /my/album routes until we have Artist private
     render( :nothing => true) && return if params[:slug].blank?
 
