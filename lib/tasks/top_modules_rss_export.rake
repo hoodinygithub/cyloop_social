@@ -24,7 +24,7 @@ namespace :db do
       case feed
       when /top_songs/ then items = site.summary_top_songs.limited_to(10)
       when /top_artists/ then items = site.summary_top_artists.limited_to(10)
-      when /top_stations/ then items = site.summary_top_stations.limited_to(10)
+      when /top_stations/ then items = site.top_abstract_stations.limited_to(10)
       end
 
       return if items.empty?
@@ -57,14 +57,14 @@ namespace :db do
               link = "http://#{site.domain}/#{s.artist.slug}"
               img = s.artist.avatar_file_name.nil? ? "http://assets.cyloop.com/storage?fileName=/.elhood.com-2/usr/#{s.artist_id}/image/thumbnail/x46b.jpg" : s.artist.avatar_file_name.sub(/hires/,'thumbnail')
             when /top_stations/ then
-              title = "#{s.station.name}"
-              link = "http://#{site.domain}/radio?station_id=#{s.station_id}"
-              if s.station.artist.nil?
-                img = "http://assets.cyloop.com/storage?fileName=/.elhood.com-2/usr/#{s.station.id}/image/thumbnail/x46b.jpg"
-              elsif s.station.artist.avatar_file_name.nil?
-                img = "http://assets.cyloop.com/storage?fileName=/.elhood.com-2/usr/#{s.station.artist_id}/image/thumbnail/x46b.jpg"
+              title = "#{s.name}"
+              link = "http://#{site.domain}/radio?station_id=#{s.station.id}"
+              if s.artist.nil?
+                img = "http://assets.cyloop.com/storage?fileName=/.elhood.com-2/usr/#{s.id}/image/thumbnail/x46b.jpg"
+              elsif s.artist.avatar_file_name.nil?
+                img = "http://assets.cyloop.com/storage?fileName=/.elhood.com-2/usr/#{s.artist_id}/image/thumbnail/x46b.jpg"
               else
-                img = s.station.artist.avatar_file_name.sub(/hires/,'thumbnail')
+                img = s.artist.avatar_file_name.sub(/hires/,'thumbnail')
               end
             end
 
