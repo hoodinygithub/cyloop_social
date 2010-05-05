@@ -7,7 +7,8 @@ module Application::MsnMessenger
   end
 
   def is_msn_messenger_enabled?
-    request.port == 80 && MessengerLiveService.current_login( request.host )
+    # request.port == 80 && MessengerLiveService.current_login( request.host )
+    false
   end
 
   memoize :is_msn_messenger_enabled?
