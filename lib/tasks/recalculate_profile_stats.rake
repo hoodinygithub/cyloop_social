@@ -1,6 +1,6 @@
 namespace :db do
   namespace :populate do
-    desc "Update accounts cached counts column with summarized data from song_listens, profile_visits and followings"
+    desc "Update accounts cached counts column with summarized data from station_artists, profile_visits and followings"
     task :profile_stats => :environment do
       include Timebox
       
@@ -11,17 +11,17 @@ namespace :db do
       connection.execute 'DROP TABLE IF EXISTS `_cached_following_count_updates`'
       connection.execute 'DROP TABLE IF EXISTS `_cached_visit_count_updates`'
       
-      timebox "Create temp table for song count updates..." do
-        query = <<-EOF
-        CREATE TABLE `_cached_song_count_updates` (
-          `id` int(11),
-          `song_play_count` int(11) DEFAULT 0,
-          `total_listen_count` int(11) DEFAULT 0,
-          PRIMARY KEY(`id`)          
-        ) ENGINE=InnoDB DEFAULT CHARSET=utf8
-        EOF
-        connection.execute query
-      end
+      # timebox "Create temp table for song count updates..." do
+      #   query = <<-EOF
+      #   CREATE TABLE `_cached_song_count_updates` (
+      #     `id` int(11),
+      #     `song_play_count` int(11) DEFAULT 0,
+      #     `total_listen_count` int(11) DEFAULT 0,
+      #     PRIMARY KEY(`id`)          
+      #   ) ENGINE=InnoDB DEFAULT CHARSET=utf8
+      #   EOF
+      #   connection.execute query
+      # end
 
       timebox "Create temp table for followings count updates..." do
         query = <<-EOF
@@ -65,9 +65,9 @@ namespace :db do
         UPDATE accounts a 
         INNER JOIN (
           SELECT artist_id, count(*) AS total_user_stations 
-          FROM user_station_artists usa 
-          INNER JOIN user_stations us ON usa.user_station_id = us.id 
-          WHERE us.deleted_at IS NULL 
+          FROM abstract_station_artists asa 
+          INNER JOIN abstract_stations abs ON asa.abstract_station_id = abs.id 
+          WHERE abs.deleted_at IS NULL 
           GROUP BY 1
         ) AS q ON a.id = q.artist_id 
         SET a.total_user_stations = q.total_user_stations
@@ -89,29 +89,29 @@ namespace :db do
         connection.execute query
       end
 
-      timebox "Calculate and insert user song play counts into temp table..." do
-        query = <<-EOF
-        INSERT INTO `_cached_song_count_updates`(`id`, `song_play_count`, `total_listen_count`)
-        SELECT s.listener_id, sum(s.total_listens), 0 FROM `song_listens` s
-        INNER JOIN `accounts` a on s.listener_id = a.id
-        INNER JOIN `songs` sg on s.song_id = sg.id
-        WHERE a.type = 'User' AND sg.deleted_at IS NULL
-        GROUP BY 1
-        EOF
-        connection.execute query
-      end
+      # timebox "Calculate and insert user song play counts into temp table..." do
+      #   query = <<-EOF
+      #   INSERT INTO `_cached_song_count_updates`(`id`, `song_play_count`, `total_listen_count`)
+      #   SELECT s.listener_id, sum(s.total_listens), 0 FROM `song_listens` s
+      #   INNER JOIN `accounts` a on s.listener_id = a.id
+      #   INNER JOIN `songs` sg on s.song_id = sg.id
+      #   WHERE a.type = 'User' AND sg.deleted_at IS NULL
+      #   GROUP BY 1
+      #   EOF
+      #   connection.execute query
+      # end
 
-      timebox "Calculate and insert artist song listen counts into temp table..." do
-        query = <<-EOF
-        INSERT INTO `_cached_song_count_updates`(`id`, `song_play_count`, `total_listen_count`)
-        SELECT s.artist_id, 0, sum(s.total_listens) FROM `song_listens` s
-        INNER JOIN `accounts` a on s.artist_id = a.id
-        INNER JOIN `songs` sg on s.song_id = sg.id
-        WHERE a.type = 'Artist' AND sg.deleted_at IS NULL
-        GROUP BY 1
-        EOF
-        connection.execute query
-      end
+      # timebox "Calculate and insert artist song listen counts into temp table..." do
+      #   query = <<-EOF
+      #   INSERT INTO `_cached_song_count_updates`(`id`, `song_play_count`, `total_listen_count`)
+      #   SELECT s.artist_id, 0, sum(s.total_listens) FROM `song_listens` s
+      #   INNER JOIN `accounts` a on s.artist_id = a.id
+      #   INNER JOIN `songs` sg on s.song_id = sg.id
+      #   WHERE a.type = 'Artist' AND sg.deleted_at IS NULL
+      #   GROUP BY 1
+      #   EOF
+      #   connection.execute query
+      # end
 
 
       timebox "Calculate and insert followings counts into temp table..." do
@@ -132,14 +132,14 @@ namespace :db do
         connection.execute query
       end
 
-      timebox "Update song counts in accounts..." do
-        query = <<-EOF
-        UPDATE `accounts` a
-        INNER JOIN `_cached_song_count_updates` t ON a.id = t.id 
-        SET a.song_play_count = t.song_play_count, a.total_listen_count = t.total_listen_count
-        EOF
-        connection.execute query
-      end
+      # timebox "Update song counts in accounts..." do
+      #   query = <<-EOF
+      #   UPDATE `accounts` a
+      #   INNER JOIN `_cached_song_count_updates` t ON a.id = t.id 
+      #   SET a.song_play_count = t.song_play_count, a.total_listen_count = t.total_listen_count
+      #   EOF
+      #   connection.execute query
+      # end
 
       timebox "Update followings counts in accounts..." do
         query = <<-EOF

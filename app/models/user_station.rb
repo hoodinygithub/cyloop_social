@@ -38,9 +38,10 @@ class UserStation < ActiveRecord::Base
   validates_uniqueness_of :abstract_station_id, :scope => :owner_id, :message => "has already been created for you"
   
   before_save :set_name_to_station_name
-  has_many :user_station_artists
-  has_many :artists, :through => :user_station_artists
-  
+  #has_many :user_station_artists
+  #has_many :artists, :through => :user_station_artists
+  delegate :includes, :refresh_included_artists, :to => :abstract_station
+
   def self.most_created(limit = nil)
     # count(:include => :abstract_station, :group => :abstract_station_id, :limit => limit, :order => "count_all DESC").map do |id, count|
     #   #Artist.find(id)
@@ -56,29 +57,29 @@ class UserStation < ActiveRecord::Base
     all(:limit => limit, :joins => [:owner, :abstract_station], :conditions => 'user_stations.deleted_at IS NULL AND accounts.deleted_at IS NULL AND abstract_stations.deleted_at IS NULL', :order => 'user_stations.created_at DESC', :select => 'STRAIGHT_JOIN user_stations.*' )
   end
 
-  def refresh_included_artists(params={})
-    params[:ip_address] ||= '67.63.37.2'
-    options = params.merge(:userID => owner_id, :artistID => amg_id)
-
-    new_artists = []
-    new_artists = RecEngine.new(options).get_rec_engine_playlist_artists unless amg_id.nil?
-    remove_artists
-    unless new_artists.empty? 
-      new_artists.each do |x|
-        artist = Artist.find(x.artist_id.to_i) rescue nil 
-        if artist
-          artist.increment_total_user_stations
-          user_station_artists << UserStationArtist.find_or_create_by_artist_id_and_user_station_id(:artist_id => x.artist_id, :user_station_id => self.id, :album_id => x.album_id)
-        end          
-      end
-    end
-    update_attribute(:total_artists, new_artists.size)
-  end
-
-  def includes(limit=3)
-    refresh_included_artists unless total_artists > 0
-    user_station_artists.limited_to(limit)
-  end
+  # def refresh_included_artists(params={})
+  #   params[:ip_address] ||= '67.63.37.2'
+  #   options = params.merge(:userID => owner_id, :artistID => amg_id)
+  # 
+  #   new_artists = []
+  #   new_artists = RecEngine.new(options).get_rec_engine_playlist_artists unless amg_id.nil?
+  #   remove_artists
+  #   unless new_artists.empty? 
+  #     new_artists.each do |x|
+  #       artist = Artist.find(x.artist_id.to_i) rescue nil 
+  #       if artist
+  #         artist.increment_total_user_stations
+  #         user_station_artists << UserStationArtist.find_or_create_by_artist_id_and_user_station_id(:artist_id => x.artist_id, :user_station_id => self.id, :album_id => x.album_id)
+  #       end          
+  #     end
+  #   end
+  #   update_attribute(:total_artists, new_artists.size)
+  # end
+  # 
+  # def includes(limit=3)
+  #   refresh_included_artists unless total_artists > 0
+  #   user_station_artists.limited_to(limit)
+  # end
 
   def station_queue(params={})
     params[:ip_address] ||= '67.63.37.2'
