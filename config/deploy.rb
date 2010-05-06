@@ -54,7 +54,7 @@ ssh_options[:paranoid] = false
 # can also specify options that can be used to single out a specific subset of boxes in a
 # particular role, like :primary => true.
 
-set :branch, "master"
+set :branch, "hotfix-20100506"
 
 #EY06 All Sites
 task :production do
@@ -69,7 +69,7 @@ task :production do
   role :app, "70.42.33.4:8137", :no_release => true, :no_symlink => true
   role :app, "70.42.33.4:8138", :no_release => true, :no_symlink => true
 
-  set :branch, "release-10-001"
+  set :branch, "release-20100505"
   set :rails_env, "production"
   set :environment_database, defer { production_database }
   set :environment_dbhost, defer { production_dbhost }

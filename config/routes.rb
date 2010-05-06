@@ -183,12 +183,7 @@ ActionController::Routing::Routes.draw do |map|
       my.resource :customizations, :collection => { :restore_defaults => :get, :remove_background_image => :get }, :path_prefix => 'my/settings'
     end
   end
-
-  map.with_options(:controller => 'custom_artists') do |url|
-    url.detour '/detour', :action => 'detour'
-    url.invasion '/invasion', :action => 'invasion'
-  end
-
+  
   map.msn_refresh '/msn/refresh', :controller => 'msn/refresh', :action => 'index'
   map.msn_channel '/msn/refresh/channel', :controller => 'msn/refresh', :action => 'channel'
 
