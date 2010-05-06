@@ -117,7 +117,6 @@ namespace :twitter do
           account = Account.find_by_twitter_id(status['user']['id'])
           unless account.nil?
             Activity::Twitter::store(account, status)
-            Resque.enqueue(TrimJob, :account_id => account.id)
             puts "@#{status['user']['screen_name']}: #{status['text']}"
           else
             puts "There is no account with @#{status['user']['screen_name']} (#{status['user']['id']})"
