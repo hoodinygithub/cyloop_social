@@ -1,6 +1,8 @@
 class StationsController < ApplicationController
-  before_filter :login_required, :only => [:edit, :delete]
-  # TODO: Let's keep this as a reminder of the refactoring we *must* do
+  before_filter :login_required, :only => [:edit, :delete]  
+  # caches_action :top, :cache_path => :stations_cache_path_url, :expires_delta => EXPIRATION_TIMES['radio_top_stations']
+  # TODO: Let's keep this as a reminder of the refactoring we *must* do  
+  
   def index
     @stations = AbstractStation.search(params[:q], :per_page => params[:limit] || 15, :page => 1)
     respond_to do |format|
@@ -58,5 +60,11 @@ class StationsController < ApplicationController
     @locals[:style] = 'last_box' if params[:last_bot]
     render :layout => false
   end
+
+# private
+# 
+#   def stations_cache_path_url
+#     "#{site_cache_key}/#{controller_name}/#{action_name}/#{params[:format]}"
+#   end
 
 end
