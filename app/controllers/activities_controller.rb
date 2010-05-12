@@ -107,13 +107,19 @@ class ActivitiesController < ApplicationController
       group        = :just_me        if @filter_type == 'me'
       group        = :just_following if @filter_type == 'following'
     end
+
     
-    collection      = @account.activity_feed(:group => group)
-    @collection     = collection.sort_by {|a| a['timestamp'].to_i}.reverse
+    # collection      = @account.activity_feed(:group => group)
+    # @collection     = collection.sort_by {|a| a['timestamp'].to_i}.reverse
+    # =>
+    @collection = @account.activity_feed(:group => group)
+    @has_more = true if collection.size - ACTIVITIES_MAX > 0
+
+    account_ids = @collection.map{|a| a['account_id']}.reject(&:nil?)
+    station_ids = @collection.map{|a| a['item_id']}.reject(&:nil?)
     
-    if collection.size - ACTIVITIES_MAX > 0
-      @has_more = true
-    end
+    Account.find(:all, :conditions => ["id in (?)", account_ids])
+    Station.find(:all, :conditions => ["id in (?)", station_ids], :include => [:playable, :artist])
 
     @collection.each do |a|
       account      =  Account.find(a['account_id'])
