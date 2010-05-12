@@ -73,7 +73,7 @@ class AbstractStation < ActiveRecord::Base
   end
 
   def includes(limit=3)
-    refresh_included_artists unless total_artists < 1
+    refresh_included_artists if total_artists < 1
 
     abstract_station_artists.limited_to(limit)
   end
