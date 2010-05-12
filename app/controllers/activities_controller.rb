@@ -121,7 +121,7 @@ class ActivitiesController < ApplicationController
     station_ids = @collection.map{|a| a['item_id']}.reject(&:nil?)
     
     Account.find(:all, :conditions => ["id in (?)", account_ids])
-    Station.find(:all, :conditions => ["id in (?)", station_ids], :include => [:playable, :artist])
+    Station.find(:all, :conditions => ["id in (?)", station_ids], :include => [:playable])
 
     @collection.each do |a|
       account      =  Account.find(a['account_id'])
