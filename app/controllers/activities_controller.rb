@@ -113,8 +113,10 @@ class ActivitiesController < ApplicationController
     # @collection     = collection.sort_by {|a| a['timestamp'].to_i}.reverse
     # =>
     @collection = @account.activity_feed(:group => group)
-    @has_more = true if collection.size - ACTIVITIES_MAX > 0
+    @has_more = true if @collection.size - ACTIVITIES_MAX > 0
 
+    # Find and cache in memory the accounts and stations so we don't have to do
+    # it throughout this block.
     account_ids = @collection.map{|a| a['account_id']}.reject(&:nil?)
     station_ids = @collection.map{|a| a['item_id']}.reject(&:nil?)
     

@@ -54,7 +54,7 @@ ssh_options[:paranoid] = false
 # can also specify options that can be used to single out a specific subset of boxes in a
 # particular role, like :primary => true.
 
-set :branch, "hotfix-20100506"
+set :branch, "performance_enhancements"
 
 #EY06 All Sites
 task :production do
