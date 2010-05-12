@@ -24,7 +24,7 @@ class RecEngine::Station < RecEngine::Abstract
   end
 
   def station
-    s = AbstractStation.find_by_amg_id(normalize_amg_id)
+    s = AbstractStation.find_by_amg_id(normalize_amg_id, :include => [{:playable => :artist}])
     s.station unless s.nil?
   end
 
