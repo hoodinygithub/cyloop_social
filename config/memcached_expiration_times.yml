@@ -2,6 +2,7 @@
 # it will be picked up by the views after a server restart.
 
 defaults: &defaults
+  abstract_station_includes: <%= 12.hours %> # app/models/abstract_station.rb:82
   artist_recent_listeners: <%= 10.minutes %> # app/views/artists/_sidebar.html.haml:16
   artist_similar_artists:  <%= 10.minutes %> # app/views/artists/_sidebar.html.haml:22
   artist_show_most_listened_songs: <%= 10.minutes %>  # app/views/artists/show.html.haml:34
@@ -24,6 +25,7 @@ defaults: &defaults
   radio_artist_info_partial: <%= 30.minutes %> # app/views/radio/_artist_info.html.haml
   user_station_songs: <%= 20.minutes %> # app/controllers/user_stations_controller:54
   radio_show: <%= 1.minutes %> # app/controllers/radio_controller.rb:3
+  radio_artist_info: <%= 12.hours %> # app/controllers/radio_controller.rb:3
   artist_recent_listeners_js: <%=  %>  # app/controllers/artists_controller.rb:2
   artist_similar_artists_js: <%= 30.minutes %> # app/controllers/artists_controller.rb:3
 

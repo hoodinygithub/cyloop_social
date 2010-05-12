@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  caches_page :home, :if => Proc.new { |c| !c.request.format.js? }
+  caches_page :home
   caches_page :about, :faq, :feedback, :privacy_policy, :safety_tips, :terms_and_conditions
   
   before_filter :authenticate, :only => [:x46b]
@@ -29,14 +29,14 @@ class PagesController < ApplicationController
         @feed_featured  = drupal_feed(url_featured, 5)
       end
 
-      format.js do
-        if logged_in?
-          @artists = Artist.artists_by_recommended( rec_engine.get_recommended_artists(:number_of_records => 30), 5)
-          render :template => 'pages/home.js.erb', :layout => false
-        else
-          head :ok
-        end
-      end
+      # format.js do
+      #   if logged_in?
+      #     @artists = Artist.artists_by_recommended( rec_engine.get_recommended_artists(:number_of_records => 30), 5)
+      #     render :template => 'pages/home.js.erb', :layout => false
+      #   else
+      #     head :ok
+      #   end
+      # end
 
     end
   end

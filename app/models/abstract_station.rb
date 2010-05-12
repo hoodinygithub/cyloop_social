@@ -73,12 +73,9 @@ class AbstractStation < ActiveRecord::Base
   end
 
   def includes(limit=3)
-   #update_includes_cache(:amgID => read_attribute(:amg_id), :number_of_records => num_of_records) if includes_cache.empty?
-   # @includes ||= includes_cache.map {|artist| Artist.find(artist)}
-   
-   #@includes ||= Artist.find_all_by_id(includes_cache)
-   refresh_included_artists unless total_artists > 0
-   abstract_station_artists.limited_to(limit)
+    refresh_included_artists unless total_artists < 1
+
+    abstract_station_artists.limited_to(limit)
   end
 
   def refresh_included_artists(params={})
@@ -106,6 +103,5 @@ class AbstractStation < ActiveRecord::Base
   def to_s
     name
   end
-  
-  
+    
 end

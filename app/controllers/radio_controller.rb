@@ -2,6 +2,7 @@ class RadioController < ApplicationController
   protect_from_forgery :except => [:search, :artist_info]
   #Explicitly removing caching on radio per Demian - 2009-09-29
   #caches_action :show, :expires_in => EXPIRATION_TIMES['radio_show'], :cache_path => :radio_show_cache_key
+  #caches_action :artist_info, :expires_in => EXPIRATION_TIMES['radio_artist_info'], :cache_path => :radio_artist_info_cache_key_url
 
   def index
     @station_obj = if params[:station_id]
@@ -182,6 +183,10 @@ class RadioController < ApplicationController
   private
   def radio_show_cache_key_url
     "#{CURRENT_SITE.cache_key}/#{current_country.code}/#{params[:station_id]}/station/#{params[:id]}"
+  end
+
+  def radio_artist_info_cache_key_url
+    "#{CURRENT_SITE.cache_key}/artist_info/#{params[:station_id]}"
   end
 
   def top_stations
