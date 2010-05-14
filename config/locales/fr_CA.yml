@@ -56,10 +56,10 @@ fr_CA:
     top_stations: TOP STATIONS DE RADIO DE {{user_name}}
     artist_latest_stations: "DERNI\xC3\x88RES STATIONS DE RADIO METTANT EN VEDETTE {{name}}"
     recent_activity: "MISES \xC3\x80 JOUR R\xC3\x89CENTE"
-    recommended_artists: 
-      title: Cyloop vous recommande...
     following: 
       title: Je suis fan de ces profils
+    recommended_artists: 
+      title: Cyloop vous recommande...
   modules: 
     edit_station: 
       new_name: Nouveau nom
@@ -357,7 +357,7 @@ fr_CA:
       followers: Mes fans
       playlists: Mes listes de lecture
       albums: Mes albums
-      followees: Fan
+      followees: Je suis leur fan
       follow_requests: My Follow Requests
       charts: Mes tops
   chat: 
@@ -371,12 +371,12 @@ fr_CA:
       customize_page: Personnaliser la page
     navigation: 
       all: Tout
-      artists: Artistes
       songs: Chansons
+      artists: Artistes
       dashboard: Tableau de bord
-      stations: stations de radio
+      stations: Stations de radio
       subscriptions: Abonnements
-      followers: sont fans
+      followers: Sont fans
       playlists: Listes de lecture
       activity: "Mises \xC3\xA0 jour"
       albums: Albums
@@ -391,9 +391,9 @@ fr_CA:
 
       home: Accueil
       biography: Biographie
-      following: Je suis leur fan
-      mixes: Mix
       charts: "Palmar\xC3\xA8s"
+      mixes: Mix
+      following: Je suis fan
   stations: 
     edit: 
       edit_your_station: Modifiez vos stations de radio
@@ -599,6 +599,10 @@ fr_CA:
     msg: 
       privacy: "doit \xC3\xAAtre accept\xC3\xA9"
       terms: "doit \xC3\xAAtre accept\xC3\xA9"
+    messages: 
+      terms_of_use: "doit \xC3\xAAtre accept\xC3\xA9"
+      pivacy_policy: "doit \xC3\xAAtre accept\xC3\xA9"
+      privacy_policy: "doit \xC3\xAAtre accept\xC3\xA9"
     confirmation: 
       click_here: cliquez ici
       email_resend_failed: "Le courriel de confirmation n'a pu \xC3\xAAtre renvoy\xC3\xA9, essayez plus tard."
@@ -627,10 +631,6 @@ fr_CA:
           {{confirm_url}}\r\n\
           \r\n\
           Entrez le courriel {{email}} et le mot de passe que vous avez utilis\xC3\xA9s lors de votre inscription pour acc\xC3\xA9der \xC3\xA0 {{host_url}}."
-    messages: 
-      terms_of_use: "doit \xC3\xAAtre accept\xC3\xA9"
-      pivacy_policy: "doit \xC3\xAAtre accept\xC3\xA9"
-      privacy_policy: "doit \xC3\xAAtre accept\xC3\xA9"
     terms_of_use: Conditions d'utilisation
     is_available_exclamation: Courriel est disponible!
     slug_available_exclamation: Profil est disponible!
@@ -662,15 +662,14 @@ fr_CA:
       add_song: "Pour ajouter cette chanson \xC3\xA0 votre liste de lecture, {{link}} pour vous connecter."
     year_of_birth: "Ann\xC3\xA9e de naissance"
     birth_date: Date de naissance
-    terms_and_privacy_must_be_accepted: "Les conditions d'utilisation et la politique de confidentialit\xC3\xA9 doivent \xC3\xAAtre accept\xC3\xA9es"
     opt_out: Nouvelles et offres
+    terms_and_privacy_must_be_accepted: "Les conditions d'utilisation et la politique de confidentialit\xC3\xA9 doivent \xC3\xAAtre accept\xC3\xA9es"
     email_address_tip: "(O\xC3\xB9 vous d\xC3\xA9sirez recevoir vos messages, etc.)"
     customize: Personnalisez votre profil sur MSN Musique
     complete_all_fields_in_red: "Compl\xC3\xA9tez tous les champs en rouge"
     msn_login_error: Erreur de connexion MSN Live. Essayez de vous connecter de nouveau.
     complete: Terminer
     thats_it: "Voil\xC3\xA0!"
-    associate_msn_login: "Presque termin\xC3\xA9!  Entrez votre courriel et votre mot de passe Cyloop pour que nous puissions l'associer avec vos informations MSN Live."
     sidebar: 
       radio_title: "Profitez de stations de radio personnalis\xC3\xA9es"
       chat_text: "Au bas de chaque page vous trouverez une barre Windows Messenger. Connectez-vous et vous pourrez chatter avec vos amis tout en \xC3\xA9coutant la meilleure musique."
@@ -682,12 +681,15 @@ fr_CA:
       follow_text: "D'un seul clic vous pourrez devenir fan de vos artistes et rester tr\xC3\xA8s bien inform\xC3\xA9 de leurs statuts sur Twitter et de leurs autres nouvelles. "
       radio_text: "Notre engin de recommandations cr\xC3\xA9e des stations de radio faites sur mesure pour vous avec tous vos artistes pr\xC3\xA9f\xC3\xA9r\xC3\xA9s."
       follow_title: "Devenez fan de vos artistes pr\xC3\xA9f\xC3\xA9r\xC3\xA9s"
+    associate_msn_login: "Presque termin\xC3\xA9!  Entrez votre courriel et votre mot de passe Cyloop pour que nous puissions l'associer avec vos informations MSN Live."
     send: Soumettre
     email_address: "Votre courriel:"
     your_password: Votre mot de passe
     privacy_policy: "Politique de confidentialit\xC3\xA9"
     must_be_13_years_older: Vous devez avoir 13 ans ou plus pour utiliser ce site
     login_failed: Courriel invalide et/ou mot de passe
+    confirm_your_password: Confirmez votre mot de passe
+    terms_and_privacy: "En cochant cette case, vous confirmez que vous savez que Cyloop.com est un site g\xC3\xA9r\xC3\xA9 par Hoodiny Entertainment Group aux \xC3\x89tats-Unis, et vous consentez \xC3\xA0 envoyer vos donn\xC3\xA9es personnelles aux \xC3\x89tats-Unis, o\xC3\xB9 vos donn\xC3\xA9es personnelles seront soumises aux lois am\xC3\xA9ricaines. Aux \xC3\x89tats-Unis, le niveau de protection des donn\xC3\xA9es est diff\xC3\xA9rent de votre pays. Vous \xC3\xAAtes \xC3\xA9galement d'accord avec les {{terms_link}} et notre {{privacy_link}} de Cyloop qui d\xC3\xA9taillent comment vos donn\xC3\xA9es personnelles seront utilis\xC3\xA9es."
     email: 
       button: Commencez maintenant!
       title: "Bienvenu, merci de vous \xC3\xAAtre incrit sur Cyloop!"
@@ -708,8 +710,6 @@ fr_CA:
         <br>
         Microsoft Corporation, One Microsoft Way, Redmond, WA 98052-6399, USA &copy; 2008 Microsoft Corporation. <br>
         All rights reserved.
-    terms_and_privacy: "En cochant cette case, vous confirmez que vous savez que Cyloop.com est un site g\xC3\xA9r\xC3\xA9 par Hoodiny Entertainment Group aux \xC3\x89tats-Unis, et vous consentez \xC3\xA0 envoyer vos donn\xC3\xA9es personnelles aux \xC3\x89tats-Unis, o\xC3\xB9 vos donn\xC3\xA9es personnelles seront soumises aux lois am\xC3\xA9ricaines. Aux \xC3\x89tats-Unis, le niveau de protection des donn\xC3\xA9es est diff\xC3\xA9rent de votre pays. Vous \xC3\xAAtes \xC3\xA9galement d'accord avec les {{terms_link}} et notre {{privacy_link}} de Cyloop qui d\xC3\xA9taillent comment vos donn\xC3\xA9es personnelles seront utilis\xC3\xA9es."
-    confirm_your_password: Confirmez votre mot de passe
     not_a_user: Pas encore membre?
   radio: 
     search_hint: Entrez le nom d'un artiste
@@ -1031,7 +1031,7 @@ fr_CA:
     alphabetical: "ALPHAB\xC3\x89TIQUE"
     relevance: PERTINENCE
     newest: "NOUVEAUT\xC3\x89"
-    latest: DERNIER
+    latest: "DERNI\xC3\x88RES"
     top: TOP
   users: 
     new: 
@@ -1075,19 +1075,19 @@ fr_CA:
   user: 
     is_not_following_anybody: "{{user_name}} n'est pas fan de personne"
     background_fixed_false: Non
-    forgot_message: "Inscrivez ici le m\xC3\xAAme courriel utilis\xC3\xA9 pour votre compte pour recevoir les instructions vous permettant de r\xC3\xA9initialiser votre mot de passe."
     name: Nom
+    forgot_message: "Inscrivez ici le m\xC3\xAAme courriel utilis\xC3\xA9 pour votre compte pour recevoir les instructions vous permettant de r\xC3\xA9initialiser votre mot de passe."
     background_repeats: 
       horizontal_repeat: "R\xC3\xA9p\xC3\xA9tition horizontale"
       full_repeat: "R\xC3\xA9p\xC3\xA9tition \xC3\xA0 l'infini"
       no_repeat: "Pas de r\xC3\xA9p\xC3\xA9tition"
       vertical_repeat: "R\xC3\xA9p\xC3\xA9tition verticale"
-    slug: Lien
-    city_name: Ville
     receives_following_notifications: M'alerter lorsque quelqu'un devient fan de mon profil
+    city_name: Ville
+    slug: Lien
     marketing_opt_out: "Je ne d\xC3\xA9sire pas recevoir de courriels de Cyloop ou de ses partenaires"
-    color_links: Couleur du lien
     background_align: "Alignement de l'arri\xC3\xA8re-plan "
+    color_links: Couleur du lien
     background_fixed_true: Oui
     confirmation: 
       click_here: cliquez ici
@@ -1095,16 +1095,16 @@ fr_CA:
       still_pending: "Vous n'avez pas confirm\xC3\xA9 votre compte. Consultez vos courriels et suivez les instructions pour confirmer votre inscription ou {{click_here}} pour le renvoyer de nouveau."
       email_resent: "Votre courriel de confirmation a \xC3\xA9t\xC3\xA9 renvoy\xC3\xA9."
     cyloop_password: Mot de passe Cyloop
-    reset_password: Modification du mot de passe
     forgot_your_password: "Mot de passe oubli\xC3\xA9?"
-    twitter_username: Votre nom de compte Twitter
-    private_profile: "Garder mon profil priv\xC3\xA9"
+    reset_password: Modification du mot de passe
     terms_of_use_instructions: En vous inscrivant, vous acceptez les {{link}} et confirmez que vous avez 13 ans ou plus.
+    private_profile: "Garder mon profil priv\xC3\xA9"
+    twitter_username: Votre nom de compte Twitter
     cyloop_email: Courriel Cyloop
     current_password: Mot de passe actuel
     female: Une femme
-    password_confirmation: Confirmer le mot de passe
     color_bg: "Arri\xC3\xA8re-plan"
+    password_confirmation: Confirmer le mot de passe
     background_alignments: 
       left: Gauche
       upper_right: "En haut \xC3\xA0 droite"
@@ -1119,29 +1119,29 @@ fr_CA:
     websites: Site Web
     terms_and_conditions: Conditions d'utilisation
     remove_avatar: Suppression de l'image
-    background_fixed: "L'arri\xC3\xA8re-plan restera en place"
-    color_main_font: Police principale
     gender: Sexe
+    color_main_font: Police principale
+    background_fixed: "L'arri\xC3\xA8re-plan restera en place"
     avatar: Image
     background_repeat: "R\xC3\xA9p\xC3\xA9tition de l'arri\xC3\xA8re-plan"
     short_bio: Courte bio
-    negative_captcha: Ne pas remplir ce champ
     privacy_policy_instructions: "Notre {{link}} a \xC3\xA9t\xC3\xA9 mise en place pour vous prot\xC3\xA9ger! Lisez et acceptez les conditions."
-    has_no_tweet: "{{user_name}} n'a pas de tweet"
+    negative_captcha: Ne pas remplir ce champ
     male: Un homme
-    new_password: Nouveau mot de passe
+    has_no_tweet: "{{user_name}} n'a pas de tweet"
     has_no_followers: Personne n'est fan de {{user_name}}
+    new_password: Nouveau mot de passe
     safety_tips: "Conseils de s\xC3\xA9curit\xC3\xA9"
     dont_stay_locked_out: "Ne restez pas embarr\xC3\xA9!"
     time_zone: Fuseau horaire
     privacy_policy: "politique de confidentialit\xC3\xA9"
     password: Mot de passe
-    saved: "Vos param\xC3\xA8tes ont \xC3\xA9t\xC3\xA9 enregistr\xC3\xA9s."
     hasnt_create_any_station: "{{user_name}} n'a pas cr\xC3\xA9\xC3\xA9 de station de radio"
+    saved: "Vos param\xC3\xA8tes ont \xC3\xA9t\xC3\xA9 enregistr\xC3\xA9s."
     color_header_bg: "Couleur de l'en-t\xC3\xAAte"
     has_no_activity: "{{user_name}} n'a pas de nouveaut\xC3\xA9"
     born_on: Date de naissance
-    email: Le courriel
+    email: Courriel
   navigation: 
     search_web: Cherchez le Web
     search_songs: Cherchez les chansons
