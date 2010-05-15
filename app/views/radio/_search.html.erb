@@ -83,6 +83,8 @@
     </div><!--/end search_box -->
 
     <h1><%= t('modules.recommended_stations.title') %></h1>
+    <% cache("#{current_site.cache_key}/recommended_abstract_stations", :expires_in => EXPIRATION_TIMES['radio_recommended_abstract_stations'] ) do %>
       <%= render :partial => 'shared/abstract_station', :collection => @recommended_stations, :locals => { :columns => 4 } %>    
+    <% end %>
     <br class="clearer" />
 </div><!--/end two_columns -->

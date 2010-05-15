@@ -13,10 +13,12 @@ class DashboardsController < ApplicationController
     @dashboard_menu = :home
     @mixes_recommended = (1..6).to_a
 
-    # stations = transformed_recommended_stations(40)
-    # @recommended_stations = stations[0..(RECOMMENDED_STATIONS-1)]
-    # @recommended_stations_queue = stations[RECOMMENDED_STATIONS..(stations.size)]
-
+    if profile_owner?
+      stations = transformed_recommended_stations(6, 10)
+      @recommended_stations = stations[0..(RECOMMENDED_STATIONS-1)]
+      @recommended_stations_queue = stations[RECOMMENDED_STATIONS..(stations.size)]
+    end
+    
     respond_to do |format|
       format.html
       format.json do

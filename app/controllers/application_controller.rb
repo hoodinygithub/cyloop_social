@@ -318,15 +318,14 @@ class ApplicationController < ActionController::Base
     []
   end
   
-  def transformed_recommended_stations(limit = 3, fetch=nil)
-    
+  def transformed_recommended_stations(limit = 3, fetch=nil)    
     fetch ||= limit
     Rails.cache.fetch("modules/recommended_stations/#{limit}/#{fetch}", :expires_delta => EXPIRATION_TIMES["module_recommended_stations"]) do
       stations = recommended_stations(fetch).map do |s| 
-        if s and s.station and s.abstract_station
-          if s.artist and s.abstract_station.total_artists > 1
-            s.abstract_station
-          end
+        if s and s.station and s.abstract_station and s.artist and s.abstract_station.total_artists > 1
+          s.abstract_station
+        else
+          nil
         end 
       end.compact
       stations = stations[0..(limit-1)]

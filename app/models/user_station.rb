@@ -42,16 +42,18 @@ class UserStation < ActiveRecord::Base
   #has_many :artists, :through => :user_station_artists
   delegate :includes, :refresh_included_artists, :to => :abstract_station
 
-  def self.most_created(limit = nil)
-    # count(:include => :abstract_station, :group => :abstract_station_id, :limit => limit, :order => "count_all DESC").map do |id, count|
-    #   #Artist.find(id)
-    #   TotalListensProxy.new(AbstractStation.find_by_id(id), count) 
-    # end
-    count(:include => :abstract_station, :group => :abstract_station_id, :limit => limit, :order => "count_all DESC").map do |id, count|
-      #Artist.find(id)
-      TotalListensProxy.new(UserStation.find_by_abstract_station_id(id), count) 
-    end
-  end
+  # def self.most_created(limit = nil)
+  #   
+  #   # count(:include => :abstract_station, :group => :abstract_station_id, :limit => limit, :order => "count_all DESC").map do |id, count|
+  #   #   #Artist.find(id)
+  #   #   TotalListensProxy.new(AbstractStation.find_by_id(id), count) 
+  #   # end
+  #   count(:group => :abstract_station_id, :limit => limit, :order => "count_all DESC")
+  #   #.map do |id, count|
+  #     #Artist.find(id)
+  #     #TotalListensProxy.new(UserStation.find_by_abstract_station_id(id), count) 
+  #   #end
+  # end
 
   def self.latest_stations(limit = 8)
     all(:limit => limit, :joins => [:owner, :abstract_station], :conditions => 'user_stations.deleted_at IS NULL AND accounts.deleted_at IS NULL AND abstract_stations.deleted_at IS NULL', :order => 'user_stations.created_at DESC', :select => 'STRAIGHT_JOIN user_stations.*' )

@@ -76,7 +76,9 @@ class RecEngine
   end
   
   def get_recommended_stations(params = {})
-    get_items(:get_recommended_stations, params).map {|x| RecEngine::Station.new(x)} rescue []
+    Rails.cache.fetch("rec_engine/get_recommended_stations/#{all_params_to_cache_key(params)}", :expires_delta => EXPIRATION_TIMES['rec_engine_recommended_stations']) do
+      get_items(:get_recommended_stations, params).map {|x| RecEngine::Station.new(x)} rescue []
+    end
   end
   
   def get_similar_artists(params = {})
