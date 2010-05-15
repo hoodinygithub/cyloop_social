@@ -63,7 +63,9 @@ class RecEngine
   end
 
   def get_rec_engine_playlist_artists(params = {})
-    get_items(:get_rec_engine_play_list, params).map {|x| RecEngine::ArtistFromPlaylist.new(x) }.uniq_by { |y| y.artist_id }
+    Rails.cache.fetch("rec_engine/get_rec_engine_playlist_artists/#{all_params_to_cache_key(params)}", :expires_delta => EXPIRATION_TIMES['get_rec_engine_playlist_artists']) do
+      get_items(:get_rec_engine_play_list, params).map {|x| RecEngine::ArtistFromPlaylist.new(x) }.uniq_by { |y| y.artist_id }
+    end
   end
 
   def get_recommended_artists(params = {})

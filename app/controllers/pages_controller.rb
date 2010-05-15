@@ -13,8 +13,8 @@ class PagesController < ApplicationController
         # Hack to handle nil values from rec engine
         @recommended_stations = transformed_recommended_stations(6, 40)
 
-        @top_abstract_stations = current_site.top_abstract_stations.limited_to(6)
-        @top_user_stations     = current_site.top_user_stations.limited_to(6)
+        @top_abstract_stations = current_site.top_abstract_stations(6)
+        @top_user_stations     = current_site.top_user_stations(6)
 
 
         @feed_featured ||= []

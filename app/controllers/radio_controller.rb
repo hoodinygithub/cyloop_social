@@ -19,7 +19,7 @@ class RadioController < ApplicationController
       @recommended_stations = transformed_recommended_stations(12, 40)
     end
     top_station_limit = @station_obj.nil? ? 6 : 4 
-    @top_abstract_stations = current_site.top_abstract_stations.limited_to(top_station_limit)
+    @top_abstract_stations = current_site.top_abstract_stations(top_station_limit)
     @msn_stations = current_site.stations
   end
 
@@ -53,7 +53,7 @@ class RadioController < ApplicationController
   end
 
   def twitstation
-    @top_stations = current_site.summary_top_stations.limited_to(5)
+    @top_stations = current_site.top_abstract_stations(5)
     begin
       if params[:station_id]
         @station_obj = Station.find(params[:station_id])
@@ -190,7 +190,7 @@ class RadioController < ApplicationController
   end
 
   def top_stations
-    @top_stations ||= current_site.summary_top_stations(:include => :station).limited_to(5)
+    @top_stations ||= current_site.top_abstract_stations(5)
   end
   helper_method :top_stations
 

@@ -3,6 +3,7 @@
 
 defaults: &defaults
   abstract_station_includes: <%= 12.hours %> # app/models/abstract_station.rb:82
+  editorial_station_includes: <%= 12.hours %> # app/models/editorial_station.rb:27
   artist_recent_listeners: <%= 10.minutes %> # app/views/artists/_sidebar.html.haml:16
   artist_similar_artists:  <%= 10.minutes %> # app/views/artists/_sidebar.html.haml:22
   artist_show_most_listened_songs: <%= 10.minutes %>  # app/views/artists/show.html.haml:34
@@ -16,7 +17,8 @@ defaults: &defaults
   artist_similar: <%= 1.hour %> # app/models/artist.rb:152
   artist_info_similar_artists: <%= 1.hour %> # app/views/_artist_info.html.haml:52
   song_listen_most_listened: <%= 5.minutes %> # app/models/song_listen.rb:30
-  rec_engine_recommended_stations: <%= 5.minutes %> # app/controllers/application_controller.rb:119
+  get_rec_engine_playlist_artists: <%= 12.hours %> # 
+  rec_engine_recommended_stations: <%= 10.minutes %> # app/controllers/application_controller.rb:310
   rec_engine_recommended_artists: <%= 5.minutes %> # app/controllers/application_controller.rb:113
   rec_engine_similar_artists: <%= 1.hour %> # rec_engine.rb:68
   rec_engine_play_list: <%= 0.minutes %> # rec_engine.rb:60
@@ -28,6 +30,7 @@ defaults: &defaults
   radio_artist_info: <%= 12.hours %> # app/controllers/radio_controller.rb:3
   artist_recent_listeners_js: <%=  %>  # app/controllers/artists_controller.rb:2
   artist_similar_artists_js: <%= 30.minutes %> # app/controllers/artists_controller.rb:3
+  module_recommended_stations: <%= 30.minutes %> # app/controllers/application_controller.rb:310
 
 development:
   <<: *defaults

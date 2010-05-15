@@ -23,9 +23,18 @@ class RecEngine::Station < RecEngine::Abstract
     new_amg_id
   end
 
+  def abstract_station
+    @abstract_station
+  end
+
+  def artist
+    @artist
+  end
+  
   def station
-    s = AbstractStation.find_by_amg_id(normalize_amg_id, :include => [{:playable => :artist}])
-    s.station unless s.nil?
+    @abstract_station ||= AbstractStation.find_by_amg_id(normalize_amg_id, :include => [:station, :artist])
+    @artist ||= @abstract_station
+    @abstract_station.station unless @abstract_station.nil?
   end
 
   def avatar

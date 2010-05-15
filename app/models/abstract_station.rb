@@ -18,7 +18,7 @@
 class AbstractStation < ActiveRecord::Base
   index :artist_id
   include Station::Playable
-  include Db::Predicates::LimitedTo
+  #include Db::Predicates::LimitedTo
   extend ActiveSupport::Memoizable
 
   define_index do
@@ -50,7 +50,7 @@ class AbstractStation < ActiveRecord::Base
   
 
   has_many :user_stations
-  has_many :abstract_station_artists
+  has_many :abstract_station_artists, :include => [:artist, :album]
   has_many :artists, :through => :abstract_station_artists
 
   belongs_to :artist, :include => :label
@@ -75,7 +75,9 @@ class AbstractStation < ActiveRecord::Base
   def includes(limit=3)
     refresh_included_artists if total_artists < 1
 
-    abstract_station_artists.limited_to(limit)
+    Rails.cache.fetch("#{cache_key}/includes/#{limit}", :expires_delta => EXPIRATION_TIMES['abstract_station_includes']) do
+      abstract_station_artists.all(:limit => limit)
+    end
   end
 
   def refresh_included_artists(params={})

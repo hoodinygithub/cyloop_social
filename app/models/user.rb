@@ -83,7 +83,7 @@ class User < Account
            :foreign_key => :owner_id,
            :select => "user_stations.*",
            :class_name => "UserStation",
-           :include => :abstract_station,
+           :include => [:abstract_station, :station],
            :source => :abstract_station,
            :conditions => 'abstract_stations.deleted_at IS NULL AND user_stations.deleted_at IS NULL'
   

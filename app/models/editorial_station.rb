@@ -23,7 +23,13 @@ class EditorialStation < ActiveRecord::Base
   end
 
   def includes(limit=3)
-    mix.songs.all(:limit => limit).uniq_by { |s| s.artist_id } if mix.songs
+    if mix.songs
+      Rails.cache.fetch("#{cache_key}/includes/#{limit}", :expires_delta => EXPIRATION_TIMES['editorial_station_includes']) do
+        mix.songs.all(:limit => limit, :include => [:artist, :album]).uniq_by(&:artist_id)
+      end
+    else
+      []
+    end
   end
   
   def owner_is?(user)
