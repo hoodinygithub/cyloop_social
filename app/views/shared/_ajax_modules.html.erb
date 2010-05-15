@@ -4,6 +4,8 @@
     Base.network.load_latest_tweet(<%= params.to_json %>);
   <% end %>
 
-  Base.network.load_latest(<%= params.to_json %>, <%= profile_owner? ? 1 : 0 %>);
+  <% if ["dashboard", "accounts"].include?(controller_name) %>
+    Base.network.load_latest(<%= params.to_json %>, <%= profile_owner? ? 1 : 0 %>);
+  <% end %>
 <% end %>
 

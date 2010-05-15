@@ -34,6 +34,7 @@ defaults: &defaults
   artist_similar_artists_js: <%= 30.minutes %> # app/controllers/artists_controller.rb:3
   radio_recommended_abstract_stations: <%= 30.minutes %> # app/controllers/application_controller.rb:310
   module_recommended_stations: <%= 30.minutes %> # app/controllers/application_controller.rb:310
+  user_follows: <%= 30.minutes %> # app/views/users/_follows.html.erb:5  
 
 development:
   <<: *defaults
