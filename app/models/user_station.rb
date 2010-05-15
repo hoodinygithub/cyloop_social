@@ -111,9 +111,9 @@ class UserStation < ActiveRecord::Base
 
   protected
 
-  def remove_artists
-    self.user_station_artists.destroy_all
-  end
+  # def remove_artists
+  #   self.user_station_artists.destroy_all
+  # end
 
   def set_name_to_station_name
     self.name ||= "#{abstract_station.name}"
