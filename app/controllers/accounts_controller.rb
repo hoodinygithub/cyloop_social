@@ -13,9 +13,9 @@ class AccountsController < ApplicationController
     @mixes_recommended = (1..6).to_a
     @comments = (1..3).to_a
 
-    @top_stations = profile_account.stations.top(6)
+    @top_stations = profile_account.top_stations(6)
     @followers = profile_account.followers.all(:limit => 4)
-    @latest_stations = profile_account.stations.all(:limit => 6 , :order => "user_stations.created_at DESC")
+    @latest_stations = profile_account.latest_stations(6)
 
     respond_to do |format|
       format.html
