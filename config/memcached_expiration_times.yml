@@ -32,9 +32,9 @@ defaults: &defaults
   radio_recent_station_listeners: <%= 10.minutes %> # app/controllers/radio_controller.rb:3
   artist_recent_listeners_js: <%= 10.minutes %>  # app/controllers/artists_controller.rb:2
   artist_similar_artists_js: <%= 30.minutes %> # app/controllers/artists_controller.rb:3
-  artist_stations_all: <%= 30.minutes %> # app/modules/artist.rb:121
-  artist_stations_top: <%= 30.minutes %> # app/modules/artist.rb:121
-  artist_stations_latest: <%= 30.minutes %> # app/modules/artist.rb:127
+  artist_stations_all: <%= 6.hours %> # app/modules/artist.rb:121
+  artist_stations_top: <%= 6.hours %> # app/modules/artist.rb:121
+  artist_stations_latest: <%= 6.hours %> # app/modules/artist.rb:127
   artist_stations_pagination: <%= 12.hours %> # app/modules/artist.rb:133
   radio_recommended_abstract_stations: <%= 30.minutes %> # app/controllers/application_controller.rb:310
   module_recommended_stations: <%= 30.minutes %> # app/controllers/application_controller.rb:310

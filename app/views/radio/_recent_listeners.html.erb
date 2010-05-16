@@ -1,6 +1,6 @@
 <% listeners = station.recent_listeners(limit) %>
 <% unless listeners.empty? %>
-  <% cache("#{site_cache_key}/station_listeners/#{station.cache_key}", :expires_in => 'radio_recent_station_listeners') do %>
+  <% cache("#{site_cache_key}/station_listeners/#{station.cache_key}", :expires_in => EXPIRATION_TIMES['radio_recent_station_listeners']) do %>
     <% listeners.each_with_index do |user, index| %>
     <% end_box = index > 0 && (index + 1) % columns == 0 %>
       <div class="small_thumb<%= " last_box" if end_box %>">
