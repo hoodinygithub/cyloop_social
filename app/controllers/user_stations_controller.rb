@@ -19,15 +19,17 @@ class UserStationsController < ApplicationController
 
     respond_to do |format|
       block = Proc.new do
-        @user_stations = profile_account.stations
+        @user_stations = profile_account.stations(profile_account.is_a?(Artist) ? 50 : nil)
         render :xml => Player::Station.from(@user_stations, :ip => remote_ip, :user_id => logged_in? ? current_user.id : nil).to_xml(:root => 'user_stations')
       end
 
       format.html do
         @sort_type = params.fetch(:sort_by, nil).to_sym rescue :latest
-
+        page = params[:page] || 1
+        per_page = 10
+        
         begin
-          @user_stations = profile_account.stations_paginate params[:page], 6, @sort_type
+          @user_stations = profile_account.stations_paginate page, per_page, @sort_type
         rescue NoMethodError
           redirect_to new_session_path
         end

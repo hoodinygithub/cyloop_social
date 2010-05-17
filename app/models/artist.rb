@@ -106,14 +106,20 @@ class Artist < Account
 
   has_many :bios, :autosave => true, :foreign_key => :account_id
   #validates_associated :bios
-  def stations_sql
+  def get_user_stations_ids_sql
     <<-EOF
-    SELECT `user_stations`.* 
+    SELECT `user_stations`.*
     FROM `user_stations` 
     INNER JOIN abstract_stations ON user_stations.abstract_station_id = abstract_stations.id 
     INNER JOIN abstract_station_artists ON abstract_stations.id = abstract_station_artists.abstract_station_id
     WHERE abstract_station_artists.artist_id = #{self.id}
+    LIMIT 100
     EOF
+  end
+
+  def stations_sql
+    ids = UserStation.find_by_sql(get_user_stations_ids_sql).map(&:id).join(',')
+    "SELECT `user_stations`.* FROM `user_stations`  WHERE id IN (#{ids})"
   end
 
   def stations
@@ -135,11 +141,11 @@ class Artist < Account
   end
   
   def stations_paginate(page=1, per_page=10, order = :latest)
-    sort_types = { :latest => 'user_station_artists.user_station_created_at DESC', :top => 'user_stations_artists.total_plays DESC', :alphabetical => 'user_station_artists.name'  }
+    sort_types = { :latest => ' ORDER BY user_stations.created_at DESC', :top => ' ORDER BY user_stations.total_plays DESC', :alphabetical => ' ORDER BY user_stations.name'  }
     # stations.paginate :page => page, :per_page => per_page, :order => sort_types[order]
     
-    Rails.cache.fetch("#{cache_key}/stations/pagination/#{page}/#{per_page}/#{order.to_s}", :expires_delta => EXPIRATION_TIMES['artist_stations_pagination']) do
-      UserStation.paginate_by_sql(stations_sql, :page => page, :per_page => 10, :order => sort_types[order], :total_entries => self.total_user_stations)
+    Rails.cache.fetch("#{cache_key}/stations/pagination/#{order.to_s}/#{page}/#{per_page}", :expires_delta => EXPIRATION_TIMES['artist_stations_pagination']) do
+      UserStation.paginate_by_sql(stations_sql << sort_types[order] , :page => page, :per_page => per_page, :total_entries => self.total_user_stations)
     end
   end
   
