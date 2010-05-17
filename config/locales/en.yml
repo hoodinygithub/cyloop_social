@@ -407,7 +407,6 @@ en:
     created_playlist: Created Playlist '{{playlist}}'
     just_user: Just {{user}}
     just_following: Just Following
-    just_followers: Just Followers
     listened_to: Listened to '{{song}}' by '{{artist}}'
     push_notification_refresh: Refresh
     filters:
@@ -422,7 +421,7 @@ en:
     created_station: "{{creator}} created a new station called: {{station}}"
     twitter_following: Tweets from artist {{user}} is following
     user_following: "{{user}} + Following"
-    user_followers: "{{user}} + Followers"    
+    user_others: "{{user}} + Others"    
   date:
     month_names:
     -

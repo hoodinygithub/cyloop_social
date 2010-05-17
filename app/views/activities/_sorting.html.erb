@@ -1,9 +1,11 @@
 <div class="sorting" id="activity_filters" <%= "style=\"display: none\"" if defined?(hide_sorting) && hide_sorting %>>
-  <%= link_to_function t("activity.user_#{profile_account.artist? && 'followers' || 'following'}", :user => profile_account.first_name), "$('#activity').data('activityFeed').switchView(this)", {:id => 'all', :class => 'filter active'} %>
+  <%= link_to_function t("activity.user_#{profile_account.artist? && 'others' || 'following'}", :user => profile_account.first_name), "$('#activity').data('activityFeed').switchView(this)", {:id => 'all', :class => 'filter active'} %>
   /
   <%= link_to_function t("activity.just_user", :user => profile_account.first_name), "$('#activity').data('activityFeed').switchView(this)", {:id => 'me', :class => 'filter'} %>
+  <% if profile_user? %>
   /
-  <%= link_to_function t("activity.just_#{profile_account.artist? && 'followers' || 'following'}"), "$('#activity').data('activityFeed').switchView(this)", {:id => 'following', :class => 'filter'} %>
+  <%= link_to_function t("activity.just_following'}"), "$('#activity').data('activityFeed').switchView(this)", {:id => 'following', :class => 'filter'} %>
+  <% end %>
   <span class="last loading"><%= image_tag "/images/spacer.gif", :width => 18, :height => 13 %></span>
   <span id="twitter_only_filter" style="float:left;display:none">
     <%= if current_user == profile_account

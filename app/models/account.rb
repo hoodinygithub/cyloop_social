@@ -261,7 +261,7 @@ class Account < ActiveRecord::Base
   def determine_account_ids(group)
     accounts = case group
     when :just_following
-      self.is_a?(Artist) ? self.follower_ids : self.followee_cache_not_deleted
+      self.is_a?(Artist) ? nil : self.followee_cache_not_deleted
     when :just_me
       [self.id]
     when :all
