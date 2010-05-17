@@ -39,7 +39,7 @@ module Activity
       valid_before_timestamp = options.has_key?(:before_timestamp) && !options[:before_timestamp].to_i.zero?
 
       db.query do |q| 
-        q.add 'user_id', :numoreq, options[:account_ids].join(' ') unless options[:account_ids].nil? || options[:artist] && options[:account_ids].size != 1
+        q.add 'user_id', :numoreq, options[:account_ids].join(' ') unless options[:account_ids].nil? # || options[:artist] && options[:account_ids].size != 1
         q.add 'account_id', :numeq, options[:artist] if options[:artist]
         q.add :timestamp, :numgt, options[:after_timestamp]  if valid_after_timestamp
         q.add :timestamp, :numlt, options[:before_timestamp] if valid_before_timestamp
