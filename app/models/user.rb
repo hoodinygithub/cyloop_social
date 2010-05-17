@@ -130,11 +130,11 @@ class User < Account
   end
 
   def top_stations(limit=10)
-    stations.top(10)
+    stations.top(limit)
   end
   
   def latest_stations(limit=10)
-    stations.latest(10)
+    stations.latest(limit)
   end
 
   def stations_paginate(page=1, per_page=10, order = :latest)
