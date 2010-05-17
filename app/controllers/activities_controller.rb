@@ -6,7 +6,6 @@ class ActivitiesController < ApplicationController
   before_filter :login_required, :only => [:update_status]
 
   def index
-    @activities     = load_related_item_activity( account.transformed_activity_feed( activity_params ) )
     @dashboard_menu = :activity
   end
 
@@ -88,6 +87,7 @@ class ActivitiesController < ApplicationController
 
   def account
     @account = params[:user] ? Account.find(params[:user]) : profile_account
+    # TODO if @account is nil - redirect to login DZC 2010-05-17
   end
 end
 
