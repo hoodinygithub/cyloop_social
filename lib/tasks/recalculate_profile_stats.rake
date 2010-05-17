@@ -64,10 +64,10 @@ namespace :db do
         query = <<-EOF
         UPDATE accounts a 
         INNER JOIN (
-          SELECT artist_id, count(*) AS total_user_stations 
-          FROM abstract_station_artists asa 
-          INNER JOIN abstract_stations abs ON asa.abstract_station_id = abs.id 
-          WHERE abs.deleted_at IS NULL 
+          SELECT abs.artist_id, count(*) AS total_user_stations 
+          FROM user_stations us 
+          INNER JOIN abstract_stations abs ON us.abstract_station_id = abs.id 
+          WHERE us.deleted_at IS NULL AND abs.deleted_at IS NULL
           GROUP BY 1
         ) AS q ON a.id = q.artist_id 
         SET a.total_user_stations = q.total_user_stations
