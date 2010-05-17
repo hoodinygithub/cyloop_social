@@ -18,8 +18,8 @@ class RadioController < ApplicationController
     else
       @recommended_stations = transformed_recommended_stations(12, 24)
     end
-    top_station_limit = @station_obj.nil? ? 6 : 4 
-    @top_abstract_stations = current_site.top_abstract_stations(top_station_limit)
+    @top_station_limit = @station_obj.nil? ? 6 : 4 
+    @top_abstract_stations = current_site.top_abstract_stations(@top_station_limit)
     @msn_stations = current_site.stations
   end
 

@@ -144,15 +144,27 @@ class Artist < Account
   # 
 
   def top_stations(limit=10)
-    station.user_stations.all(:limit => limit, :order => 'user_stations.total_plays DESC')
+    result = []
+    if station
+      result = station.user_stations.all(:limit => limit, :order => 'user_stations.total_plays DESC', :include => :owner, :conditions => "accounts.deleted_at IS NOT NULL" ) 
+    end
+    result
   end
 
   def latest_stations(limit=10)
-    station.user_stations.all(:limit => limit, :order => 'user_stations.created_at DESC')
+    result = []
+    if station
+      result = station.user_stations.all(:limit => limit, :order => 'user_stations.created_at DESC', :include => :owner, :conditions => "accounts.deleted_at IS NOT NULL")
+    end
+    result
   end
 
   def stations
-     station.user_stations
+    result = []
+    if station
+      result = station.user_stations(:include => :owner, :conditions => "accounts.deleted_at IS NOT NULL") 
+    end
+    result
   end
   
   def stations_paginate(page=1, per_page=10, order = :latest)
