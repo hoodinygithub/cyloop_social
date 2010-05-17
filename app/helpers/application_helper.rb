@@ -814,6 +814,10 @@ module ApplicationHelper
       artist_or_user.first_name
     end
   end
+  
+  def first_name(full_name)
+    full_name.split(' ')[0] rescue full_name
+  end
 
   def on_dashboard?
     request.request_uri.match(/\/my\//)
