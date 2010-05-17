@@ -237,7 +237,7 @@ namespace :deploy do
   end
 
   task :post_announce do
-    #campfire_notification "#{ENV['USER']} finished deploying #{application} to #{rails_env} (#{branch})"
+    campfire_notification "#{ENV['USER']} finished deploying #{application} to #{rails_env} (#{branch})"
   end
 
   task :restart do
