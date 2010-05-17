@@ -1,23 +1,23 @@
-<li timestamp="<%= station_activity['timestamp'] %>">
-  <% station  = station_activity["record"] || Station.find(station_activity["item"]["id"]) %>
-  <% playable = station.playable %>
-  <%= link_to avatar_for_activity(station_activity["item"]["avatar_file_name"], station_activity["item"]["id"], "artist", {:alt => station_activity["item"]["name"], :class => 'comment_icon'}), "#" %>
-  <div class="comment_text">
-    <% if playable and playable.deleted_at.nil? %>
-    <% creator = "<b><a href='/#{station_activity["user"]["slug"]}'>#{station_activity["user"]["name"]}</a></b>" %>
-    <%= t('activity.created_station', :creator => creator, :station => link_to(playable.name, radio_path(:station_id => playable.station.id))) %>
-    <% end %>
-    <br/>
-    <% unless station_activity["item"]["artists_contained"].to_s.empty? %>
-      <span class="contains">
-        <%= t('basics.contains') %>:
-        <%= station_activity["item"]["artists_contained"].map{|k| link_to(k["artist"],"/#{k["slug"]}")}.join(", ") %>
+<% station  = station_activity["record"] || Station.find(station_activity["item"]["id"]) %>
+<% playable = station.playable %>
+<li timestamp="<%= station_activity['timestamp'] %>" <%= 'style="display: none"' if playable.nil? || !playable.deleted_at.nil? %>>
+  <% if playable and playable.deleted_at.nil? %>    
+    <%= link_to avatar_for_activity(station_activity["item"]["avatar_file_name"], station_activity["item"]["id"], "artist", {:alt => station_activity["item"]["name"], :class => 'comment_icon'}), "#" %>
+    <div class="comment_text">
+      <% creator = "<b><a href='/#{station_activity["user"]["slug"]}'>#{first_name(station_activity["user"]["name"])}</a></b>" %>
+      <%= t('activity.created_station', :creator => creator, :station => link_to(playable.name, radio_path(:station_id => playable.station.id))) %>
+      <br/>
+      <% unless station_activity["item"]["artists_contained"].to_s.empty? %>
+        <span class="contains">
+          <%= t('basics.contains') %>:
+          <%= station_activity["item"]["artists_contained"].map{|k| link_to(k["artist"],"/#{k["slug"]}")}.join(", ") %>
+        </span>
+        <br/>      
+      <% end %>  
+      <span class="grey small">
+        <%= t("basics.created_at", :when => nice_elapsed_time(station_activity["timestamp"])) %>
       </span>
-    <% end %>  
-    <br/>
-    <span class="grey small">
-      <%= t("basics.created_at", :when => nice_elapsed_time(station_activity["timestamp"])) %>
-    </span>
-  </div>
-  <div class="clearer"></div>
+    </div>
+    <div class="clearer"></div>
+  <% end %>
 </li>

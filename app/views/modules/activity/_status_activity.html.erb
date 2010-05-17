@@ -6,7 +6,7 @@
   <%= link_to avatar_for_activity(account.avatar_file_name, account.id, "account", {:alt => status_activity['user_slug']}), account %>
   <div class="comment_text">
   <% end %>    
-    <b><%= link_to(account.slug, user_path(account.slug)) %></b>
+    <b><%= link_to(account.first_name, user_path(account.slug)) %></b>
     <%= status_activity['message'] %>
     <br/>
     <span class="grey small">
