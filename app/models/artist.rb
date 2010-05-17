@@ -142,6 +142,15 @@ class Artist < Account
   #   end
   # end
   # 
+
+  def top_stations(limit=10)
+    station.user_stations.all(:limit => limit, :order => 'user_stations.total_plays DESC')
+  end
+
+  def latest_stations(limit=10)
+    station.user_stations.all(:limit => limit, :order => 'user_stations.created_at DESC')
+  end
+
   def stations
      station.user_stations
   end
