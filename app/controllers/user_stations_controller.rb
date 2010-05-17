@@ -27,9 +27,9 @@ class UserStationsController < ApplicationController
         @sort_type = params.fetch(:sort_by, nil).to_sym rescue :latest
 
         begin
-            if profile_account.is_a? Artist
-              @user_stations = profile_account.stations_paginate params[:page], 6, @sort_type
-            end
+          if profile_account.is_a? Artist
+            @user_stations = profile_account.stations_paginate params[:page], 6, @sort_type
+          end
         rescue NoMethodError
           redirect_to new_session_path
         end

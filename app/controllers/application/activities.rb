@@ -8,21 +8,28 @@ module Application::Activities
   module InstanceMethods
 
     TYPES = {
-      'listen' => {:class => Song, :options => { :include => :album } },
-      'twitter' => Account,
-      'station' => Station,
-    'playlist' => Playlist }
+      'listen'   => { :class => Song, :options => { :include => :album } },
+      'twitter'  => Account,
+      'status'   => Account,
+      'station'  => { :class => Station, :options => { :include => :playable } },
+      'playlist' => Playlist 
+    }
 
     def load_related_item_activity( data )
       data.group_by { |a| a['type'] }.each do |activity_type, group|
 
-        if activity_type == 'twitter'
+        if ['twitter'].include?(activity_type)
           group.each { |item| item['item'] = { 'id' => item['account_id'] } }
         end
 
+        if ['status'].include?(activity_type)
+          group.each { |item| item['item'] = { 'id' => item['account']['id'] } }
+        end        
+
         if TYPES[activity_type]
           group.reject! { |item| item.nil? || item['item'].nil? }
-          item_ids = group.map { |item| item['item']['id'] }
+          item_ids = group.map { |item| item['item']['id'] }.uniq
+
           items = {}
 
           options = {}
@@ -58,7 +65,7 @@ module Application::Activities
 
     def record_station_activity( station )
       begin
-        artists_contained = station.playable.includes.map { |k| {:artist => k.name, :slug => k.slug} }.to_json rescue ''
+        artists_contained = station.playable.includes.map { |k| {:artist => k.artist.name, :slug => k.artist.slug} }.to_json rescue ''
         tracker_payload = {
           :user_id => current_user.id,
           :station_id => station.id,
@@ -69,7 +76,7 @@ module Application::Activities
         }
         Resque.enqueue(StationJob, tracker_payload)
       rescue Exception => e
-                Rails.logger.error("*** Could not record station activity! payload: #{tracker_payload}") and return true
+        Rails.logger.error("*** Could not record station activity! payload: #{tracker_payload}") and return true
       end
     end
 

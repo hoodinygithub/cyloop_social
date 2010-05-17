@@ -28,6 +28,7 @@ module Activity
     def self.query(*args)
       options = args.extract_options!
       page = PER_PAGE * (options[:page] - 1)
+      per_page = options[:limit] || PER_PAGE 
       activity_type_for_query = if options[:for] == :all
         %w(station twitter status).join(' ')
       else
@@ -38,14 +39,14 @@ module Activity
       valid_before_timestamp = options.has_key?(:before_timestamp) && !options[:before_timestamp].to_i.zero?
 
       db.query do |q| 
-        q.add 'user_id', :numoreq, options[:account_ids].join(' ') unless options[:artist]
+        q.add 'user_id', :numoreq, options[:account_ids].join(' ') unless options[:account_ids].nil? # options[:artist]
         q.add 'account_id', :numeq, options[:artist] if options[:artist]
         q.add :timestamp, :numgt, options[:after_timestamp]  if valid_after_timestamp
         q.add :timestamp, :numlt, options[:before_timestamp] if valid_before_timestamp
         # q.add :type, :stroreq, activity_type_for_query <------ A lesson in pain
         q.add :type, :or, activity_type_for_query
         q.order_by :timestamp, :desc 
-        q.limit PER_PAGE, page
+        q.limit per_page, page
       end
     end
     

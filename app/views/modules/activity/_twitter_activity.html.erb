@@ -1,0 +1,13 @@
+<li timestamp="<%= twitter_activity['timestamp'] %>">
+  <% account = twitter_activity["record"] || Account.find(twitter_activity["account_id"]) %>
+  <%= link_to avatar_for_activity(account.avatar_file_name, twitter_activity['account_id'], "account", {:alt => twitter_activity['screen_name']}), account %>
+  <div class="comment_text">
+    <%= linkify(twitter_activity['text']) %><br/>
+    <%= link_to("Twitter / #{twitter_activity['screen_name']}", "http://twitter.com/#{twitter_activity['screen_name']}", :target => "_blank") %>
+    <br/>
+    <span class="grey small">
+      <%= t("basics.created_at", :when => nice_elapsed_time(twitter_activity["timestamp"])) %>
+    </span>
+  </div>
+  <br class="clearer">
+</li>

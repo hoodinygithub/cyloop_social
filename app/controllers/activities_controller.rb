@@ -2,33 +2,16 @@ class ActivitiesController < ApplicationController
   include ActionView::Helpers::DateHelper
   include ApplicationHelper
 
-  before_filter :account, :except => [:latest_activities]
-  before_filter :set_page, :except => [ :song ]
+  before_filter :account
   before_filter :login_required, :only => [:update_status]
-  before_filter :load_user_activities, :only => [:index, :latest]
-
-  ACTIVITIES_MAX           = 15
-  ACTIVITIES_DASHBOARD_MAX = 5
-  ACTIVITY_SHOW_MORE_SIZE  = 5
 
   def index
-    @collection = @collection[0..ACTIVITIES_MAX-1]
+    @activities     = load_related_item_activity( account.transformed_activity_feed( activity_params ) )
     @dashboard_menu = :activity
-    if request.xhr?
-      render :partial => 'shared/collection_to_li'
-    end
-  end
-
-  def more
-    @collection = @collection[0..ACTIVITIES_DASHBOARD_MAX-1]
   end
 
   def get_activity
-    @activities = load_related_item_activity( account.transformed_activity_feed(:kind => params[:type].to_sym,
-                                                    :page => params[:page],
-                                                    :before_timestamp => @before_timestamp,
-                                                    :after_timestamp => @after_timestamp,
-                                                    :group => activity_group) )
+    @activities = load_related_item_activity( account.transformed_activity_feed( activity_params ) )
     expires_now
     respond_to do |format|
       format.js { render :partial => "modules/activity/#{@type}_activity", :collection => @activities, :layout => false }
@@ -52,107 +35,51 @@ class ActivitiesController < ApplicationController
 
   def update
     if request.post? and request.xhr?
-      if params[:type] == 'status'
-        item = {:message => params[:message]}
-      end
-
+      item = {:message => params[:message]}
       activity_status = Activity::Status.new(current_user)
       hash_added = activity_status.put(item)
-
-      load_user_activities
-      latest
+      hash_added['account'] = {'id' => hash_added['account_id']}
+      render :partial => 'modules/activity/status_activity', :locals => {:status_activity => hash_added, :no_li => true}
     end
   end
-
-  def latest
-    if params[:after]
-      last_element_index = @collection.collect {|a| a['timestamp']}.index(params[:after])
-      @collection        = @collection.slice(0, last_element_index + ACTIVITY_SHOW_MORE_SIZE + 1)
-    else
-      @collection = @collection[0..ACTIVITIES_DASHBOARD_MAX-1]
-    end
-
-    if params[:public]
-      render :partial => 'shared/public_user_activity_content'
-    else
-      render :partial => 'shared/collection_to_li'
-    end
-  end
-
+  
   def latest_tweet
-    account = get_account_by_slug(params[:slug])
-    @collection = account.transformed_activity_feed.first
+    @status = load_related_item_activity( account.transformed_activity_feed( activity_params.merge({:limit => 1, :type => :twitter}) ) ).first
     render :partial => 'shared/tweet_msg', :locals => {:slug => params[:slug]}
   end
 
   private
-  def load_user_activities
-    @has_more = true
 
-    if profile_account
-      @account = profile_account
-    else
-      @account = get_account_by_slug(params[:slug])
-    end
-
-    group = :all
-    
-    if params[:profile_owner] and params[:profile_owner].to_i == 0
-      group = :just_me
-    end
-    
-    if params[:filter_by]
-      @filter_type = params[:filter_by]
-      group        = :all            if @filter_type == 'all'
-      group        = :just_me        if @filter_type == 'me'
-      group        = :just_following if @filter_type == 'following'
-    end
-
-    
-    # collection      = @account.activity_feed(:group => group)
-    # @collection     = collection.sort_by {|a| a['timestamp'].to_i}.reverse
-    # =>
-    @collection = @account.activity_feed(:group => group)
-    @has_more = true if @collection.size - ACTIVITIES_MAX > 0
-
-    # Find and cache in memory the accounts and stations so we don't have to do
-    # it throughout this block.
-    account_ids = @collection.map{|a| a['account_id']}.reject(&:nil?)
-    station_ids = @collection.map{|a| a['item_id']}.reject(&:nil?)
-    
-    Account.find(:all, :conditions => ["id in (?)", account_ids])
-    Station.find(:all, :conditions => ["id in (?)", station_ids], :include => [:playable])
-
-    @collection.each do |a|
-      account      =  Account.find(a['account_id'])
-      a['account'] = account
-      if a['type'] == 'station'
-        station      = Station.find(a['item_id']).playable
-        a['station'] = station
-        a['artist']  = station.artist
-      end
-    end
-  end
-
-  def set_page
+  def activity_params
     params[:page]   ||= 1
     @type             = params[:type] || nil
-    @show_user        = !@account.is_a?(Artist) && (params[:su]=="true")
+    @show_user        = (params[:su]=="true")
     @show_follow      = (params[:sf]=="true")
     @before_timestamp = params[:bts]
     @after_timestamp  = params[:ats]
+    @limit            = params[:limit].to_i
     @just_update_qty  = (params[:juq] == "true")
+    activity_parameters = {
+      :kind             => @type && @type.to_sym,
+      :page             => params[:page],
+      :group            => activity_group,
+      :before_timestamp => @before_timestamp,
+      :after_timestamp  => @after_timestamp
+    }
+    activity_parameters[:limit] = @limit if @limit > 0
+    activity_parameters
   end
 
   def activity_group
-    return :just_following if artist? || @type == "twitter"
-    if params[:su] == 'true' && params[:sf] == 'true'
+    # return :just_following if artist? || @type == "twitter"
+    group = if params[:su] == 'true' && params[:sf] == 'true'
       :all
     elsif params[:su] == 'false' && params[:sf] == 'true'
       :just_following
     elsif params[:su] == 'true' && params[:sf] == 'false'
       :just_me
     end
+    # raise "#{group}:::" + params.inspect
   end
 
   def artist?
@@ -160,16 +87,7 @@ class ActivitiesController < ApplicationController
   end
 
   def account
-    @account = params[:user] ? Account.find(params[:user]) : nil
+    @account = params[:user] ? Account.find(params[:user]) : profile_account
   end
-
-  def get_account_by_slug(slug)
-    if slug
-      @account = AccountSlug.find_by_slug(slug).account
-    elsif current_user
-      @account = current_user
-    end
-  end
-
 end
 

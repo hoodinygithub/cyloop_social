@@ -6,7 +6,6 @@ class AccountsController < ApplicationController
 
   current_tab :home
 
-  RECOMMENDED_STATIONS = 6
   def show
     return redirect_to( user_path( profile_account.slug ) ) if params[:slug] != profile_account.slug
     @dashboard_menu = :home

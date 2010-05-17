@@ -242,16 +242,16 @@ class Account < ActiveRecord::Base
     available_at_current_site?
   end
 
-  after_save :delete_customization_key
-  def delete_customization_key
-    Rails.cache.delete("profiles/#{slug_cache_key}/customizations")
-  end
-
-  def current_customizations
-    Rails.cache.fetch("profiles/#{slug_cache_key}/customizations") do
-      CustomizationWriter.new(self).prepare_template
-    end
-  end
+  # after_save :delete_customization_key
+  # def delete_customization_key
+  #   Rails.cache.delete("profiles/#{slug_cache_key}/customizations")
+  # end
+  # 
+  # def current_customizations
+  #   Rails.cache.fetch("profiles/#{slug_cache_key}/customizations") do
+  #     CustomizationWriter.new(self).prepare_template
+  #   end
+  # end
 
   def delete_follower_cache
     Rails.cache.delete("#{cache_key}/followee_ids")
@@ -261,11 +261,11 @@ class Account < ActiveRecord::Base
   def determine_account_ids(group)
     accounts = case group
     when :just_following
-      self.followee_cache_not_deleted
+      self.is_a?(Artist) ? self.follower_ids : self.followee_cache_not_deleted
     when :just_me
       [self.id]
     when :all
-      self.is_a?(Artist) ? [self.id].concat(self.follower_ids) : [self.id].concat(self.followee_cache_not_deleted)
+      self.is_a?(Artist) ? nil : [self.id].concat(self.followee_cache_not_deleted)
     end
     self.is_a?(Artist) ? accounts : accounts - self.blocker_ids
   end
@@ -279,11 +279,12 @@ class Account < ActiveRecord::Base
     options[:kind] ||= :all
     options[:page] ||= 1
     options[:group] ||= :all
-    options[:group] = :all if self.is_a?(Artist)
+    # options[:group] = :all if self.is_a?(Artist)
     raise ArgumentError unless [:all, :listen, :twitter, :station, :playlist, :status].include?(options[:kind])
     raise ArgumentError unless [:all, :just_me, :just_following].include?(options[:group])
     Activity::Feed.query :for => options[:kind],
                                 :page => options[:page].to_i,
+                                :limit => options[:limit],
                                 :account_ids => determine_account_ids(options[:group]),
                                 :before_timestamp => options[:before_timestamp],
                                 :after_timestamp => options[:after_timestamp],

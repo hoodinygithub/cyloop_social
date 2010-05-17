@@ -41,7 +41,7 @@ class RecEngine
     rescue => e
       puts e.inspect
       puts e.backtrace.join( "\n" )
-      []
+      Nokogiri::XML.parse([])
     end
   end
 

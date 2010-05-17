@@ -14,9 +14,10 @@ class DashboardsController < ApplicationController
     @mixes_recommended = (1..6).to_a
 
     if profile_owner?
-      stations = transformed_recommended_stations(6, 10)
-      @recommended_stations = stations[0..(RECOMMENDED_STATIONS-1)]
-      @recommended_stations_queue = stations[RECOMMENDED_STATIONS..(stations.size)]
+      stations = transformed_recommended_stations(RECOMMENDED_STATIONS, RECOMMENDED_STATIONS+4)
+      # Queue not needed for now DZC 2010-05-16
+      @recommended_stations = stations #[0..(RECOMMENDED_STATIONS-1)] 
+#      @recommended_stations_queue = stations[RECOMMENDED_STATIONS..(stations.size)]
     end
     
     respond_to do |format|

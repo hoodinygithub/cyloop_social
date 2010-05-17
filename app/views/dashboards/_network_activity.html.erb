@@ -1,7 +1,7 @@
-<h1><%= t('home.network_update', :user_name => artist_or_user_name(profile_account)) %></h1>
-<span class="chars_counter" style="display: none">140</span>
+<h1 class="activity"><%= t('home.network_update', :user_name => artist_or_user_name(profile_account)) %></h1>
+<span class="chars_counter">140</span>
 <div class="network_update">
-  <form id="network_update_form" style="display:none;">
+  <form id="network_update_form">
     <div>
       <%= avatar_for(profile_account, :small, {:class => 'network_icon'}) %>
       <textarea id="network_comment" onkeyup="Base.network.count_chars();" onchange="Base.network.count_chars();" name="comment" rows="2" cols="20"></textarea>

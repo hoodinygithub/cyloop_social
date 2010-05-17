@@ -2,12 +2,12 @@
   <span class="follows_count"><%= profile_account.followee_count %></span>
   <h1><%= t("dashboards.follows", :user_name => profile_account.first_name.upcase) %></h1>
   
-  <% cache("#{site_cache_key}/#{profile_account.slug}/follows", :expires_in => EXPIRATION_TIMES['user_follows']) do %>  
-    <% if profile_account.followee_count < 1 %>
-      <div class="big_text">
-        <%= t("user.is_not_following_anybody", :user_name => profile_account.first_name) %>
-      </div>
-    <% else %>
+  <% if profile_account.followee_count < 1 %>
+    <div class="big_text">
+      <%= t("user.is_not_following_anybody", :user_name => profile_account.first_name) %>
+    </div>
+  <% else %>
+    <% cache("#{site_cache_key}/#{profile_account.slug}/follows", :expires_in => EXPIRATION_TIMES['user_follows']) do %>  
       <% followings = profile_account.followees.all(:limit => 8) %>
       <% followings.each_with_index do |follow, index| %>
         <div class="small_thumb<%= " last_thumb" if index == 3 or index == 7 %>">
@@ -29,16 +29,15 @@
           <br class="clearer" />
         <% end %>
       <% end %>
-
     <% end %>
-    <br class="clearer" />
-    <% if profile_account.followee_count > 8 %>
-      <div class="align_right">
-        <b>
-          <%= link_to(t('actions.view_more'),  following_index_path ) %>
-        </b>
-      </div>
-    <% end %>
+  <% end %>
+  <br class="clearer" />
+  <% if profile_account.followee_count > 8 %>
+    <div class="align_right">
+      <b>
+        <%= link_to(t('actions.view_more'),  following_index_path ) %>
+      </b>
+    </div>
   <% end %>
 </div>
 

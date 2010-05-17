@@ -45,11 +45,11 @@ module AvatarsHelper
     
     path = path.sub('www','assets')
     if options.size > 0
-      options[:class] = "avatar #{type}"
+      options[:class] = "comment_icon #{type}"
       options[:title] = options[:alt] unless !options.has_key?(:alt)
       image_tag path, options
     else
-      image_tag path, :class => "avatar #{type}"
+      image_tag path, :class => "comment_icon #{type}"
     end
   end
 

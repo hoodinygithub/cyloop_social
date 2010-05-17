@@ -6,7 +6,7 @@
   <div id="center_column">
     <%= render 'dashboards/recommended_stations' %>
     <%= render 'dashboards/network_activity' %>
-    <%= render 'dashboards/comment_list', :with_title => false %>
+    <%= render :partial => 'activities/all', :locals => {:limit => 5, :hide_sorting => profile_owner?} %>
   </div><!--/end center_column -->
 
   <%= render 'dashboards/right_column' %>

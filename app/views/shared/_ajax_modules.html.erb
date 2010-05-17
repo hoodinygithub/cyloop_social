@@ -1,11 +1,9 @@
-<% content_for :javascript do %>
-  var recommended_stations_queue = [<%= @recommended_stations_queue.collect(&:artist_id).join(", ") if @recommended_stations_queue %>];
+<% content_for :javascript do  
+  # Not needed for now DZC 2010-05-17
+  # var recommended_stations_queue = [<%= @recommended_stations_queue.collect(&:artist_id).join(", ") if @recommended_stations_queue %>]; %>
+  
   <% if profile_artist? %>
     Base.network.load_latest_tweet(<%= params.to_json %>);
-  <% end %>
-
-  <% if ["dashboard", "accounts"].include?(controller_name) %>
-    Base.network.load_latest(<%= params.to_json %>, <%= profile_owner? ? 1 : 0 %>);
   <% end %>
 <% end %>
 

@@ -869,70 +869,72 @@ Base.stations.remove = function(user_station_id, button) {
   });
 };
 
-Base.stations.close_button_event_binder = function() {
-  jQuery("span.recommended_station").bind('click', function() { Base.stations.close_button_handler(this); });
-};
-
-Base.stations.close_button_handler = function(object) {
-    $button = jQuery(object);
-    var artist_id = $button.attr('artist_id');
-
-    $parent_div = $button.parent();
-    $parent_div.html("<img style='margin-top:50px' src='/images/loading.gif'></img>");
-    $parent_div.css({'background':'#cccccc', 'text-align':'center'});
-
-    var new_artist_id = recommended_stations_queue.shift();
-
-    if (typeof(new_artist_id) == 'undefined') {
-      $parent_div.html("");
-      $parent_div.css({'background':'white', 'text-align':'left'});
-      return;
-    }
-
-    var params = {'artist_id':new_artist_id, 'last_box':$parent_div.hasClass('last_box')};
-    jQuery.get('/stations/top_station_html', params, function(data) {
-      $new_div = jQuery(data);
-      $parent_div.html($new_div.html());
-      $parent_div.css({'background':'white', 'text-align':'left'});
-      Base.stations.close_button_event_binder();
-    });
-};
+// Recommended Stations - Not for now - DZC 2010-05-17
+// Base.stations.close_button_event_binder = function() {
+//   jQuery("span.recommended_station").bind('click', function() { Base.stations.close_button_handler(this); });
+// };
+// 
+// 
+// Base.stations.close_button_handler = function(object) {
+//     $button = jQuery(object);
+//     var artist_id = $button.attr('artist_id');
+// 
+//     $parent_div = $button.parent();
+//     $parent_div.html("<img style='margin-top:50px' src='/images/loading.gif'></img>");
+//     $parent_div.css({'background':'#cccccc', 'text-align':'center'});
+// 
+//     var new_artist_id = recommended_stations_queue.shift();
+// 
+//     if (typeof(new_artist_id) == 'undefined') {
+//       $parent_div.html("");
+//       $parent_div.css({'background':'white', 'text-align':'left'});
+//       return;
+//     }
+// 
+//     var params = {'artist_id':new_artist_id, 'last_box':$parent_div.hasClass('last_box')};
+//     jQuery.get('/stations/top_station_html', params, function(data) {
+//       $new_div = jQuery(data);
+//       $parent_div.html($new_div.html());
+//       $parent_div.css({'background':'white', 'text-align':'left'});
+//       Base.stations.close_button_event_binder();
+//     });
+// };
 
 
 /*
  * Comment shared
  */
-Base.network.show_more = function(button) {
-  $button = jQuery(button);
-
-  $span_label = $button.find('span').find('span');
-  old_button_label = $span_label.html();
-  $span_label.html(Base.layout.spin_image());
-
-  // activities page
-  $list   = jQuery('.followers_list');
-
-  if ($list.length == 0) {
-    $list = jQuery(".comments_list");
-  }
-
-  if ($list.length == 0) {
-    throw("Could not find a valid list element.");
-  }
-
-  $last_li  = $list.find('li:last');
-  timestamp = $last_li.attr('timestamp');
-
-  var params = {'after':timestamp, 'slug':Base.account.slug};
-  if (typeof(Base.network.FILTER_BY) != 'undefined') {
-    params.filter_by = Base.network.FILTER_BY;
-  }
-
-  jQuery.post("/activity/latest", params, function (response) {
-    $list.html(response).fadeIn();
-    $span_label.html(old_button_label);
-  });
-};
+// Base.network.show_more = function(button) {
+//   $button = jQuery(button);
+// 
+//   $span_label = $button.find('span').find('span');
+//   old_button_label = $span_label.html();
+//   $span_label.html(Base.layout.spin_image());
+// 
+//   // activities page
+//   $list   = jQuery('.followers_list');
+// 
+//   if ($list.length == 0) {
+//     $list = jQuery(".comments_list");
+//   }
+// 
+//   if ($list.length == 0) {
+//     throw("Could not find a valid list element.");
+//   }
+// 
+//   $last_li  = $list.find('li:last');
+//   timestamp = $last_li.attr('timestamp');
+// 
+//   var params = {'after':timestamp, 'slug':Base.account.slug};
+//   if (typeof(Base.network.FILTER_BY) != 'undefined') {
+//     params.filter_by = Base.network.FILTER_BY;
+//   }
+// 
+//   jQuery.post("/activity/latest", params, function (response) {
+//     $list.html(response).fadeIn();
+//     $span_label.html(old_button_label);
+//   });
+// };
 
 Base.network.count_chars = function() {
   $textarea     = jQuery("#network_comment");
@@ -948,61 +950,60 @@ Base.network.count_chars = function() {
   }
 };
 
-Base.network.__update_page_owner_page = function(response, options) {
-  $show_more_button = jQuery('#show_more_comments');
-  $comment_list        = jQuery('#network_comment_list');
-  $share_button = jQuery('a.compartir_button');
+// Base.network.__update_page_owner_page = function(response, options) {
+//   $show_more_button = jQuery('#show_more_comments');
+//   $comment_list        = jQuery('#network_comment_list');
+//   $share_button = jQuery('a.compartir_button');
+// 
+//   if (typeof(options) == 'object' && typeof(options.replace) != 'undefined' && options.replace) {
+//     $comment_list.hide().html(response).fadeIn();
+//   } else {
+//     $comment_list.hide().append(response).fadeIn();
+//   }
+// 
+//   if ($comment_list.find('li').length >= 5) {
+//    $show_more_button.fadeIn();
+//   }
+// };
 
-  if (typeof(options) == 'object' && typeof(options.replace) != 'undefined' && options.replace) {
-    $comment_list.hide().html(response).fadeIn();
-  } else {
-    $comment_list.hide().append(response).fadeIn();
-  }
+// Base.network.__update_page_user_page = function(response) {
+//   $user_big_text = jQuery("#user_activity_big_text");
+//   $ul = jQuery('#user_recent_activities');
+// 
+//   $user_big_text.find('img').remove();
+// 
+//   if (response.length == 0) {
+//     $user_big_text.find('span').fadeIn();
+//     return;
+//   }
+// 
+//   $user_big_text.remove();
+//   $ul.html(response);
+// };
 
-  if ($comment_list.find('li').length >= 5) {
-   $show_more_button.fadeIn();
-  }
-};
-
-Base.network.__update_page_user_page = function(response) {
-  $user_big_text = jQuery("#user_activity_big_text");
-  $ul = jQuery('#user_recent_activities');
-
-  $user_big_text.find('img').remove();
-
-  if (response.length == 0) {
-    $user_big_text.find('span').fadeIn();
-    return;
-  }
-
-  $user_big_text.remove();
-  $ul.html(response);
-};
-
-
-Base.network.load_latest = function(params, profile_owner) {
-  jQuery(document).ready(function() {
-    var user_page = jQuery('#user_recent_activities').length > 0;
-
-    if (typeof(params) != 'object') params = {};
-
-    if (user_page) {
-      params.public = true;
-    }
-
-    params.profile_owner = profile_owner;
-
-    jQuery.post('/activity/latest', params, function (response) {
-      if (user_page) {
-        Base.network.__update_page_user_page(response);
-      } else {
-        jQuery(".chars_counter").show();
-        jQuery('#network_update_form').show();
-        Base.network.__update_page_owner_page(response);
-      }
-    });
-  });
-};
+// Base.network.load_latest = function(params, profile_owner) {
+//   jQuery(document).ready(function() {
+//     var user_page = jQuery('#user_recent_activities').length > 0;
+// 
+//     if (typeof(params) != 'object') params = {};
+// 
+//     if (user_page) {
+//       params.public = true;
+//     }
+// 
+//     params.profile_owner = profile_owner;
+// 
+//     jQuery.post('/activity/latest', params, function (response) {
+//       if (user_page) {
+//         Base.network.__update_page_user_page(response);
+//       } else {
+//         jQuery(".chars_counter").show();
+//         jQuery('#network_update_form').show();
+//         Base.network.__update_page_owner_page(response);
+//       }
+//     });
+//   });
+// };
 
 Base.network.__artist_latest_tweet = function(response) {
   $user_big_text = jQuery("#tweet_big_text");
@@ -1043,9 +1044,10 @@ Base.network.push_update = function() {
     jQuery.post('/activity/update/status', {'message':comment}, function (response) {
       $comment_field.val("");
       jQuery(".chars_counter").html(140);
-      Base.network.__update_page_owner_page(response, {'replace':true});
+      // Base.network.__update_page_owner_page(response, {'replace':true});
       $chars_counter.css({'color':'#cccccc'});
       $share_button.removeClass('blue_button_wo_hover').addClass('blue_button').html(old_button_content);
+      $network_update_text.html(response);
     });
   } else {
     $comment_field.css({'border':'10px solid red'});
@@ -1425,7 +1427,7 @@ jQuery(document).ready(function() {
     return false;
   });
 
-  Base.stations.close_button_event_binder();
+  // Base.stations.close_button_event_binder();
   Base.layout.bind_events();
   Base.layout.hide_success_and_error_messages();
   Base.header_search.dropdown();

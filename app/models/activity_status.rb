@@ -35,6 +35,7 @@ module Activity
         :user_slug => @account.slug,
         :timestamp => Time.now.to_i            
       })})
+      db[key]
     end
     
     def last

@@ -114,7 +114,7 @@ ActionController::Routing::Routes.draw do |map|
     url.listen_activity 'activity/activity/:type/:song_id', :action => 'song'
     url.get_activity 'activity/activity/:type', :action => 'get_activity'
     url.push_activity 'activity/update/:type', :action => 'update'
-    url.get_latest    'activity/latest', :action => 'latest'
+    # url.get_latest 'activity/latest', :action => 'latest'
     url.get_latest_tweet 'activity/latest_tweet', :action => 'latest_tweet'
   end
 

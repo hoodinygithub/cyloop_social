@@ -481,9 +481,9 @@ img.artist_icon_box.tiny {
 
 .chars_counter {
   float: right;
+  margin-top: -27px;
   color: #cccccc;
   font-size: 1.5em;
-  margin-top: -27px;
 }
 
 .grey.small {
@@ -493,6 +493,11 @@ img.artist_icon_box.tiny {
 .comments_list .follower_image {
   float: left;
   width: 90%;
+}
+
+.comments_list .comment_icon {
+  width: 50px;
+  height: 50px;
 }
 
 
@@ -756,4 +761,45 @@ div#now_playing_user_station {
 #top_stations .station {
 	height: 51px;
 	font-size: 11px;
+}
+
+.debug {
+  text-align: left!important;
+}
+
+/* Push notifications and Activity */
+h1.activity { width: 100%; margin-top: 10px; }
+#push_notification {
+  border: 1px solid #ddd; border-left: 0; border-right: 0;
+  background-color: #FCFCCC;
+  padding: 10px 15px;
+  margin-bottom: 20px;
+  color: black;
+}
+#push_notification_text { display: block; width: 400px; }
+#push_notification a.close {
+  width: 10px;
+  height: 15px;
+  display: block;
+  background: url(../images/activity_push_close.png) no-repeat center;
+  float: right;
+  text-indent: -9999px;
+  overflow: hidden;
+}
+#push_notification a.refresh {}
+#activity_filters .loading {
+	padding: 0 0 0 0;
+	width: 18px;
+	height: 13px;
+	background: transparent url('/images/animatedLoader_wht.gif') no-repeat center !important;
+}
+ul.activities li.last_loaded {
+	border-bottom: 1px solid #a3a3a3;
+}
+ul.activities li:hover{
+	background-color: #FEFFE3 !important;
+}
+.view_more_activity {
+  float: right;
+  margin-top: -24px;
 }

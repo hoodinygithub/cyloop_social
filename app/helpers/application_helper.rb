@@ -818,4 +818,8 @@ module ApplicationHelper
   def on_dashboard?
     request.request_uri.match(/\/my\//)
   end
+  
+  def on_activities?
+    controller_name == 'activities'
+  end  
 end

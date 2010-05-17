@@ -1,0 +1,24 @@
+<div id="activity">
+  <div id="push_notification" style="display: none">
+    <%= link_to("x", "#activity_filters", :id => "push_notification_close", :class => "close") %>
+    <div id="push_notification_text">
+      <%= t("activity.push_notification", :count => 1, :link => link_to(t("activity.push_notification_refresh"), my_dashboard_path)) %>
+    </div>
+  </div>
+  <ul class="comments_list activities" is_artist="<%= profile_account.is_a?(Artist).to_s %>" user="<%= profile_account.id %>">
+    <%
+    #= render :partial => "modules/activity/all_activity", :collection => @activities 
+    %>
+  </ul>
+  <div id="user_has_no_activity" class="big_text" style="display: none">
+    <br/>
+    <span><%= t("user.has_no_activity", :user_name => artist_or_user_name(profile_account)) %></span>
+    <br/><br/>
+  </div>  
+  
+  <% if on_dashboard? || on_activities? %>
+  <div class="more_button align_right">
+    <%= blue_button t('actions.show_more'), :id => "activity_more", :onclick => "$('#activity').data('activityFeed').more()" %>
+  </div>
+  <% end %>
+</div>
