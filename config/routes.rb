@@ -148,18 +148,18 @@ ActionController::Routing::Routes.draw do |map|
 
     profile.resources :stations, :controller => 'user_stations'
 
-    profile.resources :biography, :only => :index
+    # profile.resources :biography, :only => :index
     profile.resources :following, :controller => 'followees'
     profile.resources :followers
     profile.resources :activities, :only => :index
 
-    profile.resources :charts, :only => :index
+    # profile.resources :charts, :only => :index
     #profile.charts 'charts', :controller => 'charts', :action => 'index'
-    profile.namespace :charts do |charts|
-      charts.resources :songs, :only => :index
-      charts.resources :artists, :only => :index
-      charts.resources :albums, :only => :index
-    end
+    # profile.namespace :charts do |charts|
+    #   charts.resources :songs, :only => :index
+    #   charts.resources :artists, :only => :index
+    #   charts.resources :albums, :only => :index
+    # end
   end
 
   map.namespace :my do |me|
