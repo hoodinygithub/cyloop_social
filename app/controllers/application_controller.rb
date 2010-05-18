@@ -48,9 +48,9 @@ class ApplicationController < ActionController::Base
 
   def rescue_action_in_public(exception)
     if params[:format] == 'xml' || request.path.ends_with?( '.xml' )
-      unless hoptoad_ignore_user_agent?
-        HoptoadNotifier.notify_or_ignore(exception, hoptoad_request_data)
-      end
+      # unless hoptoad_ignore_user_agent?
+      #   HoptoadNotifier.notify_or_ignore(exception, hoptoad_request_data)
+      # end
       log_error(exception) if logger
       result = player_error_message(exception)
       render :xml => Player::Error.new( :code => result.first, :error => t("messenger_player.#{result.last}") )
