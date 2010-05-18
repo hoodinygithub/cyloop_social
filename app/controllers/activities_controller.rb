@@ -10,7 +10,8 @@ class ActivitiesController < ApplicationController
   end
 
   def get_activity
-    @activities = load_related_item_activity( account.transformed_activity_feed( activity_params ) )
+    # @activities = load_related_item_activity( account.transformed_activity_feed( activity_params ) )
+    @activities = []
     expires_now
     respond_to do |format|
       format.js { render :partial => "modules/activity/#{@type}_activity", :collection => @activities, :layout => false }

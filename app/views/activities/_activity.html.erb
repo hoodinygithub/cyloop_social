@@ -6,9 +6,6 @@
     </div>
   </div>
   <ul class="comments_list activities" is_artist="<%= profile_account.is_a?(Artist).to_s %>" user="<%= profile_account.id %>">
-    <%
-    #= render :partial => "modules/activity/all_activity", :collection => @activities 
-    %>
   </ul>
   <div id="user_has_no_activity" class="big_text" style="display: none">
     <br/>
