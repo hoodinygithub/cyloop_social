@@ -14,7 +14,7 @@ class AccountsController < ApplicationController
 
     @top_stations = profile_account.top_stations(6)
     @followers = profile_account.followers.all(:limit => 4)
-    @latest_stations = profile_account.latest_stations(6)
+    @latest_stations = profile_account.latest_stations(12)
 
     respond_to do |format|
       format.html
