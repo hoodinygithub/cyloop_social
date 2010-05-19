@@ -64,20 +64,21 @@ module Application::Activities
     end
 
     def record_station_activity( station )
-      begin
-        artists_contained = station.playable.includes.map { |k| {:artist => k.artist.name, :slug => k.artist.slug} }.to_json rescue ''
-        tracker_payload = {
-          :user_id => current_user.id,
-          :station_id => station.id,
-          :site_id => current_site.id,
-          :visitor_ip_address => remote_ip,
-          :timestamp => Time.now.utc.to_i,
-          :artists_contained => artists_contained
-        }
-        Resque.enqueue(StationJob, tracker_payload)
-      rescue Exception => e
-        Rails.logger.error("*** Could not record station activity! payload: #{tracker_payload}") and return true
-      end
+#       Supressing activity for now 2010-05-19 DZC
+#       begin
+#         artists_contained = station.playable.includes.map { |k| {:artist => k.artist.name, :slug => k.artist.slug} }.to_json rescue ''
+#         tracker_payload = {
+#           :user_id => current_user.id,
+#           :station_id => station.id,
+#           :site_id => current_site.id,
+#           :visitor_ip_address => remote_ip,
+#           :timestamp => Time.now.utc.to_i,
+#           :artists_contained => artists_contained
+#         }
+#         Resque.enqueue(StationJob, tracker_payload)
+#       rescue Exception => e
+#         Rails.logger.error("*** Could not record station activity! payload: #{tracker_payload}") and return true
+#       end
     end
 
     end
