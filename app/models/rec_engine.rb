@@ -90,14 +90,25 @@ class RecEngine
   def get_recommended_songs(params = {})
     get_items(:get_recommended_songs, params).map {|x| RecEngine::Song.new(x)}
   end
+
+  def get_internal_cache_key(params = {})
+    all_params_to_cache_key(params)
+  end
   
   private
-  def all_params_to_cache_key(args)
+  def remove_ip_address_param(args)
+    args.delete(:ip_address.to_s) if args.has_key?(:ip_address.to_s)
     args.delete(:ip_address) if args.has_key?(:ip_address)
+    args
+  end
+  
+  def all_params_to_cache_key(args)
+    args = remove_ip_address_param(args)
     if (@_params.nil? || @_params.keys.size == 0)
       return args.to_cache_key
     else
-      return args.merge(@_params).to_cache_key
+      new_params = remove_ip_address_param(args.merge(@_params))
+      return new_params.to_cache_key
     end
   end
 
