@@ -200,10 +200,10 @@ class RadioController < ApplicationController
   end
   helper_method :artist
 
-  def recent_listeners
-    @recent_listeners ||= artist.recent_listens(14) rescue []
-  end
-  helper_method :recent_listeners
+  # def recent_listeners
+  #   @recent_listeners ||= artist.recent_listens(14) rescue []
+  # end
+  # helper_method :recent_listeners
 
   def similar_artists
     @similar_artists ||= artist.similar(4) #rescue []

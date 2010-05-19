@@ -46,7 +46,7 @@ ActionController::Routing::Routes.draw do |map|
   map.x45b 'x45b', :controller => 'application', :action => 'x45b'
   map.x46b 'x46b', :controller => 'pages', :action => 'x46b'
 
-  map.resources :artists, :only => :index, :member => {:recent_listeners => :get, :similar_artists => :get}
+  # map.resources :artists, :only => :index, :member => {:recent_listeners => :get, :similar_artists => :get}
   map.resources :players, :only => :show
 
   map.resource :search
@@ -57,8 +57,8 @@ ActionController::Routing::Routes.draw do |map|
   map.delete_station_confirmation '/stations/:id/delete_confirmation', :controller => 'stations', :action => 'delete_confirmation'
   map.delete_station '/stations/:id/delete', :controller => 'stations', :action => 'delete'
 
-  map.resource :activity
-  map.resource :artist_recommendations
+  # map.resource :activity
+  # map.resource :artist_recommendations
   map.resource :demographics, :member => {:cities => :get}
   map.resource :session
 
@@ -110,13 +110,13 @@ ActionController::Routing::Routes.draw do |map|
     Translate::Routes.translation_ui(admin) if RAILS_ENV != "production"
   end
 
-  map.with_options(:controller => 'activities') do |url|
-    url.listen_activity 'activity/activity/:type/:song_id', :action => 'song'
-    url.get_activity 'activity/activity/:type', :action => 'get_activity'
-    url.push_activity 'activity/update/:type', :action => 'update'
-    # url.get_latest 'activity/latest', :action => 'latest'
-    url.get_latest_tweet 'activity/latest_tweet', :action => 'latest_tweet'
-  end
+  # map.with_options(:controller => 'activities') do |url|
+  #   url.listen_activity 'activity/activity/:type/:song_id', :action => 'song'
+  #   url.get_activity 'activity/activity/:type', :action => 'get_activity'
+  #   url.push_activity 'activity/update/:type', :action => 'update'
+  #   # url.get_latest 'activity/latest', :action => 'latest'
+  #   url.get_latest_tweet 'activity/latest_tweet', :action => 'latest_tweet'
+  # end
 
   map.messenger_player '/messengerplayer', :controller => 'messenger_player/player', :action => 'index'
   map.connect '/messenger_player', :controller => 'messenger_player/player', :action => 'index'

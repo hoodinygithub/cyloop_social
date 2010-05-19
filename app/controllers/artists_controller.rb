@@ -1,5 +1,5 @@
 class ArtistsController < ApplicationController
-  caches_action :recent_listeners, :cache_path => :artist_cache_path, :expires_delta => EXPIRATION_TIMES['artist_recent_listeners_js']
+  # caches_action :recent_listeners, :cache_path => :artist_cache_path, :expires_delta => EXPIRATION_TIMES['artist_recent_listeners_js']
   caches_action :similar_artists, :cache_path => :artist_cache_path, :expires_delta => EXPIRATION_TIMES['artist_similar_artists_js']
 
   def index
@@ -20,12 +20,12 @@ class ArtistsController < ApplicationController
     end
   end
 
-  def recent_listeners
-    @recent_listeners = profile_artist.recent_listeners(5)
-    respond_to do |format|
-      format.js
-    end
-  end
+  # def recent_listeners
+  #   @recent_listeners = profile_artist.recent_listeners(5)
+  #   respond_to do |format|
+  #     format.js
+  #   end
+  # end
 
   def similar_artists
     @similar_artists = profile_artist.similar(3)
