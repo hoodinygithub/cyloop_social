@@ -623,7 +623,7 @@ Base.community.follow = function(user_slug, button, remove_div, layer_path) {
       }
 
       $button.unbind('click');
-      $button.bind('click', function() { Base.community.unfollow(user_slug, this, remove_div); return false; });
+      $button.bind('click', function() { Base.community.unfollow(user_slug, this, false); return false; });
     }
   });
 };
@@ -641,15 +641,15 @@ Base.community.unfollow = function(user_slug, button, remove_div) {
 
   jQuery.post('/users/unfollow', params, function(response, status) {
     if (status == 'success') {
-      if (remove_div) {
-        $button.parent().parent().slideUp();
-      } else {
-        $button.removeClass("green_button");
-        $button.addClass("blue_button");
-        $button_label.html(Base.locale.t('actions.follow'));
-        $button.unbind('click');
-        $button.bind('click', function() { Base.community.follow(user_slug, this, remove_div); return false; });
-      }
+      $button.removeClass("green_button");
+      $button.addClass("blue_button");
+      $button_label.html(Base.locale.t('actions.follow'));
+      //if (remove_div) {
+      //  $button.parent().parent().slideUp();
+      //} else {
+      $button.unbind('click');
+      $button.bind('click', function() { Base.community.follow(user_slug, this, remove_div); return false; });
+      //}
     }
   });
 };
