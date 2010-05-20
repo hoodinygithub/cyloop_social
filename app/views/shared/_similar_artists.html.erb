@@ -1,32 +1,29 @@
 <div class="box_content">
- <h1>
-    <%= t("modules.similar_artists.title") %>
-  </h1>
-  <% unless profile_artist.similar(8).empty? %>
+  <h1><%= t("modules.similar_artists.title") %></h1>
+
+  <% if profile_artist.similar(8).empty? %>
+    <div class="big_text">
+      <%= t("user.is_not_following_anybody", :user_name => profile_account.first_name) %>
+    </div>
+  <% else %>
     <% cache("#{site_cache_key}/#{profile_artist.slug}/similar", :expires_in => EXPIRATION_TIMES['artist_similar_artists']) do %>
-      <% if profile_artist.similar(8).size < 1 %>
-        <div class="big_text">
-          <%= t("user.is_not_following_anybody", :user_name => profile_account.first_name) %>
-        </div>
-      <% else %>
-        <% profile_artist.similar(8).each_with_index do |artist, index| %>
-         <% if index == 4 %>
+      <% profile_artist.similar(8).each_with_index do |artist, index| %>
+        <% if index == 4 %>
           <br class="clearer" />
-         <% end %>
-          <div class="small_thumb<%= " last_thumb" if index == 7 || index == 3 %>">
-            <%= link_to avatar_for(artist, :tiny, :class => "spaced_img tiny", :disable_default_css => true), artist %>
-            <%= link_to artist.name, artist %>
-          </div>
         <% end %>
-
-        <% index = (8 - profile_artist.similar(8).size) %>
-        <% index.times do |i| %>
-          <div class="empty_box gb_small <%= "last_box" if i == (index-1)  ||  i == (index-5) %>">
-            &nbsp;
-          </div>
-        <% end %>
-
+        <div class="small_thumb<%= " last_thumb" if index == 7 || index == 3 %>">
+          <%= link_to avatar_for(artist, :tiny, :class => "spaced_img tiny", :disable_default_css => true), artist %>
+          <%= link_to artist.name, artist %>
+        </div>
       <% end %>
+
+      <% index = (8 - profile_artist.similar(8).size) %>
+      <% index.times do |i| %>
+        <div class="empty_box gb_small <%= "last_box" if i == (index-1)  ||  i == (index-5) %>">
+          &nbsp;
+        </div>
+      <% end %>
+
     <% end %>
   <% end %>
   <br class="clearer" />
