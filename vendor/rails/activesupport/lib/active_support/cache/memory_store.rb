@@ -26,7 +26,8 @@ module ActiveSupport
 
       def write(name, value, options = nil)
         super
-        @data[name] = value.freeze
+        #@data[name] = value.freeze
+        @data[name] = (value.duplicable? ? value.dup : value).freeze
       end
 
       def delete(name, options = nil)

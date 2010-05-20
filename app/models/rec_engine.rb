@@ -41,7 +41,7 @@ class RecEngine
     rescue => e
       puts e.inspect
       puts e.backtrace.join( "\n" )
-      []
+      Nokogiri::XML.parse([])
     end
   end
 
@@ -63,7 +63,9 @@ class RecEngine
   end
 
   def get_rec_engine_playlist_artists(params = {})
-    get_items(:get_rec_engine_play_list, params).map {|x| RecEngine::ArtistFromPlaylist.new(x) }.uniq_by { |y| y.artist_id }
+    Rails.cache.fetch("rec_engine/get_rec_engine_playlist_artists/#{all_params_to_cache_key(params)}", :expires_delta => EXPIRATION_TIMES['get_rec_engine_playlist_artists']) do
+      get_items(:get_rec_engine_play_list, params).map {|x| RecEngine::ArtistFromPlaylist.new(x) }.uniq_by { |y| y.artist_id }
+    end
   end
 
   def get_recommended_artists(params = {})
@@ -74,7 +76,9 @@ class RecEngine
   end
   
   def get_recommended_stations(params = {})
-    get_items(:get_recommended_stations, params).map {|x| RecEngine::Station.new(x)} rescue []
+    Rails.cache.fetch("rec_engine/get_recommended_stations/#{all_params_to_cache_key(params)}", :expires_delta => EXPIRATION_TIMES['rec_engine_recommended_stations']) do
+      get_items(:get_recommended_stations, params).map {|x| RecEngine::Station.new(x)} rescue []
+    end
   end
   
   def get_similar_artists(params = {})
@@ -86,14 +90,25 @@ class RecEngine
   def get_recommended_songs(params = {})
     get_items(:get_recommended_songs, params).map {|x| RecEngine::Song.new(x)}
   end
+
+  def get_internal_cache_key(params = {})
+    all_params_to_cache_key(params)
+  end
   
   private
-  def all_params_to_cache_key(args)
+  def remove_ip_address_param(args)
+    args.delete(:ip_address.to_s) if args.has_key?(:ip_address.to_s)
     args.delete(:ip_address) if args.has_key?(:ip_address)
+    args
+  end
+  
+  def all_params_to_cache_key(args)
+    args = remove_ip_address_param(args)
     if (@_params.nil? || @_params.keys.size == 0)
       return args.to_cache_key
     else
-      return args.merge(@_params).to_cache_key
+      new_params = remove_ip_address_param(args.merge(@_params))
+      return new_params.to_cache_key
     end
   end
 

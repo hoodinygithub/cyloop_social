@@ -1,22 +1,24 @@
 <% listeners = station.recent_listeners(limit) %>
 <% unless listeners.empty? %>
-  <% listeners.each_with_index do |user, index| %>
-  <% end_box = index > 0 && (index + 1) % columns == 0 %>
-    <div class="small_thumb<%= " last_box" if end_box %>">
-      <%= link_to avatar_for(user, :tiny, :class => "spaced_img tiny", :disable_default_css => true), user, :target => '_blank' %>
-      <%= link_to truncate(user.name, :length => 15), user, :target => '_blank' %>
-    </div>
-    <% if end_box %>
-      <br class="clearer" />
+  <% cache("#{site_cache_key}/station_listeners/#{station.cache_key}", :expires_in => EXPIRATION_TIMES['radio_recent_station_listeners']) do %>
+    <% listeners.each_with_index do |user, index| %>
+    <% end_box = index > 0 && (index + 1) % columns == 0 %>
+      <div class="small_thumb<%= " last_box" if end_box %>">
+        <%= link_to avatar_for(user, :tiny, :class => "spaced_img tiny", :disable_default_css => true), user, :target => '_blank' %>
+        <%= link_to truncate(user.name, :length => 15), user, :target => '_blank' %>
+      </div>
+      <% if end_box %>
+        <br class="clearer" />
+      <% end %>
     <% end %>
-  <% end %>
 
-  <% index = (limit - 1) - listeners.size %>
-  <% index.downto(0) do |i| %>
-  <% end_box = i % columns == 0 %>
-    <div class="empty_box<%= i % columns == 0 ? " gb_small last_box" : " gb_small"  %>"></div>
-    <% if end_box %>
-      <br class="clearer" />
+    <% index = (limit - 1) - listeners.size %>
+    <% index.downto(0) do |i| %>
+    <% end_box = i % columns == 0 %>
+      <div class="empty_box<%= i % columns == 0 ? " gb_small last_box" : " gb_small"  %>"></div>
+      <% if end_box %>
+        <br class="clearer" />
+      <% end %>
     <% end %>
   <% end %>
 <% end %>

@@ -48,9 +48,9 @@ class ApplicationController < ActionController::Base
 
   def rescue_action_in_public(exception)
     if params[:format] == 'xml' || request.path.ends_with?( '.xml' )
-      unless hoptoad_ignore_user_agent?
-        HoptoadNotifier.notify_or_ignore(exception, hoptoad_request_data)
-      end
+      # unless hoptoad_ignore_user_agent?
+      #   HoptoadNotifier.notify_or_ignore(exception, hoptoad_request_data)
+      # end
       log_error(exception) if logger
       result = player_error_message(exception)
       render :xml => Player::Error.new( :code => result.first, :error => t("messenger_player.#{result.last}") )
@@ -84,7 +84,7 @@ class ApplicationController < ActionController::Base
   end
   
   def do_basic_http_authentication
-    if Rails.env.staging? || argentina_auth
+    if Rails.env.staging? # || argentina_auth
       authenticate_or_request_with_http_basic do |username, password|
         username == "hoodiny" && password == "3057227000"
       end
@@ -311,23 +311,26 @@ class ApplicationController < ActionController::Base
     stations = rec_engine.get_recommended_stations(:number_of_records => limit)
     return stations
   rescue SocketError
-    logger.error "RecEngine timed out"
-    []
+   logger.error "RecEngine timed out"
+   []
   rescue
-    logger.error "Catch-all error"
-    []
+   logger.error "Catch-all error"
+   []
   end
   
-  def transformed_recommended_stations(limit = 3, fetch=nil)
+  def transformed_recommended_stations(limit = 3, fetch=nil)    
     fetch ||= limit
-    stations = recommended_stations(fetch).map do |s| 
-      if s and s.station and s.station.playable
-        if s.station.playable.artist and s.station.playable.total_artists > 1
-          s.station.playable
-        end
-      end 
-    end.compact
-    stations = stations[0..(limit-1)]
+        
+    Rails.cache.fetch("modules/recommended_stations/#{limit}/#{fetch}/#{rec_engine.get_internal_cache_key(:number_of_records => fetch)}", :expires_delta => EXPIRATION_TIMES["module_recommended_stations"]) do
+      stations = recommended_stations(fetch).map do |s| 
+        if s and s.station and s.abstract_station and s.artist and s.abstract_station.total_artists > 1
+          s.abstract_station
+        else
+          nil
+        end 
+      end.compact
+      stations = stations[0..(limit-1)]
+    end
   end
 
   helper_method :rec_engine, :recommended_artists, :recommended_stations, :recommended_artists_existing

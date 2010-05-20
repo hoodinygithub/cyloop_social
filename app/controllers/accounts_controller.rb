@@ -6,19 +6,15 @@ class AccountsController < ApplicationController
 
   current_tab :home
 
-  RECOMMENDED_STATIONS = 6
   def show
     return redirect_to( user_path( profile_account.slug ) ) if params[:slug] != profile_account.slug
     @dashboard_menu = :home
     @mixes_recommended = (1..6).to_a
     @comments = (1..3).to_a
 
-    stations = transformed_recommended_stations(40)
-    @recommended_stations = stations[0..(RECOMMENDED_STATIONS-1)]
-    @recommended_stations_queue = stations[RECOMMENDED_STATIONS..(stations.size)]
-    @top_stations = profile_account.stations.most_created(6)
+    @top_stations = profile_account.top_stations(6)
     @followers = profile_account.followers.all(:limit => 4)
-    @latest_stations = profile_account.stations.all(:limit => 6 , :order => "user_stations.created_at DESC")
+    @latest_stations = profile_account.latest_stations(12)
 
     respond_to do |format|
       format.html

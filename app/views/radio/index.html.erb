@@ -12,7 +12,9 @@
     <div class="grey_box">
       <div class="box_content" id="top_stations">
         <h1><%= t('modules.top_stations.title') %></h1>
-        <%= render :partial => 'abstract_station_simple', :collection => @top_abstract_stations %>
+        <% cache("#{site_cache_key}/top_abstract_stations/#{@top_station_limit}", :expires_in => EXPIRATION_TIMES['radio_top_abstract_stations'] ) do %>
+          <%= render :partial => 'abstract_station_simple', :collection => @top_abstract_stations %>
+        <% end %>
       </div>
     </div>
   </div><!--/end right_column -->

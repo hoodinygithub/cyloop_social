@@ -1,0 +1,19 @@
+<% account = status_activity["record"] || Account.find(status_activity["account"]["id"]) %>
+<% unless defined?(no_li) && no_li %>
+<li timestamp="<%= status_activity['timestamp'] %>">
+<% end %>
+  <% unless defined?(no_li) && no_li %>
+  <%= link_to avatar_for_activity(account.avatar_file_name, account.id, "account", {:alt => status_activity['user_slug']}), account %>
+  <div class="comment_text">
+  <% end %>    
+    <b><%= link_to(account.first_name, user_path(account.slug)) %></b>
+    <%= status_activity['message'] %>
+    <br/>
+    <span class="grey small">
+      <%= t("basics.created_at", :when => nice_elapsed_time(status_activity["timestamp"])) %>
+    </span>
+<% unless defined?(no_li) && no_li %>    
+  </div>
+  <br class="clearer">
+</li>
+<% end %>

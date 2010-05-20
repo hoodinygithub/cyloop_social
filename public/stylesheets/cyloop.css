@@ -481,9 +481,9 @@ img.artist_icon_box.tiny {
 
 .chars_counter {
   float: right;
+  margin-top: -27px;
   color: #cccccc;
   font-size: 1.5em;
-  margin-top: -27px;
 }
 
 .grey.small {
@@ -493,6 +493,11 @@ img.artist_icon_box.tiny {
 .comments_list .follower_image {
   float: left;
   width: 90%;
+}
+
+.comments_list .comment_icon {
+  width: 50px;
+  height: 50px;
 }
 
 
@@ -518,8 +523,8 @@ img.avatar_four_thumbs_medium {
 }
 
 img.avatar_four_thumbs_big {
-  width: 73px;
-  height: 73px;
+  width: 74px;
+  height: 74px;
 }
 
 #network_comment {

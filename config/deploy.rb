@@ -54,7 +54,7 @@ ssh_options[:paranoid] = false
 # can also specify options that can be used to single out a specific subset of boxes in a
 # particular role, like :primary => true.
 
-set :branch, "hotfix-20100506"
+set :branch, "performance_enhancements"
 
 #EY06 All Sites
 task :production do
@@ -161,6 +161,18 @@ task :canada do
   set :environment_dbhost, defer { production_dbhost }
 end
 
+#EY06 Widget
+task :widget do
+  role :web, "70.42.33.4:8137"
+  role :app, "70.42.33.4:8137", :memcached => true, :sphinx => true
+  role :db , "70.42.33.4:8137", :primary => true
+  role :app, "70.42.33.4:8138", :memcached => true, :sphinx => true
+
+  set :rails_env, "production"
+  set :environment_database, defer { production_database }
+  set :environment_dbhost, defer { production_dbhost }
+end
+
 #EY06 Cyloop ES
 task :cyloopes do
   role :web, "70.42.33.4:8137"
@@ -237,7 +249,7 @@ namespace :deploy do
   end
 
   task :post_announce do
-    #campfire_notification "#{ENV['USER']} finished deploying #{application} to #{rails_env} (#{branch})"
+    campfire_notification "#{ENV['USER']} finished deploying #{application} to #{rails_env} (#{branch})"
   end
 
   task :restart do

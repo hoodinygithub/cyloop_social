@@ -1,6 +1,6 @@
 (function($) {
 	var ActivityFeedSwitcher = function() {
-		var filters = new Array('all', 'playlist', 'station', 'twitter');
+		var filters = new Array('all', 'playlist', 'station', 'status', 'twitter');
 		var currentView;
 		var loadTime = (new Date()).getTime();
 		
@@ -36,11 +36,16 @@ if(!String.count){
   	return (this.length - this.replace(new RegExp(s1,"g"), '').length) / s1.length;
   }
 }
+if(!String.trim){
+  String.prototype.trim = function () {
+    return this.replace(/^\s*/, "").replace(/\s*$/, "");
+  }  
+}
 
 (function($) {
   Activity = {
     options: {
-      arrActivityFilters: ['all', 'playlist', 'station', 'twitter'],
+      arrActivityFilters: ['all', 'playlist', 'station', 'status', 'twitter'],
       activeActivityFilter: 0,
       arrViewFilters: ['all', 'me', 'following'],
       activeViewFilter: 0,
@@ -48,13 +53,16 @@ if(!String.count){
       currentActivity: null,    
       currentView: null,
       currentPage: 1,
+      limit: 15,
       viewsEnabled: true,
       pushTimer: true, 
       pushInterval: 15000, 
       itemsToPush: 0, 
       format: "js",
       justUpdateQty: false,
-      pushedTimestamps: []    
+      pushedTimestamps: [],
+      skipAutoLoad: false,
+      skipFilterConfig: false
     }
   }
 
@@ -96,6 +104,7 @@ if(!String.count){
       data.su     = ((currentOptions.arrViewFilters[currentOptions.activeViewFilter] != 'following')?'true':'false');
       data.sf     = ((currentOptions.arrViewFilters[currentOptions.activeViewFilter] != 'me')?'true':'false');
       data.page   = options.page || currentOptions.currentPage;
+      data.limit  = options.limit || currentOptions.limit;
       data.format = options.format || currentOptions.format;
       data.user   = self.getUser();
     
@@ -133,32 +142,34 @@ if(!String.count){
       );
     };
   
+  
     this.loading = function(show) {
       currentOptions = Activity.options;
       if (show) {
-        $(currentOptions.currentActivity).parent("li").children("span").addClass("loading");
-        $("#activity_filters li.last").addClass("loading");
+        $("#activity_filters .last").addClass("loading");
         if (currentOptions.buttonEnabled)
-    	    $('#activity_more').html("<span></span>");        
+    	    $('#activity_more').html(Base.layout.spanned_spin_image());
       } else {
-        $(currentOptions.currentActivity).parent("li").children("span").removeClass("loading");
-        $("#activity_filters li.last").removeClass("loading");      
-        $("#loading_more").hide();
-        if (currentOptions.buttonEnabled)
-    	    $('#activity_more').html(more_activity);
+        $("#activity_filters .last").removeClass("loading");
+        if (currentOptions.buttonEnabled) {
+        	var more_text = "<span><span>"+Base.locale.t("actions.show_more")+"</span></span>";
+    	    $('#activity_more').html(more_text);        	
+        }
       }
     }
     
     this.enableMore = function(){
     	Activity.options.buttonEnabled = true;
-    	$('#activity_more').text(more_activity);
-    	$('.pagination').show();
+    	var more_text = "<span><span>"+Base.locale.t("actions.show_more")+"</span></span>";
+    	$('#activity_more').text(more_text);
+      $('.more_button').show();
     }
 
     this.disableMore = function(){
     	Activity.options.buttonEnabled = true;
-    	$('#activity_more').text(no_more_activity);
-    	$('.pagination').hide();
+    	var no_more_text = "<span><span>"+Base.locale.t("activity.no_more_activity")+"</span></span>";
+    	$('#activity_more').text(no_more_text);
+      $('.more_button').hide();
     }    
     
     this.loadActivity = function() {
@@ -182,27 +193,23 @@ if(!String.count){
         $('.activities li:last').addClass("last_loaded");
         $('.activities').append(response);            
       }      
-      $(this).oneTime("400ms", function() {
-        newItems = $('.activities li:last('+response.count("/li")+')');
-        newItems.effect("highlight", {}, 800);
-      });      
     }
     
     this.page = function() {
-      if (self.isArtist())
-        return Activity.options.currentPage;
-      else
+      // if (self.isArtist())
+      //   return Activity.options.currentPage;
+      // else
         return 1;
     }
     
     this.moreButtonVisibility = function() {
 			al = $('.activities').children().length
-			if( al == 0 || al % 15 )
+			if( al == 0 || al % Activity.options.limit )
 				return self.disableMore();
 			else
 				return self.enableMore();
     }
-  
+
     this.more = function(afterCallback) {
       timestamp = self.getTimestamp("last");
       self.loading(true);
@@ -215,20 +222,25 @@ if(!String.count){
           if (afterCallback) { afterCallback(); }
         },
         success: function(response, status) {
-          if (self.isArtist()) {
-            self.appendResponse(response);
-            Activity.options.currentPage++;
-            self.moreButtonVisibility();
-          } else {
+          // if (self.isArtist()) {
+          //   self.appendResponse(response);
+          //   Activity.options.currentPage++;
+          //   self.moreButtonVisibility();
+          // } else {
+            if (Activity.options.firstLoad && response.trim() == "") {
+              $("#user_has_no_activity").show();
+            } else {
+              $("#user_has_no_activity").hide();              
+            }
             lastTimestamp = self.getTimestamp("last");
             if ( timestamp == lastTimestamp && Activity.options.pushedTimestamps.indexOf(lastTimestamp) < 0 ) {
               Activity.options.pushedTimestamps.push(lastTimestamp);
               self.appendResponse(response);
-              self.moreButtonVisibility();
             } else {
               console.log('Item already pushed: ' + timestamp );
-            }            
-          }
+            }
+            self.moreButtonVisibility();
+          // }
           if (afterCallback) { afterCallback(); }
           self.loading(false);        
         }
@@ -249,10 +261,6 @@ if(!String.count){
           if ( Activity.options.pushedTimestamps.indexOf(timestamp) < 0 ) {
             Activity.options.pushedTimestamps.push(timestamp);
             $('.activities').prepend(response);
-            $(this).oneTime("400ms", function() {
-              newItems = $('.activities li:lt('+self.getItemsToPush()+')');
-              newItems.effect("highlight", {}, 800);
-            });
             self.loading(false);
           } else {
             console.log('Item already pushed: ' + timestamp);
@@ -303,7 +311,7 @@ if(!String.count){
     	Activity.options.buttonEnabled = true;
     	Activity.options.currentPage   = 1;
     	
-        self.twitterHideShowFilter();      
+      // self.twitterHideShowFilter();      
     	self.loadActivity();
     }
     
@@ -313,59 +321,66 @@ if(!String.count){
       self.hidePushAlert();      
        
       if (!filter || !Activity.options.currentActivity) {
-        filter = $("#activity_filters li:eq(0) a");        
+        filter = $("#activity_filters a:eq(0)");
       } else {        	
       	$(Activity.options.currentView).removeClass("active");
     	}      
     	
-      activeViewFilter = $("#activity_filters").children('li').index($("#activity_filters li a.active").parent("li"));
-      _currentView = $("#activity_filters li:eq(" + activeViewFilter + ") a");
+      activeViewFilter = $("#activity_filters").children('a').index($("#activity_filters .active"));
+      _currentView = $("#activity_filters a:eq(" + activeViewFilter + ")");
       
     	$(filter).addClass("active");    	
-    	$("#activity_filters li.last").addClass("loading");
+    	$("#activity_filters .last").addClass("loading");
 
       Activity.options.pushedTimestamps = []
       Activity.options.viewsEnabled     = false
     	Activity.options.currentView      = $(filter);
-    	Activity.options.activeViewFilter = ($("#activity_filters").children('li').index($(filter).parent('li')));
-
+    	Activity.options.activeViewFilter = ($("#activity_filters").children('a').index($(filter)));
     	Activity.options.buttonEnabled = true;
     	Activity.options.currentPage   = 1;
 
-        self.twitterHideShowFilter();
+      // self.twitterHideShowFilter();
     	self.loadActivity();
     }
     
     /* NEXT RELEASE */
-    this.twitterHideShowFilter = function() {
-      currentOptions = Activity.options;
-      if (currentOptions.arrActivityFilters[currentOptions.activeActivityFilter] == "twitter") {
-        $("#activity_filters .filter").hide();        
-        $("#twitter_only_filter").show();
-      } else {
-        $("#activity_filters .filter").show();
-        $("#twitter_only_filter").hide();        
-      }
-    }
+    // this.twitterHideShowFilter = function() {
+    //   currentOptions = Activity.options;
+    //   if (currentOptions.arrActivityFilters[currentOptions.activeActivityFilter] == "twitter") {
+    //     $("#activity_filters .filter").hide();        
+    //     $("#twitter_only_filter").show();
+    //   } else {
+    //     $("#activity_filters .filter").show();
+    //     $("#twitter_only_filter").hide();        
+    //   }
+    // }
     
-    // Give a time to the first call fill all activities
     Activity.options.buttonEnabled = true;         
-    if (!self.isArtist()) {
-      // Define current view
-      Activity.options.activeViewFilter = $("#activity_filters").children('li').index($("#activity_filters li a.active").parent("li"));
-      Activity.options.currentView      = $("#activity_filters li:eq(" + Activity.options.activeViewFilter + ") a"); 
-      
+    // if (!self.isArtist()) {
+      if (!Activity.options.skipFilterConfig) {
+        // Define current view
+        Activity.options.activeViewFilter = $("#activity_filters").children('a').index($("#activity_filters a.active"));
+        Activity.options.currentView      = $("#activity_filters a:eq(" + Activity.options.activeViewFilter + ")"); 
+      }      
       // Load activity first time
-      self.switchActivity();
-            
-      $(self).oneTime("15s", function() {
-        $(self).everyTime("15s", function() {
-          self.check();
-        });
-      });      
-    } else {
-    	self.loadActivity();      
-    }
+      if ( !Activity.options.skipAutoLoad ) {
+        self.switchActivity();
+      } else {
+        self.loading(false);
+      }
+           
+      // Push only on user accounts and dashboard
+      if(!self.isArtist()) {
+        $(self).oneTime("15s", function() {
+          $(self).everyTime("15s", function() {
+            self.check();
+          });
+        }); 
+      }
+    // } else {
+    //   if ( !Activity.options.skipAutoLoad )
+    //    self.loadActivity();      
+    // }
   };
   
 	$.fn.activityFeed = function() {
@@ -376,7 +391,3 @@ if(!String.count){
 		});
 	};
 })(jQuery);
-
-jQuery(document).ready(function($){
-  $('#activity').activityFeed();
-});

@@ -421,6 +421,7 @@ en:
     created_station: "{{creator}} created a new station called: {{station}}"
     twitter_following: Tweets from artist {{user}} is following
     user_following: "{{user}} + Following"
+    user_others: "{{user}} + Others"    
   date:
     month_names:
     -

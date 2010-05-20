@@ -4,11 +4,11 @@
     </b>
     <br/>
     <span>
-      <%= item.location %>
+      <%= item.country.name if item.country %>
     </span>
     <br/>
-    <%= link_to item.stations.size, station_path(item) %> <%= t('profile.navigation.stations' )%> /
-    <%= link_to item.followers.size, followers_path(item) %> <%= t('profile.navigation.followers' )%>
+    <%= link_to item.total_user_stations, station_path(item) %> <%= t('profile.navigation.stations' )%> /
+    <%= link_to item.follower_count, followers_path(item) %> <%= t('profile.navigation.followers' )%>
 </div>
 
 <% if profile_owner? %>

@@ -60,7 +60,7 @@ class PaginationRenderer < WillPaginate::LinkRenderer
   end
 
   def button_disabled(page, text, attributes = {})
-    @template.link_to text, url_for(page), :class=>'disabled', :disabled => :true
+    @template.link_to text, url_for(page), :class=>'disabled', :disabled => :true, :onclick => "return false;"
   end
 
   def page_span(page, text, attributes = {})

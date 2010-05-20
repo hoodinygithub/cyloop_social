@@ -83,9 +83,15 @@ class User < Account
            :foreign_key => :owner_id,
            :select => "user_stations.*",
            :class_name => "UserStation",
-           :include => :abstract_station,
-           :source => :abstract_station,
-           :conditions => 'abstract_stations.deleted_at IS NULL AND user_stations.deleted_at IS NULL'
+           :include => [:abstract_station, :station],
+           :conditions => 'abstract_stations.deleted_at IS NULL AND user_stations.deleted_at IS NULL' do
+    def top(limit)
+      all(:order => 'user_stations.total_plays DESC', :limit => limit)
+    end
+    def latest(limit)
+      all(:order => 'user_stations.created_at DESC', :limit => limit)
+    end
+  end
   
   has_many :playlists, :foreign_key => :owner_id, :order => 'created_at DESC'
 
@@ -121,6 +127,19 @@ class User < Account
 
   def <=>(b)
     id <=> b.id
+  end
+
+  def top_stations(limit=10)
+    stations.top(limit)
+  end
+  
+  def latest_stations(limit=10)
+    stations.latest(limit)
+  end
+
+  def stations_paginate(page=1, per_page=10, order = :latest)
+    sort_types = { :latest => 'user_stations.created_at DESC', :top => 'user_stations.total_plays DESC', :alphabetical => 'user_stations.name'  }
+    stations.paginate :page => page, :per_page => per_page, :order => sort_types[order]
   end
 
   def follow(followee)

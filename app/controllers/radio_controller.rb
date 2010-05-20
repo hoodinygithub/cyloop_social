@@ -2,6 +2,7 @@ class RadioController < ApplicationController
   protect_from_forgery :except => [:search, :artist_info]
   #Explicitly removing caching on radio per Demian - 2009-09-29
   #caches_action :show, :expires_in => EXPIRATION_TIMES['radio_show'], :cache_path => :radio_show_cache_key
+  #caches_action :artist_info, :expires_in => EXPIRATION_TIMES['radio_artist_info'], :cache_path => :radio_artist_info_cache_key_url
 
   def index
     @station_obj = if params[:station_id]
@@ -15,10 +16,10 @@ class RadioController < ApplicationController
         @station_queue = @station_obj.playable.station_queue(:ip_address => remote_ip)
         @station_obj.playable.track_a_play_for(current_user) if @station_obj.playable
     else
-      @recommended_stations = transformed_recommended_stations(12, 40)
+      @recommended_stations = transformed_recommended_stations(12, 24)
     end
-    top_station_limit = @station_obj.nil? ? 6 : 4 
-    @top_abstract_stations = current_site.top_abstract_stations.limited_to(top_station_limit)
+    @top_station_limit = @station_obj.nil? ? 6 : 4 
+    @top_abstract_stations = current_site.top_abstract_stations(@top_station_limit)
     @msn_stations = current_site.stations
   end
 
@@ -52,7 +53,7 @@ class RadioController < ApplicationController
   end
 
   def twitstation
-    @top_stations = current_site.summary_top_stations.limited_to(5)
+    @top_stations = current_site.top_abstract_stations(5)
     begin
       if params[:station_id]
         @station_obj = Station.find(params[:station_id])
@@ -184,8 +185,12 @@ class RadioController < ApplicationController
     "#{CURRENT_SITE.cache_key}/#{current_country.code}/#{params[:station_id]}/station/#{params[:id]}"
   end
 
+  def radio_artist_info_cache_key_url
+    "#{CURRENT_SITE.cache_key}/artist_info/#{params[:station_id]}"
+  end
+
   def top_stations
-    @top_stations ||= current_site.summary_top_stations(:include => :station).limited_to(5)
+    @top_stations ||= current_site.top_abstract_stations(5)
   end
   helper_method :top_stations
 
@@ -195,10 +200,10 @@ class RadioController < ApplicationController
   end
   helper_method :artist
 
-  def recent_listeners
-    @recent_listeners ||= artist.recent_listens(14) rescue []
-  end
-  helper_method :recent_listeners
+  # def recent_listeners
+  #   @recent_listeners ||= artist.recent_listens(14) rescue []
+  # end
+  # helper_method :recent_listeners
 
   def similar_artists
     @similar_artists ||= artist.similar(4) #rescue []

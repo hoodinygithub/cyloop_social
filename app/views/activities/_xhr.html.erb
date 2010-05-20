@@ -1,0 +1,17 @@
+<% content_for :head do %>
+  <%= javascript_include_tag "jquery.timers" %>
+  <%= javascript_include_tag "new_activity" %>
+  <% if defined? limit && limit %>
+    <%= javascript_tag("Activity.options.limit = #{limit};") %>
+  <% end %>
+  <% if defined? skip_auto_load && skip_auto_load %>
+    <%= javascript_tag("Activity.options.skipAutoLoad = #{skip_auto_load.to_s};") %>
+  <% end %>
+  <% if defined? skip_filters && skip_filters %>
+    <%= javascript_tag("Activity.options.skipFilters = #{skip_filters.to_s};") %>
+  <% end %>  
+  <%= %>
+  <%= javascript_tag("jQuery(document).ready(function($){
+    $('#activity').activityFeed();
+  });") %>
+<% end %>

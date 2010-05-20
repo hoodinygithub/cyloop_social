@@ -1,0 +1,26 @@
+<ul id="activity_type_filters" style="display: none">
+  <li>
+    <span></span>
+    <%= link_to_function t("activity.filters.all"), "$('#activity').data('activityFeed').switchActivity(this)", {:id => 'all', :class => "active"} %>
+  </li>
+  <li>
+    <span></span>
+    <%= link_to_function t("activity.filters.songs"), "$('#activity').data('activityFeed').switchActivity(this)", {:id => 'listen'} %>
+  </li>
+  <li>
+    <span></span>
+    <%= link_to_function t("activity.filters.playlists"), "$('#activity').data('activityFeed').switchActivity(this)", {:id => 'playlist'} %>
+  </li>
+  <li>
+    <span></span>
+    <%= link_to_function t("activity.filters.status"), "$('#activity').data('activityFeed').switchActivity(this)", {:id => 'status'} %>
+  </li>
+  <li>
+    <span></span>
+    <%= link_to_function t("activity.filters.stations"), "$('#activity').data('activityFeed').switchActivity(this)", {:id => 'station'} %>
+  </li>
+  <li>
+    <span></span>
+    <%= link_to_function "TWITTER", "$('#activity').data('activityFeed').switchActivity(this)", {:id => 'twitter'} %>
+  </li>
+</ul>

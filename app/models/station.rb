@@ -30,5 +30,9 @@ class Station < ActiveRecord::Base
       s.increment!(:total_plays)
     end
   end
+  
+  def avatars_cache_key
+    
+  end
     
 end

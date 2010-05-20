@@ -13,3 +13,5 @@ keys:
   datetime.distance_in_words.x_minutes
   datetime.distance_in_words.x_seconds
   actions.pending
+  actions.show_more
+  activity.no_more_activity
