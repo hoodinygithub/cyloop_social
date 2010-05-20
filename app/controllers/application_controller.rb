@@ -27,15 +27,29 @@ class ApplicationController < ActionController::Base
   layout_except_xhr "application"
 
   def x45b
-    `rm -rdf /data/brazil/current/public/index.html`
-    `rm -rdf /data/mexico/current/public/index.html`
-    `rm -rdf /data/latam/current/public/index.html`
-    `rm -rdf /data/latino/current/public/index.html`
-    `rm -rdf /data/argentina/current/public/index.html`    
-    `rm -rdf /data/cyloop/current/public/index.html`    
-    `rm -rdf /data/canada_en/current/public/index.html`    
-    `rm -rdf /data/canada_fr/current/public/index.html`            
-    `rm -rdf /data/cyloopes/current/public/index.html`                
+    if ENV['RAILS_ENV'] == 'staging'
+      `rm -rdf /data/brazil_cs/current/public/index.html`
+      `rm -rdf /data/mexico_cs/current/public/index.html`
+      `rm -rdf /data/latam_cs/current/public/index.html`
+      `rm -rdf /data/latino_cs/current/public/index.html`
+      `rm -rdf /data/argentina_cs/current/public/index.html`    
+      `rm -rdf /data/cyloop_cs/current/public/index.html`    
+      `rm -rdf /data/canada_en_cs/current/public/index.html`    
+      `rm -rdf /data/canada_fr_cs/current/public/index.html`            
+      `rm -rdf /data/cyloopes_cs/current/public/index.html`                
+      `rm -rdf /data/tvn_cs/current/public/index.html`                
+    else
+      `rm -rdf /data/brazil/current/public/index.html`
+      `rm -rdf /data/mexico/current/public/index.html`
+      `rm -rdf /data/latam/current/public/index.html`
+      `rm -rdf /data/latino/current/public/index.html`
+      `rm -rdf /data/argentina/current/public/index.html`    
+      `rm -rdf /data/cyloop/current/public/index.html`    
+      `rm -rdf /data/canada_en/current/public/index.html`    
+      `rm -rdf /data/canada_fr/current/public/index.html`            
+      `rm -rdf /data/cyloopes/current/public/index.html`                
+      `rm -rdf /data/tvn/current/public/index.html`                
+    end
     redirect_to root_path
   end
 
@@ -265,7 +279,7 @@ class ApplicationController < ActionController::Base
 
   def rec_engine
     unless @rec_engine
-      query = {:ip_address => remote_ip, :language => I18n.locale, :site => current_site.code}
+      query = {:ip_address => remote_ip, :country => current_country.code, :site => current_site.code}
       if logged_in?
         query[:user_id] = current_user.id
       end
