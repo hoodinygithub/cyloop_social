@@ -757,3 +757,8 @@ div#now_playing_user_station {
 	height: 51px;
 	font-size: 11px;
 }
+.play_left_label{
+  margin:0 0 5px 10px;
+  float:left;
+  width:90px
+}
