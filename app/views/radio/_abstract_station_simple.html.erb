@@ -21,7 +21,7 @@
           <%= link_to_function abstract_station_simple.name, "Base.radio.set_station_details(#{abstract_station_simple.station.id}, '#{abstract_station_simple.station_queue}')" %>
           <% end %>
         </h2>
-        <%= station_contains(abstract_station_simple) %>
+        <%= station_contains(abstract_station_simple,3,true,{:target=>"_blank"}) %>
       </div>
     </div>
     <br class="clearer" />
