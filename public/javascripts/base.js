@@ -412,11 +412,7 @@ Base.layout.bind_events = function() {
 }
 
 Base.layout.spin_image = function(type, no_margin) {
-  if (typeof(type) == 'undefined' || !type) {
-    image_name = 'blue_loading.gif';
-  } else {
-    image_name = type + "_loading.gif";
-  }
+  image_name = "transparent_loading.gif";
   $img = jQuery("<img></img>");
   $img.attr('src', '/images/' + image_name);
 
@@ -539,14 +535,14 @@ Base.locale.date_difference = function(old_date, new_date) {
 Base.community.approve = function(user_slug, button) {
   var params = {'user_slug':user_slug};
   $list      = jQuery('.followers_list');
-  
+
   $approve_button = jQuery(button);
   var old_button_content = $approve_button.html();
   $approve_button.removeClass('yellow_button').addClass('yellow_button_wo_hover');
   $approve_button_label = $approve_button.children().children();
   $approve_button_label.html(Base.layout.spanned_spin_image('yellow'));
-  
-  
+
+
   jQuery.post("/users/approve", params, function(response) {
     $li   = $approve_button.parent().parent();
     $li.slideUp();
@@ -578,12 +574,12 @@ Base.community.__follow_request_handler = function(type, user_slug, link, callba
   var $main_element    = $link.parent().parent().parent().parent();
   var $black_ul        = $link.parent().parent();
   var $settings_button = $main_element.find('.settings_button').children().children();
-  
+
   return;
 
   // $black_ul.fadeOut();
   // $settings_button.html(Base.layout.spin_image(false, false));
-  // 
+  //
   // jQuery.post('/users/' + type, params, function(response, status) {
   //   $main_element.slideUp();
   //   if (typeof(callback) == 'function') callback(response);
@@ -697,7 +693,7 @@ Base.community.block = function(user_slug, button) {
   jQuery.post('/users/block', params, function(response, status) {
     if (status == 'success') {
       $main_div.find('.blocked').html("<img src='/images/blocked.gif'></img> " + Base.locale.t('blocks.blocked'));
-      $settings_button.html("<img src='/images/settings_button.png'></img>");      
+      $settings_button.html("<img src='/images/settings_button.png'></img>");
       $button.attr('onclick', "");
       $button.unbind('click');
       $button.bind('click', function() { Base.community.unblock(user_slug, this); return false; });
@@ -721,7 +717,7 @@ Base.community.unblock = function(user_slug, button) {
   jQuery.post('/users/unblock', params, function(response, status) {
     if (status == 'success') {
       $main_div.find('.blocked').html("");
-      $settings_button.html("<img src='/images/settings_button.png'></img>");      
+      $settings_button.html("<img src='/images/settings_button.png'></img>");
       $button.attr('onclick', "");
       $button.unbind('click');
       $button.bind('click', function() { Base.community.block(user_slug, this); return false; });
@@ -873,24 +869,24 @@ Base.stations.remove = function(user_station_id, button) {
 // Base.stations.close_button_event_binder = function() {
 //   jQuery("span.recommended_station").bind('click', function() { Base.stations.close_button_handler(this); });
 // };
-// 
-// 
+//
+//
 // Base.stations.close_button_handler = function(object) {
 //     $button = jQuery(object);
 //     var artist_id = $button.attr('artist_id');
-// 
+//
 //     $parent_div = $button.parent();
 //     $parent_div.html("<img style='margin-top:50px' src='/images/loading.gif'></img>");
 //     $parent_div.css({'background':'#cccccc', 'text-align':'center'});
-// 
+//
 //     var new_artist_id = recommended_stations_queue.shift();
-// 
+//
 //     if (typeof(new_artist_id) == 'undefined') {
 //       $parent_div.html("");
 //       $parent_div.css({'background':'white', 'text-align':'left'});
 //       return;
 //     }
-// 
+//
 //     var params = {'artist_id':new_artist_id, 'last_box':$parent_div.hasClass('last_box')};
 //     jQuery.get('/stations/top_station_html', params, function(data) {
 //       $new_div = jQuery(data);
@@ -906,30 +902,30 @@ Base.stations.remove = function(user_station_id, button) {
  */
 // Base.network.show_more = function(button) {
 //   $button = jQuery(button);
-// 
+//
 //   $span_label = $button.find('span').find('span');
 //   old_button_label = $span_label.html();
 //   $span_label.html(Base.layout.spin_image());
-// 
+//
 //   // activities page
 //   $list   = jQuery('.followers_list');
-// 
+//
 //   if ($list.length == 0) {
 //     $list = jQuery(".comments_list");
 //   }
-// 
+//
 //   if ($list.length == 0) {
 //     throw("Could not find a valid list element.");
 //   }
-// 
+//
 //   $last_li  = $list.find('li:last');
 //   timestamp = $last_li.attr('timestamp');
-// 
+//
 //   var params = {'after':timestamp, 'slug':Base.account.slug};
 //   if (typeof(Base.network.FILTER_BY) != 'undefined') {
 //     params.filter_by = Base.network.FILTER_BY;
 //   }
-// 
+//
 //   jQuery.post("/activity/latest", params, function (response) {
 //     $list.html(response).fadeIn();
 //     $span_label.html(old_button_label);
@@ -954,13 +950,13 @@ Base.network.count_chars = function() {
 //   $show_more_button = jQuery('#show_more_comments');
 //   $comment_list        = jQuery('#network_comment_list');
 //   $share_button = jQuery('a.compartir_button');
-// 
+//
 //   if (typeof(options) == 'object' && typeof(options.replace) != 'undefined' && options.replace) {
 //     $comment_list.hide().html(response).fadeIn();
 //   } else {
 //     $comment_list.hide().append(response).fadeIn();
 //   }
-// 
+//
 //   if ($comment_list.find('li').length >= 5) {
 //    $show_more_button.fadeIn();
 //   }
@@ -969,14 +965,14 @@ Base.network.count_chars = function() {
 // Base.network.__update_page_user_page = function(response) {
 //   $user_big_text = jQuery("#user_activity_big_text");
 //   $ul = jQuery('#user_recent_activities');
-// 
+//
 //   $user_big_text.find('img').remove();
-// 
+//
 //   if (response.length == 0) {
 //     $user_big_text.find('span').fadeIn();
 //     return;
 //   }
-// 
+//
 //   $user_big_text.remove();
 //   $ul.html(response);
 // };
@@ -984,15 +980,15 @@ Base.network.count_chars = function() {
 // Base.network.load_latest = function(params, profile_owner) {
 //   jQuery(document).ready(function() {
 //     var user_page = jQuery('#user_recent_activities').length > 0;
-// 
+//
 //     if (typeof(params) != 'object') params = {};
-// 
+//
 //     if (user_page) {
 //       params.public = true;
 //     }
-// 
+//
 //     params.profile_owner = profile_owner;
-// 
+//
 //     jQuery.post('/activity/latest', params, function (response) {
 //       if (user_page) {
 //         Base.network.__update_page_user_page(response);
@@ -1034,7 +1030,7 @@ Base.network.push_update = function() {
   var comment = jQuery.trim($comment_field.val());
   var $old_network_update_text = $network_update_text.clone();
   var $share_button = jQuery('a.compartir_button');
-  
+
   var old_button_content = $share_button.html();
   $share_button.removeClass('blue_button').addClass('blue_button_wo_hover');
   $share_button_label = $share_button.children().children();
@@ -1288,7 +1284,7 @@ Base.main_search.refresh_result = function() {
 				e.preventDefault();
 	      $('#search_sort').attr('value', jQuery(this).attr('href').match(/sort_by\=(.*)/)[1]);
 				jQuery("#scope_" + value + "_toggle").parentsUntil('ul').find('img.mini_loader').removeClass('hide');
-				Base.main_search.refresh_result();				
+				Base.main_search.refresh_result();
 			})
 			jQuery("#scope_" + value + "_toggle").parentsUntil('ul').find('img.mini_loader').addClass('hide');
 			Base.main_search.toggle_scope(false);
@@ -1305,7 +1301,7 @@ Base.main_search.refresh_result = function() {
     value = jQuery("#search_scope").get(0).value;
     jQuery("#search_" + value).addClass('active')
   };
-*/	
+*/
 
 Base.main_search.activate_scope_toggle = function() {
 		Base.main_search.highlight_scope();
@@ -1346,8 +1342,8 @@ Base.main_search.initialize_scope_toggle = function() {
 	Base.main_search.select_scope();
   jQuery(".scope_toggle a").click(function() {
       value = this.id.match(/scope_(.*)_toggle/)[1];
-      $('#search_scope').attr('value', value);    
-			if(!jQuery("#" + value + "_result").children().length) {				
+      $('#search_scope').attr('value', value);
+			if(!jQuery("#" + value + "_result").children().length) {
 				Base.main_search.activate_scope_toggle();
 				jQuery(this).parentsUntil('ul').find('img.mini_loader').removeClass('hide');
 				Base.main_search.refresh_result();
@@ -1356,11 +1352,11 @@ Base.main_search.initialize_scope_toggle = function() {
 			}
       return false;
     });
-  jQuery("div.scope_result .sorting a").click(function(e) {						
+  jQuery("div.scope_result .sorting a").click(function(e) {
 			e.preventDefault();
       $('#search_sort').attr('value', this.href.match(/sort_by\=(.*)/)[1]);
 			jQuery("#scope_" + $('#search_scope').val() + "_toggle").parentsUntil('ul').find('img.mini_loader').removeClass('hide');
-			Base.main_search.refresh_result();				
+			Base.main_search.refresh_result();
       return false;
     });
 
@@ -1418,7 +1414,7 @@ jQuery(document).ready(function() {
   // Popups
   $('.simple_popup').simple_popup();
   $('.popup').popup();
-  
+
   //MSN header behaviors
   $('#msn_header .portal').hide();
   $('#msn_header li.more a').click(function() {
