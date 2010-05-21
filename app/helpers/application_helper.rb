@@ -850,13 +850,12 @@ module ApplicationHelper
   end
 
   def market_image_path(image)
-    path = case site_code.to_s
-    when 'tvn'
-      'tvn'
+    case site_code.to_s
+      when 'tvn'
+        "/images/tvn/#{image}"
     else
-      ''
+      "/images/#{image}"
     end
-    "#{path}/#{image}"
   end
 end
 
