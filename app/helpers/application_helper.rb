@@ -854,7 +854,7 @@ module ApplicationHelper
     when 'tvn'
       'tvn'
     else
-      ''
+      'images'
     end
     "#{path}/#{image}"
   end

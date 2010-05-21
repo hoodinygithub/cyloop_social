@@ -1,14 +1,14 @@
 <% if profile_artist.has_station? %>
 <div class="big_black_box">
-  <%= radio_play_button(profile_artist.station.id, :class => 'play_button')  %>
-  <span>
-    <b>&nbsp;&nbsp;
+  <%= radio_play_button(profile_artist.station.id, :class => 'play_button', :style => "float:left;")  %>
+  <div class="play_left_label" >
+    <b>
       <span class="blue">
         <%= link_to profile_artist.station.name, radio_path(:station_id => profile_artist.station.id) %>
       </span>
     </b>
     <br/>
-  </span>
+  </div>
   <br class="clearer" />
   <%= station_contains(profile_artist.station) %>
 </div>
