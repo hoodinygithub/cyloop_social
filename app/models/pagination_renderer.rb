@@ -4,11 +4,15 @@ class PaginationRenderer < WillPaginate::LinkRenderer
   def to_html
     links = @options[:page_links] ? windowed_links : []
 
-    links = [
-      page_link_or_span(@collection.previous_page, 'previous', @options[:previous_label], true),
-      @template.content_tag( :span, links.join(@options[:separator]), :class => 'windowed_links' ),
-      page_link_or_span(@collection.next_page, 'next', @options[:next_label], true)
-      ]
+    links = [ @template.content_tag( :span, links.join(@options[:separator]), :class => 'windowed_links' )]
+
+    if @collection.previous_page
+      links.unshift(page_link_or_span(@collection.previous_page, 'previous', @options[:previous_label], true))
+    end
+
+    if @collection.next_page
+      links << page_link_or_span(@collection.next_page, 'next', @options[:next_label], true)
+    end
 
     html = links.join(@options[:separator])
     @options[:container] ? @template.content_tag(:div, html, html_attributes) : html
