@@ -229,13 +229,13 @@ module ApplicationHelper
   def randomize_includes(includes=[], limit=4)
     sorted_includes = nil
     if includes and !includes.empty?
-      sorted_includes = includes.sort_by{rand}[0..limit-1]
+      sorted_includes = includes.sort_by{rand}[0..limit-1] 
     end
   end
-
+  
   def station_contains(item, limit=3, include_text=true, link_options={}, options={})
     links = []
-    station_artists = options[:includes] || item.includes(limit)
+    station_artists = options[:includes] || item.includes(limit) 
 
     station_artists.each do |station_artist|
       links << link_to(station_artist.artist.name, artist_path(station_artist.artist), link_options) unless station_artist.artist.nil?
@@ -273,7 +273,7 @@ module ApplicationHelper
 
     station_images_with_links = []
     includes = options[:includes] || station.includes(4)
-
+    
     # TODO: Handle this issue with DB showing a default image
     if options[:type].nil?
       includes.each do |artist|
@@ -291,7 +291,7 @@ module ApplicationHelper
 
     elsif options[:type] == :medium
       includes.each_with_index do |artist, index|
-        avatar_class = "avatar_four_thumbs_medium avatar_#{index}"
+        avatar_class = "avatar_four_thumbs_medium avatar_#{index}" 
         station_images_with_links << link_to(image_tag(AvatarsHelper.avatar_path(artist.album, :small), :class => avatar_class), station_link)
       end
       station_images_with_links << content_tag(:br, "&nbsp;", :class => 'clearer') if options[:clearer]
@@ -299,7 +299,7 @@ module ApplicationHelper
 
     elsif options[:type] == :big
       includes.each_with_index do |artist, index|
-        avatar_class = "avatar_four_thumbs_big avatar_#{index}"
+        avatar_class = "avatar_four_thumbs_big avatar_#{index}"         
         station_images_with_links << link_to(image_tag(AvatarsHelper.avatar_path(artist.album, :small), :class => avatar_class), station_link)
       end
       station_images_with_links << content_tag(:br, "&nbsp;", :class => 'clearer') if options[:clearer]

@@ -777,3 +777,12 @@ div#now_playing_user_station {
 .tabs_content .text {
 	padding: 0 20px 10px
 }
+.view_more_activity {
+  float: right;
+  margin-top: -24px;
+}
+
+.tags_contains {
+	height: 53px;
+	line-height: 16px;
+}
