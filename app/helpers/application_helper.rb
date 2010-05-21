@@ -862,7 +862,7 @@ module ApplicationHelper
   def market_image_path(image)
     case site_code.to_s
       when 'tvn'
-        "/images/tvn/#{image}" 
+        "/images/tvn/#{image}"
     else
       "/images/#{image}"
     end
