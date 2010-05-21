@@ -161,3 +161,11 @@ h1 {
   background:url("../images/tvn/arrow_right_blue2.gif") no-repeat scroll left center transparent;
 }
 
+.artist_box .overlay a, .overlay_content a {
+  color:#CC33CC;
+}
+
+.side_user_box .overlay big {
+  color:#CC33CC;
+}
+
