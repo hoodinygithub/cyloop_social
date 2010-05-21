@@ -153,7 +153,7 @@ class Artist < Account
   def latest_stations(limit=10)
     result = []
     if station
-      result = station.user_stations(:limit => limit, :order => 'user_stations.created_at DESC', :include => :owner, :conditions => "accounts.deleted_at IS NULL")
+      result = station.user_stations.all(:limit => limit, :order => 'user_stations.created_at DESC', :include => :owner, :conditions => "accounts.deleted_at IS NULL")
     end
     result
   end
