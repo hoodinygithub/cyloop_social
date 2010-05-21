@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 
-  include Application::Sites, Application::Rescues, Application::Paginator, 
+  include Application::Sites, Application::Rescues, Application::Paginator,
           Application::Activities, Application::MsnMessenger, Application::Stations
   include AuthenticatedSystem
   include SslRequirement
@@ -96,7 +96,7 @@ class ApplicationController < ActionController::Base
       session[:registration_layer] = nil
     end
   end
-  
+
   def do_basic_http_authentication
     if Rails.env.staging? # || argentina_auth
       authenticate_or_request_with_http_basic do |username, password|
@@ -104,7 +104,7 @@ class ApplicationController < ActionController::Base
       end
     end
   end
-  
+
   def argentina_auth
     Rails.env.production? && site_code == "msnar"
   end
@@ -112,7 +112,7 @@ class ApplicationController < ActionController::Base
   def canada_auth
     Rails.env.production? && site_code == "msncafr" || Rails.env.production? && site_code == "msncaen"
   end
-    
+
   def site_login_url(*args)
     if wlid_web_login?
       msn_login_redirect_users_url(*args)
@@ -120,7 +120,7 @@ class ApplicationController < ActionController::Base
       login_url(*args)
     end
   end
-    
+
   def site_register_url(*args)
     if wlid_web_login?
       msn_registration_redirect_users_url(*args)
@@ -128,37 +128,37 @@ class ApplicationController < ActionController::Base
       new_user_url(*args)
     end
   end
-    
+
   def site_logout_url
     logout_url
   end
-    
+
   helper_method :site_login_url, :site_register_url, :site_logout_url
-    
+
   #################################
   # MSN Live ID Integration Methods
   def wll
     @wll ||= WindowsLiveLogin.init()
   end
-    
+
   def msn_app_id
     @msn_app_id ||= wll.appid
   end
-    
+
   def msn_login_url
     @msn_login_url ||= wll.getLoginUrl(host_port)
   end
-  
+
   def msn_register_url
     @msn_register_url ||= wll.getLoginUrl(host_port)
   end
-    
+
   def msn_logout_url
     @msn_logout_url ||= wll.getLogoutUrl(host_port)
   end
   helper_method :wll, :msn_login_url, :msn_register_url, :msn_logout_url, :msn_app_id
   #################################
-         
+
   def set_return_to
     if session[:display_layer]
       session[:layer_to]  = params[:return_to] if params[:return_to]
@@ -171,44 +171,44 @@ class ApplicationController < ActionController::Base
       session[:follow_profile] = params[:follow_profile]
     end
   end
-    
+
   def auto_follow_profile
     if session[:follow_profile] and logged_in?
       current_user.follow(session[:follow_profile])
       session[:follow_profile] = nil
     end
   end
-    
+
   def display_layer
     session[:display_layer] = true unless logged_in?
   end
-    
+
   def not_display_layer
     session[:display_layer] = false
   end
-    
+
   def set_origin
     session[:origin_to] = request.request_uri unless logged_in?
   end
-         
+
   def current_site
     self.class.current_site
   end
-    
+
   def site_code
     self.class.site_code
   end
-    
+
   def msn_site_code
     site_code.gsub("msn","")
   end
-    
+
   def login_type
     self.class.login_type
   end
 
   def cyloop_site?
-    site_includes(:cyloop, :cyloopes)
+    site_includes(:cyloop, :cyloopes, :tvn)
   end
 
   memoize :cyloop_site?
@@ -218,31 +218,31 @@ class ApplicationController < ActionController::Base
   end
 
   helper_method :cyloop_login?, :cyloop_site?
-    
+
   def wlid_web_login?
     login_type == "wlid_web"
   end
-    
+
   def wlid_delegated_login?
     login_type == "wlid_delegated"
   end
   helper_method :cyloop_login?, :wlid_web_login?, :wlid_delegated_login?, :login_type
-    
+
   def site_cache_key
     @site_cache_key ||= "#{current_site.cache_key}"
   end
   helper_method :site_cache_key
-    
+
   def page_owner?
     current_user == profile_account
   end
   helper_method :page_owner?
-    
+
   def profile_type?(type)
     profile_account.type == type
   end
   helper_method :profile_type?
-    
+
   def remote_ip
     remote_ip = request.headers.has_key?('HTTP_TRUE_CLIENT_IP') ? request.headers['HTTP_TRUE_CLIENT_IP'] : request.headers['REMOTE_ADDR']
     case remote_ip
@@ -251,7 +251,7 @@ class ApplicationController < ActionController::Base
     else remote_ip
     end
   end
-    
+
   def host_port
     (request.port.to_s == "80") ? "#{request.host}" : "#{request.host}:#{request.port}"
   end
@@ -306,8 +306,9 @@ class ApplicationController < ActionController::Base
       when :msncafr   then '24.36.255.255'
       when :cyloop    then '24.34.255.255'
       when :cyloopes  then '24.34.255.255'
+      when :tvn       then '24.34.255.255'
       when :latino    then '24.34.255.255'
-      when :msnar     then '24.34.255.255'        
+      when :msnar     then '24.34.255.255'
       when :latam     then '190.81.63.255'
       end
     end
@@ -320,7 +321,7 @@ class ApplicationController < ActionController::Base
       :ip_address => ip_for(current_site.code.to_sym))
     @recommended_artists_existing = Artist.artists_by_recommended( recommended, limit )
   end
-    
+
   def recommended_stations(limit = 3)
     stations = rec_engine.get_recommended_stations(:number_of_records => limit)
     return stations
@@ -331,20 +332,17 @@ class ApplicationController < ActionController::Base
    logger.error "Catch-all error"
    []
   end
-  
-  def transformed_recommended_stations(limit = 3, fetch=nil)    
+
+  def transformed_recommended_stations(limit = 3, fetch=nil)
     fetch ||= limit
-        
-    Rails.cache.fetch("modules/recommended_stations/#{limit}/#{fetch}/#{rec_engine.get_internal_cache_key(:number_of_records => fetch)}", :expires_delta => EXPIRATION_TIMES["module_recommended_stations"]) do
-      stations = recommended_stations(fetch).map do |s| 
-        if s and s.station and s.abstract_station and s.artist and s.abstract_station.total_artists > 1
-          s.abstract_station
-        else
-          nil
-        end 
-      end.compact
-      stations = stations[0..(limit-1)]
-    end
+    stations = recommended_stations(fetch).map do |s|
+      if s and s.station and s.station.playable
+        if s.station.playable.artist and s.station.playable.total_artists > 1
+          s.station.playable
+        end
+      end
+    end.compact
+    stations = stations[0..(limit-1)]
   end
 
   helper_method :rec_engine, :recommended_artists, :recommended_stations, :recommended_artists_existing
@@ -354,14 +352,14 @@ class ApplicationController < ActionController::Base
   rescue ActionController::RedirectBackError
     redirect_to default
   end
-    
+
   def trim_attributes_for_paperclip(params, *args)
     args.each do |arg|
       params.delete(arg) if params.has_key?(arg) && params[arg].blank?
     end
     return params
   end
-    
+
   def html_unescape(string)
     string.gsub(/&(.*?);/n) do
       match = $1.dup
@@ -397,7 +395,7 @@ class ApplicationController < ActionController::Base
     end
   end
   helper_method :html_unescape
-    
+
   def os_type
     my_os = request.env["HTTP_USER_AGENT"]
     case my_os
@@ -426,7 +424,7 @@ class ApplicationController < ActionController::Base
     when /PPC Mac OS X/   then "Mac OS X"
     when /AmigaOS/        then "Amiga OS"
     else                       "Other OS"
-    end    
+    end
   end
 
   def browser_type
@@ -476,3 +474,4 @@ class ApplicationController < ActionController::Base
     end
   end
 end
+

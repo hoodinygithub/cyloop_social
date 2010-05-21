@@ -66,6 +66,7 @@ module CustomArtistsHelper
 
   SCRIPTS[:msnlatino] = SCRIPTS[:cyloop]
   SCRIPTS[:cyloopes] = SCRIPTS[:cyloop]
+  SCRIPTS[:tvn] = SCRIPTS[:cyloop]
 
   def custom_artist_video( kind )
     SCRIPTS[current_site.code.to_sym][kind.downcase]['video']
@@ -76,3 +77,4 @@ module CustomArtistsHelper
   end
 
 end
+

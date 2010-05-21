@@ -13,12 +13,13 @@
     <br/>
     <%= station_contains(user_station) %>
     <div class="buttons">
-      <%= link_to(image_tag('play_button.png', :title => t('actions.play'), :class => 'png_fix'), radio_path(:station_id => user_station.station.id)) %>
+      <%= radio_play_button(user_station.station.id)  %>
 
-      <%= link_to(image_tag('edit_button.png', :title => t('actions.edit'), :class => 'png_fix'), '#', :onclick => "Base.stations.edit(#{user_station.id}, this); return false;") if page_owner? %>
+      <%= link_to(image_tag(market_image_path('edit_button.png'), :title => t('actions.edit'), :class => 'png_fix'), '#', :onclick => "Base.stations.edit(#{user_station.id}, this); return false;") if page_owner? %>
 
-      <%= link_to(image_tag('close_button.png', :title => t('actions.close'), :class => 'png_fix'), '#', :onclick => "Base.stations.remove(#{user_station.id}, this); return false;") if page_owner? %>
+      <%= link_to(image_tag(market_image_path('close_button.png'), :title => t('actions.close'), :class => 'png_fix'), '#', :onclick => "Base.stations.remove(#{user_station.id}, this); return false;") if page_owner? %>
     </div>
   </div>
   <br class="clearer" />
 </li>
+

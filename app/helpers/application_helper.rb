@@ -1,7 +1,7 @@
 module ApplicationHelper
 
   include PopupHelper
-  
+
   def filter_link_by(link_label, options)
     type = options.delete(:type).to_s
 
@@ -65,7 +65,7 @@ module ApplicationHelper
   def special_button(type, button_label, options = {})
     options.merge!({
       :class => "#{options[:class]} #{type}",
-      :onclick => options[:onclick].nil? ? "return false;" : "#{options[:onclick]}; return false;" 
+      :onclick => options[:onclick].nil? ? "return false;" : "#{options[:onclick]}; return false;"
     })
 
     options[:class] << " full_width" if options[:full_width]
@@ -105,7 +105,7 @@ module ApplicationHelper
   def yellow_button(button_label, options = {})
     special_button(:yellow_button, button_label, options)
   end
-  
+
   def follow_button(attrs = {})
     account = attrs.delete(:account)
     if current_user and account.follow_requests.collect(&:follower_id).include? current_user.id
@@ -273,7 +273,7 @@ module ApplicationHelper
 
     elsif options[:type] == :medium
       station.includes(4).each_with_index do |artist, index|
-        avatar_class = "avatar_four_thumbs_medium avatar_#{index}" 
+        avatar_class = "avatar_four_thumbs_medium avatar_#{index}"
         station_images_with_links << link_to(image_tag(AvatarsHelper.avatar_path(artist.album, :small), :class => avatar_class), station_link)
       end
       station_images_with_links << content_tag(:br, "&nbsp;", :class => 'clearer') if options[:clearer]
@@ -281,9 +281,9 @@ module ApplicationHelper
 
     elsif options[:type] == :big
       station.includes(4).each_with_index do |artist, index|
-        avatar_class = "avatar_four_thumbs_big avatar_#{index}"         
+        avatar_class = "avatar_four_thumbs_big avatar_#{index}"
         station_images_with_links << link_to(image_tag(AvatarsHelper.avatar_path(artist.album, :small), :class => avatar_class), station_link)
-      end      
+      end
       station_images_with_links << content_tag(:br, "&nbsp;", :class => 'clearer') if options[:clearer]
       html = content_tag(:div, station_images_with_links, :class => "four_thumbs_big #{options[:class]}")
     end
@@ -312,10 +312,10 @@ module ApplicationHelper
     end
     all_classes.join(" ")
   end
-  
+
   def html_attrs(lang = 'en-US')
     {:xmlns => "http://www.w3.org/1999/xhtml", 'xml:lang' => lang, :lang => lang}
-  end  
+  end
 
   def application_html_attrs
     attrs = if is_msn_messenger_enabled? && current_site.is_msn?
@@ -373,6 +373,8 @@ module ApplicationHelper
       "UA-410780-38"
     when "MSN Argentina"
       "UA-410780-46"
+    when "TVN"
+      "UA-410780-60"
     end
   end
 
@@ -454,7 +456,7 @@ module ApplicationHelper
         "hs0005878"
       when 'msncafr'
         "hs0005877"
-      when 'cyloop', 'cyloopes'
+      when 'cyloop', 'cyloopes', 'tvn'
         'hs0004280'
       else
         "hs0005803"
@@ -791,6 +793,8 @@ module ApplicationHelper
       'latino'
     when 'msnar'
       'argentina'
+    when 'tvn'
+      return '/images/tvn/tvn_logo.png'
     else
       return '/images/cyloop_logo.png'
     end
@@ -806,7 +810,7 @@ module ApplicationHelper
     image = image_tag(cyloop_logo_path(false), :id => 'logo', :class => 'png_fix')
     link_to(image, msn_home_page_link_path)
   end
-  
+
   def artist_or_user_name(artist_or_user)
     if artist_or_user.is_a?(Artist)
       artist_or_user.name
@@ -825,5 +829,26 @@ module ApplicationHelper
   
   def on_activities?
     controller_name == 'activities'
-  end  
+  end
+
+  def radio_play_button(station_id, attrs={})
+    image = case site_code.to_s
+    when 'tvn'
+      'tvn/play_button.png'
+    else
+      'play_button.png'
+    end
+    link_to(image_tag(image, :title => t('actions.play'), :class => 'png_fix'), radio_path(:station_id => station_id), attrs)
+  end
+
+  def market_image_path(image)
+    path = case site_code.to_s
+    when 'tvn'
+      'tvn'
+    else
+      ''
+    end
+    "#{path}/#{image}"
+  end
 end
+

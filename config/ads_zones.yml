@@ -106,6 +106,18 @@ msnar:
   radio_728x90: 123
   user_300x250: 119
   user_728x90: 121
+tvn:
+  artist_300x250: 137
+  artist_728x90: 142
+  home_300x250: 140
+  home_728x90: 146
+  messenger_234x60: 113
+  other_300x250: 141
+  other_728x90: 145
+  radio_300x250: 139
+  radio_728x90: 144
+  user_300x250: 138
+  user_728x90: 143
 staging:
   artist_300x250: 111
   artist_728x90: 112
@@ -118,3 +130,4 @@ staging:
   radio_728x90: 112
   user_300x250: 111
   user_728x90: 112
+

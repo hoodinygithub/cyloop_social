@@ -41,8 +41,8 @@ class FeedManager::DrupalItem < FeedManager::Abstract
         "http://cm.cyloop.com/drupal/files/imagecache/#{size}/"
       elsif site == "ar"
         "http://cm-msnlatam.cyloop.com/cms/files/imagecache/#{size}/"
-      elsif ["cyloop", "cyloopes"].include?(site)
-        "http://cm.cyloop.com/drupal/files/imagecache/#{size}/"        
+      elsif ["cyloop", "cyloopes","tvn"].include?(site)
+        "http://cm.cyloop.com/drupal/files/imagecache/#{size}/"
       else
         "http://cm-msn#{site}.cyloop.com/cms/files/imagecache/#{size}/"
       end

@@ -6,15 +6,16 @@ require 'fileutils'
 OUTPUT_LOCATION = "/shared/feeds"
 URL_MAPS = [
   # Cyloop Social
-  {:url => "http://cm.cyloop.com/feeds/msnbr/msnbr_cysocial_home_featured.xml", :output => "msnbr_url_featured_cysocial.xml"},  
+  {:url => "http://cm.cyloop.com/feeds/msnbr/msnbr_cysocial_home_featured.xml", :output => "msnbr_url_featured_cysocial.xml"},
   {:url => "http://cm.cyloop.com/feeds/msnmx/msnmx_cysocial_home_featured.xml", :output => "msnmx_url_featured_cysocial.xml"},
   {:url => "http://cm.cyloop.com/feeds/msnlatino/msnlatino_cysocial_home_featured.xml", :output => "msnlatino_url_featured_cysocial.xml"},
   {:url => "http://cm.cyloop.com/feeds/msnlatam/msnlatam_cysocial_home_featured.xml", :output => "msnlatam_url_featured_cysocial.xml"},
   {:url => "http://cm.cyloop.com/feeds/msnlatam/msnlatam_cysocial_home_featured.xml", :output => "msnar_url_featured_cysocial.xml"},
   {:url => "http://cm.cyloop.com/feeds/msncanada/msncaen_cysocial_home_featured.xml", :output => "msncaen_url_featured_cysocial.xml"},
-  {:url => "http://cm.cyloop.com/feeds/msncanada/msncafr_cysocial_home_featured.xml", :output => "msncafr_url_featured_cysocial.xml"},  
+  {:url => "http://cm.cyloop.com/feeds/msncanada/msncafr_cysocial_home_featured.xml", :output => "msncafr_url_featured_cysocial.xml"},
   {:url => "http://cm.cyloop.com/feeds/drupal/cyloop_cysocial_home_featured_en.xml", :output => "cyloop_url_featured_cysocial.xml"},
-  {:url => "http://cm.cyloop.com/feeds/drupal/cyloop_cysocial_home_featured_es.xml", :output => "cyloopes_url_featured_cysocial.xml"},  
+  {:url => "http://cm.cyloop.com/feeds/drupal/cyloop_cysocial_home_featured_es.xml", :output => "cyloopes_url_featured_cysocial.xml"},
+  {:url => "http://cm.cyloop.com/feeds/tvn/tvn_cysocial_home_featured.xml", :output => "tvn_url_featured_cysocial.xml"},
 
   # Cyloop Legacy
   {:url => "http://cm.cyloop.com/feeds/msnbr/msnbr_home_featured.xml", :output => "msnbr_url_featured.xml"},
@@ -87,7 +88,7 @@ end
 valid_fetch = true
 URL_MAPS.each do |item|
   if File.size("#{OUTPUT_LOCATION}/#{timestamp}/#{item[:output]}") == 0
-    valid_fetch = false 
+    valid_fetch = false
     log "Didn't write output due to #{item.inspect}"
     log "File size of #{OUTPUT_LOCATION}/#{timestamp}/#{item[:output]} was 0\n"
   end
@@ -100,3 +101,4 @@ if valid_fetch
 else
   log "Fetch invalid! valid_fetch false\n\n"
 end
+

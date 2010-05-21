@@ -26,6 +26,7 @@ class PagesController < ApplicationController
         elsif site_includes(:cyloopes)
           url_featured    = "/shared/feeds/current/cyloopes_url_featured_cysocial.xml"
         end
+        url_featured    = "/shared/feeds/current/tvn_url_featured_cysocial.xml" if site_includes(:tvn)
         @feed_featured  = drupal_feed(url_featured, 5)
       end
 

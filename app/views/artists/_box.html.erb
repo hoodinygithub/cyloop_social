@@ -1,10 +1,10 @@
-<div class="artist_box png_fix <%= style if defined? style %>">    
+<div class="artist_box png_fix <%= style if defined? style %>">
     <% if false %>
       <span class="close_btn <%= place_type if defined? place_type %>">Close</span>
     <% end %>
-    
+
     <%= four_thumbs_to(node.station, :type => :big) %>
-    
+
     <div class="overlay">
         <div class="hidden">
             <span>
@@ -15,17 +15,17 @@
                 </span><br/>
             </span>
             <br class="clearer" />
-            
+
             <% if defined? node %>
               <%= station_contains(node.station.playable) %>
             <% end %>
         </div>
-        
-        <div class="visible">               
-          <%= link_to(image_tag('play_button.png', :title => t('actions.play')), radio_path(:station_id => node.station.id), :class => 'play_button') %>
+
+        <div class="visible">
+          <%= radio_play_button(node.station.id, :class => 'play_button')  %>
           <% if defined? node %>
             <b><%= link_to(node.station.name, artist_url(node)) %></b>
-          <% end %>          
+          <% end %>
         </div>
     </div><!--/end overlay -->
     <% if defined? clearer %>
@@ -35,3 +35,4 @@
 <% if defined? clearer %>
   <br class="clearer"/>
 <% end %>
+

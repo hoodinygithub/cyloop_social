@@ -1,6 +1,6 @@
 <% unless abstract_station.nil? %>
   <% unless abstract_station.artist.nil? %>
-    <% if abstract_station.total_artists > 0 %>  
+    <% if abstract_station.total_artists > 0 %>
       <% artist = abstract_station.artist %>
       <div class="artist_box png_fix <%= "last_box" if (abstract_station_counter+1) % columns == 0 %>">
         <%= four_thumbs_to(abstract_station.station, {:type => :big}) %>
@@ -19,7 +19,7 @@
           </div>
 
           <div class="visible">
-            <%= link_to(image_tag('play_button.png', :title => t('actions.play')), radio_path(:station_id => abstract_station.station.id), :class => 'play_button') %>
+            <%= radio_play_button(abstract_station.station.id, :class => 'play_button')  %>
 
             <%= link_to truncate(abstract_station.name, :length => 15), radio_path(:station_id => abstract_station.station.id), :title => abstract_station.name %>
             <%
@@ -37,3 +37,4 @@
     <% end %>
   <% end %>
 <% end %>
+

@@ -4,7 +4,7 @@
     <% end %>
       <%= four_thumbs_to(artist_user_station.station, :type => :big) %>
       <div class="transparency_thumbanils png_fix">
-        <%= link_to(image_tag('play_button.png', :title => t('actions.play'), :class => 'png_fix'), radio_path(:station_id => artist_user_station.station.id)) %>
+        <%= radio_play_button(artist_user_station.station.id)  %>
       </div>
 
     <div class="subcription_text">
@@ -38,3 +38,4 @@
     </div><!--/end subcription_text -->
     <br class="clearer" />
 </li>
+

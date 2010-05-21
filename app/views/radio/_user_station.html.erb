@@ -3,9 +3,9 @@
 <div id="now_playing_user_station" class="album_text2">
   <span id="station_name" class="station_name"><%= @station_obj.playable.name %></span>
   <% if @station_obj.playable.owner_is? current_user %>
-  <%= link_to_function(image_tag('edit_button_small.png', :class => "png_fix valign_middle", :alt => t('actions.edit')), "Base.stations.launch_edit_layer(#{@station_obj.id})"  )%>
+  <%= link_to_function(image_tag(market_image_path('edit_button_small.png'), :class => "png_fix valign_middle", :alt => t('actions.edit')), "Base.stations.launch_edit_layer(#{@station_obj.id})"  )%>
   <% end %>
-  <a href="#" onclick="Base.stations.share(<%= @station_obj.id %>); return false;"><img src="images/share_button_small.png" class="png_fix valign_middle" alt="<%= t('actions.share') %>" /></a>
+  <%= link_to(image_tag(market_image_path('share_button_small.png'), :title => t('actions.share'), :class => 'png_fix valign_middle'), '#', :onclick => "Base.stations.share(#{@station_obj.id}); return false;") %>
   <br/>
   <small class="grey"><%= t('basics.created_at', :when => distance_of_time_in_words_to_now(@station_obj.created_at)) %></small><br/>
   <small><%= station_contains(@station_obj.playable, 3, true, :target => "_blank") %></small>
@@ -15,3 +15,4 @@
   <%= blue_button(t("radio.create_new_station"), :class => "create_new_station", :id => "create_station_button") %><br/>
   <b><%= t("basics.created_by") %>: <%= link_to(truncate(@station_obj.playable.owner.name,:length => 23), @station_obj.playable.owner, :target => '_blank', :title => @station_obj.playable.owner.name) %></b>
 </div>
+
