@@ -13,7 +13,8 @@
   </div>
 <% else %>
 
-  <%= render :partial => 'shared/user_station', :collection => @latest_stations, :locals => { :columns => 3 } %>
+  <% includes = @latest_stations.first.includes(10) %>
+  <%= render :partial => 'shared/user_station', :collection => @latest_stations, :locals => { :columns => 3, :includes => includes } %>
 
   <% index = max_stations - @latest_stations.size %>
   <% index.times do |i| %>

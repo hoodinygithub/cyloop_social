@@ -1,8 +1,9 @@
 <li>
+    <% sorted_includes = randomize_includes(includes) %>
     <% if false #phase 2 - subscriptions %>
     <a href="#"><img src="images/listen_icon.png" class="listen_icon png_fix" alt="" title="Listen" /></a>
     <% end %>
-      <%= four_thumbs_to(artist_user_station.station, :type => :big) %>
+      <%= four_thumbs_to(artist_user_station.station, :type => :big, :includes => sorted_includes) %>
       <div class="transparency_thumbanils png_fix">
         <%= radio_play_button(artist_user_station.station.id)  %>
       </div>
@@ -15,10 +16,8 @@
         </span>
         <br/>
         <div class="tags_contains">
-          <%= station_contains(artist_user_station) %>
+          <%= station_contains(artist_user_station, 3, true, nil, :includes => sorted_includes) %>
         </div>
-        <br/>
-        <br/>
         <div class="subcription_creator">
             <%= link_to avatar_for(artist_user_station.owner, :artist_icon), artist_user_station.owner %>
             <!--img src="images/network_icon.gif" class="creator_image" alt="" /-->

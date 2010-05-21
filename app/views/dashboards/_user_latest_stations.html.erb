@@ -8,7 +8,7 @@
     <%= t("artist.be_the_first_to_create_station", :user_name => artist_or_user_name(profile_account)) if profile_artist? %>
   </div>
 <% else %>
-  <%= render :partial => 'shared/user_station', :collection => @latest_stations, :locals => { :columns => 3 } %>
+  <%= render :partial => 'shared/user_station', :collection => @latest_stations, :locals => { :columns => 3, :includes => nil } %>
   <% index = max_stations - @latest_stations.size %>
   <% index.times do |i| %>
     <div class="empty_box gb_big <%= "last_box" if i == (index-1) or (i+1+@latest_stations.size) == 3 %>">

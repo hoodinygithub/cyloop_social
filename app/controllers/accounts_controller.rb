@@ -12,7 +12,7 @@ class AccountsController < ApplicationController
     @mixes_recommended = (1..6).to_a
     @comments = (1..3).to_a
 
-    @top_stations = profile_account.top_stations(6)
+    @top_stations = profile_account.top_stations(6) if profile_account.is_a? User
     @followers = profile_account.followers.all(:limit => 4)
     @latest_stations = profile_account.latest_stations(12)
 

@@ -1,5 +1,6 @@
 <div class="artist_box png_fix <%= "last_box" if (user_station_counter+1) % columns == 0 %>">
-  <%= four_thumbs_to(user_station.station, :type => :big) %>
+  <% sorted_includes = randomize_includes(includes) %>
+  <%= four_thumbs_to(user_station.station, :type => :big, :includes => sorted_includes) %>
   <div class="overlay">
     <div class="hidden">
       <%= link_to avatar_for(user_station.owner, :artist_icon), user_station.owner %>
@@ -8,7 +9,7 @@
         <%= t('basics.created_at', :when => distance_of_time_in_words_to_now(user_station.created_at)) %>
       </span>
       <br class="clearer" />
-      <%= station_contains(user_station) %>
+      <%= station_contains(user_station, 3, true, nil, :includes => sorted_includes) %>
     </div>
 
     <div class="visible">

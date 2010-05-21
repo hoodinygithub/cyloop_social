@@ -17,7 +17,11 @@
 
 <% content_for :list do %>
   <ul class="stations_list">
-    <%= render :partial => profile_artist? ? 'user_stations/artist_user_station' : 'user_stations/user_station', :collection =>  @user_stations %>
+    <% includes = nil %>
+    <% if profile_artist? %>
+    <% includes = @user_stations.first.includes(10) unless @user_stations.empty? %>
+    <% end %>
+    <%= render :partial => profile_artist? ? 'user_stations/artist_user_station' : 'user_stations/user_station', :collection =>  @user_stations, :locals => { :includes => includes } %>
   </ul>
   <%= will_paginate @user_stations, pagination_args %>
 <% end %>
