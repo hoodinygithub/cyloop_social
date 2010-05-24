@@ -2363,11 +2363,11 @@ h1 {
 
 .songs_list.my_mix .headers div.includes {
     padding: 0px 5px;
-    width: 215px;
+    width: 200px;
 }
 
 .songs_list.my_mix .headers div.large_bnt2 {
-    width: 85px;
+    width: 100px;
 }
 
 .songs_list.my_mix .headers div.album_name {
@@ -2405,13 +2405,13 @@ h1 {
 }
 
 .my_mix .songs_box .includes {
-		overflow:hidden;
+	overflow:hidden;
     padding: 0px 5px;
-    width: 215px;
+    width: 200px;
 }
 
 .my_mix .songs_box .large_bnt2 {
-    width: 85px;
+    width: 100px;
     text-align: center;
 }
 
