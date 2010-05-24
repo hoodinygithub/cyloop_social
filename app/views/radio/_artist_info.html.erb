@@ -1,6 +1,6 @@
 <div id="radio_label">
   <div class="radio_left_side" style="float:left !important">
-    <div class="side_user_box">
+    <div class="side_user_box" style="float:left !important">
       <%= avatar_for(artist, :album, :class => 'side_user_image', :width => "150", :disable_default_css => true) %>
       <div class="overlay png_fix">
         <div class="overlay_content">
@@ -32,7 +32,7 @@
     <!--a href="#" class="blue_button full_width"><span><span>FOLLOW</span></span></a-->
   </div><!--/end radio_left_side -->
 
-  <div class="radio_right_side" style="float:right !important">
+  <div class="radio_right_side">
     <div class="radio_tabs">
       <% @tabs.each_with_index do |tab, index| %>
         <a href="#" id="radio_<%= tab.to_s %>_tab" <%= index < 1 ? 'class="first active"': "" %>><span><span><%= t("modules.#{tab.to_s}.title") %></span></span></a>
