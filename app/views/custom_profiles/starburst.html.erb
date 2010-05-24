@@ -10,6 +10,12 @@
   <%= javascript_include_tag "swf_utils" %>
 <% end %>
 
+<script type="text/javascript">
+  $(document).ready(function() {
+    Base.radio.initialize();
+  });
+</script>
+
 <div id="main_content">
   <div id="left_column" class="left_adjust">
     <div id="profile_header">
