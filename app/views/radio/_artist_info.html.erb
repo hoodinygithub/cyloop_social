@@ -10,7 +10,7 @@
           </small>
         </div>
       </div>
-    </div><!--/end side_user_box -->
+    </div>
 
     <div class="black_boxes">
       <div class="black_box left_side">
@@ -24,20 +24,19 @@
       </div>
 
       <div class="clearer"></div>
-    </div><!--/end black_boxes -->
+    </div>
 
     <% attr = {:account => artist, :full_width => true} %>
     <% attr.merge!(@custom) unless @custom.nil? %>
     <%= follow_button(attr) %>
-    <!--a href="#" class="blue_button full_width"><span><span>FOLLOW</span></span></a-->
-  </div><!--/end radio_left_side -->
+  </div>
 
   <div class="radio_right_side">
     <div class="radio_tabs">
       <% @tabs.each_with_index do |tab, index| %>
         <a href="#" id="radio_<%= tab.to_s %>_tab" <%= index < 1 ? 'class="first active"': "" %>><span><span><%= t("modules.#{tab.to_s}.title") %></span></span></a>
       <% end %>
-    </div><!--/end radio_tabs -->
+    </div>
 
     <div id="recent_listeners_content" class="radio_tabs_content hide">
       <%= render :partial => "recent_listeners", :locals => { :station => @station_obj, :limit => 12, :columns => 6 } %>
@@ -47,7 +46,7 @@
       <%= render :partial => "similar_artists", :locals => { :seed_artist => artist, :limit => 12, :columns => 6 } %>
     </div>
 
-  </div><!--/end radio_right_side -->
+  </div>
 
   <div class="clearer"></div>
 </div>

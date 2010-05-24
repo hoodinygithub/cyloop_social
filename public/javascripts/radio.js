@@ -300,7 +300,10 @@ function load_artist_info(artist_id) {
         {
           $('.artist_radio_info').html(response);
 					initRadioTabs();
-          if(response.indexOf("<") > -1) $('.artist_radio_info').slideDown();
+          if(response.indexOf("<") > -1){
+            $('.artist_radio_info').slideDown();
+            $("#radio_label").show();
+          } 
         }
       });
     }
