@@ -169,3 +169,15 @@ h1 {
   color:#CC33CC;
 }
 
+.registration_layer .bottom h2 a {
+  color:#CC33CC;
+}
+
+.registration_layer .stats em {
+  color:#CC33CC;
+}
+
+.registration_layer .bottom {
+  height:75px;
+}
+
