@@ -747,7 +747,7 @@ Base.stations.edit = function(user_station_id, button) {
 
   old_buttons_content = $buttons.html();
 
-  done_button = jQuery(Base.layout.blue_button('Done'));
+  done_button = jQuery(Base.layout.blue_button(Base.locale.t('basics.done')));
   done_button.bind('click', function() {
     new_station_input = jQuery('#station_' + user_station_id + "_input");
     new_station_name = new_station_input.val();
@@ -765,7 +765,7 @@ Base.stations.edit = function(user_station_id, button) {
     return false;
   });
 
-  cancel_button = jQuery(Base.layout.blue_button('Cancel'));
+  cancel_button = jQuery(Base.layout.blue_button(Base.locale.t('actions.cancel')));
   cancel_button.bind('click', function() {
     $station_name_container.html(old_station_name_content);
     $buttons.html(old_buttons_content);

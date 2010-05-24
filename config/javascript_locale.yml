@@ -15,3 +15,6 @@ keys:
   actions.pending
   actions.show_more
   activity.no_more_activity
+  basics.done
+  actions.cancel
+
