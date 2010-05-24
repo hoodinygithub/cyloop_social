@@ -256,6 +256,20 @@ class ApplicationController < ActionController::Base
     (request.port.to_s == "80") ? "#{request.host}" : "#{request.host}:#{request.port}"
   end
 
+  def hash_string_vkpair(str)
+    h = Hash.new
+    k = nil
+    str.split(',').each_with_index do |kv, i|
+      n = (i + 1) % 2
+      if n != 0
+        k = kv.to_sym
+      else
+        h[k] = kv
+      end
+    end
+    return h
+  end
+
   def global_url
     if RAILS_ENV == 'production'
       "cyloop.com"

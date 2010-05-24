@@ -27,7 +27,7 @@ set :cyqueue,             "/data/cyqueue/current"
 set :git_shallow_clone,   1
 
 set :scm,                 :git
-set :real_revision, 			lambda { source.query_revision(revision) { |cmd| capture(cmd) } }
+set :real_revision,       lambda { source.query_revision(revision) { |cmd| capture(cmd) } }
 set :production_database, "cyloop_production"
 set :production_dbhost,   "cyloop-db-new_enzo"
 set :staging_database,    "cyloop_staging"
@@ -54,7 +54,7 @@ ssh_options[:paranoid] = false
 # can also specify options that can be used to single out a specific subset of boxes in a
 # particular role, like :primary => true.
 
-set :branch, "performance_enhancements"
+set :branch, "master"
 
 #EY06 All Sites
 task :production do
@@ -316,6 +316,6 @@ end
 
 Dir[File.join(File.dirname(__FILE__), '..', 'vendor', 'gems', 'hoptoad_notifier-*')].each do |vendored_notifier|
   $: << File.join(vendored_notifier, 'lib')
-end
+end 
 
 require 'hoptoad_notifier/capistrano'

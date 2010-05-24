@@ -31,7 +31,9 @@ class PlaylistsController < ApplicationController
   def show
     if params[:id] != "0"
       begin
-        @playlist = profile_user.playlists.find(params[:id])
+
+        @playlist = Playlist.find(params[:id])
+
         if request.xhr?
           respond_to do |format|
             format.html { render :layout => false, :partial => "playlist_result", :object => @playlist }

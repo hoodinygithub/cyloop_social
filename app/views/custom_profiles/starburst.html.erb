@@ -1,0 +1,117 @@
+<% station = profile_account.playlists[0].station unless profile_account.playlists[0].nil? %>
+
+<% content_for :head do %>
+  <%= stylesheet_link_tag    "custom_profiles/starburst.css" %>
+  <%= stylesheet_link_tag    "history" %>
+  <%= javascript_include_tag "AC_OETags" %>
+  <%= javascript_include_tag "history" %>
+  <%= javascript_include_tag "htmlcomponents" %>
+  <%= javascript_include_tag "radio" %>
+  <%= javascript_include_tag "swf_utils" %>
+<% end %>
+
+<div id="main_content">
+  <div id="left_column" class="left_adjust">
+    <div id="profile_header">
+      <img src="/images/custom_profiles/starburst/top_logo.jpg"/>
+      <div id="action_button">
+        <%= render :partial => 'accounts/buttons', :locals => {:color => 'red'}  %> <!-- CHECK OUT PARTIAL OPTIONS -->
+      </div>
+    </div>
+    <br/>
+    <br/>
+    <div class="mix_box grey_accents">
+      <div id="radio_player">
+        <script>
+          customKeys = "color,red";
+        </script>
+        <form>
+          <% if station %>
+            <%= hidden_field_tag "station_id", "#{station.id}" %>
+          <% end %>
+          <%= hidden_field_tag "radio_tab_scope" %>
+        </form>
+        <script type="text/javascript" charset="utf-8">
+          var flashvars = "urlContext=/&market=<%= current_site.code %>&playerId=starburst_<%= current_site.code %>";
+          <% if station %>
+            flashvars += "&stationId=<%= station.id %>&station=<%= station.playable.station_queue %>&randomizedStart=true";
+          <% end %>
+          AC_FL_RunContent(
+            "src", "/flash/cyloop_radio",
+            "wmode", "opaque",
+            "width", "628",
+            "height", "196",
+            "align", "middle",
+            "id", "cyloop_radio",
+            "quality", "high",
+            "bgcolor", "#f2f2f2",
+            "name", "cyloop_radio",
+            "allowScriptAccess", "sameDomain",
+            "type", "application/x-shockwave-flash",
+            "pluginspage", "http://www.adobe.com/go/getflashplayer",
+            "flashVars", flashvars
+          );
+        </script>
+      </div>
+      <div class="artist_radio_info radio_row hide"></div>
+    </div>
+    <br/>
+    <br/>
+    <br/>
+    <div>
+      <img src="/images/custom_profiles/starburst/bottom_ad.jpg" />
+    </div>
+  </div>
+
+  <div id="right_column">
+    <div class="ad_box">
+      <%= banner_ad("square_banner") %>
+    </div>
+
+    <!--FOLLOWERS-->
+    <div class="box_content">
+      <span class="follows_count"><%= profile_account.follower_count %></span>
+      <h1><%= t("dashboards.followers.title") %></h1>
+      <% if profile_account.follower_count < 1 %>
+        <div class="big_text">
+          <%= t("user.has_no_followers", :user_name => profile_account.first_name) %>
+        </div>
+      <% else %>
+        <% followings = profile_account.followers.all(:limit => 15) %>
+        <% followings.each_with_index do |follow, index| %>
+          <div class="small_thumb<%= " last_thumb" if index == 4 or index == 8 %>">
+            <%= link_to avatar_for(follow, :tiny, :class => "spaced_img tiny", :disable_default_css => true, :width => "50px", :height => "50px"), follow %>
+            <%= link_to truncate(follow.name,:length => 18), follow %>
+          </div>
+          <% if index == 4 %>
+            <br class="clearer" />
+          <% end %>
+        <% end %>
+
+
+        <% fcount = followings.size %>
+        <% index = (15 - fcount) %>
+        <% index.times do |i| %>
+          <div class="empty_box gb_small <%= "last_box" if i == (index-1) %>">
+            &nbsp;
+          </div>
+
+          <% if (fcount + (i + 1)) % 5 == 0 %>
+            <br class="clearer" />
+          <% end %>
+        <% end %>
+
+      <% end %>
+      <br class="clearer" />
+      <% if profile_account.follower_count > 15 %>
+          <div class="align_right">
+            <b>
+              <%= link_to(t('actions.view_more'), profile_owner? ? my_followers_path : followers_path ) %>
+            </b>
+          </div>
+        <% end %>
+    </div><!--/FOLLOWERS-->
+    
+  </div>
+  <div class="clearer" />
+</div>

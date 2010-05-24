@@ -17,7 +17,9 @@ class AccountsController < ApplicationController
     @latest_stations = profile_account.latest_stations(12)
 
     respond_to do |format|
-      format.html
+      format.html do
+        render :template => "custom_profiles/#{profile_account.slug}" if profile_account.has_custom_profile?
+      end
       format.rss do
         @activities = load_related_item_activity(
           profile_account.transformed_activity_feed(

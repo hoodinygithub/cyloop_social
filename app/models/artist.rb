@@ -76,7 +76,6 @@ class Artist < Account
   has_one :station, :class_name => 'AbstractStation', :foreign_key => 'artist_id', :conditions => 'abstract_stations.deleted_at IS NULL'
   has_many :abstract_station_artists
   has_many :abstract_stations, :through => :abstract_station_artists
-
   # has_many :user_station_artists
   # has_many :abstract_stations, :through => :abstract_station_artists
   # has_many :stations, 

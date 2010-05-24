@@ -1,0 +1,63 @@
+<%= render 'shared/ajax_modules' %>
+
+<% content_for :head do %>
+  <%= stylesheet_link_tag "custom_profiles/starburst_followers.css" %>
+<% end %>
+
+<% content_for :title do %>
+  <%= t('dashboards.followers.user_followers', :user_name => artist_or_user_name(profile_account)) %>
+<% end %>
+
+<% content_for :sorting do %>
+  <%= sort_link_to :latest %>
+  <%= sort_link_to :alphabetical %>
+<% end %>
+
+<div id="main_content">
+  <div id="center_column" class="wider">
+    <h1>
+      <%= yield :title %>
+    </h1>
+
+    <div class="sorting">
+      <%= yield :sorting %>
+    </div>
+
+    <% if @collection %>
+      <ul class="followers_list">
+        <% if current_user and current_user == profile_account and !@pending.nil? and @pending.size > 0 %>
+          <% @pending.each do |item| %>
+            <li class="pending_item">
+              <%= link_to (avatar_for(item.follower, :small), item.follower) %>
+              <%= render :partial => 'shared/pending', :locals => {:item => item.follower} %>
+              <br class="clearer" />
+            </li>
+          <% end %>
+        <% end %>
+
+        <%= render :partial => 'shared/collection_to_li' %>
+    <% else %>
+      <%= yield :list %>
+    <% end %>
+    </ul><!--/end followers_list -->
+
+    <div class="align_right" id="show_more_comments">
+      <% if @has_more %>
+      <%= blue_button(t('actions.show_more'), :onclick => "Base.network.show_more(this)", :width => "120px") %>
+      <% end %>
+    </div>
+
+    <% if @collection.respond_to? :total_pages %>
+    <%= will_paginate @collection, pagination_args %>
+    <% end %>
+  </div><!--/end center_column -->
+
+  <div id="right_column">
+    <div class="ad_box">
+      <%= banner_ad("square_banner") %>
+    </div>
+  </div><!--/end right_column -->
+
+
+  <div class="clearer"></div>
+</div><!--/end main_content -->

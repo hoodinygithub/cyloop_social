@@ -106,6 +106,10 @@ module ApplicationHelper
     special_button(:yellow_button, button_label, options)
   end
 
+  def red_button(button_label, options = {})
+    special_button(:red_button, button_label, options)
+  end
+
   def follow_button(attrs = {})
     account = attrs.delete(:account)
     if current_user and account.follow_requests.collect(&:follower_id).include? current_user.id
@@ -120,11 +124,17 @@ module ApplicationHelper
       action       = 'unfollow'
       key          = 'unfollow'
       button_color = 'green'
+    elsif attrs.has_key?(:color)
+      action       = 'follow'
+      key          = 'follow'
+      button_color = attrs[:color]
     else
       action       = 'follow'
       key          = 'follow'
       button_color = 'blue'
     end
+
+    # button_color = attrs[:color] if attrs.has_key?(:color)
 
     locale_key = "actions.#{key}"
 
@@ -134,7 +144,7 @@ module ApplicationHelper
                       :follow_profile => account.id)
 
     remove_div = attrs.has_key?(:remove_div) ? attrs[:remove_div] : page_owner?
-    onclick_cb = "Base.community.#{action}('#{account.slug}', this, #{remove_div}, '#{layer_path}')" if action
+    onclick_cb = "Base.community.#{action}('#{account.slug}', this, #{remove_div}, '#{layer_path}', '#{button_color}')" if action
     attrs.merge!({:onclick => onclick_cb, :class => 'follower_btn'})
     if account.is_a?(User) and (account.respond_to?(:blocks?) and !account.blocks?(current_user)) or account.is_a?(Artist)
       send("#{button_color}_button", t(locale_key), attrs)

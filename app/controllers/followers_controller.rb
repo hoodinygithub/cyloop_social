@@ -20,6 +20,10 @@ class FollowersController < ApplicationController
     rescue NoMethodError
       redirect_to new_session_path
     end
+
+    if profile_account.has_custom_profile? && FileTest.exists?("#{RAILS_ROOT}/app/views/custom_profiles/#{profile_account.slug}_followers.html.erb")
+      render :template => "custom_profiles/#{profile_account.slug}_followers"
+    end
   end
 end
 

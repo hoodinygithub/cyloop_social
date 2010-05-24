@@ -140,6 +140,9 @@ ActionController::Routing::Routes.draw do |map|
     profile.resources :playlists do |playlist|
       playlist.resources :items, :controller => 'playlist_items', :only => [:show, :update, :destroy]
     end
+
+    map.social_playlist '/playlists/:id.:format', :controller => 'playlists', :action => 'show'
+
     profile.queue_my_station '/stations/:station_id/queue', :controller => 'user_stations', :action => "queue"
     profile.resources :albums, :controller => 'albums', :only => [:index, :show]
 

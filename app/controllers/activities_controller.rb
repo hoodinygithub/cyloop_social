@@ -42,7 +42,7 @@ class ActivitiesController < ApplicationController
       render :partial => 'modules/activity/status_activity', :locals => {:status_activity => hash_added, :no_li => true}
     end
   end
-  
+
   def latest_tweet
     @status = load_related_item_activity( account.transformed_activity_feed( activity_params.merge({:limit => 1, :type => :twitter}) ) ).first
     render :partial => 'shared/tweet_msg', :locals => {:slug => params[:slug]}

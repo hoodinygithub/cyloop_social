@@ -1,1 +1,3 @@
-<%= follow_button(:account => profile_account, :full_width => true) unless profile_owner? %>
+<% attr = {:account => profile_account, :full_width => true} %>
+<% attr.merge!(local_assigns) if local_assigns.has_key?(:color) %>
+<%= follow_button(attr) unless profile_owner? %>

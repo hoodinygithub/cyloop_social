@@ -12,6 +12,9 @@ class RegistrationLayersController < ApplicationController
   end
 
   def follow_user
+    if @account.has_custom_profile? && FileTest.exists?("#{RAILS_ROOT}/app/views/custom_profiles/#{@account.slug}_follow_user.html.haml")
+      render :template => "custom_profiles/#{@account.slug}_follow_user"
+    end
   end
 
   def add_song

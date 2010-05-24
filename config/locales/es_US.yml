@@ -522,6 +522,7 @@ es_US:
       click_here: "Haz clic aqu\xC3\xAD"
       discover_text: "m\xC3\xA1s de {{count}} artistas, todos gratis"
       follow_user: Para seguir a {{slug}} y saber lo que {{gender}} escuchando, {{link}} para hacer tu login.
+      follow_user_starburst: Para seguir a {{slug}} y comenzar a recibir sus actualizaciones, {{link}} para ingresar.
       know: "Am\xC3\xADgate"
       female: "ella est\xC3\xA1"
       add_mixer: Para guardar este mix, {{link}} para hacer tu login.

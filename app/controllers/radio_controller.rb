@@ -176,6 +176,8 @@ class RadioController < ApplicationController
     else
       @tabs = [:similar_artists, :recent_listeners] #others are coming.
       @station_obj = Station.find(params[:station_id]) rescue nil
+      @custom = hash_string_vkpair(params[:customize]) if params[:customize]
+
       render :partial => "radio/artist_info"
     end
   end

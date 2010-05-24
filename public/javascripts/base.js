@@ -592,7 +592,8 @@ Base.community.follow = function(user_slug, button, remove_div, layer_path) {
   var old_onclick = $button.attr('onclick');
 
   $button_label = $button.children().children();
-  $button_label.html(Base.layout.spanned_spin_image());
+  var color = arguments[4];
+  $button_label.html(Base.layout.spanned_spin_image(color));
 
   $button.attr('onclick', "");
   $button.bind('click', function() { return false; });

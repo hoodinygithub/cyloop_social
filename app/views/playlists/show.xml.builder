@@ -1,12 +1,12 @@
-xml.player :autoStart => 'yes', :canRate => '' do
-  songs = @playlist.items.sort_by { rand }
+xml.player :autoStart => 'yes', :canRate => '', :owner => @playlist.owner.id, :numResults => @playlist.songs_count do
+  songs = @playlist.items
   songs.each do |item|
-    if item.song && item.song.album
+    if item.song && item.song.album && !item.artist.nil?
       xml.song do
         xml.idsong item.song_id
         xml.idpl item.playlist_id
         xml.idband item.artist.id
-        xml.songfile item.song.file_name
+        xml.songfile "http://media.cyloop.com/storage/storage?fileName=/.elhood.com-2/usr/#{item.song.artist.id}/audio/#{item.song.file_name}"
         xml.fotofile item.song.album.avatar_file_name
         xml.title item.song.title
         xml.band item.artist.name

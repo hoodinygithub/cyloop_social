@@ -26,7 +26,9 @@
       <div class="clearer"></div>
     </div><!--/end black_boxes -->
 
-    <%= follow_button(:account => artist, :full_width => true) %>
+    <% attr = {:account => artist, :full_width => true} %>
+    <% attr.merge!(@custom) unless @custom.nil? %>
+    <%= follow_button(attr) %>
     <!--a href="#" class="blue_button full_width"><span><span>FOLLOW</span></span></a-->
   </div><!--/end radio_left_side -->
 

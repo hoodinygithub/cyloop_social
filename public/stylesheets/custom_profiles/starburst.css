@@ -1,0 +1,115 @@
+/* @override http://localhost:3000/stylesheets/custom_profiles/starburst.css */
+
+body {
+	background-image: url("/images/custom_profiles/starburst/starburst_background.jpg");
+	background-color: #FEF075;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-position: top;
+}
+
+#internal_content
+{
+	background-color: #FFFAB0 !important;
+}
+
+#left_column.left_adjust
+{
+	width: 630px;
+}
+
+#profile_header {
+	position: relative;
+	height: 124px;
+}
+
+#profile_header img {
+	float: left;
+}
+
+#action_button {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	width: 120px;
+}
+
+.red_button {
+	display: inline-block;
+	background: url("/images/red_button_left.gif") no-repeat scroll left top transparent;
+	color: #FFF;
+	font-size: 12px;
+	font-weight: bold;
+	height: 28px;
+	line-height: 28px;
+	overflow: hidden;
+	padding-left: 4px;
+	text-align: center;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+.red_button span {
+	background: url("/images/red_button_right.gif") no-repeat scroll right top transparent;
+	display: inline-block;
+	height: 28px;
+	cursor: pointer;
+	padding-right: 4px;
+}
+
+.red_button:hover {
+	background: url("/images/grey_button_big_left.gif") no-repeat scroll left top transparent;
+}
+
+.red_button:hover span {
+	background: url("/images/grey_button_big_right.gif") no-repeat scroll right top transparent;
+}
+
+.red_button span span {
+	background: #FF0000;
+	padding: 0 16px;
+}
+
+.red_button:hover span span {
+	background: #BDBDBD;
+}
+
+.red_button.full_width, .red_button.full_width span {
+	display: block;
+	margin-bottom: 7px;
+}
+
+.red_button, h1 {
+	text-transform: uppercase;
+}
+
+h1 {
+	border-left-color: #F93A30;
+}
+
+.box_content {
+	position: relative;
+	padding: 20px 0 0 0;
+}
+
+.follows_count {
+	background-color: #FF0000;
+}
+
+.small_thumb {
+	margin-right: 10px;
+}
+
+.gb_small {
+	margin: 0 10px 12px 0;
+}
+
+div.small_thumb a {
+	color: #F93A30;
+}
+
+div.box_content div.align_right a {
+	color: #F93A30;
+}

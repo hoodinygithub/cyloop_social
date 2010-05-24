@@ -19,6 +19,7 @@ class Playlist < ActiveRecord::Base
   has_many :songs, :through => :items, :order => "playlist_items.position ASC"
   has_many :items, :class_name => 'PlaylistItem', :order => "playlist_items.position ASC", :include => :song
   has_one :editorial_station, :foreign_key => 'mix_id'
+  has_one :station, :as => :playable
   
   validates_presence_of :name
   
@@ -32,6 +33,10 @@ class Playlist < ActiveRecord::Base
 
   def artists
     @artists ||= Artist.find_by_sql( [ ARTISTS_FROM_PLAYLIST, self.id ] ).uniq
+  end
+
+  def station_queue(params={})
+    "/playlists/#{id}.xml"
   end
 
   def avatar
