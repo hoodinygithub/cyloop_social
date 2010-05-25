@@ -112,7 +112,7 @@
       <% if profile_account.follower_count > 15 %>
           <div class="align_right">
             <b>
-              <%= link_to(t('actions.view_more'), profile_owner? ? my_followers_path : followers_path ), :target => '_blank' %>
+              <%= link_to(t('actions.view_more'), profile_owner? ? my_followers_path : followers_path, :target => '_blank' ) %>
             </b>
           </div>
         <% end %>
