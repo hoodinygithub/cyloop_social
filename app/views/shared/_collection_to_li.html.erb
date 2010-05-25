@@ -1,12 +1,12 @@
 <% @collection.each do |item| %>
   <% if item.is_a? Hash %>
-    <% if profile_account != item['account'] and current_user != item['account'] and params[:controller] == 'followers' %>
+    <% if profile_account != item['account'] and current_user != item['account'] and ['followers', 'followees'].include?(params[:controller]) %>
       <li timestamp="<%= item['timestamp'] %>">
         <%= render :partial => 'shared/network_collection_info', :locals => {:item => item} %>
       </li>
     <% end %>
   <% elsif item.is_a? User or item.is_a? Artist %>
-    <% if profile_account != item and current_user != item and params[:controller] == 'followers' %>
+    <% if profile_account != item and current_user != item and ['followers', 'followees'].include?(params[:controller]) %>
       <li timestamp="<%= item['timestamp'] %>">
       <%= render :partial => 'shared/network_collection_info', :locals => {:item => item} %>
       </li>
