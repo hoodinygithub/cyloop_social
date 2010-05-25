@@ -40,7 +40,7 @@
         <script type="text/javascript" charset="utf-8">
           var flashvars = "urlContext=/&market=<%= current_site.code %>&playerId=starburst_<%= current_site.code %>";
           <% if editorial_station %>
-            flashvars += "&stationId=<%= editorial_station.station.id %>&station=<%= editorial_station.station_queue %>&randomizedStart=true";
+            flashvars += "&stationId=<%= editorial_station.station.id %>&station=<%= editorial_station.station_queue %>?randomize=0&randomizedStart=true";
           <% end %>
           AC_FL_RunContent(
             "src", "/flash/cyloop_radio",
