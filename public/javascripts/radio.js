@@ -302,6 +302,7 @@ function load_artist_info(artist_id) {
 					initRadioTabs();
           if(response.indexOf("<") > -1){
             $('.artist_radio_info').slideDown();
+            $("#radio_label").hide();
             $("#radio_label").show();
           } 
         }
