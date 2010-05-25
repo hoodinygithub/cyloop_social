@@ -1,4 +1,4 @@
-<% station = profile_account.playlists[0].station unless profile_account.playlists[0].nil? %>
+<% editorial_station = current_site.editorial_stations_sites.find_by_profile_id(profile_account).editorial_station unless current_site.editorial_stations_sites.find_by_profile_id(profile_account).nil? %>
 
 <% content_for :head do %>
   <%= stylesheet_link_tag    "custom_profiles/starburst.css" %>
@@ -32,15 +32,15 @@
           customKeys = "color,red";
         </script>
         <form>
-          <% if station %>
-            <%= hidden_field_tag "station_id", "#{station.id}" %>
+          <% if editorial_station %>
+            <%= hidden_field_tag "station_id", "#{editorial_station.station.id}" %>
           <% end %>
           <%= hidden_field_tag "radio_tab_scope" %>
         </form>
         <script type="text/javascript" charset="utf-8">
           var flashvars = "urlContext=/&market=<%= current_site.code %>&playerId=starburst_<%= current_site.code %>";
-          <% if station %>
-            flashvars += "&stationId=<%= station.id %>&station=<%= station.playable.station_queue %>&randomizedStart=true";
+          <% if editorial_station %>
+            flashvars += "&stationId=<%= editorial_station.station.id %>&station=<%= editorial_station.station_queue %>&randomizedStart=true";
           <% end %>
           AC_FL_RunContent(
             "src", "/flash/cyloop_radio",
