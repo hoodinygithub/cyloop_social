@@ -144,9 +144,11 @@ ActionController::Routing::Routes.draw do |map|
     map.social_playlist '/playlists/:id.:format', :controller => 'playlists', :action => 'show'
 
     profile.queue_my_station '/stations/:station_id/queue', :controller => 'user_stations', :action => "queue"
-    profile.resources :albums, :controller => 'albums', :only => [:index, :show]
+    # profile.resources :albums, :controller => 'albums', :only => [:index, :show]
+    profile.resources :albums, :controller => 'accounts', :only => [:index, :show]    
 
-    map.with_options(:controller => 'albums') do |url|
+    # map.with_options(:controller => 'albums') do |url|
+    map.with_options(:controller => 'accounts') do |url|
       url.queue_song ':slug/albums/:id/:song_id', :action => 'show'
     end
 

@@ -148,9 +148,20 @@ task :cyloop do
   set :environment_dbhost, defer { production_dbhost }
 end
 
-
 #EY06 Canada
 task :canada do
+  role :web, "70.42.33.4:8137"
+  role :app, "70.42.33.4:8137", :memcached => true, :sphinx => true
+  role :db , "70.42.33.4:8137", :primary => true
+  role :app, "70.42.33.4:8138", :memcached => true, :sphinx => true
+
+  set :rails_env, "production"
+  set :environment_database, defer { production_database }
+  set :environment_dbhost, defer { production_dbhost }
+end
+
+#EY06 TVN
+task :tvn do
   role :web, "70.42.33.4:8137"
   role :app, "70.42.33.4:8137", :memcached => true, :sphinx => true
   role :db , "70.42.33.4:8137", :primary => true
