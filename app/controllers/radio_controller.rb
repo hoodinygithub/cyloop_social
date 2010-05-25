@@ -20,7 +20,7 @@ class RadioController < ApplicationController
     end
     @top_station_limit = @station_obj.nil? ? 6 : 4 
     @top_abstract_stations = current_site.top_abstract_stations(@top_station_limit)
-    @msn_stations = current_site.stations.all(:conditions => "editorial_stations.profile_id IS NULL")
+    @msn_stations = current_site.stations.all(:conditions => "profile_id IS NULL")
   end
 
   def album_detail
