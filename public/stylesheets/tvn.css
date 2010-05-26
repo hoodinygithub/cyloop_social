@@ -45,10 +45,14 @@ h1 {
 }
 
 .tabs_content .title {
-    font-family: Arial;
-    font-size: 24px;
-    line-height: 34px;
-    color: #CC33CC;
+    color:#CC33CC;
+    font-family:Arial;
+    font-size:24px;
+    font-weight:bold;
+    line-height:34px;
+}
+.tabs_content p {
+   color:#CCCCCC;
 }
 
 .blue_button span span, .blue_button_wo_hover span span {
