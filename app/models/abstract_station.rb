@@ -49,7 +49,7 @@ class AbstractStation < ActiveRecord::Base
   end
   
 
-  has_many :user_stations
+  has_many :user_stations, :include => :owner, :conditions => 'accounts.deleted_at IS NULL AND user_stations.deleted_at IS NULL'
   has_many :abstract_station_artists, :include => [:artist, :album]
   has_many :artists, :through => :abstract_station_artists
 
