@@ -48,13 +48,11 @@ h1 {
     color:#CC33CC;
     font-family:Arial;
     font-size:24px;
-    font-weight:bold;
     line-height:34px;
 }
-.tabs_content p {
-   color:#CCCCCC;
+.new_station .text_input  {
+  color:#CCCCCC;
 }
-
 .blue_button span span, .blue_button_wo_hover span span {
     background: #CC33CC;
     padding: 0px 10px;
