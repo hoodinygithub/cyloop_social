@@ -772,3 +772,7 @@ div#now_playing_user_station {
 	height:53px;
 	line-height:16px;
 }
+
+.tabs_content .text {
+	padding: 0 20px 10px
+}
