@@ -1,6 +1,6 @@
 class ChangeIndexesOnFollowings < ActiveRecord::Migration
   def self.up
-    ActiveRecrord::Base.connection.execute <<-EOF
+    ActiveRecord::Base.connection.execute <<-EOF
     ALTER TABLE `followings` 
     ADD follower_name varchar(255),
     ADD followee_name varchar(255),
@@ -14,7 +14,7 @@ class ChangeIndexesOnFollowings < ActiveRecord::Migration
   end
 
   def self.down
-    ActiveRecrord::Base.connection.execute <<-EOF
+    ActiveRecord::Base.connection.execute <<-EOF
     ALTER TABLE `followings` 
     DROP KEY `ix_sort_by_follower_name_for_followee_id`,
     DROP KEY `ix_sort_by_followee_name_for_follower_id`,
