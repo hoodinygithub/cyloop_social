@@ -836,7 +836,7 @@ module ApplicationHelper
       artist_or_user.first_name
     end
   end
-  
+
   def first_name(full_name)
     full_name.split(' ')[0] rescue full_name
   end
@@ -844,7 +844,7 @@ module ApplicationHelper
   def on_dashboard?
     request.request_uri.match(/\/my\//)
   end
-  
+
   def on_activities?
     controller_name == 'activities'
   end
@@ -866,6 +866,25 @@ module ApplicationHelper
     else
       "/images/#{image}"
     end
+  end
+
+  def market_search_radio_edit_color(on_off)
+    case on_off
+      when 'off'
+        case site_code.to_s
+          when 'tvn'
+            "#CCCCCC"
+        else
+          "#C0D6E2"
+        end
+      else
+        case site_code.to_s
+          when 'tvn'
+            "#999999"
+        else
+          "#025D8C"
+        end
+      end
   end
 end
 

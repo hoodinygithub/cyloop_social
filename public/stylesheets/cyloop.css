@@ -533,6 +533,7 @@ img.avatar_four_thumbs_big {
 
 .side_user_box img.album {
   width:150px;
+  height:150px;
 }
 
 .stations_list .subcription_text {
@@ -771,4 +772,17 @@ div#now_playing_user_station {
 .tags_contains {
 	height:53px;
 	line-height:16px;
+}
+
+.tabs_content .text {
+	padding: 0 20px 10px
+}
+.view_more_activity {
+  float: right;
+  margin-top: -24px;
+}
+
+.tags_contains {
+	height: 53px;
+	line-height: 16px;
 }

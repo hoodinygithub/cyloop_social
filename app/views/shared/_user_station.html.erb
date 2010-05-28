@@ -3,7 +3,7 @@
   <%= four_thumbs_to(user_station.station, :type => :big, :includes => sorted_includes) %>
   <div class="overlay">
     <div class="hidden">
-      <%= link_to avatar_for(user_station.owner, :artist_icon), user_station.owner %>
+      <%= link_to avatar_for(user_station.owner, :tiny), user_station.owner %>
       <span>
         <span class="blue"><%= link_to user_station.owner.name, user_station.owner rescue ""%></span><br/>
         <%= t('basics.created_at', :when => distance_of_time_in_words_to_now(user_station.created_at)) %>

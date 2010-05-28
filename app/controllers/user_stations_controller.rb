@@ -30,7 +30,7 @@ class UserStationsController < ApplicationController
         per_page = 10
         
         begin
-          @user_stations = profile_account.stations.paginate :page => page, :per_page => per_page, :order => @sort_types[@sort_type]
+          @user_stations = profile_account.stations.paginate :page => page, :per_page => per_page, :order => @sort_types[@sort_type], :total_entries => profile_account.total_user_stations
         rescue NoMethodError
           redirect_to new_session_path
         end

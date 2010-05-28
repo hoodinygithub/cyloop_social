@@ -16,11 +16,12 @@ class RadioController < ApplicationController
         @station_queue = @station_obj.playable.station_queue(:ip_address => remote_ip)
         @station_obj.playable.track_a_play_for(current_user) if @station_obj.playable
     else
-      @recommended_stations = transformed_recommended_stations(12, 24)
+      @recommended_stations_limit = 12
+      @recommended_stations = transformed_recommended_stations(@recommended_stations_limit, 24)
     end
     @top_station_limit = @station_obj.nil? ? 6 : 4 
     @top_abstract_stations = current_site.top_abstract_stations(@top_station_limit)
-    @msn_stations = current_site.stations
+    @msn_stations = current_site.stations.all(:conditions => "editorial_stations_sites.profile_id IS NULL")
   end
 
   def album_detail

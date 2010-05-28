@@ -5,6 +5,7 @@
       field_with_errors     = <%= @user.errors.to_json %>;
       delete_account_errors = <%= @delete_account_errors.to_json %>;
       Base.account_settings.highlight_field_with_errors();
+      $(".accordion_box").show();
     <% end %>
 
     $('#user_avatar').focus(Base.account_settings.update_avatar_upload_info);

@@ -1,6 +1,6 @@
-xml.player :autoStart => 'yes', :canRate => '', :numResults => @playlist.playlist.size do
+xml.player :autoStart => 'yes', :canRate => '', :numResults => @playlist.playlist.count do
   playlist_id = @playlist.id
-  songs = @playlist.playlist.sort_by { rand }
+  songs = params[:randomize] == '0' ? @playlist.playlist : @playlist.playlist.sort_by { rand }
   songs.each do |song|
     if song && song.artist && song.artist && song.album
       xml.song do
