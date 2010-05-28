@@ -9,7 +9,7 @@ class FollowersController < ApplicationController
     @sort_type = params.fetch(:sort_by, nil).to_sym rescue :latest
 
     begin
-        sort_types  = { :latest => 'followings.approved_at DESC', :alphabetical => 'accounts.name'  }
+        sort_types  = { :latest => 'followings.approved_at DESC', :alphabetical => 'followings.follower_name'  }
         if profile_artist?
           @pending    = profile_artist.follow_requests
           @collection = profile_artist.followers.paginate :page => params[:page], :per_page => 12, :order => sort_types[@sort_type], :total_entries => profile_artist.follower_count
