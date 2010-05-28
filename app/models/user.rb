@@ -76,6 +76,8 @@ class User < Account
 
   index [:type]
 
+  after_update :update_followings_with_name
+
   has_one :bio, :autosave => true, :foreign_key => :account_id
   validates_associated :bio
 
@@ -263,5 +265,9 @@ class User < Account
     errors.add(:born_on, I18n.t("registration.must_be_13_years_older")) if underage?
   end
 
+  def update_followings_with_name
+    followings.update_all(:follower_name => self.name)
+    followings_as_followee.update_all(:followee_name => self.name)
+  end
 end
 
