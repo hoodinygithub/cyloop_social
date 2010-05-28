@@ -336,15 +336,15 @@ class ApplicationController < ActionController::Base
     @recommended_artists_existing = Artist.artists_by_recommended( recommended, limit )
   end
 
-  def recommended_stations(limit = 3)
+  def recommended_stations(limit = 3, attempt=0)
     stations = rec_engine.get_recommended_stations(:number_of_records => limit)
     return stations
   rescue SocketError
    logger.error "RecEngine timed out"
-   []
+   attempt == 0 ? recommended_stations(limit, 1) : []
   rescue
    logger.error "Catch-all error"
-   []
+   attempt == 0 ? recommended_stations(limit, 1) : []
   end
 
   def transformed_recommended_stations(limit = 3, fetch=nil)    
