@@ -6,7 +6,7 @@
 %meta{'name' => 'robots', :content => "ALL"}
 %meta{'name' => 'site', :content => current_site.id}
 %meta{'name' => 'created', :content => Time.now }
-%link{:rel=>"shortcut icon", :href=>"/favicon.ico"} 
+%link{:rel=>"shortcut icon", :href=>"/#{cyloop_favico}"} 
 
 - if protect_against_forgery?
   %meta{:name => 'authenticity_token', :content => form_authenticity_token}

@@ -792,6 +792,15 @@ module ApplicationHelper
     key = :"#{model.class.to_s.downcase}.#{method}" if key.nil?
     error_message_on model, method, :prepend_text => (!key.to_s.empty? ? "#{t(key)} " : "")
   end
+  
+  def cyloop_favico
+    case site_code.to_s
+    when 'tvn'
+      'tvn-favico.ico'
+    else
+      'cyloop-favico.ico'
+    end
+  end
 
   def cyloop_logo_path(sm=true)
     sufix = "_sm" if sm

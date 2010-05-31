@@ -1,6 +1,6 @@
 MSN Mexico:
   name: MSN Mexico
-  deploy_name: cyloopsocial.mx
+  deploy_name: mexico
   code: msnmx
   domains:
     - ms.msn.cyloop.com
@@ -84,7 +84,7 @@ MSN Argentina:
     
 TVN:
   name: TVN
-  deploy_name: tvn_cs
+  deploy_name: tvn
   code: tvn
   domains:
     - tvn.cyloop.com
