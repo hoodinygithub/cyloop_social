@@ -929,6 +929,7 @@ en:
     recommended_stations: STATIONS RECOMMENDED BY CYLOOP
     recommended_mixes: MIXES RECOMMENDED BY CYLOOP
     network_update: "{{user_name}}'S RECENT ACTIVITY"
+    latest_news: Latest News
   sessions:
     new:
       sign_in: Log in
