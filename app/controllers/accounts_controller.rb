@@ -15,6 +15,16 @@ class AccountsController < ApplicationController
     @top_stations = profile_account.top_stations(6) if profile_account.is_a? User
     @followers = profile_account.followers.all(:limit => 4)
     @latest_stations = profile_account.latest_stations(12)
+    @msn_properties={}
+    if profile_account.artist?
+      @msn_properties[:page_name] = '\'Artist Profile\''
+      @msn_properties[:prop3] = "\'Cyloop - Artist Profile \'"
+      @msn_properties[:prop4] = "\'Artist Profile - #{profile_account.name}\'"
+    else
+      @msn_properties[:page_name] = '\'User Profile\''
+      @msn_properties[:prop3] = "\'Cyloop - User Profile \'"
+      @msn_properties[:prop4] = "\'User Profile - #{profile_account.name}\'"
+    end
 
     respond_to do |format|
       format.html do
