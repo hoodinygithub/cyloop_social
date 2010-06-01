@@ -19,9 +19,17 @@ class RadioController < ApplicationController
       @recommended_stations_limit = 12
       @recommended_stations = transformed_recommended_stations(@recommended_stations_limit, 24)
     end
-    @top_station_limit = @station_obj.nil? ? 6 : 4 
+    @top_station_limit = @station_obj.nil? ? 6 : 4
     @top_abstract_stations = current_site.top_abstract_stations(@top_station_limit)
     @msn_stations = current_site.stations.all(:conditions => "editorial_stations_sites.profile_id IS NULL")
+    @msn_properties={}
+    @msn_properties[:page_name] = '\'Radio Station In Cyloop\''
+    @msn_properties[:prop3] = '\'Cyloop - Radio\''
+    if @station_obj
+      @msn_properties[:prop4] = "\'Radio - #{@station_obj.name}\'"
+    else
+      @msn_properties[:prop4] = '\'Radio Homapage\''
+    end
   end
 
   def album_detail
@@ -44,7 +52,7 @@ class RadioController < ApplicationController
 
   def my_stations_list
     if request.xhr?
-      if logged_in? 
+      if logged_in?
         @station_obj = Station.find(params[:station_id]) rescue nil
         render :partial => 'my_stations'
       end
@@ -130,7 +138,7 @@ class RadioController < ApplicationController
 
   def search
     params[:search_station_id] = params[:station_id] if params.has_key?(:station_id) #this is for backwards compatibility
-    
+
     @station = Station.find(params[:search_station_id]) rescue nil
     if @station
       respond_to do |format|
@@ -152,7 +160,7 @@ class RadioController < ApplicationController
 
     else
       params[:search_station_name] = params[:station_name] if params.has_key?(:station_name) #this is for backwards compatibility
-      
+
       not_found_message = t('stations.could_not_find_artist', :artist => params[:search_station_name])
       respond_to do |format|
         format.html do

@@ -18,7 +18,7 @@ class Following < ActiveRecord::Base
   after_destroy :after_destroy_callback
 
   index [:id, :followee_id, :follower_id, :approved_at]
-
+  
   belongs_to :follower, :class_name => 'Account'
   belongs_to :followee, :class_name => 'Account'
   validates_presence_of :follower, :followee
@@ -28,6 +28,7 @@ class Following < ActiveRecord::Base
 
   named_scope :approved,  :conditions => "followings.approved_at IS NOT NULL"
   named_scope :pending,   :conditions => {:approved_at => nil, :accounts => {:deleted_at => nil}},  :joins => "INNER JOIN accounts ON accounts.deleted_at IS NULL and accounts.id = followings.follower_id"
+
 
   def after_create_callback
     update_followee_cache
@@ -74,6 +75,8 @@ class Following < ActiveRecord::Base
   end
 
   before_create do |f|
+    f.followee_name = f.followee.name
+    f.follower_name = f.follower.name
     unless f.followee.private_profile?
       # Set all three so there's no chance of approved_at occurring first
       f.created_at = f.updated_at = f.approved_at = Time.now.utc

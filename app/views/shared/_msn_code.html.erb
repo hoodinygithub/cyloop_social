@@ -10,7 +10,7 @@
         <noscript><div><img src="http://msnportalprodigyent.112.2O7.net/b/ss/msnportalprodigyent/1/H.1--NS/0"; height="1" width="1" alt="" /></div></noscript>
       </div>
       <script type="text/javascript" src="http://stj.msn.com/br/om/js/lt/lt.js"></script>
-    </div>  
+    </div>
   <% elsif params[:controller] == "pages" && params[:action] == "home" %>
     <div id="reporting">
       <img id="ctag" width="1" height="1" alt="" src="http://c.prodigy.msn.com/c.gif?di=2514&amp;pi=9564&amp;ps=10128&amp;tp= http://prodigy.msn.cyloop.com/"; />
@@ -22,7 +22,7 @@
         <noscript><div><img src="http://msnportalprodigyent.112.2O7.net/b/ss/msnportalprodigyent/1/H.1--NS/0"; height="1" width="1" alt="" /></div></noscript>
       </div>
       <script type="text/javascript" src="http://stj.msn.com/br/om/js/lt/lt.js"></script>
-    </div>  
+    </div>
   <% else %>
     <div id="reporting">
       <img id="ctag" width="1" height="1" alt="" src="http://c.prodigy.msn.com/c.gif?di=2514&amp;pi=9564&amp;ps=10132&amp;tp=http://entretenimiento.prodigy.msn.com/musica&amp;rf="; />
@@ -56,10 +56,9 @@
     </div>
     <script type="text/javascript" src="http://blstj.msn.com/br/gbl/js/5/linktracking.js"></script>
   </div>
-  
-<% elsif site_includes(:msnlatino) %>
 
-  <%#  
+<% elsif site_includes(:msnlatino) %>
+  <%#
     #<div id="reporting">
     # <div id="omni" xmlns:CP.Request="urn:CP.Request">
     #   <script type="text/javascript">var s_account='msnportallatino';</script>
@@ -76,7 +75,7 @@
     <div id="omni">
       <script type="text/javascript">var s_account='msnportallatino';</script>
       <script type="text/javascript" src="http://blstj.msn.com/br/om/js/s_code.js"></script>
-      <script type="text/javascript">s.charSet='UTF-8';s.linkInternalFilters='javascript:,latino.msn.com';s.pageName='MSN Latino Música';s.server='msn.com';s.prop1='MSN Latino';s.prop2='es-us';s.channel='Música';s.prop22='True';s.prop25='19:07:1972';s.prop26='m';s.prop3='Cobrand';s.prop5='Cobrand';s.prop6='Música';s.prop49='';s.prop50=escape(document.URL);s.eVar1=s.getQueryParam('cp-documentid');s.prop11='';s.prop37='';var s_code=s.t();if(s_code)document.write(s_code);</script>
+      <script type="text/javascript">s.charSet='UTF-8';s.linkInternalFilters='javascript:,latino.msn.com';s.pageName=<%= @msn_properties.nil?? '\'MSN Latino Música\'' : @msn_properties[:page_name] %>;s.server='msn.com';s.prop1='MSN Latino';s.prop2='es-us';s.channel='Música';s.prop22='True';s.prop25='19:07:1972';s.prop26='m';s.prop3=<%= @msn_properties.nil?? '\'Cyloop - Homepage\'' : @msn_properties[:prop3] %>;s.prop4=<%= @msn_properties.nil?? '\'Homapage\'' : @msn_properties[:prop4] %>;s.prop5='Cobrand';s.prop6='Música';s.prop49='';s.prop50=escape(document.URL);s.eVar1=s.getQueryParam('cp-documentid');s.prop11='';s.prop37='';var s_code=s.t();if(s_code)document.write(s_code);</script>
       <script type="text/javascript"><!--if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')//--></script>
       <noscript>
     <div>
@@ -86,7 +85,7 @@
 <% elsif site_includes(:msncaen) %>
 
   <% if params[:controller] == "radio" %>
-  
+
       <div id="reporting">
         <img id="ctag" width="1" height="1" alt="" src="http://c.msn.com/c.gif?di=14234&amp;pi=11654&amp;ps=10128&amp;tp=http://entertainment.ca.msn.com/music/Partner/Music%20-%20Radio.aspx&amp;rf=" />
         <div id="omni">
@@ -109,10 +108,10 @@
           </div></noscript>
         </div><script type="text/javascript" src="http://blstj.msn.com/br/gbl/js/6/linktracking.js">
   </script>
-      </div>  
-  
+      </div>
+
   <% else %>
-  
+
       <div id="reporting">
         <img id="ctag" width="1" height="1" alt="" src="http://c.msn.com/c.gif?di=14234&amp;pi=11654&amp;ps=10128&amp;tp=http://entertainment.ca.msn.com/music/Partner/Music.aspx&amp;rf=" />
         <div id="omni">
@@ -135,10 +134,10 @@
           </div></noscript>
         </div><script type="text/javascript" src="http://blstj.msn.com/br/gbl/js/6/linktracking.js">
   </script>
-      </div>  
-  
+      </div>
+
   <% end %>
-  
+
 <% elsif site_includes(:msncafr) %>
   <% if params[:controller] == "radio" %>
     <div id="reporting">
@@ -163,7 +162,7 @@
         </div></noscript>
       </div><script type="text/javascript" src="http://blstj.msn.com/br/gbl/js/6/linktracking.js">
 </script>
-    </div>  
+    </div>
   <% else %>
     <div id="reporting">
       <img id="ctag" width="1" height="1" alt="" src="http://c.msn.com/c.gif?di=14235&amp;pi=23608&amp;ps=10128&amp;tp=http://divertissement.ca.msn.com/musique/Partner/Musique.aspx&amp;rf=" />
@@ -187,6 +186,7 @@
         </div></noscript>
       </div><script type="text/javascript" src="http://blstj.msn.com/br/gbl/js/6/linktracking.js">
 </script>
-    </div>  
+    </div>
   <% end %>
 <% end %>
+

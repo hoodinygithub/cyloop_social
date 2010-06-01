@@ -3,8 +3,9 @@
   <%= javascript_include_tag "AC_OETags", "history", "swf_utils", "radio", "htmlcomponent" %>
 <% end %>
 <div id="main_content">
-  <%= render @station_obj.nil? && 'search' || 'radio' %>
-
+  <div>
+    <%= render @station_obj.nil? && 'search' || 'radio' %>
+  </div>
   <div id="right_column">
     <div class="ad_box">
       <%= banner_ad("square_banner") %>
@@ -21,3 +22,4 @@
 
   <div class="clearer"></div>
 </div>
+

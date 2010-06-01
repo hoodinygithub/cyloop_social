@@ -786,3 +786,32 @@ div#now_playing_user_station {
 	height: 53px;
 	line-height: 16px;
 }
+
+.news_content{
+  width:630px;
+  height:125px;
+  float:left;
+  padding-right:20px;
+}
+
+.news_item{
+  width:315px;
+  float:left;
+  padding:5px 0px;
+  border-bottom:#ccc 1px solid;
+}
+.news_item_last{
+  width:315px;
+  float:left;
+  padding:5px 0px;
+}
+.news_item a, .news_item_last a{
+  margin:0px;
+  font-size:15px;
+  font-weight:bold;
+}
+.promo_content{
+  width:300px;
+  float:left;
+}
+

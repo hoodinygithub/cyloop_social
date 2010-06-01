@@ -7,26 +7,28 @@
       <%= t("user.has_no_followers", :user_name => profile_account.first_name) %>
     </div>
   <% else %>
-    <% followings = profile_account.followers.all(:limit => 8) %>
-    <% followings.each_with_index do |follow, index| %>
-      <div class="small_thumb<%= " last_thumb" if index == 3 or index == 7 %>">
-        <%= link_to avatar_for(follow, :tiny, :class => "spaced_img tiny", :disable_default_css => true, :width => "50px", :height => "50px"), follow %>
-        <%= link_to truncate(follow.name,:length => 18), follow %>
-      </div>
-      <% if index == 3 %>
-        <br class="clearer" />
+    <% cache("#{site_cache_key}/#{profile_account.slug}/follows", :expires_in => EXPIRATION_TIMES['user_follows']) do %>  
+      <% followings = profile_account.followers.all(:limit => 8) %>
+      <% followings.each_with_index do |follow, index| %>
+        <div class="small_thumb<%= " last_thumb" if index == 3 or index == 7 %>">
+          <%= link_to avatar_for(follow, :small, :class => "spaced_img small", :disable_default_css => true, :width => "50px", :height => "50px"), follow %>
+          <%= link_to truncate(follow.name,:length => 18), follow %>
+        </div>
+        <% if index == 3 %>
+          <br class="clearer" />
+        <% end %>
       <% end %>
-    <% end %>
 
-    <% index = (8 - followings.size) %>
-    <% index.times do |i| %>
-      <div class="empty_box gb_small <%= "last_box" if i == (index-1) or i == (index-5) %>">
-        &nbsp;
-      </div>
-      <% if i == index-5 %>
-        <br class="clearer" />
+      <% index = (8 - followings.size) %>
+      <% index.times do |i| %>
+        <div class="empty_box gb_small <%= "last_box" if i == (index-1) or i == (index-5) %>">
+          &nbsp;
+        </div>
+        <% if i == index-5 %>
+          <br class="clearer" />
+        <% end %>
       <% end %>
-    <% end %>
+    <% end %>      
   <% end %>
   <br class="clearer" />
 

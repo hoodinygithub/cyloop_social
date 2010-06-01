@@ -28,6 +28,16 @@ class PagesController < ApplicationController
         end
         url_featured    = "/shared/feeds/current/tvn_url_featured_cysocial.xml" if site_includes(:tvn)
         @feed_featured  = drupal_feed(url_featured, 5)
+        
+        @feed_news = ""
+        @feed_promo = ""
+        if site_includes(:msnlatino)
+          url_news   = "http://musica.latino.msn.com/rss_Musica.aspx"
+          @feed_news = single_msn_feed(url_news, 8)
+          
+          url_promo   = "http://cm.cyloop.com/feeds/msnlatino/msnlatino_home_promo.xml"
+          @feed_promo = drupal_feed(url_promo, 1).first
+        end
       end
 
       # format.js do

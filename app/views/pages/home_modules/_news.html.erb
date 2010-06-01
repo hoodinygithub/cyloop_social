@@ -1,0 +1,16 @@
+<div class="top_radios_column">
+  <h1><%= t('home.latest_news') %></h1>
+  
+  <div class="news_content">
+    <% @feed_news.each_with_index do |feed, index| %>
+      <div class="news_item<%= '_last' if index >= (@feed_news.size - 2) %> ">
+      <%= link_to truncate(feed.title, :length => 40), feed.link, :title => feed.title, :target => "_blank"  %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="promo_content">
+  <%= link_to image_tag(@feed_promo.image("300x135", msn_site_code)), @feed_promo.link %>    
+  </div>
+  <br class="clearer" />
+</div>
