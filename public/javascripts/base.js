@@ -1405,6 +1405,43 @@ Base.radio.init_edit_station_layer = function() {
 };
 
 /*
+ * Show correct quantity of day for each month
+ * ie. $.ShowDays("user_born_on_3i", 
+ *                $("#user_born_on_2i").attr("value"), 
+ *                $("#user_born_on_1i").attr("value"));
+ */
+jQuery.ShowDays = function(days_select_field_name, month, year){
+  $("#"+days_select_field_name+" option").css("display", "block").removeAttr("disabled");
+  // February
+  if(month == "2"){
+    // Leap years 
+    if(parseInt(year) % 4 == 0){
+      if(parseInt($("#"+days_select_field_name).attr("value")) >= 30) {
+          $("#"+days_select_field_name).attr("value", "29");
+      }  
+      $("#"+days_select_field_name+" option[value=30]").css("display", "none").attr("disabled", "disabled");
+      $("#"+days_select_field_name+" option[value=31]").css("display", "none").attr("disabled", "disabled");
+    } 
+    // Normal years
+    else { 
+      if(parseInt($("#"+days_select_field_name).attr("value")) >= 29){
+        $("#"+days_select_field_name).attr("value", "28");
+      }  
+      $("#"+days_select_field_name+" option[value=29]").css("display", "none").attr("disabled", "disabled");
+      $("#"+days_select_field_name+" option[value=30]").css("display", "none").attr("disabled", "disabled");
+      $("#"+days_select_field_name+" option[value=31]").css("display", "none").attr("disabled", "disabled");
+    }
+  } 
+  // Months with 30 days
+  else if(month.match(/(4|6|9|11)/)) {
+    if(parseInt($("#"+days_select_field_name).attr("value")) == 31){
+        $("#"+days_select_field_name).attr("value", "30");
+    }  
+    $("#"+days_select_field_name+" option[value=31]").css("display", "none").attr("disabled", true);;
+  }
+};
+
+/*
  * Register and triggers
  */
 jQuery(document).ready(function() {

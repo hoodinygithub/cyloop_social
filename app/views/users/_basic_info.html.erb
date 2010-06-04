@@ -1,3 +1,17 @@
+<% content_for :javascript do %>
+  $(document).ready(function(){
+    $.ShowDays("user_born_on_3i", $("#user_born_on_2i").attr("value"), $("#user_born_on_1i").attr("value"));
+    
+    $("#user_born_on_1i").change(function(){
+      $.ShowDays("user_born_on_3i", $("#user_born_on_2i").attr("value"), $("#user_born_on_1i").attr("value"));
+    });
+
+    $("#user_born_on_2i").change(function(){
+      $.ShowDays("user_born_on_3i", $("#user_born_on_2i").attr("value"), $("#user_born_on_1i").attr("value"));
+    });
+  });
+<% end %>
+
 <div class="accordion_title expanded"><%= t('account_settings.basic_info') %></div>
 <div class="accordion_box expanded">
   <% form_for @user, :html => { :method => :put, :multipart => true, :class => "account_settings", :id => 'basic_info_form' }, :url => my_settings_path do |f| %>
@@ -33,7 +47,7 @@
           <%= f.select :gender, [[t('user.male'), 'Male'], [t('user.female'), 'Female']] %>
         </div>
       </div>
-      <div class="left_side">
+      <div class="left_side" style="width:200px">
         <b><%= f.label :born_on %></b>
         <div class="grey_round_box">
           <%= f.date_select :born_on, :use_month_numbers => true, :from_year => 1900, :end_year => Time.now.year %>

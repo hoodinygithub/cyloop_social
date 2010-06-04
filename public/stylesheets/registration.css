@@ -361,3 +361,6 @@ button.registration_complete {
   cursor: pointer;
   background: transparent url(../images/registration/button-complete.png) no-repeat;
 }
+.with_error {
+  height: auto !important;
+}
