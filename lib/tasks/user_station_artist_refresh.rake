@@ -5,7 +5,7 @@ namespace :db do
     def refresh_artists_included_in(object = :user_stations)
       include Timebox
 
-      conditions = "total_artists = 0#{ENV.has_key?('conditions') ? " AND #{ENV['conditions']}" : "" }"
+      conditions = "total_artists = 0 AND deleted_at IS NULL AND poll_attempts < 2#{ENV.has_key?('conditions') ? " AND #{ENV['conditions']}" : "" }"
       rec_engine = RecEngine.new(:ip_address => '67.63.37.2', :site => 'cyloop')
        
       options = { :klass => object.to_s.classify.constantize, :batch_size => 50, :order => 'id' }

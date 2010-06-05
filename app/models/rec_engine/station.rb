@@ -24,16 +24,14 @@ class RecEngine::Station < RecEngine::Abstract
   end
 
   def abstract_station
-    @abstract_station
+    @abstract_station ||= AbstractStation.find_by_amg_id(normalize_amg_id, :include => [:station, :artist])
   end
 
   def artist
-    @artist
+    @artist ||= abstract_station.artist unless abstract_station.nil?
   end
   
   def station
-    @abstract_station ||= AbstractStation.find_by_amg_id(normalize_amg_id, :include => [:station, :artist])
-    @artist ||= @abstract_station
     @abstract_station.station unless @abstract_station.nil?
   end
 

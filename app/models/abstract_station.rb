@@ -84,12 +84,18 @@ class AbstractStation < ActiveRecord::Base
     params[:ip_address] ||= '67.63.37.2'
     options = params.merge(:artistID => amg_id)
     
-    new_artists = []
-    new_artists = RecEngine.new(options).get_rec_engine_playlist_artists unless amg_id.nil?
-    unless new_artists.empty? 
-      new_artists.each { |x| abstract_station_artists << AbstractStationArtist.find_or_create_by_artist_id_and_abstract_station_id(:artist_id => x.artist_id, :abstract_station_id => self.id, :album_id => x.album_id) } 
+    if poll_attempts < 2
+      new_artists = []
+      new_artists = RecEngine.new(options).get_rec_engine_playlist_artists unless amg_id.nil?
+      unless new_artists.empty? 
+        new_artists.each { |x| abstract_station_artists << AbstractStationArtist.find_or_create_by_artist_id_and_abstract_station_id(:artist_id => x.artist_id, :abstract_station_id => self.id, :album_id => x.album_id) } 
+        update_attribute(:total_artists, new_artists.size)
+      else
+        increment!(:poll_attempts)
+      end
+    else      
+      update_attribute(:deleted_at, Time.now)
     end
-    update_attribute(:total_artists, new_artists.size)
   end
 
 

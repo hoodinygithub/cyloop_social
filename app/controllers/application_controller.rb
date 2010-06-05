@@ -352,7 +352,7 @@ class ApplicationController < ActionController::Base
         
     Rails.cache.fetch("modules/recommended_stations/#{limit}/#{fetch}/#{rec_engine.get_internal_cache_key(:number_of_records => fetch)}", :expires_delta => EXPIRATION_TIMES["module_recommended_stations"]) do
       stations = recommended_stations(fetch).map do |s| 
-        if s and s.station and s.abstract_station and s.artist and s.abstract_station.total_artists > 1
+        if s and s.abstract_station and s.abstract_station.station and s.abstract_station.total_artists > 1
           s.abstract_station
         else
           nil

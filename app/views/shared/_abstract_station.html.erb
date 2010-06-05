@@ -1,40 +1,34 @@
 <% unless abstract_station.nil? %>
-  <% unless abstract_station.artist.nil? %>
-    <% if abstract_station.total_artists > 0 %>
-      <% artist = abstract_station.artist %>
-      <div class="artist_box png_fix <%= "last_box" if (abstract_station_counter+1) % columns == 0 %>">
-        <%= four_thumbs_to(abstract_station.station, {:type => :big}) %>
-        <div class="overlay">
-          <div class="hidden">
-            <% if artist.nil? %>
-              <%= avatar_for(nil, :artist_icon) %>
-            <% else %>
-              <%= link_to avatar_for(artist, :artist_icon), artist %>
-            <% end %>
-            <span>
-              <span class="blue"><%= link_to abstract_station.name, artist %> </span><br/>
-            </span>
-            <br class="clearer" />
-            <%= station_contains(abstract_station) %>
-          </div>
+  <% if abstract_station.total_artists > 0 %>
+    <% artist = abstract_station.artist %>
+    <div class="artist_box png_fix <%= "last_box" if (abstract_station_counter+1) % columns == 0 %>">
+      <%= four_thumbs_to(abstract_station.station, {:type => :big}) %>
+      <div class="overlay">
+        <div class="hidden">
+          <%= avatar_for(abstract_station.artist, :artist_icon) %>
+          <span>
+            <span class="blue"><%= link_to abstract_station.name, artist %> </span><br/>
+          </span>
+          <br class="clearer" />
+          <%= station_contains(abstract_station) %>
+        </div>
 
-          <div class="visible">
-            <%= radio_play_button(abstract_station.station.id, :class => 'play_button')  %>
+        <div class="visible">
+          <%= radio_play_button(abstract_station.station.id, :class => 'play_button')  %>
 
-            <%= link_to truncate(abstract_station.name, :length => 15), radio_path(:station_id => abstract_station.station.id), :title => abstract_station.name %>
-            <%
-              # phase 2
-              if false
-            %>
-            <br />
-            <div class="rating_stars">
-              <a href="#"><img src="images/star_blue.png" alt="" /></a> <a href="#"><img src="images/star_blue.png" alt="" /></a> <a href="#"><img src="images/star_blue.png" alt="" /></a> <a href="#"><img src="images/star_blue.png" alt="" /></a> <a href="#"><img src="images/star_white.png" alt="" /></a>
-            </div>
-            <% end %>
+          <%= link_to truncate(abstract_station.name, :length => 15), radio_path(:station_id => abstract_station.station.id), :title => abstract_station.name %>
+          <%
+            # phase 2
+            if false
+          %>
+          <br />
+          <div class="rating_stars">
+            <a href="#"><img src="images/star_blue.png" alt="" /></a> <a href="#"><img src="images/star_blue.png" alt="" /></a> <a href="#"><img src="images/star_blue.png" alt="" /></a> <a href="#"><img src="images/star_blue.png" alt="" /></a> <a href="#"><img src="images/star_white.png" alt="" /></a>
           </div>
-        </div><!--/end overlay -->
-      </div><!--/end artist_box -->
-    <% end %>
+          <% end %>
+        </div>
+      </div><!--/end overlay -->
+    </div><!--/end artist_box -->
   <% end %>
 <% end %>
 
