@@ -14,7 +14,7 @@ class PagesController < ApplicationController
         @recommended_stations = transformed_recommended_stations(6, 40)
 
         @top_abstract_stations = current_site.top_abstract_stations(6)
-        @top_user_stations     = current_site.top_user_stations(6)
+        @top_user_stations     = current_site.top_user_stations(15).uniq_by(&:abstract_station_id)[0..5] rescue []
 
 
         @feed_featured ||= []
