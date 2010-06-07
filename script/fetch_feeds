@@ -15,7 +15,11 @@ URL_MAPS = [
   {:url => "http://cm.cyloop.com/feeds/msncanada/msncafr_cysocial_home_featured.xml", :output => "msncafr_url_featured_cysocial.xml"},
   {:url => "http://cm.cyloop.com/feeds/drupal/cyloop_cysocial_home_featured_en.xml", :output => "cyloop_url_featured_cysocial.xml"},
   {:url => "http://cm.cyloop.com/feeds/drupal/cyloop_cysocial_home_featured_es.xml", :output => "cyloopes_url_featured_cysocial.xml"},
-  {:url => "http://cm.cyloop.com/feeds/tvn/tvn_cysocial_home_featured.xml", :output => "tvn_url_featured_cysocial.xml"}
+  {:url => "http://cm.cyloop.com/feeds/tvn/tvn_cysocial_home_featured.xml", :output => "tvn_url_featured_cysocial.xml"},
+  
+  # Latino - News and Promo
+  {:url => "http://musica.latino.msn.com/rss_Musica.aspx", :output => "msnlatino_url_news_cysocial.xml"},
+  {:url => "http://cm.cyloop.com/feeds/msnlatino/msnlatino_home_promo.xml", :output => "msnlatino_url_promo_cysocial.xml"}
 ]
 
 timestamp = Time.now.strftime("%m%d%Y%I%M%p")

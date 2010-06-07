@@ -1,0 +1,25 @@
+<html>
+<body>
+
+<script language="JavaScript" type="text/JavaScript">
+//try{document.domain=document.domain.toString().replace(/(.)*?\./,"");}catch(_){} // set document.domain
+function ADM_getArgs(){
+ var args=new Object(),query=location.search.substring(1),pairs=query.split("&");
+ for(var i=0;i<pairs.length;i++){
+  var pos=pairs[i].indexOf("=");
+  if(pos==-1)continue;
+  var argname=pairs[i].substring(0,pos),value=pairs[i].substring(pos+1);
+  args[argname]=unescape(value)
+ }
+ return args
+};
+var args=ADM_getArgs();
+var ADM_webcode = args.w;
+delete args.w;
+for(var prop in args)
+	self[prop]=args[prop];
+document.writeln('<scr'+'ipt src="http://nspmotion.com/js/adm_600.js"></scr'+'ipt>');
+</script>
+
+</body>
+</html>

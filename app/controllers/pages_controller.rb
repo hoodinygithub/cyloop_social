@@ -32,10 +32,10 @@ class PagesController < ApplicationController
         @feed_news = ""
         @feed_promo = ""
         if site_includes(:msnlatino)
-          url_news   = "http://musica.latino.msn.com/rss_Musica.aspx"
+          url_news   = "/shared/feeds/current/msnlatino_url_news_cysocial.xml"
           @feed_news = single_msn_feed(url_news, 8)
-          
-          url_promo   = "http://cm.cyloop.com/feeds/msnlatino/msnlatino_home_promo.xml"
+                    
+          url_promo   = "/shared/feeds/current/msnlatino_url_promo_cysocial.xml"
           @feed_promo = drupal_feed(url_promo, 1).first
         end
       end
