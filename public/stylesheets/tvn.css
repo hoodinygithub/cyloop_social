@@ -7,8 +7,17 @@ a {
     padding:18px 0 0 15px;
 }
 
-#login_links {
+#login_links_logged_in {
     float: left;
+    padding: 18px 0px 0px 50px;
+    line-height: 18px;
+    color: #CC33CC;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+#login_links {
+    float: right;
     padding: 18px 0px 0px 50px;
     line-height: 18px;
     color: #CC33CC;

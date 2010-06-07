@@ -93,7 +93,7 @@ a:hover {
     background: url("../images/arrow_top_white.gif") no-repeat center bottom;
 }
 
-#login_links {
+#login_links_logged_in {
     float: left;
     padding: 18px 0px 0px 50px;
     line-height: 18px;
@@ -101,6 +101,16 @@ a:hover {
     font-size: 14px;
     font-weight: bold;
 }
+
+#login_links {
+    float: right;
+    padding: 18px 0px 0px 50px;
+    line-height: 18px;
+    color: #00a5f8;
+    font-size: 14px;
+    font-weight: bold;
+}
+
 
 #login_links a {
     color: #00a5f8;
