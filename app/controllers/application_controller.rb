@@ -171,6 +171,7 @@ class ApplicationController < ActionController::Base
         else
           session[:return_to] = params[:return_to]
         end
+      end
     end
     if params[:follow_profile]
       session[:follow_profile] = params[:follow_profile]
