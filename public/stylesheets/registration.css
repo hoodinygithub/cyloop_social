@@ -285,7 +285,7 @@ body.users_create .errors {
 }
 .registration_layer .bottom { 
   background: transparent url(../images/layers/bottom.png) no-repeat bottom center; 
-  height: 69px; 
+  height: 75px; 
   padding: 20px;
   text-align: center;
 }
