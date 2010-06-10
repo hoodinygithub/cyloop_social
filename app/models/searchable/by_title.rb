@@ -21,6 +21,7 @@ module Searchable::ByTitle
         indexes :title
         set_property :min_prefix_len => 1
         set_property :enable_star => 1
+        has :created_at
       end
     end
     base.extend ClassMethods

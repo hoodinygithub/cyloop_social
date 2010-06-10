@@ -43,7 +43,13 @@ class Site < ActiveRecord::Base
   has_many :summary_top_abstract_stations, :order => 'station_count DESC', :class_name => 'TopAbstractStation', :include => { :abstract_station => [:station, :artist] }
   #has_many :top_abstract_stations, :through => :summary_top_abstract_stations, :class_name => 'AbstractStation', :foreign_key => 'abstract_station_id', :source => :abstract_station, :order => 'top_abstract_stations.station_count DESC'
   has_many :summary_top_user_stations, :order => 'total_requests DESC', :class_name => 'TopUserStation', :include => { :user_station => :station }
-  #has_many :top_user_stations, :through => :summary_top_user_stations, :class_name => 'UserStation', :foreign_key => 'user_station_id', :source => :user_station, :order => 'top_user_stations.total_requests DESC'
+  #has_many :top_user_stations, :through => :summary_top_user_stations, :class_name => 'UserStation', :foreign_key => 'user_station_id', :source => :user_station, :order => 'top_user_stations.total_requests DESC', :group => 'user_stations.abstract_station_id'
+
+  has_many :user_stations do
+    def latest(limit=8)
+      all(:order => 'created_at DESC', :limit => limit)
+    end
+  end
 
   has_many :editorial_stations_sites
   has_many :stations, :through => :editorial_stations_sites, :class_name => 'EditorialStation', :source => :editorial_station, :conditions => "editorial_stations.deleted_at IS NULL"
@@ -82,8 +88,12 @@ class Site < ActiveRecord::Base
   end
 
   def top_user_stations(limit=6)
-    summary_top_user_stations.all(:limit => limit).map(&:user_station)
+    summary_top_user_stations.all(:limit => limit, :group => 'abstract_station_id').map(&:user_station)
   end
+
+  # def top_user_stations_grouped(limit=6)
+  #   summary_top_user_stations.all(:joins => :user_station, :limit => limit, :group => 'user_stations.abstract_station_id').map(&:user_station)
+  # end
   
   def calendar_locale
     locale = default_locale

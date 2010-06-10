@@ -4,7 +4,7 @@ class SearchesController < ApplicationController
     @query = params[:q]    
     @search_types ||= [:artists, :stations, :users]    
     @sort_type = params.fetch(:sort_by, nil).to_sym rescue :relevance
-    @sort_types = { :latest => 'created_at DESC', :alphabetical => 'name ASC', :relevance => nil }
+    @sort_types = { :latest => { :playlists => 'updated_at DESC', :users => 'created_at DESC' }, :alphabetical => 'name ASC', :relevance => nil }
 
     @active_scope = params[:scope].to_sym unless params[:scope].nil?
 
@@ -31,7 +31,7 @@ class SearchesController < ApplicationController
     end
     
     def search_only_active_type (per_page = 20)
-      opts = { :page => params[:page], :per_page => per_page }
+      opts = { :page => params[:page], :per_page => per_page, :star => true }
       opts.merge!(:order => @sort_types[@sort_type]) unless @sort_types[@sort_type].nil?
 
       @search_types.each do |scope|
@@ -44,7 +44,7 @@ class SearchesController < ApplicationController
     end
   
     def search_all_types (per_page = 20)
-      opts = { :page => params[:page], :per_page => per_page }
+      opts = { :page => params[:page], :per_page => per_page, :star => true }
       opts.merge!(:order => @sort_types[@sort_type]) unless @sort_types[@sort_type].nil?
 
       @search_types.each do |scope|

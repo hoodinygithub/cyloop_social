@@ -1,16 +1,16 @@
 module Searchable::ByName
   module ClassMethods
-    if RAILS_ENV =~ /test/ # bad bad bad
-      def search(*args)
-        options = args.extract_options!
-        starts_with(args[0]).paginate :page => (options[:page] || 1)
-      end
-    else
-      def search(*args)
-        args[0] = "#{args[0]}*"
-        super(*args).compact
-      end
-    end
+    # if RAILS_ENV =~ /test/ # bad bad bad
+    #   def search(*args)
+    #     options = args.extract_options!
+    #     starts_with(args[0]).paginate :page => (options[:page] || 1)
+    #   end
+    # else
+    #   def search(*args)
+    #     args[0] = "#{args[0]}*"
+    #     super(*args).compact
+    #   end
+    # end
   end
 
   def self.included(base)
@@ -20,10 +20,10 @@ module Searchable::ByName
       define_index do
         where "deleted_at IS NULL"
         indexes :name, :sortable => true
-        indexes :created_at, :sortable => true
         set_property :min_prefix_len => 1
         set_property :enable_star => 1
         set_property :allow_star => 1
+        has :created_at
       end
     end
     base.extend ClassMethods

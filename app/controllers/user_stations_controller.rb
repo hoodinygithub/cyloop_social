@@ -24,7 +24,7 @@ class UserStationsController < ApplicationController
       end
 
       format.html do
-        @sort_types = { :latest => ' user_stations.created_at DESC', :top => ' user_stations.total_plays DESC', :alphabetical => ' user_stations.name'  }
+        @sort_types = { :latest => ' user_stations.updated_at DESC', :top => ' user_stations.total_plays DESC', :alphabetical => ' user_stations.name'  }
         @sort_type = params.fetch(:sort_by, nil).to_sym rescue :latest
         page = params[:page] || 1
         per_page = 10

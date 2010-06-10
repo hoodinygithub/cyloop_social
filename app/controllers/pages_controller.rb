@@ -8,7 +8,7 @@ class PagesController < ApplicationController
   def home
     respond_to do |format|
       format.html do
-        @latest_stations       = UserStation.latest_stations
+        @latest_stations       = current_site.user_stations.latest
 
         # Hack to handle nil values from rec engine
         @recommended_stations = transformed_recommended_stations(6, 40)
