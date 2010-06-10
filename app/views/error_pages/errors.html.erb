@@ -1,0 +1,12 @@
+<div id="error_left_collumn">
+  <div id="error_pages">
+    <%= render :partial => "/error_pages/blocks/#{params[:partial]}" %>
+  </div>
+  <div class="search_box">
+    <%= render :partial =>'/searches/search_form' %>
+  </div><!--/end search_box -->
+</div>
+<div id="error_right_collumn">
+  <%= image_tag "/images/maintenance/error_boy.png" %>
+</div>
+<br class="clear" />

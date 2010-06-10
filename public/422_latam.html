@@ -1,0 +1,331 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns='http://www.w3.org/1999/xhtml' lang='en-US' xml:lang='en-US'>
+  <head>
+    <meta content='text/html;charset=utf-8' http-equiv='Content-Type' />
+<meta content='text/javascript' http-equiv='Content-Script-Type' />
+<title>Cyloop | ¿Qué te gustaría escuchar?</title>
+<meta content='Descubrir música, descubrir música nueva, descubrir videos, ver videos, escuchar música, escuchar música gratis, música gratis, videos gratis, artistas de música, descubrir artistas, escuchar artistas, descubrir artistas de música, descubrir músicos, descubrir bandas, escuchar bandas, biblioteca de música online, biblioteca de música en la red, la más grande biblioteca de múisca online, musica online gratis, música gratis en la red, biblioteca de música gratis online, biblioteca de música gratis en la red, la más grande biblioteca de múisca gratis online, seguir amigos, siguiendo amigos, seguidor de amigos, crear playlists, compartir playlists, crear playlists de música, compartir playlists de música, radios personalizadas, estaciones de radio personalizadas, artistas favoritos, compartir música, compartir música gratis' name='keywords' />
+<meta content='Descubre música nueva y videos gratis de la biblioteca más grande y completa de música y videos en Internet, sigue a tus amigos y lo que están escuchando, y crea y comparte playlists y radios personalizadas de tus artistas favoritos.' name='description' />
+<meta content='ALL' name='robots' />
+<meta content='12' name='site' />
+<meta content='Thu Jun 10 15:40:33 -0300 2010' name='created' />
+<link href='/cyloop-favico.ico' rel='shortcut icon' />
+
+    <script src="/javascripts/jquery-1.4.1.min.js" type="text/javascript"></script>
+<script src="/javascripts/jquery.cycle.all.min.js" type="text/javascript"></script>
+<script src="/javascripts/jquery.cycle.all.min.js" type="text/javascript"></script>
+<script src="/javascripts/supersleight.plugin.js" type="text/javascript"></script>
+<script src="/javascripts/jquery.metadata.js" type="text/javascript"></script>
+<script src="/javascripts/jquery.autocomplete.js" type="text/javascript"></script>
+<script src="/javascripts/jquery.validate.min.js" type="text/javascript"></script>
+<script src="/javascripts/jquery.hotkeys.min.js" type="text/javascript"></script>
+<script src="/javascripts/jquery.facebox.js" type="text/javascript"></script>
+<script src="/javascripts/base.js" type="text/javascript"></script>
+<script src="/utils/locale.js" type="text/javascript"></script>
+
+
+
+<script>
+  
+
+  
+</script>
+
+
+    <link href="/stylesheets/application.css" media="screen" rel="stylesheet" type="text/css" />
+<link href="/stylesheets/facebox.css" media="screen" rel="stylesheet" type="text/css" />
+<link href="/stylesheets/registration.css" media="screen" rel="stylesheet" type="text/css" />
+<link href="/stylesheets/cyloop.css" media="screen" rel="stylesheet" type="text/css" />
+<link href="/stylesheets/albums.css" media="screen" rel="stylesheet" type="text/css" />
+
+<!--[if lte IE 7]>
+<link href="/stylesheets/ie.css" media="screen" rel="stylesheet" type="text/css" />
+<![endif]-->
+
+
+    
+  </head>
+  <body locale="es" market="msnlatam" class="msn">
+    
+    <div id="container">
+      
+<div id="top_banner_container">
+  <iframe border="0" frameborder="no" framespacing="0" height="90" id="top_banner" scrolling="no" src="http://openx.cyloop.com/www/delivery/afr.php?cb=10684495302&amp;v_lang=es&amp;v_promocode=&amp;v_city=&amp;v_songgenre=&amp;v_profiletype=&amp;v_age=&amp;iframe=false&amp;v_gender=&amp;zoneid=48&amp;v_folder=&amp;v_country=&amp;v_songlabel=&amp;loc=%2Fpages%2Ferror_pages&amp;v_region=" width="728"><a href="http://openx.cyloop.com/www/delivery/ck.php?cb=10684495302&amp;v_lang=es&amp;v_promocode=&amp;v_city=&amp;v_songgenre=&amp;v_profiletype=&amp;v_age=&amp;iframe=false&amp;v_gender=&amp;zoneid=48&amp;v_folder=&amp;v_country=&amp;v_songlabel=&amp;loc=%2Fpages%2Ferror_pages&amp;v_region=" target="_blank"><img alt="Avw" border="0" src="http://openx.cyloop.com/www/delivery/avw.php?cb=10684495302&amp;v_lang=es&amp;v_promocode=&amp;v_city=&amp;v_songgenre=&amp;v_profiletype=&amp;v_age=&amp;iframe=false&amp;v_gender=&amp;zoneid=48&amp;v_folder=&amp;v_country=&amp;v_songlabel=&amp;loc=%2Fpages%2Ferror_pages&amp;v_region=" /></a></iframe>
+</div>
+<div id="msn_header">
+  
+    <div class='clearfix' id='msn_header'>
+  <div class='wrapper'>
+    <div class='msn_main'>
+      <ul class='msn_navigation'>
+        <li><a href="http://ar.msn.com">MSN Argentina</a></li>
+        <li><a href="http://cl.msn.com">MSN Chile</a></li>
+        <li><a href="http://co.msn.com">MSN Colombia</a></li>
+        <li><a href="http://pe.msn.com">MSN Perú</a></li>
+        <li><a href="http://ve.msn.com">MSN Venezuela</a></li>
+        <li><a href="http://latam.msn.com">MSN Latinoamérica</a></li>
+      </ul>
+      <ul class='msn_sisters'>
+        <li><a href="http://www.nuevomessenger2009.com/">Messenger</a></li>
+        <li><a href="http://mail.live.com/">Hotmail</a></li>
+        <li class='last'><a href="http://localhost:3000/users/msn_login_redirect">Iniciar sesión</a></li>
+      </ul>
+    </div>
+    <div class='portal clearfix' style='display: none'>
+      <ul class='msn_sections' style='padding: 5px 10px'>
+        <li><a href="http://match.latam.msn.com/channel/index.aspx?trackingid=202694">Amor y Amistad</a></li>
+        <li><a href="http://foxsportsla.msn.com/">Deportes</a></li>
+        <li><a href="http://juegos.latam.msn.com/">Juegos</a></li>
+        <li><a href="http://tiempo.latam.msn.com/">Tiempo</a></li>
+        <li><a href="http://events.latam.msn.com/discos">MSN Discos</a></li>
+        <li><a href="http://astrologia.latam.msn.com/">Astrología</a></li>
+        <li><a href="http://entretenimiento.latam.msn.com/">Entretenimiento</a></li>
+        <li><a href="http://msninconcert.msn.com/music/archive/es-la/archive.aspx">MSN en Concierto</a></li>
+        <li><a href="http://video.latam.msn.com/">Video</a></li>
+        <li><a href="http://latam.msn.cyloop.com/">Musica</a></li>
+        <li><a href="http://latammsn.pricegrabber.com/">Compras</a></li>
+        <li><a href="http://englishtown.latam.msn.com/sp/brochure.aspx?lng=sp&amp;etag=lt_msncanal">Inglés en línea</a></li>
+        <li><a href="http://noticias.latam.msn.com/">Noticias</a></li>
+        <li><a href="http://salud.latam.msn.com/">Salud</a></li>
+      </ul>
+    </div>
+    <div class='sub'>
+      <ul class='msn_navigation'>
+        <li class='active'><a href="/">Principal</a></li>
+        <li><a href="http://events.latam.msn.com/discos" onclick="$('#msn_nav_extension').hide();">Discos</a></li>
+        <li><a href="http://video.msn.com/?mkt=es-xl&amp;tab=s1206272649002" onclick="$('#msn_nav_extension').hide();">Videos de música</a></li>
+        <li><a href="http://msninconcert.msn.com/music/archive/es-la/archive.aspx" onclick="$('#msn_nav_extension').hide();">Conciertos</a></li>
+        <li class='last'><a href="#" onclick="$('#msn_nav_extension').show();">Entretenimiento</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div id='msn_nav_extension' style='display:none'>
+  <ul>
+    <li>
+      <strong><a href="http://entretenimiento.latam.msn.com">Entretenimiento Latam</a></strong>
+    </li>
+    <li><a href="http://entretenimiento.latam.msn.com/ar">Entretenimiento Argentina</a></li>
+    <li><a href="http://entretenimiento.latam.msn.com/cl">Entretenimiento Chile</a></li>
+    <li><a href="http://entretenimiento.latam.msn.com/co">Entretenimiento Colombia</a></li>
+  </ul>
+</div>
+
+  
+</div>
+
+<div id="header">
+  <div id="header_content">
+    <a href="http://latam.msn.com/"><img alt="Msn_latam_music" class="png_fix" id="logo" src="/images/msn_latam_music.png" /></a>
+    <ul id="main_links">
+    <li><a href="http://localhost:3000/" class="fn org url" rel="home" title="Cyloop">Inicio</a></li>
+    
+    <li><a href="http://localhost:3000/radio" class="fn org url" rel="home" title="Radios">Radio</a></li>
+</ul><!--/end main_links -->
+
+    
+
+  
+    <div id="login_links">
+    
+      <a href="http://localhost:3000/users/msn_login_redirect?return_to=%2Fpages%2Ferror_pages">Log in</a>
+      <span class="spacer">|</span> 
+      <a href="/registration_layers?return_to=%2Fmy%2Fdashboard" class="simple_popup">Regístrate</a>
+    
+  
+    </div>
+
+    <script>
+ var msg="Busca tus artistas y música favorita";
+</script>
+<div id="search_form">
+  <form action="/search" class="line" id="header_search_form" method="get" onsubmit="return Base.header_search.buildSearchUrl();">
+    <div>
+      <input autocomplete="off" class="search_input" id="search_query" name="q" onblur="restoreInput(msg, this); setTimeout(function() {$('.search_results_box').hide();}, 300);" onfocus=" clearInput(msg, this);" type="text" value="Busca tus artistas y música favorita" />
+      <input type="image" src="/images/search_icon.gif" class="search_button" />
+      <div class="clearer"></div>
+    </div>
+  </form>
+</div><!--/end search_form -->
+<div class="search_results_box">
+
+  <div class="oveflow_list">
+  <div class="search_results_header"><h1>Artistas </h1></div>
+  <div class="search_results_ajax"><img alt="Ajax_activity_indicators_download_animated_icon_animated_busy" src="/images/ajax_activity_indicators_download_animated_icon_animated_busy.gif" /></div>
+  <div class="clearer"></div>
+
+
+  <ul class="search_list">
+
+  </ul>
+
+  <div class="grey_spacer"></div>
+
+  <h1>Radios</h1>
+
+  <ul class="search_list">
+
+  </ul>
+
+  <div class="grey_spacer"></div>
+
+  <h1>Gente</h1>
+
+  <ul class="search_list">
+  </ul>
+
+  <div class="grey_spacer"></div>
+
+
+
+</div><!--/end oveflow_list -->
+
+</div><!--/end search_results_box -->
+
+
+    
+<div id="userdata_box" class="user_data_logged_out">
+  <div class="user">
+    
+      <img alt="Artist" class="avatar tiny" src="/avatars/missing/artist.gif" />
+      <a href="/my/dashboard" class="user_name">Anon</a>    
+    
+  </div>
+
+  <ul class="links"><li class="home "><a href="/my/dashboard" class="home ">Inicio</a></li>
+<li class="stations "><a href="/my/stations" class="stations ">Radios</a></li>
+<li class="followers "><a href="/my/followers" class="followers ">Seguidores</a></li>
+<li class="following "><a href="/my/following" class="following ">Siguiendo</a></li>
+<li class="settings last"><a href="/my/settings" class="settings last">Configuración de Cuenta</a></li></ul>
+
+  <a href="#" id="userdata_arrow">
+    <img alt="Userdata_arrow" class="png_fix" src="/images/userdata_arrow.png" />
+    <img alt="Arrow_up" class="arrow_up" src="/images/arrow_up.gif" />
+  </a>
+</div><!--/end userdata_box -->
+    <div class="clearer"></div>
+    <div id="flash_messages">
+      
+    </div>
+  </div>
+</div>
+
+      
+      <div id="pages"><div id="internal_content"><div id="pages_internal"><div id="error_left_collumn">
+  <div id="error_pages">
+    <h2>No se ha encontrado la pagina.</h2>
+<p>La página que estás buscando puede haber sido removida, 
+  o su nombre modificado, o no se encuentra disponible temporalmente.
+  Por favor, intenta lo siguiente:</p>
+< br />
+
+  </div>
+  <div class="search_box">
+    <form action="/search" id="main_search_form" method="get" onsubmit="return Base.main_search.buildSearchUrl();">
+  <div class="title">Buscar música en Cyloop</div>
+
+  <span class="text_input_placeholder">
+      <input class="search_input" id="search_query" name="q" onblur="restoreInput('Busca tus artistas y música favorita', this);" onfocus="clearInput('Busca tus artistas y música favorita', this);" type="text" value="Busca tus artistas y música favorita" />
+      <input id="search_scope" name="scope" type="hidden" value="" />
+      <input id="search_sort" name="sort" type="hidden" value="" />
+  </span>
+
+  <span class="btn_placeholder">
+      <a href="#" onclick="return Base.main_search.buildSearchUrl();" class="blue_button"><span><span>BUSCAR</span></span></a>
+  </span>
+  <br/>
+
+  <div class="sorting scope">
+      
+      <a href="#" id="search_artists">Artistas</a> /
+      
+      <a href="#" id="search_stations">Radios</a> /
+      
+      <a href="#" id="search_users">Usuarios</a> 
+      
+  </div>
+</form>
+  </div><!--/end search_box -->
+</div>
+<div id="error_right_collumn">
+  <img alt="Error_boy" src="/images/maintenance/error_boy.png" />
+</div>
+<br class="clear" />
+</div></div></div>
+      
+      <div id="footer">
+  <div class="footer_left">
+    <a href="http://www.hoodiny.com" target="_blank">Sobre Hoodiny</a>
+    <a href="http://localhost:3000/support/about_cyloop">Sobre Cyloop</a>
+    <a href="http://localhost:3000/support/terms_and_conditions">Términos y Condiciones</a>
+    <a href="http://localhost:3000/support/privacy_policy">Política de Privacidad</a>
+    <a href="http://localhost:3000/support/safety_tips">Consejos de Seguridad</a>
+    <a href="http://localhost:3000/support/faq">FAQ</a>
+    <a href="http://localhost:3000/support/contact_us">Sugerencias</a>
+  </div>
+  <div class="footer_right">
+    <a href="/support/about_cyloop"><img alt="Cyloop" src="/images/cyloop.gif" /></a>
+  </div>
+  <br class="clearer" />
+</div>
+
+  <div id="msn_footer">
+    <div id="msn_footer_container">
+      <div id='msn_footer'>
+  <div class='inner clearfix'>
+    <ul class='left'>
+      <li><a href="http://privacy2.msn.com/es-la/default.aspx">Privacidad</a></li>
+      <li><a href="http://g.msn.com/0TO_/esar">Términos y condiciones</a></li>
+      <li><a href="http://www.advertising.microsoft.com/latinoamerica">Publicidad</a></li>
+    </ul>
+    <ul class='right'>
+      <li><a href="http://privacy2.msn.com/anti-spam/es-la/default.aspx">Directiva contra correo no deseado</a></li>
+      <li><a href="http://feedback.msn.com/">Comentarios</a></li>
+      <li><a href="https://support.msn.com/default.aspx?locale=es-xl">Ayuda</a></li>
+    </ul>
+  </div>
+  <ul class='copyright_info'>
+    <li class='copyright'>
+      &copy; 2010 Microsoft
+    </li>
+    <li class='logo'>
+      Microsoft
+    </li>
+  </ul>
+</div>
+
+    </div>
+  </div>
+  
+  <div id="reporting"><img id="ctag" width="1" height="1" alt="" src="http://c.msn.com/c.gif?di=14343&pi=9565&ps=10132&tp=http://channelizer.latam.msn.com/Musica/Latam.aspx&rf=" />
+    <div id="omni" xmlns:CP.Request="urn:CP.Request">
+    <script type="text/javascript">var s_account='msnportallatament';</script>
+    <script type="text/javascript" src="http://blstj.msn.com/br/om/js/s_code.js"></script>
+    <script type="text/javascript">s.linkInternalFilters='javascript:,entretenimiento.latam.msn.com';s.pageName='XL_Entretenimiento_Musica_Cyloop';s.server='entretenimiento.latam.msn.com';s.prop1='Entretenimiento-XL';s.prop2='es-xl';s.channel='Musica';s.prop22='False';s.prop25='';s.prop26='';s.prop3='Cobrand';s.prop6='Cyloop';s.prop11='standard';s.prop50=escape(document.URL);s.prop49="Escucha música, conoce artistas, haz amigos - Cyloop - MSN Música - MSN Latinoamérica";s.charSet="UTF-8";s.eVar1=s.getQueryParam('cp-documentid');var s_code=s.t();if(s_code)document.write(s_code);</script>
+    <script type="text/javascript"><!--if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')//--></script>
+    <noscript><div><img src="http://msnportallatament.112.2O7.net/b/ss/msnportallatament/1/H.1--NS/0"; height="1" width="1" alt="" /></div></noscript>
+    </div>
+    <script type="text/javascript" src="http://blstj.msn.com/br/gbl/js/5/linktracking.js"></script>
+  </div>
+
+
+
+
+
+
+
+  <script src="http://www.google-analytics.com/ga.js" type="text/javascript"></script>
+
+  
+  <script type="text/javascript">
+  try {
+  var pageTracker = _gat._getTracker("UA-410780-32");
+  pageTracker._trackPageview();
+  } catch(err) {}</script>
+
+
+
+
+    </div><!--/end container -->
+  </body>
+</html>

@@ -1,0 +1,111 @@
+static:
+  msnlatino:
+    400:
+      page_title: "Cyloop - Erro"
+    404:
+      page_title: "Cyloop - No se ha encontrado la pagina"
+    422:
+      page_title: "Cyloop - No se ha encontrado la pagina"
+    500:
+      page_title: "Cyloop - Erro"
+  
+  msnlatam:
+    400:
+      page_title: "Cyloop - Erro"
+    404:
+      page_title: "Cyloop - No se ha encontrado la pagina"
+    422:
+      page_title: "Cyloop - No se ha encontrado la pagina"
+    500:
+      page_title: "Cyloop - Erro"
+  
+  msncaen:
+    400:
+      page_title: "Cyloop - Erro"
+    404:
+      page_title: "Cyloop - No se ha encontrado la pagina"
+    422:
+      page_title: "Cyloop - No se ha encontrado la pagina"
+    500:
+      page_title: "Cyloop - Erro"
+  
+  msncafr:
+    400:
+      page_title: "Cyloop - Erro"
+    404:
+      page_title: "Cyloop - No se ha encontrado la pagina"
+    422:
+      page_title: "Cyloop - No se ha encontrado la pagina"
+    500:
+      page_title: "Cyloop - Erro"
+  
+  msnbr:
+    400:
+      page_title: "Cyloop - Erro"
+    404:
+      page_title: "Cyloop - Página não encontrada"
+    422:
+      page_title: "Cyloop - No se ha encontrado la pagina"
+    500:
+      page_title: "Cyloop - Erro"
+  
+  msnmx:
+    400:
+      page_title: "Cyloop - Erro"
+    404:
+      page_title: "Cyloop - Página não encontrada"
+    422:
+      page_title: "Cyloop - No se ha encontrado la pagina"
+    500:
+      page_title: "Cyloop - Erro"
+  
+  msnar:
+    400:
+      page_title: "Cyloop - Erro"
+    404:
+      page_title: "Cyloop - Página não encontrada"
+    422:
+      page_title: "Cyloop - No se ha encontrado la pagina"
+    500:
+      page_title: "Cyloop - Erro"
+  
+  cyloop:
+    400:
+      page_title: "Cyloop - Erro"
+    404:
+      page_title: "Cyloop - Página não encontrada"
+    422:
+      page_title: "Cyloop - No se ha encontrado la pagina"
+    500:
+      page_title: "Cyloop - Erro"
+  
+  cyloopes:
+    400:
+      page_title: "Cyloop - Erro"
+    404:
+      page_title: "Cyloop - Página não encontrada"
+    422:
+      page_title: "Cyloop - No se ha encontrado la pagina"
+    500:
+      page_title: "Cyloop - Erro"
+  
+  tvn:
+    400:
+      page_title: "Cyloop - Erro"
+    404:
+      page_title: "Cyloop - Página não encontrada"
+    422:
+      page_title: "Cyloop - No se ha encontrado la pagina"
+    500:
+      page_title: "Cyloop - Erro"
+  
+  widget:
+    400:
+      page_title: "Cyloop - Erro"
+    404:
+      page_title: "Cyloop - Página não encontrada"
+    422:
+      page_title: "Cyloop - No se ha encontrado la pagina"
+    500:
+      page_title: "Cyloop - Erro"
+

@@ -138,6 +138,11 @@ class PagesController < ApplicationController
     render "pages/x46b"
   end
 
+  def error_pages
+    @search_types ||= [:artists, :stations, :users]    
+    render '/error_pages/errors', :layout => "logged_out"
+  end
+  
   private
     def authenticate
       authenticate_or_request_with_http_basic do |username, password|

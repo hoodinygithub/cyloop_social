@@ -814,4 +814,18 @@ div#now_playing_user_station {
   width:300px;
   float:left;
 }
-
+#error_left_collumn{
+  float:left;
+  width:600px;
+}
+#error_right_collumn{
+  padding-top:40px;
+}
+#error_pages h2{
+  border: none;
+  text-align: center;
+  padding-left:0px;
+  color: #ccc;
+  text-transform: none;
+  font-size:26px;
+}
