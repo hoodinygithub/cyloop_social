@@ -199,7 +199,7 @@ a:hover {
 
 #search_form {
     position: absolute;
-    right: 155px;
+    right: 185px;
     top: 14px;
     width: 282px;
     height: 24px;
@@ -1242,7 +1242,7 @@ h1 {
 .followers_list .follower_actions.w_settings .green_button span span,
 .followers_list .follower_actions.w_settings .black_button span span {
     padding: 0px;
-    width: 100px;
+    width: 120px;
 }
 
 .followers_list .follower_actions.w_settings .blue_button.settings_button,
