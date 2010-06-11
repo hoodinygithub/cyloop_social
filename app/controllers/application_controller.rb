@@ -165,13 +165,7 @@ class ApplicationController < ActionController::Base
       session[:return_to] = session[:origin_to]
     else
       session[:layer_to]  = nil
-      if params[:return_to]
-        if params[:return_to].split('/')[1] =="radio" && params[:return_to].split('/')[2]=="ïnfo"
-          session[:return_to] = "/radio?station_id=#{params[:return_to].split('/')[3]}"
-        else
-          session[:return_to] = params[:return_to]
-        end
-      end
+      session[:return_to] = params[:return_to] if params[:return_to]
     end
     if params[:follow_profile]
       session[:follow_profile] = params[:follow_profile]

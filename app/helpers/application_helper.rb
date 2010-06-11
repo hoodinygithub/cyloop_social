@@ -137,9 +137,10 @@ module ApplicationHelper
     # button_color = attrs[:color] if attrs.has_key?(:color)
 
     locale_key = "actions.#{key}"
-
+    return_to = request.request_uri
+    return_to = radio_path(:station_id => return_to.split('/').fourth) if return_to =~ /\/radio\/info\/([0-9]+)/
     layer_path = send("follow_#{account.class.name.downcase}_registration_layers_path",
-                      :return_to => request.request_uri,
+                      :return_to => return_to,
                       :account_id => account.id,
                       :follow_profile => account.id)
 
