@@ -161,6 +161,8 @@ class RadioController < ApplicationController
     else
       params[:search_station_name] = params[:station_name] if params.has_key?(:station_name) #this is for backwards compatibility
 
+      @station = AbstractStation.find_by_name(params[:search_station_name]) rescue nil
+      
       not_found_message = t('stations.could_not_find_artist', :artist => params[:search_station_name])
       respond_to do |format|
         format.html do
@@ -171,7 +173,7 @@ class RadioController < ApplicationController
         format.xml { render :xml => Player::Error.new(:error => not_found_message, :code => 404) }
         format.rss do
           feed_site = site_code.match(/^msnca.*/) ? "msncanada" : site_code
-          redirect_to "http://cm.cyloop.com/feeds/#{feed_site}/feed_top_stations_#{site_code}.xml"
+          #redirect_to "http://cm.cyloop.com/feeds/#{feed_site}/feed_top_stations_#{site_code}.xml"
         end
       end
 

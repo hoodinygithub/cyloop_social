@@ -12,7 +12,7 @@ xml.rss(:version => "2.0") do
     @station.includes.each do |related_artist|
       xml.item do
         xml.title "#{t("basics.contains")}: #{related_artist.name}"
-        xml.description "#{link_to(avatar_for(related_artist, :tiny), artist_url(related_artist))} #{related_artist.name}"
+        xml.description "#{link_to(avatar_for(related_artist.artist, :tiny), artist_url(related_artist.artist))} #{related_artist.name}"
         xml.category "Related Artist" 
         xml.link artist_url(related_artist)
         xml.guid artist_url(related_artist)
