@@ -10,7 +10,7 @@
   </div>
 
   <div class="promo_content">
-  <%= link_to image_tag(@feed_promo.image("300x135", msn_site_code)), @feed_promo.link %>    
+  <%= link_to image_tag(@feed_promo.image("300x135", msn_site_code)), @feed_promo.link  rescue "" %>    
   </div>
   <br class="clearer" />
 </div>

@@ -2,6 +2,7 @@ class UserStationsController < ApplicationController
 
   before_filter :profile_ownership_required, :only => [:create]
   before_filter :auto_follow_profile, :only => [ :index ]
+  before_filter :msn_codes
   # caches_action :show, :expires_in => 1.minute, :cache_path => :user_station_cache_key
 
   current_tab :stations
@@ -16,7 +17,7 @@ class UserStationsController < ApplicationController
   def index
 
     @dashboard_menu = :stations
-
+    
     respond_to do |format|
       block = Proc.new do
         @user_stations = profile_account.stations(profile_account.is_a?(Artist) ? 50 : nil)
@@ -109,5 +110,18 @@ class UserStationsController < ApplicationController
   def user_station_cache_key_url
     "#{CURRENT_SITE.cache_key}/#{profile_user.cache_key}/station/#{params[:id]}"
   end
+  
+  def msn_codes
+    @msn_properties={}
+    if profile_account.artist?
+      @msn_properties[:page_name] = '\'Artist Profile\''
+      @msn_properties[:prop3] = "\'Cyloop - Artist Profile \'"
+      @msn_properties[:prop4] = "\'Artist Profile - #{profile_account.name}\'"
+    else
+      @msn_properties[:page_name] = '\'User Profile\''
+      @msn_properties[:prop3] = "\'Cyloop - User Profile \'"
+      @msn_properties[:prop4] = "\'User Profile - #{profile_account.name}\'"
+    end
+  end 
 end
 

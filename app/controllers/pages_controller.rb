@@ -38,6 +38,11 @@ class PagesController < ApplicationController
           url_promo   = "/shared/feeds/current/msnlatino_url_promo_cysocial.xml"
           @feed_promo = drupal_feed(url_promo, 1).first
         end
+        
+        @msn_properties={}
+        @msn_properties[:page_name] = '\'MSN Latino Música\''
+        @msn_properties[:prop3] = '\'Cyloop - Inicio\''
+        @msn_properties[:prop4] = "\'Homepage\'"
       end
 
       # format.js do

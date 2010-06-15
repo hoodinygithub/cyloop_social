@@ -1,4 +1,5 @@
 class SearchesController < ApplicationController
+  before_filter :msn_codes
 
   def show
     @query = params[:q]    
@@ -55,6 +56,13 @@ class SearchesController < ApplicationController
         @counts.store(scope, obj.search_count("#{@query}*"))
       end
       default_active_scope
+    end
+    
+    def msn_codes
+      @msn_properties={}
+      @msn_properties[:page_name] = '\'Search\''
+      @msn_properties[:prop3] = "\'Cyloop - Search \'"
+      @msn_properties[:prop4] = "\'\'"
     end
 end
 

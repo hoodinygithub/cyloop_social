@@ -1,4 +1,5 @@
 class FollowersController < ApplicationController
+  before_filter :msn_codes
   include ApplicationHelper
 
   current_tab :community
@@ -23,6 +24,20 @@ class FollowersController < ApplicationController
 
     if profile_account.has_custom_profile? && FileTest.exists?("#{RAILS_ROOT}/app/views/custom_profiles/#{profile_account.slug}_followers.html.erb")
       render :template => "custom_profiles/#{profile_account.slug}_followers"
+    end
+  end
+  
+  private
+  def msn_codes
+    @msn_properties={}
+    if profile_account.artist?
+      @msn_properties[:page_name] = '\'Artist Profile\''
+      @msn_properties[:prop3] = "\'Cyloop - Artist Profile \'"
+      @msn_properties[:prop4] = "\'Artist Profile - #{profile_account.name}\'"
+    else
+      @msn_properties[:page_name] = '\'User Profile\''
+      @msn_properties[:prop3] = "\'Cyloop - User Profile \'"
+      @msn_properties[:prop4] = "\'User Profile - #{profile_account.name}\'"
     end
   end
 end

@@ -1,5 +1,6 @@
 class FolloweesController < ApplicationController
   before_filter :profile_ownership_required, :only => [:update, :show, :destroy]
+  before_filter :msn_codes
 
   current_tab :community
   current_filter :following
@@ -50,6 +51,20 @@ class FolloweesController < ApplicationController
         flash[:success] = t('followings.delete_success', :name => following.followee.name)
         redirect_back(my_following_index_path)
       end
+    end
+  end
+  
+  private
+  def msn_codes
+    @msn_properties={}
+    if profile_account.artist?
+      @msn_properties[:page_name] = '\'Artist Profile\''
+      @msn_properties[:prop3] = "\'Cyloop - Artist Profile \'"
+      @msn_properties[:prop4] = "\'Artist Profile - #{profile_account.name}\'"
+    else
+      @msn_properties[:page_name] = '\'User Profile\''
+      @msn_properties[:prop3] = "\'Cyloop - User Profile \'"
+      @msn_properties[:prop4] = "\'User Profile - #{profile_account.name}\'"
     end
   end
 end
