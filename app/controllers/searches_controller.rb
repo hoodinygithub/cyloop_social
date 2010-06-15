@@ -62,7 +62,7 @@ class SearchesController < ApplicationController
       @msn_properties={}
       @msn_properties[:page_name] = '\'Search\''
       @msn_properties[:prop3] = "\'Cyloop - Search \'"
-      @msn_properties[:prop4] = "\'\'"
+      @msn_properties[:prop4] = "\'Search\'"
     end
 end
 
