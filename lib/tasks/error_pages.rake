@@ -55,7 +55,7 @@ namespace :error_pages do
             new_market = case market
               when "msncaen"  then new_market = "_ca_en";
               when "msncafr"  then new_market = "_ca_fr";
-              when "cyloop"   then new_market = "";
+              when "cyloop"   then new_market = "_cyloop";
               when "cyloopes" then new_market = "_es";
               when "tvn"      then new_market = "_tvn";
               when "widget"   then new_market = "_widget";

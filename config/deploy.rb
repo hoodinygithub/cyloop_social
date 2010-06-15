@@ -227,11 +227,26 @@ task :symlink_remaining, :roles => :app, :except => {:no_release => true, :no_sy
       ln -s #{shared_path}/system/db/geoip #{latest_release}/db/geoip
     CMD
 
+    site_code = case application
+                  when /^mexico/    then "_mx";   
+                  when /^brazil/    then "_br";
+                  when /^latam/     then "_latam";
+                  when /^latino/    then "_latino";
+                  when /^cyloopes/  then "_es";
+                  when /^cyloop/    then "_cyloop";
+                  when /^argentina/ then "_ar";
+                  when /^canada_en/ then "_ca_en";
+                  when /^canada_fr/ then "_ca_fr";
+                  when /^tvn/       then "_tvn";
+                  when /^widget/    then "_widget";
+                end
+
     run <<-CMD
-      rm -rf #{latest_release}/public/404.html && rm -rf #{latest_release}/public/422.html && rm -rf #{latest_release}/public/500.html &&
-      ln -s #{shared_path}/error_pages/404.html #{latest_release}/public/404.html &&
-      ln -s #{shared_path}/error_pages/422.html #{latest_release}/public/422.html &&
-      ln -s #{shared_path}/error_pages/500.html #{latest_release}/public/500.html &&
+      rm -rf #{latest_release}/public/404.html && rm -rf #{latest_release}/public/404.html && rm -rf #{latest_release}/public/422.html && rm -rf #{latest_release}/public/500.html &&
+      ln -s #{shared_path}/error_pages/400_#{site_code}.html #{latest_release}/public/400.html &&
+      ln -s #{shared_path}/error_pages/404_#{site_code}.html #{latest_release}/public/404.html &&
+      ln -s #{shared_path}/error_pages/422_#{site_code}.html #{latest_release}/public/422.html &&
+      ln -s #{shared_path}/error_pages/500_#{site_code}.html #{latest_release}/public/500.html &&
       rm #{latest_release}/public/robots.txt &&
       ln -s #{shared_path}/robots.txt #{latest_release}/public/robots.txt && 
       ln -s #{shared_path}/system/sitemap.xml #{latest_release}/public/sitemap.xml &&
