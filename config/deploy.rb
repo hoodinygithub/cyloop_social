@@ -243,10 +243,10 @@ task :symlink_remaining, :roles => :app, :except => {:no_release => true, :no_sy
 
     run <<-CMD
       rm -rf #{latest_release}/public/404.html && rm -rf #{latest_release}/public/404.html && rm -rf #{latest_release}/public/422.html && rm -rf #{latest_release}/public/500.html &&
-      ln -s #{shared_path}/error_pages/400_#{site_code}.html #{latest_release}/public/400.html &&
-      ln -s #{shared_path}/error_pages/404_#{site_code}.html #{latest_release}/public/404.html &&
-      ln -s #{shared_path}/error_pages/422_#{site_code}.html #{latest_release}/public/422.html &&
-      ln -s #{shared_path}/error_pages/500_#{site_code}.html #{latest_release}/public/500.html &&
+      ln -s #{latest_release}/public/400_#{site_code}.html #{latest_release}/public/400.html &&
+      ln -s #{latest_release}/public/404_#{site_code}.html #{latest_release}/public/404.html &&
+      ln -s #{latest_release}/public/422_#{site_code}.html #{latest_release}/public/422.html &&
+      ln -s #{latest_release}/public/500_#{site_code}.html #{latest_release}/public/500.html &&
       rm #{latest_release}/public/robots.txt &&
       ln -s #{shared_path}/robots.txt #{latest_release}/public/robots.txt && 
       ln -s #{shared_path}/system/sitemap.xml #{latest_release}/public/sitemap.xml &&
