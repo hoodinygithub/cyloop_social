@@ -228,17 +228,17 @@ task :symlink_remaining, :roles => :app, :except => {:no_release => true, :no_sy
     CMD
 
     site_code = case application
-                  when /^mexico/    then "_mx";   
-                  when /^brazil/    then "_br";
-                  when /^latam/     then "_latam";
-                  when /^latino/    then "_latino";
-                  when /^cyloopes/  then "_es";
-                  when /^cyloop/    then "_cyloop";
-                  when /^argentina/ then "_ar";
-                  when /^canada_en/ then "_ca_en";
-                  when /^canada_fr/ then "_ca_fr";
-                  when /^tvn/       then "_tvn";
-                  when /^widget/    then "_widget";
+                  when /^mexico/    then "mx";   
+                  when /^brazil/    then "br";
+                  when /^latam/     then "latam";
+                  when /^latino/    then "latino";
+                  when /^cyloopes/  then "es";
+                  when /^cyloop/    then "cyloop";
+                  when /^argentina/ then "ar";
+                  when /^canada_en/ then "ca_en";
+                  when /^canada_fr/ then "ca_fr";
+                  when /^tvn/       then "tvn";
+                  when /^widget/    then "widget";
                 end
 
     run <<-CMD
