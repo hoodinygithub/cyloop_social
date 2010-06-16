@@ -647,7 +647,8 @@ module ApplicationHelper
     {
       :previous_label => "« #{t('actions.previous')}",
       :next_label => "#{t('actions.next')} »",
-      :renderer => PaginationRenderer
+      :renderer => PaginationRenderer,
+      :inner_window => 2
     }
   end
 

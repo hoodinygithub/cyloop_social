@@ -1032,15 +1032,17 @@ h1 {
 }
 
 .pagination {
-    font-size: 14px;
+    font-size: 13px;
     font-weight: bold;
     text-align: center;
     line-height: 16px;
+    width:540px;
+    margin-left:-20px;
 }
 
 .pagination a {
     border: solid 1px #cccccc;
-    padding: 1px 5px;
+    padding: 1px 4px;
     zoom: 1;
 }
 
