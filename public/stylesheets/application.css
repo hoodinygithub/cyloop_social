@@ -1205,14 +1205,14 @@ h1 {
 .followers_list .follower_info {
   float: left;
   word-wrap: break-word;
-  width: 250px;
+  width: 220px;
   margin-right: -20px;
   margin-left: 10px;
 }
 
 .followers_list .follower_actions {
     float: right;
-    width: 155px;
+    width: 175px;
     text-align: right;
     position: relative;
 }
