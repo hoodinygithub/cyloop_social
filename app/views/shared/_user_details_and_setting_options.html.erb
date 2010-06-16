@@ -1,4 +1,4 @@
-<div class="follower_info">
+<div class="follower_info" style='width:236px' >
     <b>
       <%= link_to item, item %>
     </b>
@@ -11,19 +11,11 @@
     <%= link_to item.follower_count, user_followers_path(item) %> <%= t('profile.navigation.followers')%>
 </div>
 
-  <div class="follower_actions w_settings">
-      <%= follow_button(:account => item) %>
+  <div class="follower_actions w_settings" style="width:170px">
       <% if logged_in? && item.is_a?(User) %>
-        <%= blue_button(image_tag('settings_button.png'), :href => '#', :class => 'settings_button png_fix') %>
-        <br/>
+        <%= blue_button(image_tag('settings_button.png'), :href => '#', :class => 'settings_button png_fix', :style => "float:left") %>
 
-        <div class="blocked">
-          <% if current_user.blocks?(item) %>
-          <%= image_tag('blocked.gif') %> <%= t('blocks.blocked') %>
-          <% end %>
-        </div>
-
-        <ul class="actions_settings">
+        <ul class="actions_settings" style="z-index:9">
           <% if current_user.blocks?(item) %>
             <li>
               <a href="#" onclick="Base.community.unblock('<%= item.slug %>', this); return false;">
@@ -39,5 +31,13 @@
           <% end %>
         </ul>
       <% end %>
+      <%= follow_button(:account => item) %>
     
+      <% if logged_in? && item.is_a?(User) %>
+        <div class="blocked">
+          <% if current_user.blocks?(item) %>
+          <%= image_tag('blocked.gif') %> <%= t('blocks.blocked') %>
+          <% end %>
+        </div>
+      <% end %>
   </div>
