@@ -9,7 +9,15 @@
     $("#user_born_on_2i").change(function(){
       $.ShowDays("user_born_on_3i", $("#user_born_on_2i").attr("value"), $("#user_born_on_1i").attr("value"));
     });
+    
+    $("#user_avatar").hover(function(){
+      $("#avatar_upload_button").addClass("blue_button_press");
+    });
+    $("#user_avatar").mouseleave(function(){
+      $("#avatar_upload_button").removeClass("blue_button_press");
+    });
   });
+
 <% end %>
 
 <div class="accordion_title expanded"><%= t('account_settings.basic_info') %></div>

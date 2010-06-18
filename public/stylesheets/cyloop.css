@@ -829,3 +829,14 @@ div#now_playing_user_station {
   text-transform: none;
   font-size:26px;
 }
+
+.blue_button_press {
+  background: url("../images/grey_button_big_left.gif") no-repeat left top;
+}
+.blue_button_press span {
+  background: url("../images/grey_button_big_right.gif") no-repeat right top;
+}
+.blue_button_press span span {
+  background: #bdbdbd;
+}
+
