@@ -11,3 +11,4 @@ public/system
 db/tyrant
 vendor/cyqueue
 db/sphinx
+coverage

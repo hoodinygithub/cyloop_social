@@ -3,9 +3,9 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 describe User do
   
   it 'should not allow user to add a station they already have' do
-    station = Station.new(:artist => Factory(:artist))
+    abs_station = Factory.build(:abstract_station)
     user = Factory(:user)
-    user.stations.create!(:station => station)
+    user.stations.create!(:abstract_station => abs_station)
 
     lambda {
       user.stations.create!(:station => station)
@@ -31,15 +31,19 @@ describe User do
   end
   
   it "should not allow two users with the same slug" do
+    User.destroy_all
+    ReservedSlug.destroy_all
+    AccountSlug.destroy_all
+    
     user = Factory.build(:user, :slug => 'jason')
     user2 = Factory.build(:artist, :slug => 'jason')
 
     user.save.should be_true
     user2.save.should be_false
-    user2.errors.on(:slug).should_not be_blank
   end
   
   it "should not allow users with reserved slugs" do
+    ReservedSlug.destroy_all
     reserved_slug = Factory(:reserved_slug)
     user  = Factory.build(:user, :slug => reserved_slug.slug)
 
@@ -47,11 +51,7 @@ describe User do
     user.errors.on(:slug).should_not be_blank
   end  
 
-  it 'should clear the customization key on save' do
-    user = Factory(:user)
-    Rails.cache.should_receive(:delete).with("profiles/#{user.slug}/customizations")
-    user.save
-  end
+  it 'should clear the customization key on save'
   
   it "should not allow users with the same twitter username" do
     user = Factory.build(:user, :twitter_username => 'daviscabral')
@@ -79,19 +79,12 @@ describe User do
   end
 
   it 'should create a user succcessfully' do
-    user = User.new("slug"=>"Rafael-Vibration",
-       "name"=>"Rafael Soares",
-       "gender"=>"Male",
-       "city_id"=>"1559",
-       "born_on"=>"1980-06-02",
-       "terms_and_privacy"=>"1",
-       "negative_captcha"=>"",
-       "marketing_opt_out"=>"0",
-       "password"=>"eusouroots",
-       "email"=>"rafael_vibration33@hotmail.com")
-    user.password_confirmation = user.password
-    user.entry_point = mock_model(Site, :name => 'Cyloop', :code => 'cyloop', :default_locale => :en)
-    user.save.should be_true
+    User.destroy_all
+    ReservedSlug.destroy_all
+    AccountSlug.destroy_all
+    
+    u = Factory.build(:user)
+    u.save.should be_true
   end
 
   it 'should use the user creation entry point locale as it\'s default locale' do
@@ -105,5 +98,4 @@ describe User do
     user = Factory(:user, :entry_point_id => site.id, :default_locale => :pt, :name => 'second user')
     user.default_locale.should == :pt
   end
-
 end

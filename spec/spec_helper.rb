@@ -22,4 +22,11 @@ Spec::Runner.configure do |config|
   config.include SiteHelper
   config.include RecEngineHelper
   config.global_fixtures = :all
+  config.mock_with :mocha
+end
+
+Spec::Matchers.define :expire_fragment do |fragment, options|
+  match do |controller|
+    controller.cache_store.should_receive(:delete).with("views/#{fragment}", options)
+  end
 end

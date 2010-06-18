@@ -159,7 +159,7 @@ class Account < ActiveRecord::Base
   def available_at_current_site?( current_site_id = ApplicationController.current_site.id )
     !(self.sites.count( :conditions => { :id => current_site_id } ) > 0)
   end
-
+  
   def first_name
     self.name.split(' ')[0] rescue self.name
   end
