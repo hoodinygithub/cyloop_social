@@ -832,12 +832,15 @@ div#now_playing_user_station {
 
 .blue_button_press {
   background: url("../images/grey_button_big_left.gif") no-repeat left top;
+  cursor: pointer;
 }
 .blue_button_press span {
   background: url("../images/grey_button_big_right.gif") no-repeat right top;
+  cursor: pointer;
 }
 .blue_button_press span span {
   background: #bdbdbd;
+  cursor: pointer;
 }
 
 .bold {
