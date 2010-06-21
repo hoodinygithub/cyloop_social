@@ -865,6 +865,7 @@ es_ES:
     comment: Comentario
     sorry: "Perd\xC3\xB3n!"
     created_at: hace {{when}}
+    overlay_created_at: hace {{when}}
     previous: Anterior
     person: Pesona
     my: Mi

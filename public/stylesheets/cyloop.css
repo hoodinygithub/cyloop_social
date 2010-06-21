@@ -399,7 +399,7 @@ img.artist_icon_box.tiny {
 
 .artist_box .overlay a,
 .overlay_content a {
-  color: #FFF;
+  color: #00A5F8;
 }
 
 #msn_footer {
@@ -838,5 +838,12 @@ div#now_playing_user_station {
 }
 .blue_button_press span span {
   background: #bdbdbd;
+}
+
+.bold {
+  font-weight: bold;
+}
+.white{
+	color: #fff !important;
 }
 

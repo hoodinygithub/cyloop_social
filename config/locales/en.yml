@@ -785,6 +785,7 @@ en:
     songs: Songs
     previous: Previous
     created_at: Created {{when}} ago
+    overlay_created_at: "{{when}} ago"
     "no": "No"
     by: By
     includes: Includes

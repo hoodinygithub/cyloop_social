@@ -7,7 +7,7 @@
         <div class="hidden">
           <%= avatar_for(abstract_station.artist, :artist_icon) %>
           <span>
-            <span class="blue"><%= link_to abstract_station.name, artist %> </span><br/>
+            <span class="bold"><%= link_to abstract_station.name, artist %> </span><br/>
           </span>
           <br class="clearer" />
           <%= station_contains(abstract_station) %>
@@ -16,7 +16,7 @@
         <div class="visible">
           <%= radio_play_button(abstract_station.station.id, :class => 'play_button')  %>
 
-          <%= link_to truncate(abstract_station.name, :length => 15), radio_path(:station_id => abstract_station.station.id), :title => abstract_station.name %>
+          <%= link_to truncate(abstract_station.name, :length => 15), radio_path(:station_id => abstract_station.station.id), :title => abstract_station.name, :class => :white %>
           <%
             # phase 2
             if false

@@ -5,8 +5,8 @@
     <div class="hidden">
       <%= link_to avatar_for(user_station.owner, :tiny), user_station.owner %>
       <span>
-        <span class="blue"><%= link_to user_station.owner.name, user_station.owner rescue ""%></span><br/>
-        <%= t('basics.created_at', :when => distance_of_time_in_words_to_now(user_station.created_at)) %>
+        <span class="bold"><%= link_to user_station.owner.name, user_station.owner rescue ""%></span><br/>
+        <%= t('basics.overlay_created_at', :when => distance_of_time_in_words_to_now(user_station.created_at)) %>
       </span>
       <br class="clearer" />
       <%= station_contains(user_station, 3, true, nil, :includes => sorted_includes) %>
@@ -15,7 +15,7 @@
     <div class="visible">
       <%= radio_play_button(user_station.station.id, :class => 'play_button')  %>
 
-      <%= link_to truncate(user_station.name, :length => 25), radio_path(:station_id => user_station.station.id), :title => user_station.name %>
+      <%= link_to truncate(user_station.name, :length => 25), radio_path(:station_id => user_station.station.id), :title => user_station.name, :class=>:white %>
     </div>
   </div><!--/end overlay -->
 </div><!--/end artist_box -->

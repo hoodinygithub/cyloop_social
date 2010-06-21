@@ -927,6 +927,7 @@ es_MX:
       wqFQZXJkw7NuIQ==
 
     created_at: Creada hace {{when}}
+    overlay_created_at: hace {{when}}
     previous: Anterior
     person: Persona
     my: Mi

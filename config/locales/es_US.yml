@@ -933,6 +933,7 @@ es_US:
     radio: Radio
     albums: Albumes
     created_at: Creada hace {{when}}
+    overlay_created_at: hace {{when}}
     my: Mi
     play: Escuchar
     people: Gente

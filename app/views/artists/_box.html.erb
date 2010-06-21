@@ -8,7 +8,7 @@
     <div class="overlay">
         <div class="hidden">
             <span>
-                <span class="blue">
+                <span class="bold">
                   <% if defined? node %>
                     <%= artist_name(node) %>
                   <% end %>
@@ -24,7 +24,7 @@
         <div class="visible">
           <%= radio_play_button(node.station.id, :class => 'play_button')  %>
           <% if defined? node %>
-            <b><%= link_to(node.station.name, artist_url(node)) %></b>
+            <b><%= link_to(node.station.name, artist_url(node), :class => :white) %></b>
           <% end %>
         </div>
     </div><!--/end overlay -->

@@ -930,6 +930,7 @@ es:
       wqFQZXJkw7NuIQ==
 
     created_at: Creada hace {{when}}
+    overlay_created_at: hace {{when}}
     person: Persona
     previous: Anterior
     artists: Artistas

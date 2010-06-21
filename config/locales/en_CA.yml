@@ -879,6 +879,7 @@ en_CA:
     charts_for: Charts for
     songs: Songs
     created_at: Created {{when}} ago
+    overlay_created_at: "{{when}} ago"
     person: Person
     my: My
     listens: Listens

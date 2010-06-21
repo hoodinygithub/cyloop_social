@@ -890,6 +890,7 @@ fr_CA:
     songs: chansons
     person: Personne
     created_at: "cr\xC3\xA9\xC3\xA9e il y a {{when}}"
+    overlay_created_at: "a {{when}}"
     my: Mon
     "no": Non
     listens: "\xC3\x89coute"

@@ -887,6 +887,7 @@ pt_BR:
     songs: "M\xC3\xBAsicas"
     person: Pessoa
     created_at: "Criado {{when}} atr\xC3\xA1s"
+    overlay_created_at: "{{when}} atr\xC3\xA1s"
     my: Meu
     "no": !binary |
       TsOjbw==
