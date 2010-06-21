@@ -849,3 +849,11 @@ div#now_playing_user_station {
 .white{
 	color: #fff !important;
 }
+.overlay_avatar{
+	float:left; 
+	width:35px;
+}
+.overlay_description{
+	float:left; 
+	width:95px;
+}

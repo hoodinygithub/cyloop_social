@@ -3,12 +3,17 @@
   <%= four_thumbs_to(user_station.station, :type => :big, :includes => sorted_includes) %>
   <div class="overlay">
     <div class="hidden">
-      <%= link_to avatar_for(user_station.owner, :tiny), user_station.owner %>
-      <span>
-        <span class="bold"><%= link_to user_station.owner.name, user_station.owner rescue ""%></span><br/>
-        <%= t('basics.overlay_created_at', :when => distance_of_time_in_words_to_now(user_station.created_at)) %>
-      </span>
+      <div class="overlay_avatar">
+        <%= link_to avatar_for(user_station.owner, :tiny), user_station.owner %>
+      </div>  
+      <div class="overlay_description">
+        <span>
+          <span class="bold"><%= link_to truncate(user_station.owner.name,15), user_station.owner rescue ""%></span><br/>
+          <%= t('basics.overlay_created_at', :when => distance_of_time_in_words_to_now(user_station.created_at)) %>
+        </span>
+      </div>
       <br class="clearer" />
+      <br/>
       <%= station_contains(user_station, 3, true, nil, :includes => sorted_includes) %>
     </div>
 
