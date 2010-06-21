@@ -134,6 +134,7 @@ a:hover {
     border-left: solid 1px #595959;
     border-right: solid 1px #595959;
     background: #000;
+    z-index:9;
 }
 
 #userdata_box .user {
@@ -161,6 +162,7 @@ a:hover {
     position: absolute;
     bottom: -8px;
     left: -1px;
+    z-index: 9;
 }
 
 #userdata_box .links {
