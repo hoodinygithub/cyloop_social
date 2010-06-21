@@ -1,22 +1,19 @@
 require File.expand_path(File.join( File.dirname(__FILE__), '..', '..', 'spec_helper' ))
 
 describe FeedManager do
-
   before :all do
     @msn_ca_en_news_full = Nokogiri::XML.parse( IO.read( File.join( RAILS_ROOT, 'spec', 'files', 'msn_ca_en_news_full.xml' ) ) )
     @msn_ca_en_news_four = Nokogiri::XML.parse( IO.read( File.join( RAILS_ROOT, 'spec', 'files', 'msn_ca_en_news_four.xml' ) ) )
   end
 
   describe 'on CA EN feeds loading' do
-
     before do
       @feed_manager = FeedManager.new( nil, nil, true )
     end
 
     describe 'with full list' do
-
       before do
-        @feed_manager.stub!(:get).and_return( @msn_ca_en_news_full )
+        @feed_manager.stubs(:get).returns( @msn_ca_en_news_full )
         @news = @feed_manager.get_single_msn_feed(6)
       end
 
@@ -31,13 +28,11 @@ describe FeedManager do
       it 'should have six items' do
         @news.size.should == 6
       end
-
     end
 
     describe 'with a four items list' do
-
       before do
-        @feed_manager.stub!(:get).and_return( @msn_ca_en_news_four )
+        @feed_manager.stubs(:get).returns( @msn_ca_en_news_four )
         @news = @feed_manager.get_single_msn_feed(6)
       end
 
@@ -52,9 +47,6 @@ describe FeedManager do
       it 'should have six items' do
         @news.size.should == 4
       end
-
     end
-
   end
-
 end
