@@ -3,9 +3,9 @@
   <div class="form_row">
     <%= avatar_for(@song, :medium, {:alt => "#{@song.artist.name} - #{@song.album.name}", :class => "left_side"}) %>
     <div class="popup_mix_text">
-      <big><a href="#"><%= @song.title %></a></big><br/>
-      <%= t("basics.by") %>: <a href="#"><%= @song.artist.name %></a><br/>
-      <%= t("basics.album") %>: <a href="#"><%= @song.album.name %></a>
+      <big><%= @song.title %></big><br/>
+      <%= t("basics.by") %>: <%= @song.artist.name %><br/>
+      <%= t("basics.album") %>: <%= @song.album.name %>
     </div>
     <div class="clearer"></div>
   </div>

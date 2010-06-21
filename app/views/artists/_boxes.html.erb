@@ -1,2 +1,2 @@
 <%= render 'shared/sidebar_followers' %>
-<%= render 'shared/similar_artists' %>
+<%= render 'shared/similar_artists' unless profile_artist.similar(8).empty? %>
