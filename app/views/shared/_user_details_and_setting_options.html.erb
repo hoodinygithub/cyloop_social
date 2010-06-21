@@ -1,6 +1,6 @@
 <div class="follower_info" style='width:236px' >
     <b>
-      <%= link_to item, item %>
+      <%= link_to truncate(item.name, :length => 35), item, :title => item %>
     </b>
     <br/>
     <span>
