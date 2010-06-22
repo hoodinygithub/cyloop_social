@@ -40,7 +40,7 @@ label.label_holder {
 }
 
 .last_box {
-  float: right;
+  float: left !important;
   margin-right: 0!important;
 }
 
