@@ -1,4 +1,4 @@
-<% if profile_account.total_user_stations > @latest_stations.size %>
+<% if profile_account.total_user_stations > @latest_stations.size && @latest_stations.size > 0 %>
   <b class="right_side">
     <%= link_to(t('actions.view_more'), user_stations_path ) %>
   </b>
