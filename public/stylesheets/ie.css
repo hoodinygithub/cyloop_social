@@ -156,3 +156,10 @@ span.checkbox {
 .maintain_private{
   width:180px;
 }
+.headers{
+  background: #d0d0d0;
+  width: 627px !important;
+}
+.songs_list{
+  background: #d0d0d0;
+}
