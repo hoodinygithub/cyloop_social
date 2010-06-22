@@ -77,7 +77,8 @@ class User < Account
   index [:type]
 
   after_update :update_followings_with_name
-
+  
+  default_scope :conditions => { :network_id => 1 }  
   has_one :bio, :autosave => true, :foreign_key => :account_id
   validates_associated :bio
 
@@ -100,7 +101,7 @@ class User < Account
   has_many :song_listens, :foreign_key => :listener_id
 
   has_many :followings, :foreign_key => 'follower_id'
-  has_many :followees, :through => :followings, :conditions => "followings.approved_at IS NOT NULL", :source => :followee do
+  has_many :followees, :through => :followings, :conditions => "followings.approved_at IS NOT NULL AND accounts.network_id = 1", :source => :followee do
     def with_limit(limit=10)
       find(:all, :limit => limit)
     end
@@ -118,6 +119,7 @@ class User < Account
   has_many :messages
 
   belongs_to :entry_point, :class_name => 'Site', :foreign_key => 'entry_point_id'
+  belongs_to :network
 
   validates_presence_of :entry_point_id
   validates_presence_of :born_on
@@ -210,6 +212,10 @@ class User < Account
   def user?
     true
   end
+  
+  def part_of_network?
+    ApplicationController.current_site.networks.include? self.network
+  end
 
   def private?
     self.private_profile
@@ -269,5 +275,6 @@ class User < Account
     followings.update_all(:follower_name => self.name)
     followings_as_followee.update_all(:followee_name => self.name)
   end
+    
 end
 

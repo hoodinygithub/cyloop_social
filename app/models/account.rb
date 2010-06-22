@@ -118,7 +118,7 @@ class Account < ActiveRecord::Base
   end
 
   has_many :followings_as_followee, :class_name => 'Following', :foreign_key => 'followee_id'
-  has_many :followers, :through => :followings_as_followee, :conditions => "followings.approved_at IS NOT NULL", :source => :follower do
+  has_many :followers, :through => :followings_as_followee, :conditions => "followings.approved_at IS NOT NULL AND accounts.network_id = 1", :source => :follower do
     def with_limit(limit=10)
       find(:all, :limit => limit)
     end

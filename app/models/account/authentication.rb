@@ -168,8 +168,9 @@ module Account::Authentication
 
   module ClassMethods
 
-    def authenticate(email, password)
-      u = find_by_email_and_deleted_at(email, nil) # need to get the salt and make sure the account isn't deleted
+    def authenticate(email, password, site)
+      network_ids = site.networks.collect(&:id)
+      u = find_by_email_and_deleted_at_and_network_id(email, nil, network_ids) # need to get the salt and make sure the account isn't deleted
       u && u.authenticated?(password) ? u : nil
     end
 

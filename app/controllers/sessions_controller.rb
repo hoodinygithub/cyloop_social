@@ -39,7 +39,7 @@ class SessionsController < ApplicationController
   def create
     # Cyloop Login
     unless wlid_web_login?
-      account = Account.authenticate(params[:email], params[:password])
+      account = Account.authenticate(params[:email], params[:password], current_site)
       do_login(account, params[:remember_me])
     end
   end
@@ -68,22 +68,27 @@ private
       flash[:error] = t("registration.artist_login_denied")
       redirect_to(new_user_path)
     elsif account
-      self.current_user = account
-      
-      AccountLogin.create!( :account_id => account.id, :site_id => current_site.id )
+      if account.part_of_network?
+        self.current_user = account      
+        AccountLogin.create!( :account_id => account.id, :site_id => current_site.id )
 
-      if remember_me == "1"
-        current_user.remember_me unless current_user.remember_token?
-        cookies[:auth_token] = { :value => self.current_user.remember_token , :expires => self.current_user.remember_token_expires_at }
-      end
+        if remember_me == "1"
+          current_user.remember_me unless current_user.remember_token?
+          cookies[:auth_token] = { :value => self.current_user.remember_token , :expires => self.current_user.remember_token_expires_at }
+        end
 
-      if save_wlid && wlid_web_login?
-        account.update_attribute(:msn_live_id, session[:msn_live_id].to_s)
-        session[:msn_live_id] = nil
+        if save_wlid && wlid_web_login?
+          account.update_attribute(:msn_live_id, session[:msn_live_id].to_s)
+          session[:msn_live_id] = nil
+        end
+        session[:registered_from] = nil
+        flash[:google_code] = 'loginOK'
+        redirect_back_or_default(my_dashboard_path(:host => corrected_registration_host))
+      else
+        flash[:error] = t("registration.login_failed")
+        render :action => 'new'
+        return false
       end
-      session[:registered_from] = nil
-      flash[:google_code] = 'loginOK'
-      redirect_back_or_default(my_dashboard_path(:host => corrected_registration_host))
     elsif !wlid_web_login?
       flash[:error] = t("registration.login_failed")
       render :action => 'new'

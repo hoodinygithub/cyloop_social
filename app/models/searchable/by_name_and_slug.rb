@@ -18,7 +18,7 @@ module Searchable::ByNameAndSlug
       named_scope :starts_with, lambda { |prefix| { :conditions => ["name LIKE ?", "#{prefix}%"] } }
 
       define_index do
-        where "deleted_at IS NULL"
+        where "deleted_at IS NULL AND network_id = 1"
         indexes :name, :sortable => true
         indexes :slug
         set_property :min_prefix_len => 1

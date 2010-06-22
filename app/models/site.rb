@@ -57,6 +57,8 @@ class Site < ActiveRecord::Base
   has_many :users, :foreign_key => 'entry_point_id'
   has_one :site_statistic
   has_many :campaigns
+  has_many :network_sites
+  has_many :networks, :through => :network_sites
   
   belongs_to :login_type
   
