@@ -2494,7 +2494,7 @@ h1 {
 .songs_box.large_height {
 /*    height: 495px;*/
     position: relative;
-		height:575px !important;
+		height:526px !important;
 		width:627px;
 		background-color: #fff;
 }
