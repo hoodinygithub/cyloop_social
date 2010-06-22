@@ -2,7 +2,7 @@
 class Widget::SessionsController < Widget::WidgetController
 
   def create
-    account = Account.authenticate(params[:email], params[:password])
+    account = Account.authenticate(params[:email], params[:password], current_site)
     if account && account.kind_of?( User )
       self.current_user = account
       AccountLogin.create!( :account_id => current_user.id, :site_id => current_site.id )
