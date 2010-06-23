@@ -68,7 +68,8 @@
 
 class User < Account
 
-  include Account::ProfileColors
+  include Account::Authentication
+  include Account::ProfileColors  
   include Account::FolloweeCache
   include Account::SingleShortBio
   include Account::RegistrationStates

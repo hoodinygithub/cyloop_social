@@ -67,7 +67,6 @@
 #
 
 class Account < ActiveRecord::Base
-  include Authentication
   include Sluggable
   include AvatarImporter
   include BackgroundImporter
