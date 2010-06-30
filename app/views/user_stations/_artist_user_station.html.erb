@@ -19,7 +19,7 @@
           <%= station_contains(artist_user_station, 3, true, nil, :includes => sorted_includes) %>
         </div>
         <div class="subcription_creator">
-            <%= link_to avatar_for(artist_user_station.owner, :artist_icon), artist_user_station.owner %>
+            <%= link_to avatar_for(artist_user_station.owner, :small), artist_user_station.owner %>
             <!--img src="images/network_icon.gif" class="creator_image" alt="" /-->
             <div class="creator_text">
                 <b><%= t("basics.created_by") %>: <%= link_to artist_user_station.owner.name, user_path(artist_user_station.owner) %></b><br/>
