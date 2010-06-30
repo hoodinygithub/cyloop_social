@@ -1,13 +1,12 @@
 <% logged_out = false unless local_assigns[:logged_out] %>
-<div id="top_banner_container">
-  <%= banner_ad("top_banner") %>
-</div>
-<div id="msn_header">
-  <% if site_includes(:msnmx, :msnbr, :msnlatam, :msnlatino, :msnar, :msncaen, :msncafr) %>
+<% if site_includes(:msnmx, :msnbr, :msnlatam, :msnlatino, :msnar, :msncaen, :msncafr) %>
+  <div id="top_banner_container">
+    <%= banner_ad("top_banner") %>
+  </div>
+  <div id="msn_header">
     <%= render "3rd_party_branding/msn_header_#{site_code}" %>
-  <% end %>
-</div>
-
+  </div>
+<% end %>
 <div id="header">
   <div id="header_content">
     <%= market_logo %>

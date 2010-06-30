@@ -103,7 +103,7 @@ a:hover {
 }
 
 #login_links {
-    float: right;
+    float: left;
     padding: 18px 0px 0px 50px;
     line-height: 18px;
     color: #00a5f8;
