@@ -4,7 +4,7 @@
   <b><%= @station_obj.playable.name %></b>
   <%= link_to(image_tag(market_image_path('share_button_small.png'), :title => t('actions.share'), :class => 'png_fix valign_middle'), '#', :onclick => "Base.stations.share(#{@station_obj.id}); return false;") %>
   <br/>
-  <small><%= station_contains(@station_obj.playable) %></small>
+  <small><%= station_contains(@station_obj.playable, 3, true, :target => "_blank") %></small>
 </div><!--/end top_buttons -->
 
 <div class="album_actions2">
