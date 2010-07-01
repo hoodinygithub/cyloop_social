@@ -14,7 +14,8 @@ class PersonalizeJavascript
         current_user = User.find(session[:user_id])
         js = <<-END
         jQuery(document).ready(function($){
-        	$('#login_links_logged_in').html("#{logout_url}");
+        	$('#login_links').html("#{logout_url}");
+        	$('#login_links').css("float","left");
           $('#userdata_box .user_name').text("#{current_user.try(:first_name)}");
           $('#userdata_box .avatar').attr("src", "#{AvatarsHelper.avatar_path(current_user, :tiny)}");
           $('#userdata_box').removeClass("user_data_logged_out").addClass("user_data_logged_in");
