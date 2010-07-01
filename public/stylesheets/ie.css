@@ -163,3 +163,21 @@ span.checkbox {
 .songs_list{
   background: #d0d0d0;
 }
+.msnlatam #brand #search #leftcorner {
+  FILTER: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true', sizingMethod='image', src='http://blstc.msn.com/br/gbl/css/9/decoration/leftedge_6x36.png'); BACKGROUND-IMAGE: none
+}
+.msnlatam #brand #search #searchform {
+  FILTER: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true', sizingMethod='scale', src='http://blstc.msn.com/br/gbl/css/9/decoration/gradient_1x36.png'); BACKGROUND-IMAGE: none
+}
+.msnlatam #brand #search #ntwlogo {
+  FILTER: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true', sizingMethod='scale', src='http://blstc.msn.com/br/gbl/css/9/decoration/gradient_1x36.png'); BACKGROUND-IMAGE: none
+}
+.msnlatam #brand #search #rightcorner {
+  FILTER: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true', sizingMethod='image', src='http://blstc.msn.com/br/gbl/css/9/decoration/rightedge_6x36.png'); BACKGROUND-IMAGE: none
+}
+.msnlatam #brand #search #ntwlogo {
+  FILTER: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true', sizingMethod='scale', src='http://blstc.msn.com/br/gbl/css/9/decoration/gradient_1x36.png'); BACKGROUND-IMAGE: none
+}
+.msnlatam #brand #search #ntwlogo #logoimg{
+  FILTER: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true', sizingMethod='image', src='http://blstc.msn.com/br/gbl/css/9/decoration/logo_56x29.png'); BACKGROUND-IMAGE: none
+}

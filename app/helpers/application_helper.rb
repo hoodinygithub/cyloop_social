@@ -666,7 +666,7 @@ module ApplicationHelper
     elsif site_includes(:msnmx)
       'http://prodigy.msn.com/'
     elsif site_includes(:msnlatam)
-      'http://latam.msn.com/'
+      root_path
     elsif site_includes(:msnlatino)
       'http://latino.msn.com/'
     elsif site_includes(:msncaen)
@@ -816,8 +816,6 @@ module ApplicationHelper
       'canada_en'
     when 'msncafr'
       'canada_fr'
-    when 'msnlatam'
-      'latam'
     when 'msnlatino'
       'latino'
     when 'msnar'

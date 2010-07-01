@@ -1,0 +1,121 @@
+<script type="text/javascript" src="http://blstj.msn.com/br/gbl/js/4/mozcompat.js"> </script>
+<script type="text/javascript" src="http://blstj.msn.com/br/gbl/js/4/core.js"> </script>
+<script type="text/javascript" src="http://blstj.msn.com/br/gbl/js/2/report.js"> </script>
+<script type="text/javascript" src="http://blstj.msn.com/br/csl/js/1/navigation.js"> </script>
+<script type="text/javascript" src="http://ads1.msn.com/library/dap.js"> </script>
+<script type="text/javascript" src="http://blstj.msn.com/br/csl/js/6b0ad3f99457a8577884afebde717cc0/js.js"> </script>
+<script type="text/javascript">
+  /*<![CDATA[*/
+  (function($) {
+   function isNumber(obj, min, max) {
+   return (typeof obj == "number") && (isNumber(min) ? obj >= min : true) && (isNumber(max) ? obj <= max : true)
+   }
+
+   function isString(obj, minLength) {
+   return (typeof obj == "string") && (isNumber(minLength) ? obj.length >= minLength : true);
+   }
+   var $isArray = $.isArray;
+   var urlRegExp = /^((ht|f)tps?\:\/\/)((([a-z0-9\-]+\.)+[a-z]{2,4})|((\d{1,3}\.){3}\d{1,3})(:[0-9]+)?)(\/([a-z0-9\-_\.\?!~\*\'\(\);\/\?:@&=\+\$,%#])*|\/?)$/i;
+
+   function getObjectWithNamespace(objName) {
+   var ns = objName.split('.'),
+   o = window,
+   i, len = ns.length;
+   for (i = 0; i < len; i++) {
+   o = o[ns[i]];
+   if (o == null) return null;
+   }
+   return o;
+   }
+   $.extend({
+isNumber: isNumber,
+isString: isString,
+isAbsoluteUrl: function(obj) {
+return isString(obj) && urlRegExp.test(obj);
+}, isObject: function(obj) {
+return (typeof obj == "object") && (obj !== null);
+}, isDefined: function(obj) {
+return (typeof obj != "undefined");
+}, isArray: function(obj, minLength) {
+return $isArray(obj) && (isNumber(minLength) ? obj.length >= minLength : true);
+}, getObjectWithNamespace: getObjectWithNamespace
+});
+})(jQuery);
+(function($) {
+ var defaults = {
+timeout: 250
+};
+var pending = {};
+var pollList = [];
+var timerId;
+var $isString = $.isString;
+var $isFunction = $.isFunction;
+var w = window;
+
+function async(test, action, url) {
+var canary;
+if ($isString(test, 1) && (canary = (this[test]) || $.getObjectWithNamespace(test))) {
+if ($isFunction(action)) {
+action.apply(this);
+}
+else if ($isFunction(canary)) {
+if ($.isArray(action)) {
+canary.apply(this, action);
+}
+else if (!$.isDefined(action)) {
+  canary.apply(this);
+}
+}
+}
+else if ($isString(url)) {
+  var testQueue = pending[url];
+  if (testQueue) {
+    testQueue.push(new testItem(test, action, this));
+  }
+  else {
+    pending[url] = [new testItem(test, action, this)];
+    $.ajax({
+url: url,
+dataType: "script",
+cache: 1,
+success: function() {
+testQueue = pending[url];
+for (var item, ndx = 0;
+  (item = testQueue[ndx]); ++ndx) {
+retryTest(item);
+}
+}
+});
+}
+}
+else if ($isString(test, 1)) {
+  pollList.push(new testItem(test, action, this));
+  if (!timerId) {
+    timerId = w.setTimeout(pollCallback, defaults.timeout);
+  }
+}
+}
+
+function pollCallback() {
+  var list = pollList;
+  pollList = [];
+  for (var item, ndx = 0;
+      (item = list[ndx]); ++ndx) {
+    retryTest(item);
+  }
+  timerId = (pollList.length == 0 ? 0 : w.setTimeout(pollCallback, defaults.timeout));
+}
+
+function retryTest(item) {
+  async.call(item.callee, item.test, item.action);
+}
+
+function testItem(test, action, callee) {
+  this.test = test;
+  this.action = action;
+  this.callee = callee;
+}
+$.async = $.fn.async = w.async = async;
+$.async.defaults = defaults;
+})(jQuery); //]]>
+</script>

@@ -857,3 +857,188 @@ div#now_playing_user_station {
 	float:left; 
 	width:95px;
 }
+
+/* msnlatam 3rd_party_branding */
+#msn_header.msnlatam{
+  background: #333333 !important;
+  background-image: none !important;
+  border: none;
+}
+.msnlatam .wrapper{
+  width: auto !important;
+}
+.msnlatam .wrapper .msn_main{
+  padding:5px 5px 7px 0 !important;
+}
+#msn_header .msnlatam .msn_main .msn_navigation li a{
+  padding:0px;
+}
+.msnlatam .msn_main ul.msn_navigation li {
+  background-image:url("/images/crossnetnav.gif");
+  padding: 0.25em 0.6em 0.35em 0.8em;
+  font-family: tahoma,sans-serif;
+  font-size: 100%
+}
+.msnlatam .msn_main ul.msn_navigation li.selected {
+  background-image:url("/images/chansel.gif");
+  background-position:0 50%;
+}
+.msnlatam .msn_main ul.msn_navigation li a{
+  background: none !important;
+  font-size: none;
+  line-height: none;
+}
+.msnlatam .msn_main ul.msn_navigation li a.expand{
+  background-image: url("/images/expand.gif") !important;
+  background-position: 100% 65% !important;
+  background-repeat: no-repeat !important;
+  padding-right: 1.35em !important;
+}
+
+.msnlatam .msn_main ul.msn_sisters li a{
+  font-family: tahoma,sans-serif;
+  font-size: 1em !important;
+}
+.msnlatam #brand{
+  background-image: url("/images/glow.gif") !important;
+  background-position:0 0;
+  background-repeat:no-repeat;
+  height:9.85ex;
+  margin-top:2px;
+  width:auto;
+}
+.msnlatam #brand #logo{
+  margin:5px 0 0 5px;
+  width:39%;
+
+}
+.msnlatam #brand #logo img {
+  float:left;
+  padding-left:0;
+  width:118px;
+}
+.msnlatam #brand #logo .name {
+  float:left;
+  font:200%/0.9em "Segoe UI",tahoma,arial,sans-serif;
+  padding:0.7em 0 0.2em;
+  width:61%;
+  background-color:transparent;
+  color:#FFFFFF;
+}
+.msnlatam #brand #search {
+  float:left;
+  margin-bottom:6px;
+  margin-top:0.1em;
+}
+.msnlatam #brand #search label {
+  display:none;
+}
+.msnlatam #brand #search #ntwscopes {
+  height:1.55em;
+  width:384px;
+}
+.msnlatam #brand #search #leftcorner,
+.msnlatam #brand #search #searchform,
+.msnlatam #brand #search #ntwlogo,
+.msnlatam #brand #search #rightcorner {
+  float:left;
+  height:36px !important;
+}
+.msnlatam #brand #search #leftcorner {
+  clear:left;
+  width:6px;
+  background:url("/images/leftedge_6x36.png") no-repeat scroll left top transparent;
+}
+.msnlatam #brand #search #searchform {
+  position:relative;
+  width:312px;
+  background:url("/images/gradient_1x36.png") repeat-x scroll left top transparent;
+}
+.msnlatam #brand #search #ntwlogo {
+  background:url("/images/gradient_1x36.png") repeat-x scroll left top transparent;
+}
+.msnlatam #brand #search #rightcorner {
+  width:6px;
+  background:url("/images/rightedge_6x36.png") no-repeat scroll right top transparent;
+}
+.msnlatam #brand #search #ntwlogo {
+  background:url("/images/gradient_1x36.png") repeat-x scroll left top transparent;
+}
+.msnlatam #brand #search #ntwlogo #logoimg{
+  width:56px;
+  height: 29px;
+  background:url('http://blstc.msn.com/br/gbl/css/9/decoration/logo_56x29.png') repeat-x scroll left top transparent;
+}
+.msnlatam #brand #search #searchform .searchsubmit {
+  float:left;
+  height:22px;
+  margin:2px;
+  width:22px;
+}
+.msnlatam #brand #search #searchform .searchinput {
+  float:left;
+  padding-left:5px;
+}
+.msnlatam #brand #search .searchinputarea, .msnlatam #brand #search .searchform {
+border:1px solid #333333;
+}
+.msnlatam #brand #search #searchform .searchinputarea {
+  background:none repeat scroll 0 0 #FFFFFF;
+  height:26px;
+  left:-1px;
+  margin-top:4px;
+  position:relative;
+  width:312px;
+}
+.msnlatam #brand #search .searchinputarea {
+border:1px solid #333333;
+}
+
+.msnlatam #brand #search #ntwlogo input {
+display:block;
+margin-left:6px;
+position:relative;
+top:6px;
+}
+
+
+.msnlatam #brand #search .searchinputarea #q {
+  border:0 none;
+  color:#6A8CA4;
+  display:block;
+  float:left;
+  font-family:"Segoe UI",tahoma,arial,sans-serif;
+  font-size:13px;
+  font-style:italic;
+  left:-5px;
+  margin-top:3px;
+  padding:0 1px 0 6px;
+  position:relative;
+  width:274px;
+}
+
+.sub.msnlatam{
+  background: url("/images/hn.gif") repeat !important;
+}
+.sub ul.msn_navigation.msnlatam li, .sub ul.msn_navigation.msnlatam li ul{
+   display:inline;
+ }
+.sub ul.msn_navigation.msnlatam li.expanded.notselected {
+  font-weight: bold;
+}
+.sub ul.msn_navigation.msnlatam li.selected a, 
+.sub ul.msn_navigation.msnlatam li.notselected a {
+  background-image:none;
+  border:1px solid;
+  padding-bottom:0.3em;
+  position:inherit;
+  z-index:10;
+}
+.sub ul.msn_navigation.msnlatam li.expanded.notselected ul{
+  float: left;
+  width:100%
+}
+
+
+
+
