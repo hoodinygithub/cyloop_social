@@ -103,7 +103,7 @@ a:hover {
 }
 
 #login_links {
-    float: left;
+    float: right;
     padding: 18px 0px 0px 50px;
     line-height: 18px;
     color: #00a5f8;
@@ -201,7 +201,7 @@ a:hover {
 
 #search_form {
     position: absolute;
-    right: 170px;
+    right: 185px;
     top: 14px;
     width: 282px;
     height: 24px;

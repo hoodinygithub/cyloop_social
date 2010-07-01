@@ -1,6 +1,6 @@
 <% logged_out = false  unless local_assigns[:logged_out] %>
 
-  <% if !logged_in? || logged_out %>
+  <% if !logged_in?  %>
     <div id="login_links">
     <% if @follow_profile %>
       <%= link_to t("sessions.new.sign_in"), site_login_url(:return_to => nav_aux_login_url, :follow_profile => @follow_profile) %>
