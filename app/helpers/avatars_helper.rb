@@ -76,13 +76,13 @@ module AvatarsHelper
         if target
           if target.is_a?(User) || target.is_a?(Playlist)
             if target.gender =~ /^male$/i
-              if type == :new_medium || type == :medium
+              if type == :new_medium || type == :medium || type == :album
                 path = '/avatars/missing/male_large.jpg'
               else
                 path = '/avatars/missing/male_small.jpg'
               end  
             else
-              if type == :new_medium || type == :medium
+              if type == :new_medium || type == :medium || type == :album
                 path = '/avatars/missing/female_large.jpg'
               else
                 path = '/avatars/missing/female_small.jpg'
