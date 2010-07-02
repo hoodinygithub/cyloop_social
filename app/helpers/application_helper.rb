@@ -812,6 +812,8 @@ module ApplicationHelper
       'br'
     when 'msnmx'
       'mx'
+    when 'msnlatam'
+      'latam'
     when 'msncaen'
       'canada_en'
     when 'msncafr'
@@ -835,6 +837,7 @@ module ApplicationHelper
 
   def market_logo
     image = image_tag(cyloop_logo_path(false), :id => 'logo', :class => 'png_fix')
+    image = image_tag('/images/cyloop_logo.png', :id => 'logo', :class => 'png_fix') if site_code.to_s == "msnlatam"
     link_to(image, msn_home_page_link_path)
   end
 
