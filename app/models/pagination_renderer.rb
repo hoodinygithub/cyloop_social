@@ -56,19 +56,29 @@ class PaginationRenderer < WillPaginate::LinkRenderer
   end
 
   def page_link(page, text, attributes = {})
-    @template.link_to(text, url_for(page))
+    @template.link_to(text,url_link(page))
   end
 
   def button_active(page, text, attributes = {})
-    @template.link_to text, url_for(page), :class=>'next_page'
+    @template.link_to text, url_link(page), :class=>'next_page'
   end
 
   def button_disabled(page, text, attributes = {})
-    @template.link_to text, url_for(page), :class=>'disabled', :disabled => :true, :onclick => "return false;"
+    @template.link_to text, url_link(page), :class=>'disabled', :disabled => :true, :onclick => "return false;"
   end
 
   def page_span(page, text, attributes = {})
     @template.content_tag(:span, text, attributes)
+  end
+  
+  def url_link(page)
+    url = url_for(page)
+    if url.scan('search').size > 0 && url.scan('all').size > 0
+      url = url.gsub('all','users') if @collection.first.type == "User"
+      url = url.gsub('all','stations') if @collection.first.type.to_s == "AbstractStation"
+      url = url.gsub('all','artists') if @collection.first.type == "Artist"
+    end
+    url
   end
 
 end
