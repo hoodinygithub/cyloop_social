@@ -11,10 +11,10 @@
   <%= render :partial => 'shared/user_station', :collection => @latest_stations, :locals => { :columns => 3, :includes => nil } %>
   <% index = max_stations - @latest_stations.size %>
   <% index.times do |i| %>
-    <div class="empty_box gb_big <%= "last_box" if i == (index-1) or (i+1+@latest_stations.size) == 3 %>">
+    <div class="empty_box gb_big <%= "last_box" if i == (index-1) or (i+1+@latest_stations.size) % 3 == 0 %>">
       &nbsp;
     </div>
-    <% if (i+1+@latest_stations.size) == 3 %>
+    <% if (i+1+@latest_stations.size) % 3 == 0 %>
       <br class="clearer" />
     <% end %>
   <% end %>
