@@ -1,5 +1,8 @@
-<% if false  #do not render this - it is calling song_listens.most_listened_songs and it shouldn't. this should be recommended stations if anything. %>
-jQuery(document).ready(function($){  
-	$('#secondary_content div.module.recommended.clearfix ul').html("<%= escape_javascript(render(:partial => 'pages/home_modules/recommended_artist.html.haml', :collection => @artists)) %>");
+jQuery(document).ready(function($){ 
+	$('#recommended_items').html("<%= escape_javascript(render(:partial => 'shared/abstract_station', :collection => @recommended_stations, :locals => { :columns => 6 })) %>");
+	setTimeout(function(){
+		$('#recommended_stations_loader').fadeOut('slow', function(){			
+			$('#recommended_items').fadeIn('slow');
+		});		
+	}, 1000);
 });
-<% end %>

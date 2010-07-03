@@ -1,6 +1,8 @@
+<% logged_in = "/logged_in.js?lang=#{I18n.default_locale}&logout_url=#{CGI::escape(site_logout_url)}"%>
 <% content_for :head do %>
-  <%= render :partial => 'shared/logged_in_callback' %>
+  <script type="text/javascript" charset="utf-8" src="<%= logged_in %>"></script>
   <script type="text/javascript" charset="utf-8" src="/flash.js"></script>
+  <script type="text/javascript" charset="utf-8" src="/home.js"></script>
 <% end %>
 
 <%= render :partial => 'pages/home_modules/slide_banner' %>
@@ -28,7 +30,14 @@
    # render :partial => 'pages/home_modules/mixes_recomended' 
   %>
 
-  <%= render :partial => 'pages/home_modules/radios_recomended' %>
+  <%#Phase 1 use top_radios_column class to get full width layout, phase 2 change to radios_recommended_column %>
+  <div id="recommended_stations_container" class="top_radios_column">
+    <h1><%= t("home.radios_recomended_for_you") %></h1>
 
+    <%= image_tag 'loading.gif', :id => 'recommended_stations_loader' %>
+    <div id="recommended_items"></div>
+    <div class="clearer"></div>
+  </div>
+  
   <br class="clearer" />
 </div><!--/end homepage_content -->

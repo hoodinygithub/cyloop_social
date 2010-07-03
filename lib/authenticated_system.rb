@@ -29,8 +29,8 @@ module AuthenticatedSystem
     @profile_account ||= unless params[:slug].blank?
       account_slug = AccountSlug.find_by_slug( params[:slug] )
       account = nil
-      account = account_slug.account if account_slug
-      raise ActiveRecord::RecordNotFound.new( "No record was found for slug #{params[:slug]}" ) unless account
+      account = account_slug.account if account_slug and account_slug.account and ( (account_slug.account.is_a?(User) and account_slug.account.part_of_network?) or account_slug.account.is_a?(Artist)) rescue nil
+      raise ActiveRecord::RecordNotFound.new( "No record was found for slug #{params[:slug]} where network_id = 1" ) unless account
       account
     else
       current_user

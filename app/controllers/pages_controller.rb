@@ -46,14 +46,10 @@ class PagesController < ApplicationController
         @msn_properties[:prop4] = "\'Homepage\'"
       end
 
-      # format.js do
-      #   if logged_in?
-      #     @artists = Artist.artists_by_recommended( rec_engine.get_recommended_artists(:number_of_records => 30), 5)
-      #     render :template => 'pages/home.js.erb', :layout => false
-      #   else
-      #     head :ok
-      #   end
-      # end
+      format.js do
+        @recommended_stations ||= transformed_recommended_stations(6, 40)
+        render :template => 'pages/home.js.erb', :layout => false
+      end
 
     end
   end
@@ -63,7 +59,7 @@ class PagesController < ApplicationController
       format.js { render :template => 'pages/flash.js.erb', :layout => false }
     end
   end
-
+  
   def about
     @title = t 'site.about_cyloop'
     render "pages/#{site_code}/about"
