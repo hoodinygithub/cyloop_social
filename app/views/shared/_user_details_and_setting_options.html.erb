@@ -1,6 +1,10 @@
 <div class="follower_info" style='width:236px' >
   <b>
-    <%= link_to(truncate(item.to_s, :length => 35), item, :title => item) rescue link_to(item, item) %>
+    <% if item.is_a?(Hash) %>
+      <%= link_to(truncate(item[:name], :length => 35), item, :title => item) rescue link_to(item, item) %>
+    <% elsif item.is_a? User or item.is_a? Artist %>
+      <%= link_to(truncate(item.name, :length => 35), item, :title => item) rescue link_to(item, item) %>
+    <% end %>
     </b>
     <br/>
     <span>
