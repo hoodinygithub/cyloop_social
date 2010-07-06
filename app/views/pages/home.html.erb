@@ -10,6 +10,11 @@
       success: function(response){
         $("div#recommended_items").empty();
         $("div#recommended_items").append(response);
+        $('div#recommended_items .artist_box').hover(function() {
+          $(this).addClass('hover');
+        }, function() {
+          $(this).removeClass('hover');
+        });
     		$('#recommended_stations_loader').fadeOut('slow', function(){			
     			$('#recommended_items').fadeIn('slow');
     		});		
