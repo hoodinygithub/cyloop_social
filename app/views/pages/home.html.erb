@@ -2,7 +2,21 @@
 <% content_for :head do %>
   <script type="text/javascript" charset="utf-8" src="<%= logged_in %>"></script>
   <script type="text/javascript" charset="utf-8" src="/flash.js"></script>
-  <script type="text/javascript" charset="utf-8" src="/home.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function(){
+    $.ajax({
+      type : "GET",
+      url  : "/home/recommended_stations",
+      success: function(response){
+        $("div#recommended_items").empty();
+        $("div#recommended_items").append(response);
+    		$('#recommended_stations_loader').fadeOut('slow', function(){			
+    			$('#recommended_items').fadeIn('slow');
+    		});		
+      }
+    });
+  });
+  </script>
 <% end %>
 
 <%= render :partial => 'pages/home_modules/slide_banner' %>

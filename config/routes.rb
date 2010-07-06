@@ -13,7 +13,7 @@ ActionController::Routing::Routes.draw do |map|
   map.process_with_silence 'fitter_happier/process_with_silence', :controller => 'fitter_happier', :action => "process_with_silence"
 
 
-  map.home_recommendations_callback '/home.js', :controller => 'pages', :action => 'home', :format => 'js'
+  map.home_recommended_stations '/home/recommended_stations', :controller => 'pages', :action => 'home_recommended_stations'
   map.home_flash_callback '/flash.js', :controller => 'pages', :action => 'flash_callback', :format => 'js'
   map.header_state_callback '/header.js', :controller => 'pages', :action => 'header_callback', :format => 'js'
 

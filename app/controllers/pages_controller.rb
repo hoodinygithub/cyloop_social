@@ -10,9 +10,6 @@ class PagesController < ApplicationController
       format.html do
         @latest_stations       = current_site.user_stations.latest
 
-        # Hack to handle nil values from rec engine
-        @recommended_stations = transformed_recommended_stations(6, 40)
-
         @top_abstract_stations = current_site.top_abstract_stations(6)
         #@top_user_stations     = current_site.top_user_stations(15).uniq_by(&:abstract_station_id)[0..5] rescue []
         @top_user_stations     = current_site.top_user_stations
@@ -53,6 +50,11 @@ class PagesController < ApplicationController
 
     end
   end
+  
+  def home_recommended_stations
+    @recommended_stations = transformed_recommended_stations(6, 12)
+    render :partial => 'shared/abstract_station', :collection => @recommended_stations, :locals => { :columns => 6 }
+  end  
 
   def flash_callback
     respond_to do |format|
