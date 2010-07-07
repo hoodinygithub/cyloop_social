@@ -378,7 +378,9 @@ fr_CA:
       dashboard: Tableau de bord
       subscriptions: Abonnements
       playlists: Listes de lecture
-      followers: sont fans
+      followers: Sont fans
+      myfollowers: Ils sont mes fans
+      profile_followers: profils sont fans
       activity: "Mises \xC3\xA0 jour"
       albums: Albums
       account_settings: "Param\xC3\xA8tres du compte"

@@ -43,7 +43,7 @@ module DashboardsHelper
     [{:menu => :home,          :label => "#{t('profile.navigation.home')}",        :url => links[:home]      },
      {:menu => :stations,      :label => "#{t('profile.navigation.stations')}",    :url => links[:stations]  },
      # {:menu => :activity,      :label => "#{t('profile.navigation.activity')}",    :url => links[:activities]},
-     {:menu => :followers,     :label => "#{t('profile.navigation.followers')}",   :url => links[:followers] },
+     {:menu => :followers,     :label => "#{t('profile.navigation.myfollowers')}",   :url => links[:followers] },
      {:menu => :following,     :label => "#{t('profile.navigation.following')}",   :url => links[:following] },
      {:menu => :settings, :label => "#{t('profile.navigation.account_settings')}", :url => links[:settings]}]
   end

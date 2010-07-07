@@ -1217,6 +1217,7 @@ Base.header_search.dropdown = function() {
       var form_values = jQuery("#header_search_form").serializeArray();
       var q = Base.header_search.getFieldValue(form_values,'q');
       if(keyCode == 37 || keyCode == 38 || keyCode == 39 || keyCode == 40){
+	      jQuery('.search_results_ajax').hide();
         return;
 	  }
       if(keyCode == 13 || keyCode == 27 || q.length <= 1){

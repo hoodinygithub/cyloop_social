@@ -351,6 +351,8 @@ es_MX:
       subscriptions: Subscripciones
       stations: Radios
       followers: Seguidores
+      myfollowers: Seguidores
+      profile_followers: Seguidores
       playlists: Playlists
       albums: Albumes
       activity: Actividad

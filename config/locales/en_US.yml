@@ -358,6 +358,8 @@ en_US:
       subscriptions: Subscriptions
       playlists: Playlists
       followers: Followers
+      myfollowers: Followers
+      profile_followers: Followers
       activity: Activity
       albums: Albums
       account_settings: Account Settings
