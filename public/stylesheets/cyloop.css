@@ -425,8 +425,11 @@ img.artist_icon_box.tiny {
 
 .search_results_ajax {
 	display: none;
-	float: right;
-	margin-right: 10px;
+	float:none;
+	left:260px;
+	margin-right:10px;
+	position:relative;
+	top:-20px;
 }
 
 #pages {
