@@ -12,7 +12,11 @@
       <% followings.each_with_index do |follow, index| %>
         <div class="small_thumb<%= " last_thumb" if index == 3 or index == 7 %>">
           <%= link_to avatar_for(follow, :small, :class => "spaced_img small", :disable_default_css => true, :width => "50px", :height => "50px"), follow %>
-          <%= link_to truncate(follow.name,:length => 18), follow %>
+          <% if follow.name.length >= 11 and follow.name.split[0].length >= 11 %>
+            <%= link_to truncate(follow.name,:length => 11), follow %>
+          <% else %>
+            <%= link_to truncate(follow.name,:length => 18), follow %>
+        <% end %>
         </div>
         <% if index == 3 %>
           <br class="clearer" />
