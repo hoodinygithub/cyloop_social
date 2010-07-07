@@ -1056,3 +1056,6 @@ top:6px;
 #recommended_items {
 	display: none;
 }
+.follows_count{
+  font-weight: bold;
+}
