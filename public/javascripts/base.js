@@ -1220,7 +1220,7 @@ Base.header_search.dropdown = function() {
         return;
 	  }
       if(keyCode == 13 || keyCode == 27 || q.length <= 1){
-        jQuery('.search_results_ajax').show();
+        jQuery('.search_results_ajax').hide();
         jQuery('.search_results_box').hide();
         return;
   	  }
@@ -1236,12 +1236,12 @@ Base.header_search.autocomplete = function(last_value) {
   var form_values = jQuery("#header_search_form").serializeArray();
   var q = Base.header_search.getFieldValue(form_values,'q');
   if( last_value != q || q == ''){
-    jQuery('search_results_ajax').hide();
+    jQuery('.search_results_ajax').hide();
     return;
   }
   jQuery.get('/search/all/' + q, function(data) {
-      jQuery('.search_results_box').html(data);
-      jQuery('search_results_ajax').hide();
+		 jQuery('.search_results_ajax').hide();
+     jQuery('.search_results_box').html(data);
   });
 };
 
