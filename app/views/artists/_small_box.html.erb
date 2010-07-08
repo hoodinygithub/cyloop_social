@@ -5,7 +5,7 @@
     
     <%= link_to(image_tag("#{ENV['ASSETS_URL']}#{artist.image}", :class => "spaced_img tiny", :alt => artist.nick_name, :title => truncate(artist.nick_name, :length => 10)), artist_url(artist), :alt => artist.nick_name) %>
     
-    <%= link_to(truncate(artist.nick_name, :length => 10), artist_url(artist), :alt => artist.nick_name) %>
+    <%= link_to(truncate(artist.nick_name, :length => 25), artist_url(artist), :alt => artist.nick_name) %>
 </div>
 
 <% if defined? clearer %>

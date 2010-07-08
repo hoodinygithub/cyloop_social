@@ -12,7 +12,7 @@ module DashboardsHelper
      {:menu => :stations,      :label => "#{t('profile.navigation.stations')}",   :url => links[:stations]  },
      # {:menu => :albums,        :label => "#{t('profile.navigation.albums')}",     :url => links[:albums]},
      # {:menu => :activity,      :label => "#{t('profile.navigation.activity')}",   :url => links[:activities]},
-     {:menu => :followers,     :label => "#{t('profile.navigation.followers')}",  :url => links[:followers] }]
+     {:menu => :followers,     :label => "#{t('profile.navigation.myfollowers')}",  :url => links[:followers] }]
   end
   
   def user_nav_links
@@ -27,7 +27,7 @@ module DashboardsHelper
     [{:menu => :home,          :label => "#{t('profile.navigation.home')}",       :url => links[:home]      },
      {:menu => :stations,      :label => "#{t('profile.navigation.stations')}",   :url => links[:stations]  },
      # {:menu => :activity,      :label => "#{t('profile.navigation.activity')}",   :url => links[:activities]},
-     {:menu => :followers,     :label => "#{t('profile.navigation.followers')}",  :url => links[:followers] },
+     {:menu => :followers,     :label => "#{t('profile.navigation.myfollowers')}",  :url => links[:followers] },
      {:menu => :following,     :label => "#{t('profile.navigation.following')}",  :url => links[:following] }]
   end
   
