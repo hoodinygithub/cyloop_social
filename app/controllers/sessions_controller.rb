@@ -72,7 +72,7 @@ private
         self.current_user = account      
         AccountLogin.create!( :account_id => account.id, :site_id => current_site.id )
 
-        if remember_me == "1"
+        if remember_me == "1" || !wlid_web_login?
           current_user.remember_me unless current_user.remember_token?
           cookies[:auth_token] = { :value => self.current_user.remember_token , :expires => self.current_user.remember_token_expires_at }
         end
