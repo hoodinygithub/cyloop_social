@@ -23,5 +23,5 @@
 <% end %>
 <%= render_messenger_live %>
 <%= render :partial => "shared/google_analytics" %>
-<%= render 'shared/cyloop_tracking.html.erb' if site_includes(:cyloop) %>
+<%= render 'shared/cyloop_tracking.html.erb' if site_includes(:cyloop) || site_includes(:msnlatino) %>
 
