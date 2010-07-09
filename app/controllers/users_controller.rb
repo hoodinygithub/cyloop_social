@@ -94,7 +94,8 @@ class UsersController < ApplicationController
         UserNotification.send_reset_notification(
           :user_id => user.id,
           :password => user.reset_password,
-          :site_id => request.host)
+          :site_id => request.host,
+          :locale => current_site.default_locale)
         flash[:success] = t('forgot.reset_message_sent')
 
         redirect_back_or_default("/")

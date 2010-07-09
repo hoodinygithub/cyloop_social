@@ -1018,7 +1018,7 @@ es_AR:
         cuenta, s\xC3\xB3lo ignora este email y sigue utilizando tu contrase\xC3\xB1a actual normalmente como hasta ahora.\r\n\
         \r\n\
         Si efectivamente deseas cambiar tu contrase\xC3\xB1a, por favor utiliza este enlace:\r\n\
-        {{reset_link}}\r\n\
+        {{password}}\r\n\
         \r\n\
         Consejo: crea una contrase\xC3\xB1a que contenga una mezcla de caracteres tanto de letras como de n\xC3\xBAmeros, para que sea m\xC3\xA1s segura."
   footer: 
