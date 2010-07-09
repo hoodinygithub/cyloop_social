@@ -7,7 +7,7 @@
     <%= yield :head %>
     <%= render '3rd_party_branding/msn_head' if current_site.is_msn? %>
   </head>
-  <body locale="<%= current_site.default_locale %>" market="<%= current_site.code %>"<%= current_site.is_msn? ? ' class="msn"' : '' %>>
+  <body locale="<%= current_site.default_locale %>" market="<%= current_site.code %>"<%= current_site.is_msn? ? " class=\"msn  #{current_site.code}\"" : '' %>>
     <%= render_messenger_app %>
     <div id="container">
       <%= render :partial => 'shared/header', :locals => {:logged_out => true} %>

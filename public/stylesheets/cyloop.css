@@ -862,6 +862,9 @@ div#now_playing_user_station {
 }
 
 /* msnlatam 3rd_party_branding */
+body.msnlatam{
+  background: url("/images/bg.jpg") repeat-x !important;
+}
 #msn_header.msnlatam{
   background: #333333 !important;
   background-image: none !important;
