@@ -1,0 +1,9 @@
+<div class="top_playlists_column">
+  <h1><%= t("modules.top_playlists.title").upcase %></h1>
+  
+  <% cache("#{site_cache_key}/modules/home/top_playlists/#{@top_playlists.size}", :expires_in => EXPIRATION_TIMES["top_modules_playlists"]) do %>
+    <ul class="list_items">
+      <%= render :partial => 'shared/top_playlist_item', :collection => @top_playlists %>
+    </ul>
+  <% end %>
+</div>

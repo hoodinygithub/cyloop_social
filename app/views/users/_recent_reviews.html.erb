@@ -1,0 +1,64 @@
+<% unless @recent_reviews.empty? %>
+  <br/><br/>
+  <h1><%= possessive :recent_reviews %></h1>
+  <% @recent_reviews.each_with_index do |review, index| %>
+  <div class="albums_item">
+      <div class="artist_box png_fix">
+          <%= link_to avatar_for(review.commentable, :new_medium), mix_radio_path(:station_id => review.commentable.station.id) %>
+          <div class="overlay">
+              <div class="hidden">
+                  <%= link_to avatar_for(review.commentable.owner, :tiny) %>
+                  <span>
+                    <span class="blue"><%= link_to truncate(review.commentable.owner.name,15), review.commentable.owner rescue ""%></span><br/>
+                    <%= t('basics.overlay_created_at', :when => distance_of_time_in_words_to_now(review.commentable.updated_at))) %>
+                    
+                  </span>
+                  <br class="clearer" />
+                  <div class="tags_contains">
+                    <% unless review.commentable.cached_tag_list.blank? %>
+                    <div><%= tag_links(review.commentable, @active_scope) %></div>
+                    <% end %>
+                    <% if review.commentable.songs_count > 0 %>
+                    <div class="station_contains"><%= station_contains(review.commentable) %></div>
+                    <% end %>
+                  </div>
+              </div>
+            
+              <div class="visible">
+                <%= link_to image_tag('play_button.png', :class => "png_fix play_button"), mix_radio_path(:station_id => review.commentable.station.id) %>                
+                <%= link_to truncate(review.commentable.name, 15, '...'), 
+                            mix_radio_path(:station_id => review.commentable.station.id),
+                            :alt => review.commentable.name %><br/>
+                <%= rating(review.commentable, false, "rating_#{review.commentable.id}_#{review.id}_bottom") %>
+              </div>
+          </div><!--/end overlay -->
+      </div><!--/end artist_box -->
+    
+      <div class="reviews">
+          <b><%= t('reviews.reviewed_by') %>: <%= link_to review.user, user_path(review.user) %></b><br/>
+        
+          <span class="grey"><%= nice_elapsed_time(review.updated_at) %> <%= t('basics.ago') %></span><br/>
+          <span class="review_creator_stars2">
+          <%= rating(review.commentable)%>
+          <!-- <span class="review_creator_stars2">
+            <a href="#"><img src="images/star_blue.png" class="png_fix" alt="" /></a> <a href="#"><img src="images/star_blue.png" class="png_fix" alt="" /></a> <a href="#"><img src="images/star_grey.png" alt="" /></a> <a href="#"><img src="images/star_grey.png" alt="" /></a> <a href="#"><img src="images/star_grey.png" alt="" /></a>
+            </span> --></span><br/>
+
+          <div class="review_text">
+            <small><%= review.comment %></small>
+          </div>        
+          <div class="review_item">
+              <%= avatar_for(review.commentable.owner, :small, :class => 'review_icon')%>
+              <div class="review_creator">
+                  <b><%= link_to review.commentable.owner.name, user_path(review.commentable.owner) %></b><br/>
+                  <%= review.commentable.owner.country.name if review.commentable.owner.country %><br/>
+              </div>
+
+              <br class="clearer" />
+          </div><!--/end review_item -->
+      </div><!--/end reviews -->
+    
+      <div class="clearer"></div>
+  </div><!--/end albums_item -->
+  <% end %>  
+<% end %>

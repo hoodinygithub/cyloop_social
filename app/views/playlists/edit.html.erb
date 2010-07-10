@@ -1,0 +1,85 @@
+<% content_for :head do %>
+  <%= stylesheet_link_tag 'playlist_create' %>
+  <%= javascript_include_tag 'jquery.ui' %>
+  <%= javascript_include_tag 'playlist_create' %>
+  <%= javascript_include_tag 'AC_OETags' %>
+<% end %>
+
+<div id="main_content">
+
+  <%= form_tag playlist_edit_path(@playlist), :class => "account_settings search_music", :id => "update_playlist_form", :method => :post, :multipart => true %>
+  <input type="hidden" name="item_ids" value="">
+
+  <div class="two_columns">
+    <h1><%= t('playlists.edit') %></h1>
+    <div class="form_row last">
+      <h2><%= t('playlists.name_your_playlist') %></h2>
+
+      <div class="grey_round_box align_center">
+        <input type="text" class="input full_width3" name="playlist[name]" value="<%= @playlist.name %>"/>
+      </div>
+    </div><!--/end form_row -->
+
+    <div class="form_row last">
+      <h2><%= t('playlists.tag_your_playlist') %> <small class="grey"><%= t('playlists.seperated_commas') %></small></h2>
+
+      <div class="grey_round_box align_center">
+        <input type="text" class="input full_width3" value="<%= @playlist.tags.join(',') %>" name="playlist[tags]" />
+      </div>
+    </div><!--/end form_row -->
+
+    <h2><%= t('playlists.search_for_music') %></h2>
+    <%= render :partial => 'playlists/create/search_box' %>
+    <div id="search_results_container">
+      <%= render :partial => 'playlists/create/search_results' %>
+    </div>
+    <div id="playlist_recommended_artists_container">
+      <%= render :partial => 'playlists/create/recommendations' %>
+    </div>
+  </div><!--/end two_columns -->
+
+  <div id="right_column">
+    <h2><%= t('playlists.picture') %></h2>
+    <div class="playlist_image_container">
+      <%= avatar_for @playlist, :album, :class => "icon playlist valign_middle float_left", :id => "update_layer_avatar" %>
+      &nbsp;
+      <label class='label_holder'>
+        <a href="#" id="avatar_upload_button" class="blue_button valign_middle"><span><span><%= t('account_settings.update') %></span></span></a>
+        <input id="playlist_avatar" type="file" class="file" name="playlist[avatar]" size="30" onchange="playlist_image_preview();"/>
+      </label>
+      <div id="uploaded_image_name">filename</div>
+    </div>
+
+    <h1><%= t('playlists.rules') %></h1>
+    <%= render :partial => 'playlists/create/track_list' %>
+  </div><!--/end right_column -->
+
+  </form>
+
+  <div class="clearer"></div>
+
+  <div id="stream_connector">
+    <script type="text/javascript" charset="utf-8">
+    <% if @edited %>
+    $('#edit_conf_popup').fadeIn('fast');
+    <% end %>
+
+    var flashvars = "playerId=<%= @player_id %>";
+    AC_FL_RunContent(
+      "src", "/flash/stream_connect",
+      "wmode", "opaque",
+      "width", "1",
+      "height", "1",
+      "align", "middle",
+      "id", "stream_connect",
+      "quality", "high",
+      "bgcolor", "#FFFFFF",
+      "name", "stream_connect",
+      "allowScriptAccess", "sameDomain",
+      "type", "application/x-shockwave-flash",
+      "pluginspage", "http://www.adobe.com/go/getflashplayer",
+      "flashVars", flashvars
+    );
+    </script>
+  </div>
+</div>

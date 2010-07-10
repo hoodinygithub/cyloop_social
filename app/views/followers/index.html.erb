@@ -1,16 +1,14 @@
-<%= render 'shared/ajax_modules' %>
 <% content_for :title do %>
-  <% if current_user == profile_account %>
-    <%= t('dashboards.followers.my_followers') %>
-  <% else %>
-    <%= t('dashboards.followers.user_followers', :user_name => artist_or_user_name(profile_account)) %>
-  <% end %>
+  <%= possessive :followers %>
 <% end %>
 
 <% content_for :sorting do %>
-  <%= sort_link_to :latest %> / 
+  <%= sort_link_to :latest %> /
   <%= sort_link_to :alphabetical %>
 <% end %>
 
-<%= render 'shared/internal_content' %>
+<% content_for :list do %>
+  <%= render 'followings/list'%>
+<% end %>
 
+<%= render 'shared/list' %>

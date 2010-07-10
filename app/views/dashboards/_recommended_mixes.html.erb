@@ -1,0 +1,37 @@
+<h1><%= title %></h1>
+
+<% @latest_mixes.each_with_index do |playlist, index| %>
+  <div class="artist_box png_fix <%= "last_box" if (index+1) % 3 == 0 %>">
+    <%= avatar_for(playlist, :new_medium)%>
+
+    <div class="overlay">
+      <div class="hidden">
+        <%= link_to avatar_for(playlist.owner, :tiny), user_path(playlist.owner) %>
+        <span>
+          <span class="bold"><%= link_to truncate(playlist.owner.name,15), playlist.owner rescue ""%></span><br/>
+          <%= t('basics.overlay_created_at', :when => distance_of_time_in_words_to_now(playlist.updated_at)) %>
+        </span>
+        <br class="clearer" />
+        <div class="tags_contains">
+          <% unless playlist.cached_tag_list.blank? %>
+          <div><%= tag_links(playlist, @active_scope) %></div>
+          <% end %>
+          <% if playlist.songs_count > 0 %>
+          <div class="station_contains"><%= station_contains(playlist) %></div>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="visible">
+        <%= link_to image_tag('play_button.png', :class=> "play_button png_fix"), mix_radio_path(:station_id => playlist.station.id) %>
+        <%= link_to truncate(playlist.name, 15, '...'), mix_radio_path(:station_id => playlist.station.id), :alt => playlist.name, :class => 'white' %><br />       
+        <%= rating(playlist) %>
+      </div>
+    </div><!--/end overlay -->
+  </div><!--/end artist_box -->
+  
+  <% if (index+1) % 3 == 0 %>
+    <br class="clearer" />
+  <% end %>
+<% end %>
+<br class="clearer" />

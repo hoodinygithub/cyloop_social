@@ -397,11 +397,6 @@ img.artist_icon_box.tiny {
   height: 30px;
 }
 
-.artist_box .overlay a,
-.overlay_content a {
-  color: #00A5F8;
-}
-
 #msn_footer {
   width: 952px;
   margin: 10px auto;
@@ -743,14 +738,14 @@ body.msn div#container {
 	margin-left: -210px;
 }
 
-div#homepage_content .tabs_column {
+/*div#homepage_content .tabs_column {
 	margin-top: 30px;
 }
 
 div#homepage_content .tabs_column .tabs {
 	display: none;
 }
-
+*/
 div#top_stations {
 	padding-top: 22px;
 }
@@ -1060,6 +1055,1135 @@ top:6px;
 #recommended_items {
 	display: none;
 }
+
 .follows_count{
   font-weight: bold;
+}
+
+.albums_item {
+   padding: 0px 0px 7px;
+   margin-bottom: 17px;
+   border-bottom: solid 1px #ccc;
+   position: relative;
+   zoom: 1;
+}
+
+div.albums_item div.reviews {
+    width: 300px;
+    float: right;
+    color: #333;
+    position: relative;
+}
+
+.reviews .title {
+    background: #000;
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 5px;
+    line-height: 14px;
+    margin-bottom: 8px;
+}
+
+.reviews .reviews_stars {
+    float: right;
+}
+
+.review_item {
+    margin-bottom: 16px;
+    position: relative;
+    zoom: 1;
+}
+
+.review_item .review_icon {
+    float: left;
+}
+
+.review_item .review_creator {
+    float: left;
+    width: 100px;
+    /* 90px*/
+    padding-left: 8px;
+    font-size: 11px;
+    line-height: 15px;
+}
+
+.review_creator_large {
+    width: 240px;
+    float: left;
+    padding-left: 10px;
+}
+
+.review_item .review_text {
+    float: right;
+    width: 120px;
+    /* 130px*/
+    padding-right: 10px;
+    font-size: 11px;
+    line-height: 13px;
+    position: relative;
+    z-index: 1;
+}
+
+.reviews .view_all {
+    text-align: right;
+    margin-top: -14px;
+}
+
+.reviews small {
+    font-size: 11px;
+    line-height: 13px;
+}
+
+.review_creator_stars2 {
+    display: inline-block;
+    padding: 5px 0px;
+}
+
+.rev_text {
+    padding: 10px 0px;
+		height: 31px;
+		overflow: hidden;
+}
+
+.comments_list {
+    list-style-type: none;
+    padding-bottom: 10px;
+}
+
+.comments_list li {
+    padding: 5px 0px;
+    border-bottom: solid 1px #d9d9d9;
+}
+
+.comments_list .comment_icon {
+    float: left;
+}
+
+.comments_list .comment_text {
+    float: right;
+    width: 400px;
+    word-wrap: break-word;
+}
+
+.comments_list .comment_text span.grey {
+    font-size: 11px;
+    line-height: 14px;
+}
+
+.ad_box {
+    margin-bottom: 20px;
+}
+
+.box_content .small_thumb {
+    margin-right: 12px;
+}
+
+.small_thumb.last_thumb, .medium_thumb.last_thumb {
+    float: right;
+    margin-right: 0px;
+}
+
+.top_mixes_list {
+    list-style-type: none;
+}
+
+.top_mixes_list li {
+    padding-bottom: 10px;
+}
+
+.top_mixes_list li .top_mix_image {
+    float: left;
+}
+
+.top_mixes_list li .top_mix_text {
+    float: right;
+    width: 235px;
+    font-size: 11px;
+    line-height: 14px;
+}
+
+.top_mixes_list li .top_mix_text big {
+    display: inline-block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 14px;
+    line-height: 18px;
+}
+
+.badges_list {
+    position: relative;
+    padding-bottom: 20px;
+    zoom: 1;
+}
+
+.recent_activity_list {
+    list-style-type: none;
+}
+
+.recent_activity_list li {
+    padding-bottom: 12px;
+    font-size: 12px;
+    line-height: 14px;
+}
+
+.albums_item {
+    padding: 0px 0px 7px;
+    margin-bottom: 17px;
+    border-bottom: solid 1px #ccc;
+    position: relative;
+    zoom: 1;
+}
+
+.albums_item.reviews_list {
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.albums_item.reviews_list .review_item {
+    margin-bottom: 0px;
+}
+
+.review_close {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    z-index: 1;
+}
+
+.artist_box {
+    width: 150px;
+    height: 150px;
+    position: relative;
+    float: left;
+    margin: 0px 10px 5px 0px;
+    zoom: 1;
+}
+
+.artist_box.last_box {
+    float: right;
+    margin-right: 0px;
+}
+
+.artist_box .overlay {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    background: url("../images/overlay.png") repeat left top;
+    width: 100%;
+    color: #fff;
+    z-index: 3;
+}
+
+.artist_box .overlay .visible {
+    color: #00a5f8;
+    padding: 5px 8px;
+    font-weight: bold;
+    height: 30px;
+    zoom: 1;
+}
+
+.artist_box .play_button {
+    float: right;
+}
+
+.artist_box .hidden {
+    padding: 10px 8px 0px;
+    height: 100px;
+    font-size: 11px;
+    line-height: 14px;
+    display: none;
+}
+
+.artist_box.hover .hidden {
+    display: block;
+}
+
+.artist_box .artist_icon {
+    float: left;
+    border: solid 2px #fff;
+    margin-right: 6px;
+    margin-bottom: 14px;
+}
+
+.artist_box .overlay .visible.fh {
+    height: 30px;
+}
+
+.artist_box.hover .overlay .visible.fh {
+    display: none;
+}
+
+.artist_box .overlay .visible.fh .play_button {
+    position: relative;
+    top: 2px;
+}
+
+.artist_box .overlay .hidden.fh {
+    height: 140px;
+}
+
+.artist_box .overlay .hidden.fh b {
+    font-size: 12px;
+}
+
+.artist_box.pl {
+    margin-right: 5px;
+}
+
+.artist_box.pl.last_box {
+    margin-right: 0px;
+}
+
+.playlist_item .artist_box.empty_item { 
+    background: none repeat scroll 0 0 #D8D8D8;
+    height: 150px;
+    width: 201px;
+}
+
+/*.tags_contains {
+  line-height: 20px;
+  height: 53px;
+}
+*/
+.tag_links {
+  line-height: 20px;
+}
+
+.box_buttons {
+  position: absolute;
+  bottom: 5px;
+  right: 8px;
+}
+
+div.sorting {
+	margin-bottom: 20px;
+}
+
+div.mix_sorting_pad {
+	height: 10px;
+}
+
+.small_btn  {
+	display:inline-block;
+	height:20px;
+	overflow:hidden;
+	text-indent:1000px;
+	width:20px;
+}
+.copy_btn {
+	background:url("/images/duplicate_button_small.png") no-repeat scroll left top transparent;
+}
+
+.edit_btn {
+	background:url("/images/edit_button_small.png") no-repeat scroll left top transparent;
+}
+
+.tabs a {
+	background: url("../images/tab_active.gif") no-repeat scroll left top transparent;
+	color: #FFFFFF;
+	display: block;
+	font-weight: bold;
+	height: 36px;
+	line-height: 36px;
+	text-align: center;
+	text-transform: uppercase;
+	width: 152px;
+}
+
+.tabs_content {
+	height: 278px;
+}
+
+.tabs a:hover, .tabs a.active {
+	background:url("../images/tab_inactive.gif") no-repeat scroll left top transparent;
+	color:#333333;
+	text-decoration:none;
+}
+
+#create_mix_content {
+	display: none;
+}
+
+.artist_box {
+	z-index: 0;
+}
+
+.content_search_results_ajax.home {
+	left: 241px;
+	top: 208px;	
+}
+
+.album_text2 {
+	text-align: left;
+}
+
+.playlist_items {
+	margin-bottom: 24px;
+}
+
+.playlist_item {
+	float:left;
+	margin:0 13px 10px 0;
+}
+
+.big_item_number {
+	background:none repeat scroll 0 0 #999999;
+	color:#FFFFFF;
+	display:block;
+	float:left;
+	font-size:43.5px;
+	font-weight:bold;
+	height:130px;
+	line-height:45px;
+	margin-right:1px;
+	padding:10px 0;
+	text-align:center;
+	text-decoration:none;
+	width:50px;
+}
+.big_item_number:hover {
+   background: #00a5f8;
+   text-decoration: none;
+}
+
+.playlist_item .artist_box {
+	margin:0;
+}
+
+
+.latest_playlists_column {
+    width: 290px;
+    float: right;
+}
+
+.list_items .badge_box {
+    display: inline-block;
+    width: 70px;
+    float: left;
+    margin-right: 1px;
+}
+
+/*.latest_playlists_column .list_items li {
+    padding: 10px 0px;
+}
+
+.latest_playlists_column .list_items .item_text big {
+    display: inline-block;
+    margin-bottom: 6px;
+    color: #333;
+}
+*/
+.two_columns.mixes {
+	position: relative;
+}
+
+.top_playlists_column {
+    width: 250px;
+    float: left;
+    margin-right: 20px;
+}
+
+.top_playlists_column .list_items .item_text {
+    width: 150px;
+}
+
+.two_columns .tags_column, .two_columns .top_playlists_column {
+    margin-right: 15px;
+}
+
+.tags_column  {
+	float:left;
+	margin-right:20px;
+	width:150px;
+}
+
+.tag_css1 { font-size: 12px !important; }
+.tag_css2 { font-size: 14px !important; }
+.tag_css3 { font-size: 18px !important; }
+.tag_css4 { font-size: 22px !important; }
+.tag_css5 { font-size: 26px !important; }
+
+.mix_tags a{
+  display: inline-block;
+  text-decoration: none;
+  font-family: Arial;
+  text-align: center;
+}
+
+.list_items .item_number {
+	background:none repeat scroll 0 0 #999999;
+	color:#FFFFFF;
+	display:inline-block;
+	float:left;
+	font-size:15.5px;
+	font-weight:bold;
+	height:40px;
+	line-height:20px;
+	margin-right:1px;
+	padding:5px 0;
+	text-align:center;
+	text-decoration:none;
+	width:20px;
+}
+
+.list_items {
+    list-style-type: none;
+}
+
+.list_items li {
+    padding: 15px 0px;
+    border-bottom: solid 1px #ededed;
+    zoom: 1;
+}
+
+.list_items .item_number {
+    display: inline-block;
+    width: 20px;
+    height: 40px;
+    line-height: 20px;
+    float: left;
+    margin-right: 1px;
+    background: #999;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    font-size: 15.5px;
+    font-weight: bold;
+    padding: 5px 0px;
+		margin-top: 1px;
+}
+
+.list_items .item_number:hover {
+    background: #00a5f8;
+}
+
+.list_items .item_image {
+    position: relative;
+    display: inline-block;
+    float: left;
+}
+
+.list_items .play_icon {
+    position: absolute;
+    right: 1px;
+    bottom: 1px;
+}
+
+.list_items .item_text {
+    float: left;
+    font-size: 12px;
+    line-height: 13px;
+    padding-left: 5px;
+}
+
+.list_items .item_text a {
+    text-decoration: none;
+}
+
+.list_items .item_text a:hover {
+    text-decoration: underline;
+}
+
+.list_items .item_text big {
+    font-size: 14px;
+    line-height: 15px;
+}
+
+.list_items .item_text small {
+    font-size: 11px;
+    line-height: 11px;
+}
+
+.top_playlists_column .list_items .item_text {
+    width: 150px;
+}
+
+.list_items .rating {
+    display: inline-block;
+    padding-top: 2px;
+}
+
+.top_djs_column {
+    width: 200px;
+    float: left;
+}
+
+.top_djs_column .list_items .item_text {
+    width: 120px;
+}
+
+.latest_playlists_column {
+    width: 300px;
+    float: right;
+}
+
+.list_items .badge_box {
+    display: inline-block;
+    width: 70px;
+    float: left;
+    margin-right: 1px;
+}
+
+.latest_playlists_column .list_items li {
+    padding: 10px 0px;
+}
+
+.latest_playlists_column .list_items .item_text big {
+    display: inline-block;
+    margin-bottom: 6px;
+    color: #333;
+}
+
+.top_djs_column h1, .top_playlists_column h1 {
+	margin-bottom: 5px;
+}
+
+.playlist_item.last_item {
+    margin-right: 0px;
+    float: right;
+}
+
+.mixes .search_box .text_input_placeholder {
+	margin-left: 55px;
+}
+
+.mixes .create_box  {
+	left:71px;
+	position:absolute;
+	top:101px;
+	width:384px;
+}
+
+.follows_count{
+  font-weight: bold;
+}
+
+
+.albums_item {
+   padding: 0px 0px 7px;
+   margin-bottom: 17px;
+   border-bottom: solid 1px #ccc;
+   position: relative;
+   zoom: 1;
+}
+
+div.albums_item div.reviews {
+    width: 300px;
+    float: right;
+    color: #333;
+    position: relative;
+}
+
+.reviews .title {
+    background: #000;
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 5px;
+    line-height: 14px;
+    margin-bottom: 8px;
+}
+
+.reviews .reviews_stars {
+    float: right;
+}
+
+.review_item {
+    margin-bottom: 16px;
+    position: relative;
+    zoom: 1;
+}
+
+.review_item .review_icon {
+    float: left;
+}
+
+.review_item .review_creator {
+    float: left;
+    width: 100px;
+    /* 90px*/
+    padding-left: 8px;
+    font-size: 11px;
+    line-height: 15px;
+}
+
+.review_creator_large {
+    width: 240px;
+    float: left;
+    padding-left: 10px;
+}
+
+.review_item .review_text {
+    float: right;
+    width: 120px;
+    /* 130px*/
+    padding-right: 10px;
+    font-size: 11px;
+    line-height: 13px;
+    position: relative;
+    z-index: 1;
+}
+
+.reviews .view_all {
+    text-align: right;
+    margin-top: -14px;
+}
+
+.reviews small {
+    font-size: 11px;
+    line-height: 13px;
+}
+
+.review_creator_stars2 {
+    display: inline-block;
+    padding: 5px 0px;
+}
+
+.rev_text {
+    padding: 10px 0px;
+}
+
+.comments_list {
+    list-style-type: none;
+    padding-bottom: 10px;
+}
+
+.comments_list li {
+    padding: 5px 0px;
+    border-bottom: solid 1px #d9d9d9;
+}
+
+.comments_list .comment_icon {
+    float: left;
+}
+
+.comments_list .comment_text {
+    float: right;
+    width: 400px;
+    word-wrap: break-word;
+}
+
+.comments_list .comment_text span.grey {
+    font-size: 11px;
+    line-height: 14px;
+}
+
+.ad_box {
+    margin-bottom: 20px;
+}
+
+.box_content .small_thumb {
+	margin-right:19px;
+}
+
+.small_thumb.last_thumb, .medium_thumb.last_thumb {
+    float: right;
+    margin-right: 0px;
+}
+
+.top_mixes_list {
+    list-style-type: none;
+}
+
+.top_mixes_list li {
+    padding-bottom: 10px;
+}
+
+.top_mixes_list li .top_mix_image {
+    float: left;
+}
+
+.top_mixes_list li .top_mix_text {
+    float: right;
+    width: 235px;
+    font-size: 11px;
+    line-height: 14px;
+}
+
+.top_mixes_list li .top_mix_text big {
+    display: inline-block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 14px;
+    line-height: 18px;
+}
+
+.badges_list {
+    position: relative;
+    padding-bottom: 20px;
+    zoom: 1;
+}
+
+.recent_activity_list {
+    list-style-type: none;
+}
+
+.recent_activity_list li {
+    padding-bottom: 12px;
+    font-size: 12px;
+    line-height: 14px;
+}
+
+.albums_item {
+    padding: 0px 0px 7px;
+    margin-bottom: 17px;
+    border-bottom: solid 1px #ccc;
+    position: relative;
+    zoom: 1;
+}
+
+.albums_item.reviews_list {
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.albums_item.reviews_list .review_item {
+    margin-bottom: 0px;
+}
+
+.review_close {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    z-index: 1;
+}
+
+.artist_box {
+    width: 150px;
+    height: 150px;
+    position: relative;
+    float: left;
+    margin: 0px 10px 5px 0px;
+    zoom: 1;
+}
+
+.artist_box.last_box {
+    float: right;
+    margin-right: 0px;
+}
+
+.artist_box .overlay {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    background: url("../images/overlay.png") repeat left top;
+    width: 100%;
+    color: #fff;
+    z-index: 3;
+}
+
+.artist_box .overlay .visible {
+    color: #00a5f8;
+    padding: 5px 8px 5px 5px;
+    font-weight: bold;
+    height: 30px;
+    zoom: 1;
+}
+
+.artist_box .play_button {
+    float: right;
+}
+
+.artist_box .hidden {
+    padding: 10px 8px 0px;
+    height: 100px;
+    font-size: 11px;
+    line-height: 14px;
+    display: none;
+}
+
+.artist_box.hover .hidden {
+    display: block;
+}
+
+.artist_box .artist_icon {
+    float: left;
+    border: solid 2px #fff;
+    margin-right: 6px;
+    margin-bottom: 14px;
+}
+
+.artist_box .overlay .visible.fh {
+    height: 30px;
+}
+
+.artist_box.hover .overlay .visible.fh {
+    display: none;
+}
+
+.artist_box .overlay .visible.fh .play_button {
+    position: relative;
+    top: 2px;
+}
+
+.artist_box .overlay .hidden.fh {
+    height: 140px;
+}
+
+.artist_box .overlay .hidden.fh b {
+    font-size: 12px;
+}
+
+.artist_box.pl {
+    margin-right: 5px;
+}
+
+.artist_box.pl.last_box {
+    margin-right: 0px;
+}
+
+.playlist_item .artist_box.empty_item { 
+    background: none repeat scroll 0 0 #D8D8D8;
+    height: 150px;
+    width: 201px;
+}
+
+.tags_contains {
+  line-height: 14px !important;
+  height: 53px;
+}
+
+.tag_links {
+  line-height: 20px;
+}
+
+.box_buttons {
+  position: absolute;
+  bottom: 5px;
+  right: 8px;
+}
+
+div.sorting {
+	margin-bottom: 20px;
+}
+
+div.mix_sorting_pad {
+	height: 10px;
+}
+
+.small_btn  {
+	display:inline-block;
+	height:20px;
+	overflow:hidden;
+	text-indent:1000px;
+	width:20px;
+}
+.copy_btn {
+	background:url("/images/duplicate_button_small.png") no-repeat scroll left top transparent;
+}
+
+.edit_btn {
+	background:url("/images/edit_button_small.png") no-repeat scroll left top transparent;
+}
+
+.susbcriptions_list  {
+	list-style-type:none;
+	margin-bottom:35px;
+}
+
+.susbcriptions_list li {
+	border-bottom:1px solid #CCCCCC;
+	padding:10px 0;
+	position:relative;
+}
+
+.susbcriptions_list .susbcription_text {
+	float:right;
+	font-size:11px;
+	line-height:15px;
+	width:300px;
+}
+
+.susbcriptions_list big {
+	font-size:14px;
+	font-weight:bold;
+	line-height:16px;
+}
+
+.susbcription_creator {
+	font-size:11px;
+}
+
+.susbcription_creator .creator_text {
+	float:right;
+	width:240px;
+}
+
+.susbcription_creator b {
+	font-size:11px;
+}
+
+.reviews_box  {
+	-moz-border-radius:5px 5px 5px 5px;
+	background:url("/images/reviews_box_bg.gif") repeat-x scroll left top #F2F2F2;
+	border:1px solid #CCCCCC;
+	padding:10px;
+}
+
+.reviews_box .network_update textarea {
+	width:470px;
+}
+
+.network_text {
+	color:#191919;
+	float:left;
+	font-size:11px;
+	width:280px;
+}
+
+.rating_input  {
+	margin-top:10px;
+}
+
+.grey_round_box2 {
+	-moz-border-radius:4px 4px 4px 4px;
+	border:1px solid #CCCCCC;
+	float:left;
+	margin-left:15px;
+	padding:5px 10px;
+	vertical-align:middle;
+}
+
+.playlist_reviews {
+	list-style-type:none;
+	margin-bottom:15px;
+}
+
+.playlist_reviews li {
+	border-bottom:1px solid #EDEDED;
+	padding:10px 0;
+	position:relative;
+}
+
+.playlist_reviews li .info {
+	float:left;
+	width:110px;
+}
+
+.playlist_reviews li .text {
+	color:#333333;
+	float:right;
+	width:410px;
+}
+
+.playlist_reviews li .close_btn {
+	top:10px;
+}
+
+.reviews .title {
+	background:none repeat scroll 0 0 #B3B3B3;
+	color:#FFFFFF;
+	font-size:14px;
+	font-weight:bold;
+	line-height:14px;
+	margin-bottom:8px;
+	padding:5px;
+}
+
+.visible a.white {
+	margin-left:3px;
+}
+
+textarea.network_update_red {
+  border:10px solid red !important;
+}
+
+.rating_inputs {
+  float:right;
+}
+
+.playlist_reviews li .icon {
+  float:left;
+  margin-right:10px;
+}
+
+.network_red_msg {
+  background:none repeat scroll 0 0 red;
+  color:#FFFFFF;
+  font-weight:bold;
+  margin-left:15px;
+  padding:5px;
+  width:490px;
+}
+
+textarea.network_red_msg  {
+  border:10px solid red !important;
+  margin-left:0;
+}
+
+.network_update textarea {
+  margin-bottom:0;
+}
+
+.post_button {
+  margin-top:10px;
+}
+
+.red_round_box2 {
+  -moz-border-radius:4px 4px 4px 4px;
+  background:none repeat scroll 0 0 #FF0000;
+  border:1px solid #FF0000;
+  color:#FFFFFF;
+  float:left;
+  margin-left:15px;
+  padding:5px 10px;
+  vertical-align:middle;
+}
+
+.review_text {
+	height: 43px; 
+	overflow:hidden;
+}
+
+.big_btn_box{
+	display:block;
+	float:right;
+	margin-right:7px;
+	margin-top:6px;
+}
+
+.radio_station_row .station_buttons {
+	float:right;
+	padding-top:0px;
+}
+
+span.review_elapsed {
+  margin-bottom: -8px;   
+  display:block;
+}
+
+.review_creator_large  {
+  width:230px !important;
+}
+
+div.small_loading {
+  height: 25px;
+  width: 25px;
+  float: right;
+  background: url("../images/ajax_activity_indicators_download_animated_icon_animated_busy.gif") no-repeat left;    
+  overflow: auto;  
+  margin-top: -25px;
+}
+
+h1 div.small_loading {
+  margin-top: 0px !important;
+}
+
+.at_sorting {
+  margin-top: -5px !important;   
+}
+
+.albums_item.reviews_list  {
+  height: 150px;
+}
+
+.creator_and_date {
+	display: block; 
+	float: left; 
+	margin-left: 10px;
+}
+
+.station_contains {
+	margin-top:3px
 }

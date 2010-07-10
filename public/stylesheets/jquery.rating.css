@@ -1,0 +1,48 @@
+/* jQuery.Rating Plugin CSS - http://www.fyneworks.com/jquery/star-rating/ */
+div.star-rating{float:left;width:14px;height:14px;text-indent:-999em;cursor:pointer;display:block;background:transparent;overflow:hidden;margin:0 2px;}
+div.star-rating,div.star-rating a{background:url(/images/stars.png) no-repeat 0 0px}
+div.star-rating a{display:block;width:14px;height:100%;background-position:0 0px;border:0}
+div.star-rating-on a{background-position:0 0px!important}
+div.star-rating-hover a{background-position:0 -14px}
+/* Read Only CSS */
+div.star-rating-readonly a{cursor:default !important;background-position:0 -28px}
+/* Partial Star CSS */
+div.star-rating{background:transparent!important;overflow:hidden!important}
+/* END jQuery.Rating Plugin CSS */
+
+/* With error */
+div.red_round_box2.grey_round_box2 span div.star-rating a{display:block;width:16px;height:100%;background-position:0 -28px;border:0}
+div.red_round_box2.grey_round_box2 span div.star-rating-on a {background-position:0 -14px!important}
+div.red_round_box2.grey_round_box2 span div.star-rating-hover a {background-position:0 -14px!important}
+
+.review_creator div.star-rating-readonly a{background-position:0 -14px!important}
+.review_creator div.star-rating-on a{background-position:0 0px!important}
+
+div.visible span div.star-rating a, div.hidden span div.star-rating a {background-position:0 -28px!important}
+div.visible span div.star-rating-on a, div.hidden span div.star-rating-on a {background-position:0 0px!important}
+
+
+div.grey_round_box2 span div.star-rating-hover a{background-position:0 0px !important}
+div.grey_round_box2 span div.star-rating-readonly a{background-position:0 0px !important}
+div.grey_round_box2 span div.star-rating-live a{background-position:0 -14px}
+
+.playlist_reviews.ajax_list span div.star-rating-readonly a{background-position:0 -14px}
+
+.album_actions2 span div.star-rating-readonly a{background-position:0 -14px}
+.album_actions2 span div.star-rating-on a{background-position:0 0px}
+.album_actions2 span div.star-rating a{line-height:999px;}
+
+.review_creator_stars2 span div.star-rating-readonly a{background-position:0 -14px}
+.review_creator_stars2 span div.star-rating-on a{background-position:0 0px}
+
+.station_buttons span div.star-rating-readonly a{background-position:0 -14px}
+.station_buttons span div.star-rating-on a{background-position:0 0px}
+
+.reviews span div.star-rating-readonly a{background-position:0 -14px}
+.reviews span div.star-rating-on a{background-position:0 0px}
+
+.reviews .title span div.star-rating-readonly a{background-position:0 -28px}
+
+
+
+input[type='radio'].star{display:none}

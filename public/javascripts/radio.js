@@ -309,3 +309,28 @@ function load_artist_info(artist_id) {
     }
   });
 }
+
+function load_station_info(station_id)
+{
+  $('.artist_radio_info').slideUp(function() {
+    if(station_id){
+      $.ajax({
+        type: "GET",
+        url: "/mixes/info/" + station_id,
+        error: function()
+        {
+          alert("error!");
+        },
+        success: function(response, status)
+        {
+          $('.artist_radio_info').html(response);
+          initRadioTabs();
+          $('input[type=radio].star').rating();
+          if(response.indexOf("<") > -1) {
+						$('.artist_radio_info').slideDown();
+					}
+        }
+      });
+    }
+  });
+}

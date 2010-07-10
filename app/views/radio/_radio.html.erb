@@ -17,28 +17,32 @@
     </form>
     <%= render 'top_buttons' %>    
     <div id="my_stations_container">
-      <%= render 'my_stations' if logged_in? && current_user && current_user.total_user_stations > 0 %>
+      <%= render "my_#{@station_obj.playable.class.to_s.pluralize.underscore}" if logged_in? && current_user && current_user.send("total_#{@station_obj.playable.class.to_s.pluralize.underscore}".to_sym) > 0 %>
     </div>
-    <%= render 'msn_stations' unless @msn_stations.empty? %>
-    <%= render 'create_new_station' %>
+    <% if !@station_obj.playable.is_a?(Playlist) %>
+      <%= render 'msn_stations' unless @msn_stations.empty? %>
+      <%= render 'create_new_station' %>
+    <% end %>
     <div class="album_detail" id="current_station_info">
-      <%= render @station_obj.playable.class.to_s.underscore %>
+      <%= render :partial => @station_obj.playable.class.to_s.underscore %>
       <br class="clearer" />
     </div><!--/end album_detail -->
+
     <div id="radio_player">
       <script type="text/javascript" charset="utf-8">
-        var flashvars = "urlContext=/&market=<%= current_site.code %>&playerId=radio_<%= current_site.code %>";
+        var swf_file = "<%= @station_obj.playable.is_a?(Playlist) ? '/flash/mix_radio' : '/flash/cyloop_radio' %>";
+        var flashvars = "urlContext=/&market=<%= current_site.code %>&playerId=<%= @station_obj.playable.is_a?(Playlist) ? 'mix_radio_' : 'radio_' %><%= current_site.code %>";
         flashvars += "&stationId=<%= @station_obj.id %>&station=<%= @station_queue %>";
         AC_FL_RunContent(
-          "src", "/flash/cyloop_radio",
+          "src", "<%= @station_obj.playable.is_a?(Playlist) ? '/flash/mix_radio' : '/flash/cyloop_radio' %>",
           "wmode", "opaque",
           "width", "628",
           "height", "196",
           "align", "middle",
-          "id", "cyloop_radio",
+          "id", "<%= @station_obj.playable.is_a?(Playlist) ? 'mix_radio' : 'cyloop_radio' %>",
           "quality", "high",
           "bgcolor", "#f2f2f2",
-          "name", "cyloop_radio",
+          "name", "<%= @station_obj.playable.is_a?(Playlist) ? '/flash/mix_radio' : '/flash/cyloop_radio' %>",
           "allowScriptAccess", "sameDomain",
           "type", "application/x-shockwave-flash",
           "pluginspage", "http://www.adobe.com/go/getflashplayer",
@@ -49,4 +53,12 @@
 
     <div class="artist_radio_info radio_row hide"></div>
   </div><!--/end mix_box -->
+
+  <% if @station_obj.playable.is_a?(Playlist) %>
+    <% if (@station_obj.playable.reviews_count > 0 and !logged_in?) or logged_in? %>
+      <br/><br/><br/>
+      <%= render 'reviews' %>
+    <% end%>
+  <% end %>
+
 </div><!--/end two_columns -->

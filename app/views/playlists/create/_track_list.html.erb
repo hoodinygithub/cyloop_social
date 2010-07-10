@@ -1,0 +1,145 @@
+<div class="rules_list">
+    <div id="artist_error_tag" class="rule lower"><%= t('playlists.maximum_songs_from',:num => 3, :type => "#{t('basics.artist')}") %>
+        
+        <div class="rule_tooltip">
+          <div class="top_round">&nbsp;</div>
+
+          <div class="tooltip_content">
+              <ul class="tooltip_list">
+                  <!-- <li><span class="number red">1</span> You have <b class="red">3</b> songs from <b class="red">metallica</b>, please remove 1 from mix.</li> -->
+              </ul>
+          </div>
+          <div class="bottom_round">&nbsp;</div>
+          <img src="/images/tooltip_arrow.gif" class="tooltip_arrow" alt="" />
+      </div>
+      
+    </div>
+    <div id="album_error_tag" class="rule lower"><%= t('playlists.maximum_songs_from',:num => 3, :type => "#{t('basics.album')}") %>
+    
+        <div class="rule_tooltip">
+          <div class="top_round">&nbsp;</div>
+
+          <div class="tooltip_content">
+              <ul class="tooltip_list">
+                  <!-- <li><span class="number red">1</span> You have <b class="red">3</b> songs from the <b class="red">Greatest Hits</b> album, please remove 1 from mix.</li> -->
+              </ul>
+          </div>
+          <div class="bottom_round">&nbsp;</div>
+          <img src="/images/tooltip_arrow.gif" class="tooltip_arrow" alt="" />
+      </div>
+      
+    </div>
+</div><!--/end rules_list -->
+
+<h2 class="left_side" id="playlist_error_tag"><span id="remaining_track_count">10</span> <%= t('playlists.tracks_remaining') %></h2>
+<div class="black_count" id="track_count">0</div>
+
+<br class="clearer" />
+
+
+<div class="dotted_box">
+    <div class="layer2">
+        <div id="empty_playlist" class="layer3">
+            <div class="step_no">2</div>
+            <h2><%= t('playlists.drag_songs_here') %></h2>
+
+            <div>
+                <%= t('playlists.drag_songs_here_text') %>
+            </div>
+        </div>
+      
+        <div id="populated_playlist" class="added_items_box hidden">
+            <ul id="playlist_item_list" class="added_items">
+            
+            </ul>
+        </div><!--/end added_items_box -->
+    </div>
+</div><!--/end dotted_box -->
+
+
+
+<div class="playlist_creation_buttons align_right">
+  <div class="inner_box">
+    <div class="left_side">
+        <!-- <a href="#" id="autofill_button" onclick="void(0); return false;" class="green_button" style="display:none"><span><span><%= t('playlists.autofill') %></span></span></a>
+
+                <a href="#" id="autofill_button_ques" style="display:none" onclick="$('#auto_fill_popup').fadeIn('fast'); return false;"><img src="/images/unable_qmark.gif" class="unable_qmark" alt="" /></a> -->                        
+    </div>
+  
+  
+    <div class="right_side">
+        <a href="#" class="cancel_button" onclick="$('#cancel_popup').fadeIn('fast'); return false;"><%= t('actions.cancel') %></a>
+        <a href="#" id="save_button" class="blue_button" style="display:none" onclick="open_save_popup(); return false;"><span><span><%= t('actions.save') %></span></span></a>
+    </div><!--/end right_side -->
+  
+    <div class="clearer"></div>
+  </div>
+</div>
+<%= render :partial => "playlists/create/create_popups" %>
+
+
+<script language="javascript">
+  
+  <% if @playlist %>
+    edit_mode = true;
+  <% end %>
+  
+  function close_cancel_popup()
+  {
+    redirect_url = '<%= my_mixes_path %>';
+    jQuery.get('/mixes/clear_state', function(data) {
+        document.location.href = redirect_url;
+    });
+  }
+  
+  function add_item_wrapper(id, title, artist_id, artist_name, album_id, album_name, image_src, suppress_validation)
+  {
+    add_item(id, title, artist_id, artist_name, album_id, album_name, image_src, suppress_validation);
+  }
+  
+  function artist_text_wrapper(num, name, item_count, max_artist)
+  {
+    // This is overriding the function in playlist_create.js to include translations
+    text = '<li>'
+          + '<span class="number red">' + num + '</span> '
+          + '<%= t('playlists.you_have') %>'
+          + ' <b class="red">' + item_count + '</b> '
+          + ((parseInt(item_count,10)== 1)? '<%= t('playlists.song_from') %>' : '<%= t('playlists.songs_from') %>' )
+          + ' <b class="red">' + name + '</b>. '
+          + '<%= t('playlists.please_remove') %>'
+          + ' ' + (item_count - max_artist) + ' '
+          + ((parseInt(item_count - max_artist, 10)== 1)? '<%= t('playlists.song_from_mix') %>.' : '<%= t('playlists.songs_from_mix') %>.' )
+          + '</li>';
+    return text;
+  }
+
+  function album_text_wrapper(num, name, item_count, max_album)
+  {
+    // This is overriding the function in playlist_create.js to include translations
+    text = '<li>'
+          + '<span class="number red">' + num + '</span> '
+          + '<%= t('playlists.you_have') %>'
+          + ' <b class="red">' + item_count + '</b> '
+          + ((parseInt(item_count,10)== 1)? '<%= t('playlists.song_from_album') %>' : '<%= t('playlists.songs_from_album') %>' )
+          + ' <b class="red">' + name + '</b>. '
+          +  '<%= t('playlists.please_remove') %>'
+          + ' ' + (item_count - max_album) + ' '
+          + ((parseInt(item_count - max_album, 10) == 1)? '<%= t('playlists.song_from_mix') %>.' : '<%= t('playlists.songs_from_mix') %>.' )
+          + '</li>';
+    return text;
+  }
+  
+  <% if @playlist_items %>
+    
+    <% @playlist_items.each do |item| %>
+      <% unless item.artist.nil? || item.album.nil? %>
+        add_item_wrapper(<%= item.id %>, '<%= escape_for_js(item.title) %>', <%= item.artist.id %>, '<%= escape_for_js(item.artist.name) %>', <%= item.album.id %>, '<%= escape_for_js(item.album.name) %>', '<%= AvatarsHelper.avatar_path(item, :small) %>', true);
+      <% end %>
+    <% end %>
+    
+    validate_items();
+  <% end %>
+  
+  init_draggable();
+  
+</script>

@@ -72,22 +72,17 @@ module AvatarsHelper
         path = "/avatars/missing/missing.png"
       end
 
+
       if path =~ /^\/avatars\/(.*)\/missing.png$/
         if target
-          if target.is_a?(User) || target.is_a?(Playlist)
+          if target.is_a?(User)
             if target.gender =~ /^male$/i
-              if type == :new_medium || type == :medium || type == :album
-                path = '/avatars/missing/male_large.jpg'
-              else
-                path = '/avatars/missing/male_small.jpg'
-              end  
+              path = "/avatars/missing/male_#{type}.jpg"
             else
-              if type == :new_medium || type == :medium || type == :album
-                path = '/avatars/missing/female_large.jpg'
-              else
-                path = '/avatars/missing/female_small.jpg'
-              end
+              path = "/avatars/missing/female_#{type}.jpg"
             end
+          elsif target.is_a?(Playlist)
+              path = AvatarsHelper.avatar_path(target.songs.first.album, (type == :search) ? :album : type) unless target.songs.first.nil?
           else
             path = '/avatars/missing/artist.gif'
           end
@@ -95,6 +90,30 @@ module AvatarsHelper
           path = '/avatars/missing/artist.gif'
         end
       end
+
+      # if path =~ /^\/avatars\/(.*)\/missing.png$/
+      #   if target
+      #     if target.is_a?(User) || target.is_a?(Playlist)
+      #       if target.gender =~ /^male$/i
+      #         if type == :new_medium || type == :medium || type == :album
+      #           path = '/avatars/missing/male_large.jpg'
+      #         else
+      #           path = '/avatars/missing/male_small.jpg'
+      #         end  
+      #       else
+      #         if type == :new_medium || type == :medium || type == :album
+      #           path = '/avatars/missing/female_large.jpg'
+      #         else
+      #           path = '/avatars/missing/female_small.jpg'
+      #         end
+      #       end
+      #     else
+      #       path = '/avatars/missing/artist.gif'
+      #     end
+      #   else
+      #     path = '/avatars/missing/artist.gif'
+      #   end
+      # end
 
       path
     end

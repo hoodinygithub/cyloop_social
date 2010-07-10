@@ -8,11 +8,11 @@ class PagesController < ApplicationController
   def home
     respond_to do |format|
       format.html do
-        @latest_stations       = current_site.user_stations.latest
-
+        #@latest_stations       = current_site.user_stations.latest
         @top_abstract_stations = current_site.top_abstract_stations(6)
         #@top_user_stations     = current_site.top_user_stations(15).uniq_by(&:abstract_station_id)[0..5] rescue []
         @top_user_stations     = current_site.top_user_stations
+        @top_playlists         = current_site.top_playlists(8)
 
 
         @feed_featured ||= []
@@ -42,12 +42,6 @@ class PagesController < ApplicationController
         @msn_properties[:prop3] = '\'Cyloop - Inicio\''
         @msn_properties[:prop4] = "\'Homepage\'"
       end
-
-      format.js do
-        @recommended_stations ||= transformed_recommended_stations(6, 40)
-        render :template => 'pages/home.js.erb', :layout => false
-      end
-
     end
   end
   
@@ -61,7 +55,12 @@ class PagesController < ApplicationController
       format.js { render :template => 'pages/flash.js.erb', :layout => false }
     end
   end
-  
+
+  def home_recommended_stations
+    @recommended_stations = transformed_recommended_stations(6, 12)
+    render :partial => 'shared/abstract_station', :collection => @recommended_stations, :locals => { :columns => 6 }
+  end
+
   def about
     @title = t 'site.about_cyloop'
     render "pages/#{site_code}/about"

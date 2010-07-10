@@ -32,6 +32,29 @@ class RadioController < ApplicationController
     end
   end
 
+  def mix_index
+    @station_obj = nil
+
+    station = Station.find_by_id_and_playable_type(params[:station_id], 'Playlist') rescue nil
+    @station_obj = station if station and station.playable and station.playable.owner and station.playable.owner.active?
+
+    if @station_obj
+      @section = "player_page" #used for css styling
+      @station_queue = @station_obj.playable.station_queue(:ip_address => remote_ip)
+      @station_obj.playable.track_a_play_for(current_user) if @station_obj.playable
+    else
+      @top_djs_limit = 5
+      @top_djs = current_site.top_djs.all(:limit => @top_djs_limit)
+      @top_playlists_limit = 6
+      @top_playlists = current_site.top_playlists(@top_playlists_limit)
+      @latest_playlists = current_site.playlists.latest
+
+      @top_artists_limit = 5    
+      @top_artists = current_site.top_artists.all(:limit => @top_artists_limit)
+    end
+  end
+  
+
   def album_detail
     if request.xhr?
       @station_obj = Station.find(params[:station_id]) rescue nil
@@ -193,6 +216,12 @@ class RadioController < ApplicationController
 
       render :partial => "radio/artist_info"
     end
+  end
+
+  def station_info
+    @tabs = [:more_playlists, :top_playlists, :emotions] #others are coming.
+    @station_obj = Station.find(params[:station_id]) rescue nil
+    render :partial => "radio/station_info"
   end
 
   private

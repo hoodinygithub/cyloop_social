@@ -7,17 +7,15 @@ class DashboardsController < ApplicationController
   current_filter :songs
   layout_except_xhr 'application'
 
-  RECOMMENDED_STATIONS = 12
+  RECOMMENDED_STATIONS = 6
 
   def show
     @dashboard_menu = :home
-    @mixes_recommended = (1..6).to_a
 
     if profile_owner?
       stations = transformed_recommended_stations(RECOMMENDED_STATIONS, RECOMMENDED_STATIONS+4)
-      # Queue not needed for now DZC 2010-05-16
-      @recommended_stations = stations #[0..(RECOMMENDED_STATIONS-1)] 
-#      @recommended_stations_queue = stations[RECOMMENDED_STATIONS..(stations.size)]
+      @recommended_stations = stations
+      @latest_mixes = current_site.top_playlists(6)
     end
     
     respond_to do |format|

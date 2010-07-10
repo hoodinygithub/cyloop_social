@@ -4,7 +4,10 @@
   </b>
 <% end %>
 
-<h1><%= t("dashboards.#{profile_account.class.to_s.downcase}_latest_stations", :name => artist_or_user_name(profile_account)) %></h1>
+<h1>
+  <%= possessive :latest_stations if profile_user? %>
+  <%= t('artist.latest_stations_featuring_artist', :artist_name => profile_account.name) if profile_artist? %>
+</h1>
 
 <% if @latest_stations.empty? %>
   <div class="big_round_box png_fix">

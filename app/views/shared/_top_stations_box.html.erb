@@ -15,10 +15,9 @@
     <% if most_played_stations.size >= 3 %>
       <div class="align_right">
         <b>
-          <%= link_to(t('actions.view_more'), profile_owner? ? my_stations_path : user_stations_path(:sort_by=>:top) ) %>
+          <%= link_to(t('actions.view_more'), profile_owner? ? my_stations_path(:sort_by => :top) : user_stations_path(:sort_by => :top) ) %>
         </b>
       </div>
     <% end %>
   </div>
 <% end %>
-

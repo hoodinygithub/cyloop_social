@@ -1,0 +1,26 @@
+<div class="search_list" onmouseleave="restoreInput(content_msg, this); setTimeout(function() {$('.create_box').hide();}, 300);">
+
+  <div class="search_playlist_form">    
+    <div class="form_row last">
+        <div class="grey_round_box align_center"><%= text_field_tag :q, t('search.content_search_hint', :default => ''),  {
+        :id => :playlist_search_query, :class => "input full_width3", 
+        :onfocus => " clearInput(content_msg, this);", 
+        :onblur => "if (!$.browser.msie) { restoreInput(content_msg, this); setTimeout(function() {$('.create_box').hide();}, 300); }", 
+        :autocomplete => :off } %></div>
+        <div id="playlist_search_results" class="create_box large_width"></div><!--/end create_box -->
+    </div><!--/end form_row -->
+  </div>
+  <div class="content_search_results_ajax <%= @playlist ? "playlist_update" : "playlist_create" %>">
+  <%= image_tag "/images/loading.gif" %></div>
+</div>
+
+<script language="javascript">
+  var content_msg = "<%= t('search.content_search_hint') %>";
+  
+  $("#playlist_search_query").keypress(function(e){
+    if(e.which==13) {
+      Base.playlist_search.buildSearchUrl();
+      return false;
+    }
+  });
+</script>

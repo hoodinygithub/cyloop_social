@@ -93,6 +93,22 @@ class Artist < Account
   has_many :songs
   has_many :top_songs
 
+
+  has_many :playlist_items
+  has_many :playlists, :through => :playlist_items, :include => [:owner, :station], :conditions => "accounts.id IS NOT NULL AND accounts.deleted_at IS NULL AND stations.id IS NOT NULL AND playlists.locked_at IS NULL", :uniq => true do
+    def latest(limit=nil)
+      opts = {:order => 'playlists.updated_at DESC'}
+      opts.merge!(:limit => limit) unless limit.nil?
+      all(opts)
+    end
+  
+    def top(limit=nil)
+      opts = {:order => 'playlists.total_plays DESC'}
+      opts.merge!(:limit => limit) unless limit.nil?
+      all(opts)
+    end
+  end
+  
   has_many :album_artists
   has_many :artist_albums, :through => :album_artists, :source => :album, :uniq => true
 

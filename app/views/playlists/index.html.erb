@@ -1,0 +1,21 @@
+<form name='station_form' action="">
+  <input type="hidden" id="station_to_delete" value="" />
+</form>
+
+<% content_for :title do %>
+  <%= possessive :playlists if profile_account.is_a? User %>  
+  <%= t('artist.mixes_featuring_artist', :artist_name => profile_account.name) if profile_account.is_a? Artist %>
+<% end %>
+
+<% content_for :sorting do %>
+  <%= sort_link_to :latest %> /
+  <%= sort_link_to :top %> /
+  <%= sort_link_to :highest_rated %> /
+  <%= sort_link_to :alphabetical %>
+<% end %>
+
+<% content_for :list do %>
+  <%= render 'list' %>
+<% end %>
+
+<%= render 'shared/list' %>

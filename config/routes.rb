@@ -51,7 +51,9 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :players, :only => :show
 
   map.resource :search
-  map.friendly_search '/search/:scope/:q', :controller => 'searches', :action => 'show'
+  map.content_local_search '/search/content_local/:scope/:q', :controller => 'searches', :action => 'content', :local => true
+  map.content_search '/search/content/:scope/:q', :controller => 'searches', :action => 'content'
+  map.main_search '/search/:scope/:q', :controller => 'searches', :action => 'show'
   map.empty_search '/search/:scope', :controller => 'searches', :action => 'show'
 
   map.resources :stations, :collection => {:top => :get, :top_station_html => :get}
@@ -66,6 +68,11 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :album_buylinks, :only => :show
   map.resources :song_buylinks, :only => :show
   map.resources :sites_stations, :only => [:index, :show]
+  
+  map.resources :reviews, :member => { :confirm_remove => :get,
+                                       :duplicate_warning => :get,
+                                       :show => :get
+                                     }
 
   map.login  'login',  :controller => 'sessions', :action => 'new'
   map.logout 'logout', :controller => 'sessions', :action => 'destroy'
@@ -88,6 +95,9 @@ ActionController::Routing::Routes.draw do |map|
 #  unless RAILS_ENV =~ /production/
   map.with_options(:controller => 'radio') do |url|
     url.radio 'radio', :action => 'index'
+    url.mix_radio 'mixes', :action => 'mix_index'
+    url.artist_info 'mixes/info/:playlist_id/:artist_id', :action => 'artist_info'
+    url.station_info 'mixes/info/:station_id', :action => 'station_info'
     url.artist_info 'radio/my_stations_list', :action => 'my_stations_list'
     url.album_detail 'radio/album_detail', :action => 'album_detail'
     url.twitstation 'twitstation', :action => 'twitstation'
@@ -129,15 +139,27 @@ ActionController::Routing::Routes.draw do |map|
     player.resources :users, :collection => { :status => :get }
   end
 
+  map.playlist_create '/mixes/create', :controller => 'playlists', :action => 'create'
+  map.playlist_edit '/mixes/edit/:id', :controller => 'playlists', :action => 'edit'
+  map.playlist_recommended_artists '/mixes/recommended_artists/:artist_id', :controller => 'playlists', :action => 'artist_recommendations'
+  map.playlist_save_state '/mixes/save_state', :controller => 'playlists', :action => 'save_state'
+  map.playlist_clear_state '/mixes/clear_state', :controller => 'playlists', :action => 'clear_state'
+  map.playlist_comment '/mixes/comment/:id', :controller => 'playlists', :action => 'comment'
+
+  map.playlist_reviews         '/mixes/:playlist_id/reviews/list', :controller => 'reviews', :action => 'list'
+  map.playlist_reviews_items   '/mixes/:playlist_id/reviews/items', :controller => 'reviews', :action => 'items'
+
+  map.resources :mixes, :controller => 'playlists', :has_many => [:reviews]
 
   map.resources :campaigns, :member => {:activate => :post, :deactivate => :post}
 
   profile_routes = lambda do |profile|
     profile.resources :comments
     profile.resources :follow_requests
-    profile.resources :playlists, :member => {:delete_confirmation => :get}
-    profile.resources :playlist_items,:member => {:delete_confirmation => :get}, :only => [:new, :create]
-    profile.resources :playlists do |playlist|
+
+    profile.resources :mixes, :controller => 'playlists', :member => {:delete_confirmation => :get, :copy => :get, :duplicate => :post }
+    profile.resources :playlist_items, :member => {:delete_confirmation => :get}, :only => [:new, :create]
+    profile.resources :mixes do |playlist|
       playlist.resources :items, :controller => 'playlist_items', :only => [:show, :update, :destroy]
     end
 
@@ -158,6 +180,7 @@ ActionController::Routing::Routes.draw do |map|
     profile.resources :following, :controller => 'followees'
     profile.resources :followers
     profile.resources :activities, :only => :index
+    profile.resources :reviews
 
     # profile.resources :charts, :only => :index
     #profile.charts 'charts', :controller => 'charts', :action => 'index'

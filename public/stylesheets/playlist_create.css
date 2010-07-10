@@ -1,0 +1,520 @@
+#container h2 {
+	color :#191919;
+	font-size :14px;
+	font-weight :bold;
+	line-height :22px;
+	padding: 0px;
+}
+#container .empty_results_box h2, #container .layer3 h2 {
+	text-align: center;
+}
+
+#search_results_container  {
+	height:480px;
+}
+
+.content_search_results_ajax  {
+	display: none;
+	float: right;
+	left: 590px;
+	position: absolute;
+	top: 10px;
+}
+
+#playlist_error_tag.info_text  {
+	color: #FF0000;
+}
+#playlist_error_tag {
+	font-size: 13px;
+}
+
+#playlist_error_tag {
+	margin-top: 17px;
+}
+
+#track_count.info_text {
+background-color:#FF0000;
+}
+#track_count {
+	margin-top:17px;
+}
+
+.black_count {
+	-moz-border-radius:3px 3px 3px 3px;
+	background:none repeat scroll 0 0 #000000;
+	color:#FFFFFF;
+	float:right;
+	font-size:16px;
+	font-weight:bold;
+	height:22px;
+	line-height:22px;
+	padding:0 10px;
+	position:relative;
+	top:-3px;
+}
+
+.rules_list  {
+	padding: 31px 0 0;
+}
+
+.dotted_box {
+	height: 396px;
+	margin-bottom: 0;
+}
+
+.hidden {
+	display: none;
+}
+
+.dotted_box .layer3 {
+	height:195px;
+	padding:102px 10px;
+	text-align:center !important;
+}
+
+.playlist_creation_buttons  {
+	background-color: #F1F1F1;
+	border: 1px solid #CCCCCC;
+	height: 44px;
+}
+
+.playlist_creation_buttons .inner_box {
+	border: 1px solid #FFFFFF;
+	height: 42px;
+}
+
+.empty_results_box {
+	height: 234px;
+	padding: 104px 10px;
+}
+
+.playlist_creation_buttons .cancel_button {
+	display: block;
+	float: left;
+	font-size: 13px;
+	font-weight: normal;
+	margin: 6px 6px 0 0;
+	text-transform: uppercase;
+}
+
+.playlist_creation_buttons .right_side {
+	margin-right: 10px;
+	margin-top: 7px;
+}
+
+.spaced_img {
+	height:50px;
+	width:50px;
+}
+
+.content_search_results_ajax img {
+	height:22px;
+	width:22px;
+}
+
+.create_box {
+	background:none repeat scroll 0 0 #FFFFFF;
+	border:1px solid #CCCCCC;
+	display:none;
+	height:425px;
+	left:19px;
+	overflow:auto;
+	padding:5px 0;
+	position:absolute;
+	top:49px;
+	width:520px;
+	z-index:100;
+}
+
+.create_box.small_width {
+	left:23px;
+	top:78px;
+	width:250px;
+}
+
+.create_box.large_width {
+	left: 7px;
+	top: 36px;
+	width: 613px;
+}
+
+.search_list a {
+	color:#999999;
+	display:block;
+	line-height:13px;
+	margin-bottom:1px;
+	padding:2px 10px;
+	text-decoration:none;
+}
+.see_link {
+	float:right;
+	font-weight:bold;
+	margin-right:10px;
+	position:relative;
+	top: -3px;
+}
+
+.create_box ul {
+	padding-bottom:10px;
+}
+
+.search_list a small {
+	font-size:11px;
+}
+
+.search_list a b {
+	color: #333333;
+}
+
+.search_list br.no_clear {
+	clear: none;
+}
+
+#search_results_container .songs_list {
+	position:relative !important;
+}
+
+.remove_index {
+	z-index:0 !important;
+}
+
+.songs_list.my_mix .headers div.song_name, .songs_list.my_mix .headers div.artist_name {
+	padding:0 5px;
+	width:185px;
+}
+
+.songs_list .headers div.song_name {
+	padding-left:10px;
+	width:300px;
+}
+
+.songs_list.my_mix .headers div.album_name, .my_mix .songs_box .album_name {
+ width:145px;
+	padding:0 10px;
+}
+
+.songs_list .headers div.large_bnt {
+	border-right:medium none !important; 
+	width:64px;
+}
+
+.songs_box ul li div.large_bnt {
+	width:65px;
+}
+
+.songs_list .headers {
+	background:none repeat scroll 0 0 #D8D8D8;
+	border-top:1px solid #FFFFFF;
+	height:24px;
+	line-height:24px;
+}
+
+
+.upper {
+	text-transform:uppercase;
+}
+
+.songs_box.medium_height {
+	height:417px;
+	position:relative;
+}
+
+.songs_box {
+	overflow-y:hidden;
+}
+
+.my_mix .songs_box ul, .songs_box ul.results_by_artist {
+	border-bottom:1px solid #CCCCCC;
+	border-right:medium none;
+	height:371px;
+	width:628px;
+}
+
+.songs_box ul li {
+	background:none repeat scroll 0 0 #FFFFFF;
+	border-bottom:1px solid #CCCCCC;
+	border-top:1px solid #FFFFFF;
+	color:#191919;
+	line-height:29px;
+}
+.hoverable_list li {
+	cursor:pointer;
+}
+.songs_box ul li div.song_image {
+	display:none;
+}
+
+.my_mix .songs_box .song_name, .my_mix .songs_box .artist_name {
+	padding:0 5px;
+	width:185px;
+}
+
+.icon_play_button {
+	vertical-align:middle;
+}
+
+.songs_list .headers div.sortable:hover {
+    color:#fff;
+    cursor: pointer;
+    background: #666 url("/images/arrow_up_white.gif") no-repeat right center;
+}
+
+.songs_list .headers div.sortable.sort_asc {
+    color:#fff;
+    background: #666 url("/images/arrow_up_white.gif") no-repeat right center;
+}
+
+.songs_list .headers div.sortable.sort_desc {
+    color:#fff;
+    background: #666 url("/images/arrow_down_white2.gif") no-repeat right center;
+}
+
+.songs_list .pagination a {
+	background-color:#FFFFFF;
+	color:#666666;
+}
+.pagination .disabled {
+	background:none repeat scroll 0 0 transparent !important;
+	border:medium none;
+	color:#CCCCCC;
+	font-size:20px;
+	font-weight:normal;
+}
+
+.songs_list .pagination .current {
+	color:#00A5F8;
+}
+
+.pagination .current {
+	margin:0 3px;
+}
+
+.songs_list .pagination a {
+	background-color:#FFFFFF;
+	color:#666666;
+}
+
+.pagination a.prev_page, .pagination a.next_page {
+	background:none repeat scroll 0 0 transparent !important;
+	border:medium none;
+	font-size:20px;
+	font-weight:normal;
+}
+
+#pagination_container {
+	background-color:#F1F1F1;
+	border:1px solid #FFFFFF;
+	height:43px;
+}
+
+.songs_box .pagination {
+	padding-top:13px;
+	width: auto;
+	margin-left: 0px;
+}
+
+/* Dragging Playlist Item */
+body li.ui-draggable-dragging {
+  list-style-type:none;
+  font-size: 14px;
+  width: 300px;
+  background-color: #ccc;
+  text-align: left;
+  padding:5px;
+  color: #FFF;
+  height:50px;
+  overflow:hidden;
+}
+
+body li.ui-draggable-dragging div {
+  float:left;
+  font-size:11px;
+}
+
+body li.ui-draggable-dragging .song_image .icon {
+  float:left;
+}
+body li.ui-draggable-dragging .song_image {
+  height:200px;
+}
+
+body li.ui-draggable-dragging .song_name {
+  width:200px;
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:14px;
+  font-weight: bold;
+  margin-bottom:8px;
+}
+
+body li.ui-draggable-dragging .artist_name {
+  width:200px;
+  padding-left:8px;
+  top: 13px;
+  position:relative;
+}
+
+body li.ui-draggable-dragging .album_name {
+  width:200px;
+  padding-left: 8px;
+  top: -13px;
+  position:relative;
+  font-weight:bold;
+}
+
+body li.ui-draggable-dragging .large_bnt {
+  display:none;
+}
+body li.ui-draggable-dragging .song_name a {
+  display:none;
+}
+
+.songs_list .headers {
+	background: none repeat scroll 0 0 #F1F1F1;
+}
+
+.tooltip_list li {
+	border-bottom: none;
+}
+
+.added_items {
+	height:397px;
+	overflow-y:auto;
+}
+
+.playlist_image_container  {
+	height:120px;
+	margin-bottom:10px;
+	overflow:hidden;
+}
+
+#save_mix_popup label.label_holder {
+	left:110px;
+	top:280px;
+}
+.account_settings .form_row label {
+	display:block;
+	font-size:14px;
+	margin-bottom:4px;
+}
+ 
+label.label_holder {
+	cursor:pointer;
+	display:block;
+	height:40px;
+	overflow:hidden;
+	position:absolute;
+	width:125px;
+	z-index:1;
+}
+
+label.label_holder input.file {
+	height:100%;
+	left:-198px;
+	opacity:0;
+	position:relative;
+	top:0;
+	width:auto;
+	z-index:2;
+}
+
+img.avatar.playlist {
+	height:100px;
+	width:100px;
+}
+
+#avatar_upload_button {
+	left:0;
+	position:absolute;
+	top:0;
+}
+
+#uploaded_image_name {
+	color:#FF0000;
+	display:none;
+	left:120px;
+	position:relative;
+	text-transform:capitalize;
+	top:-20px;
+}
+
+.btn_blue_loading {
+  margin-top: 5px;
+  margin-right: 5px;   
+}
+
+.error_field { 
+	background-color: #FF0000;
+}
+
+#update_playlist_form label.label_holder {
+	left:760px;
+	top:55px;
+}
+
+#update_playlist_form #search_results_container {
+	margin-top:20px;
+}
+
+#update_playlist_form .rules_list {
+	margin-bottom:13px;
+	margin-top:15px;
+	padding:0;
+}
+
+#update_playlist_form .playlist_image_container  {
+	height:128px;
+}
+
+.search_playlist_form  {
+	position:relative;
+}
+
+#playlist_search_results h1 {
+	margin-left: 10px;
+}
+
+my_mix .songs_box ul, .songs_box ul.results_by_artist {
+	border-bottom: 1px solid #CCCCCC;
+	border-right: medium none;
+	height: 371px;
+	width: 628px;
+}
+
+.songs_list .headers div.solo {
+	border-right:1px solid #FFFFFF;
+	padding-left:10px;
+	width:616px;
+}
+
+.songs_box ul.results_by_artist li {
+	border-bottom:1px solid #C5C5C5;
+	cursor:pointer;
+	padding:6px 9px;
+}
+
+.songs_box ul.results_by_artist .icon {
+	float:left;
+	margin:0 7px 0 0;
+}
+
+img.avatar.search_results {
+	height:39px;
+	width:39px;
+}
+
+.songs_box ul.results_by_artist .links {
+	border:medium none;
+	float:left;
+	font-size:14px;
+	height:auto;
+	line-height:17px;
+	width:500px;
+}
+
+.songs_box a.black {
+	text-decoration:none;
+}
+
+.songs_box ul.results_by_artist li:hover {
+    background: #d6d6d6;
+}

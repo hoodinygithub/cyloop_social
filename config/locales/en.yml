@@ -60,6 +60,10 @@ en:
     recommended_artists:
       title: Recommended Artists
   modules:
+    emotions:
+      title: Emotions
+    more_playlists:
+      title: More Playlists
     photos:
       title: Photos
     user_info:
@@ -115,7 +119,20 @@ en:
     delete_station:
       title: Delete Station
       confirmation_text: "Are you sure you want to delete {{station_name}}?"
+    popular_mixes:
+      title: Popular Mixes
+    popular_tags:
+      title: Popular Tags
+    top_djs:
+      title: Top DJs
+    top_playlists:
+      title: Top Mixes
+    latest_playlists:
+      title: Latest Mixes
   actions:
+    rate_it: RATE IT
+    logout: Log Out
+    saving: Saving
     awaiting_approval: Awaiting Approval
     play: Play
     share: Share
@@ -176,6 +193,7 @@ en:
     show_more: SHOW MORE
     listen: listen
   sort:
+    highest_rated: HIGHEST RATED
     top: TOP
     relevance: RELEVANCE
     alphabetical: ALPHABETICAL
@@ -308,20 +326,40 @@ en:
       network_activity: "{{subject}}'s Network Activity"
       stations: "{{subject}}'s Stations"
       followers: People that are following {{subject}}
-      playlists: "{{subject}}'s Playlists"
+      playlists: "{{subject}}'s Mixes"
       albums: "{{subject}}'s Albums"
       followees: People that {{subject}} is following
       follow_requests: "{{subject}}'s Follow Requests"
       charts: "{{subject}}'s Charts"
+      has_not_playlists: "{{subject}} has no mixes."
+      has_not_stations: "{{subject}} has no stations."
+      has_not_reviews: "{{subject}} has no reviews."
+      latest_stations: "{{subject}}'s Latest Stations"
+      latest_mixes: "{{subject}}'s Latest Mixes"
+      top_stations: "{{subject}}'s Top Stations"
+      top_mixes: "{{subject}}'s Top Mixes"
+      recent_reviews: "{{subject}}'s Recent Reviews"
+      reviews: "{{subject}}'s Reviews"
+      has_not_reviews: "{{subject}} has not posted any reviews."
     first_person:
       network_activity: "My Network Activity"
       stations: My Stations
       followers: People that are following me
-      playlists: My Playlists
+      playlists: My Mixes
       albums: My Albums
       followees: People that I am following
       follow_requests: My Follow Requests
       charts: My Charts
+      has_not_playlists: "You have no mixes."
+      has_not_stations: "You has no stations."
+      has_not_reviews: "You has no reviews."
+      latest_stations: "My Latest Stations"
+      latest_mixes: "My Latest Mixes"
+      top_stations: "My Top Stations"
+      top_mixes: "My Top Mixes"
+      recent_reviews: "My Recent Reviews"
+      reviews: "My Reviews"
+      has_not_reviews: "You have not posted any reviews."
   blocks:
     blocked: Blocked
     been_unblocked: "{{name}} has been unblocked."
@@ -619,6 +657,55 @@ en:
     location: Location
     influences: Influences
     genre: Genre
+  playlists: 
+    duration: Length
+    total_time: Total Time
+    saving_order: Saving Order
+    delete_text: Are you sure you want to delete this playlist?
+    playlist_name: Playlist Name
+    last_playlist: Last Playlist
+    continue_btn: Continue
+    delete_title: Delete Playlist
+    create_new: Create a New Playlist
+    edit: Edit Your Playlist
+    search_for_music: Search for music to add to your playlist
+    rules: Playlist Rules
+    maximum_songs_from: maximum of {{num}} songs from the same {{type}}
+    select_your_songs: Select Your Songs
+    select_your_songs_text: "Song search results will show up here<br />drag the songs you like the container to<br />the right to create your playlist"
+    tracks_remaining: tracks remaining to publish
+    drag_songs_here: Drag Songs Here
+    drag_songs_here_text: "include at least 10 songs,<br />with no more than 2 songs<br />from the same artist<br />or the same album"
+    why_not_try: Why Not Try...
+    no_results_found: "No results found, please search again"
+    cancel_playlist: Cancel Playlist?
+    cancel_playlist_text: "Cancelling your playlist will revert all your additions/edits.<br/>Are you sure you want to cancel?"
+    continue: Continue
+    no_thanks: No Thanks
+    autofill: Auto-Fill
+    autofill_option: Auto-Fill Option
+    autofill_option_text: The auto-fill option will allow you to fill your playlist with recommended songs based on what you have already populated.
+    save_your_playlist: Save your playlist
+    name_your_playlist: Name of your playlist
+    tag_your_playlist: Tag your playlist
+    seperated_commas: seperated by commas
+    picture: Picture of your playlist
+    add_update: ADD/UPDATE
+    unable_save: Unable to save this playlist
+    unable_save_text: You have errors with your playlist.  These  errors must be corrected before you can share it with the rest of the community.
+    you_have: You have
+    songs_from: songs from
+    song_from: song from
+    songs_from_album: songs from the album
+    song_from_album: song from the album
+    please_remove: please remove
+    from_mix: from mix
+    songs_from_mix: songs from mix
+    song_from_mix: song from mix
+    save_confirmation: Save Confirmation
+    edit_confirm_text: Your playlist edits have been saved. Would you like to continue editing?
+    copy: Copy Playlist
+    name_dialog: What would you like to name this playlist? 
   messenger_player:
     we_hope_you_enjoyed: We hope you enjoyed the songs that you've heard. To hear more songs,
     view_your_stations: To view your stations,
@@ -746,7 +833,19 @@ en:
       email: Email Address
       category_profile: My Profile
   playlist:
-    edit_your_playlist: Edit your playlist
+    edit_your_playlist: Edit your mix
+    doesnt_have_any_reviews: This mix does not<br/> have any reviews
+    review: REVIEW THIS MIX
+    this_mix_is_locked: This mix is locked
+    click_to_unlock: To unlock this mix, click {{unlock_link}} and correct the errors listed in red.
+  reviews:
+    post_your_review: POST YOUR REVIEW
+    edit_your_review: Edit your review
+    delete_review_title: Delete this review
+    delete_review_text: Deleting a review is a permenant action.  Are you sure you still want to delete this review?
+    duplicate_warning_title: Oops...
+    duplicate_warning_text: You have already posted a review for this playlist. If you post a new review it will overwrite your previous review.
+    reviewed_by: Reviewed by
   footer:
     faq: FAQ
     help: Help
@@ -767,6 +866,8 @@ en:
     browser: Browser
     email: Your Email
   basics:
+    ago: ago
+    tags: Tags
     and_more: and more...
     followees_of: Followee of
     users: Users
@@ -833,6 +934,9 @@ en:
     you_are: You are
     following: following
     last_modified_at: "Last modified: {{when}} ago"
+    song_name: Song Name
+    artist_name: Artist Name
+    album_name: Album Name
   cancellation:
     confirmation:
       are_you_sure: Are you sure still want to cancel your account?
@@ -916,9 +1020,13 @@ en:
   home:
     create_your_own_personalized_radio_station: Create Your Own Personalized Radio Station
     create_your_own_station_now: Create Your Own Station now!
+    create_your_own_mix_now: Create Your Own Mix now!
     create_radio: Create Radio
+    create_mix: Create Mix
     text_about_radio: "Text About Radio"
+    text_about_mix: "Text About Mix"
     explaing_what_is_and_why_create_a_new_radio: Type the name of your favorite artist. Cyloop will generate personalized radio station with your favorite music from your favorite artists
+    explaing_what_is_and_why_create_a_new_mix: Type the name of your favorite artist. Cyloop will help you start creating a new mix with your favorite music from your favorite artists
     start_listening: START LISTENING
     type_artist_name: Enter the name of an artist
     station: Station
@@ -949,12 +1057,18 @@ en:
       sign_out: Log out
   artist:
     be_the_first_to_create_station: "Be the first to create a station for {{user_name}}"
+    be_the_first_to_create_mix: "Be the first to create a mix with songs by {{user_name}}"
+    mixes_featuring_artist: "Mixes Featuring {{artist_name}}"
+    stations_featuring_artist: "Stations Featuring {{artist_name}}"
+    latest_mixes_featuring_artist: "Latest Mixes Featuring {{artist_name}}"
+    latest_stations_featuring_artist: "Latest Stations Featuring {{artist_name}}"
   user:
     has_no_activity: "{{user_name}} has no activity"
     has_no_tweet: "{{user_name}} has no tweet"
     has_no_followers: "{{user_name}} has no followers"
     is_not_following_anybody: "{{user_name}} is not following anybody"
     hasnt_create_any_station: "{{user_name}} hasn't created any stations"
+    hasnt_create_any_mixes: "{{user_name}} hasn't created any mixes"
     background_align: Background Align
     receives_following_notifications: Alert me when someone follows me
     name: Name
@@ -1029,6 +1143,7 @@ en:
     search_users: Search People
     search_albums: Search Albums
     homepage: Homepage
+    mixes: Homepage
     discover: Discover
   datetime:
     prompts:
@@ -1207,4 +1322,12 @@ en:
     delete_my_account: DELETE MY ACCOUNT
     delete_info_required: You must click on the check box to continue
     password_required: You must enter a valid password
-
+  search: 
+    search_hint: Search for your favorite artist & music
+    see_all_albums_with_term: see all albums with "{{term}}"
+    content_search_hint: Enter the name of an artist, album or song
+    search_title: Search
+    see_all_artists_with_term: see all artists with "{{term}}"
+    see_all_songs_with_term: see all songs with "{{term}}"
+    search_results_for: Search results for
+    search_results: Search Results

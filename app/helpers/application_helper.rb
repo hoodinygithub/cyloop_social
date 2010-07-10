@@ -1,6 +1,29 @@
 module ApplicationHelper
 
   include PopupHelper
+  include TagsHelper
+
+  def redirect_owner(owner, path)
+    path_to = if logged_in? && owner == current_user
+      case path
+        when "profile"
+          "/my/dashboard"
+        when "followers"
+          "/my/followers"
+        when "playlists"
+          "/my/playlists"
+      end
+    else
+      case path
+        when "profile"
+          user_path(owner)
+        when "followers"
+          user_followers_path(owner)
+      when "playlists"
+          user_mixes_path(owner)
+      end
+    end
+  end
 
   def filter_link_by(link_label, options)
     type = options.delete(:type).to_s
@@ -155,6 +178,11 @@ module ApplicationHelper
   def create_radio_button(attrs = {})
     attrs.merge!({:href => radio_path})
     button = send("blue_button", t("home.create_radio"), attrs)
+  end
+
+  def create_mix_button(attrs = {})
+    attrs.merge!({:href => playlist_create_path})
+    button = send("blue_button", t("home.create_mix"), attrs)
   end
 
   def follow_button2(user, options={})
@@ -645,8 +673,8 @@ module ApplicationHelper
 
   def pagination_args
     {
-      :previous_label => "« #{t('actions.previous')}",
-      :next_label => "#{t('actions.next')} »",
+      :previous_label => "«",
+      :next_label => "»",
       :renderer => PaginationRenderer,
       :inner_window => 2
     }
@@ -898,5 +926,83 @@ module ApplicationHelper
         end
       end
   end
+
+  #'Movin Out Anthony's Song Out Anthonys Songs Song'
+  def escape_for_js(str)
+    if str
+      #str.gsub!(/'/, "&#39;")
+      temp = "before: #{str}"
+      str.gsub!(/'/, CGI::escape("'"))
+      str.gsub!(/"/, CGI::escape('"'))
+    end
+    str
+  end
+
+  def rating(rateable, enabled = false, id=nil)
+    ratings = ""
+    disabled = true unless enabled
+    rating = false
+    rating_id = id ? id : "rating_#{rateable.id}"
+    (1..5).each do |rate|
+      checked = rate == rateable.rating_cache.floor ? true : false
+      ratings << radio_button_tag(rating_id, rate, checked, :class => 'star', :disabled => disabled)
+    end
+    
+    "<span class=\"rating\">
+       #{ratings}
+     </span>"
+  end
+
+  def tag_links(item, active_scope = :all, limit=3, include_text=true, link_options={})
+    links = []
+    tags = item.tags.all(:limit => limit).map{ |tag| link_to(tag.name, main_search_path(:scope => active_scope.to_s, :q => tag.name), link_options) }
+
+    unless tags.empty?
+      if include_text
+        "#{t('basics.tags')}: #{tags.join(", ")}..."
+      else
+        "#{tags.join(", ")}..."
+      end
+    end
+  end
+
+  def mix_tag_cloud(tags)
+    inner_tag_links = []
+    tag_cloud tags, %w(tag_css1 tag_css2 tag_css3 tag_css4, tag_css5) do |tag, css_class, index| 
+      inner_tag_links << link_to(tag.name, search_path(:q => tag.name, :scope => :playlists), :class => "blue #{css_class}", :id => "tag_#{index}") rescue nil
+    end
+    <<-EOF
+    <div class="mix_tags">
+      <table width="100%">
+        <tr>
+          <td align="center">
+            #{inner_tag_links.compact.join('&nbsp;&nbsp;')}
+          </td>
+        </tr>
+      </table
+    </div>
+    EOF
+  end
+
+  def ajax_pagination_for(url, collection, per_page)
+    total_pages = collection.paginate(:per_page => 5, :page => 1).total_pages
+    if total_pages > 1
+      content = ""
+      (2..total_pages).each do |x|
+        content << "<a href=\"#\" class=\"page\">#{x}</a>"
+      end
+
+    "<div class=\"pagination ajax_pagination { url: '#{url}'}\" >
+      <span class=\"page current\">1</span>
+      #{content}
+    </div>"
+    end
+  end
+
+  def action_for(item)
+    current_user.blocks?(item) ? 'unblock' : 'block'
+  end
+
+
 end
 

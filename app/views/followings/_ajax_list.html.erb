@@ -1,0 +1,8 @@
+<div class="sorting ajax_sorting">
+  <%= sort_link_to :latest %> /
+  <%= sort_link_to :alphabetical %>
+</div>
+<%= render 'followings/list' %>
+<% if @collection.respond_to? :total_pages %>
+  <%= will_paginate @collection, pagination_args %>
+<% end %>

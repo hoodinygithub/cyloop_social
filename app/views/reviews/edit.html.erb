@@ -1,0 +1,69 @@
+<form action="" method="post" id="update_review" class="account_settings">
+  <div class="title"><%= t('reviews.edit_your_review') %></div>
+
+  <div class="form_row">
+    <%= link_to avatar_for(@review.commentable, :medium, :class => 'popup_mix_image'),
+      radio_path(:station_id => @review.commentable.id) %>
+    <div class="popup_mix_text">
+      <big><a href="#" class="black"><%= @review.commentable.name %></a></big><br/>
+      <%= t('basics.by') %>: <a href="#" class="black"><%= @review.commentable.owner %></a>
+    </div>
+
+    <div class="clearer"></div>
+    <br/>
+  </div><!--/end form_row -->
+
+
+  <div class="form_row">
+    <br/>
+    <p align="right" class="style1">
+    <font size="4"><span id="edit_comment_counter" class="chars_counter">
+      <%= 140 - @review.comment.size %>
+    </span></font>
+    </p>
+      <div class="network_update">
+        <%= avatar_for(profile_account, :small, {:class => 'network_icon'}) %>
+
+        <div class="album_detail_area">
+          <div class="album_textarea">
+            <textarea id="comment_update"
+                      chars_counter="edit_comment_counter"
+                      rows="3"
+                      cols="20" onkeyup="Base.reviews.count_chars(this);"
+                      onchange="Base.reviews.count_chars(this);"><%= @review.comment %></textarea>
+            <img id="comment_update_arrow" src="/images/network_arrow.gif" class="network_arrow" alt="" />
+            <div class="clearer"></div>
+          </div>
+
+          <div class="rating_bottles grey_round_box2 rating_input">
+            <b><%= t('actions.rate_it')%> :</b> &nbsp; &nbsp;
+            <span class="rating_inputs">
+            <%= rating(@review, true) %>
+            </span>
+          </div>
+          <% if false %>
+          <div class="right_side">
+            <div class="network_twitter">
+              <input type="checkbox" />
+              <a href="#"><img src="images/twitter_icon.gif" alt="" /></a>
+              &nbsp;
+            </div>
+          </div>
+          <% end %>
+
+
+          <br class="clearer" />
+      </div>
+
+      <div class="clearer"></div>
+    </div>
+  </div><!--/end form_row -->
+  <br/>
+
+  <div class="align_right">
+    <big><a href="#" onclick="$(document).trigger('close.facebox');return false;" class="black valign_middle popup_close_action"><%= t('actions.cancel') %></a></big>
+    <a href="#" class="blue_button valign_middle" onclick="Base.reviews.update('<%= @review.id %>', <%= @full_partial.to_s %>);return false;">
+      <span><span><%= t('actions.save') %></span></span>
+    </a>
+  </div>
+</form>

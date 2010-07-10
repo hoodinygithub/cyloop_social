@@ -1,4 +1,4 @@
-xml.playlists do 
+xml.playlists do
   @playlists.each do |playlist|
     xml.list do
       xml.type "2"

@@ -97,8 +97,36 @@ class User < Account
     end
   end
   
-  has_many :playlists, :foreign_key => :owner_id, :order => 'created_at DESC'
+  has_many :comments, :foreign_key => :user_id, :conditions => "commentable_type = 'Playlist'" do
+    def latest(limit=6)
+      all(:limit => limit, :order => 'comments.created_at DESC')
+    end 
+  end
+        
+  
+  
+  has_many :playlists, :foreign_key => :owner_id, :conditions => 'playlists.deleted_at IS NULL' do
+    def top(limit = 4)
+      all(:include => :station, :conditions => 'stations.id IS NOT NULL', :order => 'playlists.total_plays DESC', :limit => limit)
+    end
 
+    def latest(limit = 6)
+      all(:include => :station, :conditions => 'stations.id IS NOT NULL', :order => 'playlists.updated_at DESC', :limit => limit)
+    end
+
+    def locked(limit = 6)
+      all(:include => :station, :conditions => 'stations.id IS NOT NULL AND playlists.locked_at IS NOT NULL', :order => 'playlists.updated_at DESC', :limit => limit)
+    end
+
+    def unlocked(args = {})
+      opts = { :include => :station, :conditions => 'stations.id IS NOT NULL AND playlists.locked_at IS NULL', :order => 'playlists.updated_at DESC' }
+      opts.merge!(args) unless opts.empty?
+      all(opts)
+    end
+  end
+  
+
+  has_many :taggings, :through => :playlists
   has_many :song_listens, :foreign_key => :listener_id
 
   has_many :followings, :foreign_key => 'follower_id'
@@ -169,6 +197,29 @@ class User < Account
     followee_id = followee_id.id if followee_id.kind_of? Account
     # followings.pending.exists?(:followee_id => followee_id)
     cached_pending_followee_ids.include?(followee_id)
+  end
+
+  def tag_counts_from_playlists(limit=60)
+    options = { :select => "DISTINCT tags.*",
+                :joins => "INNER JOIN #{Tagging.table_name} ON #{Tag.table_name}.id = #{Tagging.table_name}.tag_id INNER JOIN #{Playlist.table_name} ON #{Tagging.table_name}.taggable_id = #{Playlist.table_name}.id AND #{Tagging.table_name}.taggable_type = 'Playlist'",
+                :order => "taggings.created_at DESC",
+                :conditions => "playlists.owner_id = #{self.id} AND (playlists.deleted_at IS NULL AND playlists.locked_at IS NULL)",
+                :limit => limit }
+
+    Tag.all(options)
+    # options = { :limit => limit, 
+    #             :joins => "INNER JOIN #{Playlist.table_name} ON #{Tagging.table_name}.taggable_id = #{Playlist.table_name}.id AND #{Tagging.table_name}.taggable_type = 'Playlist'",
+    #             :order => "taggings.created_at DESC",
+    #             :conditions => "playlists.owner_id = #{self.id}" }
+    # Tag.counts(options)
+  end
+
+  def tags_from_playlists
+    taggings.map(&:tag)
+  end
+
+  def update_cached_tag_list
+    update_attribute(:cached_tag_list, TagList.new(tags_from_playlists.map(&:name)).to_s)
   end
 
   #TODO MUST BE REVISITED WHEN IMPLEMENTING LOCALES

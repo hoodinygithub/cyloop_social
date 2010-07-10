@@ -1,0 +1,43 @@
+<%
+  p = @playlist if @playlist
+%>
+
+<% if @last_box %>
+  <div class="artist_box pl last_box png_fix">
+<% elsif defined?(last_box) and last_box %>
+  <div class="artist_box pl last_box png_fix">
+<% else %>
+  <div class="artist_box pl png_fix">
+<% end %>
+    <% if false %><span class="close_btn">Close</span><% end %>
+    <%= link_to avatar_for(p, :medium), radio_path(:station_id => p.station.id) %>
+    <div class="overlay">
+        <div class="hidden">
+            <%= link_to(avatar_for(p.owner, :tiny, :class => 'artist_icon'), user_path(p.owner)) %>
+            <b>
+              <%= link_to(p.owner.name, user_path(p.owner)) %>
+            </b>
+            <br />
+            <span class="white"><%= l(p.updated_at.to_date) %></span>
+            <br/><br/>
+            <div class="tag_links">
+            <%= tag_links(p) %>
+            </div>
+            <div class="align_right box_buttons">
+              <% if false %>
+              <a href="#" title = "Subscribe"><img src="images/listen_button.png" class="png_fix" alt="" /></a>
+              <a href="#" title="Copy"><img src="images/duplicate_button.png" class="png_fix" alt="" /></a>
+              <% end %>
+            </div>
+        </div>
+        <div class="visible">
+            <%= link_to image_tag('play_button.png', :class => 'play_button png_fix'), radio_path(:station_id => p.station.id) %>
+  	        <%= link_to truncate(p.name, 15, '...'), 
+	                  radio_path(:station_id => p.station.id),
+	                  :alt => p.name %>
+            <br />
+            <%= rating(p) %>
+        </div>
+    </div><!--/end overlay -->
+  </div><!--/end artist_box -->
+<%=  "<br class=\"clearer\" />" if @last_box %>

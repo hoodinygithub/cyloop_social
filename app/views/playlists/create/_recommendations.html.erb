@@ -1,0 +1,13 @@
+<h2><%= t('playlists.why_not_try') %></h2>
+
+<%# cache("#{site_cache_key}/modules/playlist_creation/top_artists", :expires_in => EXPIRATION_TIMES["top_modules_artists"]) do %>
+  <div class="try_list">
+      <% @recommended_artists.each_with_index do |recommended_artists_item, index| %>
+        <div class="small_thumb <%= index==9 ? "last_thumb" : "" %>" title="<%= recommended_artists_item.name %>">
+            <%= link_to_function avatar_for(recommended_artists_item, :spaced_img, {:disable_default_css => true}), "get_song_list('#{recommended_artists_item.id}','artist')" %>
+            <%= link_to_function truncate(recommended_artists_item.name, :length => 10), "get_song_list('#{recommended_artists_item.id}','artist')" %>
+        </div>
+      <% end %> 
+    <br class="clearer" />
+  </div><!--/end try_list -->
+<%# end %>

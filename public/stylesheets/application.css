@@ -1546,7 +1546,7 @@ h1 {
     zoom: 1;
 }
 
-.reviews {
+div.reviews {
     width: 300px;
     float: right;
 }

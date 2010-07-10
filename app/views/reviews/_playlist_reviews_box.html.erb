@@ -1,0 +1,30 @@
+<% comments = playlist.comments.all(:order => 'comments.updated_at DESC')%>
+<div class="reviews mixes">
+  <% if playlist.locked? %>
+    <br/>
+    <div class="medium_text">
+      <%= image_tag 'lock.gif' %> <%= t('playlist.this_mix_is_locked') %>
+    </div>  
+    <div class="grey align_center">
+        <%= t( "playlist.click_to_unlock", :unlock_link => link_to (t("basics.here", :default => "here"), playlist_edit_path(playlist))) %>
+    </div>
+  <% else %>
+  <div class="title">
+    <span class="reviews_stars"><%= rating(playlist) %></span>
+    <div><%= t('modules.reviews.title').upcase %> (<%= comments.size %>)</div>
+  </div>
+    <% if comments.empty? %>
+      <br/>
+      <div class="medium_text">
+        <%= t('playlist.doesnt_have_any_reviews') %>
+      </div>
+    <% else %>
+      <%= render :partial => 'reviews/playlist_review_line', :collection => comments[0..1] %>
+    <% end %>
+    <% if comments.size > 2 %>
+    <div class="view_all">
+      <b><%= link_to t('actions.view_all'), radio_path(:station_id => playlist.station.id) %></b>
+    </div>
+    <% end %>
+  <% end %>
+</div>

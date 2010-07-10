@@ -1,0 +1,25 @@
+<% playlists = current_playlist.kind_of? (Array) ? current_playlist : current_playlist.playable.owner.playlists.latest(20) %>
+<% playlists.each do |playlist| %>
+  <div class="radio_station_row">
+    <%= link_to_function avatar_for(playlist, :small, :class => 'left_side station_icon', :width => '50', :disable_default_css => true), "Base.radio.set_station_details(#{playlist.station.id}, '#{playlist.station_queue}')" %>
+    <div class="station_text">
+      <b><%= link_to playlist.name, mix_radio_path(:station_id => playlist.station.id) %></b></small><br/>
+    <small class="grey"><%=  l(playlist.updated_at.to_date) %></small><br/>
+    <small><%= station_contains(playlist, 3, true, :target => '_blank') %></small>
+    </div>
+
+    <div class="station_buttons">
+      <% if top %>
+        <%= rating(playlist, false, "#{playlist.id}_top") %>
+      <% else %>
+        <%= rating(playlist) %>
+      <% end %>
+      <br />
+      <span class="big_btn_box hoverable_item">
+        <%= link_to image_tag('play_button.png', :class => 'play_button png_fix'), mix_radio_path(:station_id => playlist.station.id) %>
+      </span>
+      <!--img src="images/play_button.png" /></a!--> 
+     </div>
+     <div class="clearer"></div>
+  </div><!--/end radio_station_row -->
+<% end %><!--playlist.updated_at.strftime('%m/%d/%Y')-->

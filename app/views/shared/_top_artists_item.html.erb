@@ -1,0 +1,12 @@
+<% search_link = main_search_path(:scope => 'mixes', :q => CGI::escape(top_artists_item.name)) %>
+<li>
+  <%= link_to (top_artists_item_counter + 1), search_link, :class => "item_number" %>
+  <span class="item_image">
+    <%= link_to avatar_for(top_artists_item, :small), search_link %>
+  </span>
+  <div class="item_text">
+    <big><b><%= link_to top_artists_item.name, search_link, :class => 'blue' %></b></big><br/>
+    <small><%= top_artists_item.country.name if top_artists_item.country %></small>
+  </div>
+  <br class="clearer" />
+</li>

@@ -1,0 +1,35 @@
+<% last_item = (big_playlist_item_counter + 1) % columns == 0 ? true : false %>
+<div class="playlist_item<%=" last_item" if last_item %>">
+  <%= link_to (big_playlist_item_counter + 1), mix_radio_path(:station_id => big_playlist_item.station.id), :class => "big_item_number" %>
+  <div class="artist_box png_fix">
+    <%= link_to avatar_for(big_playlist_item, :new_medium), mix_radio_path(:station_id => big_playlist_item.station.id) %>
+
+    <div class="overlay">
+      <div class="hidden">
+        <%= link_to avatar_for(big_playlist_item.owner, :tiny, :class => 'left_side'), user_path(big_playlist_item.owner) %>
+        <span class="creator_and_date">
+          <span class="bold"><%= link_to truncate(big_playlist_item.owner.name,15), big_playlist_item.owner rescue ""%></span><br/>
+          <%= t('basics.overlay_created_at', :when => distance_of_time_in_words_to_now(big_playlist_item.updated_at)) %>
+        </span>
+        <br class="clearer" />
+        <div class="tags_contains">
+          <% unless big_playlist_item.cached_tag_list.blank? %>
+          <div><%= tag_links(big_playlist_item, @active_scope) %></div>
+          <% end %>
+          <% if big_playlist_item.songs_count > 0 %>
+          <div class="station_contains"><%= station_contains(big_playlist_item) %></div>
+          <% end %>
+        </div>
+      </div>
+      <div class="visible">
+        <%= link_to image_tag("play_button.png", :class=> "play_button png_fix", :title => t('basics.play')), mix_radio_path(:station_id => big_playlist_item.station.id) %>
+
+        <%= link_to truncate(big_playlist_item.name, 15, '...'), mix_radio_path(:station_id => big_playlist_item.station.id), :alt => big_playlist_item.name %><br/>
+
+        <%= rating(big_playlist_item) %>
+      </div>
+    </div><!--/end overlay -->
+  </div><!--/end artist_box -->
+</div><!--/end playlist_item -->
+
+<% if last_item %><div class="clearer"></div><% end %>

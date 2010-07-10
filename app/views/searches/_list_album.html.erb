@@ -1,0 +1,12 @@
+<li>
+  <% if @local %>
+    <a href="#" onclick='get_song_list(<%=list_album.id %>,"<%=list_album.class.to_s.downcase %>"); return false;'>
+  <% else %>
+    <a href="<%= playlist_create_path(:item_id => list_album.id, :scope => list_album.class.to_s.downcase) %>">
+  <% end %>
+      <%= avatar_for(list_album, :small, :alt => "#{list_album.name}") %>
+      <b> <%= list_album.name %> </b><br class="no_clear"/>
+      <small><%= list_album.owner.name if list_album.owner %> </small>
+      <br class="clearer" />
+  </a>
+</li>

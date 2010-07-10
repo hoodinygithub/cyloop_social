@@ -349,7 +349,7 @@ class ApplicationController < ActionController::Base
 
   def transformed_recommended_stations(limit = 3, fetch=nil)    
     fetch ||= limit
-        
+    logger.info "#{rec_engine.get_all_params(:number_of_records => fetch).inspect} (#{rec_engine.get_internal_cache_key(:number_of_records => fetch)})"
     Rails.cache.fetch("modules/recommended_stations/#{limit}/#{fetch}/#{rec_engine.get_internal_cache_key(:number_of_records => fetch)}", :expires_delta => EXPIRATION_TIMES["module_recommended_stations"]) do
       stations = recommended_stations(fetch).map do |s| 
         if s and s.abstract_station and s.abstract_station.station and s.abstract_station.total_artists > 1
@@ -490,5 +490,22 @@ class ApplicationController < ActionController::Base
       end
     end
   end
+
+  def on_dashboard?
+    request.request_uri.match(/\/my\//)
+  end
+
+  def feedback_recipient
+    ENV["#{current_site.code.upcase}_FEEDBACK_EMAIL"]
+  end
+
+  def get_sort_by_param(valid_params=[], default = :latest)
+    sort_by = params.fetch(:sort_by, default).to_sym
+    unless valid_params.include?(sort_by)
+      sort_by = default.to_sym
+    end
+    params[:sort_by] = sort_by
+  end
+
 end
 

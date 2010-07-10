@@ -1,0 +1,48 @@
+<form action="" method="post" class="account_settings">    
+    <div class="form_row">
+      <%= link_to avatar_for(@review.commentable, :medium, :class => 'popup_mix_image'),
+        radio_path(:station_id => @review.commentable.station.id) %>
+
+        
+        <div class="popup_mix_text">
+          <big>
+            <%= link_to @review.commentable.name, radio_path(:station_id => @review.commentable.station.id), :class => "black" %>
+          </big><br/>
+          <%= t('basics.by') %>: <a href="#" class="black">
+            <%= link_to(@review.commentable.owner, @review.commentable.owner, :target => "_blank", :class => "black") %>
+          </a>
+        </div>
+        
+        <div class="clearer"></div>
+        <br/>
+    </div><!--/end form_row -->
+
+    
+    <div class="form_row">
+        <br/>
+        <div class="network_update">
+          <%= avatar_for(@review.user, :small, {:class => 'network_icon'}) %>
+            
+            <div class="album_detail_area">
+                <div class="album_textarea">
+                    <textarea class="readonly" rows="6" cols="20" readonly="true"><%= @review.comment %></textarea>
+                    <img src="/images//network_arrow.gif" class="network_arrow" alt="" />
+
+                    <div class="clearer"></div>
+                      
+                </div>
+                
+                <div class="rating_bottles grey_round_box2 rating_input">
+                    <b><%= t('actions.rate_it')%> :</b> &nbsp; &nbsp;
+                    <span class="rating_inputs">
+                    <%= rating(@review) %>
+                    </span>
+                </div>
+                
+                <br class="clearer" />
+            </div> 
+            
+            <div class="clearer"></div>
+        </div>
+    </div><!--/end form_row -->
+</form>

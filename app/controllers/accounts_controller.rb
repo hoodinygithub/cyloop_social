@@ -9,12 +9,18 @@ class AccountsController < ApplicationController
   def show
     return redirect_to( user_path( profile_account.slug ) ) if params[:slug] != profile_account.slug
     @dashboard_menu = :home
-    @mixes_recommended = (1..6).to_a
     @comments = (1..3).to_a
 
-    @top_stations = profile_account.top_stations(6) if profile_account.is_a? User
+    @recent_reviews = []
+    if profile_account.is_a? User
+      @top_stations = profile_account.top_stations(6) 
+      @recent_reviews = profile_account.comments.latest(3)
+    end
+    
     @followers = profile_account.followers.all(:limit => 4)
-    @latest_stations = profile_account.latest_stations(12)
+    @latest_mixes = profile_account.playlists.latest(6)
+    @latest_stations = profile_account.latest_stations(6)
+    
     @msn_properties={}
     if profile_account.artist?
       @msn_properties[:page_name] = '\'Artist Profile\''

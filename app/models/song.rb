@@ -50,10 +50,19 @@ class Song < ActiveRecord::Base
   validates_presence_of :position, :if => :album_id?
 
   define_index do
-    where "deleted_at IS NULL"
-    indexes :title
+    where "songs.deleted_at IS NULL and accounts.deleted_at IS NULL and albums.deleted_at IS NULL"
+    indexes :title, :sortable => true
+    
+    # Added for Playlist Create sorting
+    has artist.name, :as => :artist_name, :sortable => true
+    has album.name, :as => :album_name, :sortable => true
+    #
+    has artist(:id), :as => :artist_id
+    has album(:id), :as => :album_id
+    
     set_property :min_prefix_len => 1
     set_property :enable_star => 1
+    set_property :allow_star => 1
   end
   
   def total_listens

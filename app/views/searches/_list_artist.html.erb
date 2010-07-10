@@ -1,5 +1,9 @@
 <li>
-  <a href="<%= artist_path(list_artist) %>">
+  <% if @local %>
+    <a href="#" onclick='get_song_list(<%=list_artist.id %>,"<%=list_artist.class.to_s.downcase %>"); return false;'>
+  <% else %>
+    <a href="<%= playlist_create_path(:item_id => list_artist.id, :scope => list_artist.class.to_s.downcase) %>">
+  <% end %>
     <%= avatar_for(list_artist, :search, {:alt => " #{list_artist.name}"}) %>
     <b> <%= list_artist.name %> </b><br/>
     <br class="clearer" />

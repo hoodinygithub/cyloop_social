@@ -1,0 +1,17 @@
+<form action="" method="post" class="account_settings">
+    <div class="title"><%= t('reviews.duplicate_warning_title') %></div>
+
+    <div class="form_row auto_fill_text">
+        <%= t('reviews.duplicate_warning_text') %>
+        <br/><br/>
+
+    </div>
+
+    <br/>
+
+    <div class="align_right">
+        <big><a href="#" onclick="$(document).trigger('close.facebox');return false;" class="black valign_middle popup_close_action"><%= t('actions.cancel') %></a></big>
+
+        <a href="#" class="blue_button valign_middle" onclick="Base.reviews.overwrite('<%= @review.id %>');return false;"><span><span><%= t('actions.submit') %></span></span></a>
+    </div>
+</form>

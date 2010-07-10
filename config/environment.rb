@@ -44,13 +44,14 @@ Rails::Initializer.run do |config|
   config.gem "rubyist-aasm",            :version => "2.1.1", :lib => "aasm", :source => 'http://gems.github.com'
   config.gem "newrelic_rpm",            :version => '2.12.0'
   config.gem 'htmlentities',            :version => "4.2.0"
-  config.gem 'mislav-will_paginate',    :version => '2.3.11', :lib => 'will_paginate'
+  config.gem 'will_paginate',           :version => '2.3.11', :source => 'http://gemcutter.org'
   config.gem 'rufus-tokyo',             :version => '1.0.5'
   config.gem 'oauth',                   :version => '0.3.4'
   config.gem 'moomerman-twitter_oauth', :version => '0.2.1', :lib => 'twitter_oauth', :source => 'http://gems.github.com'
   config.gem 'httparty',                :version => '0.4.5'
   config.gem 'ar_mailer',               :version => '1.5.0', :lib => 'action_mailer/ar_mailer', :source => 'http://gemcutter.org'
   config.gem "block_helpers",           :source => "http://gemcutter.org"
+  config.gem 'redis-namespace',         :lib => 'redis/namespace'
   config.gem 'resque', :version => '1.2.3'
     
   

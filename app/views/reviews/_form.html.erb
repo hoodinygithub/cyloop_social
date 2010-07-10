@@ -1,0 +1,54 @@
+<h1><%= t('playlist.review') %></h1>
+<br/>
+
+<p align="right" class="style1"><font size="4"><span id="new_comment_counter" class="chars_counter">140</span></font></p>
+ <div class="network_update">
+  <form method="post" action="" id="post_review">
+    <div>
+      <%= link_to avatar_for(current_user, :small, :class => "network_icon"), current_user %>
+
+      <div class="album_detail_area">
+          <div class="album_textarea">
+            <textarea chars_counter="new_comment_counter"
+                      id="network_comment" cols="20" rows="3"
+                      name="comment"
+                      onkeyup="Base.reviews.count_chars(this);"
+                      onchange="Base.reviews.count_chars(this);"></textarea>
+            <img alt="" class="network_arrow" src="images/network_arrow.gif" />
+            <div class="clearer"></div>
+          </div>
+
+          <div class="network_text">
+              <div class="rating_bottles grey_round_box2 rating_input">
+                  <b><%= t('actions.rate_it')%> :</b> &nbsp; &nbsp;
+                  <span class="rating_inputs">
+                    <input name="rating" type="radio" class="star" value="1"/>
+                    <input name="rating" type="radio" class="star" value="2"/>
+                    <input name="rating" type="radio" class="star" value="3"/>
+                    <input name="rating" type="radio" class="star" value="4"/>
+                    <input name="rating" type="radio" class="star" value="5"/>
+                  </span>
+              </div>
+          </div>
+
+        <div class="right_side post_button">
+          <a class="blue_button compartir_button" onclick="Base.reviews.post('<%= @playlist.id %>'); return false;" href="#"><span><span><%= t('reviews.post_your_review')%></span></span></a>
+          <% if false %>
+            <div class="network_twitter">
+              <input type="checkbox" />
+              <a href="#"><img alt="" src="/images/twitter_icon.gif" /></a>
+              &nbsp;
+            </div>
+          <% end %>
+        </div>
+
+        <br class="clearer" />
+      </div>
+
+      <div class="clearer"></div>
+
+    </div>
+  </form>
+</div>
+
+<br/>

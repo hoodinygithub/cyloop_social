@@ -31,9 +31,18 @@ class UserStationsController < ApplicationController
         per_page = 10
         
         begin
-          @user_stations = profile_account.stations.paginate :page => page, :per_page => per_page, :order => @sort_types[@sort_type], :total_entries => profile_account.total_user_stations
+          @collection = profile_account.stations.paginate :page => page, 
+                                                          :per_page => per_page, 
+                                                          :order => @sort_types[@sort_type], 
+                                                          :total_entries => profile_account.total_user_stations
+          if profile_account.is_a?(Artist)
+            @includes = @collection.empty? ? nil : @collection.first.includes(10)
+          end
         rescue NoMethodError
           redirect_to new_session_path
+        end
+        if request.xhr?
+          render :partial => 'ajax_list'
         end
       end
 

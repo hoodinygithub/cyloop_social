@@ -1,0 +1,10 @@
+<% if !@collection.empty? %>
+  <%= render :partial => 'reviews/item', :collection => @collection %>
+  <% (6 - @collection.size).times do %>
+    <div class="albums_item reviews_list">
+      <%= image_tag "empty_img.gif" %>
+    </div>
+  <% end %>
+<% else %>
+  <%= render 'blank_slate' %>
+<% end %>

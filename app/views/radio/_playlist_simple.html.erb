@@ -1,0 +1,12 @@
+<% unless playlist_simple.nil? %>
+  <div class="station">
+    <div class="avatar">
+      <%= link_to avatar_for(playlist_simple, :small), mix_radio_path(:station_id => playlist_simple.station.id) %>
+    </div>
+    <div class="station_info">
+      <h2><%= link_to playlist_simple.name, mix_radio_path(:station_id => playlist_simple.station.id) %></h2>
+      <%= station_contains(playlist_simple, 3, true, :target=>"_blank") %>
+    </div>
+  </div>
+  <br class="clearer" />
+<% end %>

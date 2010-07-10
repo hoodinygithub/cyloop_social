@@ -1,0 +1,26 @@
+<li id="review_<%= playlist_review_item.id %>">
+    <%= link_to avatar_for(playlist_review_item.user, :small, :class => "icon"), playlist_review_item.user, :target => "_blank" %>
+    <div class="info">
+      <b><%= link_to(playlist_review_item.user, playlist_review_item.user, :target => "_blank") %></b>
+      <br />
+      <%= nice_elapsed_time(playlist_review_item.updated_at) %> <%= t('basics.ago') %>
+      <br />
+      <%= rating(playlist_review_item) %>
+    </div>
+    <div class="text">
+      <%= playlist_review_item.comment %>
+      <% if playlist_review_item.user == current_user %>
+        <div class="align_right">
+          <a href="#" onclick="Base.reviews.edit(<%= playlist_review_item.id %>);return false;"><%= t('actions.edit') %></a>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="clearer"></div>
+
+    <% if (playlist_review_item.user == current_user) or @playlist.owner == current_user %>
+      <a href="#" onclick="Base.reviews.confirm_remove(<%= playlist_review_item.id %>);return false;" class="close_btn">
+        <%= t('action.close') %>
+      </a>
+    <% end %>
+</li>

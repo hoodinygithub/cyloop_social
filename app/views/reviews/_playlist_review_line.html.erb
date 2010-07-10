@@ -1,0 +1,24 @@
+<div class="review_item" id="review_<%= playlist_review_line.id %>">
+
+  <% if (playlist_review_line.user == current_user) or playlist_review_line.commentable.owner == current_user %>
+    <a href="#" onclick="Base.reviews.confirm_remove(<%= playlist_review_line.id %>);return false;" class="close_btn">
+      <%= t('action.close') %>
+    </a>
+  <% end %>
+
+  <%= link_to avatar_for(playlist_review_line.user, :small, :class => "review_icon"),  playlist_review_line.user %>
+
+  <div class="review_creator">
+      <b><%= link_to playlist_review_line.user, user_path(playlist_review_line.user), :target => '_blank' %></b><br/>
+      <%= nice_elapsed_time(playlist_review_line.updated_at) %> <%= t('basics.ago') %><br/>
+      <%= rating(playlist_review_line) %>
+  </div>
+  <div class="review_text">
+    <p><%= truncate(playlist_review_line.comment, 60, "...") %></p>
+    <% if playlist_review_line.comment.size > 60 %>
+    <p><a href="#" onclick="Base.reviews.show(<%= playlist_review_line.id %>); return false;"><%= t('actions.read_more')%></a></p>
+    <% end %>
+  </div>
+  <br class="clearer" />
+
+</div><!--/end review_item -->

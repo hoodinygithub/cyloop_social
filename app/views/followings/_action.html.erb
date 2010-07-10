@@ -1,0 +1,7 @@
+<ul class="actions_settings" style="z-index: 9; display: none;">
+  <li>
+    <a href="#" onclick="Base.community.<%=action_for(item)%>('<%= item.slug %>', this); return false;" />
+    <%= t("actions.#{action_for(item)}") %>
+    </a>
+  </li>
+</ul>

@@ -33,12 +33,15 @@ class Album < ActiveRecord::Base
   index [:deleted_at, :songs_count]
 
   define_index do
-    where "deleted_at IS NULL"
+    where "albums.deleted_at IS NULL AND accounts.deleted_at IS NULL"
     indexes :name, :sortable => true
     set_property :min_prefix_len => 1
     set_property :enable_star => 1
     set_property :allow_star => 1
     has year, created_at
+    has owner(:id), :as => :owner_id
+    has owner(:name), :as => :artist_name
+    has album_artists(:artist_id), :as => :artist_ids
   end
 
   default_scope :conditions => 'deleted_at IS NULL', :order => 'year DESC'

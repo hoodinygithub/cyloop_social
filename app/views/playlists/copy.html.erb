@@ -1,0 +1,40 @@
+<form action="" method="post" class="account_settings">
+  <div class="title"><%= t('playlists.copy') %></div>
+  
+  <div class="form_row">
+    <%= link_to avatar_for(@playlist, :medium, :class => 'popup_mix_image'),
+      radio_path(:station_id => @playlist.station.id) %>
+    
+    <div class="popup_mix_text">
+        <big><%= link_to @playlist.name, radio_path(:station_id => @playlist.station.id), :class => "blue" %></big><br/>
+        <%= t('basics.by') %>:
+        <%= link_to(@playlist.owner, @playlist.owner, :target => "_blank", :class => "blue") %>
+        <br />
+        <%= station_contains(@playlist.station.playable, 3, true, :target => '_blank', :class => "blue") %>
+    </div>
+    
+    <div class="clearer"></div>
+
+    <br/>
+  </div><!--/end form_row -->
+  
+  <div class="form_row">
+    <label><b><%= t('playlists.name_dialog') %></b></label>
+    
+    <div class="grey_round_box">
+      <input type="text" class="input full_width" name="playlist[name]" id="playlist_name" />
+    </div>
+  </div><!--/end form_row -->
+
+  <br/>
+  
+  <div class="align_right">
+    <big><a href="#" class="black valign_middle popup_close_action" onclick="$(document).trigger('close.facebox'); return false;"><%= t('actions.cancel') %></a></big>
+    
+    <a href="#" class="blue_button valign_middle" 
+      onclick="Base.playlists.duplicate('<%= @playlist.owner.slug%>',<%= @playlist.id %>);">
+      <span><span><%= t('actions.save') %></span></span>
+    </a>
+  </div>
+</form>
+

@@ -1,4 +1,5 @@
 <div class="top_buttons">
+  <% if !@station_obj.playable.is_a? Playlist %>
   <div class="left_side">
     <% if logged_in? && current_user && current_user.total_user_stations > 0 %>
     <%= blue_button(t("possessives.first_person.stations"), :id => 'my_stations_button') %>
@@ -7,7 +8,7 @@
       <%= blue_button(t("radio.msn_stations"), :id => 'msn_stations_button', :href => "#") %>
     <% end %>
   </div>
-
+  <% end %>
   <%= grey_button("<img src=\"/images/now_playing_animation.gif\" class=\"now_playing\" alt=\"#{t("radio.now_playing")}\" />&nbsp;&nbsp;#{t("radio.now_playing")}", :class => "right_side", :id => 'now_playing_button', :href => "#now_playing") %>
   <div class="clearer"></div>
 </div>

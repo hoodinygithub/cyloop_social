@@ -19,7 +19,7 @@ module Searchable::ByNameAndSlug
 
       define_index do
         where "deleted_at IS NULL AND network_id = 1"
-        indexes :name, :sortable => true
+        indexes "UPPER(accounts.name)", :as => :normalized_name, :sortable => true
         indexes :slug
         set_property :min_prefix_len => 1
         set_property :enable_star => 1

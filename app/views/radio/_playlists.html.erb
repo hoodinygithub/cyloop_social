@@ -1,0 +1,111 @@
+<% content_for :head do %>
+<%= stylesheet_link_tag "playlist_create" %>
+<% end %>
+<div class="two_columns mixes">
+  <script type="text/javascript">
+  $(document).ready(function() {
+    var textField = $("input[class='text_input']");
+    var contentSearch = $("input[id='content_search_query']");
+    var mixButton = $("#create_playlist_btn");
+
+    textField.css('color', '<%= market_search_radio_edit_color("off") %>');
+    textField.focus(function() {      
+      if(contentSearch.val() == "<%= t('search.content_search_hint') %>") {
+        contentSearch.attr('value', '')
+      }
+
+      if ($(this).attr("touched") != 'true') {
+        $(this).attr("touched", 'true');
+        $(this).css('color','<%= market_search_radio_edit_color("on") %>' );
+        $(this).attr('value', '')
+      }
+    });
+
+    textField.blur(function() {
+      if($(this).val() == "") {
+        $(this).attr("touched", 'false');
+        $(this).css('color', '<%= market_search_radio_edit_color("off") %>');
+        $(this).attr('value', "<%= t('search.content_search_hint') %>")
+        mixButton.attr('can_post', 0).removeClass('blue_button').addClass('grey_button_big');
+      }
+    });    
+  });  
+  </script>
+  <div class="search_box light_grey">
+    <% form_for(:station, :html => { :onsubmit => 'return Base.content_search.buildSearchUrl();', :method => :get, :id => :content_search_form }, :url => search_path) do %>
+        <div align="center" class="title">
+          <%= image_tag "cyloop_logo_transparent.gif" %>&nbsp;<%= t('basics.mixes').downcase %>
+        </div>
+        <br/>
+        <span class="text_input_placeholder">
+          <%= text_field_tag :q, t('search.content_search_hint', :default => ''),  {
+            :id => :content_search_query, :class => "text_input",
+            # :onfocus => " clearInput(content_msg, this);", 
+            # :onblur => "if (!$.browser.msie) { restoreInput(content_msg, this); setTimeout(function() {$('.create_box').hide();}, 300); }", 
+            :autocomplete => :off } %>
+        </span>            
+        <span class="btn_placeholder">
+          <%= blue_button( t("home.create_mix"), :id => "create_playlist_btn", :href => playlist_create_path) %>
+        </span>
+        <br/><br/>
+    <% end %>
+  </div><!--/end search_box -->
+  <div id="content_search_results" class="create_box"></div><!--/end create_box -->
+
+  <h1><%= t("modules.top_playlists.title").upcase %></h1>
+
+  <div class="playlist_items">
+
+    <% top_playlists_size = @top_playlists.size %>
+    <% columns = 3 %>
+    <% cache("#{site_cache_key}/modules/playlists/top_playlists/#{top_playlists_size}", :expires_in => EXPIRATION_TIMES['top_modules_playlists']) do %>
+      <%= render :partial => 'shared/big_playlist_item', :collection => @top_playlists, :locals => { :columns => columns } %>
+
+      <% index = (@top_playlists_limit - 1) - top_playlists_size %>
+      <% index.downto(0) do |i| %>
+      <% last_item = i % columns == 0 %>
+        <div class="playlist_item<%= " last_item" if last_item  %>">
+          <div class="artist_box empty_item"></div>
+        </div>
+        <% if last_item %>
+          <br class="clearer" />
+        <% end %>
+      <% end %>
+    <% end %>
+  </div><!--/end playlist_items -->
+
+
+  <% cache("#{site_cache_key}/modules/tag_cloud", :expires_in => EXPIRATION_TIMES['site_tag_cloud']) do %>
+    <%= render :partial => "shared/tag_cloud", :locals => { :tags => current_site.tag_counts_from_playlists } %>
+  <% end %>
+
+  <div class="top_playlists_column">
+    <h1><%= t("modules.top_artists.title").upcase %></h1>
+
+    <% cache("#{site_cache_key}/modules/playlists/top_artists", :expires_in => EXPIRATION_TIMES['top_modules_artists']) do %>
+      <ul class="list_items">
+        <%= render :partial => 'shared/top_artists_item', :collection => @top_artists %>
+      </ul>
+    <% end %>
+  </div><!--/end top_playlists_column -->
+
+  <%= render :partial => 'shared/today_top_djs' %>
+</div><!--/end two_columns -->
+
+
+<div class="latest_playlists_column">
+  <div class="ad_box">
+    <%= banner_ad("square_banner") %>
+  </div>
+
+  <br/>
+
+
+  <div class="grey_box">
+    <div class="box_content">
+      <h1><%= t("modules.latest_playlists.title").upcase%></h1>
+      <%= render :partial => 'playlist_simple', :collection => @latest_playlists %>
+    </div>
+  </div>
+</div><!--/end latest_badges_column -->
+<div class="clearer"></div>

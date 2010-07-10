@@ -1,0 +1,35 @@
+<li>
+  <% sorted_includes = randomize_includes(includes) %>
+  <% if false #phase 2 - subscriptions %>
+    <a href="#"><img src="images/listen_icon.png" class="listen_icon png_fix" alt="" title="Listen" /></a>
+  <% end %>
+  <%= four_thumbs_to(artist_item.station, :type => :big, :includes => sorted_includes) %>
+  <div class="transparency_thumbanils png_fix">
+    <%= radio_play_button(artist_item.station.id)  %>
+  </div>
+
+  <div class="subcription_text">
+    <big><%= link_to(artist_item.name, radio_path(:station_id => artist_item.station)) %></big>
+    <br/>
+    <span class="grey">
+      <%= t("basics.last_modified_at", :when => nice_elapsed_time(artist_item.created_at)) %>
+    </span>
+    <br/>
+    <div class="tags_contains">
+      <%= station_contains(artist_item, 3, true, nil, :includes => sorted_includes) %>
+    </div>
+    <div class="subcription_creator">
+      <%= link_to avatar_for(artist_item.owner, :small), artist_item.owner %>
+      <!--img src="images/network_icon.gif" class="creator_image" alt="" /-->
+      <div class="creator_text">
+        <b>
+          <%= t("basics.created_by") %>: <%= link_to artist_item.owner.name, user_path(artist_item.owner) %>
+        </b><br/>
+      
+        <%= render :partial =>'shared/user_following', :locals => {:current_user => current_user, 
+                                                                  :user =>artist_item.owner} %>
+       </div>
+    </div>
+  </div><!--/end subcription_text -->
+  <br class="clearer" />
+</li>

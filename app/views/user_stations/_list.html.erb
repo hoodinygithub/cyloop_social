@@ -1,0 +1,8 @@
+<% if !@collection.empty? %>
+  <ul class="stations_list">
+    <%= render :partial => profile_artist? ? 'artist_item' : 'user_item', 
+               :collection =>  @collection, :locals => { :includes => @includes } %>
+  </ul>
+<% else %>
+  <%= render 'blank_slate' %>
+<% end %>

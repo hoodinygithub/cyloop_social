@@ -1,10 +1,7 @@
-<%= render 'shared/ajax_modules' %>
 <% content_for :title do %>
-  <% if params[:slug] %>
-    <%= t("possessives.third_person.stations", :subject => artist_or_user_name(profile_account)) %>
-  <% else %>
-    <%= t("possessives.first_person.stations") %>
-  <% end %>
+  <%= possessive :stations if profile_account.is_a? User %>  
+  <%= t('artist.stations_featuring_artist', :artist_name => profile_account.name) if profile_account.is_a? Artist %>  
+
 <% end %>
 
 <% content_for :sorting do %>
@@ -16,16 +13,7 @@
 <% end %>
 
 <% content_for :list do %>
-  <ul class="stations_list">
-    <% includes = nil %>
-    <% if profile_artist? %>
-    <% includes = @user_stations.first.includes(10) unless @user_stations.empty? %>
-    <% end %>
-    <%= render :partial => profile_artist? ? 'user_stations/artist_user_station' : 'user_stations/user_station', :collection =>  @user_stations, :locals => { :includes => includes } %>
-  </ul>
-  <%= will_paginate @user_stations, pagination_args %>
+  <%= render 'list' %>
 <% end %>
 
-
-<%= render 'shared/internal_content' %>
-
+<%= render 'shared/list' %>

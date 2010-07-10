@@ -1,0 +1,9 @@
+<% if list_mix.station %>
+<li>
+  <a href="<%= mix_radio_path(:station_id => list_mix.station.id) %>">
+    <%= avatar_for(list_mix, :small, {:alt => "#{list_mix.name}"}) %>
+    <b> <%= list_mix.name %> </b><br/>
+    <br class="clearer" />
+  </a>
+</li>
+<% end %>

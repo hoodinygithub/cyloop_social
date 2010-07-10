@@ -1,0 +1,50 @@
+<% content_for :head do %>
+  <%= stylesheet_link_tag 'playlist_create' %>
+  <%= javascript_include_tag 'jquery.ui' %>
+  <%= javascript_include_tag 'playlist_create' %>
+  <%= javascript_include_tag 'AC_OETags' %>
+<% end %>
+
+<div id="main_content">
+  <div class="two_columns">
+    <h1><%= t('playlists.create_new') %></h1>
+    <h2><%= t('playlists.search_for_music') %></h2>
+    <% form_for :search, :url => search_path, :html => { :onsubmit => 'return Base.playlist_search.buildSearchUrl();', :method => :get, :id => :playlist_search_form, :class => "account_settings search_music" } do |f| %>  
+      <%= render :partial => 'playlists/create/search_box' %>
+    <% end %>
+    <div id="search_results_container">
+      <%= render :partial => 'playlists/create/search_results' %>
+    </div>
+    <div id="playlist_recommended_artists_container">
+      <%= render :partial => 'playlists/create/recommendations' %>
+    </div>
+  </div><!--/end two_columns -->
+
+  <div id="right_column">
+    <h1><%= t('playlists.rules') %></h1>
+    <%= render :partial => 'playlists/create/track_list' %>
+  </div><!--/end right_column -->
+
+  <div class="clearer"></div>
+
+  <div id="stream_connector">
+    <script type="text/javascript" charset="utf-8">
+    var flashvars = "playerId=<%= @player_id %>";
+    AC_FL_RunContent(
+      "src", "/flash/stream_connect",
+      "wmode", "opaque",
+      "width", "1",
+      "height", "1",
+      "align", "middle",
+      "id", "stream_connect",
+      "quality", "high",
+      "bgcolor", "#FFFFFF",
+      "name", "stream_connect",
+      "allowScriptAccess", "sameDomain",
+      "type", "application/x-shockwave-flash",
+      "pluginspage", "http://www.adobe.com/go/getflashplayer",
+      "flashVars", flashvars
+    );
+    </script>
+  </div>
+</div>

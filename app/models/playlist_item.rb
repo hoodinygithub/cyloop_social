@@ -17,13 +17,14 @@ class PlaylistItem < ActiveRecord::Base
   before_destroy :decrement_playlist_total_time
 
   belongs_to :song
+  belongs_to :artist
   belongs_to :playlist, :counter_cache => :songs_count
   
   validates_presence_of :song, :playlist
 
   validates_uniqueness_of :song_id, :scope => :playlist_id
 
-  delegate :artist, :title, :duration, :avatar, :to => :song, :allow_nil => true
+  delegate :title, :duration, :avatar, :to => :song, :allow_nil => true
 
   def increment_playlist_total_time
     playlist.update_attribute(:total_time, playlist.songs.sum(:duration))

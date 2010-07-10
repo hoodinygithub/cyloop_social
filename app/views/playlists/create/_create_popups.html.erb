@@ -1,0 +1,200 @@
+<div class="popup" id="auto_fill_popup">
+    <div class="top_shadow">
+        <div class="top_left corner"></div>
+        <div class="center_shadow"></div>
+        <div class="top_right corner"></div>
+        <a href="#" onclick="$('#auto_fill_popup').fadeOut('fast'); return false;"><img src="/images/popup_close.png" class="popup_close png_fix" alt="X" title="Close" /></a>
+    </div>
+    
+    <div class="popup_content">
+        <div class="title"><%= t('playlists.autofill_option') %></div>
+
+        <div class="auto_fill_text">
+            <%= t('playlists.autofill_option_text') %>
+        </div>
+    </div>
+    
+    <div class="bottom_shadow">
+        <div class="bottom_left corner"></div>
+        <div class="center_shadow"></div>
+        <div class="bottom_right corner"></div>
+    </div>
+
+</div><!--/end popup -->
+
+<div class="popup" id="save_mix_popup">
+    <div class="top_shadow">
+        <div class="top_left corner"></div>
+        <div class="center_shadow"></div>
+        <div class="top_right corner"></div>
+        <a href="#" onclick="$('#save_mix_popup').fadeOut('fast'); return false;"><img src="/images/popup_close.png" class="popup_close png_fix" alt="X" title="Close" /></a>
+    </div>
+
+    
+    <div class="popup_content">
+        <%= form_tag playlist_create_path, :class => "account_settings", :id => "save_playlist_form", :method => :post, :multipart => true %>
+            <input type="hidden" name="item_ids" value="">
+            <div class="title"><%= t('playlists.save_your_playlist') %></div>
+            
+            <div class="form_row">
+                <label><b><%= t('playlists.name_your_playlist') %></b></label>
+                
+                <div class="grey_round_box">
+                    <input type="text" class="input full_width" name="name" value="<%= params[:name] %>" />
+                </div>
+
+                
+                <label><b><%= t('playlists.tag_your_playlist') %></b> <small class="grey"><%= t('playlists.seperated_commas') %></small></label>
+                
+                <div class="grey_round_box">
+                    <input type="text" class="input full_width" name="tags" value="<%= params[:tags] %>" />
+                    <!--div class="tags">
+                        <span class="tag">metal <a href="#"><img src="/images/close_grey.gif" alt="" /></a></span>
+                        <span class="tag">reggae <a href="#"><img src="/images/close_grey.gif" alt="" /></a></span>
+                    </div-->
+
+                </div>
+            </div><!--/end form_row -->
+            
+            <br/>
+            
+            <div class="form_row">
+                <label><b><%= t('playlists.picture') %></b></label>
+                
+                <div class="playlist_image_container">
+                  <img id="save_layer_avatar" alt="" class="valign_middle avatar playlist float_left" src="/images/upload_image_placeholder.gif" />
+                
+                  <label class='label_holder'>
+                    <a href="#" id="avatar_upload_button" class="blue_button valign_middle"><span><span><%= t('playlists.add_update') %></span></span></a>
+                    <input id="playlist_avatar" type="file" class="file" name="avatar" size="30" onchange="playlist_image_preview();"/>
+                  </label>
+                  <div id="uploaded_image_name">filename</div>
+                  <br class="clearer" />
+                </div>
+
+            </div><!--/end form_row -->
+            
+            <br/>
+            
+            <div class="align_right">
+                <big><a href="#" onclick="$('#save_mix_popup').fadeOut('fast'); return false;" class="not_underlined black valign_middle popup_close_action"><%= t('actions.cancel') %></a></big>
+                <a href="#" class="blue_button valign_middle btn_blue_loading" 
+                  onclick="submit_save_form(); return false;">
+                <span><span class="blue_loading" loading_message="<%= t('actions.saving') %>">
+                  <%= t('actions.save') %>
+                </span></span></a>
+            </div>
+        </form>
+    </div>
+
+    
+    <div class="bottom_shadow">
+        <div class="bottom_left corner"></div>
+        <div class="center_shadow"></div>
+        <div class="bottom_right corner"></div>
+    </div>
+</div><!--/end popup -->
+
+
+<div class="popup" id="unable_popup">
+    <div class="top_shadow">
+        <div class="top_left corner"></div>
+        <div class="center_shadow"></div>
+
+        <div class="top_right corner"></div>
+        <a href="#" onclick="$('#unable_popup').fadeOut('fast'); return false;"><img src="/images/popup_close.png" class="popup_close png_fix" alt="X" title="Close" /></a>
+    </div>
+    
+    <div class="popup_content">
+        <div class="title"><%= t('playlists.unable_save') %></div>
+        
+        <div class="auto_fill_text">
+            <%= t('playlists.unable_save_text') %>
+        </div>
+    </div>
+
+    <div class="bottom_shadow">
+        <div class="bottom_left corner"></div>
+        <div class="center_shadow"></div>
+        <div class="bottom_right corner"></div>
+    </div>
+</div><!--/end popup -->
+
+<div class="popup" id="cancel_popup">
+    <div class="top_shadow">
+
+        <div class="top_left corner"></div>
+        <div class="center_shadow"></div>
+        <div class="top_right corner"></div>
+        <a href="#" onclick="$('#cancel_popup').fadeOut('fast'); return false;"><img src="/images/popup_close.png" class="popup_close png_fix" alt="X" title="Close" /></a>
+    </div>
+    
+    <div class="popup_content">
+        <form action="" method="post" class="account_settings">
+            <div class="title"><%= t('playlists.cancel_playlist') %></div>
+
+            
+            <div class="form_row">
+                <div class="auto_fill_text">
+                    <%= t('playlists.cancel_playlist_text') %> 
+                </div>
+                <br/>
+            </div>
+        
+            <br/>
+            
+            <div class="align_right">
+                <big><a href="#" onclick="$('#cancel_popup').fadeOut('fast'); return false;" class="not_underlined black valign_middle popup_close_action"><%= t('playlists.no_thanks') %></a></big>
+                
+                <a href="#" onclick="close_cancel_popup();" class="blue_button valign_middle"><span><span><%= t('playlists.continue') %></span></span></a>
+            </div>
+        </form>
+    </div>
+    
+    <div class="bottom_shadow">
+        <div class="bottom_left corner"></div>
+        <div class="center_shadow"></div>
+
+        <div class="bottom_right corner"></div>
+    </div>
+</div><!--/end popup -->
+
+
+<div class="popup" id="edit_conf_popup">
+    <div class="top_shadow">
+
+        <div class="top_left corner"></div>
+        <div class="center_shadow"></div>
+        <div class="top_right corner"></div>
+        <a href="#" onclick="$('#edit_conf_popup').fadeOut('fast'); return false;"><img src="/images/popup_close.png" class="popup_close png_fix" alt="X" title="Close" /></a>
+    </div>
+    
+    <div class="popup_content">
+        <form action="" method="post" class="account_settings">
+            <div class="title"><%= t('playlists.save_confirmation') %></div>
+
+            
+            <div class="form_row">
+                <div class="auto_fill_text">
+                    <%= t('playlists.edit_confirm_text') %> 
+                </div>
+                <br/>
+            </div>
+        
+            <br/>
+            
+            <div class="align_right">
+                <big><a href="<%= my_mixes_path %>" class="not_underlined black valign_middle popup_close_action"><%= t('playlists.no_thanks') %></a></big>
+                
+                <a href="#" onclick="$('#edit_conf_popup').fadeOut('fast'); return false;" class="blue_button valign_middle"><span><span><%= t('playlists.continue') %></span></span></a>
+            </div>
+        </form>
+    </div>
+    
+    <div class="bottom_shadow">
+        <div class="bottom_left corner"></div>
+        <div class="center_shadow"></div>
+
+        <div class="bottom_right corner"></div>
+    </div>
+</div><!--/end popup -->

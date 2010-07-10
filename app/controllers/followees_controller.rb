@@ -12,6 +12,9 @@ class FolloweesController < ApplicationController
     begin
         sort_types = { :latest => 'followings.approved_at DESC', :alphabetical => 'followings.followee_name'  }
         @collection = profile_user.followees.paginate :page => params[:page], :per_page => 12, :order => sort_types[@sort_type], :total_entries => profile_user.followee_count
+      if request.xhr?
+        render :partial => 'followings/ajax_list'
+      end
     rescue NoMethodError
       redirect_to new_session_path
     end

@@ -1,5 +1,54 @@
 --- 
 es: 
+  playlists: 
+    duration: "Duraci\xC3\xB3n"
+    autofill: Auto-Fill
+    song_from: "canci\xC3\xB3n de"
+    autofill_option_text: "La opci\xC3\xB3n de auto-completar te permitir\xC3\xA1 completar tu playlist con canciones recomendadas seg\xC3\xBAn el estilo de las que ya hayas puesto."
+    total_time: Tiempo Total
+    cancel_playlist: Cancelar el playlist?
+    save_confirmation: "Confirmaci\xC3\xB3n de Almacenamiento"
+    edit: Modifica tu playlist
+    cancel_playlist_text: "La cancelaci\xC3\xB3n de tu playlist va a revertir todas tus modificaciones y lo que hayas agregado.<br/>\xC2\xBFEst\xC3\xA1s seguro de que quieres cancelar?"
+    songs_from: canciones de
+    unable_save: No se puede guardar este playlist
+    saving_order: Orden para Guardar
+    tracks_remaining: "m\xC3\xA1s para poder guardar playlist"
+    delete_text: Seguro que quieres borrar este playlist?
+    rules: Reglas del playlist
+    tag_your_playlist: "As\xC3\xADgnale emociones a tu playlist"
+    edit_confirm_text: "La canciones seleccionadas para tu playlist han quedado guardadas. \xC2\xBFQuieres hacer alguna modificaci\xC3\xB3n?"
+    name_your_playlist: Nombre de tu playlist
+    please_remove: Por favor, remover
+    playlist_name: Nombre del Playlist
+    search_for_music: "Busca m\xC3\xBAsica para agregar a tu playlist"
+    seperated_commas: "(sep\xC3\xA1ralas entre comas)"
+    select_your_songs_text: "Los resultados de canciones aparecer\xC3\xA1n aqu\xC3\xAD.<br/>Arrastra las canciones que te gustan<br/>y ponlas en la columna del costado<br/>para crear tu playlist"
+    last_playlist: Ultimo Playlist
+    maximum_songs_from: "m\xC3\xA1ximo de {{num}} canciones de un mismo {{type}}"
+    autofill_option: "Opci\xC3\xB3n de Auto-Completar"
+    why_not_try: "\xC2\xBFY qu\xC3\xA9 te parecen \xC3\xA9stas...?"
+    drag_songs_here: "Arrastra las canciones aqu\xC3\xAD."
+    delete_title: Borrar Playlist
+    continue_btn: Continuar
+    no_results_found: "No se encontraron resultados. Por favor realiza otra b\xC3\xBAsqueda."
+    drag_songs_here_text: "Incluye por lo menos 10 canciones,<br/>usando no m\xC3\xA1s de 3 canciones<br/>de un mismo artista<br/>o de un mismo \xC3\xA1lbum<br/>dentro del mismo playlist"
+    add_update: ACTUALIZAR
+    songs_from_album: canciones del album
+    name_dialog: "\xC2\xBFQu\xC3\xA9 nombre quieres ponerle a este playlist?"
+    song_from_mix: "canci\xC3\xB3n de este playlist"
+    from_mix: "canci\xC3\xB3n/es de este playlist"
+    continue: Continuar
+    unable_save_text: Tu playlist tiene errores. Estos errores deben ser corregidos para que puedas compartir tu lista con el resto de la comunidad.
+    create_new: Crear un playlist nuevo
+    no_thanks: No. Gracias.
+    you_have: Tienes
+    save_your_playlist: Guardar tu playlist
+    song_from_album: "canci\xC3\xB3n del album"
+    picture: Foto para tu playlist
+    songs_from_mix: canciones de este playlist
+    copy: Copiar Playlist
+    select_your_songs: Selecciona tus canciones.
   artist: 
     be_the_first_to_create_station: "S\xC3\xA9 el primero en crear un radio de {{user_name}}"
   share: 
@@ -56,6 +105,7 @@ es:
     song: "Comprar esta canci\xC3\xB3n"
     select_store: Selecciona tu tienda
   actions: 
+    saving: Guardando
     play: Escuchar
     share: Compartir
     unfollow_account: Dejar de seguir a {{name}}
@@ -202,20 +252,22 @@ es:
       stations: Radios de {{subject}}
       network_activity: Actividad de {{subject}} en la red
       followers: "Gente que est\xC3\xA1 siguiendo a {{subject}}"
-      playlists: Playlists de {{subject}}
+      playlists: Mixes de {{subject}}
       albums: "Albumes de {{subject}} "
       followees: "Gente que  {{subject}} est\xC3\xA1 siguiendo"
       follow_requests: Pedidos de Gente a Seguir de {{subject}}
       charts: Listas de {{subject}}
+      has_not_playlists: "{{subject}} no tiene mixes."
     first_person: 
       stations: Mis Radios
       network_activity: Mi actividad de red
       followers: Gente que me esta siguiendo
-      playlists: Mis Playlists
+      playlists: Mis Mixes
       albums: Mis Albumes
       followees: "Gente que estoy siguiendo "
       follow_requests: Mis Pedidos de Gente a Seguir
       charts: Mis Listas
+      has_not_playlists: "No tienes mixes."
   playlist_items: 
     delete_text: "Seguro que queres borrar esta Canci\xC3\xB3n?"
     delete_title: "Borrar Canci\xC3\xB3n?"
@@ -918,6 +970,9 @@ es:
       home: Principal
       mixes: Mixes
   basics: 
+    album_name: Nombre del \xC3\xA1lbum
+    artist_name: Nombre del artista
+    song_name: "Nombre de la canci\xC3\xB3n"
     play: Escuchar
     artist: Artista
     charts_for: Rankings de
@@ -1023,7 +1078,10 @@ es:
     privacy_policy: "Pol\xC3\xADtica de Privacidad"
   playlist: 
     edit_your_playlist: Editar tu playlist
+    review: HACER UN REVIEW DE ESTE PLAYLIST
+    doesnt_have_any_reviews: Este playlist no tiene reviews aun.
   sort: 
+    highest_rated: MAYOR PUNTAJE
     alphabetical: ALFABETICO
     relevance: RELEVANCIA
     newest: MAS NUEVAS
@@ -1253,6 +1311,11 @@ es:
     approval: "{{name}} comenzar\xC3\xA1 a recibir tus actualizaciones a partir de ahora"
     denial: "{{name}} no podr\xC3\xA1 recibir tus actualizaciones"
   search: 
+    search_results: "Resultados de b\xC3\xBAsqueda"
     search_hint: "Busca tus artistas y m\xC3\xBAsica favorita"
+    see_all_albums_with_term: see all albums with "{{term}}"
+    content_search_hint: "Escribe el nombre de un artista, un \xC3\xA1lbum, o una canci\xC3\xB3n"
     search_title: "B\xC3\xBAsqueda"
+    see_all_songs_with_term: see all songs with "{{term}}"
+    see_all_artists_with_term: see all artists with "{{term}}"
     search_results_for: Buscar resultados para

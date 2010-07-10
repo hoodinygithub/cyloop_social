@@ -1,0 +1,8 @@
+<% if !@collection.empty? %>
+  <ul class="followers_list">
+    <%= render :partial => 'followings/item', :collection => @collection %>
+  </ul><!--/end followers_list -->  
+<% else %>
+  <%= render 'blank_slate' %>
+<% end %>
+

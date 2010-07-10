@@ -24,7 +24,7 @@ class PlaylistItemsController < ApplicationController
       @playlists.each do |playlist|
         if @song.any?
           @song.each do |song|
-            playlist.items.create(:song => song)
+            playlist.items.create(:song => song, :artist_id => song.artist_id)
             record_activity(playlist)
           end
         end

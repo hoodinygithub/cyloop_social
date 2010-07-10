@@ -1,5 +1,59 @@
 --- 
 pt_BR: 
+  playlists: 
+    duration: "Duraci\xC3\xB3n"
+    autofill: Auto-Preencher
+    song_from: "m\xC3\xBAsica de"
+    autofill_option_text: "A op\xC3\xA7\xC3\xA3o de preenchimento autom\xC3\xA1tico permite que voc\xC3\xAA preencha o seu playlist com m\xC3\xBAsicas recomendadas com base naquilo que voc\xC3\xAA j\xC3\xA1 tenha escolhido."
+    total_time: Tiempo Total
+    cancel_playlist: Cancelar Playlist?
+    save_confirmation: !binary |
+      Q29uZmlybWHDp8Ojbw==
+
+    edit: Edite Sua Playlist
+    cancel_playlist_text: "Cancelando sua playlist ir\xC3\xA1 desfazer todas suas altera\xC3\xA7\xC3\xB5es.<br/>Voc\xC3\xAA tem certeza que deseja cancelar?"
+    songs_from: "m\xC3\xBAsicas de"
+    unable_save: "N\xC3\xA3o foi poss\xC3\xADvel salvar essa playlist"
+    saving_order: Orden para Guardar
+    tracks_remaining: faixas restando para publicar
+    delete_text: Seguro que quieres borrar este playlist?
+    rules: Regras da Playlist
+    tag_your_playlist: Tags para sua playlist
+    edit_confirm_text: "As sele\xC3\xA7\xC3\xB5es para o seu playlist foram salvas. Deseja realizar alguma modifica\xC3\xA7\xC3\xA3o adicional?"
+    name_your_playlist: Nome da sua playlist
+    please_remove: por favor remova
+    playlist_name: Nombre del Playlist
+    search_for_music: "Busque por m\xC3\xBAsicas para adicionar em sua playlist"
+    seperated_commas: "separados por v\xC3\xADrgulas"
+    select_your_songs_text: "Resultados da pesquisa por m\xC3\xBAsica ir\xC3\xA3o aparecer aqui<br />\r\n\
+      arraste as m\xC3\xBAsicas que voc\xC3\xAA gosta do recipiente para<br />\r\n\
+      a direita para criar a sua playlist"
+    last_playlist: Ultimo Playlist
+    maximum_songs_from: "m\xC3\xA1ximo de {{num}} m\xC3\xBAsicas do mesmo {{type}} "
+    autofill_option: "Op\xC3\xA7\xC3\xA3o Auto-Preencher"
+    why_not_try: "Por Que N\xC3\xA3o Tentar..."
+    drag_songs_here: "Arraste as m\xC3\xBAsicas aqui"
+    delete_title: Borrar Playlist
+    continue_btn: Continuar
+    no_results_found: Nenhum resultado encontrado, por favor procure novamente
+    drag_songs_here_text: "Selecione pelo menos 10 m\xC3\xBAsicas,<br/>usando n\xC3\xA3o mais de 3 m\xC3\xBAsicas<br/>de um mesmo artista<br/>ou de um mesmo \xC3\xA1lbum<br/>dentro da mesma playlist"
+    add_update: ATUALIZAR
+    songs_from_album: "m\xC3\xBAsicas do \xC3\xA1lbum"
+    name_dialog: "Como voc\xC3\xAA gostaria de nomear esta playlist?"
+    song_from_mix: "m\xC3\xBAsica da playlist"
+    from_mix: de mix
+    continue: Continuar
+    unable_save_text: "Voc\xC3\xAA possui erros em sua playlist. Esses erros devem ser corrigidos antes de voc\xC3\xAA poder compartilhar ela com o resto da comunidade."
+    create_new: Criar uma Playlist Nova
+    latest: Ultimos Playlist de {{subject}}
+    no_thanks: "N\xC3\xA3o Obrigado"
+    you_have: "Voc\xC3\xAA tem"
+    save_your_playlist: Salvar sua playlist
+    song_from_album: "m\xC3\xBAsica do \xC3\xA1lbum"
+    picture: Image da sua playlist
+    songs_from_mix: "m\xC3\xBAsicas da playlist"
+    copy: Copie a Playlist
+    select_your_songs: "Selecione Suas M\xC3\xBAsicas"
   artist: 
     be_the_first_to_create_station: "Seja o primeiro a criar uma r\xC3\xA1dio para {{user_name}}"
   modules: 
@@ -61,6 +115,7 @@ pt_BR:
     recent_activity: 
       title: ATIVIDADE RECENTE
   actions: 
+    saving: Salvando
     disaprove: Cancelar
     awaiting_approval: "Esperando aprova\xC3\xA7\xC3\xA3o"
     play: Tocar
@@ -197,21 +252,23 @@ pt_BR:
     third_person: 
       stations: "R\xC3\xA1dios de {{subject}}"
       network_activity: Atividade Recente de {{subject}}
-      playlists: Playlists de {{subject}}
+      playlists: Mixes de {{subject}}
       followers: "Quem est\xC3\xA1 seguindo {{subject}}"
       albums: Discos de {{subject}}
       followees: "Quem {{subject}} est\xC3\xA1 seguindo "
       follow_requests: Pedidos de seguidores de {{subject}}
       charts: Ranking de {{subject}}
+      has_not_playlists: "{{subject}} n\xC3\xA3o tem nenhuma mix."
     first_person: 
       stations: "Minhas r\xC3\xA1dios"
       network_activity: Minha Atividade Recente
-      playlists: Minhas playlists
+      playlists: Minhas Mixes
       followers: "Quem est\xC3\xA1 me seguindo"
       albums: Meus Discos
       followees: Quem eu estou seguindo
       follow_requests: Meus pedidos de seguidores
       charts: Meu ranking
+      has_not_playlists: "Voc\xC3\xAA n\xC3\xA3o tem nenhuma mix."
   songs: 
     play_confirmation: Aproveite {{title}}!
   playlist_items: 
@@ -812,7 +869,9 @@ pt_BR:
   block: 
     blockee_id: "Usu\xC3\xA1rio"
   playlist: 
-    edit_your_playlist: Modifique a playlist
+    edit_your_playlist: Modifique a mix
+    review: REVISAR ESSA MIX
+    doesnt_have_any_reviews: This mix does not<br/> have any reviews
   settings: 
     page_title: !binary |
       T3DDp8O1ZXM=
@@ -867,6 +926,9 @@ pt_BR:
     browser: Navegador
     email: Seu email
   basics: 
+    song_name: "Nome da M\xC3\xBAsica"
+    artist_name: Nome do Artista
+    album_name: Nome do Album
     followees_of: Seguido por
     artist: Artista
     you_are: !binary |
@@ -1036,6 +1098,7 @@ pt_BR:
       category_profile: Meu Perfil
       email: "Endere\xC3\xA7o de e-mail"
   sort: 
+    highest_rated: HIGHEST RATED
     alphabetical: "Alfab\xC3\xA9tica"
     relevance: "Relev\xC3\xA2ncia"
     newest: Mais novos
@@ -1267,6 +1330,11 @@ pt_BR:
     approval: "{{name}} vai receber suas novidades"
     denial: "{{name}} n\xC3\xA3o vai mais receber suas novidades"
   search: 
+    search_results: Resultados da Busca
     search_hint: "Busque pelas suas m\xC3\xBAsicas e artistas favoritos"
+    see_all_albums_with_term: see all albums with "{{term}}"
+    content_search_hint: "Busque pelas suas m\xC3\xBAsicas e artistas favoritos"
     search_title: Busca
+    see_all_songs_with_term: see all songs with "{{term}}"
+    see_all_artists_with_term: see all artists with "{{term}}"
     search_results_for: Resultados para

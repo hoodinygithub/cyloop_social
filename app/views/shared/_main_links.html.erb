@@ -1,9 +1,6 @@
 <ul id="main_links">
-    <li><%= link_to "#{t('navigation.homepage')}",     root_url, :class => "fn org url", :rel => "home", :title => "Cyloop" %></li>
-    <% # Phase 2 
-    if false
-    %>
-    <li><%= link_to "#{t('navigation.mixes')}",    "#",      :class => "fn org url", :rel => "home", :title => "Mixes" %></li>
-    <% end %>
-    <li><%= link_to "#{t('navigation.radio')}", radio_url,      :class => "fn org url", :rel => "home", :title => "Radios" %></li>
+    <li><%= link_to "#{t('main.navigation.home')}", root_path, :class => "fn org url #{"active" if root_path == request.path}", :rel => "home", :title => "#{t('main.navigation.home')}" %></li>
+    <li><%= link_to "#{t('main.navigation.mixes')}", mixes_path, :class => "fn org url #{"active" if request.path.match(/\/mixes/) and ( !request.path.match(/\/my\//) and !request.path.match(/\/search\/mixes\//) and params[:controller] != 'playlists' )} ", :rel => "home", :title => "#{t('main.navigation.mixes')}" %></li>
+    <li><%= link_to "#{t('basics.radio')}", radio_path, :class => "fn org url #{"active" if request.path.match(/\/radio/)}", :rel => "home", :title => "#{t('basics.radio')}" %></li>
+    <li><%= link_to "#{t('actions.search')}", search_path, :class => "fn org url #{"active" if request.path.match(/\/search/)}", :rel => "home", :title => "#{t('actions.search')}" %></li>
 </ul><!--/end main_links -->

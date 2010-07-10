@@ -1,9 +1,9 @@
 <% logged_in = "/logged_in.js?lang=#{I18n.default_locale}&logout_url=#{CGI::escape(site_logout_url)}"%>
 <% content_for :head do %>
-  <script type="text/javascript" charset="utf-8" src="<%= logged_in %>"></script>
   <script type="text/javascript" charset="utf-8" src="/flash.js"></script>
+  <script type="text/javascript" charset="utf-8" src="<%= logged_in %>"></script>
   <script type="text/javascript">
-  $(document).ready(function(){
+	$(document).ready(function(){
     $.ajax({
       type : "GET",
       url  : "/home/recommended_stations",
@@ -27,7 +27,8 @@
 <%= render :partial => 'pages/home_modules/slide_banner' %>
 
 <div id="homepage_content">
-  <%= render :partial => 'pages/home_modules/latest_stations' %>
+  <%= render :partial => 'pages/home_modules/popular_mixes' %>
+  <%# render :partial => 'pages/home_modules/latest_stations' %>
   
   <%= render :partial => 'pages/home_modules/create_station' %>
 

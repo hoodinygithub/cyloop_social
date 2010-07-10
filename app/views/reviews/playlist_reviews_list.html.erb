@@ -1,0 +1,19 @@
+<%= render 'form' if logged_in? and !@playlist.owner_is?(current_user) %>
+<h1>
+  <%= "#{t('modules.reviews.title').upcase} (<span class=\"reviews_count\">#{@records.size}</span>)" %>
+</h1>
+
+<div class="sorting">
+  <a class="ajax_sorting active { url:'/mixes/<%= @playlist.id %>/reviews/items', sort_by: 'latest' }" href="#">
+    <%= t('sort.latest').upcase %>
+  </a> |
+  <a class="ajax_sorting { url:'/mixes/<%= @playlist.id %>/reviews/items', sort_by: 'highest_rated' }" href="#">
+    <%= t('sort.highest_rated').upcase %>
+  </a>
+</div>
+
+<ul class="playlist_reviews ajax_list">
+  <%= render :partial => 'playlist_review_item', :collection => @collection %>
+</ul><!--/end playlist_reviews -->
+
+<%= ajax_pagination_for(playlist_reviews_items_path(@playlist), @records, 5) %>

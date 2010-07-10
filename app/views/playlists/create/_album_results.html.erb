@@ -1,0 +1,41 @@
+<%
+  album_sort_class = ""
+  album_sort_class = (params[:order_dir]=="DESC" ? "sort_desc" : "sort_asc") if params[:order_by] == "album"
+%>
+<script language="javascript">
+  $(document).ready(function() {
+    $(".pagination a").click(function(e){
+      if($(this).attr('disabled') != 'disabled') {
+        e.preventDefault();
+        page = this.href.match(/page=(\d+)/)[1]
+        get_song_list(<%= @item_id ? @item_id : "'#{params[:term]}'" %>, '<%= @scope %>', page, '<%= params.fetch(:order_by, "") %>', '<%= params.fetch(:order_dir, "") %>')
+      }
+    });
+  });
+</script>
+<div class="songs_list remove_index">
+    <div class="headers">
+        <div class="a_name solo upper sortable <%= album_sort_class %>" onclick="do_search_list_sort(this, '<%=escape_for_js(@result_text) %>', '<%=@scope %>', 'album', <%= @page %>);"><%= t('basics.album_name') %></div>
+        <br class="clearer" />
+    </div><!--/end headers -->
+
+    <div class="songs_box medium_height">
+        <ul class="results_by_artist">
+          <% @results.each_with_index do |album, index| %>
+            <% unless album.owner.nil? %>
+              <li onclick='get_song_list("<%=album.id %>","album"); return false;'<%= ' class="last"' if index == @results.size - 1 %>>
+                  <%= avatar_for(album, :search_results, {:class => "icon"}) %>
+                  <div class="links">
+                      <b><a href="#" onclick='get_song_list("<%=album.id %>","album"); return false;' class="black"><%= truncate(album.name, :length => 60) %></a></b><br/>
+                      <small><a href="#" onclick='get_song_list("<%=album.id %>","album"); return false;' class="grey"><%= truncate(album.owner.name, :length => 60) %></a></small>
+                  </div>
+                  <br class="clearer" />
+              </li>
+            <% end %>
+          <% end %>
+        </ul>
+        <div id="pagination_container">
+          <%= will_paginate @results, pagination_args %>
+        </div>                  
+    </div><!--/end songs_box -->
+</div><!--/end songs_list -->

@@ -1,0 +1,14 @@
+<% content_for :title do %>
+  <%= possessive :reviews %>
+<% end %>
+
+<% content_for :sorting do %>
+  <%= sort_link_to(:latest) %> / 
+  <%= sort_link_to(:highest_rated) %> 
+<% end %>
+
+<% content_for :list do %>
+  <%= render 'list' %>
+<% end %>
+
+<%= render 'shared/list' %>

@@ -1,12 +1,16 @@
 <% content_for :head do %>
+  <%= stylesheet_link_tag 'playlist_create' %>
   <%= stylesheet_link_tag 'jquery.autocomplete' %>
   <%= javascript_include_tag 'jquery.autocomplete' %>
 
   <script type="text/javascript">
     $(document).ready(function() {
-      var artistSearch = $("input[name='station_name']");
+      var textField = $("input[class='text_input']");
+      var artistSearch = $("input[id='radio_text_input']");
+      var contentSearch = $("input[id='content_search_query']");
       var stationID = $("input[name='station_id']");
       var listenButton = $("#start_listening_button");
+      var mixButton = $("#create_playlist_btn");
 
       listenButton.click(function(e) {
         if(parseInt($(this).attr('can_post'), 10)) {
@@ -26,63 +30,143 @@
           stationID.val(item[0]);
           listenButton.attr('can_post', 1);
           listenButton.removeClass('grey_button_big').addClass('blue_button');
-        });
+      });
 
-      artistSearch.css('color', '<%= market_search_radio_edit_color("off") %>');
-      artistSearch.focus(function() {
-        if(artistSearch.val() == "<%= t('radio.search_hint') %>") {
-          artistSearch.attr('value', '')
+      textField.css('color', '<%= market_search_radio_edit_color("off") %>');
+      textField.focus(function() {
+        if($(this).attr('id') == "radio_text_input"){          
+          if(artistSearch.val() == "<%= t('radio.search_hint') %>") {
+            artistSearch.attr('value', '')
+          }
         }
-        if (artistSearch.attr("touched") != 'true') {
-          artistSearch.attr("touched", 'true');
-          artistSearch.css('color','<%= market_search_radio_edit_color("on") %>' );
-          artistSearch.attr('value', '')
+        
+        if($(this).attr('id') == "content_search_query"){          
+          if(contentSearch.val() == "<%= t('search.content_search_hint') %>") {
+            contentSearch.attr('value', '')
+          }
+        }
+
+        if ($(this).attr("touched") != 'true') {
+          $(this).attr("touched", 'true');
+          $(this).css('color','<%= market_search_radio_edit_color("on") %>' );
+          $(this).attr('value', '')
         }
       });
 
-      artistSearch.blur(function() {
-        if(artistSearch.val() == "") {
-          artistSearch.attr("touched", 'false');
-          artistSearch.css('color', '<%= market_search_radio_edit_color("off") %>');
-          artistSearch.attr('value', "<%= t('radio.search_hint') %>")
-          listenButton.attr('can_post', 0).removeClass('blue_button').addClass('grey_button_big');
-          stationID.val("");
+      textField.blur(function() {
+        if($(this).val() == "") {
+          $(this).attr("touched", 'false');
+          $(this).css('color', '<%= market_search_radio_edit_color("off") %>');
+
+          if($(this).attr('id') == "radio_text_input"){          
+            $(this).attr('value', "<%= t('radio.search_hint') %>")
+            listenButton.attr('can_post', 0).removeClass('blue_button').addClass('grey_button_big');
+            stationID.val("");
+          }
+          if($(this).attr('id') == "content_search_query"){          
+            $(this).attr('value', "<%= t('search.content_search_hint') %>")
+            mixButton.attr('can_post', 0).removeClass('blue_button').addClass('grey_button_big');
+          }          
+        }
+      });
+      
+      $('#create_radio_tab').click(function(e){
+        e.preventDefault();
+        if($(this).hasClass('active')) { 
+          $(this).removeClass('active');
+          $('#create_mix_tab').addClass('active');
+          $('#create_radio_content').hide();          
+          $('#create_mix_content').show();          
+        } else {
+          $('#create_mix_tab').removeClass('active');
+          $(this).addClass('active');
+          $('#create_mix_content').hide();          
+          $('#create_radio_content').show();          
+        }
+      });
+
+      $('#create_mix_tab').click(function(e){
+        e.preventDefault();
+        if($(this).hasClass('active')) { 
+          $(this).removeClass('active');
+          $('#create_radio_tab').addClass('active');
+          $('#create_mix_content').hide();          
+          $('#create_radio_content').show();          
+        } else {
+          $('#create_radio_tab').removeClass('active');
+          $(this).addClass('active');
+          $('#create_radio_content').hide();          
+          $('#create_mix_content').show();          
         }
       });
     });
   </script>
-
+  <script language="javascript">
+    var content_msg = "<%= t('search.content_search_hint') %>";
+  </script>
 <% end %>
 
 <div class="tabs_column">
   <div class="tabs">
-    <a href="#" class="left_side"><%= t("home.create_radio") %></a>
+    <a href="#" id="create_radio_tab" class="left_side active"><%= t("home.create_radio") %></a>
+    <a href="#" id="create_mix_tab" class="right_side"><%= t("home.create_mix") %></a>
     <br class="clearer" />
   </div>
 
   <div class="tabs_content">
-    <div class="text">
-      <div class="title"><%= t("home.text_about_radio")%></div>
+    <div id="create_radio_content">
+      <div class="text">
+        <div class="title"><%= t("home.text_about_radio")%></div>
 
-      <p>
-        <%= t("home.explaing_what_is_and_why_create_a_new_radio") %>
-      </p>
-    </div>
-
-    <% form_for(:station, :html => {:class => "new_station"}, :url => search_radio_path) do %>
-    <%= hidden_field_tag :station_id %>
-      <div>
-        <label><%= t("home.create_your_own_station_now") %></label><br/>
+        <p>
+          <%= t("home.explaing_what_is_and_why_create_a_new_radio") %>
+        </p>
       </div>
 
-      <div class="input_placeholder">
-        <%= text_field_tag :station_name, t('home.type_artist_name'),  {:class => "text_input"} %>
-        <div class="align_right">
-          <%= grey_button( t("home.start_listening"), :id => "start_listening_button", :can_post => 0) %>
-          <!--a href="#" id="start_listening_button" onclick="return false;" class="blue_button" can_post="0"><span><span><%= t("home.start_listening") %></span></span></a-->
+      <% form_for(:station, :html => {:class => "new_station"}, :url => search_radio_path) do %>
+      <%= hidden_field_tag :station_id %>
+        <div>
+          <label><%= t("home.create_your_own_station_now") %></label><br/>
         </div>
-      </div><!--/end input_placeholder -->
-    <% end %><!--/end new_station -->
+
+        <div class="input_placeholder">
+          <%= text_field_tag :station_name, t('home.type_artist_name'), :id => 'radio_text_input', :class => "text_input" %>
+          <div class="align_right">
+            <%= grey_button( t("home.start_listening"), :id => "start_listening_button", :can_post => 0) %>
+            <!--a href="#" id="start_listening_button" onclick="return false;" class="blue_button" can_post="0"><span><span><%= t("home.start_listening") %></span></span></a-->
+          </div>
+        </div><!--/end input_placeholder -->
+      <% end %><!--/end new_station -->
+      </div> <!--/end create_mix_content -->
+      <div id="create_mix_content">
+        <div class="text">
+          <div class="title"><%= t("home.text_about_mix")%></div>
+
+          <p>
+            <%= t("home.explaing_what_is_and_why_create_a_new_mix") %>
+          </p>
+        </div>
+
+      <% form_for(:station, :html => { :onsubmit => 'return Base.content_search.buildSearchUrl();', :method => :get, :id => :content_search_form, :class => "new_station" }, :url => search_path) do %>
+        <div>
+          <label><%= t("home.create_your_own_mix_now") %></label><br/>
+        </div>
+        <div class="input_placeholder">
+          <%= text_field_tag :q, t('search.content_search_hint', :default => ''),  {
+            :id => :content_search_query, :class => "text_input",
+            # :onfocus => " clearInput(content_msg, this);", 
+            # :onblur => "if (!$.browser.msie) { restoreInput(content_msg, this); setTimeout(function() {$('.create_box').hide();}, 300); }", 
+            :autocomplete => :off } %></span>
+          <div class="align_right">
+            <%= grey_button( t("home.create_mix"), :id => "create_playlist_btn", :href => playlist_create_path) %>
+          </div>          
+        </div><!--/end input_placeholder -->
+        <div id="content_search_results" class="create_box small_width"></div><!--/end create_box -->
+      <% end %><!--/end new_station -->
+      
+    </div><!--/end create_mix_content -->
+    <div class="content_search_results_ajax home" style="display:none"><%= image_tag "/images/loading.gif" %></div>
   </div><!--/end tabs_content -->
+
 </div><!--/end tabs_column -->
 

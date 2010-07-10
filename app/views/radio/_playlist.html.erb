@@ -1,0 +1,30 @@
+<%= render :partial => 'station_details_form' %>
+<%= avatar_for(@station_obj.playable, :small, :class => 'left_side', :width => '50', :disable_default_css => true) %>
+<div class="album_text2">
+  <b><%= @station_obj.playable.name %></b>
+  <% if logged_in? && current_user.id == @station_obj.playable.owner.id %>
+    <!--span class="small_btn_box hoverable_item"><%= link_to_function "Edit","Base.stations.launch_edit_layer(#{@station_obj.id})", :class => "small_btn edit_btn" %></span-->
+    <span class="small_btn_box hoverable_item"><%= link_to "Edit", playlist_edit_path(@station_obj.playable), :class => "small_btn edit_btn" %></span>
+
+  <% end %>
+    <span class="small_btn_box hoverable_item"><%= link_to "Copy", "#", :class => "small_btn copy_btn", 
+      :alt => "copy playlist", :onclick => "Base.playlists.copy('#{@station_obj.playable.owner.slug}', #{@station_obj.playable.id});return false;" %></span>
+  <br/>
+  <small class="grey"><%= l(@station_obj.playable.updated_at.to_date) %></small>
+  <br/>
+  <small><%= station_contains(@station_obj.playable, 3, true, :target => '_blank') %></small>
+</div><!--/end top_buttons -->
+
+<div class="album_actions2">
+  <span class="rating_inputs">
+    <%= rating @station_obj.playable, false, "mix_#{@station_obj.playable.id}" %>
+  </span>
+  <br />
+  <br />
+  <span><span class="reviews_count"><%= @station_obj.playable.reviews_count %></span> <%= t('modules.reviews.title') %></span>
+  <br />
+
+  <% if logged_in? && current_user.id != @station_obj.playable.owner.id %>
+    <b><%= t('basics.created_by') %>: <%= link_to @station_obj.playable.owner.name, redirect_owner(@station_obj.playable.owner, 'profile'), :target => '_blank' %></b>
+  <% end %>
+</div>

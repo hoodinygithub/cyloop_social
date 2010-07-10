@@ -4,6 +4,8 @@
   <%= render 'dashboards/left_column' %>
 
   <div id="center_column">
+    <%= render :partial => 'dashboards/recommended_mixes', :locals => { :title => t("modules.top_playlists.title").upcase } %>
+    <br />
     <%= render 'dashboards/recommended_stations' %>
     <% if false %>
     <%= render 'dashboards/network_activity' %>

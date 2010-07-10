@@ -1,0 +1,17 @@
+<% if @results.nil? %>
+  <h2><%= t('search.search_results') %></h2>
+  <div class="empty_results_box">
+    <div class="step_no">1</div>
+    <h2><%= t('playlists.select_your_songs') %></h2>
+    <div><%= t('playlists.select_your_songs_text') %></div>
+  </div>
+<% else %>
+  <h2><%= t('search.search_results_for') %> &quot;[<%=@result_text%>]&quot;</h2>
+  <% if @results.empty? %>
+    <div class="empty_results_box">
+      <h2><%= t('playlists.no_results_found') %></h2>
+    </div>
+  <% else %>
+    <%= render :partial => "playlists/create/#{@results.first.class.to_s.downcase}_results" %>
+  <% end %>
+<% end %> 

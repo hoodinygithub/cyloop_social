@@ -11,8 +11,5 @@
       <span class="spacer">|</span> 
       <%= registered_link_to t("registration.sign_up"),  :return_to => my_dashboard_path %>
     <% end %>
-  <% else %>
-    <div id="login_links_logged_in">
-      <%= link_to t("sessions.destroy.sign_out"), site_logout_url %>
-  <% end %>
     </div>
+  <% end %>

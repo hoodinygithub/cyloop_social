@@ -1,10 +1,10 @@
 <!-- Leave profile visists until include mixes -->
 <div class="black_box left_side">
   <big class="blue">
-    <%= number_with_delimiter(profile_account.visit_count) %>
+    <%= number_with_delimiter(profile_account.total_playlists) %>
   </big>
   <br />
-  <%= t('user.stats.visits', :default => "Visits") %>
+  <%= t('user.stats.mixes', :default => "Mixes") %>
 </div>
 
 <div class="black_box right_side">

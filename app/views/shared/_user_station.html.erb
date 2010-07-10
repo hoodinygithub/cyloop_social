@@ -9,7 +9,7 @@
       <div class="overlay_description">
         <span>
           <span class="bold"><%= link_to truncate(user_station.owner.name,15), user_station.owner rescue ""%></span><br/>
-          <%= t('basics.overlay_created_at', :when => distance_of_time_in_words_to_now(user_station.created_at)) %>
+          <%= t('basics.overlay_created_at', :when => distance_of_time_in_words_to_now(user_station.updated_at)) %>
         </span>
       </div>
       <br class="clearer" />

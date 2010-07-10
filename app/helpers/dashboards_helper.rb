@@ -3,6 +3,8 @@ module DashboardsHelper
     links = {
       :home     => user_path,
       :stations => user_stations_path,
+      :mixes => user_mixes_path,
+      :reviews => user_reviews_path,
       :activities => activities_path,
       :albums =>  artist_albums_path,
       :followers  => followers_path
@@ -10,6 +12,8 @@ module DashboardsHelper
     
     [{:menu => :home,          :label => "#{t('profile.navigation.home')}",       :url => links[:home]      },
      {:menu => :stations,      :label => "#{t('profile.navigation.stations')}",   :url => links[:stations]  },
+     {:menu => :mixes,         :label => "#{t('profile.navigation.mixes')}",      :url => links[:mixes]  },
+     {:menu => :reviews,       :label => "#{t('profile.navigation.reviews')}",          :url => links[:reviews]},
      # {:menu => :albums,        :label => "#{t('profile.navigation.albums')}",     :url => links[:albums]},
      # {:menu => :activity,      :label => "#{t('profile.navigation.activity')}",   :url => links[:activities]},
      {:menu => :followers,     :label => "#{t('profile.navigation.myfollowers')}",  :url => links[:followers] }]
@@ -19,6 +23,8 @@ module DashboardsHelper
     links = {
       :home     => user_path,
       :stations => user_stations_path,
+      :mixes => user_mixes_path,
+      :reviews => my_reviews_path,
       :activities => activities_path,
       :followers  => followers_path,
       :following  => following_index_path
@@ -26,6 +32,8 @@ module DashboardsHelper
     
     [{:menu => :home,          :label => "#{t('profile.navigation.home')}",       :url => links[:home]      },
      {:menu => :stations,      :label => "#{t('profile.navigation.stations')}",   :url => links[:stations]  },
+     {:menu => :mixes,        :label => "#{t('profile.navigation.mixes')}",       :url => links[:mixes]  },
+     {:menu => :reviews,       :label => "#{t('profile.navigation.reviews')}",          :url => links[:reviews]},
      # {:menu => :activity,      :label => "#{t('profile.navigation.activity')}",   :url => links[:activities]},
      {:menu => :followers,     :label => "#{t('profile.navigation.myfollowers')}",  :url => links[:followers] },
      {:menu => :following,     :label => "#{t('profile.navigation.following')}",  :url => links[:following] }]
@@ -35,17 +43,23 @@ module DashboardsHelper
     links = {
       :home     => my_dashboard_path,
       :stations => my_stations_path,
+      :mixes => my_mixes_path,
+      :reviews => my_reviews_path,
       :settings => my_settings_path,
       :activities => my_activities_path,
       :followers  => my_followers_path,
-      :following  => my_following_index_path
+      :following  => my_following_index_path,
+      :logout        => logout_path
     }
     [{:menu => :home,          :label => "#{t('profile.navigation.home')}",        :url => links[:home]      },
      {:menu => :stations,      :label => "#{t('profile.navigation.stations')}",    :url => links[:stations]  },
+     {:menu => :mixes,        :label => "#{t('profile.navigation.mixes')}",       :url => links[:mixes]  },
+     {:menu => :reviews,       :label => "#{t('profile.navigation.reviews')}",          :url => links[:reviews]},
      # {:menu => :activity,      :label => "#{t('profile.navigation.activity')}",    :url => links[:activities]},
      {:menu => :followers,     :label => "#{t('profile.navigation.myfollowers')}",   :url => links[:followers] },
      {:menu => :following,     :label => "#{t('profile.navigation.following')}",   :url => links[:following] },
-     {:menu => :settings, :label => "#{t('profile.navigation.account_settings')}", :url => links[:settings]}]
+     {:menu => :settings, :label => "#{t('profile.navigation.account_settings')}", :url => links[:settings]},
+     {:menu => :logout,  :label => "#{t('actions.logout')}", :url => links[:logout]}]
   end
   
   def user_top_navegation
