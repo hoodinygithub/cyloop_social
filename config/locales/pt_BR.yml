@@ -430,8 +430,8 @@ pt_BR:
     autofill: Auto-Preencher
     cancel_playlist: Cancelar Mix?
     cancel_playlist_text: "Cancelando seu mix ir\xC3\xA1 desfazer todas suas altera\xC3\xA7\xC3\xB5es.<br/>Voc\xC3\xAA tem certeza que deseja cancelar?"
-    total_time: "Dura\xC3\xA7\xC3\xA3o total"
     edit: Edite Seu Mix
+    total_time: "Dura\xC3\xA7\xC3\xA3o total"
     autofill_option_text: "A op\xC3\xA7\xC3\xA3o de preenchimento autom\xC3\xA1tico permite que voc\xC3\xAA preencha o seu mix com m\xC3\xBAsicas recomendadas com base naquilo que voc\xC3\xAA j\xC3\xA1 tenha escolhido."
     save_confirmation: !binary |
       Q29uZmlybWHDp8Ojbw==
@@ -444,15 +444,15 @@ pt_BR:
     please_remove: por favor remova
     edit_confirm_text: "As sele\xC3\xA7\xC3\xB5es para o seu mix foram salvas. Deseja realizar alguma modifica\xC3\xA7\xC3\xA3o adicional?"
     rules: Regras do mix
-    delete_text: Tem certeza que deseja excluir este mix?
     name_your_playlist: Nome da seu mix
+    delete_text: Tem certeza que deseja excluir este mix?
     search_for_music: "Busque por m\xC3\xBAsicas para adicionar em seu mix"
     seperated_commas: "separados por v\xC3\xADrgulas"
     playlist_name: Nome do mix
     maximum_songs_from: "m\xC3\xA1ximo de {{num}} m\xC3\xBAsicas do mesmo {{type}} "
     select_your_songs_text: "Resultados da pesquisa por m\xC3\xBAsica ir\xC3\xA3o aparecer aqui<br />\r\n\
       arraste as m\xC3\xBAsicas que voc\xC3\xAA gosta do recipiente para<br />\r\n\
-      a direita para criar a seu playlist"
+      a direita para criar a seu mix"
     last_playlist: "\xC3\x9Altimo mix"
     autofill_option: "Op\xC3\xA7\xC3\xA3o Auto-Preencher"
     continue_btn: Continuar
@@ -465,17 +465,17 @@ pt_BR:
     add_update: ATUALIZAR
     song_from_mix: "m\xC3\xBAsica da mix"
     name_dialog: "Como voc\xC3\xAA gostaria de nomear este mix?"
-    no_thanks: "N\xC3\xA3o Obrigado"
-    create_new: Criar um Mix Novo
     continue: Continuar
+    create_new: Criar um Mix Novo
+    no_thanks: "N\xC3\xA3o Obrigado"
     unable_save_text: "Voc\xC3\xAA possui erros em seu mix. Esses erros devem ser corrigidos antes de voc\xC3\xAA poder compartilhar ela com o resto da comunidade."
     from_mix: de mix
     songs_from_mix: "m\xC3\xBAsicas da mix"
     select_your_songs: "Selecione Suas M\xC3\xBAsicas"
     save_your_playlist: Salvar seu mix
     picture: Image da seu mix
-    copy: Copie a Mix
     you_have: "Voc\xC3\xAA tem"
+    copy: Copie a Mix
     song_from_album: "m\xC3\xBAsica do \xC3\xA1lbum"
   time: 
     am: am
@@ -1381,7 +1381,7 @@ pt_BR:
     search_results: Resultados da Busca
     search_hint: "Busque pelas suas m\xC3\xBAsicas e artistas favoritos"
     see_all_albums_with_term: see all albums with "{{term}}"
-    content_search_hint: "Busque pelas suas m\xC3\xBAsicas e artistas favoritos"
+    content_search_hint: "Busque suas m\xC3\xBAsicas e artistas favoritos"
     search_title: Busca
     see_all_songs_with_term: see all songs with "{{term}}"
     see_all_artists_with_term: see all artists with "{{term}}"
