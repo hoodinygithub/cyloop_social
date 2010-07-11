@@ -2187,3 +2187,28 @@ h1 div.small_loading {
 .station_contains {
 	margin-top:3px
 }
+
+.popup .network_update textarea {
+    width:320px;
+}
+
+textarea.network_update_red {
+  border:10px solid red !important;
+}
+
+textarea.edit_review_red_msg {
+  border:10px solid red !important;
+  margin-left: 0px;
+}
+
+.edit_review_red_msg {
+  width: 345px;
+  background: red;
+  color: #ffffff;
+  font-weight: bold;
+  padding: 0 0 5px 5px;
+  background: red;
+  margin-left: 15px;
+
+}
+
