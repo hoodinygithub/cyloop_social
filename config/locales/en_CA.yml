@@ -45,7 +45,7 @@ en_CA:
     latest_playlists: 
       title: Latest Mixes
     more_playlists: 
-      title: More Playlists
+      title: More Mixes
     photos: 
       title: Photos
     delete_station: 
@@ -109,12 +109,12 @@ en_CA:
     play: Play
     pending: Pending
     add: add
-    add_song_to_playlist: Add Song to Playlist
+    add_song_to_playlist: Add Song to Mix
     logout: Log Out
     share_with_a_friend: Share this song with a friend
     edit: Edit
     previous: Previous
-    select_playlist: Select playlist
+    select_playlist: Select mix
     forgot_password: Forgot Password?
     unfollow: Following
     go_with_exclamation: Go!
@@ -132,11 +132,11 @@ en_CA:
     search_again: Search again
     view_more: View More
     block_this_person: Block This Person
-    add_this_song_into_the_following_playlists: Add this song into the following playlists
+    add_this_song_into_the_following_playlists: Add this song into the following mixes
     aprove: Approve
     to: to
     view_more_songs: view more songs
-    add_to_playlist: Add to my Playlist
+    add_to_playlist: Add to my Mix
     follow: Follow
     saving: Saving
     block: Block
@@ -151,7 +151,7 @@ en_CA:
     create: Create
     filter_by: Filter By
     reset: Reset
-    add_into_a_new_playlist: Add into a new playlist
+    add_into_a_new_playlist: Add into a new mix
     login: Login
     listen: listen
     share_station: Share this station with a friend
@@ -245,7 +245,7 @@ en_CA:
         bios: Bio
         location: Location
         terms_of_use: Terms of use
-        playlist_confirmation: Your Playlist has been created, continue searching!
+        playlist_confirmation: Your Mix has been created, continue searching!
         cyloop_password: Cyloop Password
         twitter_username: Twitter Username
         female: Female
@@ -381,7 +381,7 @@ en_CA:
     delete_title: Delete Song
     create: 
       errors: 
-        click_checkbox_first: In order to add this song, you must click on a checkbox beside the playlist you wish to add it to
+        click_checkbox_first: In order to add this song, you must click on a checkbox beside the mix you wish to add it to
   songs: 
     play_confirmation: Enjoy {{title}}!
   profile: 
@@ -396,7 +396,7 @@ en_CA:
       dashboard: Dashboard
       profile_followers: Followers
       stations: Stations
-      playlists: Playlists
+      playlists: Mixes
       followers: Followers
       albums: Albums
       activity: Activity
@@ -431,49 +431,49 @@ en_CA:
     song_from: song from
     duration: Length
     autofill: Auto-Fill
-    cancel_playlist: Cancel Playlist?
-    cancel_playlist_text: Cancelling your playlist will revert all your additions/edits.<br/>Are you sure you want to cancel?
-    edit: Edit Your Playlist
+    cancel_playlist: Cancel Mix?
+    cancel_playlist_text: Cancelling your mix will revert all your additions/edits.<br/>Are you sure you want to cancel?
+    edit: Edit Your Mix
     total_time: Total Time
-    autofill_option_text: The auto-fill option will allow you to fill your playlist with recommended songs based on what you have already populated.
+    autofill_option_text: The auto-fill option will allow you to fill your mix with recommended songs based on what you have already populated.
     save_confirmation: Save Confirmation
     songs_from: songs from
     saving_order: Saving Order
     tracks_remaining: tracks remaining to publish
-    unable_save: Unable to save this playlist
-    tag_your_playlist: Tag your playlist
+    unable_save: Unable to save this mix
+    tag_your_playlist: Tag your mix
     please_remove: please remove
-    edit_confirm_text: Your playlist edits have been saved. Would you like to continue editing?
-    rules: Playlist Rules
-    name_your_playlist: Name of your playlist
-    delete_text: Are you sure you want to delete this playlist?
-    search_for_music: Search for music to add to your playlist
+    edit_confirm_text: Your mix edits have been saved. Would you like to continue editing?
+    rules: Mix Rules
+    name_your_playlist: Name of your mix
+    delete_text: Are you sure you want to delete this mix?
+    search_for_music: Search for music to add to mix
     seperated_commas: seperated by commas
-    playlist_name: Playlist Name
+    playlist_name: Mix Name
     maximum_songs_from: maximum of {{num}} songs from the same {{type}}
-    select_your_songs_text: Song search results will show up here<br />drag the songs you like the container to<br />the right to create your playlist
-    last_playlist: Last Playlist
+    select_your_songs_text: Song search results will show up here<br />drag the songs you like the container to<br />the right to create your mix
+    last_playlist: Last Mix
     autofill_option: Auto-Fill Option
     continue_btn: Continue
     drag_songs_here: Drag Songs Here
-    delete_title: Delete Playlist
+    delete_title: Delete Mix
     why_not_try: Why Not Try...
     drag_songs_here_text: include at least 10 songs,<br />with no more than 2 songs<br />from the same artist<br />or the same album
     no_results_found: No results found, please search again
     songs_from_album: songs from the album
     add_update: ADD/UPDATE
     song_from_mix: song from mix
-    name_dialog: What would you like to name this playlist?
+    name_dialog: What would you like to name this mix?
     no_thanks: No Thanks
     continue: Continue
-    create_new: Create a New Playlist
-    unable_save_text: You have errors with your playlist.  These  errors must be corrected before you can share it with the rest of the community.
+    create_new: Create a New Mix
+    unable_save_text: You have errors with your mix. These errors must be corrected before you can share it with the rest of the community.
     from_mix: from mix
     songs_from_mix: songs from mix
     select_your_songs: Select Your Songs
-    save_your_playlist: Save your playlist
-    picture: Picture of your playlist
-    copy: Copy Playlist
+    save_your_playlist: Save your mix
+    picture: Picture of your mix
+    copy: Copy MIx
     you_have: You have
     song_from_album: song from the album
   time: 
@@ -494,7 +494,7 @@ en_CA:
   custom_profiles: 
     sony_disclaimer: The Walkman&#8482; symbol and logo are trademarks from Sony Corporation.
   activity: 
-    created_playlist: Created Playlist '{{playlist}}'
+    created_playlist: Created Mix '{{playlist}}'
     just_following: Just Following
     just_user: Just {{user}}
     listened_to: Listened to '{{song}}' by '{{artist}}'
@@ -505,7 +505,7 @@ en_CA:
       all: ALL
       songs: SONGS
       stations: STATIONS
-      playlists: PLAYLISTS
+      playlists: Mixes
     push_notification: You have {{count}} new updates. {{link}} your feed to view them.
     twitter_you_following: Tweets from artists you are following
     push_notification_more_than: You have more than {{count}} new updates. {{link}} your feed to view them.
@@ -545,7 +545,7 @@ en_CA:
     album: 
       released: Released
     authentication_required: You need to be logged in to do that
-    recengineerror_NO_PLAYLIST: No playlist could be found
+    recengineerror_NO_PLAYLIST: No mix could be found
     now_playing: Now Playing
     msn_music_is_free: MSN Music is free,
     station_edit_success: Station name successfully updated
@@ -559,8 +559,8 @@ en_CA:
     genre: Genre
   meta: 
     title: Cyloop | What do you want to listen to?
-    description: Discover new music and videos from largest online library for free, follow what you friends listen to, and create and share playlists and personalized radio stations from your favorite artists.
-    keywords: Discover music, discover new music, discover videos, listen to music, listen to free music, free music, fee videos, music artists, discover artists, discover music artists, online music library, largest online music library, free online music, free online music library, follow friends, following friends, follower friends, create playlists, share playlists, create music playlists, share music playlists, personalized radio stations, favorite artists
+    description: Discover new music and videos from largest online library for free, follow what you friends listen to, and create and share mixes and personalized radio stations from your favorite artists.
+    keywords: Discover music, discover new music, discover videos, listen to music, listen to free music, free music, fee videos, music artists, discover artists, discover music artists, online music library, largest online music library, free online music, free online music library, follow friends, following friends, follower friends, create mixes, share mixes, create music mixes, share music mixes, personalized radio stations, favorite artists
   registration: 
     you_are: You are...
     artist_login_denied: Artist login is coming soon!
@@ -583,7 +583,7 @@ en_CA:
         info: |-
           As a Cyloop member, make sure you check out these cool features:
           
-          - Start collecting songs and creating your own music playlists to listen to and share anytime
+          - Start collecting songs and creating your own music mixes to listen to and share anytime
           
           - Create your own personalized radio stations just by entering the name of your favorite artists and share them with friends
           
@@ -639,7 +639,7 @@ en_CA:
       place: MSN Music
       discover: Discover
       listen: Listen
-      add_song: To add this song to your playlist, {{link}} to login.
+      add_song: To add this song to your mix, {{link}} to login.
       still_do_not_have_msn_account: Still do not have your MSN Music account?
       follow_artist: To follow {{name}} and your other favorite artists, {{link}} to log in.
     birth_date: Birth Date
@@ -656,7 +656,7 @@ en_CA:
       chat_text: at the bottom of every page you will find a Windows Messenger bar. Sign in and you can chat with friends while enjoying the best music.
       discover_text: get up to the minute info on what they hear, plus listen to or save the songs you like best.
       discover_title: discover music with your friends
-      playlist_title: create your playlist of songs
+      playlist_title: create your mix of songs
       chat_title: chat with your friends
       playlist_text: if you have aspirations of becoming a DJ, create your own mixes adding songs you like to your playlists.
       follow_text: with just one click you can follow your favorite artists and keep abreast of their Twitter and other news.
@@ -873,7 +873,7 @@ en_CA:
     album: 
       released: Released
     authentication_required: You need to be logged in to do that
-    recengineerror_NO_PLAYLIST: No playlist could be found
+    recengineerror_NO_PLAYLIST: No mix could be found
     now_playing: Now Playing
     msn_music_is_free: MSN Music is free,
     station_edit_success: Station name successfully updated
@@ -972,7 +972,7 @@ en_CA:
     delete_review_text: Deleting a review is a permenant action.  Are you sure you still want to delete this review?
     reviewed_by: Reviewed by
     edit_your_review: Edit your review
-    duplicate_warning_text: You have already posted a review for this playlist. If you post a new review it will overwrite your previous review.
+    duplicate_warning_text: You have already posted a review for this mix. If you post a new review it will overwrite your previous review.
     post_your_review: POST YOUR REVIEW
     delete_review_title: Delete this review
   cancellation: 
@@ -1006,7 +1006,7 @@ en_CA:
     my: My
     listens: Listens
     people: People
-    playlists: Playlists
+    playlists: Mixes
     followers: Followers
     charts: Charts
     song: Song
@@ -1050,7 +1050,7 @@ en_CA:
     time: Time
     sorry: Sorry!
     following: following
-    playlists_created_by: Playlists Created by
+    playlists_created_by: Mixes Created by
     created_by: Created By
     includes: Includes
     artists: Artists
