@@ -10,7 +10,7 @@
                   <%= link_to avatar_for(review.commentable.owner, :tiny) %>
                   <span>
                     <span class="blue"><%= link_to truncate(review.commentable.owner.name,15), review.commentable.owner rescue ""%></span><br/>
-                    <%= t('basics.overlay_created_at', :when => distance_of_time_in_words_to_now(review.commentable.updated_at))) %>
+                    <%= t('basics.overlay_created_at', :when => distance_of_time_in_words_to_now(review.commentable.updated_at)) %>
                     
                   </span>
                   <br class="clearer" />
