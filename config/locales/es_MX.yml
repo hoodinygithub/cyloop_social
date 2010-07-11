@@ -1,11 +1,11 @@
 --- 
 es_MX: 
   artist: 
-    latest_mixes_featuring_artist: Mixes Ultimas Que Incluyen a {{artist_name}}
+    latest_mixes_featuring_artist: "Mixes \xC3\x9Altimos Que Incluyen a {{artist_name}}"
     be_the_first_to_create_mix: "S\xC3\xA9 el primero en crear un mix con m\xC3\xBAsicas de {{user_name}}"
-    latest_stations_featuring_artist: "R\xC3\xA1dios Que Incluyen a {{artist_name}}"
+    latest_stations_featuring_artist: Radios Que Incluyen a {{artist_name}}
     mixes_featuring_artist: Mixes Que Incluyen a {{artist_name}}
-    stations_featuring_artist: "R\xC3\xA1dios Que Incluyen a {{artist_name}}"
+    stations_featuring_artist: Radios Que Incluyen a {{artist_name}}
     be_the_first_to_create_station: "S\xC3\xA9 el primero en crear un radio de {{user_name}}"
   dashboards: 
     pending: 
@@ -340,12 +340,12 @@ es_MX:
       stations: Radios de {{subject}}
       recent_reviews: "Reviews \xC3\x9Altimos de {{subject}}"
       has_not_reviews: "{{subject}} no ha escrito ningn\xC3\xBAn review aun."
-      playlists: Playlists de {{subject}}
+      playlists: Mixes de {{subject}}
       followers: "Gente que est\xC3\xA1 siguiendo a {{subject}}"
       albums: "Albumes de {{subject}} "
       has_not_playlists: "{{subject}} no tiene mixes."
       has_not_stations: "{{subject}} no tiene r\xC3\xA1dios."
-      latest_stations: "R\xC3\xA1dios \xC3\x9Altimos de {{subject}}"
+      latest_stations: "R\xC3\xA1dios \xC3\x9Altimas de {{subject}}"
       followees: "Gente que  {{subject}} est\xC3\xA1 siguiendo"
       reviews: Reviews de {{subject}}
       follow_requests: Pedidos de Gente a Seguir de {{subject}}
@@ -358,12 +358,12 @@ es_MX:
       stations: Mis Radios
       recent_reviews: "Mis Reviews \xC3\x9Altimos"
       has_not_reviews: "No has dejado ning\xC3\xBAn review aun."
-      playlists: Mis Playlists
+      playlists: Mis Mixes
       followers: Gente que me esta siguiendo
       albums: Mis Albumes
       has_not_playlists: No tienes mixes.
       has_not_stations: "No tienes r\xC3\xA1dios."
-      latest_stations: "Mis R\xC3\xA1dios \xC3\x9Altimos"
+      latest_stations: "Mis R\xC3\xA1dios \xC3\x9Altimas"
       followees: "Gente que estoy siguiendo "
       reviews: Mis Reviews
       follow_requests: Mis Pedidos de Gente a Seguir
@@ -521,10 +521,10 @@ es_MX:
       message: Mensaje
       friend: El email de tu amigo
       email: Tu Email
-    edit_station: "Para editar esta radio, "
     buylink: 
       select_store: Selecciona tu tienda
       song: "Comprar esta canci\xC3\xB3n"
+    edit_station: "Para editar esta radio, "
     record_not_found: "No se pudo encontrar ning\xC3\xBAn resultado"
     checkout_today_polular_stations: "Checar las  Radios M\xC3\xA1s Populares del d\xC3\xADa"
     recengineerror_UNKNOWN: Error desconocido
@@ -699,7 +699,7 @@ es_MX:
       discover_title: "Descubre m\xC3\xBAsica con tus amigos"
       playlist_title: Crea tus playlists de canciones
       chat_title: Chatea con tus amigos
-      playlist_text: Si aspiras a convertirte en DJ, crea tus propios mixes agregando a tus playlists canciones que te gusten.
+      playlist_text: Si aspiras a convertirte en DJ, crea tus propios mixes agregando a tus mixes canciones que te gusten.
       follow_text: "Con s\xC3\xB3lo un clic puedes seguir a tus artistas favoritos y mantenerte al tanto de sus Twitters y otras noticias."
       radio_text: "Nuestro motor de recomendaci\xC3\xB3n crea radios hechas espec\xC3\xADficamente a tu medida con todos tus artistas favoritos."
       follow_title: Sigue a tus artistas favoritos
@@ -755,8 +755,8 @@ es_MX:
     add_update: "A\xC3\x91ADIR / ACTUALIZAR"
     delete_account: ELIMINAR CUENTA
     update: ACTUALIZAR
-    basic_info: INFORMACION BASICA
     password: "Contrase\xC3\xB1a"
+    basic_info: INFORMACION BASICA
     email_notifications: NOTIFICACIONES POR EMAIL
     old_password: "Vieja Contrase\xC3\xB1a"
   radio: 
