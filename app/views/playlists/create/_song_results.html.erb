@@ -50,7 +50,7 @@
                 <div class="artist_name" title="<%= song.artist.name %>"><b><%= truncate(song.artist.name, :length => 20) %></b></div>
                 <div class="album_name" title="<%= song.album.name %>"><%= truncate(song.album.name, :length => 20) %></div>
                 <div class="large_bnt">
-                  <b><a href="#" class="black" onclick="add_item_wrapper(<%= song.id %>, '<%= escape_for_js(song.title) %>', <%= song.artist.id %>, '<%= escape_for_js(song.artist.name) %>', <%= song.album.id %>, '<%= escape_for_js(song.album.name) %>', '<%= AvatarsHelper.avatar_path( song, :small ) %>', false); remove_search_result(<%= song.id %>); refresh_similar_artists(<%= song.artist_id %>); return false;">+</a></b></div>
+                  <b><a href="#" class="black" onclick="add_item_wrapper(<%= song.id %>, '<%= escape_for_js(song.title) %>', <%= song.artist.id %>, '<%= escape_for_js(song.artist.name) %>', <%= song.album.id %>, '<%= escape_for_js(song.album.name) %>', '<%= AvatarsHelper.avatar_path( song, :small ) %>', false, 0); remove_search_result(<%= song.id %>); refresh_similar_artists(<%= song.artist_id %>); return false;">+</a></b></div>
 
                 <br class="clearer" />
             </li>
