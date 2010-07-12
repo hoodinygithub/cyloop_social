@@ -1,6 +1,6 @@
 <div class="black_box left_side">
   <big class="blue">
-    <%= number_with_delimiter(profile_account.total_playlists) %>
+    <%= link_to("#{profile_account.total_playlists}", user_mixes_path(profile_account)) %>
   </big>
   <br />
   <%= t('users.stats.mixes', :default => "Mixes") %>

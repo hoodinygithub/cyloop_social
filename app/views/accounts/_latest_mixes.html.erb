@@ -11,7 +11,7 @@
 
 <% if @latest_mixes.empty? %>
   <div class="big_round_box png_fix">
-    <%= t("user.hasnt_create_any_mixes", :subject => artist_or_user_name(profile_account)) if profile_user? %>
+    <%= t("user.hasnt_create_any_mixes", :user_name => artist_or_user_name(profile_account)) if profile_user? %>
     <%= t("artist.be_the_first_to_create_mix", :user_name => artist_or_user_name(profile_account)) if profile_artist? %>
   </div>
 <% else %>
