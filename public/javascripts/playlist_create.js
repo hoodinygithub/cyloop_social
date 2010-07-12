@@ -5,6 +5,7 @@
 // var playlist_max_artist = 3;
 // var playlist_max_album = 3;
 var edit_mode = false;
+var has_custom_avatar = false;
 
 var _pv = new PlaylistValidations(10,3,3,100);
 
@@ -16,11 +17,10 @@ function PlaylistValidations(items_req, max_artist, max_album, max_items)
     this.max_items  = max_items;
     this.items_req  = items_req;
     
-    // atributes
+    // attributes
     this.valid      = false;
     this.item_count = 0;
-    this.item_ids   = [];
-    
+    this.item_ids   = [];    
     
     // collections
     this.items          = new ValidationList();
@@ -467,15 +467,6 @@ function toggle_playlist_box()
   }    
 }
 
-function form_array_to_json(aValues){
-	var values = "";
-	var szDelimier = "";
-	for (i-0; i = aValues.count; i++) {
-		values += szDelimier + aValues[i].name + ":" + aValues[i].value
-		szDelimier = ',';		
-	}
-}
-
 function open_save_popup()
 {
   if(_pv.valid)
@@ -489,6 +480,11 @@ function open_save_popup()
 		    type: "POST",
 		    data: form.serialize(),
 		    success: function(r){ 
+					if(!has_custom_avatar) {
+						update_playlist_avatar('#update_layer_avatar', $('#' + _pv.item_ids[0]).find('img').attr('src').replace(/image\/thumbnail/i, "image/hi-thumbnail"));
+/*			      img_src = $('#' + _pv.item_ids[0]).find('img').attr('src');
+			      $('#update_layer_avatar').attr('src', img_src.replace(/image\/thumbnail/i, "image/hi-thumbnail"));
+*/					}
 					$('#edit_conf_popup').fadeIn('fast');
 				},
 		    error: function(r){alert('Error!')}
@@ -502,8 +498,9 @@ function open_save_popup()
     }
     else
     {
-      img_src = $('#' + _pv.item_ids[0]).find('img').attr('src');
-      $('#save_layer_avatar').attr('src', img_src.replace(/image\/thumbnail/i, "image/comments"));
+			if(!has_custom_avatar) {	
+				$('#save_layer_avatar').attr('src', $('#' + _pv.item_ids[0]).find('img').attr('src').replace(/image\/thumbnail/i, "image/hi-thumbnail"));
+			}
       $('#save_mix_popup').fadeIn('fast');
     }
   }
@@ -517,12 +514,12 @@ function submit_save_form()
   
   if(_pv.valid)
   {
-    var button = $('.blue_loading');
-    button.empty().prepend('<img class="btn_blue_loading" src="/images/blue_loading.gif"/>' + button.attr('loading_message'));
-
 		var name = form.find("input[name='name']");
     if(name.val() != "")
     {
+	    var button = $('.blue_loading');
+	    button.empty().prepend('<img class="btn_blue_loading" src="/images/blue_loading.gif"/>' + button.attr('loading_message'));
+
       form.find("input[name='item_ids']").attr("value", _pv.item_ids);
 	
 /*		  $.ajax({
@@ -697,9 +694,29 @@ $(function() {
   //init_draggable();
 });
 
+function save_playlist_image_preview() {
+  field = $('#playlist_avatar');
+  image = $('#save_layer_avatar');
+  image_name = $('#uploaded_image_name');
+  full_path = ('file://'+ field.val()).replace(/\\/, '/'); //Fix Windows Paths
+  image.attr('src', full_path);
+  file_path = field.val();
+  shortName = file_path.match(/[^\/\\]+$/);
+  image.attr('src', '/images/upload_image_placeholder.gif');
+  image_name.show();
+  image_name.html(shortName[shortName.length-1]);
+	has_custom_avatar = true;
+}
 
 function playlist_image_preview() {
-  field = $('#playlist_avatar');
+	$('#update_layer_avatar_container').fadeOut('slow', function(){
+		$("#update_layer_avatar").attr('src', '/images/upload_image_placeholder.gif');
+		$('#update_layer_loading').show();
+		$(this).fadeIn('slow', function(){
+			setTimeout($('#update_avatar_form').submit(), 500);
+		});
+	}); 
+/*  field = $('#playlist_avatar');
   image = $('#update_layer_avatar');
   image_name = $('#uploaded_image_name');
   // path = 'file://'+ field;
@@ -710,11 +727,19 @@ function playlist_image_preview() {
   image.attr('src', '/images/upload_image_placeholder.gif');
   image_name.show();
   image_name.html(shortName[shortName.length-1]);
+*/	has_custom_avatar = true;
 }
 
-
-
-
+function update_playlist_avatar(selector, avatar_path) {
+	$('#update_layer_avatar_container').fadeOut('slow', function(){
+		$('#update_layer_loading').hide();
+		$(selector).attr('src', avatar_path);
+		$(this).fadeIn('slow');
+	});
+/*	$(selector).fadeOut('fast', function(){
+		$(this).attr('src', avatar_path);
+	});
+*/}
 
 Array.prototype.contains = function (element) {
   for (var i = 0; i < this.length; i++) {
@@ -733,7 +758,6 @@ Array.prototype.remove = function (element) {
   }
   //return this;
 }
-
 
 var hideCreateBox = function(){
 /*  restoreInput(content_msg, this); setTimeout(function() {$('.create_box').hide();}, 300); */

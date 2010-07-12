@@ -2,7 +2,7 @@
 <div class="playlist_item<%=" last_item" if last_item %>">
   <%= link_to (big_playlist_item_counter + 1), mix_radio_path(:station_id => big_playlist_item.station.id), :class => "big_item_number" %>
   <div class="artist_box png_fix">
-    <%= link_to avatar_for(big_playlist_item, :new_medium), mix_radio_path(:station_id => big_playlist_item.station.id) %>
+    <%= link_to avatar_for(big_playlist_item, :large), mix_radio_path(:station_id => big_playlist_item.station.id) %>
 
     <div class="overlay">
       <div class="hidden">

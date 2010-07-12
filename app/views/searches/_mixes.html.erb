@@ -13,7 +13,7 @@
     <% if playlist.station %>
       <% is_self = (current_user and current_user == playlist.owner) %>
       <li>
-        <%= link_to avatar_for(playlist, :new_medium), mix_radio_path(:station_id => playlist.station.id) %>
+        <%= link_to avatar_for(playlist, :large), mix_radio_path(:station_id => playlist.station.id) %>
 
         <div class="transparency_thumbanils png_fix">
             <% if false %><a href="#"><img src="images/listen_button.png" alt="" /></a><% end %>

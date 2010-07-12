@@ -3,7 +3,7 @@
 
   <% @top_playlists.each_with_index do |playlist, index| %>
     <div class="artist_box png_fix <%= "last_box" if (index+1) % 4 == 0 %>">
-      <%= avatar_for(playlist, :new_medium)%>
+      <%= avatar_for(playlist, :large)%>
 
       <div class="overlay">
         <div class="hidden">

@@ -1,6 +1,6 @@
 <div class="albums_item reviews_list" id="review_<%= item.id %>"> 
   <div class="artist_box png_fix"> 
-    <%= link_to avatar_for(item.commentable, :new_medium), 
+    <%= link_to avatar_for(item.commentable, :large), 
       mix_radio_path(:station_id => item.commentable.station.id) %>
     <div class="overlay"> 
       <div class="hidden fh"> 

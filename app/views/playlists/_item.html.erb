@@ -1,7 +1,7 @@
 <div class="albums_item" id="my_station_item_<%= item.station.id %>">
 
   <div class="artist_box png_fix">
-    <%= link_to avatar_for(item, :new_medium), radio_path(:station_id => item.station.id) %>
+    <%= link_to avatar_for(item, :large), mix_radio_path(:station_id => item.station.id) %>
 
      <div class="overlay">
          <div class="hidden">

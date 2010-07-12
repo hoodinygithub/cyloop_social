@@ -2,8 +2,8 @@ class PlaylistsController < ApplicationController
   current_tab :playlists
   current_filter :all
   
-  before_filter :login_required, :except => [:index, :widget]
-  before_filter :profile_ownership_required, :only => [:index], :if => :profile_owner?
+  before_filter :login_required, :except => [:index, :widget, :avatar_update, :show]
+  before_filter :profile_ownership_required, :only => [:index, :avatar_update], :if => :profile_owner?
   
   def index
     @dashboard_menu = :mixes
@@ -32,6 +32,22 @@ class PlaylistsController < ApplicationController
       end
     end
   end
+  
+  def avatar_update
+    @playlist = Playlist.find(params[:id])
+    if @playlist
+      @playlist.update_attributes(params[:playlist])
+      respond_to do |format|
+        format.js do
+          responds_to_parent do
+             render :update do |page|
+               page << "update_playlist_avatar('#update_layer_avatar', '#{@playlist.avatar.url.sub(/\/original\//,'/large/')}');"
+             end
+          end
+        end
+      end
+    end
+  end  
 
   def create
 
@@ -88,15 +104,17 @@ class PlaylistsController < ApplicationController
         @songs_in_order = params[:item_ids].split(',')
         @playlist_item_ids = Song.find_all_by_id(@songs_in_order).to_a rescue []
         unless @playlist_item_ids.empty?
-          PlaylistItem.delete_all("playlist_id = #{@playlist.id}")
-          song = nil
-          @songs_in_order.each_with_index do |item, index|
-            song = @playlist_item_ids.select{ |s| s && s.id.equal?(item.to_i) }.first rescue nil
-            @playlist.items.create(:song => song, :artist_id => song.artist_id, :position => index + 1) if song
+          ActiveRecord::Base.transaction do 
+            PlaylistItem.delete_all("playlist_id = #{@playlist.id}")
+            song = nil
+            @songs_in_order.each_with_index do |item, index|
+              song = @playlist_item_ids.select{ |s| s && s.id.equal?(item.to_i) }.first rescue nil
+              @playlist.items.create(:song => song, :artist_id => song.artist_id, :position => index + 1) if song
+            end
+            @playlist.update_tags(params[:tags].split(','))
+            attributes = { :name => params[:name], :site_id => current_site.id, :locked_at => nil }
+            @playlist.update_attributes(attributes)
           end
-          @playlist.update_tags(params[:tags].split(','))
-          @playlist.update_attributes(params[:playlist])
-          #@edited = true
           render :text => 'updated'
           #redirect_to my_playlists_path
         end

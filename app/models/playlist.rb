@@ -32,7 +32,7 @@ class Playlist < ActiveRecord::Base
   has_many :songs, :through => :items, :order => "playlist_items.position ASC", :include => :artist, :conditions => { :deleted_at => nil }
   has_one :editorial_station, :foreign_key => 'mix_id'
   
-  has_attached_file :avatar, :styles => { :album => "300x300#", :medium => "86x86#", :small => "60x60#" }
+  has_attached_file :avatar, :styles => { :album => "300x300#", :medium => "86x86#", :small => "60x60#", :large => "150x150#" }, :url => "/system/playlists/:sharded_id/:style/:basename.:extension", :path => ':rails_root/public/system/playlists/:sharded_id/:style/:basename.:extension'
   validates_attachment_content_type :avatar,
     :content_type => ["image/jpeg", "image/png", "image/gif", "image/pjpeg", "image/x-png"]
       
@@ -192,6 +192,10 @@ class Playlist < ActiveRecord::Base
   def rate_with(rating)
     add_rating(rating)
     update_attribute(:rating_cache, self.rating)
+  end
+
+  def to_s
+    self.name
   end
 
 end

@@ -337,6 +337,14 @@ img.avatar.new_medium {
   padding: 0px;
   border: none;
 }
+
+img.avatar.large {
+  width: 150px;
+  height: 150px;
+  padding: 0px;
+  border: none;
+}
+
 img.avatar.new_small {
   width: 25px;
   height: 25px;
@@ -2211,4 +2219,3 @@ textarea.edit_review_red_msg {
   margin-left: 15px;
 
 }
-

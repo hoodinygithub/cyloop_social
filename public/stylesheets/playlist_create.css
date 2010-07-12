@@ -199,6 +199,7 @@ background-color:#FF0000;
 }
 
 .songs_box ul li div.large_bnt {
+	border-right:medium none !important; 
 	width:65px;
 }
 
@@ -517,4 +518,39 @@ img.avatar.search_results {
 
 .songs_box ul.results_by_artist li:hover {
     background: #d6d6d6;
+}
+
+label.label_holder {
+	cursor:pointer;
+	display:block;
+	height:40px;
+	left:119px;
+	overflow:hidden;
+	position:relative;
+	top:-51px;
+	width:125px;
+	z-index:1;
+}
+
+#update_layer_avatar_container {
+	height: 100px;
+	position: relative;
+}
+
+#update_layer_loading {
+	display: none;
+	left: 34px;
+	position: absolute;
+	top: 34px;
+}
+
+#save_mix_popup label.label_holder {
+	left:110px;
+	top:-50px;
+}
+
+#save_mix_popup #uploaded_image_name {
+	left:0;
+	position:relative;
+	top:-40px;
 }

@@ -4,6 +4,9 @@
   <%= javascript_include_tag 'jquery.ui' %>
   <%= javascript_include_tag 'playlist_create' %>
   <%= javascript_include_tag 'AC_OETags' %>
+  <script type="text/javascript">
+	  var has_custom_avatar = <%= @playlist.nil? ? 'false' : !@playlist.avatar_file_name.nil?.to_s %>;
+  </script>
 <% end %>
 
 <div id="main_content">
@@ -38,24 +41,29 @@
       <%= render :partial => 'playlists/create/recommendations' %>
     </div>
   </div><!--/end two_columns -->
+  </form>
 
   <div id="right_column">
     <h2><%= t('playlists.picture') %></h2>
     <div class="playlist_image_container">
-      <%= avatar_for @playlist, :album, :class => "icon playlist valign_middle float_left", :id => "update_layer_avatar" %>
+      <div id="update_layer_avatar_container">
+        <div id="update_layer_loading"><%= image_tag 'loading.gif' %></div>
+        <%= avatar_for @playlist, :album, :class => "icon playlist valign_middle float_left", :id => "update_layer_avatar" %>
+      </div>
       &nbsp;
-      <label class='label_holder'>
-        <a href="#" id="avatar_upload_button" class="blue_button valign_middle"><span><span><%= t('account_settings.update') %></span></span></a>
-        <input id="playlist_avatar" type="file" class="file" name="playlist[avatar]" size="30" onchange="playlist_image_preview();"/>
-      </label>
+      <%= form_tag playlist_avatar_update_path(:format => 'js'), :multipart => true, :target => 'upload_frame', :method => :post, :id => :update_avatar_form %>
+        <label class='label_holder'>
+          <a href="#" id="avatar_upload_button" class="blue_button valign_middle"><span><span><%= t('account_settings.update') %></span></span></a>
+          <input id="playlist_avatar" type="file" class="file" name="playlist[avatar]" size="30" onchange="playlist_image_preview();"/>
+          <iframe id='upload_frame' name="upload_frame" style="width:1px;height:1px;border:0px" src="about:blank"></iframe>
+        </label>
+      </form>
       <div id="uploaded_image_name">filename</div>
     </div>
 
     <h1><%= t('playlists.rules') %></h1>
     <%= render :partial => 'playlists/create/track_list' %>
   </div><!--/end right_column -->
-
-  </form>
 
   <div class="clearer"></div>
 

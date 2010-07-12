@@ -4,7 +4,7 @@
   <% @recent_reviews.each_with_index do |review, index| %>
   <div class="albums_item">
       <div class="artist_box png_fix">
-          <%= link_to avatar_for(review.commentable, :new_medium), mix_radio_path(:station_id => review.commentable.station.id) %>
+          <%= link_to avatar_for(review.commentable, :large), mix_radio_path(:station_id => review.commentable.station.id) %>
           <div class="overlay">
               <div class="hidden">
                   <%= link_to avatar_for(review.commentable.owner, :tiny) %>
