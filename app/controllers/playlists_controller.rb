@@ -3,7 +3,7 @@ class PlaylistsController < ApplicationController
   current_filter :all
 
   before_filter :xhr_login_required, :only => [:copy]
-  before_filter :login_required, :except => [:index, :widget, :avatar_update, :show]
+  before_filter :login_required, :except => [:index, :widget, :avatar_update, :show, :copy]
   before_filter :profile_ownership_required, :only => [:index, :avatar_update], :if => :profile_owner?
 
   def index
