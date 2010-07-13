@@ -554,3 +554,7 @@ label.label_holder {
 	position:relative;
 	top:-40px;
 }
+
+#edit_conf_popup{
+	top: 375px;
+}
