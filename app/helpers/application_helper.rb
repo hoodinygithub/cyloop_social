@@ -265,15 +265,16 @@ module ApplicationHelper
   def station_contains(item, limit=3, include_text=true, link_options={}, options={})
     links = []
     station_artists = options[:includes] || item.includes(limit) 
-
+    etc=""
+    etc="..." if station_artists.size > limit  
     station_artists.each do |station_artist|
       links << link_to(station_artist.artist.name, artist_path(station_artist.artist), link_options) unless station_artist.artist.nil?
     end
 
     if include_text
-      "#{t('basics.contains')}: #{links.join(", ")}..."
+      "#{t('basics.contains')}: #{links.join(", ")}#{etc}"
     else
-      "#{links.join(", ")}..."
+      "#{links.join(", ")}#{etc}"
     end
   end
 
