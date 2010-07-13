@@ -65,8 +65,8 @@ class Site < ActiveRecord::Base
     end
   end
 
-  has_many :editorial_stations_sites
-  has_many :stations, :through => :editorial_stations_sites, :class_name => 'EditorialStation', :source => :editorial_station, :conditions => "editorial_stations.deleted_at IS NULL"
+  has_many :editorial_stations_sites, :include => {:editorial_station => :mix}, :conditions => "editorial_stations.deleted_at IS NULL AND playlists.deleted_at IS NULL AND playlists.locked_at IS NULL"
+  has_many :stations, :through => :editorial_stations_sites, :include => :mix, :class_name => 'EditorialStation', :source => :editorial_station
 
   has_many :users, :foreign_key => 'entry_point_id'
   has_one :site_statistic
