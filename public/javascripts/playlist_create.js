@@ -713,7 +713,7 @@ function playlist_image_preview() {
 		$("#update_layer_avatar").attr('src', '/images/upload_image_placeholder.gif');
 		$('#update_layer_loading').show();
 		$(this).fadeIn('slow', function(){
-			setTimeout($('#update_avatar_form').submit(), 500);
+			$('#update_avatar_form').submit();
 		});
 	}); 
 /*  field = $('#playlist_avatar');
