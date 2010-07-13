@@ -1331,3 +1331,7 @@ en:
     see_all_songs_with_term: see all songs with "{{term}}"
     search_results_for: Search results for
     search_results: Search Results
+  player:
+    license_message:
+      header: We're sorry...
+      body:  Due to radio licensing, you are unable to listen to full tracks when playing your own mix. 

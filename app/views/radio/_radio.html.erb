@@ -4,6 +4,9 @@
   $(document).ready(function() {
     Base.radio.initialize();
     initTopButtons();
+    <% if @station_obj.playable.owner_is? current_user %>
+      setTimeout(function(){ $('#licensing_popup').fadeIn('slow'); }, 2000);
+    <% end %>
   });
 </script>
 <div class="two_columns">
@@ -61,4 +64,26 @@
     <% end%>
   <% end %>
 
+  <div class="popup" id="licensing_popup">
+      <div class="top_shadow">
+          <div class="top_left corner"></div>
+          <div class="center_shadow"></div>
+          <div class="top_right corner"></div>
+          <a href="#" onclick="$('#licensing_popup').fadeOut('fast'); return false;"><img src="/images/popup_close.png" class="popup_close png_fix" alt="X" title="Close" /></a>
+      </div>
+      <div class="popup_content">
+          <div class="title"><%= t('player.license_message.header') %></div>
+          <div class="form_row">
+              <div class="auto_fill_text">
+                  <%= t('player.license_message.body') %> 
+              </div>
+              <br/>
+          </div>
+      </div>
+      <div class="bottom_shadow">
+          <div class="bottom_left corner"></div>
+          <div class="center_shadow"></div>
+          <div class="bottom_right corner"></div>
+      </div>
+  </div><!--/end popup -->
 </div><!--/end two_columns -->

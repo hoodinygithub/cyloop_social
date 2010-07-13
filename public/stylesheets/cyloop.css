@@ -2230,3 +2230,6 @@ textarea.edit_review_red_msg {
 	overflow: hidden;
 }
 
+#licensing_popup {
+	display: none;
+}

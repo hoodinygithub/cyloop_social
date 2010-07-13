@@ -1469,7 +1469,7 @@ jQuery(document).ready(function() {
 
   // Popups
   $('.simple_popup').simple_popup();
-  $('.popup:not(#save_mix_popup,#edit_conf_popup,#cancel_popup,#unable_popup,#auto_fill_popup)').popup();
+  $('.popup:not(#save_mix_popup,#edit_conf_popup,#cancel_popup,#unable_popup,#auto_fill_popup,#licensing_popup)').popup();
 
   //MSN header behaviors
   $('#msn_header .portal').hide();
