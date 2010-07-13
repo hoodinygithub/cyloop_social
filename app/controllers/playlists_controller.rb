@@ -2,6 +2,7 @@ class PlaylistsController < ApplicationController
   current_tab :playlists
   current_filter :all
 
+  before_filter :xhr_login_required, :only => [:copy]
   before_filter :login_required, :except => [:index, :widget, :avatar_update, :show]
   before_filter :profile_ownership_required, :only => [:index, :avatar_update], :if => :profile_owner?
 
@@ -180,7 +181,7 @@ class PlaylistsController < ApplicationController
 
         if request.xhr?
           respond_to do |format|
-            format.html { render :layout => false, :partial => "playlist_result", :object => @playlist }
+            for0mat.html { render :layout => false, :partial => "playlist_result", :object => @playlist }
             format.xml { render :layout => false }
           end
         elsif
@@ -278,6 +279,13 @@ class PlaylistsController < ApplicationController
   end
 
   private
+
+  def xhr_login_required
+    unless current_user
+      return render(:json => {:status => 'redirect', :url => login_path})
+    end
+  end
+
   def get_seeded_results
     results = nil
     result_text = ""

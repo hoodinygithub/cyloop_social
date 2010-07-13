@@ -1703,7 +1703,11 @@ Base.reviews.count_chars = function(textarea) {
 
 Base.utils.showPopup = function(url) {
     $.get(url, function(response) {
-      $.popup(response);
+      if (response.status == 'redirect') {
+        window.location = response.url;
+      } else {
+        $.popup(response);            
+      }
     });
 };
 
