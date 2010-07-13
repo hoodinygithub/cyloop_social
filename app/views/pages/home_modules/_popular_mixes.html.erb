@@ -15,7 +15,7 @@
           <br class="clearer" />
           <div class="tags_contains">
             <% unless playlist.cached_tag_list.blank? %>
-            <div><%= tag_links(playlist, @active_scope) %></div>
+            <div><%= tag_links(playlist) %></div>
             <% end %>
             <% if playlist.songs_count > 0 %>
             <div class="station_contains"><%= station_contains(playlist) %></div>

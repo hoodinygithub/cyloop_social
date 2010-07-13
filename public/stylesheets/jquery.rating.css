@@ -43,6 +43,8 @@ div.grey_round_box2 span div.star-rating-live a{background-position:0 -14px}
 
 .reviews .title span div.star-rating-readonly a{background-position:0 -28px}
 
+.susbcription_stars span div.star-rating-readonly a{background-position:0 -14px}
+.susbcription_stars span div.star-rating-on a{background-position:0 0px}
 
 
 input[type='radio'].star{display:none}

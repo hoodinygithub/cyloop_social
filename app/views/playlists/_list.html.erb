@@ -1,5 +1,10 @@
 <% if !@collection.empty? %>
-  <%= render :partial => 'item', :collection => @collection %>
+  <%= render :partial => 'item', :collection => @collection if profile_user? %>
+  <% if profile_artist? %>
+  <ul class="susbcriptions_list">
+    <%= render :partial => 'shared/mix', :collection => @collection %>
+  </ul>
+  <% end %>
   <% (6 - @collection.size).times do %>
     <div class="albums_item reviews_list">
       <%= image_tag "empty_img.gif" %>

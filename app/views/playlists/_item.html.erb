@@ -10,7 +10,7 @@
              <br /><br />
              <div class="tags_contains">
                <% unless item.cached_tag_list.blank? %>
-               <div><%= tag_links(item, @active_scope) %></div>
+               <div><%= tag_links(item) %></div>
                <% end %>
                <% if item.songs_count > 0 %>
                <div class="station_contains"><%= station_contains(item) %></div>

@@ -16,7 +16,7 @@
                   <br class="clearer" />
                   <div class="tags_contains">
                     <% unless review.commentable.cached_tag_list.blank? %>
-                    <div><%= tag_links(review.commentable, @active_scope) %></div>
+                    <div><%= tag_links(review.commentable) %></div>
                     <% end %>
                     <% if review.commentable.songs_count > 0 %>
                     <div class="station_contains"><%= station_contains(review.commentable) %></div>
