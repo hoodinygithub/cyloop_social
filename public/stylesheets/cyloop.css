@@ -2226,6 +2226,7 @@ textarea.edit_review_red_msg {
 }
 
 .album_detail .album_text2.mix_radio {
-	width: 450px;
+	width: 350px;
+	overflow: hidden;
 }
 
