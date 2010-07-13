@@ -1950,6 +1950,7 @@ div.albums_item div.reviews {
 .tags_contains {
   line-height: 14px !important;
   height: 53px;
+	margin: 0;
 }
 
 .tag_links {
@@ -2227,3 +2228,4 @@ textarea.edit_review_red_msg {
 .album_detail .album_text2.mix_radio {
 	width: 450px;
 }
+

@@ -5,6 +5,7 @@
 // var playlist_max_artist = 3;
 // var playlist_max_album = 3;
 var edit_mode = false;
+var has_custom_avatar = false;
 
 var _pv = new PlaylistValidations(10,3,3,100);
 
@@ -704,7 +705,7 @@ function save_playlist_image_preview() {
   image.attr('src', '/images/upload_image_placeholder.gif');
   image_name.show();
   image_name.html(shortName[shortName.length-1]);
-	has_custom_avatar = 1;
+	has_custom_avatar = true;
 }
 
 function playlist_image_preview() {
@@ -726,7 +727,7 @@ function playlist_image_preview() {
   image.attr('src', '/images/upload_image_placeholder.gif');
   image_name.show();
   image_name.html(shortName[shortName.length-1]);
-*/	has_custom_avatar = 1;
+*/	has_custom_avatar = true;
 }
 
 function update_playlist_avatar(selector, avatar_path) {

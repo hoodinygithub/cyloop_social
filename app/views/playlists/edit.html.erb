@@ -5,12 +5,11 @@
   <%= javascript_include_tag 'playlist_create' %>
   <%= javascript_include_tag 'AC_OETags' %>
   <script type="text/javascript">
-    var has_custom_avatar = <%= @playlist.avatar_file_name.nil? ? 0 : 1 %>;
+    has_custom_avatar = <%= @playlist.avatar_file_name.nil? ? 0 : 1 %>;
   </script>
 <% end %>
 
 <div id="main_content">
-
   <%= form_tag playlist_edit_path(@playlist), :class => "account_settings search_music", :id => "update_playlist_form", :method => :post, :multipart => true %>
   <input type="hidden" name="item_ids" value="">
 

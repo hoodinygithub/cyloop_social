@@ -5,7 +5,11 @@
 
      <div class="overlay">
          <div class="hidden">
-            <b><%= link_to item.name, mix_radio_path(:station_id => item.station.id) %></b><br/>
+           <% unless item.locked? %>
+              <b><%= link_to item.name, mix_radio_path(:station_id => item.station.id) %></b><br/>
+           <% else %>
+              <span class="blue"><b><%= item.name %></b></span><br/>
+           <% end %>
              <b><%= t('basics.overlay_created_at', :when => distance_of_time_in_words_to_now(item.updated_at)) %></b>
              <br /><br />
              <div class="tags_contains">
@@ -21,7 +25,13 @@
          <div class="visible">
              <div class="hoverable_hidden">
                <%= link_to image_tag('play_button.png', :class=> "play_button png_fix"), mix_radio_path(:station_id => item.station.id) unless item.locked? %>
-               <%= link_to truncate(item.name, 15, '...'), mix_radio_path(:station_id => item.station.id), :alt => item.name, :class => 'white' %><br/>
+
+               <% unless item.locked? %>
+                <%= link_to truncate(item.name, 15, '...'), mix_radio_path(:station_id => item.station.id), :alt => item.name, :class => 'white' %><br/>
+               <% else %>
+                  <span class="white"><%= truncate(item.name, 15, '...') %></span><br/>
+               <% end %>
+               
              </div>
              <div class="hoverable_visible">
                <%= link_to(image_tag('duplicate_button.png', :class=> "png_fix hoverable_button"), '#', :onclick => "Base.playlists.copy('#{item.owner.slug}', #{item.id}); return false;") unless item.locked? %>
