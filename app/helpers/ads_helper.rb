@@ -114,6 +114,8 @@ module AdsHelper
     profile = ad_profile_type
     zone = if action_name == "home"
       "home"
+    elsif controller_name == "radio" and action_name == "mix_index" || controller_name == "playlists"
+      "mixer"
     elsif controller_name == "radio"
       "radio"
     elsif controller_name == "messenger_radio" || id == "messenger"

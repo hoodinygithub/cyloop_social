@@ -8,6 +8,8 @@ msnbr:
   other_728x90: 9
   radio_300x250: 8
   radio_728x90: 7
+  mixer_300x250:161
+  mixer_728x90: 162
   user_300x250: 6
   user_728x90: 5
 cyloopes:
@@ -20,6 +22,8 @@ cyloopes:
   other_728x90: 102
   radio_300x250: 103
   radio_728x90: 104
+  mixer_300x250: 163
+  mixer_728x90: 0
   user_300x250: 106
   user_728x90: 107
 msnlatam:
@@ -32,6 +36,8 @@ msnlatam:
   other_728x90: 48
   radio_300x250: 50
   radio_728x90: 49
+  mixer_300x250: 165
+  mixer_728x90: 166
   user_300x250: 51
   user_728x90: 53
 msnlatino:
@@ -44,6 +50,8 @@ msnlatino:
   other_728x90: 63
   radio_300x250: 64
   radio_728x90: 65
+  mixer_300x250: 169
+  mixer_728x90: 170
   user_300x250: 54
   user_728x90: 56
 msncaen:
@@ -55,7 +63,9 @@ msncaen:
   other_300x250: 78
   other_728x90: 74
   radio_300x250: 76
-  radio_728x90: 73
+  radio_728x90: 73 
+  mixer_300x250: 171
+  mixer_728x90: 172   
   user_300x250: 75
   user_728x90: 71
 msncafr:
@@ -68,6 +78,8 @@ msncafr:
   other_728x90: 93
   radio_300x250: 88
   radio_728x90: 92
+  mixer_300x250:173
+  mixer_728x90: 174
   user_300x250: 84
   user_728x90: 91
 msnmx:
@@ -80,6 +92,8 @@ msnmx:
   other_728x90: 35
   radio_300x250: 36
   radio_728x90: 37
+  mixer_300x250: 177
+  mixer_728x90: 178  
   user_300x250: 38
   user_728x90: 40
 cyloop:
@@ -92,6 +106,8 @@ cyloop:
   other_728x90: 21
   radio_300x250: 18
   radio_728x90: 19
+  mixer_300x250: 164
+  mixer_728x90: 0
   user_300x250: 12
   user_728x90: 82
 msnar:
@@ -104,6 +120,8 @@ msnar:
   other_728x90: 125
   radio_300x250: 117
   radio_728x90: 123
+  mixer_300x250: 167
+  mixer_728x90: 168
   user_300x250: 119
   user_728x90: 121
 tvn:
@@ -116,6 +134,8 @@ tvn:
   other_728x90: 145
   radio_300x250: 139
   radio_728x90: 144
+  mixer_300x250: 175
+  mixer_728x90: 176
   user_300x250: 138
   user_728x90: 143
 staging:
