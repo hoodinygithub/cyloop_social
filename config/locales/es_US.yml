@@ -100,14 +100,14 @@ es_US:
     unblock: Desbloquear
   modules: 
     popular_tags: 
-      title: Top Emociones
+      title: Tags Top
     edit_station: 
       new_name: Nuevo nombre
       title: Modificar radio
       no_edit_rights: No tienes permisos suficientes para modificar esta radio
       blank_station_name_message: Debes ingresar un nombre para esta radio
     emotions: 
-      title: Emociones
+      title: Tags
     network_activity: 
       title: Actividad de la red
     latest_playlists: 
@@ -121,10 +121,10 @@ es_US:
       confirmation_text: "\xC2\xBFConfirmas que quieres eliminar la {{station_name}}?"
     concerts: 
       title: Conciertos
-    top_artists: 
-      title: Top Artistas
     user_info: 
       title: "Informaci\xC3\xB3n del Usuario"
+    top_artists: 
+      title: Top Artistas
     recently_created_stations: 
       title: "Radios Reci\xC3\xA9n Creadas"
     information: 
@@ -143,10 +143,10 @@ es_US:
       title: Recomendaciones
     members: 
       title: Integrantes
-    top_djs: 
-      title: Top DJs
     reviews: 
       title: Reviews
+    top_djs: 
+      title: Top DJs
     features_and_galleries: 
       title: Especiales Y Fotogalerias
     news: 
@@ -420,20 +420,20 @@ es_US:
     autofill: Auto-Fill
     cancel_playlist: Cancelar el mix?
     cancel_playlist_text: "La cancelaci\xC3\xB3n de tu mix va a revertir todas tus modificaciones y lo que hayas agregado.<br/>\xC2\xBFEst\xC3\xA1s seguro de que quieres cancelar?"
-    total_time: Tiempo Total
     edit: Modifica tu mix
+    total_time: Tiempo Total
     autofill_option_text: "La opci\xC3\xB3n de auto-completar te permitir\xC3\xA1 completar tu mix con canciones recomendadas seg\xC3\xBAn el estilo de las que ya hayas puesto."
     save_confirmation: "Confirmaci\xC3\xB3n de Almacenamiento"
     songs_from: canciones de
     saving_order: Orden para Guardar
     tracks_remaining: "m\xC3\xA1s para poder guardar mix"
     unable_save: No se puede guardar este mix
-    tag_your_playlist: "As\xC3\xADgnale emociones a tu mix"
+    tag_your_playlist: "As\xC3\xADgnale tags a tu mix"
     please_remove: Por favor, remover
     edit_confirm_text: "La canciones seleccionadas para tu mix han quedado guardadas. \xC2\xBFQuieres hacer alguna modificaci\xC3\xB3n?"
     rules: Reglas del mix
-    delete_text: Seguro que quieres borrar este mix?
     name_your_playlist: Nombre de tu mix
+    delete_text: Seguro que quieres borrar este mix?
     search_for_music: "Busca m\xC3\xBAsica para agregar a tu mix"
     seperated_commas: "(sep\xC3\xA1ralas entre comas)"
     playlist_name: Nombre del Mix
@@ -451,17 +451,17 @@ es_US:
     add_update: ACTUALIZAR
     song_from_mix: "canci\xC3\xB3n de este mix"
     name_dialog: "\xC2\xBFQu\xC3\xA9 nombre quieres ponerle a este mix?"
-    no_thanks: No. Gracias.
-    create_new: Crear un mix nuevo
     continue: Continuar
+    create_new: Crear un mix nuevo
+    no_thanks: No. Gracias.
     unable_save_text: Tu mix tiene errores. Estos errores deben ser corregidos para que puedas compartir tu lista con el resto de la comunidad.
     from_mix: "canci\xC3\xB3n/es de este mix"
     songs_from_mix: canciones del mix
     select_your_songs: Selecciona tus canciones.
     save_your_playlist: Guardar tu mix
     picture: Foto para tu mix
-    copy: Copiar Mix
     you_have: Tienes
+    copy: Copiar Mix
     song_from_album: "canci\xC3\xB3n del album"
   time: 
     am: am
@@ -900,9 +900,9 @@ es_US:
   playlist: 
     edit_your_playlist: Editar tu mix
     review: HACER UN REVIEW DE ESTE MIX
-    click_to_unlock: ""
+    click_to_unlock: "Para destrabar este mix, haz click aqu\xC3\xAD {{unlock_link}} y corrige los errores marcados en rojo."
     doesnt_have_any_reviews: Este mix no tiene reviews aun.
-    this_mix_is_locked: ""
+    this_mix_is_locked: Este mix esta trabado.
   settings: 
     background_not_saved_image_too_large: "Las im\xC3\xA1genes de fondo no pueden superar el tama\xC3\xB1o de 1MB"
     page_title: Controla tu Cyloop
@@ -1051,7 +1051,7 @@ es_US:
     charts: Rankings
     song: "Canci\xC3\xB3n"
     message: Mensaje
-    tags: Emociones
+    tags: Tags
     unknown: Desconocido
     message_sent: Tu mensaje se ha enviado.
     artist_name: Nombre del artista
@@ -1334,11 +1334,11 @@ es_US:
     text_about_mix: ""
     create_radio: Crear Radio
     recommended_stations: RADIOS RECOMENDADAS POR CYLOOP
-    latest_stations: RADIOS MAS RECIENTES
     create_mix: Crear un mix
+    latest_stations: RADIOS MAS RECIENTES
     explaing_what_is_and_why_create_a_new_radio: "Ingresa el nombre de tu artista favorito. Cyloop generar\xC3\xA1 una radio personalizada con m\xC3\xBAsica de ese y otros artistas que elegir\xC3\xA1 para ti.\r\n"
     user_latest_stations: RADIOS MAS RECIENTES
-    explaing_what_is_and_why_create_a_new_mix: ""
+    explaing_what_is_and_why_create_a_new_mix: "Escribe el nombre de tu artista favorito. Cyloop te ayudar\xC3\xA1 a crear un mix con m\xC3\xBAsica de tus artistas favoritos."
     network_update: ACTUALIZACION DE RED  {{user_name}}
     create_your_own_mix_now: "\xC2\xA1Crea tu propia mix ahora!"
     recommended_mixes: MIXES RECOMENDADOS POR CYLOOP
@@ -1377,9 +1377,9 @@ es_US:
   search: 
     search_results: "Resultados de b\xC3\xBAsqueda"
     search_hint: "Busca tus artistas y m\xC3\xBAsica favorita"
-    see_all_albums_with_term: see all albums with "{{term}}"
+    see_all_albums_with_term: Ver todos los albums con "{{term}}"
     content_search_hint: "Escribe el nombre de un artista, un \xC3\xA1lbum, o una canci\xC3\xB3n"
     search_title: "B\xC3\xBAsqueda"
-    see_all_songs_with_term: see all songs with "{{term}}"
-    see_all_artists_with_term: see all artists with "{{term}}"
+    see_all_songs_with_term: Ver todas las canciones con "{{term}}"
+    see_all_artists_with_term: Ver todos los artistas con "{{term}}"
     search_results_for: Buscar resultados para

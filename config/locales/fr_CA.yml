@@ -32,7 +32,7 @@ fr_CA:
       title: Je suis fan de ces profils
   modules: 
     popular_tags: 
-      title: Top Emotions
+      title: Balise Top
     edit_station: 
       new_name: Nouveau nom
       title: Modifier la station
@@ -53,10 +53,10 @@ fr_CA:
       confirmation_text: "\xC3\x8Ates-vous s\xC3\xBBr de vouloir supprimer {{station_name}}?"
     concerts: 
       title: Concerts
-    user_info: 
-      title: Informations sur l'utilisateur
     top_artists: 
       title: Top artistes
+    user_info: 
+      title: Informations sur l'utilisateur
     recently_created_stations: 
       title: "Stations cr\xC3\xA9\xC3\xA9es r\xC3\xA9cemment"
     information: 
@@ -75,10 +75,10 @@ fr_CA:
       title: Recommandations
     members: 
       title: Membres
-    reviews: 
-      title: Critiques
     top_djs: 
       title: Top DJs
+    reviews: 
+      title: Critiques
     features_and_galleries: 
       title: En vedette et galeries photos
     news: 
@@ -453,10 +453,10 @@ fr_CA:
     autofill: Auto-Fill
     cancel_playlist: Voulez-vous annuler ce mix?
     cancel_playlist_text: "Annulation de votre mix reviendra tous vos modifications. <br/> Etes-vous s\xC3\xBBr de vouloir annuler?"
-    edit: Modifiez votre mix
     total_time: !binary |
       RHVyw6ll
 
+    edit: Modifiez votre mix
     autofill_option_text: "L'option auto-fill vous permettra de remplir votre mix avec des chansons recommand\xC3\xA9 en fonction de ce que vous avez d\xC3\xA9j\xC3\xA0 rempli.\r\n"
     save_confirmation: Confirmation de Sauvegarder
     songs_from: chansons de
@@ -467,8 +467,8 @@ fr_CA:
     please_remove: "S'il vous pla\xC3\xAEt supprimez"
     edit_confirm_text: "Votre modifications ont \xC3\xA9t\xC3\xA9 enregistr\xC3\xA9es. Souhaitez-vous continuer l'\xC3\xA9dition?"
     rules: "R\xC3\xA8gles des Mixes"
-    name_your_playlist: Nom de ce mix
     delete_text: "\xC3\x8Ates-vous certain de vouloir supprimer cette liste d'\xC3\xA9coute?"
+    name_your_playlist: Nom de ce mix
     search_for_music: "Recherchez de la musique \xC3\xA0 ajouter \xC3\xA0 votre playlist"
     seperated_commas: "s\xC3\xA9par\xC3\xA9es par des virgules"
     playlist_name: Nom de la liste de lecture
@@ -486,17 +486,17 @@ fr_CA:
     add_update: "R\xC3\xA9actualisez"
     song_from_mix: chanson du mix
     name_dialog: Que voulez-vous le nom de ce mix
-    no_thanks: Non. Merci.
-    create_new: "Cr\xC3\xA9ez un nouveau mix"
     continue: Continuez
+    create_new: "Cr\xC3\xA9ez un nouveau mix"
+    no_thanks: Non. Merci.
     unable_save_text: "Vous avez des erreurs avec votre mix. Ces erreurs doivent \xC3\xAAtre corrig\xC3\xA9es avant de pouvoir la partager avec le reste de la communaut\xC3\xA9."
     from_mix: du mix
     songs_from_mix: chansons du mix
     select_your_songs: Choissisez vos chasons
     save_your_playlist: Sauvegardez votre mix
     picture: Photo de votre mix
-    you_have: Vous avez
     copy: Copiez ce mix
+    you_have: Vous avez
     song_from_album: chanson de l'album
   time: 
     am: am
@@ -912,9 +912,9 @@ fr_CA:
   playlist: 
     edit_your_playlist: Entrez le nouveau nom
     review: Evaluez ce mix
-    click_to_unlock: ""
-    doesnt_have_any_reviews: ""
-    this_mix_is_locked: ""
+    click_to_unlock: "Pour d\xC3\xA9verrouiller ce mix, cliquez sur {{unlock_link}} et corriger les erreurs en rouge."
+    doesnt_have_any_reviews: Ce mix n'avez pas des commentaires
+    this_mix_is_locked: "Ce mix est verrouill\xC3\xA9"
   settings: 
     background_not_saved_image_too_large: "Votre image d'arri\xC3\xA8re-plan ne peut pas \xC3\xAAtre plus lourde que 1 MB."
     page_title: "Prenez le contr\xC3\xB4le de votre compte Cyloop!"
@@ -1022,7 +1022,7 @@ fr_CA:
     message: Message
     unknown: Inconnue
     message_sent: "Votre message a \xC3\xA9t\xC3\xA9 envoy\xC3\xA9."
-    tags: Emotions
+    tags: balise
     artist_name: Nom de l'artiste
     artist: Artiste
     done: Sauvegarder
@@ -1316,8 +1316,8 @@ fr_CA:
     text_about_mix: ""
     create_radio: "Cr\xC3\xA9ez une station!"
     recommended_stations: "STATIONS RECOMMAND\xC3\x89ES PAR CYLOOP"
-    latest_stations: "DERNI\xC3\x88RES STATIONS DE RADIO"
     create_mix: "Cr\xC3\xA9ez un Mix "
+    latest_stations: "DERNI\xC3\x88RES STATIONS DE RADIO"
     explaing_what_is_and_why_create_a_new_radio: "Tapez ici le nom d'un artiste que vous aimez! Cyloop g\xC3\xA9n\xC3\xA9rera une station de radio personnalis\xC3\xA9e avec votre musique et vos artistes pr\xC3\xA9f\xC3\xA9r\xC3\xA9s!"
     explaing_what_is_and_why_create_a_new_mix: "Tapez ici le nom d'un artiste que vous aimez!. Cyloop vous aidera \xC3\xA0 commencer \xC3\xA0 cr\xC3\xA9er un nouveau mix avec votre musique et vos artistes pr\xC3\xA9f\xC3\xA9r\xC3\xA9s."
     network_update: "DERNI\xC3\x88RES MISES \xC3\x80 JOUR DE {{user_name}}"
