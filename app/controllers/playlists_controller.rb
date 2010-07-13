@@ -18,10 +18,12 @@ class PlaylistsController < ApplicationController
 
     @sort_type = get_sort_by_param(sort_types.keys, :latest) #params.fetch(:sort_by, nil).to_sym rescue :latest
 
-    conditions = 'stations.id IS NOT NULL'
+    conditions = "stations.id IS NOT NULL"
     conditions << " AND locked_at IS NULL" unless on_dashboard?
+    opts = { :conditions => conditions, :include => :station, :order => sort_types[@sort_type] }
+    opts.merge!(:group => 'playlist_items.playlist_id') if profile_account.is_a? Artist
     
-    @collection = profile_account.playlists.all(:include => :station, :conditions => conditions, :order => sort_types[@sort_type]).paginate :page => params[:page], :per_page => 6
+    @collection = profile_account.playlists.all(opts).paginate :page => params[:page], :per_page => 6
   
     if request.xhr?
       render :partial => 'ajax_list'

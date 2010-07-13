@@ -95,15 +95,15 @@ class Artist < Account
 
 
   has_many :playlist_items
-  has_many :playlists, :through => :playlist_items, :include => [:owner, :station], :conditions => "accounts.id IS NOT NULL AND accounts.deleted_at IS NULL AND stations.id IS NOT NULL AND playlists.locked_at IS NULL", :uniq => true do
+  has_many :playlists, :through => :playlist_items, :include => [:owner, :station], :conditions => "accounts.id IS NOT NULL AND accounts.deleted_at IS NULL AND stations.id IS NOT NULL AND playlists.locked_at IS NULL" do
     def latest(limit=nil)
-      opts = {:order => 'playlists.updated_at DESC'}
+      opts = {:order => 'playlists.updated_at DESC', :group => 'playlist_items.playlist_id'}
       opts.merge!(:limit => limit) unless limit.nil?
       all(opts)
     end
   
     def top(limit=nil)
-      opts = {:order => 'playlists.total_plays DESC'}
+      opts = {:order => 'playlists.total_plays DESC', :group => 'playlist_items.playlist_id'}
       opts.merge!(:limit => limit) unless limit.nil?
       all(opts)
     end
