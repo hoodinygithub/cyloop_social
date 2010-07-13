@@ -1,6 +1,6 @@
 <%= render :partial => 'station_details_form' %>
 <%= avatar_for(@station_obj.playable, :small, :class => 'left_side', :width => '50', :disable_default_css => true) %>
-<div class="album_text2">
+<div class="album_text2 mix_radio">
   <b><%= @station_obj.playable.name %></b>
   <% if logged_in? && current_user.id == @station_obj.playable.owner.id %>
     <!--span class="small_btn_box hoverable_item"><%= link_to_function "Edit","Base.stations.launch_edit_layer(#{@station_obj.id})", :class => "small_btn edit_btn" %></span-->

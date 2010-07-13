@@ -3,6 +3,22 @@
   <%= javascript_include_tag "AC_OETags", "history", "swf_utils", "radio", "htmlcomponent" %>
 <% end %>
 <div id="main_content">
-  <%= render @station_obj.nil? && 'playlists' || 'radio' %>
+  <div>
+    <%= render @station_obj.nil? && 'playlists' || 'radio' %>
+  </div>
+  <div id="right_column">
+    <div class="ad_box">
+      <%= banner_ad("square_banner") %>
+    </div>
+    <div class="grey_box mix_radio">
+      <div class="box_content" id="top_stations">
+        <h1><%= t('modules.top_playlists.title') %></h1>
+        <% cache("#{site_cache_key}/latest_playlists/#{@top_playlists_limit}", :expires_in => EXPIRATION_TIMES['radio_top_abstract_stations'] ) do %>
+          <%= render :partial => 'playlist_simple', :collection => @top_playlists %>
+        <% end %>
+      </div>
+    </div>
+  </div><!--/end right_column -->
+
   <div class="clearer"></div>
 </div>

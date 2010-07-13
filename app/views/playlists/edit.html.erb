@@ -5,7 +5,7 @@
   <%= javascript_include_tag 'playlist_create' %>
   <%= javascript_include_tag 'AC_OETags' %>
   <script type="text/javascript">
-	  var has_custom_avatar = <%= @playlist.nil? ? 'false' : !@playlist.avatar_file_name.nil?.to_s %>;
+    var has_custom_avatar = <%= @playlist.avatar_file_name.nil? ? 0 : 1 %>;
   </script>
 <% end %>
 

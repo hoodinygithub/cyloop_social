@@ -2219,3 +2219,11 @@ textarea.edit_review_red_msg {
   margin-left: 15px;
 
 }
+
+.grey_box.mix_radio {
+	top: -4px
+}
+
+.album_detail .album_text2.mix_radio {
+	width: 450px;
+}

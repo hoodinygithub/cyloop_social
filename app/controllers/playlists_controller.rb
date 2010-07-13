@@ -113,7 +113,7 @@ class PlaylistsController < ApplicationController
               song = @playlist_item_ids.select{ |s| s && s.id.equal?(item.to_i) }.first rescue nil
               @playlist.items.create(:song => song, :artist_id => song.artist_id, :position => index + 1) if song
             end
-            @playlist.update_tags(params[:tags].split(','))
+            @playlist.update_tags(params[:tags].split(',')) if params[:tags]
             attributes = { :name => params[:name], :site_id => current_site.id, :locked_at => nil }
             @playlist.update_attributes(attributes)
           end
