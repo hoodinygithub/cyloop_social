@@ -6,6 +6,8 @@
   <div>
     <%= render @station_obj.nil? && 'playlists' || 'radio' %>
   </div>
+
+  <% unless @station_obj.nil? %>
   <div id="right_column">
     <div class="ad_box">
       <%= banner_ad("square_banner") %>
@@ -19,6 +21,7 @@
       </div>
     </div>
   </div><!--/end right_column -->
-
+  <% end %>
   <div class="clearer"></div>
+
 </div>
