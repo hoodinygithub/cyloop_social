@@ -9,20 +9,24 @@ class ListenMetal
     remote_ip = env['REMOTE_ADDR']
     params    = request.params
 
-    radio_listen = /^\/activity\/listen\/radio\/(\w+)\/(\d+)\/(\d+)\/(\d+)\/(\d+)$/
-    on_demand    = /^\/activity\/listen\/ondemand\/(\w+)\/(\d+)\/(\d+)\/(\d+)$/
+    radio_listen    = /^\/activity\/listen\/radio\/(\w+)\/(\d+)\/(\d+)\/(\d+)\/(\d+)$/
+    on_demand       = /^\/activity\/listen\/ondemand\/(\w+)\/(\d+)\/(\d+)\/(\d+)$/
+    radio_on_demand = /^\/activity\/listen\/ondemand\/(\w+)\/(\d+)\/(\d+)\/(\d+)\/(\d+)$/
 
-    if (env["PATH_INFO"] =~ radio_listen || env["PATH_INFO"] =~ on_demand)
+    if (env["PATH_INFO"] =~ radio_listen || env["PATH_INFO"] =~ on_demand || env["PATH_INFO"] =~ radio_on_demand)
       options = Hash.new
       options.merge!(params)
       options[:remote_ip] = env.has_key?('HTTP_TRUE_CLIENT_IP') ? env['HTTP_TRUE_CLIENT_IP'] : remote_ip
-      options[:user_id] = session[:user_id] || nil
+      options[:user_id] = session[:coke_user_id] || nil
       options[:timestamp] = Time.now.to_i
       options[:site_id] = env['HTTP_HOST']
 
       if env["PATH_INFO"] =~ radio_listen
         # RADIO = 1
         options.merge!({:type => $1, :song_id => $2, :duration => $3, :station_id => $4, :player_id => $5, :license_id => 1, :source => request_uri})
+      elsif env["PATH_INFO"] =~ radio_on_demand
+        # ON-DEMAND = 2
+        options.merge!({:type => $1, :song_id => $2, :duration => $3, :station_id => $4, :player_id => $5, :license_id => 2, :source => request_uri})
       elsif env["PATH_INFO"] =~ on_demand
         # ON-DEMAND = 2
         options.merge!({:type => $1, :song_id => $2, :duration => $3, :player_id => $4, :license_id => 2, :source => request_uri})
