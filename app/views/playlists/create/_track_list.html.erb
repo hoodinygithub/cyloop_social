@@ -49,7 +49,7 @@
         </div>
       
         <div id="populated_playlist" class="added_items_box hidden">
-            <ul id="playlist_item_list" class="added_items">
+            <ul id="playlist_item_list" class="added_items" playlist_id="<%= @playlist.nil? ? 0 : @playlist.id  %>">
             
             </ul>
         </div><!--/end added_items_box -->
@@ -92,9 +92,9 @@
     });
   }
   
-  function add_item_wrapper(id, title, artist_id, artist_name, album_id, album_name, image_src, suppress_validation)
+  function add_item_wrapper(id, title, artist_id, artist_name, album_id, album_name, image_src, suppress_validation, item_id)
   {
-    add_item(id, title, artist_id, artist_name, album_id, album_name, image_src, suppress_validation);
+    add_item(id, title, artist_id, artist_name, album_id, album_name, image_src, suppress_validation, item_id);
   }
   
   function artist_text_wrapper(num, name, item_count, max_artist)
@@ -132,9 +132,16 @@
   <% if @playlist_items %>
     
     <% @playlist_items.each do |item| %>
-      <% unless item.artist.nil? || item.album.nil? %>
-        add_item_wrapper(<%= item.id %>, '<%= escape_for_js(item.title) %>', <%= item.artist.id %>, '<%= escape_for_js(item.artist.name) %>', <%= item.album.id %>, '<%= escape_for_js(item.album.name) %>', '<%= AvatarsHelper.avatar_path(item, :small) %>', true);
+      <% if item.is_a? PlaylistItem %>
+        <% unless item.song.artist.nil? || item.song.album.nil? %>
+          add_item_wrapper(<%= item.song.id %>, '<%= escape_for_js(item.song.title) %>', <%= item.song.artist.id %>, '<%= escape_for_js(item.song.artist.name) %>', <%= item.song.album.id %>, '<%= escape_for_js(item.song.album.name) %>', '<%= AvatarsHelper.avatar_path(item.song, :small) %>', true, <%= item.id %>);
+        <% end %>
+      <% else %>
+        <% unless item.artist.nil? || item.album.nil? %>
+          add_item_wrapper(<%= item.id %>, '<%= escape_for_js(item.title) %>', <%= item.artist.id %>, '<%= escape_for_js(item.artist.name) %>', <%= item.album.id %>, '<%= escape_for_js(item.album.name) %>', '<%= AvatarsHelper.avatar_path(item, :small) %>', true, 0);        
+        <% end %>
       <% end %>
+      
     <% end %>
     
     validate_items();

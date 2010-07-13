@@ -61,6 +61,7 @@ module AvatarsHelper
         if path = avatar.instance.try(:pending_avatar_url)
           path = path.sub(%r{/hires/}, '/hi-thumbnail/') if type == :medium
           path = path.sub(%r{/hires/}, '/hi-thumbnail/') if type == :new_medium
+          path = path.sub(%r{/hires/}, '/hi-thumbnail/') if type == :large
           path = path.sub(%r{/hires/}, '/thumbnail/') unless type == :album
           path = path.sub(%r{/hires/}, '/thumbnail/') if type == :small
           path = path.sub(%r{/hires/}, '/thumbnail/') if type == :artist_icon

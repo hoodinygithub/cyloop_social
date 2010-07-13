@@ -28,7 +28,7 @@ class Song < ActiveRecord::Base
 
   index :id
 
-  default_scope :conditions => { :deleted_at => nil }, :order => 'position'
+  default_scope :conditions => { :deleted_at => nil }
 
   after_save :increment_album_total_time, :if => :album_id?
   before_destroy :decrement_album_total_time, :if => :album_id?

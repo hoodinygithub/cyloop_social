@@ -5,6 +5,7 @@
 // var playlist_max_artist = 3;
 // var playlist_max_album = 3;
 var edit_mode = false;
+var has_custom_avatar = false;
 
 var _pv = new PlaylistValidations(10,3,3,100);
 
@@ -16,11 +17,10 @@ function PlaylistValidations(items_req, max_artist, max_album, max_items)
     this.max_items  = max_items;
     this.items_req  = items_req;
     
-    // atributes
+    // attributes
     this.valid      = false;
     this.item_count = 0;
-    this.item_ids   = [];
-    
+    this.item_ids   = [];    
     
     // collections
     this.items          = new ValidationList();
@@ -113,9 +113,9 @@ function PlaylistValidations(items_req, max_artist, max_album, max_items)
     }
   
     
-    this.add_item = function(song_id, title, artist_id, artist_name, album_id, album_name, image_src, suppress_validation) {
+    this.add_item = function(song_id, title, artist_id, artist_name, album_id, album_name, image_src, suppress_validation, item_id) {
       // Add Song ID to playlist
-      this.items.setItem(song_id, new PlaylistItem(song_id, title, artist_id, artist_name, album_id, album_name, image_src));
+      this.items.setItem(song_id, new PlaylistItem(song_id, title, artist_id, artist_name, album_id, album_name, image_src, item_id));
       this.item_ids.push(song_id);
       this.item_count = this.item_ids.length;
       
@@ -171,11 +171,21 @@ function PlaylistValidations(items_req, max_artist, max_album, max_items)
     this.get_remaining = function() {
       return (this.item_count > this.items_req) ? 0 : (this.items_req - this.item_count)
     }
+
+		this.reorder_items = function() {
+			_item_ids = [];
+			$('#playlist_item_list li').each(function(){
+				_item_ids.push($(this).attr('id'));
+			});
+		this.item_ids = _item_ids;
+		}
+		
 }
 
-function PlaylistItem(song_id, song, artist_id, artist_name, album_id, album_name, image_src)
+function PlaylistItem(song_id, song, artist_id, artist_name, album_id, album_name, image_src, item_id)
 {
   //attributes
+  this.item_id = item_id;
   this.song_id = song_id;
   this.song = song;
   
@@ -285,11 +295,11 @@ function ValidationList()
 }
 
 
-function add_item(id, title, artist_id, artist_name, album_id, album_name, image_src, suppress_validation)
+function add_item(id, title, artist_id, artist_name, album_id, album_name, image_src, suppress_validation, item_id)
 {
   if(!_pv.contains(id) && (_pv.item_count < _pv.max_items))
   {
-    li = '<li id="'+id+'" artist_id="'+artist_id+'" album_id="'+album_id+'">'
+    li = '<li id="'+id+'" artist_id="'+artist_id+'" album_id="'+album_id+'" item_id="'+ item_id+'">'
           + '<img alt="'+id+'" class="icon avatar small" src="'+image_src+'" />'
           + '<div class="text">'
               + '<big><b>'+unescape(title)+'</b></big><br/>'
@@ -412,21 +422,27 @@ function update_ui()
 }
 
 var previous_artist = 0;
+var refreshing = false;
 function refresh_similar_artists(id)
 {
 	current_artist = parseInt(id, 10);
-	if(!isNaN(current_artist) && current_artist != previous_artist){
+	if(!isNaN(current_artist) && current_artist != previous_artist && !refreshing){
+		refreshing = true;
 	  $.ajax({
 	    url: '/mixes/recommended_artists/' + id,
 	    type: "GET",
 	    data: null,
 	    success: function(r){ 
+				refreshing = false;
 				previous_artist = id;
 				$("#playlist_recommended_artists_container").fadeOut(function(){
 					$(this).html(r).fadeIn();
 				});
 			},
-	    error: function(r){alert('Error!')}
+	    error: function(r){
+				refreshing = false; 
+				alert('Error!')
+			}
 	  });
 	}
 }
@@ -453,18 +469,39 @@ function toggle_playlist_box()
 
 function open_save_popup()
 {
-  if(_pv.valid)
+	$('html').animate({scrollTop: 0},'slow');
+	if(_pv.valid)
   {
     if(edit_mode)
     {
       form = $('#update_playlist_form');
       form.find("input[name='item_ids']").attr("value", _pv.item_ids);
+		  $.ajax({
+		    url: '/mixes/edit/' + $('#playlist_item_list').attr('playlist_id'),
+		    type: "POST",
+		    data: form.serialize(),
+		    success: function(r){ 
+					if(!has_custom_avatar) {
+						update_playlist_avatar('#update_layer_avatar', $('#' + _pv.item_ids[0]).find('img').attr('src').replace(/image\/thumbnail/i, "image/hi-thumbnail"));
+/*			      img_src = $('#' + _pv.item_ids[0]).find('img').attr('src');
+			      $('#update_layer_avatar').attr('src', img_src.replace(/image\/thumbnail/i, "image/hi-thumbnail"));
+*/					}
+					$('#edit_conf_popup').fadeIn('fast');
+				},
+		    error: function(r){alert('Error!')}
+		  });
+
+/*      form = $('#update_playlist_form');
+      form.find("input[name='item_ids']").attr("value", _pv.item_ids);
       form.submit();
+*/
+	
     }
     else
     {
-      img_src = $('#' + _pv.item_ids[0]).find('img').attr('src');
-      $('#save_layer_avatar').attr('src', img_src.replace(/image\/thumbnail/i, "image/comments"));
+			if(!has_custom_avatar) {	
+				$('#save_layer_avatar').attr('src', $('#' + _pv.item_ids[0]).find('img').attr('src').replace(/image\/thumbnail/i, "image/hi-thumbnail"));
+			}
       $('#save_mix_popup').fadeIn('fast');
     }
   }
@@ -478,16 +515,28 @@ function submit_save_form()
   
   if(_pv.valid)
   {
-    var button = $('.bluw_loading');
-    button.empty().prepend('<img class="btn_blue_loading" src="/images/blue_loading.gif"/>' + 
-      button.attr('loading_message'));
-
 		var name = form.find("input[name='name']");
     if(name.val() != "")
     {
-      //form.find("input[name='item_ids']").attr("value", playlist_ids);
+	    var button = $('.blue_loading');
+	    button.empty().prepend('<img class="btn_blue_loading" src="/images/blue_loading.gif"/>' + button.attr('loading_message'));
+
       form.find("input[name='item_ids']").attr("value", _pv.item_ids);
-      setTimeout(function(){ $('#save_playlist_form').submit(); }, 500);
+	
+/*		  $.ajax({
+		    url: '/mixes/create',
+		    type: "POST",
+		    data: form.serialize(),
+		    success: function(r){ 
+					$('#edit_conf_popup').fadeIn('fast');
+				},
+		    error: function(r){alert('Error!')}
+		  });
+*/
+			setTimeout(function(){ $('#save_playlist_form').submit(); }, 500);
+      
+			//form.find("input[name='item_ids']").attr("value", playlist_ids);
+      //form.find("input[name='item_ids']").attr("value", _pv.item_ids);
     }
     else
     {
@@ -646,9 +695,29 @@ $(function() {
   //init_draggable();
 });
 
+function save_playlist_image_preview() {
+  field = $('#playlist_avatar');
+  image = $('#save_layer_avatar');
+  image_name = $('#uploaded_image_name');
+  full_path = ('file://'+ field.val()).replace(/\\/, '/'); //Fix Windows Paths
+  image.attr('src', full_path);
+  file_path = field.val();
+  shortName = file_path.match(/[^\/\\]+$/);
+  image.attr('src', '/images/upload_image_placeholder.gif');
+  image_name.show();
+  image_name.html(shortName[shortName.length-1]);
+	has_custom_avatar = true;
+}
 
 function playlist_image_preview() {
-  field = $('#playlist_avatar');
+	$('#update_layer_avatar_container').fadeOut('slow', function(){
+		$("#update_layer_avatar").attr('src', '/images/upload_image_placeholder.gif');
+		$('#update_layer_loading').show();
+		$(this).fadeIn('slow', function(){
+			$('#update_avatar_form').submit();
+		});
+	}); 
+/*  field = $('#playlist_avatar');
   image = $('#update_layer_avatar');
   image_name = $('#uploaded_image_name');
   // path = 'file://'+ field;
@@ -659,11 +728,19 @@ function playlist_image_preview() {
   image.attr('src', '/images/upload_image_placeholder.gif');
   image_name.show();
   image_name.html(shortName[shortName.length-1]);
+*/	has_custom_avatar = true;
 }
 
-
-
-
+function update_playlist_avatar(selector, avatar_path) {
+	$('#update_layer_avatar_container').fadeOut('slow', function(){
+		$('#update_layer_loading').hide();
+		$(selector).attr('src', avatar_path);
+		$(this).fadeIn('slow');
+	});
+/*	$(selector).fadeOut('fast', function(){
+		$(this).attr('src', avatar_path);
+	});
+*/}
 
 Array.prototype.contains = function (element) {
   for (var i = 0; i < this.length; i++) {
@@ -682,7 +759,6 @@ Array.prototype.remove = function (element) {
   }
   //return this;
 }
-
 
 var hideCreateBox = function(){
 /*  restoreInput(content_msg, this); setTimeout(function() {$('.create_box').hide();}, 300); */

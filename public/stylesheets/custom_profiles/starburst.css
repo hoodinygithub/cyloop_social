@@ -99,7 +99,7 @@ h1 {
 }
 
 .small_thumb {
-	margin-right: 10px;
+	margin-right: 10px !important;
 }
 
 .gb_small {

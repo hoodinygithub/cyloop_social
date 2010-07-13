@@ -1,7 +1,8 @@
 <!-- Leave profile visists until include mixes -->
 <div class="black_box left_side">
   <big class="blue">
-    <%= number_with_delimiter(profile_account.total_playlists) %>
+	<%= link_to("#{profile_user.total_playlists}", my_mixes_path) if profile_user? && profile_owner? %>
+	<%= link_to("#{profile_user.total_playlists}", user_mixes_path(profile_user)) if profile_user? && !profile_owner? %>	
   </big>
   <br />
   <%= t('user.stats.mixes', :default => "Mixes") %>

@@ -38,6 +38,9 @@ class RadioController < ApplicationController
     station = Station.find_by_id_and_playable_type(params[:station_id], 'Playlist') rescue nil
     @station_obj = station if station and station.playable and station.playable.owner and station.playable.owner.active?
 
+    @top_playlists_limit = @station_obj.nil? ? 6 : 4
+    @top_playlists = current_site.top_playlists(@top_playlists_limit)
+
     if @station_obj
       @section = "player_page" #used for css styling
       @station_queue = @station_obj.playable.station_queue(:ip_address => remote_ip)
@@ -45,8 +48,6 @@ class RadioController < ApplicationController
     else
       @top_djs_limit = 5
       @top_djs = current_site.top_djs.all(:limit => @top_djs_limit)
-      @top_playlists_limit = 6
-      @top_playlists = current_site.top_playlists(@top_playlists_limit)
       @latest_playlists = current_site.playlists.latest
 
       @top_artists_limit = 5    

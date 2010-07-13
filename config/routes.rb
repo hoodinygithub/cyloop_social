@@ -145,6 +145,7 @@ ActionController::Routing::Routes.draw do |map|
   map.playlist_save_state '/mixes/save_state', :controller => 'playlists', :action => 'save_state'
   map.playlist_clear_state '/mixes/clear_state', :controller => 'playlists', :action => 'clear_state'
   map.playlist_comment '/mixes/comment/:id', :controller => 'playlists', :action => 'comment'
+  map.playlist_avatar_update '/mixes/avatar_update/:id', :controller => 'playlists', :action => 'avatar_update'
 
   map.playlist_reviews         '/mixes/:playlist_id/reviews/list', :controller => 'reviews', :action => 'list'
   map.playlist_reviews_items   '/mixes/:playlist_id/reviews/items', :controller => 'reviews', :action => 'items'

@@ -64,12 +64,13 @@ namespace :db do
         query = <<-EOF
         UPDATE accounts a 
         INNER JOIN (
-          SELECT artist_id, count(*) AS total_playlists
-          FROM songs s 
-          INNER JOIN playlist_items pi ON s.id = pi.song_id 
+          SELECT pi.artist_id, count(*) AS total_playlists
+          FROM playlist_items pi 
           INNER JOIN playlists p ON pi.playlist_id = p.id 
-          INNER JOIN stations s ON p.id = s.playable_id AND s.playable_type = 'Playlist' 
+          INNER JOIN accounts a ON p.owner_id = a.id 
+          INNER JOIN stations ss ON p.id = ss.playable_id AND ss.playable_type = 'Playlist' 
           WHERE p.deleted_at IS NULL AND p.locked_at IS NULL 
+          AND a.deleted_at IS NULL AND a.network_id = 1
           GROUP BY 1
         ) AS q ON a.id = q.artist_id 
         SET a.total_playlists = q.total_playlists

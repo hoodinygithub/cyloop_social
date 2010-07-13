@@ -4,7 +4,6 @@ module DashboardsHelper
       :home     => user_path,
       :stations => user_stations_path,
       :mixes => user_mixes_path,
-      :reviews => user_reviews_path,
       :activities => activities_path,
       :albums =>  artist_albums_path,
       :followers  => followers_path
@@ -13,7 +12,6 @@ module DashboardsHelper
     [{:menu => :home,          :label => "#{t('profile.navigation.home')}",       :url => links[:home]      },
      {:menu => :stations,      :label => "#{t('profile.navigation.stations')}",   :url => links[:stations]  },
      {:menu => :mixes,         :label => "#{t('profile.navigation.mixes')}",      :url => links[:mixes]  },
-     {:menu => :reviews,       :label => "#{t('profile.navigation.reviews')}",          :url => links[:reviews]},
      # {:menu => :albums,        :label => "#{t('profile.navigation.albums')}",     :url => links[:albums]},
      # {:menu => :activity,      :label => "#{t('profile.navigation.activity')}",   :url => links[:activities]},
      {:menu => :followers,     :label => "#{t('profile.navigation.myfollowers')}",  :url => links[:followers] }]
@@ -24,7 +22,7 @@ module DashboardsHelper
       :home     => user_path,
       :stations => user_stations_path,
       :mixes => user_mixes_path,
-      :reviews => my_reviews_path,
+      :reviews => user_reviews_path,
       :activities => activities_path,
       :followers  => followers_path,
       :following  => following_index_path

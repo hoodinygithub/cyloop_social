@@ -1,6 +1,6 @@
 <div class="albums_item reviews_list" id="review_<%= item.id %>"> 
   <div class="artist_box png_fix"> 
-    <%= link_to avatar_for(item.commentable, :new_medium), 
+    <%= link_to avatar_for(item.commentable, :large), 
       mix_radio_path(:station_id => item.commentable.station.id) %>
     <div class="overlay"> 
       <div class="hidden fh"> 
@@ -11,7 +11,7 @@
         <br/>                
         <div class="tags_contains">
           <% unless item.commentable.cached_tag_list.blank? %>
-          <div><%= tag_links(item.commentable, @active_scope) %></div>
+          <div><%= tag_links(item.commentable) %></div>
           <% end %>
           <% if item.commentable.songs_count > 0 %>
           <div class="station_contains"><%= station_contains(item.commentable) %></div>

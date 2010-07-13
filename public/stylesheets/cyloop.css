@@ -337,6 +337,14 @@ img.avatar.new_medium {
   padding: 0px;
   border: none;
 }
+
+img.avatar.large {
+  width: 150px;
+  height: 150px;
+  padding: 0px;
+  border: none;
+}
+
 img.avatar.new_small {
   width: 25px;
   height: 25px;
@@ -1942,6 +1950,7 @@ div.albums_item div.reviews {
 .tags_contains {
   line-height: 14px !important;
   height: 53px;
+	margin: 0;
 }
 
 .tag_links {
@@ -2210,5 +2219,14 @@ textarea.edit_review_red_msg {
   background: red;
   margin-left: 15px;
 
+}
+
+.grey_box.mix_radio {
+	top: -4px
+}
+
+.album_detail .album_text2.mix_radio {
+	width: 350px;
+	overflow: hidden;
 }
 
