@@ -1,4 +1,10 @@
 <% @search_types.each_with_index do |type, index| %>
+  <h1><%= t("basics.#{type.to_s}").upcase %> (<%= @counts[type] %>)</h1>
+  <div class="clearer"></div>
+    
+  <ul id="<%= "#{type.to_s}_list" %>" class="search_list">
+    <%= render :partial => "searches/list_#{type.to_s.singularize}", :collection => @results[type] unless @results[type].empty? %> 
+  </ul>  
   <% if @local %>
     <% if @counts[type] > 0 %>
       <%= link_to_function t("search.see_all_#{type.to_s}_with_term", :term => @query), "get_search_results('#{CGI::escape(@query)}','#{type.to_s.singularize}')", :class => "see_link" %>
@@ -6,11 +12,5 @@
   <% else %>
     <%= link_to t("search.see_all_#{type.to_s}_with_term", :term => @query), playlist_create_path(:term => @query, :scope => type.to_s.singularize), :class => "see_link" %>
   <% end %>
-  <h1><%= t("basics.#{type.to_s}").upcase %> (<%= @counts[type] %>)</h1>
-  <div class="clearer"></div>
-    
-  <ul id="<%= "#{type.to_s}_list" %>" class="search_list">
-    <%= render :partial => "searches/list_#{type.to_s.singularize}", :collection => @results[type] unless @results[type].empty? %> 
-  </ul>  
-  <div class="grey_spacer"></div>
+  <div class="grey_spacer">  </div>
 <% end %>
