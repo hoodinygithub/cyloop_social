@@ -1307,6 +1307,7 @@ Base.main_search.refresh_result = function() {
 			})
 			jQuery("#scope_" + value + "_toggle").parentsUntil('ul').find('img.mini_loader').addClass('hide');
 			Base.main_search.toggle_scope(false);
+	    $('input[type=radio].star').rating();			
 		},
     error: function(result) { alert("error"); }
   });
