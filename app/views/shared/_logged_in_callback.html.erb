@@ -1,0 +1,2 @@
+<% logged_in = "/logged_in.js?lang=#{I18n.default_locale}&logout_url=#{CGI::escape(site_logout_url)}" %>
+<%= javascript_include_tag(logged_in) %>
