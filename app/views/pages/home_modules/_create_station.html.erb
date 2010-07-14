@@ -14,7 +14,7 @@
 
       listenButton.click(function(e) {
         if(parseInt($(this).attr('can_post'), 10)) {
-          $('form.new_station').submit();
+          $('#radio_new_station').submit();
           listenButton.attr('can_post', 0);
       	}
       });
@@ -123,7 +123,7 @@
         </p>
       </div>
 
-      <% form_for(:station, :html => {:class => "new_station"}, :url => search_radio_path) do %>
+      <% form_for(:station, :html => {:class => "new_station", :id => :radio_new_station }, :url => search_radio_path) do %>
       <%= hidden_field_tag :station_id %>
         <div>
           <label><%= t("home.create_your_own_station_now") %></label><br/>
