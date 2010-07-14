@@ -319,10 +319,11 @@ function load_station_info(station_id)
         url: "/mixes/info/" + station_id,
         error: function()
         {
-          alert("error!");
+					load_licensing_message();
         },
         success: function(response, status)
         {
+					load_licensing_message();
           $('.artist_radio_info').html(response);
           initRadioTabs();
           $('input[type=radio].star').rating();
