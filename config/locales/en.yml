@@ -334,6 +334,8 @@ en:
       has_not_playlists: "{{subject}} has no mixes."
       has_not_stations: "{{subject}} has no stations."
       has_not_reviews: "{{subject}} has no reviews."
+      has_not_followers:  "{{subject}} has no followers."
+      is_not_following: "{{subject}} is not following anyone."
       latest_stations: "{{subject}}'s Latest Stations"
       latest_mixes: "{{subject}}'s Latest Mixes"
       top_stations: "{{subject}}'s Top Stations"
@@ -351,8 +353,10 @@ en:
       follow_requests: My Follow Requests
       charts: My Charts
       has_not_playlists: "You have no mixes."
-      has_not_stations: "You has no stations."
-      has_not_reviews: "You has no reviews."
+      has_not_stations: "You have no stations."
+      has_not_reviews: "You have no reviews."
+      is_not_following: "You not following anyone."
+      has_not_followers:  "You have no followers."
       latest_stations: "My Latest Stations"
       latest_mixes: "My Latest Mixes"
       top_stations: "My Top Stations"
