@@ -3,23 +3,27 @@
   <div class="follower_info" style="width:236px;">
     <b><%= link_to item.name, item %></b><br/>
     <span><%= item.country %></span><br/>
-    <%= link_to item.playlists.size, user_mixes_path(item) %> <%= t('profile.navigation.playlists') %> /
-    <%= link_to item.followers.size, user_followers_path(item) %> <%= t('profile.navigation.followers') %>
+    <%= link_to item.total_playlists, user_mixes_path(item) %> <%= t('profile.navigation.playlists') %> /
+    <%= link_to item.follower_count, user_followers_path(item) %> <%= t('profile.navigation.followers') %>
   </div>
   <div class="follower_actions w_settings" style="width: 170px;">
     <% if item != current_user %>
-      <a href="#" class="blue_button settings_button" style="float:left;">
-        <span><span>
-          <img src="/images/settings_button.png" class="png_fix" alt="" />
-        </span></span>
-      </a>
-      <%= render :partial => 'followings/action', :locals => { :item => item } %>
+      <% if current_user %>
+        <a href="#" class="blue_button settings_button" style="float:left;">
+          <span><span>
+            <img src="/images/settings_button.png" class="png_fix" alt="" />
+          </span></span>
+        </a>
+      <% end %>
+      <%= render :partial => 'followings/action', :locals => { :item => item } if current_user  %>
       <%= follow_button(:account => item, :remove_div => (params[:controller] != 'followers' && page_owner?) ) %>
-      <div class="blocked">
-        <% if current_user.blocks?(item) %>
-        <%= image_tag('blocked.gif') %> <%= t('blocks.blocked') %>
-        <% end %>
-      </div>
+      <% if current_user %>
+        <div class="blocked">
+          <% if current_user.blocks?(item) %>
+          <%= image_tag('blocked.gif') %> <%= t('blocks.blocked') %>
+          <% end %>
+        </div>
+      <% end %>
     <% end %>
   </div>
   <br class="clearer" />
