@@ -77,6 +77,7 @@ class PaginationRenderer < WillPaginate::LinkRenderer
       url = url.gsub('all','users') if @collection.first.type == "User"
       url = url.gsub('all','stations') if @collection.first.type.to_s == "AbstractStation"
       url = url.gsub('all','artists') if @collection.first.type == "Artist"
+      url = url.gsub('all','mixes') if @collection.first.type.to_s == "Playlist"
     end
     url = url.gsub('playlists','mixes')
     url
