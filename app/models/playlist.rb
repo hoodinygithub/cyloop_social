@@ -26,7 +26,7 @@ class Playlist < ActiveRecord::Base
   
   belongs_to :site
   belongs_to :owner, :class_name => 'User', :conditions => { :network_id => 1 }
-  delegate :network, :to => :owner
+  delegate :network, :to => :owner  
     
   has_many :items, :class_name => 'PlaylistItem', :conditions => "songs.deleted_at IS NULL AND accounts.deleted_at IS NULL", :order => "playlist_items.position ASC", :include => { :song => :artist }
   has_many :songs, :through => :items, :order => "playlist_items.position ASC", :include => :artist, :conditions => { :deleted_at => nil }
