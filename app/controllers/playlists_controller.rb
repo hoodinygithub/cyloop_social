@@ -282,7 +282,12 @@ class PlaylistsController < ApplicationController
 
   def xhr_login_required
     unless current_user
-      return render(:json => {:status => 'redirect', :url => login_path})
+      registration_layer = render_to_string 'registration_layers/index'
+      return render(:json => {
+                              :status => 'redirect',
+                              :html   => registration_layer
+                              }
+                   )
     end
   end
 
