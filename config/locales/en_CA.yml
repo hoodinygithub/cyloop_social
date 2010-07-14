@@ -1345,7 +1345,7 @@ en_CA:
     search_results: Search Results
     search_hint: Search for your favorite artist & music
     see_all_albums_with_term: see all albums with "{{term}}"
-    content_search_hint: Enter the name of an artist, album or song
+    content_search_hint: Name of an artist. album, or song
     search_title: Search
     see_all_songs_with_term: see all songs with "{{term}}"
     see_all_artists_with_term: see all artists with "{{term}}"

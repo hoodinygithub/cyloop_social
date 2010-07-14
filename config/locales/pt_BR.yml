@@ -251,7 +251,7 @@ pt_BR:
       top_mixes: Minhas Top Mixes
       followers: "Quem est\xC3\xA1 me seguindo"
       recent_reviews: "Minhas \xC3\x9Altimas Avalia\xC3\xA7\xC3\xB5es"
-      playlists: Minhas Mixes
+      playlists: Meus Mixes
       has_not_reviews: "Voc\xC3\xAA n\xC3\xA3o postou nenhuma avalia\xC3\xA7\xC3\xA3o."
       albums: Meus Discos
       has_not_playlists: "Voc\xC3\xAA n\xC3\xA3o tem nenhuma mix."
@@ -1151,7 +1151,7 @@ pt_BR:
       category_profile: Meu Perfil
       email: "Endere\xC3\xA7o de e-mail"
   sort: 
-    highest_rated: HIGHEST RATED
+    highest_rated: MAIS VOTADOS
     alphabetical: "Alfab\xC3\xA9tica"
     relevance: "Relev\xC3\xA2ncia"
     newest: Mais novos
@@ -1360,7 +1360,7 @@ pt_BR:
     top_radios: "R\xC3\x81DIOS MAIS TOCADAS"
     text_about_mix: Escreva Sobre o Mix
     recommended_stations: "R\xC3\xA1dios Recomendadas pelo Cyloop"
-    explaing_what_is_and_why_create_a_new_radio: "Digite o nome do seu artista favorito. Cyloop criar\xC3\xA1 uma radio personalizada com m\xC3\xBAsidas dele.<br/><br/>"
+    explaing_what_is_and_why_create_a_new_radio: "Digite o nome do seu artista favorito. Cyloop criar\xC3\xA1 uma radio personalizada com m\xC3\xBAsicas dele.<br/><br/>"
     create_mix: Criar uma Mix
     latest_stations: "\xC3\x9ALTIMAS ESTA\xC3\x87\xC3\x95ES DE R\xC3\x81DIO"
     explaing_what_is_and_why_create_a_new_mix: "Digite o nome do seu artista favorito. Cyloop ir\xC3\xA1 ajudar voc\xC3\xAA a iniciar a criar um novo mix com suas m\xC3\xBAsicas favoritas do seus artistas favoritos"
@@ -1393,7 +1393,7 @@ pt_BR:
     search_results: Resultados da Busca
     search_hint: "Busque pelas suas m\xC3\xBAsicas e artistas favoritos"
     see_all_albums_with_term: see all albums with "{{term}}"
-    content_search_hint: "Busque suas m\xC3\xBAsicas e artistas favoritos"
+    content_search_hint: "Nome de um artista, album ou m\xC3\xBAsica"
     search_title: Busca
     see_all_songs_with_term: see all songs with "{{term}}"
     see_all_artists_with_term: see all artists with "{{term}}"

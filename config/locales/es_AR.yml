@@ -1360,7 +1360,7 @@ es_AR:
     user_latest_stations: RADIOS MAS RECIENTES DE {{name}}
     explaing_what_is_and_why_create_a_new_mix: "Escribe el nombre de tu artista favorito. Cyloop te ayudar\xC3\xA1 a crear un mix con m\xC3\xBAsica de tus artistas favoritos.\r\n"
     network_update: ACTIVIDAD RECIENTE DE {{user_name}}
-    create_your_own_mix_now: "\xC2\xA1Crea tu propia mix ahora!"
+    create_your_own_mix_now: "\xC2\xA1Crea tu propio mix ahora!"
     recommended_mixes: MIXES RECOMENDADOS POR CYLOOP
     type_artist_name: Escribe el nombre de un artista
     radios_recomended_for_you: RADIOS RECOMENDADAS PARA VOS
@@ -1384,7 +1384,7 @@ es_AR:
     search_results: "Resultados de b\xC3\xBAsqueda"
     search_hint: "Busc\xC3\xA1 tu m\xC3\xBAsica y artistas favoritos"
     see_all_albums_with_term: Ver todos los albums con "{{term}}"
-    content_search_hint: "Escribe el nombre de un artista, un \xC3\xA1lbum, o una canci\xC3\xB3n"
+    content_search_hint: Nombre de un artista, album, o cancion
     search_title: "B\xC3\xBAsqueda"
     see_all_songs_with_term: Ver todas las canciones con "{{term}}"
     see_all_artists_with_term: Ver todos los artistas con "{{term}}"
