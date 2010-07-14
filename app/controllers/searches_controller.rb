@@ -68,6 +68,7 @@ class SearchesController < ApplicationController
 
   def content
     @query = params[:q]    
+    @content_search ||= true
     @search_types ||= [:artists, :songs, :albums]    
     @internal_search_types = []    
     @sort_type = :relevance
