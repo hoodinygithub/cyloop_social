@@ -251,6 +251,8 @@ en_US:
       has_not_stations: "{{subject}} no tiene radios."
       latest_stations: "Radios \xC3\x9Altimas de {{subject}}"
       followees: People that {{subject}} is following
+      has_not_followers: "{{subject}} has no followers."
+      is_not_following: "{{subject}} is not following anyone."
       reviews: "{{subject}}'s Reviews"
       follow_requests: "{{subject}}'s Follow Requests"
       top_stations: Radios Top de {{subject}}
@@ -269,6 +271,8 @@ en_US:
       has_not_stations: No tienes radios.
       latest_stations: "Mis Radios \xC3\x9Altimas"
       followees: People that I am following
+      has_not_followers: You have no followers.
+      is_not_following: You not following anyone.
       reviews: My Reviews
       follow_requests: My Follow Requests
       top_stations: My Top Stations
@@ -1277,7 +1281,7 @@ en_US:
         other: "{{count}} years"
       half_a_minute: half a minute
   home: 
-    latest_news: ""
+    latest_news: Latest News
     station: Station
     start_listening: START LISTENING
     create_your_own_personalized_radio_station: Create Your Own Personalized Radio Station
@@ -1289,7 +1293,7 @@ en_US:
     explaing_what_is_and_why_create_a_new_radio: "Type the name of your favorite artist and Cyloop will generate a personalized radio station with your favorite music. "
     create_mix: Create Mix
     latest_stations: LATEST RADIO STATIONS
-    explaing_what_is_and_why_create_a_new_mix: ""
+    explaing_what_is_and_why_create_a_new_mix: Type the name of your favorite artist. Cyloop will help you start creating a new mix with your favorite music from your favorite artists
     network_update: "{{user_name}}'S RECENT ACTIVITY"
     create_your_own_mix_now: "\xC2\xA1Crea tu propia mix ahora!"
     recommended_mixes: MIXES RECOMMENDED BY CYLOOP

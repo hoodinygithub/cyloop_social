@@ -108,27 +108,27 @@ fr_CA:
     awaiting_approval: En attente d'approbation
     play: Jouer
     unblock: "D\xC3\xA9bloquer"
-    share: Partager
     unfollow_account: "Ne plus \xC3\xAAtre fan de {{name}}"
+    share: Partager
     disaprove: Ne pas approuver
-    unfollow: "Ne plus \xC3\xAAtre fan"
-    add: ajouter
     pending: En attente
-    share_with_a_friend: Partagez cette chanson avec un ami
+    add: ajouter
+    unfollow: "Ne plus \xC3\xAAtre fan"
     logout: "Se d\xC3\xA9connecter"
+    share_with_a_friend: Partagez cette chanson avec un ami
     select_playlist: "S\xC3\xA9lectionnez une liste de lecture"
-    forgot_password: "Mot de passe oubli\xC3\xA9?"
     edit: Modifier
+    forgot_password: "Mot de passe oubli\xC3\xA9?"
     previous: !binary |
       UHLDqWPDqWRlbnQ=
 
     add_song_to_playlist: "Ajoutez cette chanson \xC3\xA0 une liste de lecture"
-    submit: Soumettre
-    close: Fermer
-    delete: Supprimer
     stop: "Arr\xC3\xAAter"
-    cancel: Annuler
+    delete: Supprimer
+    close: Fermer
+    submit: Soumettre
     go_with_exclamation: Go!
+    cancel: Annuler
     buy_album: Achetez l'album
     results_for: 
     buy_song: Achetez la chanson
@@ -146,33 +146,33 @@ fr_CA:
     aprove: Approuver
     add_to_playlist: "Ajouter \xC3\xA0 une liste"
     saving: Sauvegardant
-    launch_radio: Lancer la Radio
-    block: Bloquer
     follow: Devenir fan
+    block: Bloquer
+    launch_radio: Lancer la Radio
     save: Enregistrer
     view: Voir
     go: Allez-y
     filter_by: Filtrer par
     approve: Approuver
     send: Envoyer
-    next: Suivant
     create: !binary |
       Q3LDqWVy
 
+    next: Suivant
     search_text: Trouver Music en Cyloop
     reset: "R\xC3\xA9initialiser"
     add_into_a_new_playlist: Ajouter dans une nouvelle liste de lecture
-    share_station: Partager cette station avec un ami
     login: Connexion
+    share_station: Partager cette station avec un ami
     follow_account: Devinir fan de {{name}}
     listen: "\xC3\xA9coutez"
-    rate_it: "\xC3\x89valuez-le"
     add_song: Ajoutez une chanson
-    select_store: ""
+    rate_it: "\xC3\x89valuez-le"
     create_station: "Cr\xC3\xA9ez la radio!"
+    select_store: ""
     add_more: Ajoutez-en un autre
-    search: Trouver
     submitting: Soumettre
+    search: Trouver
   share: 
     name: Votre nom
     station: 
@@ -260,6 +260,8 @@ fr_CA:
       has_not_stations: "{{user_name}} n'a pas de station de radio"
       latest_stations: "Derni\xC3\xA8res Stations de Radio par {{subject}}"
       followees: "{{subject}} est fan de ces profils"
+      has_not_followers: Personne n'est fan de {{subject}}
+      is_not_following: "{{subject}} n'est pas fan de personne"
       reviews: Commentaires par {{subject}}
       follow_requests: "{{subject}}'s Follow Requests"
       top_stations: Top Stations de Radio par {{subject}}
@@ -278,6 +280,8 @@ fr_CA:
       has_not_stations: Vous n'avez pas de station de radio.
       latest_stations: "Mes Derni\xC3\xA8res Stations de Radio"
       followees: Fan
+      has_not_followers: Personne n'est fan de vous
+      is_not_following: Tu n'es pas fan de personne
       reviews: Mes Commentaires
       follow_requests: My Follow Requests
       top_stations: Mes Top Stations de Radio
@@ -587,9 +591,9 @@ fr_CA:
     email_me_subscribes_radios: "Envoyez-moi un courriel lorsque quelqu'un s'abonne \xC3\xA0 une de mes radios"
     change_password: CHANGER LE MOT DE PASSE
     delete: SUPPRIMER
-    cancel: Annuler
-    title: "PARAM\xC3\x88TRES DU COMPTE"
     email_me_subscribes_mixes: "Envoyez-moi un courriel lorsque quelqu'un s'abonne \xC3\xA0 un de mes mix"
+    title: "PARAM\xC3\x88TRES DU COMPTE"
+    cancel: Annuler
     email_me_reviews_mixes: Envoyez-moi un courriel lorsque quelqu'un fait une critique/note un de mes mix
     delete_my_account: SUPPRIMER MON COMPTE
     email_me_communications: "Envoyez-moi p\xC3\xA9riodiquement le bulletin d'information ainsi que d'autres messages de Cyloop"
@@ -600,8 +604,8 @@ fr_CA:
     save: SAUVEGARDER
     add_update: "AJOUTER / METTRE \xC3\x80 JOUR"
     delete_account: SUPPRIMER LE COMPTE
-    email_notifications: NOTIFICATIONS PAR COURRIEL
     update: "METTRE \xC3\x80 JOUR"
+    email_notifications: NOTIFICATIONS PAR COURRIEL
     password: Mot de passe
     basic_info: INFORMATION DE BASE
     old_password: Ancien mot de passe
@@ -979,9 +983,9 @@ fr_CA:
     charts: Tops
     song: chanson
     message: Message
+    tags: balise
     unknown: Inconnue
     message_sent: "Votre message a \xC3\xA9t\xC3\xA9 envoy\xC3\xA9."
-    tags: balise
     artist_name: Nom de l'artiste
     artist: Artiste
     and_more: et bien plus...
