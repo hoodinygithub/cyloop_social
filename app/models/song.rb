@@ -117,4 +117,8 @@ class Song < ActiveRecord::Base
     "#{id}-#{PermalinkFu.escape(title)}"
   end
 
+  def songs
+    [self]
+  end
+
 end
