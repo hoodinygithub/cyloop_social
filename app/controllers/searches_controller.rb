@@ -6,7 +6,7 @@ class SearchesController < ApplicationController
     @search_types ||= [:artists , :stations, :mixes, :users]    
     @internal_search_types ||=  { :stations => :abstract_stations, :mixes => :playlists }
 
-    @sort_types = { :latest => { :artists => nil, :stations => 'updated_at DESC', :playlists => 'playlists.updated_at DESC', :users => nil}, \
+    @sort_types = { :latest => { :artists => nil, :stations => 'updated_at DESC', :playlists => 'updated_at DESC', :users => nil}, \
                     :alphabetical => 'normalized_name ASC', \
                     :relevance => nil, \
                     :highest_rated => { :playlists => 'rating_cache DESC', :users => nil, :artists => nil, :stations => 'rating_cache DESC' }, \
@@ -113,10 +113,10 @@ class SearchesController < ApplicationController
           custom_sort = false
 
           if(@sort_types[@sort_type].is_a? Hash)
-            sort_instruction = @sort_types[@sort_type][scope]
+            sort_instruction = @sort_types[@sort_type][obj_scope]
             unless sort_instruction.nil?
               custom_sort = true if sort_instruction.is_a?(Symbol)
-              opts.merge!(:order => @sort_types[@sort_type][scope]) unless custom_sort
+              opts.merge!(:order => @sort_types[@sort_type][obj_scope]) unless custom_sort
             end
           else
             sort_instruction = @sort_types[@sort_type]
