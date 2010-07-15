@@ -458,7 +458,7 @@ es_ES:
     select_your_songs: Selecciona tus canciones.
     copy: Copiar Mix
     save_your_playlist: Guardar tu mix
-    picture: "m\xC3\xA1ximo de {{num}} canciones de un mismo {{type}}"
+    picture: Foto para tu mix
   activity: 
     created_playlist: "Cre\xC3\xB3 el Playlist '{{playlist}}'"
     just_following: "S\xC3\xB3lo siguiendo"
