@@ -36,14 +36,14 @@ fr_CA:
     be_the_first_to_create_station: "Soyez le premier \xC3\xA0 cr\xC3\xA9er une station de radio pour {{user_name}}"
   modules: 
     popular_tags: 
-      title: Balise Top
+      title: Tags Top
     edit_station: 
       new_name: Nouveau nom
       title: Modifier la station
       no_edit_rights: Vous n'avez pas les droits pour modifier cette station.
       blank_station_name_message: Vou devez entrer un nom pour cette station de radio.
     emotions: 
-      title: Emotions
+      title: Tags
     network_activity: 
       title: "Activit\xC3\xA9 de mon r\xC3\xA9seau"
     latest_playlists: 
@@ -459,10 +459,10 @@ fr_CA:
 
     song_from: chanson de
     autofill: Auto-Fill
+    save_confirmation: Confirmation de Sauvegarder
     total_time: !binary |
       RHVyw6ll
 
-    save_confirmation: Confirmation de Sauvegarder
     edit: Modifiez votre mix
     cancel_playlist: Voulez-vous annuler ce mix?
     cancel_playlist_text: "Annulation de votre mix reviendra tous vos modifications. <br/> Etes-vous s\xC3\xBBr de vouloir annuler?"
@@ -471,12 +471,12 @@ fr_CA:
     tracks_remaining: "chansons qui restent \xC3\xA0 publier"
     unable_save: Nous ne pouvons pas sauvegarder ce mix
     songs_from: chansons de
-    tag_your_playlist: "Attribuez \xC3\xA9motions \xC3\xA0 votre mix"
+    tag_your_playlist: Tag votre mix
     rules: "R\xC3\xA8gles des Mixes"
     please_remove: "S'il vous pla\xC3\xAEt supprimez"
     edit_confirm_text: "Votre modifications ont \xC3\xA9t\xC3\xA9 enregistr\xC3\xA9es. Souhaitez-vous continuer l'\xC3\xA9dition?"
-    delete_text: "\xC3\x8Ates-vous certain de vouloir supprimer cette liste d'\xC3\xA9coute?"
     name_your_playlist: Nom de ce mix
+    delete_text: "\xC3\x8Ates-vous certain de vouloir supprimer cette liste d'\xC3\xA9coute?"
     search_for_music: "Recherchez de la musique \xC3\xA0 ajouter \xC3\xA0 votre playlist"
     seperated_commas: "s\xC3\xA9par\xC3\xA9es par des virgules"
     playlist_name: Nom de la liste de lecture
@@ -484,8 +484,8 @@ fr_CA:
     select_your_songs_text: "Les r\xC3\xA9sultats de recherche chanson s'affichent ici <br />Faites glisser les chansons que vous aimez dans le conteneur au droit pour cr\xC3\xA9er votre mix"
     last_playlist: "Derni\xC3\xA8re liste de lecture"
     autofill_option: Option Auto-Fill
-    continue_btn: Continuer
     delete_title: "Supprimer la liste d'\xC3\xA9coute"
+    continue_btn: Continuer
     drag_songs_here: Faites glisser les chansons ici
     why_not_try: Et comment ceux-ci semblent vous?
     add_update: "R\xC3\xA9actualisez"
@@ -983,9 +983,9 @@ fr_CA:
     charts: Tops
     song: chanson
     message: Message
+    tags: Tags
     unknown: Inconnue
     message_sent: "Votre message a \xC3\xA9t\xC3\xA9 envoy\xC3\xA9."
-    tags: balise
     artist_name: Nom de l'artiste
     artist: Artiste
     and_more: et bien plus...
