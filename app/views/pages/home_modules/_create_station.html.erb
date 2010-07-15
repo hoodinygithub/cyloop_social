@@ -158,7 +158,9 @@
             # :onblur => "if (!$.browser.msie) { restoreInput(content_msg, this); setTimeout(function() {$('.create_box').hide();}, 300); }", 
             :autocomplete => :off } %></span>
           <div class="align_right">
-            <%= grey_button( t("home.create_mix"), :id => "create_playlist_btn", :href => playlist_create_path) %>
+            <%= grey_button( t("home.create_mix"), :id => "create_playlist_btn", 
+             :href => logged_in? ? playlist_create_path : nil , 
+             :onclick => logged_in? ? nil : "Base.utils.showRegistrationLayer()" ) %>
           </div>          
         </div><!--/end input_placeholder -->
         <div id="content_search_results" class="create_box small_width"></div><!--/end create_box -->

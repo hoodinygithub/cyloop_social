@@ -156,7 +156,6 @@ $(document).ready(function() {
       }
   });
 
-  $('.registered').click(Base.utils.showRegistrationLayer);
 });
 
 var swf = function(objname)
@@ -2043,4 +2042,3 @@ Base.utils.ajax_pagination = function() {
   $.get(paginate_link.attr('href'), Base.utils.load_content);
   return false;
 };
-

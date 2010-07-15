@@ -45,8 +45,9 @@
             :autocomplete => :off } %>
         </span>            
         <span class="btn_placeholder">
-          <%= blue_button( t("home.create_mix"), :id => "create_playlist_btn", :href => playlist_create_path, 
-          :class => logged_in? ? nil : "registered" ) %>
+          <%= blue_button( t("home.create_mix"), :id => "create_playlist_btn", 
+             :href => logged_in? ? playlist_create_path : nil , 
+             :onclick => logged_in? ? nil : "Base.utils.showRegistrationLayer()" ) %>
         </span>
         <br/><br/>
     <% end %>
