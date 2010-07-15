@@ -38,16 +38,6 @@ class AbstractStation < ActiveRecord::Base
     end
   end
 
-  # def self.search(*args)
-  #   if RAILS_ENV =~ /test/ # bad bad bad
-  #     options = args.extract_options!
-  #     starts_with(args[0]).paginate :page => (options[:page] || 1)
-  #   else
-  #     args[0] = "#{args[0]}*"
-  #     super(*args).compact        
-  #   end
-  # end
-
   has_many :user_stations, :include => :owner, :conditions => 'accounts.deleted_at IS NULL AND user_stations.deleted_at IS NULL'
   has_many :abstract_station_artists, :include => [:artist, :album]
   has_many :artists, :through => :abstract_station_artists
