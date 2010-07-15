@@ -107,15 +107,15 @@ class User < Account
   
   has_many :playlists, :foreign_key => :owner_id, :conditions => 'playlists.deleted_at IS NULL' do
     def top(limit = 4)
-      all(:include => :station, :conditions => 'stations.id IS NOT NULL', :order => 'playlists.total_plays DESC', :limit => limit)
+      all(:include => :station, :order => 'playlists.total_plays DESC', :limit => limit)
     end
 
     def latest(limit = 6)
-      all(:include => :station, :conditions => 'stations.id IS NOT NULL', :order => 'playlists.updated_at DESC', :limit => limit)
+      all(:include => :station, :order => 'playlists.updated_at DESC', :limit => limit)
     end
 
     def locked(limit = 6)
-      all(:include => :station, :conditions => 'stations.id IS NOT NULL AND playlists.locked_at IS NOT NULL', :order => 'playlists.updated_at DESC', :limit => limit)
+      all(:include => :station, :order => 'playlists.updated_at DESC', :limit => limit)
     end
 
     def unlocked(args = {})

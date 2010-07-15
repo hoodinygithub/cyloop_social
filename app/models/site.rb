@@ -59,7 +59,7 @@ class Site < ActiveRecord::Base
     end
   end
 
-  has_many :playlists, :include => [:owner, :station], :conditions => 'accounts.deleted_at IS NULL AND accounts.network_id = 1 AND stations.id IS NOT NULL AND playlists.deleted_at IS NULL AND playlists.locked_at IS NULL' do
+  has_many :playlists, :include => :owner, :conditions => 'accounts.deleted_at IS NULL AND accounts.network_id = 1 AND playlists.deleted_at IS NULL AND playlists.locked_at IS NULL' do
     def latest(limit=8)
       all(:order => 'playlists.updated_at DESC', :limit => limit)
     end
@@ -124,7 +124,7 @@ class Site < ActiveRecord::Base
   end
 
   def top_playlists(limit=8)
-    summary_top_playlists.all(:limit => limit, :include => { :playlist => [:owner, :station] }, :conditions => 'playlists.deleted_at IS NULL AND playlists.locked_at IS NULL AND accounts.network_id = 1 AND accounts.deleted_at IS NULL').map(&:playlist)
+    summary_top_playlists.all(:limit => limit, :include => { :playlist => :owner }, :conditions => 'playlists.deleted_at IS NULL AND playlists.locked_at IS NULL AND accounts.network_id = 1 AND accounts.deleted_at IS NULL').map(&:playlist)
   end
 
   # def top_user_stations_grouped(limit=6)

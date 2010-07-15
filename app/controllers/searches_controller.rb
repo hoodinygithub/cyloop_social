@@ -6,7 +6,7 @@ class SearchesController < ApplicationController
     @search_types ||= [:artists , :stations, :mixes, :users]    
     @internal_search_types ||=  { :stations => :abstract_stations, :mixes => :playlists }
 
-    @sort_types = { :latest => { :artists => nil, :stations => 'updated_at DESC', :playlists => 'updated_at DESC', :users => nil}, \
+    @sort_types = { :latest => { :artists => nil, :stations => 'updated_at DESC', :playlists => 'playlists.updated_at DESC', :users => nil}, \
                     :alphabetical => 'normalized_name ASC', \
                     :relevance => nil, \
                     :highest_rated => { :playlists => 'rating_cache DESC', :users => nil, :artists => nil, :stations => 'rating_cache DESC' }, \

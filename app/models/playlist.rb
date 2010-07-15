@@ -21,7 +21,7 @@ class Playlist < ActiveRecord::Base
   acts_as_commentable
   acts_as_rateable(:class => 'Comment', :as => 'commentable')
 
-  before_save :update_cached_artist_list
+  before_save :update_cached_artist_list, :update_item_timestamps
   before_create :increment_owner_total_playlists
   
   belongs_to :site
@@ -69,7 +69,9 @@ class Playlist < ActiveRecord::Base
   # end
 
   def includes(limit=3)
-    songs.all(:limit => limit, :group => "songs.artist_id")
+    Rails.cache.fetch("playlist/includes/#{cache_key}/#{limit}", :expires_delta => EXPIRATION_TIMES['mix_includes']) do
+      songs.all(:limit => limit, :group => "songs.artist_id")
+    end
   end
   
   def deactivate!
@@ -194,8 +196,11 @@ class Playlist < ActiveRecord::Base
     update_attribute(:rating_cache, self.rating)
   end
 
-  def to_s
-    self.name
+  def update_item_timestamps
+    PlaylistItem.update_all("updated_at = now()", ['playlist_id = ?', self.id])
   end
 
+  def to_s
+    self.name
+  end    
 end

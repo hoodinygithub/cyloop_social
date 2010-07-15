@@ -2,6 +2,7 @@
 # it will be picked up by the views after a server restart.
 
 defaults: &defaults
+  profile_mixes: <%= 5.minutes %> # app/models/abstract_station.rb:82
   abstract_station_includes: <%= 12.hours %> # app/models/abstract_station.rb:82
   editorial_station_includes: <%= 12.hours %> # app/models/editorial_station.rb:27
   artist_recent_listeners: <%= 10.minutes %> # app/views/artists/_sidebar.html.haml:16

@@ -1,6 +1,6 @@
 <%= render 'form' if logged_in? and !@playlist.owner_is?(current_user) %>
 <h1>
-  <%= "#{t('modules.reviews.title').upcase} (<span class=\"reviews_count\">#{@records.size}</span>)" %>
+  <%= "#{t('modules.reviews.title')} (<span class=\"reviews_count\">#{@records.size}</span>)" %>
 </h1>
 
 <div class="sorting">

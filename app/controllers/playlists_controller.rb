@@ -13,19 +13,19 @@ class PlaylistsController < ApplicationController
       params[:action]     = 'playlists'
     end
     sort_types  = { :latest => 'playlists.updated_at DESC',
-      :alphabetical => 'playlists.name',
-      :highest_rated => 'playlists.rating_cache DESC',
-    :top => 'playlists.total_plays DESC'  }
+                    :alphabetical => 'playlists.name',
+                    :highest_rated => 'playlists.rating_cache DESC',
+                    :top => 'playlists.total_plays DESC'  }
 
     @sort_type = get_sort_by_param(sort_types.keys, :latest) #params.fetch(:sort_by, nil).to_sym rescue :latest
-
-    conditions = "stations.id IS NOT NULL"
-    conditions << " AND locked_at IS NULL" unless on_dashboard?
-    opts = { :conditions => conditions, :include => :station, :order => sort_types[@sort_type] }
-    opts.merge!(:group => 'playlist_items.playlist_id') if profile_account.is_a? Artist
-
-    @collection = profile_account.playlists.all(opts).paginate :page => params[:page], :per_page => 6
-
+    @page = params[:page] || 1
+    
+    if profile_account.is_a?(Artist)
+      @collection = profile_account.playlists(:order => sort_types[@sort_type], :sort_type => @sort_type).paginate(:per_page => 6, :page => @page, :total_entries => 200)      
+    else
+      @collection = profile_account.playlists.paginate :page => @page, :per_page => 6, :order => sort_types[@sort_type], :total_entries => profile_account.total_playlists
+    end
+    
     if request.xhr?
       render :partial => 'ajax_list'
     else
