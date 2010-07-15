@@ -103,7 +103,7 @@ namespace :db do
 
       timebox "Update mix counts for users..." do
         ActiveRecord::Base.transaction do
-          connection.execute "UPDATE accounts a SET a.total_playlists = 0 WHERE a.type = 'User'"
+          connection.execute "UPDATE accounts a SET a.total_playlists = 0 WHERE a.type = 'User' AND a.network_id = 1"
           connection.execute <<-EOF
           UPDATE accounts a 
           INNER JOIN (
@@ -124,7 +124,7 @@ namespace :db do
  
       timebox "Update user_station counts for users..." do
         ActiveRecord::Base.transaction do
-          connection.execute "UPDATE accounts a SET a.total_user_stations = 0 WHERE a.type = 'User'"
+          connection.execute "UPDATE accounts a SET a.total_user_stations = 0 WHERE a.type = 'User' AND a.network_id = 1"
           connection.execute <<-EOF
           UPDATE accounts a 
           INNER JOIN (
