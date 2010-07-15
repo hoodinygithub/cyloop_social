@@ -1,4 +1,4 @@
-<% search_link = main_search_path(:scope => 'mixes', :q => CGI::escape(top_artists_item.name)) %>
+<% search_link = main_search_path(:scope => 'mixes', :q => CGI::escape(top_artists_item.name.gsub(/\./,' '))) %>
 <li>
   <%= link_to (top_artists_item_counter + 1), search_link, :class => "item_number" %>
   <span class="item_image">
