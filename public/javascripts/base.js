@@ -1982,7 +1982,6 @@ Base.content_search.dropdown = function() {
         return;
   	  }
       //jQuery('.search_results_box').show();
-     alert('oi');
       setTimeout(function () {Base.content_search.autocomplete(q)}, 500);
       return true;
     });
