@@ -181,3 +181,16 @@ span.checkbox {
 .msnlatam #brand #search #ntwlogo #logoimg{
   FILTER: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true', sizingMethod='image', src='http://blstc.msn.com/br/gbl/css/9/decoration/logo_56x29.png'); BACKGROUND-IMAGE: none
 }
+ul.susbcriptions_list{
+  float:left;
+}
+ul.susbcriptions_list li.mixes_search_item{
+  float:left;
+}
+ul.susbcriptions_list li.mixes_search_item img.large{
+  float:left;
+}
+ul.susbcriptions_list li.mixes_search_item img.follower_image{
+  float:left;
+}
+

@@ -12,8 +12,8 @@
   <% @results[:mixes].each do |playlist| %>
     <% if playlist.station %>
       <% is_self = (current_user and current_user == playlist.owner) %>
-      <li style="float:left;">
-        <%= link_to avatar_for(playlist, :large, :style => "float:left"), mix_radio_path(:station_id => playlist.station.id) %>
+      <li class="mixes_search_item">
+        <%= link_to avatar_for(playlist, :large), mix_radio_path(:station_id => playlist.station.id) %>
 
         <div class="transparency_thumbanils png_fix">
             <% if false %><a href="#"><img src="images/listen_button.png" alt="" /></a><% end %>
