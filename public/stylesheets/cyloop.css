@@ -1418,8 +1418,10 @@ div.mix_sorting_pad {
 }
 
 .content_search_results_ajax.home {
-	left: 241px;
-	top: 208px;	
+	float:none;
+	left:241px;
+	position:relative;
+	top:-95px;	
 }
 
 .album_text2 {

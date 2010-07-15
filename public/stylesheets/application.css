@@ -2627,10 +2627,12 @@ h2 {
     height: 430px;
     background: #fff;
     overflow-y: auto;
+    position:relative;
 }
 
 .added_items {
     list-style-type: none;
+    position:relative;
 }
 
 .added_items li {
@@ -2640,6 +2642,7 @@ h2 {
     position: relative;
     margin-bottom: 1px;
     zoom: 1;
+    position:relative;
 }
 
 .added_items li.selected_item {
