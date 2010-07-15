@@ -47,83 +47,95 @@ namespace :db do
       end
 
       timebox "Update album counts for artists..." do
-        query = <<-EOF
-        UPDATE accounts a 
-        INNER JOIN (
-          SELECT owner_id, count(*) AS total_albums
-          FROM albums 
-          WHERE deleted_at IS NULL 
-          GROUP BY 1
-        ) AS q ON a.id = q.owner_id 
-        SET a.total_albums = q.total_albums
-        EOF
-        connection.execute query
+        ActiveRecord::Base.transaction do
+          connection.execute "UPDATE accounts a SET a.total_albums = 0 WHERE a.type = 'Artist'"
+          connection.execute <<-EOF
+          UPDATE accounts a 
+          INNER JOIN (
+            SELECT owner_id, count(*) AS total_albums
+            FROM albums 
+            WHERE deleted_at IS NULL 
+            GROUP BY 1
+          ) AS q ON a.id = q.owner_id 
+          SET a.total_albums = q.total_albums
+          EOF
+        end
       end
 
       timebox "Update mix counts for artists..." do
-        query = <<-EOF
-        UPDATE accounts a 
-        INNER JOIN (
-          SELECT pi.artist_id, count(*) AS total_playlists
-          FROM playlist_items pi 
-          INNER JOIN playlists p ON pi.playlist_id = p.id 
-          INNER JOIN accounts a ON p.owner_id = a.id 
-          INNER JOIN stations ss ON p.id = ss.playable_id AND ss.playable_type = 'Playlist' 
-          WHERE p.deleted_at IS NULL AND p.locked_at IS NULL 
-          AND a.deleted_at IS NULL AND a.network_id = 1
-          GROUP BY 1
-        ) AS q ON a.id = q.artist_id 
-        SET a.total_playlists = q.total_playlists
-        EOF
-        connection.execute query
+        ActiveRecord::Base.transaction do
+          connection.execute "UPDATE accounts a SET a.total_playlists = 0 WHERE a.type = 'Artist'"
+          connection.execute <<-EOF
+          UPDATE accounts a 
+          INNER JOIN (
+            SELECT pi.artist_id, count(*) AS total_playlists
+            FROM playlist_items pi 
+            INNER JOIN playlists p ON pi.playlist_id = p.id 
+            INNER JOIN accounts a ON p.owner_id = a.id 
+            INNER JOIN stations ss ON p.id = ss.playable_id AND ss.playable_type = 'Playlist' 
+            WHERE p.deleted_at IS NULL AND p.locked_at IS NULL 
+            AND a.deleted_at IS NULL AND a.network_id = 1
+            GROUP BY 1
+          ) AS q ON a.id = q.artist_id 
+          SET a.total_playlists = q.total_playlists
+          EOF
+        end
       end
 
       timebox "Update user_station counts for artists..." do
-        query = <<-EOF
-        UPDATE accounts a 
-        INNER JOIN (
-          SELECT abs.artist_id, count(*) AS total_user_stations 
-          FROM user_stations us 
-          INNER JOIN abstract_stations abs ON us.abstract_station_id = abs.id 
-          WHERE us.deleted_at IS NULL AND abs.deleted_at IS NULL
-          GROUP BY 1
-        ) AS q ON a.id = q.artist_id 
-        SET a.total_user_stations = q.total_user_stations
-        EOF
-        connection.execute query
+        ActiveRecord::Base.transaction do
+          connection.execute "UPDATE accounts a SET a.total_user_stations = 0 WHERE a.type = 'Artist'"
+
+          connection.execute <<-EOF
+          UPDATE accounts a 
+          INNER JOIN (
+            SELECT abs.artist_id, count(*) AS total_user_stations 
+            FROM user_stations us 
+            INNER JOIN abstract_stations abs ON us.abstract_station_id = abs.id 
+            WHERE us.deleted_at IS NULL AND abs.deleted_at IS NULL
+            GROUP BY 1
+          ) AS q ON a.id = q.artist_id 
+          SET a.total_user_stations = q.total_user_stations
+          EOF
+          
+        end
       end
 
-      timebox "Update playlist counts for users..." do
-        query = <<-EOF
-        UPDATE accounts a 
-        INNER JOIN (
-          SELECT p.owner_id, count(*) AS total_playlists
-          FROM playlists p 
-          INNER JOIN accounts a ON p.owner_id = a.id 
-          INNER JOIN stations s ON p.id = s.playable_id AND s.playable_type = 'Playlist' 
-          WHERE a.deleted_at IS NULL 
-          AND p.deleted_at IS NULL 
-          AND p.locked_at IS NULL 
-          AND a.network_id = 1
-          GROUP BY 1
-        ) AS q ON a.id = q.owner_id 
-        SET a.total_playlists = q.total_playlists
-        EOF
-        connection.execute query
+      timebox "Update mix counts for users..." do
+        ActiveRecord::Base.transaction do
+          connection.execute "UPDATE accounts a SET a.total_playlists = 0 WHERE a.type = 'User'"
+          connection.execute <<-EOF
+          UPDATE accounts a 
+          INNER JOIN (
+            SELECT p.owner_id, count(*) AS total_playlists
+            FROM playlists p 
+            INNER JOIN accounts a ON p.owner_id = a.id 
+            INNER JOIN stations s ON p.id = s.playable_id AND s.playable_type = 'Playlist' 
+            WHERE a.deleted_at IS NULL 
+            AND p.deleted_at IS NULL 
+            AND p.locked_at IS NULL 
+            AND a.network_id = 1
+            GROUP BY 1
+          ) AS q ON a.id = q.owner_id 
+          SET a.total_playlists = q.total_playlists
+          EOF
+        end
       end
  
       timebox "Update user_station counts for users..." do
-        query = <<-EOF
-        UPDATE accounts a 
-        INNER JOIN (
-          SELECT owner_id, count(*) AS total_user_stations 
-          FROM user_stations 
-          WHERE deleted_at IS NULL 
-          GROUP BY 1
-        ) AS q ON a.id = q.owner_id 
-        SET a.total_user_stations = q.total_user_stations
-        EOF
-        connection.execute query
+        ActiveRecord::Base.transaction do
+          connection.execute "UPDATE accounts a SET a.total_user_stations = 0 WHERE a.type = 'User'"
+          connection.execute <<-EOF
+          UPDATE accounts a 
+          INNER JOIN (
+            SELECT owner_id, count(*) AS total_user_stations 
+            FROM user_stations 
+            WHERE deleted_at IS NULL 
+            GROUP BY 1
+          ) AS q ON a.id = q.owner_id 
+          SET a.total_user_stations = q.total_user_stations
+          EOF
+        end
       end
 
       # timebox "Calculate and insert user song play counts into temp table..." do
