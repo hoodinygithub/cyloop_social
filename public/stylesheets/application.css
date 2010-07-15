@@ -2624,7 +2624,6 @@ h2 {
 }
 
 .added_items_box {
-    height: 430px;
     background: #fff;
     overflow-y: auto;
     position:relative;
