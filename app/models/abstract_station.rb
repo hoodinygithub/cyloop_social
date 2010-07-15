@@ -23,7 +23,7 @@ class AbstractStation < ActiveRecord::Base
 
   define_index do
     where "deleted_at IS NULL AND total_artists > 0"
-    indexes "UPPER(name)", :as => :normalized_name, :sortable => true
+    indexes "UPPER(abstract_stations.name)", :as => :normalized_name, :sortable => true
     indexes :created_at, :sortable => true
     set_property :min_prefix_len => 1
     set_property :enable_star => 1
@@ -38,16 +38,15 @@ class AbstractStation < ActiveRecord::Base
     end
   end
 
-  def self.search(*args)
-    if RAILS_ENV =~ /test/ # bad bad bad
-      options = args.extract_options!
-      starts_with(args[0]).paginate :page => (options[:page] || 1)
-    else
-      args[0] = "#{args[0]}*"
-      super(*args).compact        
-    end
-  end
-  
+  # def self.search(*args)
+  #   if RAILS_ENV =~ /test/ # bad bad bad
+  #     options = args.extract_options!
+  #     starts_with(args[0]).paginate :page => (options[:page] || 1)
+  #   else
+  #     args[0] = "#{args[0]}*"
+  #     super(*args).compact        
+  #   end
+  # end
 
   has_many :user_stations, :include => :owner, :conditions => 'accounts.deleted_at IS NULL AND user_stations.deleted_at IS NULL'
   has_many :abstract_station_artists, :include => [:artist, :album]
