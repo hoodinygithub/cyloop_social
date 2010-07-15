@@ -209,6 +209,7 @@ en:
         user_email_blank: Email can't be blank
         user_name_blank: Name can't be blank
         friend_email_invalid: Friend email is invalid
+        invalid_chars: 'Invalid chars'
     friend_email: Friend(s) Email
     message: Message
     multiple_emails: (seperate multiple emails with commas)
