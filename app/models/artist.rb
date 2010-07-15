@@ -163,7 +163,7 @@ class Artist < Account
       pi_args = { :select => 'playlist_items.playlist_id',
                   :group => 'playlist_items.playlist_id', 
                   :joins => ["INNER JOIN playlists ON playlist_items.playlist_id = playlists.id", "INNER JOIN accounts ON playlists.owner_id = accounts.id" ],
-                  :conditions => ['playlist_items.artist_id = ? AND playlists.deleted_at IS NULL and playlists.locked_at IS NULL', self.id],
+                  :conditions => ['playlist_items.artist_id = ? AND playlists.deleted_at IS NULL and playlists.locked_at IS NULL AND accounts.deleted_at IS NULL and accounts.network_id = 1', self.id],
                   :order => "playlist_items.playlist_id DESC, playlist_items.updated_at DESC", 
                   :limit => 200 }
 
