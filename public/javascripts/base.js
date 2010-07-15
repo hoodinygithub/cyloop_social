@@ -1982,6 +1982,7 @@ Base.content_search.dropdown = function() {
         return;
   	  }
       //jQuery('.search_results_box').show();
+     alert('oi');
       setTimeout(function () {Base.content_search.autocomplete(q)}, 500);
       return true;
     });
@@ -1998,7 +1999,7 @@ Base.content_search.autocomplete = function(last_value) {
   }
   jQuery.get('/search/content/all/' + q, function(data) {
       jQuery('.create_box').html(data);
-      Base.utils.resetIndexes();
+      //Base.utils.resetIndexes();
       jQuery('.create_box').show();
       
       jQuery('.content_search_results_ajax').hide();
