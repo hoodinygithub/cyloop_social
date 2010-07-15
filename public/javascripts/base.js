@@ -155,6 +155,8 @@ $(document).ready(function() {
         });
       }
   });
+
+  $('.registered').click(Base.utils.showRegistrationLayer);
 });
 
 var swf = function(objname)
@@ -1710,6 +1712,13 @@ Base.utils.showPopup = function(url) {
         $.popup(response);  
       }
     });
+};
+
+Base.utils.showRegistrationLayer = function() {
+  $.get('/registration_layers', function(response) {
+    $.simple_popup(response);
+  });
+  return false;
 };
 
 Base.reviews.resetForm = function() {
