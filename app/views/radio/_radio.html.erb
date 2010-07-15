@@ -1,14 +1,18 @@
+<% content_for :head do %>    
+<script type="text/javascript">
+  function load_licensing_message(){
+    <% if @station_obj.playable.is_a?(Playlist) && @station_obj.playable.owner_is?(current_user) %>
+      $('#licensing_popup').fadeIn('slow');
+    <% end %>    
+  }
+</script>
+<% end %>
 <% blank_msg = t('modules.edit_station.blank_station_name_message').gsub(/\"/, '\"') %>
 <script type="text/javascript">
   var blank_station_alert = "<%= blank_msg  %>";
   $(document).ready(function() {
     Base.radio.initialize();
-    initTopButtons();
-    function load_licensing_message(){
-      <% if @station_obj.playable.is_a?(Playlist) && @station_obj.playable.owner_is?(current_user) %>
-        $('#licensing_popup').fadeIn('slow');
-      <% end %>    
-    }
+    initTopButtons();    
   });
 </script>
 <div class="two_columns">
