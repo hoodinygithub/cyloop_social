@@ -23,7 +23,7 @@ class AbstractStation < ActiveRecord::Base
 
   define_index do
     where "deleted_at IS NULL AND total_artists > 0"
-    indexes "UPPER(name)", :as => :normalized_name :sortable => true
+    indexes "UPPER(name)", :as => :normalized_name, :sortable => true
     indexes :created_at, :sortable => true
     set_property :min_prefix_len => 1
     set_property :enable_star => 1
