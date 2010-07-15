@@ -2233,3 +2233,7 @@ textarea.edit_review_red_msg {
 #licensing_popup {
 	display: none;
 }
+
+div.reviews.mixes div.title {
+	text-transform: uppercase;
+}

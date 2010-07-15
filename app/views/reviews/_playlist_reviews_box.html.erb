@@ -11,7 +11,7 @@
   <% else %>
   <div class="title">
     <span class="reviews_stars"><%= rating(playlist) %></span>
-    <div><%= t('modules.reviews.title').upcase %> (<%= comments.size %>)</div>
+    <div><%= t('modules.reviews.title') %> (<%= comments.size %>)</div>
   </div>
     <% if comments.empty? %>
       <br/>
