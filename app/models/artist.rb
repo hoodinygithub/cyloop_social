@@ -159,7 +159,7 @@ class Artist < Account
   # 
 
   def playlists(opts={})
-    Rails.cache.fetch("#{slug_cache_key}/mixes/#{opts[:sort_type]}", :expires_delta => EXPIRATION_TIMES['profile_mixes']) do    
+    Rails.cache.fetch("#{slug_cache_key}/mixes/#{opts.to_cache_key}", :expires_delta => EXPIRATION_TIMES['profile_mixes']) do    
       pi_args = { :select => 'playlist_items.playlist_id',
                   :group => 'playlist_items.playlist_id', 
                   :joins => ["INNER JOIN playlists ON playlist_items.playlist_id = playlists.id", "INNER JOIN accounts ON playlists.owner_id = accounts.id" ],
@@ -169,6 +169,7 @@ class Artist < Account
 
       p_args = {}
       p_args.merge!(:order => opts[:order]) unless opts[:order].nil?
+      p_args.merge!(:limit => opts[:limit]) unless opts[:limit].nil?
 
       ids = PlaylistItem.all(pi_args).map(&:playlist_id)
     

@@ -15,10 +15,12 @@ class AccountsController < ApplicationController
     if profile_account.is_a? User
       @top_stations = profile_account.top_stations(6) 
       @recent_reviews = profile_account.comments.latest(3)
+      @latest_mixes = profile_account.playlists.latest(6)
+    else
+      @latest_mixes = profile_account.playlists(:order => 'playlists.updated_at DESC', :limit => 6)      
     end
     
     @followers = profile_account.followers.all(:limit => 4)
-    @latest_mixes = profile_account.playlists.latest(6)
     @latest_stations = profile_account.latest_stations(6)
     
     @msn_properties={}
