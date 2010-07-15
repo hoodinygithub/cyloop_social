@@ -970,7 +970,7 @@ module ApplicationHelper
   def mix_tag_cloud(tags)
     inner_tag_links = []
     tag_cloud tags, %w(tag_css1 tag_css2 tag_css3 tag_css4, tag_css5) do |tag, css_class, index| 
-      inner_tag_links << link_to(tag.name, search_path(:q => tag.name, :scope => :playlists), :class => "blue #{css_class}", :id => "tag_#{index}") rescue nil
+      inner_tag_links << link_to(tag.name, search_path(:q => tag.name, :scope => :mixes), :class => "blue #{css_class}", :id => "tag_#{index}") rescue nil
     end
     <<-EOF
     <div class="mix_tags">
