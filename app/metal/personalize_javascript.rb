@@ -17,6 +17,7 @@ class PersonalizeJavascript
           $('#userdata_box .user_name').text("#{current_user.try(:first_name)}");
           $('#userdata_box .avatar').attr("src", "#{AvatarsHelper.avatar_path(current_user, :tiny)}");
           $('#userdata_box').removeClass("user_data_logged_out").addClass("user_data_logged_in");
+          $('#login_links').hide();
         });
         END
         [200, {"Content-Type" => "text/javascript; charset=utf-8", "Cache-Control" => "no-cache", "Expires" => "-1"}, [js.gsub("\n", ' ')]]
