@@ -684,6 +684,28 @@ es_ES:
     description: "Descubre m\xC3\xBAsica nueva y videos gratis de la biblioteca m\xC3\xA1s grande y completa de m\xC3\xBAsica y videos en Internet, sigue a tus amigos y lo que est\xC3\xA1n escuchando, y crea y comparte playlists y radios personalizadas de tus artistas favoritos."
     keywords: "Descubrir m\xC3\xBAsica, descubrir m\xC3\xBAsica nueva, descubrir videos, ver videos, escuchar m\xC3\xBAsica, escuchar m\xC3\xBAsica gratis, m\xC3\xBAsica gratis, videos gratis, artistas de m\xC3\xBAsica, descubrir artistas, escuchar artistas, descubrir artistas de m\xC3\xBAsica, descubrir m\xC3\xBAsicos, descubrir bandas, escuchar bandas, biblioteca de m\xC3\xBAsica online, biblioteca de m\xC3\xBAsica en la red, la m\xC3\xA1s grande biblioteca de m\xC3\xBAisca online, musica online gratis, m\xC3\xBAsica gratis en la red, biblioteca de m\xC3\xBAsica gratis online, biblioteca de m\xC3\xBAsica gratis en la red, la m\xC3\xA1s grande biblioteca de m\xC3\xBAisca gratis online, seguir amigos, siguiendo amigos, seguidor de amigos, crear playlists, compartir playlists, crear playlists de m\xC3\xBAsica, compartir playlists de m\xC3\xBAsica, radios personalizadas, estaciones de radio personalizadas, artistas favoritos, compartir m\xC3\xBAsica, compartir m\xC3\xBAsica gratis"
   date: 
+    month_names: 
+    - 
+    - January
+    - February
+    - March
+    - April
+    - May
+    - June
+    - July
+    - August
+    - September
+    - October
+    - November
+    - December
+    abbr_day_names: 
+    - Sun
+    - Mon
+    - Tue
+    - Wed
+    - Thu
+    - Fri
+    - Sat
     order: 
     - :month
     - :day
@@ -692,7 +714,29 @@ es_ES:
       default: "%Y-%m-%d"
       short: "%b %d"
       long: "%B %d, %Y"
-  titles: 
+    day_names: 
+    - Sunday
+    - Monday
+    - Tuesday
+    - Wednesday
+    - Thursday
+    - Friday
+    - Saturday
+    abbr_month_names: 
+    - 
+    - Jan
+    - Feb
+    - Mar
+    - Apr
+    - May
+    - Jun
+    - Jul
+    - Aug
+    - Sep
+    - Oct
+    - Nov
+    - Dec  
+  titles:
     awaiting_approval: "A la espera de aprobaci\xC3\xB3n para seguir a este usuario."
     unfollow: "Clic aqu\xC3\xAD para dejar de seguir a este usuario"
     follow: "Clic aqu\xC3\xAD para seguir a este usuario"
