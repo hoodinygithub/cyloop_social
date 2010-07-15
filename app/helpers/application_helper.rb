@@ -980,7 +980,7 @@ module ApplicationHelper
             #{inner_tag_links.compact.join('&nbsp;&nbsp;')}
           </td>
         </tr>
-      </table
+      </table>
     </div>
     EOF
   end
