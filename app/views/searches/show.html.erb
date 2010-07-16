@@ -11,7 +11,7 @@
     <% unless @query.nil? %>
       <h3 class="search_result"><%= "#{t('search.search_results_for')} \"#{@query.nil? ? '' : @query}\"" %></h3>
     <% end %>
-    <div id="left_column">
+    <div id="left_column" class="search_left_column">
       <% unless @query.nil? %>
         <%= render 'scope_toggle' %>
       <% end %>

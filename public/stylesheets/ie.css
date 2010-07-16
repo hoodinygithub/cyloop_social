@@ -193,4 +193,10 @@ ul.susbcriptions_list li.mixes_search_item img.large{
 ul.susbcriptions_list li.mixes_search_item img.follower_image{
   float:left;
 }
+.search_left_column{
+  width:95px !important;
+}
+.search_results{
+  padding-left: 5px !important;
+}
 
