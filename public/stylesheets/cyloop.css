@@ -2131,6 +2131,11 @@ textarea.network_red_msg  {
   margin-top:10px;
 }
 
+.activity_post_button {
+  margin-top:10px;
+  padding-right:10px;
+}
+
 .red_round_box2 {
   -moz-border-radius:4px 4px 4px 4px;
   background:none repeat scroll 0 0 #FF0000;
