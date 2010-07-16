@@ -179,6 +179,7 @@ pt_BR:
         user_email_blank: "Email n\xC3\xA3o pode ser estar em branco"
         user_name_blank: "Nome n\xC3\xA3o pode estar em branco"
         friend_email_invalid: "Email do amigo n\xC3\xA3o \xC3\xA9 v\xC3\xA1lido"
+        invalid_chars: "Caracteres inv\xC3\xA1lidos"
     friend_email: Email do(s) Amigo(s)
     message: Mensagem
     multiple_emails: "(separe mais de um email com v\xC3\xADrgulas)"

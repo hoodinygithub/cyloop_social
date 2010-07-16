@@ -1,9 +1,82 @@
 --- 
 en_US: 
-  buylink: 
-    no_buylinks: Not available to buy
-    select_store: Select your store
-    song: Buy this song
+  modules: 
+    edit_station: 
+      new_name: New Name
+      title: Edit Station
+      no_edit_rights: You don't have rights to edit this station.
+      blank_station_name_message: You must enter a name for this station.
+    popular_tags: 
+      title: Popular Tags
+    emotions: 
+      title: Tags
+    network_activity: 
+      title: Network Activity
+    latest_playlists: 
+      title: Latest Mixes
+    more_playlists: 
+      title: More Mixes
+    photos: 
+      title: Photos
+    delete_station: 
+      title: Delete Station
+      confirmation_text: Are you sure you want to delete {{station_name}}?
+    concerts: 
+      title: Concerts
+    user_info: 
+      title: User Information
+    recently_created_stations: 
+      title: Recently Created Stations
+    top_artists: 
+      title: Top Artists
+    top_playlists: 
+      title: Top Mixes
+    recommended_stations: 
+      title: Recommended Stations
+    recent_listeners: 
+      title: Recent Listeners
+    top_activity: 
+      title: Top Activity
+    information: 
+      title: Information
+    recommendations: 
+      title: Recommendations
+    similar_artists: 
+      title: Similar Artists
+    members: 
+      title: Members
+    reviews: 
+      title: Reviews
+    top_djs: 
+      title: Top DJs
+    popular_mixes: 
+      title: Popular Mixes
+    features_and_galleries: 
+      title: Features and Photo Galleries
+    news: 
+      title: News
+    my_stations: 
+      includes: Includes
+      station_name: Station Name
+    interviews: 
+      title: Interviews
+    top_songs: 
+      title: Top Songs
+    top_stations: 
+      title: Top Stations
+    biography: 
+      title: Biography
+    recent_activity: 
+      title: RECENT ACTIVITY
+    recommended_artists: 
+      title: Recommended Artists
+  artist: 
+    latest_mixes_featuring_artist: "Mixes \xC3\x9Altimos Que Incluyen a {{artist_name}}"
+    be_the_first_to_create_mix: Be the first to create a mix with songs by {{user_name}}
+    latest_stations_featuring_artist: Radios Que Incluyen a {{artist_name}}
+    stations_featuring_artist: Radios Que Incluyen a {{artist_name}}
+    be_the_first_to_create_station: Be the first to create a station for {{user_name}}
+    mixes_featuring_artist: Mixes Que Incluyen a {{artist_name}}
   dashboards: 
     pending: 
       title: Pendings
@@ -22,151 +95,74 @@ en_US:
       what_do_you_want_to_listen_to: What Do You Want To Listen To?
     artist_latest_stations: LATEST STATIONS FEATURING {{name}}
     top_stations: "{{user_name}}'S TOP STATIONS"
-    recent_activity: RECENT ACTIVITY
     recommended_artists: 
       title: Recommended Artists
+    recent_activity: RECENT ACTIVITY
     following: 
       title: Following
-  artist: 
-    latest_mixes_featuring_artist: "Mixes \xC3\x9Altimos Que Incluyen a {{artist_name}}"
-    be_the_first_to_create_mix: Be the first to create a mix with songs by {{user_name}}
-    latest_stations_featuring_artist: Radios Que Incluyen a {{artist_name}}
-    mixes_featuring_artist: Mixes Que Incluyen a {{artist_name}}
-    stations_featuring_artist: Radios Que Incluyen a {{artist_name}}
-    be_the_first_to_create_station: Be the first to create a station for {{user_name}}
-  modules: 
-    popular_tags: 
-      title: Popular Tags
-    edit_station: 
-      new_name: New Name
-      title: Edit Station
-      no_edit_rights: You don't have rights to edit this station.
-      blank_station_name_message: You must enter a name for this station.
-    emotions: 
-      title: Tags
-    network_activity: 
-      title: Network Activity
-    latest_playlists: 
-      title: Latest Mixes
-    more_playlists: 
-      title: More Mixes
-    photos: 
-      title: Photos
-    delete_station: 
-      title: Delete Station
-      confirmation_text: Are you sure you want to delete {{station_name}}?
-    concerts: 
-      title: Concerts
-    top_artists: 
-      title: Top Artists
-    user_info: 
-      title: User Information
-    recently_created_stations: 
-      title: Recently Created Stations
-    recommended_stations: 
-      title: Recommended Stations
-    top_activity: 
-      title: Top Activity
-    top_playlists: 
-      title: Top Mixes
-    recent_listeners: 
-      title: Recent Listeners
-    information: 
-      title: Information
-    similar_artists: 
-      title: Similar Artists
-    recommendations: 
-      title: Recommendations
-    members: 
-      title: Members
-    reviews: 
-      title: Reviews
-    top_djs: 
-      title: Top DJs
-    features_and_galleries: 
-      title: Features and Photo Galleries
-    news: 
-      title: News
-    popular_mixes: 
-      title: Popular Mixes
-    my_stations: 
-      includes: Includes
-      station_name: Station Name
-    interviews: 
-      title: Interviews
-    top_songs: 
-      title: Top Songs
-    top_stations: 
-      title: Top Stations
-    biography: 
-      title: Biography
-    recommended_artists: 
-      title: Recommended Artists
-    recent_activity: 
-      title: RECENT ACTIVITY
   actions: 
     awaiting_approval: Awaiting Approval
-    play: Play
     unblock: Unblock
-    share: Share
+    play: Play
     unfollow_account: Stop following {{name}}
+    share: Share
     disaprove: Disapprove
-    unfollow: Following
-    pending: Pending
     add: add
-    share_with_a_friend: Share this song with a friend
+    pending: Pending
+    add_song_to_playlist: Add Song to Mix
     logout: Log Out
-    select_playlist: Select playlist
-    forgot_password: Forgot Password?
     edit: Edit
     previous: Previous
-    add_song_to_playlist: Add Song to Mix
-    submit: Submit
-    stop: Stop
-    delete: Delete
-    close: Close
-    cancel: Cancel
+    share_with_a_friend: Share this song with a friend
+    select_playlist: Select playlist
+    unfollow: Following
+    forgot_password: Forgot Password?
     go_with_exclamation: Go!
     buy_album: Purchase Album
+    close: Close
+    delete: Delete
+    stop: Stop
+    submit: Submit
     results_for: Results for
+    cancel: Cancel
+    or: or
     buy_song: Purchase Song
     show_more: SHOW MORE
-    or: or
     deny: Deny
-    search_again: Search again
     view_more: View More
     block_this_person: Block This Person
     add_this_song_into_the_following_playlists: Add this song into the following mixes
-    view_more_songs: view more songs
+    search_again: Search again
     to: to
+    view_more_songs: view more songs
     aprove: Approve
     add_to_playlist: Add to my mix
     saving: Saving
     launch_radio: Launch Radio
-    block: Block
     follow: Follow
+    block: Block
     save: Save
     view: View
-    go: Go
-    filter_by: Filter By
     approve: Approve
     send: Send
-    next: Next
+    go: Go
     create: Create
+    next: Next
+    filter_by: Filter By
     search_text: Search Music on Cyloop
     reset: Reset
-    add_into_a_new_playlist: Add into a new mix
     share_station: Share this station with a friend
-    login: Login
     follow_account: Follow {{name}}
+    login: Login
     listen: listen
-    rate_it: RATE IT
-    add_song: Add Song
-    select_store: ""
+    add_into_a_new_playlist: Add into a new mix
     create_station: Create Station
+    add_song: Add Song
+    rate_it: RATE IT
+    select_store: ""
     add_more: Add More
-    search: Search
     submitting: Submitting
+    search: Search
   share: 
     name: Your Name
     station: 
@@ -178,8 +174,10 @@ en_US:
         user_email_blank: Email can't be blank
         user_name_blank: Name can't be blank
         friend_email_invalid: Friend email is invalid
+        invalid_chars: Ivalid characters
     friend_email: Friend(s) Email
     message: Message
+    multiple_emails: (seperate multiple emails with commas)
     song: 
       submit: Compartilhar
       subject: "{{user}} would like you to share this song with you."
@@ -196,7 +194,6 @@ en_US:
         Microsoft Corporation, One Microsoft Way, Redmond, WA 98052-6399, USA \xC2\xA9; 2008 Microsoft Corporation.
         All rights reserved.
       message: I think you may enjoy this song.
-    multiple_emails: (seperate multiple emails with commas)
     email: Your Email
   number: 
     format: 
@@ -220,9 +217,6 @@ en_US:
     percentage: 
       format: 
         delimiter: ""
-    precision: 
-      format: 
-        delimiter: ""
     currency: 
       format: 
         format: "%u%n"
@@ -230,8 +224,13 @@ en_US:
         separator: .
         precision: 2
         delimiter: ","
-  songs: 
-    play_confirmation: Enjoy {{title}}!
+    precision: 
+      format: 
+        delimiter: ""
+  buylink: 
+    no_buylinks: Not available to buy
+    select_store: Select your store
+    song: Buy this song
   player: 
     license_message: 
       body: Due to radio licensing, you are unable to listen to full tracks when playing your own mix. Your friends can hear your mixes in full - and of course you can hear theirs in full as well.
@@ -239,9 +238,9 @@ en_US:
   possessives: 
     third_person: 
       latest_mixes: "{{subject}}'s Latest Mixes"
-      stations: "{{subject}}'s Stations"
       network_activity: "{{subject}}'s Network Activity"
       top_mixes: "{{subject}}'s Top Mixes"
+      stations: "{{subject}}'s Stations"
       followers: People that are following {{subject}}
       recent_reviews: "{{subject}}'s Recent Reviews"
       playlists: "{{subject}}'s Mixes"
@@ -250,8 +249,8 @@ en_US:
       has_not_playlists: "{{subject}} has no mixes."
       has_not_stations: "{{subject}} no tiene radios."
       latest_stations: "{{subject}}'s Latest Stations"
-      followees: People that {{subject}} is following
       has_not_followers: "{{subject}} has no followers."
+      followees: People that {{subject}} is following
       is_not_following: "{{subject}} is not following anyone."
       reviews: "{{subject}}'s Reviews"
       follow_requests: "{{subject}}'s Follow Requests"
@@ -259,9 +258,9 @@ en_US:
       charts: "{{subject}}'s Charts"
     first_person: 
       latest_mixes: "Mis Mixes \xC3\x9Altimos"
-      stations: My Stations
       network_activity: My Network Activity
       top_mixes: My Top Mixes
+      stations: My Stations
       followers: People that are following me
       recent_reviews: My Recent Reviews
       playlists: My Mixes
@@ -270,8 +269,8 @@ en_US:
       has_not_playlists: You have no mixes.
       has_not_stations: No tienes radios.
       latest_stations: "Mis Radios \xC3\x9Altimas"
-      followees: People that I am following
       has_not_followers: You have no followers.
+      followees: People that I am following
       is_not_following: You not following anyone.
       reviews: My Reviews
       follow_requests: My Follow Requests
@@ -290,21 +289,21 @@ en_US:
         slug: URL
         bios: Bio
         location: Location
-        twitter_username: Twitter Username
         playlist_confirmation: Your Playlist has been created, continue searching!
         cyloop_password: Cyloop Password
-        password_confirmation: Confirm password
+        twitter_username: Twitter Username
         female: Female
         cyloop_email: Cyloop Email
         current_password: Current password
+        password_confirmation: Confirm password
         websites: Websites
         gender: Gender
         short_bio: Short bio
-        new_password: New password
         male: Male
-        bio: Bio
-        time_zone: Time zone
+        new_password: New password
         city_id: City
+        time_zone: Time zone
+        bio: Bio
         password: Password
         age: Age
         born_on: Birth date
@@ -317,14 +316,14 @@ en_US:
               content_type: Sorry, we only allow jpg, gif or png images to be uploaded
             avatar: 
               content_type: Sorry, we only allow jpg, gif or png images to be uploaded
-        block: 
-          attributes: 
-            blockee_id: 
-              already_blocked: is already being blocked
         album: 
           attributes: 
             avatar: 
               content_type: Sorry, we only allow jpg, gif or png images to be uploaded
+        block: 
+          attributes: 
+            blockee_id: 
+              already_blocked: is already being blocked
         user: 
           attributes: 
             slug: 
@@ -381,46 +380,41 @@ en_US:
       description_bullet_3: The blocked person will not be able to start following you.
       description_header: "By blocking:"
       description_footer: You can unblock people just by starting to follow them again at any time.
+  songs: 
+    play_confirmation: Enjoy {{title}}!
   playlist_items: 
     delete_text: Are you sure you want to delete this song?
     delete_title: Delete Song
     create: 
       errors: 
         click_checkbox_first: In order to add this song, you must click on a checkbox beside the mix you wish to add it to
-  stations: 
-    edit: 
-      edit_your_station: Edit Your Station
-    deleted: Your station has been deleted.
-    could_not_find_artist: "Could not find artist: {{artist}}"
-    no_stations_created: No stations have been created
-    last_station_created_at: Last station created {{when}} ago
   profile: 
     header: 
       customize_page: Customize Page
     navigation: 
       myfollowers: Followers
-      songs: Songs
       all: All
       artists: Artists
-      stations: Stations
+      songs: Songs
       subscriptions: Subscriptions
       profile_followers: Followers
       dashboard: Dashboard
+      stations: Stations
       followers: Followers
       playlists: Mixes
-      activity: Activity
       albums: Albums
+      activity: Activity
       account_settings: Account Settings
       settings: Settings
-      reviews: Reviews
       music: Music
+      reviews: Reviews
       follow_requests: Follow Requests
-      home: Home
       community: Community
       age: Age
-      charts: Charts
+      home: Home
       biography: Biography
       mixes: Mixes
+      charts: Charts
       following: Following
   comments: 
     create_success: Comment successfully posted
@@ -428,76 +422,72 @@ en_US:
   chat: 
     moderator: 
       title: Moderator Module
+  stations: 
+    edit: 
+      edit_your_station: Edit Your Station
+    deleted: Your station has been deleted.
+    could_not_find_artist: "Could not find artist: {{artist}}"
+    no_stations_created: No stations have been created
+    last_station_created_at: Last station created {{when}} ago
   forgot: 
     reset_message_sent: Thank you. Instructions to reset your password have been sent to the email you just provided.
   playlists: 
-    duration: Length
     song_from: song from
+    duration: Length
     autofill: Auto-Fill
+    autofill_option_text: The auto-fill option will allow you to fill your playlist with recommended songs based on what you have already populated.
     total_time: Total Time
-    save_confirmation: Save Confirmation
     edit: Edit Your Mix
+    save_confirmation: Save Confirmation
     cancel_playlist: Cancel Mix?
     cancel_playlist_text: Cancelling your mix will revert all your additions/edits.<br/>Are you sure you want to cancel?
-    autofill_option_text: The auto-fill option will allow you to fill your playlist with recommended songs based on what you have already populated.
-    saving_order: Saving Order
-    tracks_remaining: tracks remaining to publish
     unable_save: Unable to save this mix
     songs_from: songs from
+    saving_order: Saving Order
+    tracks_remaining: tracks remaining to publish
     tag_your_playlist: Tag your mix
-    rules: Mix Rules
     please_remove: Please remove
+    rules: Mix Rules
     edit_confirm_text: Your mix edits have been saved. Would you like to continue editing?
     name_your_playlist: Name of your mix
     delete_text: Are you sure you want to delete this mix?
     search_for_music: Search for music to add to your mix
     seperated_commas: seperated by commas
     playlist_name: Mix Name
-    maximum_songs_from: maximum of {{num}} songs from the same {{type}}
     select_your_songs_text: Song search results will show up here<br />drag the songs you like the container to<br />the right to create your playlist
     last_playlist: Last Mix
+    maximum_songs_from: maximum of {{num}} songs from the same {{type}}
     autofill_option: Auto-Fill Option
     continue_btn: Continue
-    delete_title: Delete Mix
     drag_songs_here: Drag Songs Here
+    delete_title: Delete Mix
     why_not_try: Why Not Try...
+    songs_from_album: songs from the album
     add_update: ADD/UPDATE
     drag_songs_here_text: include at least 10 songs,<br />with no more than 2 songs<br />from the same artist<br />or the same album
     no_results_found: No results found, please search again
-    songs_from_album: songs from the album
     song_from_mix: song from mix
     name_dialog: What would you like to name this mix?
-    from_mix: from mix
     continue: Continue
+    from_mix: from mix
     create_new: Create a New Mix
     no_thanks: No Thanks
     unable_save_text: You have errors with your mix. These errors must be corrected before you can share it with the rest of the community.
-    you_have: You have
-    song_from_album: song from the album
-    songs_from_mix: songs from mix
-    select_your_songs: Select Your Songs
-    copy: Copy Mix
     save_your_playlist: Save your mix
     picture: Picture of your mix
-  activity: 
-    created_playlist: Created Mix '{{playlist}}'
-    just_following: Just Following
-    just_user: Just {{user}}
-    listened_to: Listened to '{{song}}' by '{{artist}}'
-    user_others: "{{user}} + Others"
-    push_notification_refresh: Refresh
-    filters: 
-      songs: SONGS
-      all: ALL
-      stations: STATIONS
-      playlists: MIXES
-    no_more_activity: No more activity
-    push_notification: You have {{count}} new updates. {{link}} your feed to view them.
-    twitter_you_following: Tweets from artists you are following
-    push_notification_more_than: You have more than {{count}} new updates. {{link}} your feed to view them.
-    twitter_following: Tweets from artist {{user}} is following
-    created_station: "{{creator}} created a new station called: {{station}}"
-    user_following: "{{user}} + Following"
+    you_have: You have
+    song_from_album: song from the album
+    copy: Copy Mix
+    songs_from_mix: songs from mix
+    select_your_songs: Select Your Songs
+  albums: 
+    label: Label
+    song_count: Song Count
+    year: Year
+    show: 
+      about_this_album: About this album
+    release_date: Release Date
+    total_plays: Total Plays
   time: 
     am: am
     formats: 
@@ -505,34 +495,45 @@ en_US:
       short: "%d %b %H:%M"
       long: "%B %d, %Y %H:%M"
     pm: pm
-  albums: 
-    label: Label
-    song_count: Song Count
-    show: 
-      about_this_album: About this album
-    year: Year
-    release_date: Release Date
-    total_plays: Total Plays
   custom_profiles: 
     sony_disclaimer: The Walkman&#8482; symbol and logo are trademarks from Sony Corporation.
+  activity: 
+    created_playlist: Created Mix '{{playlist}}'
+    just_following: Just Following
+    just_user: Just {{user}}
+    listened_to: Listened to '{{song}}' by '{{artist}}'
+    user_others: "{{user}} + Others"
+    push_notification_refresh: Refresh
+    twitter_you_following: Tweets from artists you are following
+    filters: 
+      all: ALL
+      songs: SONGS
+      stations: STATIONS
+      playlists: MIXES
+    no_more_activity: No more activity
+    push_notification: You have {{count}} new updates. {{link}} your feed to view them.
+    push_notification_more_than: You have more than {{count}} new updates. {{link}} your feed to view them.
+    twitter_following: Tweets from artist {{user}} is following
+    created_station: "{{creator}} created a new station called: {{station}}"
+    user_following: "{{user}} + Following"
   messenger_player: 
-    buylink: 
-      select_store: Select your store
-      song: Buy this song
-    sign_in: sign in with Windows Live ID
     station: 
       name: Station Name
       edit: Edit Station Name
       delete: Delete Station
       would_delete: Would you like to delete this station?
-    click_here: click here
+    sign_in: sign in with Windows Live ID
     edit_station: To edit this station,
     share: 
       title: Share with a friend
       message: Message
       email: Your Email
       friend: Friend's email
+    click_here: click here
     we_hope_you_enjoyed: We hope you enjoyed the songs that you've heard. To hear more songs,
+    buylink: 
+      select_store: Select your store
+      song: Buy this song
     record_not_found: The item you are looking for could not be found
     checkout_today_polular_stations: Checkout Today's Popular Stations
     recengineerror_UNKNOWN: Unknown error
@@ -545,51 +546,33 @@ en_US:
     authentication_required: You need to be logged in to do that
     internal_error: We could not execute your request due to an internal error. We've been notified about this issue and we'll take a look at it shortly.
     activate_your_account: Activate your account on MSN Music
-    buy: Buy
     album: 
       released: Released
+    buy: Buy
+    msn_music_is_free: MSN Music is free,
     station_edit_success: Station name successfully updated
     recengineerror_NO_PLAYLIST: No playlist could be found
     now_playing: Now Playing
-    msn_music_is_free: MSN Music is free,
     view_your_stations: To view your stations,
     still_dont_have: Still don't have your MSN Music account?
     continue: Continue
     recengineerror_NO_RADIO: No radio could be found
-  account_settings: 
-    password_change: PASSWORD CHANGE
-    email_me_following_me: Send me an email when someone is following me
-    email_me_subscribes_radios: Send me an email when someone subscribes to one of my radios
-    change_password: CHANGE PASSWORD
-    delete: DELETE
-    cancel: Cancel
-    title: ACCOUNT SETTINGS
-    email_me_subscribes_mixes: Send me an email when someone subscribes to one of my mixes
-    email_me_reviews_mixes: Send me an email when someone reviews/rates one of my mixes
-    delete_my_account: DELETE MY ACCOUNT
-    email_me_communications: Send me periodical Cyloop Newsletters and communications
-    delete_info: By checking this box, I understand that deleting my account means that my Cyloop page, music library and picture will be deleted. I understand that in order to return to Cyloop, I will have to create a new account with a new username.
-    password_required: You must enter a valid password
-    new_password: New Password
-    delete_info_required: You must click on the check box to continue
-    save: SAVE
-    add_update: ADD / UPDATE
-    delete_account: DELETE ACCOUNT
-    email_notifications: EMAIL NOTIFICATIONS
-    update: UPDATE
-    password: Password
-    basic_info: BASIC INFO
-    old_password: Old Password
+  titles: 
+    awaiting_approval: Waiting for approval to follow this user
+    unfollow: Click here to stop following this user
+    follow: Click here to follow this user
   registration: 
     sign_up: Sign Up
     sign_up_exclamation: Sign up!
     your_profile_name_tip: (Your address to share with friends)
     you_are: You are...
     artist_login_denied: Artist login is coming soon!
-    terms_of_use: Terms of Use
     msg: 
       privacy: must be accepted
       terms: must be accepted
+    messages: 
+      terms_of_use: must be accepted
+      privacy_policy: must be accepted
     confirmation: 
       click_here: click here
       here_is_your_confirmation_link: Here is your confirmation link
@@ -632,50 +615,46 @@ en_US:
           
           Use the e-mail address {{email}} and password you provided during sign-up to access {{host_url}}.
 
-    messages: 
-      terms_of_use: must be accepted
-      privacy_policy: must be accepted
+    terms_of_use: Terms of Use
     is_available_exclamation: Email is available!
     your_name: Your name
     slug_available_exclamation: Profile is available!
+    terms_and_conditions: Terms and conditions
     your_profile_name: Your profile name
     layers: 
-      click_here: click here
-      share: Share
       do_not_have_account: Registration is easy, just {{link}}
-      follow_user: To follow {{slug}} and find out what {{gender}} listening to, {{link}} to log in.
+      share: Share
+      click_here: click here
       discover_text: more than {{count}} artists, all free
+      follow_user: To follow {{slug}} and find out what {{gender}} listening to, {{link}} to log in.
       know: Meet
       female: she's
       add_mixer: To save this mix, {{link}} to login.
       know_text: more than {{count}} users in {{place}}
-      share_text: songs, mixes, and radios with your friends
       male: he's
-      sign_in_with_your_windows_live_id: sign in with your credentials
-      index: If you already have your Cyloop account, {{link}} to login.
-      max_song: We hope you enjoyed the songs you've heard. To hear more songs, {{link}} to login.
-      listen_text: over {{count}} songs, all free
+      share_text: songs, mixes, and radios with your friends
       msn_music_is_free: Cyloop is free, {{link}}
-      place: Cyloop
+      index: If you already have your Cyloop account, {{link}} to login.
+      sign_in_with_your_windows_live_id: sign in with your credentials
+      listen_text: over {{count}} songs, all free
+      max_song: We hope you enjoyed the songs you've heard. To hear more songs, {{link}} to login.
       discover: Discover
+      place: Cyloop
       listen: Listen
       add_song: To add this song to your playlist, {{link}} to login.
       follow_artist: To follow {{name}} and your other favorite artists, {{link}} to log in.
       still_do_not_have_msn_account: Still don't have a Cyloop account?
-    terms_and_conditions: Terms and conditions
     birth_date: Birth Date
     year_of_birth: Date of birth
+    terms_and_privacy_must_be_accepted: Terms of Use and Privacy Policy must be accepted
     opt_out: Opt out?
     email_address_tip: (Where you prefer to receive messages, etc.)
-    terms_and_privacy_must_be_accepted: Terms of Use and Privacy Policy must be accepted
     customize: Customize your profile on Cyloop
     complete_all_fields_in_red: Complete all fields in red
-    complete: Complete
     msn_login_error: Login Error! Try logging in again.
-    send: Send
-    thats_it: That's it!
+    complete: Complete
     associate_msn_login: Almost done. Please enter your cyloop credentials so we can associate it with your MSN Live ID
-    email_address: E-mail address
+    thats_it: That's it!
     sidebar: 
       radio_title: enjoy personalized radios
       chat_text: at the bottom of every page you will find a Windows Messenger bar.  Sign in and you can chat with friends while enjoying the best music.
@@ -687,13 +666,14 @@ en_US:
       follow_text: with just one click you can follow your favorite artists and keep abreast of their Twitter and other news.
       radio_text: our recommendation engine creates radios specifically tailored for you with all your favorite artists.
       follow_title: follow your favorite artists
+    send: Send
+    email_address: E-mail address
     must_be_13_years_older: You must be 13 years or older to use this website
-    your_password: Your password
     privacy_policy: Privacy policy
-    not_a_user: Not a user?
-    login_failed: Invalid email and/or password
-    terms_and_privacy: By checking the box, you confirm that you know Cylooop.com is a website operated by Hoodiny Entertainment Group in the U.S., and you consent to the transfer of your personal data to the U.S. , where your personal data will be subject to U.S. law and where the level of data protection is different compared to your country. You also agree to the Cylooop {{terms_link}} and {{privacy_link}} which describe how your personal data will be used.
+    your_password: Your password
     confirm_your_password: Confirm your password
+    terms_and_privacy: By checking the box, you confirm that you know Cylooop.com is a website operated by Hoodiny Entertainment Group in the U.S., and you consent to the transfer of your personal data to the U.S. , where your personal data will be subject to U.S. law and where the level of data protection is different compared to your country. You also agree to the Cylooop {{terms_link}} and {{privacy_link}} which describe how your personal data will be used.
+    not_a_user: Not a user?
     email: 
       button: Start Now!
       title: Welcome, thanks for signing up for Cyloop!
@@ -703,6 +683,7 @@ en_US:
       terms_and_legal_text: "Copyright \xC2\xA9 2008 Cyloop LLC. All rights reserved. Cyloop, Cyloop.com, the Cyloop logo and all other Cyloop marks <br>\r\n      contained herein are trademarks of Hoodiny Entertainment Group and/or its affiliated companies. <br>\r\n      All other marks \r\n      contained herein are the property of their respective owners. Reproduction in whole or in <br>\r\n      part in any \r\n      form or medium without express written permission of Cyloop LLC, is prohibited.\r\n            <br>\r\n\
         <br>\r\n\
         Cyloop, LLC, 555 Washington Avenue, Miami Beach, FL 33139\r\n            <br>\r\n"
+    login_failed: Invalid email and/or password
   meta: 
     title: Cyloop | What do you want to listen to?
     description: Discover new music and videos from largest online library for free, follow what you friends listen to, and create and share playlists and personalized radio stations from your favorite artists.
@@ -760,10 +741,30 @@ en_US:
     - Oct
     - Nov
     - Dec
-  titles: 
-    awaiting_approval: Waiting for approval to follow this user
-    unfollow: Click here to stop following this user
-    follow: Click here to follow this user
+  account_settings: 
+    password_change: PASSWORD CHANGE
+    email_me_subscribes_radios: Send me an email when someone subscribes to one of my radios
+    change_password: CHANGE PASSWORD
+    email_me_following_me: Send me an email when someone is following me
+    delete: DELETE
+    title: ACCOUNT SETTINGS
+    cancel: Cancel
+    email_me_subscribes_mixes: Send me an email when someone subscribes to one of my mixes
+    email_me_reviews_mixes: Send me an email when someone reviews/rates one of my mixes
+    delete_my_account: DELETE MY ACCOUNT
+    email_me_communications: Send me periodical Cyloop Newsletters and communications
+    delete_info: By checking this box, I understand that deleting my account means that my Cyloop page, music library and picture will be deleted. I understand that in order to return to Cyloop, I will have to create a new account with a new username.
+    password_required: You must enter a valid password
+    delete_info_required: You must click on the check box to continue
+    new_password: New Password
+    save: SAVE
+    delete_account: DELETE ACCOUNT
+    add_update: ADD / UPDATE
+    update: UPDATE
+    email_notifications: EMAIL NOTIFICATIONS
+    password: Password
+    basic_info: BASIC INFO
+    old_password: Old Password
   radio: 
     search_hint: Enter the name of an artist
     select_recommended_stations_below: "Or if you can\xE2\x80\x99t think of any, select a recommended station from below"
@@ -815,29 +816,29 @@ en_US:
   block: 
     blockee_id: User
   widget: 
-    buylink: 
-      select_store: Select your store
-      song: Buy this song
-    sign_in: sign in with Windows Live ID
     station: 
       name: Station Name
       edit: Edit Station Name
       delete: Delete Station
       would_delete: Would you like to delete this station?
-    click_here: click here
+    sign_in: sign in with Windows Live ID
     edit_station: To edit this station,
+    actions: 
+      edit: Edit
+      delete: Delete
+      close: Close
+      submit: Submit
+      save: Save
     share: 
       title: Share with a friend
       message: Message
       email: Your Email
       friend: Friend's email
-    actions: 
-      edit: Edit
-      submit: Submit
-      close: Close
-      delete: Delete
-      save: Save
+    click_here: click here
     we_hope_you_enjoyed: We hope you enjoyed the songs that you've heard. To hear more songs,
+    buylink: 
+      select_store: Select your store
+      song: Buy this song
     record_not_found: The item you are looking for could not be found
     missing_api_key: You did not provide an API key or your API key is invalid/disabled
     checkout_today_polular_stations: Checkout Today's Popular Stations
@@ -848,42 +849,42 @@ en_US:
     msn_stations: MSN Stations
     to_login: to login
     registration: 
-      share: Share
       you_are: You are...
+      share: Share
       discover_text: more than {{count}} artists, all free
       your_name: Your name
-      your_profile_name: Your profile name
       terms_and_conditions: Terms and conditions
+      your_profile_name: Your profile name
       share_text: songs, mixes, and radios with your friends
       listen_text: over {{count}} songs, all free
-      your_password: Your password
       discover: Discover
-      privacy_policy: Privacy policy
       listen: Listen
+      privacy_policy: Privacy policy
+      your_password: Your password
+      confirm_your_password: Confirm Your password
       terms_and_privacy: |
         
         
         
         By checking the box, you confirm that you know Cylooop.com is a website operated by Hoodiny Entertainment Group in the U.S., and you consent to the transfer of your personal data to the U.S. , where your personal data will be subject to U.S. law and where the level of data protection is different compared to your country. You also agree to the Cylooop {{terms_link}} and {{privacy_link}} which describe how your personal data will be used.
 
-      confirm_your_password: Confirm Your password
     authentication_required: You need to be logged in to do that
     internal_error: We could not execute your request due to an internal error. We've been notified about this issue and we'll take a look at it shortly.
     activate_your_account: Activate your account on MSN Music
-    buy: Buy
     album: 
       released: Released
-    station_edit_success: Station name successfully updated
+    buy: Buy
+    msn_music_is_free: MSN Music is free,
+    create_new_station: Create New Station
     basics: 
       by: By
       includes: Includes
       album: Album
       message_sent: You message has been sent
       contains: Contains
+    station_edit_success: Station name successfully updated
     recengineerror_NO_PLAYLIST: No playlist could be found
-    create_new_station: Create New Station
     now_playing: Now Playing
-    msn_music_is_free: MSN Music is free,
     view_your_stations: To view your stations,
     still_dont_have: Still don't have your MSN Music account?
     continue: Continue
@@ -899,28 +900,22 @@ en_US:
       top_stations: Top Stations
       recommended_artists: Recommended Artists
     recengineerror_NO_RADIO: No radio could be found
-  playlist: 
-    edit_your_playlist: Edit your mix
-    review: REVIEW THIS MIX
-    click_to_unlock: To unlock this mix, click {{unlock_link}} and correct the errors listed in red.
-    doesnt_have_any_reviews: This mix does not<br/> have any reviews
-    this_mix_is_locked: This mix is locked
   settings: 
     background_not_saved_image_too_large: Background image can't be larger than 1 MB
     page_title: Control your Cyloop
-    private_profile: 
-      description: Description of what 'Keep profile private?' does
     customizations: 
       header_background: Header Background
-      link_font_color: Link Font Color
       main_background_color: Main Background Color
+      link_font_color: Link Font Color
       main_font_color: Main Font Color
       reset_to_default: Your profile's customization settings have been reset to Cyloop's defaults.
-      remove_background_image: Remove Image
       restore_defaults: Restore Defaults
+      remove_background_image: Remove Image
       colors: Colors
       browse: Browse...
     cancel_my_account: Cancel My Account
+    private_profile: 
+      description: Description of what 'Keep profile private?' does
     not_saved: Your settings failed to save.
     saved: Your settings have been saved.
     tabs: 
@@ -928,9 +923,9 @@ en_US:
       notifications: Notifications
       password: Password
   feedback: 
+    country: Country
     submit: Submit Your Feedback
     title: Feedback
-    country: Country
     os: Operating System
     feedback: Feedback
     browser: Browser
@@ -940,10 +935,10 @@ en_US:
     faq: Frequently asked questions
     terms_and_conditions: Terms and conditions
     support: Support
+    profile_not_available: Profile Not Available
     about_cyloop: About Cyloop
     feedback: Feedback
     safety_tips: Safety Tips
-    profile_not_available: Profile Not Available
     about_hoodiny: About Hoodiny
     profile_not_available_sorry: Sorry but this profile is not available in your country
     privacy_policy: Privacy Policy
@@ -961,17 +956,17 @@ en_US:
     followers: Followers
     playlists: Mixes
     listens: Listens
-    charts: Charts
     song: Song
+    charts: Charts
     message: Message
     unknown: Unknown
     message_sent: You message has been sent
     tags: Tags
     artist_name: Artist Name
     artist: Artist
-    and_more: and more...
     done: Done
     more: More
+    and_more: and more...
     click_to_follow: Click {{follow_link}} to follow
     followers_of: Followers of
     last_modified_at: "Last modified: {{when}} ago"
@@ -980,17 +975,17 @@ en_US:
     chart: Chart
     follow_requests: Follow Requests
     comment: Comment
-    city: City
     song_name: Song Name
     station: Station
-    followees_of: Followee of
     you_are: You are
+    followees_of: Followee of
+    city: City
     contains: Contains
     here: here
     stations: Stations
+    my_plural: My
     "yes": "Yes"
     album_name: Album Name
-    my_plural: My
     in: in
     country: Country
     welcome: Welcome
@@ -1001,8 +996,8 @@ en_US:
     played_by: Played By
     time: Time
     sorry: Sorry!
-    following: following
     playlists_created_by: Mix Created by
+    following: following
     created_by: Created By
     includes: Includes
     artists: Artists
@@ -1012,28 +1007,23 @@ en_US:
     follow_requests_for: Follow Requests for
     previous: Previous
     charts_for: Charts for
-    person: Person
     mixes: Mixes
     ago: ago
     me: Me
+    person: Person
     albums_by: Albums by
     followees: Followees
     comments: Comments
     songs: Songs
     "no": "No"
-  main: 
-    navigation: 
-      stations: Stations
-      home: Home
-      mixes: Mixes
   cancellation: 
     confirmation: 
-      are_you_sure: Are you sure still want to cancel your account?
       title: We are sorry you're leaving Cyloop!
+      are_you_sure: Are you sure still want to cancel your account?
       body: Cancelling your Cyloop account will permanently remove all of your profile information, including your photos, activity feeds and your personal network of followers. This information cannot be restored.
       irreversible_note: This action is irreversible
-      cancel_account: Yes, Cancel My Account
       keep_account: No, Keep My Account
+      cancel_account: Yes, Cancel My Account
     feedback: 
       label: Feedback
       title: Why are you leaving Cyloop?
@@ -1045,6 +1035,11 @@ en_US:
       body: Your Cyloop profile was removed.
       subject: Profile Removed
       goodbye: Thank you
+  main: 
+    navigation: 
+      stations: Stations
+      home: Home
+      mixes: Mixes
   footer: 
     faq: FAQ
     help: Help
@@ -1064,6 +1059,12 @@ en_US:
     duplicate_warning_text: You have already posted a review for this playlist. If you post a new review it will overwrite your previous review.
     post_your_review: POST YOUR REVIEW
     delete_review_title: Delete this review
+  playlist: 
+    edit_your_playlist: Edit your mix
+    review: REVIEW THIS MIX
+    click_to_unlock: To unlock this mix, click {{unlock_link}} and correct the errors listed in red.
+    doesnt_have_any_reviews: This mix does not<br/> have any reviews
+    this_mix_is_locked: This mix is locked
   demographics: 
     edit: 
       title: "Step 2: Customize Your Recommendations"
@@ -1074,35 +1075,35 @@ en_US:
       title: Confirmation
       body: Your Form has been submitted
     form: 
-      feedback_default: Please provide as much detail as possible
       faq: Frequently Asked Questions
+      feedback_default: Please provide as much detail as possible
       category_error: Errors and Bug Reports
       category_security: My Safety and Security
-      category: Category
       category_business: General Business or PR Inquiries
-      submit: Submit Your Message
-      country: Country
-      welcome: Welcome to Cyloop Support!
+      category: Category
       support_form: Support Form
+      welcome: Welcome to Cyloop Support!
+      country: Country
+      submit: Submit Your Message
       category_account: My Account
-      category_other_features: Ohter Features on Cyloop
       privacy_text: Learn about what Cyloop does about Spam, Impersonation, Trademark, Copyright and other violations.
-      os: Operating System
       business_inquires: General Business Inquiries?
-      header: "We want to help you\xC2\xA0get the answers you need as quickly as possible so you can get back to enjoying all the innovative features Cyloop has to offer."
+      os: Operating System
       business_inquires_text: Please contact
       support_form_text: If you have a question or problem that isn't answered on this page or in the {{link}} or just want to provide us some feedback, you can use this form to send us a message.
+      header: "We want to help you\xC2\xA0get the answers you need as quickly as possible so you can get back to enjoying all the innovative features Cyloop has to offer."
+      category_other_features: Ohter Features on Cyloop
       resources: Resources
       new_cyloop: New to Cyloop?
       information: Please include as much information as you can
       category_music: About Music
       category_photos: About Photos
       feedback: Message
+      category_other: Other
+      new_cyloop_text: Check out our {{link}} to find answers to the most commonly asked questions.  If your questions are still not answered, then please use the {{link2}} form to get in touch with us.
       privacy: Privacy and Security?
       category_feedback: Suggestions, Ideas or Feedback
-      category_other: Other
       browser: Browser
-      new_cyloop_text: Check out our {{link}} to find answers to the most commonly asked questions.  If your questions are still not answered, then please use the {{link2}} form to get in touch with us.
       category_profile: My Profile
       email: Email Address
   sort: 
@@ -1138,6 +1139,20 @@ en_US:
         After logging in, you may reset your password by going into settings.
         
         Tip: create a password with a mix of letters and numbers so it's more secure.
+  sessions: 
+    new: 
+      complete_registration: Complete Registration
+      register_link_msn: If you dont have a cyloop account, Go ahead and register to have it linked to your MSN ID.
+      sign_in: Log in
+      register_cyloop: Register On Cyloop
+      remember_me: Remember me
+      listener_account: Listener Account
+      sign_up_for_free: Sign Up For Free
+      not_registered: Not Registered?
+      sign_up_tag_line: Follow all your favorite artists and discover new music through friends.
+      recover_cyloop_password: Recover Cyloop Password
+    destroy: 
+      sign_out: Log out
   navigation: 
     search_web: Search Web
     search_songs: Search Songs
@@ -1150,90 +1165,76 @@ en_US:
     search_albums: Search Albums
     discover: Discover
     mixes: Mixes
-  sessions: 
-    new: 
-      sign_in: Log in
-      complete_registration: Complete Registration
-      register_link_msn: If you dont have a cyloop account, Go ahead and register to have it linked to your MSN ID.
-      register_cyloop: Register On Cyloop
-      remember_me: Remember me
-      listener_account: Listener Account
-      sign_up_for_free: Sign Up For Free
-      not_registered: Not Registered?
-      sign_up_tag_line: Follow all your favorite artists and discover new music through friends.
-      recover_cyloop_password: Recover Cyloop Password
-    destroy: 
-      sign_out: Log out
   user: 
+    receives_following_notifications: Alert me when someone follows me
+    forgot_message: Cyloop will send password reset instructions to the email address associated with your account.  Please type your email address below.
+    name: Name
     background_repeats: 
       horizontal_repeat: Horizontal Repeat
       full_repeat: Full Repeat
       no_repeat: No Repeat
       vertical_repeat: Vertical Repeat
+    background_fixed_false: "No"
     marketing_opt_out: "I don\xE2\x80\x99t wish to receive emails from Cyloop or its partners."
-    name: Name
+    city_name: City
+    slug: Choose your Profile Name
+    background_align: Background Align
     color_links: Link Color
     is_not_following_anybody: "{{user_name}} is not following anybody"
-    receives_following_notifications: Alert me when someone follows me
-    slug: Choose your Profile Name
-    forgot_message: Cyloop will send password reset instructions to the email address associated with your account.  Please type your email address below.
-    city_name: City
-    background_align: Background Align
-    background_fixed_false: "No"
     background_fixed_true: "Yes"
     confirmation: 
       click_here: click here
       email_resend_failed: The confirmation e-mail could not be resent. Please try again later.
       still_pending: Your account has not been confirmed. Please check your e-mail and follow the confirmation instructions, or {{click_here}} to resend your confirmation link.
       email_resent: Your confirmation e-mail has been resent.
-    private_profile: Keep profile private?
-    twitter_username: Twitter Username
-    terms_of_use_instructions: By signing up, you accept the {{link}} and confirm you're 13 or older
     reset_password: Password Change
     cyloop_password: Cyloop Password
+    terms_of_use_instructions: By signing up, you accept the {{link}} and confirm you're 13 or older
+    twitter_username: Twitter Username
+    private_profile: Keep profile private?
     forgot_your_password: Forgot your password?
-    password_confirmation: Confirm Password
-    background: Background Image
     female: Female
-    cyloop_email: Cyloop Email
     background_alignments: 
-      upper_right: Upper Right
       left: Left
-      center: Center
+      upper_right: Upper Right
       lower_right: Lower Right
+      center: Center
       upper_left: Upper Left
       lower_left: Lower Left
       right: Right
       upper_center: Upper Center
       lower_center: Lower Center
+    cyloop_email: Cyloop Email
     color_bg: Background Color
     current_password: Current Password
+    background: Background Image
+    password_confirmation: Confirm Password
+    terms_and_conditions: terms and conditions
     websites: Websites
     remove_avatar: Remove Image
-    terms_and_conditions: terms and conditions
-    background_fixed: Background Fixed
-    color_main_font: Main Font Color
     background_repeat: Background Repeat
+    color_main_font: Main Font Color
     avatar: Image
     privacy_policy_instructions: Our {{link}} exists to protect you! Please read and agree to the terms
     gender: Gender
     negative_captcha: Don't fill in this field
     short_bio: Short bio
-    has_no_tweet: "{{user_name}} has no tweet"
-    new_password: New Password
-    has_no_followers: "{{user_name}} has no followers"
+    background_fixed: Background Fixed
     male: Male
+    has_no_tweet: "{{user_name}} has no tweet"
+    has_no_followers: "{{user_name}} has no followers"
+    new_password: New Password
     safety_tips: Safety Tips
     dont_stay_locked_out: Don't stay locked out
     time_zone: Time zone
-    password: Password
     color_header_bg: Header Color
+    password: Password
     hasnt_create_any_station: "{{user_name}} hasn't created any stations"
-    privacy_policy: privacy policy
     saved: Your settings have been saved.
-    hasnt_create_any_mixes: "{{user_name}} no ha creado mixes"
+    privacy_policy: privacy policy
     born_on: Birth date
     email: Email
+    hasnt_create_any_mixes: "{{user_name}} no ha creado mixes"
     has_no_activity: "{{user_name}} has no activity"
   datetime: 
     prompts: 
@@ -1279,29 +1280,29 @@ en_US:
         other: "{{count}} years"
       half_a_minute: half a minute
   home: 
-    latest_news: Latest News
     station: Station
+    latest_news: Latest News
     start_listening: START LISTENING
     create_your_own_personalized_radio_station: Create Your Own Personalized Radio Station
     text_about_radio: Smart Radios
     create_radio: Create Radio
-    top_radios: TOP RADIO STATIONS
     text_about_mix: ""
+    top_radios: TOP RADIO STATIONS
     recommended_stations: STATIONS RECOMMENDED BY CYLOOP
+    latest_stations: LATEST RADIO STATIONS
     explaing_what_is_and_why_create_a_new_radio: "Type the name of your favorite artist and Cyloop will generate a personalized radio station with your favorite music. "
     create_mix: Create Mix
-    latest_stations: LATEST RADIO STATIONS
     explaing_what_is_and_why_create_a_new_mix: Type the name of your favorite artist. Cyloop will help you start creating a new mix with your favorite music from your favorite artists
     network_update: "{{user_name}}'S RECENT ACTIVITY"
     create_your_own_mix_now: Create Your Own Mix now!
     recommended_mixes: MIXES RECOMMENDED BY CYLOOP
     type_artist_name: Type Artist Name
-    radios_recomended_for_you: RADIOS RECOMMENDED FOR YOU
-    create_your_own_station_now: Create Your Own Station now!
     top_songs: Top Songs
+    radios_recomended_for_you: RADIOS RECOMMENDED FOR YOU
     top_stations: Top Stations
-    cyloop_recommends: CYLOOP RECOMMENDS
+    create_your_own_station_now: Create Your Own Station now!
     recommended_artists: Recommended Artists
+    cyloop_recommends: CYLOOP RECOMMENDS
   biography: 
     no_bio_availible: No bio available
     management: 
