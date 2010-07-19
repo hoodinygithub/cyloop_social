@@ -7,12 +7,16 @@
             <%= link_to avatar_for(review.commentable, :large), mix_radio_path(:station_id => review.commentable.station.id) %>
             <div class="overlay">
                 <div class="hidden">
-                    <%= link_to avatar_for(review.commentable.owner, :tiny) %>
-                    <span>
-                      <span class="blue"><%= link_to truncate(review.commentable.owner.name,15), review.commentable.owner rescue ""%></span><br/>
-                      <%= t('basics.overlay_created_at', :when => distance_of_time_in_words_to_now(review.commentable.updated_at)) %>
-                  
-                    </span>
+                    <div class="overlay_avatar">
+                      <%= link_to avatar_for(review.commentable.owner, :tiny) %>
+                    </div>
+                    <div class="overlay_description">
+                      <span>
+                        <span class="bold"><%= link_to truncate(review.commentable.owner.name,15), review.commentable.owner rescue ""%></span><br/>
+                        <%= t('basics.overlay_created_at', :when => distance_of_time_in_words_to_now(review.commentable.updated_at)) %>
+
+                      </span>
+                    </div>
                     <br class="clearer" />
                     <div class="tags_contains">
                       <% unless review.commentable.cached_tag_list.blank? %>
