@@ -199,6 +199,9 @@ ul.susbcriptions_list li.mixes_search_item img.follower_image{
 .search_results{
   padding-left: 5px !important;
 }
-
+#update_playlist_form{
+  width: 630px;
+  float: left;
+}
 
 
