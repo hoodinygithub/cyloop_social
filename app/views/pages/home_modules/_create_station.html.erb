@@ -161,7 +161,7 @@
           <div class="align_right">
             <%= grey_button( t("home.create_mix"), :id => "create_playlist_btn", 
              :href => logged_in? ? playlist_create_path : nil , 
-             :onclick => logged_in? ? nil : "Base.utils.showRegistrationLayer()" ) %>
+             :onclick => logged_in? ? nil : "Base.utils.showRegistrationLayer('#{playlist_create_path}')" ) %>
           </div>          
         </div><!--/end input_placeholder -->
         <div id="content_search_results" class="create_box small_width"></div><!--/end create_box -->

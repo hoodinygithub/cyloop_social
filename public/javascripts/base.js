@@ -1713,8 +1713,11 @@ Base.utils.showPopup = function(url) {
     });
 };
 
-Base.utils.showRegistrationLayer = function() {
-  $.get('/registration_layers', function(response) {
+Base.utils.showRegistrationLayer = function(url) {
+  if (url == undefined) {
+    url = '/my/dashboard';	
+  } 
+  $.get('/registration_layers?return_to=' + url, function(response) {
     $.simple_popup(response);
   });
   return false;

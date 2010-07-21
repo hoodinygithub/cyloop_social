@@ -47,7 +47,7 @@
         <span class="btn_placeholder">
           <%= blue_button( t("home.create_mix"), :id => "create_playlist_btn", 
              :href => logged_in? ? playlist_create_path : nil , 
-             :onclick => logged_in? ? nil : "Base.utils.showRegistrationLayer()" ) %>
+             :onclick => logged_in? ? nil : "Base.utils.showRegistrationLayer('#{playlist_create_path}')" ) %>
         </span>
         <br/><br/>
     <% end %>

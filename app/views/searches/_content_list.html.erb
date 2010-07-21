@@ -10,7 +10,8 @@
       <%= link_to_function t("search.see_all_#{type.to_s}_with_term", :term => @query), "get_search_results('#{CGI::escape(@query)}','#{type.to_s.singularize}')", :class => "see_link" %>
     <% end %>
   <% else %>
-    <%= link_to t("search.see_all_#{type.to_s}_with_term", :term => @query), playlist_create_path(:term => @query, :scope => type.to_s.singularize), :class => "see_link", :onclick => logged_in? ? nil : "Base.utils.showRegistrationLayer();return false;" %>
+    <% url =  playlist_create_path(:term => @query, :scope => type.to_s.singularize) %>
+    <%= link_to t("search.see_all_#{type.to_s}_with_term", :term => @query), url, :class => "see_link", :onclick => logged_in? ? nil : "Base.utils.showRegistrationLayer('#{url}');return false;" %>
   <% end %>
   <div class="grey_spacer">  </div>
 <% end %>

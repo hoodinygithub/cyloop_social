@@ -2,8 +2,9 @@
   <% if @local %>
     <a href="#" onclick='get_song_list(<%=list_album.id %>,"<%=list_album.class.to_s.downcase %>"); return false;'>
   <% else %>
-    <a href="<%= playlist_create_path(:item_id => list_album.id, :scope => list_album.class.to_s.downcase) %>" 
-	onclick="<%= logged_in? ? nil : 'Base.utils.showRegistrationLayer();return false;'%>">
+    <% url = playlist_create_path(:item_id => list_album.id, :scope => list_album.class.to_s.downcase) %>
+    <a href="<%= url %>" 
+	onclick="<%= logged_in? ? nil : "Base.utils.showRegistrationLayer('#{url}');return false;"%>">
   <% end %>
       <%= avatar_for(list_album, :small, :alt => "#{list_album.name}") %>
       <b> <%= list_album.name %> </b><br class="no_clear"/>
