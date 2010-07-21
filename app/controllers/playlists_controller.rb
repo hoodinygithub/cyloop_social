@@ -53,7 +53,6 @@ class PlaylistsController < ApplicationController
   end
 
   def create
-
     @page = params[:page] || 1
     @per_page = (params[:term] and (params[:scope]=='artist' or params[:scope]=='album')) ? 7 : 12
     @results,@scope,@result_text = get_seeded_results
@@ -282,6 +281,7 @@ class PlaylistsController < ApplicationController
 
   def xhr_login_required
     unless current_user
+      session[:return_to] = request.referer
       registration_layer = render_to_string 'registration_layers/index'
       return render(:json => {
                               :status => 'redirect',
