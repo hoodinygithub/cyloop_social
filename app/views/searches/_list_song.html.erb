@@ -1,7 +1,8 @@
 <% if @local %>
   <a href="#" onclick='get_song_list(<%=list_song.id %>,"<%=list_song.class.to_s.downcase %>"); return false;'>
 <% else %>
-  <a href="<%= playlist_create_path(:item_id => list_song.id, :scope => list_song.class.to_s.downcase) %>">
+  <a href="<%= playlist_create_path(:item_id => list_song.id, :scope => list_song.class.to_s.downcase) %>"
+	onclick="<%= logged_in? ? nil : 'Base.utils.showRegistrationLayer();return false;'%>">
 <% end %>
     <%= avatar_for(list_song.album, :small, :alt => "#{list_song.title}") %>
     <b> <%= list_song.title %> </b><br class="no_clear"/>
