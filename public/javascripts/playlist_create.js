@@ -469,7 +469,7 @@ function toggle_playlist_box()
 
 function open_save_popup()
 {
-	$('html').animate({scrollTop: 0},'slow');
+	$('html').animate({scrollTop: 90},'slow');
 	if(_pv.valid)
   {
     if(edit_mode)
