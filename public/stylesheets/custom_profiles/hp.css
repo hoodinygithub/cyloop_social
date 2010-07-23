@@ -20,8 +20,7 @@ body.hprocks div#container {
 
 h1 {
 	color: #FFFFFF;
-	padding-left: 0px;
-	border: none;
+	border-color: #29568F;
 }
 
 .blue {
@@ -60,7 +59,7 @@ body.hprocks div#main_content a {
 
 
 
-.custom_button, body.hprocks .red_button, body.hprocks .blue_button  {
+.custom_button, body.hprocks .red_button, body.hprocks .blue_button, body.hprocks .green_button  {
 	background:url("/images/btn_28_round_left.png") no-repeat scroll left top #29568F;
 	color:#FFFFFF;
 	display:inline-block;
@@ -73,7 +72,7 @@ body.hprocks div#main_content a {
 	text-align:center;
 	text-transform:uppercase;
 }
-.custom_button span, body.hprocks .red_button span, body.hprocks .blue_button span {
+.custom_button span, body.hprocks .red_button span, body.hprocks .blue_button span, body.hprocks .green_button span {
 	background:url("/images/btn_28_round_right.png") no-repeat scroll right top transparent;
 	color:#FFFFFF;
 	cursor:pointer;
@@ -82,7 +81,7 @@ body.hprocks div#main_content a {
 	padding-right:4px;
 }
 
-.custom_button span span, body.hprocks .red_button span span, body.hprocks .blue_button span span {
+.custom_button span span, body.hprocks .red_button span span, body.hprocks .blue_button span span, body.hprocks .green_button span span {
 	background:none repeat scroll 0 0 transparent;
 	padding:0 10px;
 }
