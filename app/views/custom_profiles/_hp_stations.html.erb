@@ -1,0 +1,15 @@
+<div id="msn_stations_list" class="songs_list my_mix small_fonts hide">
+  <div class="headers">
+    <div class="song_name_large"><%= t('modules.my_stations.station_name').upcase %></div>
+    <div class="includes"><%= t('modules.my_stations.includes').upcase %></div>
+    <div class="large_bnt2">&nbsp;</div>
+    <div class="last">&nbsp;</div>
+    <br class="clearer" />
+  </div><!--/end headers -->
+
+  <div class="songs_box large_height iefix">
+    <ul class="size2">
+      <%= render :partial => 'custom_profiles/hp_editorial_station_item', :collection => @msn_stations %>
+    </ul>
+  </div><!--/end songs_box -->
+</div><!--/end songs_list -->

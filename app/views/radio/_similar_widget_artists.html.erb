@@ -1,0 +1,31 @@
+<% app_env = ENV['RAILS_ENV'] %>
+<% widghost = "" if app_env == 'development' %>
+<% widghost = "http://staging.widget.hoodiny.com" if app_env == 'staging' %>
+<% widghost = "http://widget.cyloop.com" if app_env == 'production' %>
+<% similars = seed_artist.similar(limit).map { |a| a unless a.nil? or a.station.nil? } %>
+<% unless similars.empty? %>
+  <% cache("#{site_cache_key}/#{seed_artist.slug}/similar_radio_page", :expires_in => EXPIRATION_TIMES['artist_similar_artists']) do %>
+    <% similars.compact! %>
+    <% similars.each_with_index do |artist, index| %>
+    <% end_box = index > 0 && (index + 1) % columns == 0 %>
+      <div class="small_thumb<%= " last_box" if end_box %>" title="<%= artist.name %>">
+        <% unless artist.station.nil? %>
+          <%= link_to_function avatar_for(artist, :tiny, :class => "spaced_img tiny", :disable_default_css => true), "Widget.set_station_details(#{artist.station.id}, '#{artist.station.station_queue}', true, '#{widghost}')" %>
+          <%= link_to_function truncate(artist.name, :length => 15), "Widget.set_station_details(#{artist.station.id}, '#{artist.station.station_queue}', true, '#{widghost}')" %>
+        <% end %>
+      </div>
+      <% if end_box %>
+        <br class="clearer" />
+      <% end %>
+    <% end %>
+
+    <% index = (limit - 1) - similars.size %>
+    <% index.downto(0) do |i| %>
+    <% end_box = i % columns == 0 %>
+      <div class="empty_box<%= i % columns == 0 ? " gb_small last_box" : " gb_small"  %>"></div>
+      <% if end_box %>
+        <br class="clearer" />
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

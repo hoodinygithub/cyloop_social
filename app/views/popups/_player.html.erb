@@ -1,99 +1,373 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<% app_env = ENV['RAILS_ENV'] %>
+<% widghost = "" if app_env == 'development' %>
+<% widghost = "http://staging.widget.hoodiny.com" if app_env == 'staging' %>
+<% widghost = "http://widget.cyloop.com" if app_env == 'production' %>
+
 <html lang='pt' xml:lang='pt' xmlns='http://www.w3.org/1999/xhtml'>
   <head>
     <title>Popup</title>
     <meta content='text/html; charset=utf-8' http-equiv='Content-Type' />
     <meta content='pt' name='lang' />
-    <script src="http://widget.cyloop.com/javascripts/swfobject.js" type="text/javascript"></script>
-    <script src="http://widget.cyloop.com/javascripts/htmlcomponent.js" type="text/javascript"></script>
-    <script src="http://widget.cyloop.com/javascripts/swf_utils.js" type="text/javascript"></script>
-  </head>
-  <body topmargin="0" leftmargin="0" marginwidth="0" marginheight="0">
 
-    <script defer="defer">
-      var HOST = "http://widget.cyloop.com/";
-      var flashvars = { urlContext: HOST, playerId: PLAYERID, market: "<%= current_site.code %>", mode: "widget" };
-      var params = { wmode: "opaque", allowScriptAccess: "always" };
-      var attrib = { id: "radio_widget", name: "radio_widget" };
-      swfobject.embedSWF( String(HOST + "flash/cyloop.swf?cb=" + Math.random(999999)), "radio_widget", "555", "450", "9", false, flashvars, params, attrib );
-      
-      window.onunload = function() { deactivateWidget(); };
-      
-      Cyloop = {};
-      Cyloop.Player = function ()
-      { 
-        this.createStation = function(s)
-        {
-          var station = {name: s.name, id: s.id};
-          swfobject.getObjectById("radio_widget").widgCreateStation(station);
-        };
-        this.playPause = function()
-        {
-          swfobject.getObjectById("radio_widget").widgPlayPause();
-        };
-        this.next = function()
-        {
-          swfobject.getObjectById("radio_widget").widgNext();
-        };
-      };
+    <link rel="stylesheet" type="text/css" media="screen" href="<%= widghost %>/stylesheets/widget/widgStyles.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="<%= widghost %>/stylesheets/application.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="<%= widghost %>/stylesheets/facebox.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="<%= widghost %>/stylesheets/cyloop.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="<%= widghost %>/stylesheets/jquery.auto-complete.css"/>
 
-      var player = new Cyloop.Player();
-      var sURL;
-      var sSong = {};
-      var reset = false;
-      setInterval( "attachToOpener()", 1000 );
-      function attachToOpener()
-      {
-        if(opener.cyloopWidget == undefined) 
-        {
-          reset = true;
+    <!-- CAMPAIGN STYLE OVERRIDE -->
+    <% if @campaign %>
+      <style type="text/css">
+        #widget_container .header {
+          background: url("<%= widghost + @campaign.header_logo.url %>") no-repeat;
+          <% unless @campaign.header_hexcolor.nil? %>
+            background-color: <%= @campaign.header_hexcolor %>;
+          <% end %>
         }
-        else
-        {
-          if(reset && sSong)
+
+        a, span.includes, div.includes {
+          color: <%= @campaign.hexcolor %>
+        }
+
+        .side_user_box .no_overlay big {
+          color: <%= @campaign.artistinfo_name_hexcolor %>;
+        }
+
+        .side_user_box .no_overlay small {
+          color: <%= @campaign.artistinfo_meta_hexcolor %>;
+          font-weight: bold;
+        }
+
+        .site_user_box {
+          background-color: <%= @campaign.hexcolor %>
+        }
+
+        .custom_button, .custom_color {
+          background-color: <%= @campaign.hexcolor %>
+        }
+
+        div#radio_label h1, div#top_stations h1 {
+          border-left: 5px solid #<%= @campaign.hexcolor %> !important
+        }
+
+        .red {
+          background-color: #FF0000;
+        }
+
+        .list_button {
+          vertical-align: middle;
+        }
+
+      </style>
+    <% end %>
+    <!-- END -->
+
+    <script>var HOSTURL = "<%= widghost %>";</script>
+    <script src="<%= widghost %>/javascripts/jquery-1.4.1.min.js" type="text/javascript"></script>
+    <script src="<%= widghost %>/javascripts/jquery.cycle.all.min.js" type="text/javascript"></script>
+    <script src="<%= widghost %>/javascripts/supersleight.plugin.js" type="text/javascript"></script>
+    <script src="<%= widghost %>/javascripts/jquery.metadata.js" type="text/javascript"></script>
+    <script src="<%= widghost %>/javascripts/jquery.auto-complete.js" type="text/javascript"></script>
+    <script src="<%= widghost %>/javascripts/jquery.validate.min.js" type="text/javascript"></script>
+    <script src="<%= widghost %>/javascripts/jquery.hotkeys.min.js" type="text/javascript"></script>
+    <script src="<%= widghost %>/javascripts/base.js" type="text/javascript"></script>
+    <script src="<%= widghost %>/javascripts/widget.js" type="text/javascript"></script>
+    <script src="<%= widghost %>/javascripts/jquery.facebox.js" type="text/javascript"></script>
+    <script src="<%= widghost %>/utils/locale.js" type="text/javascript"></script>
+    <script src="<%= widghost %>/javascripts/swfobject.js" type="text/javascript"></script>
+    <script src="<%= widghost %>/javascripts/htmlcomponent.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+      var init = false;
+      $(document).ready(function()
+      {
+        // STATIC MAPPINGS OF BANNER SRC
+        var regex = new RegExp(/v_folder=|v_songgenre=|v_songlabel=/g);
+        BANNERS.right = {elem: $("#square_banner"), src: String( $("#square_banner").attr("src") ).cleanupURL(regex, "")};
+        BANNERS.big = {elem: $("#large_banner"), src: String( $("#large_banner").attr("src") ).cleanupURL(regex, "")};
+
+        var artistSearch = $("input[name='search_station_name']");
+        var stationID    = $("input[name='search_station_id']");
+        var stationQueue = $("input[name='search_station_queue']");
+        var listenButton = $("#create_station_submit");
+
+        artistSearch.css("color", "#C0D6E2");
+
+        artistSearch.focus(function() {
+          if(artistSearch.val() == "<%= t('radio.search_hint') %>") artistSearch.attr("value", "");
+          if(artistSearch.attr("touched") != "true")
           {
-            opener.cyloopWidget.setPlayer(player, {ad: sURL, song: sSong});
-            reset = false;
+            artistSearch.attr("touched", "true");
+            artistSearch.css("color", "#025D8C");
+            artistSearch.attr("value", "");
           }
-          else
-            opener.cyloopWidget.setPlayer(player);
+        });
+
+        artistSearch.blur(function()
+        {
+          if(artistSearch.val() == "")
+          {
+            artistSearch.attr("touched", "false");
+            artistSearch.css("color", "#C0D6E2");
+            artistSearch.attr("value", "<%= t('radio.search_hint') %>");
+            listenButton.attr("can_post", 0).removeClass("custom_button").addClass("grey_button_big");
+            stationID.val("");
+            stationQueue.val("");
+          }
+        });
+
+        var delay;
+        artistSearch.keyup(function()
+        {
+          var val = this.value;
+          clearTimeout(delay);
+          if(val) delay = setTimeout(function() { searchStation(val) }, 600);
+        });
+
+        listenButton.click(function(e)
+        {
+          if( parseInt( $(this).attr("can_post"), 10 ) )
+          {
+            Widget.launch_station_handler(this, e, "<%= widghost %>");
+            listenButton.attr("can_post", 0);
+          }
+        });
+
+      });
+
+      function searchStation(artist)
+      {
+        var req = "http://widget.cyloop.com/stations.js?q=" + artist + "&limit=5";
+        swf("swfproxy").proxyreq(req);
+      }
+
+      var map;
+      function proxyrsp(obj)
+      {
+        var listenButton = $("#create_station_submit");
+        var parse  = obj.split("\n");
+        var data   = [];
+        var search = [];
+        map = {};
+
+        for(var i = 0; i < parse.length; i++)
+        {
+          var item = parse[i].split("|");
+          data.push(item[1]);
+          search.push( item[1].toLowerCase() );
+          map[item[1]] = {id: item[0], url: item[2]};
         }
+
+        var ac = $("input[name='search_station_name']");
+        ac.autoComplete("disable");
+        ac.autoComplete("flush", true);
+        ac.autoComplete({
+          dataSupply: data,
+          newList: true,
+          useCache: false,
+          onSelect: function(e)
+          {
+            var selObj = map[ac.val()];
+            Widget.set_station_search_details(String(selObj.id), String(selObj.url), false, "<%= widghost %>");
+            listenButton.attr("can_post", 1);
+            listenButton.removeClass("grey_button_big").addClass("custom_button");
+          }
+        });
+        ac.autoComplete("button.supply");
       }
 
-      function appReady()
-      {
-        opener.cyloopWidget.setPlayerReady(true);
-      }
+    </script>
+  </head>
+  <body>
 
-      function songInfo(song)
-      {
-        sSong = song;
-        opener.cyloopWidget.setState("playing", song);
-      }
-      
-      function advertisement(url)
-      {
-        sURL = url;
-        // opener.cyloopWidget.setAdvertisement(url);
-      }
-      
-      function playerState(status)
-      {
-        opener.cyloopWidget.widgetStatus(status);
-      }
-      
-      function deactivateWidget()
-      {
-        opener.cyloopWidget.deactivate();
-      }
-      
-      function editStationName(title)
-      {
-        opener.cyloopWidget.stationName(title);
-      }
+    <script type="text/javascript">
+      $(document).ready(function() {
+          Widget.init_top_buttons();
+      });
     </script>
 
-    <div id="radio_widget" />
+    <div id="widget_container">
+      <div class="header"></div>
+      <div class="content">
+        <div class="two_columns">
+          <form name='station_form' action="">
+            <input type="hidden" id="station_to_delete" value="" />
+            <input type="hidden" id="radio_tab_scope" value="" />
+            <input type="hidden" id="my_stations_toggle" value="0" />
+            <input type="hidden" id="create_station_toggle" value="0" />
+          </form>
+
+          <div class="top_buttons">
+            <div class="left_side">
+              <%= custom_button(t("possessives.first_person.stations"), :id => 'my_stations_button') %>
+            </div>
+            <%= grey_button("<img src=\"#{widghost}/images/now_playing_animation.gif\" class=\"now_playing\" alt=\"#{t("radio.now_playing")}\" />&nbsp;&nbsp;#{t("radio.now_playing")}", :class => "right_side", :id => 'now_playing_button', :href => "#now_playing") %>
+            <div class="clearer"></div>
+          </div>
+
+          <%= render 'radio/create_new_widget_station' %>
+
+          <div id="my_stations_container">
+            <div id="my_stations_list" class="songs_list my_mix small_fonts hide">
+              <div class="headers">
+                <div class="song_name_large"><%= t('modules.my_stations.station_name').upcase %></div>
+                <div class="includes"><%= t('modules.my_stations.includes').upcase %></div>
+                <div class="large_bnt2">&nbsp;</div>
+                <div class="last">&nbsp;</div>
+                <br class="clearer" />
+              </div><!--/end headers -->
+
+              <div class="songs_box large_height iefix">
+                <ul class="size2">
+                </ul>
+              </div><!--/end songs_box -->
+            </div><!--/end songs_list -->
+          </div>
+
+          <div class="album_detail" id="current_station_info">
+            <form action="" name="station_details">
+              <%= hidden_field_tag :station_id, "" %>
+              <%= hidden_field_tag :station_queue, "" %>
+            </form>
+            <br class="clearer" />
+          </div><!--/end album_detail -->
+            <script defer="defer">
+
+              //ENSURES SWFOBJECT EXISTS
+              var interval = setInterval( function() {
+                if(typeof swfobject != "undefined")
+                {
+                  clearInterval(interval);
+                  setPlayers();
+                }
+              }, 50 );
+
+              function setPlayers()
+              {
+                var flashvars = { urlContext: "<%= widghost %>/", playerId: PLAYERID, mode: "widget" };
+                var params = { wmode: "opaque", allowScriptAccess: "always" };
+                var attrib = { id: "cyloop_radio", name: "cyloop_radio" };
+                swfobject.embedSWF("<%= widghost %>/flash/cyloop_radio.swf", "radio_widget", "628", "196", "9", false, flashvars, params, attrib);
+
+                //SWF PROXY BUILD
+                var flashvars = {};
+                var params    = { wmode: "transparent", allowScriptAccess: "always" };
+                var attrib    = { id: "swfproxy", name: "swfproxy" };
+                swfobject.embedSWF("<%= widghost %>/flash/swfproxy.swf", "swfproxy", "1", "1", "9", false, flashvars, params, attrib);
+
+                
+                var flashvars = {};
+                var params    = { wmode: "transparent", allowScriptAccess: "always" };
+                var attrib    = { id: "swfutils", name: "swfutils" };
+                swfobject.embedSWF("<%= widghost %>/flash/swfutils.swf", "swfutils", "1", "1", "9", false, flashvars, params, attrib);
+              }
+
+              window.onunload = function() { opener.cyloopWidget.deactivate() };
+
+              Cyloop = {};
+              Cyloop.Player = function ()
+              {
+                this.createStation = function(s)
+                {
+                  Widget.set_station_details(s.req.id, s.req.url, true, "<%= widghost %>" );
+                  //swf('cyloop_radio').queueStation(s.req.id, s.req.url);
+                };
+                this.playPause = function()
+                {
+                  swf('cyloop_radio').widgPlayPause();
+                };
+                this.next = function()
+                {
+                  swf('cyloop_radio').widgNext();
+                };
+              };
+
+              var player = new Cyloop.Player();
+
+              var sURL;
+              var sSong = {};
+              var reset = false;
+              setInterval( "attachToOpener()", 1000 );
+              function attachToOpener()
+              {
+                if(opener.cyloopWidget == undefined) 
+                {
+                  reset = true;
+                }
+                else
+                {
+                  if(reset && sSong)
+                  {
+                    opener.cyloopWidget.setPlayer(player, {ad: sURL, song: sSong});
+                    reset = false;
+                  }
+                  else
+                    opener.cyloopWidget.setPlayer(player);
+                }
+              }
+
+              function appReady()
+              {
+                opener.cyloopWidget.setPlayerReady(true);
+              }
+
+              function songInfo(song)
+              {
+                sSong = song;
+                opener.cyloopWidget.setState("playing", song);
+              }
+
+              function advertisement(url)
+              {
+                sURL = url;
+                // opener.cyloopWidget.setAdvertisement(url);
+              }
+
+              function playerState(status)
+              {
+                opener.cyloopWidget.widgetStatus(status);
+              }
+
+
+              function editStationName(title)
+              {
+                opener.cyloopWidget.stationName(title);
+              }
+
+
+              //FOR DEBUG PURPOSES
+              function console_out(str)
+              {
+                //console.log(str);
+              }
+            </script>
+          <div id="radio_widget"></div>
+          <div id="swfproxy"></div>
+          <div id="swfutils"></div>
+          <div class="artist_radio_info radio_row hide"></div>
+        </div>
+
+        <div id="right_column">
+          <% if @campaign.ad_size == "300x250" %>
+            <div class="ad_box">
+              <%= banner_ad("square_banner", :zoneid => @campaign.ad_zone_id, :v_promocode => @campaign.promo_code) %>
+            </div>
+            <div class="station_box">
+              <div class="box_content" id="top_stations">
+                <h1><%= t('modules.top_stations.title') %></h1>
+                <%= render :partial => 'radio/widget_station_simple', :collection => @top_abstract_stations %>
+              </div>
+            </div>
+          <% else %>
+            <div class="ad_box">
+              <%= banner_ad("large_banner", :zoneid => @campaign.ad_zone_id, :v_promocode => @campaign.promo_code) %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
 
   </body>
 </html>

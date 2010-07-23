@@ -21,6 +21,11 @@ class StationsController < ApplicationController
     end
   end
 
+  def edit_widget_station
+    @station = Station.find(params[:id]) rescue nil
+    render :layout => false
+  end
+
   def delete
     @station = Station.find(params[:id]) rescue nil
     if @station and @station.playable.owner_is?(current_user)
@@ -43,7 +48,15 @@ class StationsController < ApplicationController
       render :partial => 'no_edit_rights'
     end
   end
-  
+
+  def delete_widget_station_confirmation
+    respond_to do |format|
+      format.html do
+        render :layout => false
+      end
+    end
+  end
+
   def top
     limit = params[:limit].to_i == 0 ? 4 : params[:limit].to_i
     @stations = current_site.top_abstract_stations(limit).compact
@@ -53,7 +66,7 @@ class StationsController < ApplicationController
       format.xml { render :xml => @stations.to_xml( :root => 'stations' ) }
     end
   end
-  
+
   def top_station_html
     artist = Artist.find(params[:artist_id])
     @locals = {:node => artist, :place_type => :recommended_station}

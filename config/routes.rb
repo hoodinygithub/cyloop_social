@@ -58,6 +58,8 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :stations, :collection => {:top => :get, :top_station_html => :get}
   map.delete_station_confirmation '/stations/:id/delete_confirmation', :controller => 'stations', :action => 'delete_confirmation'
+  map.delete_widget_station_confirmation '/stations/:id/delete_widget_station_confirmation', :controller => 'stations', :action => 'delete_widget_station_confirmation'
+  map.edit_widget_station '/stations/:id/edit_widget_station', :controller => 'stations', :action => 'edit_widget_station'
   map.delete_station '/stations/:id/delete', :controller => 'stations', :action => 'delete'
 
   # map.resource :activity
@@ -105,6 +107,7 @@ ActionController::Routing::Routes.draw do |map|
     url.play_station 'radio/play.:format', :action => 'play'
     url.radio_xml 'radio/:station_id.:format', :action => 'show'
     url.artist_info 'radio/info/:station_id/:artist_id', :action => 'artist_info'
+    url.widget_info 'widget/info/:station_id/:artist_id', :action => 'widget_info'
   end
 
 #  end
@@ -152,6 +155,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :mixes, :controller => 'playlists', :has_many => [:reviews]
 
+  map.campaign_key '/campaign_key/:player.:format', :controller => 'campaigns', :action => 'campaign_key'
   map.resources :campaigns, :member => {:activate => :post, :deactivate => :post}
 
   profile_routes = lambda do |profile|

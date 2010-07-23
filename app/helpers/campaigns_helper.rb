@@ -46,4 +46,12 @@ module CampaignsHelper
       ), :class => 'invisible_table'
     ) 
   end
+  
+  
+  def add_link(name)
+    link_to_function name do |page|
+      page.insert_html :bottom, :links, :partial => 'link' , :object => CampaignLink.new
+    end
+  end
+  
 end

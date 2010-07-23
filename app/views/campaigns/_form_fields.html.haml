@@ -27,14 +27,51 @@
   = custom_image_field :form => f, :label => 'Header Logo:', :field => 'header_logo', :model_instance => @campaign
   = custom_image_field :form => f, :label => 'Index Logo:', :field => 'index_logo', :model_instance => @campaign
   = custom_image_field :form => f, :label => 'Footer Logo:', :field => 'footer_logo', :model_instance => @campaign
+  = custom_image_field :form => f, :label => 'Editorial Play Icon:', :field => 'editorial_play_icon', :model_instance => @campaign
   
   %br
   
   %p
+    %label Header Hexcolor
+    = f.text_field :header_hexcolor
+    = text_field 'empty', 'header_hexcolor', {:disabled => 'disabled'}
+
+  %br
+
+  %p
     %label Hexcolor
     = f.text_field :hexcolor
     = text_field 'empty', 'hexcolor', {:disabled => 'disabled'}
-        
+    
+  %br
+  
+  %p
+    %label Progress Bar Hexcolor
+    = f.text_field :progressbar_hexcolor
+    = text_field 'empty', 'progressbar_hexcolor', {:disabled => 'disabled'}
+
+  %br
+
+  %h4 Artist Info
+  %p
+    %label Artist Name Hexcolor
+    = f.text_field :artistinfo_name_hexcolor
+    = text_field 'empty', 'artistinfo_name_hexcolor', {:disabled => 'disabled'}
+
+  %br
+
+  %p
+    %label Artist Meta Hexcolor
+    = f.text_field :artistinfo_meta_hexcolor
+    = text_field 'empty', 'artistinfo_meta_hexcolor', {:disabled => 'disabled'}
+  
+  
+.fieldset
+  %h4 Footer Links (positioned left to right)
+  #links
+    = render :partial => 'link', :collection => @campaign.campaign_links
+  = add_link "Add a link"
+  
     
 .fieldset
   %h4 Ad/Analytics
@@ -44,6 +81,9 @@
   
   = custom_text_field :form => f, :label => 'Google Profile ID:', :field => 'google_profile_id', :model_instance => @campaign, :example => 'UA-410870-40'
 
+  %p
+    Ad Size:
+    = f.select :ad_size, ['300x250', '300x600']
 
 .fieldset
   %h4 Campaigns Status/Dates
@@ -59,6 +99,6 @@
     %label Status
     = f.select :campaign_status_id, @statuses, :prompt => "Choose one"
 
-/  %p
-/    %label Site
-/    = f.select :site_id, @sites, :prompt => "Choose one"
+  /%p
+  /  %label Site
+  /  = f.select :site_id, @sites, :prompt => "Choose one"

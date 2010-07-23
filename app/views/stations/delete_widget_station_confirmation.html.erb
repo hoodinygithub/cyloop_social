@@ -1,0 +1,17 @@
+<script type='text/javascript'>
+  $(document).ready(function() {
+    Widget.init_delete_layer();
+  }); 
+</script>
+<div id="delete_confirm">
+  <div class="title" style="float:left"><%= t('modules.delete_station.title')%></div>
+  <div id="delete_loading" style="float:right;" class="hide">
+      <img src="/images/loading.gif" />
+  </div>
+  <br class="clearer">
+  <div class="align_right">
+      <big><a href="#" class="black valign_middle popup_close_action" onclick="$(document).trigger('close.facebox');return false;"><%= t('actions.cancel').upcase %></a></big>
+      <a href="#" id="delete_station_button" class="blue_button valign_middle"><span><span><%= t('actions.delete').upcase %></span></span></a>
+  </div>
+</div>
+

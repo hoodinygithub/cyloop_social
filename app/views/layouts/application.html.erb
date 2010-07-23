@@ -8,7 +8,7 @@
     <%= yield :head %>
     <%= render '3rd_party_branding/msn_head' if current_site.is_msn? %>
   </head>
-  <body loggedin="<%= (logged_in?).to_s %>" locale="<%= current_site.default_locale %>" market="<%= current_site.code %>"<%= current_site.is_msn? ? " class=\"msn  #{current_site.code}\"" : '' %>>
+  <body loggedin="<%= (logged_in?).to_s %>" locale="<%= current_site.default_locale %>" market="<%= current_site.code %>"<%= current_site.is_msn? ? " class=\"msn  #{current_site.code}#{params[:slug].nil? ? "" : " " + params[:slug]}\"" : '' %>>
     <%= render_messenger_app %>
     <div id="container">
       <%= render 'shared/header' %>

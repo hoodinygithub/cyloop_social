@@ -80,13 +80,29 @@ table.invisible_table td.big2 {
   border: 1px solid gray;
 }
 
-#campaign_hexcolor {
+#campaign_hexcolor, #campaign_header_hexcolor, #campaign_artistinfo_name_hexcolor, #campaign_artistinfo_meta_hexcolor, #campaign_progressbar_hexcolor {
   display: inline;
   width: 80px;
 }
 
-#empty_hexcolor {
+#empty_hexcolor, #empty_header_hexcolor, #empty_artistinfo_name_hexcolor, #empty_artistinfo_meta_hexcolor, #empty_progressbar_hexcolor {
   width: 20px;
   border: 1px solid gray;
   disabled: disabled;
+}
+
+#column_label {
+	float:left;
+	width: 110px;
+	height: 30px;
+}
+
+#column_field {
+	float:left;
+	width: 280px;
+	height: 30px;
+}
+
+.clear{ 
+	clear:both; 
 }

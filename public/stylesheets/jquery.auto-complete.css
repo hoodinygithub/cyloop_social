@@ -14,7 +14,7 @@ ul.auto-complete-list {
 	z-index: 100000;
 	max-height: 250px;
 	overflow: auto;
-	width: 185px !important;
+	/*width: 185px !important;*/
 }
 
 ul.auto-complete-list li {

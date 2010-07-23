@@ -1,0 +1,21 @@
+<% unless widget_station_simple.nil? %>
+  <% unless widget_station_simple.artist.nil? %>
+    <% artist = widget_station_simple.artist %>
+    <div class="station">
+      <div class="avatar">
+        <% if artist.nil? %>
+          <%= avatar_for(nil, :artist_icon) %>
+        <% else %>
+          <%= link_to_function avatar_for(artist, :artist_icon), "Widget.set_station_details(#{widget_station_simple.station.id}, '#{widget_station_simple.station_queue}')" %>
+        <% end %>
+      </div>
+      <div class="station_info">
+        <h2>
+          <%= link_to_function widget_station_simple.name, "Widget.set_station_details(#{widget_station_simple.station.id}, '#{widget_station_simple.station_queue}')" %>
+        </h2>
+        <%= station_contains(widget_station_simple,3,true,{:target=>"_blank"}, {:unlinked => true}) %>
+      </div>
+    </div>
+    <br class="clearer" />
+  <% end %>
+<% end %>

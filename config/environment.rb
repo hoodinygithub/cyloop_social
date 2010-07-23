@@ -16,7 +16,7 @@ end
 # Uncomment below to force Rails into production mode when
 # you don't control web/app server and can't set it the proper way
 ENV['SITE'] ||= 'MSN Brazil' if ENV['RAILS_ENV'] =~ /production|staging|ec2_production/
-ENV['SITE'] ||= 'Cyloop' if ENV['RAILS_ENV'] =~ /development/
+ENV['SITE'] ||= 'MSN LATAM' if ENV['RAILS_ENV'] =~ /development/
 ENV['RAILS_ASSET_ID'] = '' if ENV['RAILS_ENV'] =~ /development/
 
 Rails::Initializer.run do |config|

@@ -1,0 +1,16 @@
+- new_or_existing = link.new_record? ? 'new' : 'existing'
+- prefix = "campaign[#{new_or_existing}_link_attributes][]"
+
+#link
+  - fields_for prefix,link do |links_form| 
+    #column_label
+      = links_form.label :url, 'URL:'
+    #column_field 
+      = links_form.text_field :url
+    #column_label 
+      = links_form.label :name, 'Name:'
+    #column_field 
+      = links_form.text_field :name 
+       
+    = link_to_function "remove" , "$(this).parent('#link').remove()"
+    .clear

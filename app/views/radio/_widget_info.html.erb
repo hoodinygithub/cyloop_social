@@ -1,0 +1,28 @@
+<div id="radio_label">
+  <div class="radio_left_side" style="float:left !important">
+    <% if artist.nil? == false %>
+      <div class="side_user_box" style="float:left !important">
+        <%= avatar_for(artist, :album, :class => 'side_user_image', :width => "150", :disable_default_css => true) %>
+        <div class="no_overlay png_fix">
+          <div class="overlay_content">
+            <big><%= artist.name %></big><br/>
+            <small><%= artist.country unless artist.country.nil? %><br/>
+              <%= artist.genre.name unless artist.genre.nil? %>
+            </small>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="radio_right_side">
+    <div class="radio_tabs">
+      <h1><%= t('modules.similar_artists.title') %></h1>
+    </div>
+    <div id="similar_artists_content" class="radio_tabs_content">
+      <%= render :partial => "similar_widget_artists", :locals => { :seed_artist => artist, :limit => 12, :columns => 6 } %>
+    </div>
+  </div>
+
+  <div class="clearer"></div>
+</div>

@@ -1,5 +1,11 @@
 // init variables
-var WIDGHOST = "http://widget.cyloop.com";
+var ENV = "<%= ENV['RAILS_ENV'] %>";
+
+var WIDGHOST;
+if      (ENV == "development") { WIDGHOST = ""; }
+else if (ENV == "staging")     { WIDGHOST = "http://staging.widget.hoodiny.com"; }
+else if (ENV == "production")  { WIDGHOST = "http://widget.cyloop.com"; }
+
 var READY = false;
 
 // js|css include logic
@@ -42,6 +48,15 @@ function waitForScriptLoad(look_for, callback)
   }, 50 );
 }
 
+function swf(objname)
+{
+  if(navigator.appName.indexOf("Microsoft") != -1)
+    return window[objname];
+  else
+    return document[objname];
+    
+}
+
 (function() {
   importCSS(WIDGHOST + "/stylesheets/widget/widgStyles.css");
   importCSS(WIDGHOST + "/stylesheets/jquery.auto-complete.css");
@@ -49,6 +64,7 @@ function waitForScriptLoad(look_for, callback)
     $.noConflict();
     importJS(WIDGHOST + "/javascripts/jquery.metadata.js");
     importJS(WIDGHOST + "/javascripts/jquery.auto-complete.js");
+    importJS(WIDGHOST + "/campaign_key/widget_player.js");
     importJS(WIDGHOST + "/javascripts/swfobject.js", "swfobject", function() { READY = true; } );
   });
 })();
@@ -81,6 +97,13 @@ Cyloop.Widget = function(options)
 
   // widget ui
   this.element = jQuery("#" + this.options.elementId);
+  
+  
+  /*var css  = "<style type='text/css'>";
+      css += "div#widgView div#controlsWrapper div#controlsHeader span.create, div#songInfo div#info h1, div#info span, div#widgView div#stationWrapper div#stationHeader h1 { color: #" + cssobj.campaign.hexcolor + "} !important;";
+      css += "</style>";
+  
+  this.element.append(css);*/
 
   // widget content wrapper
   this.element.append("<div id='widgView'></div>");
@@ -89,11 +112,11 @@ Cyloop.Widget = function(options)
   jQuery("#widgHandle").click( function() { window.cyloopWidget.setState("createStation"); } );
   
   // swf proxy for crossdomain requests
-  this.element.append("<div id='swfproxy'></div>");
+  this.element.append("<div id='swfutils'></div>");
   var flashvars = {};
   var params = { wmode: "transparent", allowScriptAccess: "always" };
-  var attrib = { id: "swfproxy", name: "swfproxy" };
-  swfobject.embedSWF( WIDGHOST + "/flash/swfproxy.swf" , "swfproxy", "1", "1", "9", false, flashvars, params, attrib );
+  var attrib = { id: "swfutils", name: "swfutils" };
+  swfobject.embedSWF( WIDGHOST + "/flash/swfutils.swf" , "swfutils", "1", "1", "9", false, flashvars, params, attrib );
 
   ///////////////////////////////
 
@@ -157,7 +180,6 @@ Cyloop.Widget = function(options)
   var controlsBody = jQuery("div#controlsBody");
   controlsBody.append("<div id='songInfo'></div>");
 
-
   this.controlsWrapper.append("<div id='widgFooter'><div class='controls'><span id='playpause' class='pause'></span><span id='next'></span></div><span class='poweredBy'></span></div>");
   var playPause = jQuery("#playpause");
   var next = jQuery("#next");
@@ -172,6 +194,12 @@ Cyloop.Widget = function(options)
 
   // FORM LOGIC
   var artistSearch = jQuery("input[name='station_name']");
+  
+  // DEACTIVATE ENTER KEY
+  artistSearch.keypress( function(e) {
+    if(e.keyCode == 13) return false;
+  });
+  
   artistSearch.click(function(){
     submitActive(false);
     jQuery(this).attr("value", "");
@@ -190,12 +218,10 @@ Cyloop.Widget = function(options)
   } );
 
   function searchStation(q)
-  { 
+  {
     var req = "http://widget.cyloop.com/stations.js?q=" + q + "&limit=5";
-    swfobject.getObjectById("swfproxy").proxyreq(req, {});
+    swf("swfutils").proxyreq(req);
   }
-  
-  
   
   // FORM LOGIC
 
@@ -205,7 +231,7 @@ Cyloop.Widget = function(options)
   this.openPopup = function() {
     if(!this.playing)
     {
-      this.popup = window.open("/" , "player_popup", "width=555,height=450,toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=0,resizable=0");
+      this.popup = window.open("/" , "player_popup", "width=950,height=694,toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=0,resizable=0");
       this.popup.document.open();
       this.popup.document.write("<script>var PLAYERID='" + this.options.playerId + "';</script>");
       this.popup.document.write( Cyloop.PopupContent );
@@ -475,7 +501,7 @@ function proxyrsp(obj)
     var item = parse[i].split("|");
     data.push( item[1] );
     search.push( item[1].toLowerCase() );
-    map[item[1]] = item[0];
+    map[item[1].toLowerCase()] = {id: item[0], url: item[2]};
   }
   
   submitActive( jQuery.inArray(jQuery("input[name='station_name']").attr("value").toLowerCase(), search) != -1 );
@@ -503,8 +529,10 @@ function submitActive(active)
     if(active)
     {
       if( !window.cyloopWidget.popup ) window.cyloopWidget.openPopup();
-      var sn = jQuery(this).find('#station_name').attr('value');
-      window.cyloopWidget.createStation({name: sn, id: map[sn]});
+      var sn = jQuery(this).find('#station_name').attr('value').toLowerCase();
+      window.cyloopWidget.createStation({name: sn, req: map[sn]});
     }
   });
 }
+
+function hitting(data) { alert(data); }

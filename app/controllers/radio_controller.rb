@@ -57,12 +57,16 @@ class RadioController < ApplicationController
   
 
   def album_detail
-    if request.xhr?
+    if request.xhr? or params[:widget] == "true"
       @station_obj = Station.find(params[:station_id]) rescue nil
       if @station_obj
         @station_obj = create_user_station(@station_obj)
         @station_obj.playable.track_a_play_for(current_user) if @station_obj.playable
-        render :partial => @station_obj.playable.class.to_s.underscore
+        unless params[:partial_prefix]
+          render :partial => @station_obj.playable.class.to_s.underscore
+        else
+          render :partial => "#{partial_prefix}#{@station_obj.playable.class.to_s.underscore}"
+        end
       end
     else
       redirect_to radio_path(:station_id => params[:station_id])
@@ -223,6 +227,15 @@ class RadioController < ApplicationController
     @tabs = [:more_playlists, :top_playlists, :emotions] #others are coming.
     @station_obj = Station.find(params[:station_id]) rescue nil
     render :partial => "radio/station_info"
+  end
+
+  def widget_info
+    if(artist.nil?)
+      render :nothing => true
+    else
+      @station_obj = Station.find(params[:station_id]) rescue nil
+      render :partial => 'radio/widget_info'
+    end
   end
 
   private

@@ -91,6 +91,8 @@ module AdsHelper
   def ad_size(id)
     size = if id == 'square_banner'
       "300x250"
+    elsif id == "large_banner"
+      "300x600"
     elsif id == "pixel_banner"
       "1x1"
     elsif id == "messenger"

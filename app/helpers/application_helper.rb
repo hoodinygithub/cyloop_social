@@ -133,6 +133,10 @@ module ApplicationHelper
     special_button(:red_button, button_label, options)
   end
 
+  def custom_button(button_label, options={})
+    special_button(:custom_button, button_label, options)
+  end
+
   def follow_button(attrs = {})
     account = attrs.delete(:account)
     if current_user and account.follow_requests.collect(&:follower_id).include? current_user.id
@@ -268,11 +272,19 @@ module ApplicationHelper
     etc = ""
     etc = "..." if station_artists.size == limit  
     station_artists.each do |station_artist|
-      links << link_to(station_artist.artist.name, artist_path(station_artist.artist), link_options) unless station_artist.artist.nil?
+      unless options[:unlinked] == true
+        links << link_to(station_artist.artist.name, artist_path(station_artist.artist), link_options) unless station_artist.artist.nil?
+      else
+        links << "<span class='includes'>#{station_artist.artist.name}</span>" unless station_artist.artist.nil?
+      end
     end
 
     if include_text
-      "#{t('basics.contains')}: #{links.join(", ")}#{etc}"
+      unless options[:unlinked] == true
+        "#{t('basics.contains')}: #{links.join(", ")}#{etc}"
+      else
+        "#{t('basics.contains')}: <span class='includes'>#{links.join(", ")}</span>#{etc}"
+      end
     else
       "#{links.join(", ")}#{etc}"
     end
@@ -303,7 +315,7 @@ module ApplicationHelper
 
     station_images_with_links = []
     includes = options[:includes] || station.includes(4)
-    
+
     # TODO: Handle this issue with DB showing a default image
     if options[:type].nil?
       includes.each do |artist|
@@ -314,7 +326,11 @@ module ApplicationHelper
 
     elsif options[:type] == :small
       includes.each do |artist|
-        station_images_with_links << link_to(image_tag(AvatarsHelper.avatar_path(artist.album, :small), :class => 'avatar_four_thumbs_small'), station_link)
+        if options[:function].nil?
+          station_images_with_links << link_to(image_tag(AvatarsHelper.avatar_path(artist.album, :small), :class => 'avatar_four_thumbs_small'), station_link)
+        else
+          station_images_with_links << link_to_function(image_tag(AvatarsHelper.avatar_path(artist.album, :small), :class => 'avatar_four_thumbs_small'), options[:function])
+        end
       end
       station_images_with_links << content_tag(:br, "&nbsp;", :class => 'clearer') if options[:clearer]
       html = content_tag(:div, station_images_with_links, :class => "four_thumbs_small #{options[:class]}")

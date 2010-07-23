@@ -1,0 +1,199 @@
+<% editorial_station = current_site.editorial_stations_sites.find_by_profile_id(profile_account).editorial_station unless current_site.editorial_stations_sites.find_by_profile_id(profile_account).nil? %>
+<% @station_obj = editorial_station.station %>
+<% @msn_stations = current_site.editorial_stations_sites.find_all_by_profile_id(profile_account).map(&:editorial_station) %>
+
+<% content_for :head do %>
+  <%= stylesheet_link_tag    "custom_profiles/hp.css" %>
+  <%= stylesheet_link_tag    "history" %>
+  <%= javascript_include_tag "AC_OETags" %>
+  <%= javascript_include_tag "history" %>
+  <%= javascript_include_tag "htmlcomponent" %>
+  <%= javascript_include_tag "radio" %>
+  <%= javascript_include_tag "swf_utils" %>
+<% end %>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    Base.radio.initialize();
+    initHpTopButtons();    
+    function initHpTopButtons() {
+      $("#my_stations_button").click(function() {
+    		value = parseInt($("#my_stations_toggle").get(0).value, 10);
+    		msn_value = parseInt($("#msn_stations_toggle").get(0).value, 10);
+    		create_station_value = parseInt($("#create_station_toggle").get(0).value, 10);
+
+    		if(value) {
+    			if(msn_value) { toggleButton('msn_stations', 0, null); }
+    			if(create_station_value) { toggleButton('create_station', 0); }
+    			toggleButton('my_stations', 0);
+    			$('#now_playing_button').removeClass('custom_button').addClass('grey_button_big');			
+    		} else {
+    			if(msn_value) { toggleButton('msn_stations', 0, null); }
+    			if(create_station_value) { toggleButton('create_station', 0); }
+    			toggleButton('my_stations', 1);
+    			$('#now_playing_button').removeClass('grey_button_big').addClass('custom_button');			
+    		}			
+        return false;
+      });	
+
+      $("#msn_stations_button").click(function() {
+    		value = parseInt($("#msn_stations_toggle").get(0).value, 10);
+    		my_value = parseInt($("#my_stations_toggle").get(0).value, 10);
+    		create_station_value = parseInt($("#create_station_toggle").get(0).value, 10);
+
+    		if(value) {
+    			if(my_value) { toggleButton('my_stations', 0, null);}
+    			if(create_station_value) { toggleButton('create_station', 0, null); }
+    			toggleButton('msn_stations', 0);
+    			$('#now_playing_button').removeClass('custom_button').addClass('grey_button_big');			
+    		} else {
+    			if(my_value) { toggleButton('my_stations', 0, null); }
+    			if(create_station_value) { toggleButton('create_station', 0, null); }
+    			toggleButton('msn_stations', 1);
+    			$('#now_playing_button').removeClass('grey_button_big').addClass('custom_button');			
+    		}			
+        return false;
+      });	
+
+      $("#collapse_create_new_station").click(function() {
+    		toggleButton('create_station', 0, toggleCreateStation);
+    		$('#now_playing_button').removeClass('custom_button').addClass('grey_button_big');			
+        return false;
+      });	
+
+    	initCreateStationButton();
+
+      $("#now_playing_button").click(function() {
+    		msn_value = parseInt($("#msn_stations_toggle").get(0).value, 10);
+    		my_value = parseInt($("#my_stations_toggle").get(0).value, 10);
+
+    		if(msn_value || my_value) {
+    			toggleButton('msn_stations', 0);
+    			toggleButton('my_stations', 0);			
+    			$('#now_playing_button').removeClass('custom_button').addClass('grey_button_big');			
+    		}
+        return false;
+        });	
+    	}
+    
+  });
+</script>
+
+<div id="main_content">
+  <div id="left_column" class="left_adjust">
+    <div id="profile_header">
+      <img src="/images/custom_profiles/hp/hp_logo_and_tag.jpg"/>
+      <div id="action_button">
+        <%= render :partial => 'accounts/buttons', :locals => { :color => 'custom' }  %> 
+      </div>
+    </div>
+    <br/>
+    <div class="mix_box grey_accents">
+      <form name='station_form' action="">
+        <input type="hidden" id="station_to_delete" value="" />
+        <input type="hidden" id="radio_tab_scope" value="" />
+        <input type="hidden" id="my_stations_toggle" value="0" />
+        <input type="hidden" id="msn_stations_toggle" value="0" />
+        <input type="hidden" id="create_station_toggle" value="0" />
+      </form>      
+      <%= render :partial => 'custom_profiles/hp_top_buttons' %>    
+      <div id="my_stations_container">
+        <%= render "custom_profiles/hp_my_user_stations" if logged_in? && current_user && current_user.send("total_user_stations".to_sym) > 0 %>
+      </div>
+      <% if !@station_obj.playable.is_a?(Playlist) %>
+        <%= render :partial =>  'custom_profiles/hp_stations' unless @msn_stations.empty? %>
+        <%= render :partial  => 'custom_profiles/hp_create_new_station' %>
+      <% end %>
+      <div class="album_detail" id="current_station_info">
+        <%= render :partial => "custom_profiles/hp_#{@station_obj.playable.class.to_s.underscore}" %>
+        <br class="clearer" />
+      </div><!--/end album_detail -->
+      <div id="radio_player">
+        <script>
+          customKeys = "color,red";
+        </script>
+        <form>
+          <% if editorial_station %>
+            <%= hidden_field_tag "station_id", "#{editorial_station.station.id}" %>
+          <% end %>
+          <%= hidden_field_tag "radio_tab_scope" %>
+        </form>
+        <script type="text/javascript" charset="utf-8">
+          var flashvars = "urlContext=/&market=<%= current_site.code %>&playerId=starburst_<%= current_site.code %>";
+          <% if editorial_station %>
+            flashvars += "&stationId=<%= editorial_station.station.id %>&station=<%= editorial_station.station_queue %>?randomize=0&randomizedStart=true";
+          <% end %>
+          AC_FL_RunContent(
+            "src", "/flash/cyloop_radio",
+            "wmode", "opaque",
+            "width", "628",
+            "height", "196",
+            "align", "middle",
+            "id", "cyloop_radio",
+            "quality", "high",
+            "bgcolor", "#f2f2f2",
+            "name", "cyloop_radio",
+            "allowScriptAccess", "sameDomain",
+            "type", "application/x-shockwave-flash",
+            "pluginspage", "http://www.adobe.com/go/getflashplayer",
+            "flashVars", flashvars
+          );
+        </script>
+      </div>
+      <div class="artist_radio_info radio_row hide"></div>
+    </div>
+    <br/>
+  </div>
+
+  <div id="right_column">
+    <div class="ad_box">
+      <%= banner_ad("square_banner") %>
+    </div>
+
+    <!--FOLLOWERS-->
+    <div class="box_content">
+      <span class="follows_count"><%= profile_account.follower_count %></span>
+      <h1><%= t("dashboards.followers.title") %></h1>
+      <% if profile_account.follower_count < 1 %>
+        <div class="big_text">
+          <%= t("user.has_no_followers", :user_name => profile_account.first_name) %>
+        </div>
+      <% else %>
+        <% followings = profile_account.followers.all(:limit => 15) %>
+        <% followings.each_with_index do |follow, index| %>
+          <div class="small_thumb<%= " last_thumb" if index == 4 or index == 8 %>">
+            <%= link_to avatar_for(follow, :tiny, :class => "spaced_img tiny", :disable_default_css => true, :width => "50px", :height => "50px"), follow, :target => '_blank' %>
+            <%= link_to truncate(follow.name,:length => 18), follow, :target => '_blank' %>
+          </div>
+          <% if index == 4 %>
+            <br class="clearer" />
+          <% end %>
+        <% end %>
+
+
+        <% fcount = followings.size %>
+        <% index = (15 - fcount) %>
+        <% index.times do |i| %>
+          <div class="empty_box gb_small <%= "last_box" if i == (index-1) %>">
+            &nbsp;
+          </div>
+
+          <% if (fcount + (i + 1)) % 5 == 0 %>
+            <br class="clearer" />
+          <% end %>
+        <% end %>
+
+      <% end %>
+      <br class="clearer" />
+      <% if profile_account.follower_count > 15 %>
+          <div class="align_right">
+            <b>
+              <%= link_to(t('actions.view_more'), profile_owner? ? my_followers_path : followers_path, :target => '_blank' ) %>
+            </b>
+          </div>
+        <% end %>
+    </div><!--/FOLLOWERS-->
+    <div><%= image_tag 'custom_profiles/hp/la_computadora_tag.jpg' %></div>
+  </div>
+  <div class="clearer" />
+</div>

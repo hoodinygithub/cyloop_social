@@ -1,7 +1,163 @@
 /* @override http://localhost:3000/stylesheets/widget/widgStyles.css */
 body {
-	border: 0; padding: 0; margin: 0;
+	border: 0; padding: 3px; margin: 0;
 }
+
+/* -- WIDGET POPUP STYLES -- */
+#widget_container {
+	width: 950px;
+	height: 100px;
+	text-align: left;
+}
+
+#widget_container .header {
+	background: #000 url("/images/logo_hoodiny.png") no-repeat;
+	height: 40px;
+}
+
+#widget_container .content {
+	float: left;
+	background-color: #F7F7F7;
+	border-left: 1px solid #D9D9D9;
+	border-right: 1px solid #D9D9D9;
+	border-bottom: 1px solid #D9D9D9;
+}
+
+#widget_container .station_info {
+	float: left;
+	margin-left: 10px;
+	width: 180px;
+}
+
+#widget_container .station .avatar {
+	float: left;
+	height: 50px !important;
+	width: 50px !important;
+}
+
+.top_buttons {
+	background-color: #F7F7F7 !important;
+}
+
+.two_columns {
+	border-right: 1px solid #CCC !important;
+}
+
+.album_detail {
+	border-top: 1px solid #CCC;
+	border-bottom: 1px solid #CCC;
+	padding: 10px 8px;
+	position: relative;
+}
+
+.album_detail .album_text2 {
+	text-align: left;
+}
+
+.artist_radio_info {
+	border-top: 1px solid #CCC !important;
+}
+
+#right_column {
+	width: 317px !important;
+}
+
+.ad_box {
+	margin-top: 10px !important;
+	margin-bottom: 10px !important;
+	margin-left: 10px;
+}
+
+.station_box {
+	position: relative;
+}
+
+div#top_stations {
+	margin-left: 10px;
+}
+
+.side_user_box {
+	overflow: visible !important;
+}
+
+.side_user_box .no_overlay {
+	margin-top: 10px;
+	height: 77px;
+	color: #FFF;
+	background-color: #000;
+	text-align: left;
+}
+
+.side_user_box .no_overlay big {
+	color: #00A5F8;
+	font-weight: bold;
+	line-height: 20px;
+}
+
+div#radio_label h1 {
+	text-align: left;
+	margin-bottom: 10px !important;
+}
+
+.custom_button {
+	text-transform: uppercase;
+	background: url("/images/btn_28_round_left.png") no-repeat scroll left top #00A5F8;
+	color: #FFF;
+	display: inline-block;
+	font-size: 12px;
+	font-weight: bold;
+	height: 28px;
+	line-height: 28px;
+	overflow: hidden;
+	padding-left: 4px;
+	text-align: center;
+}
+
+.custom_button span {
+	background: url("/images/btn_28_round_right.png") no-repeat scroll right top transparent;
+	color: #FFF;
+	cursor: pointer;
+	display: inline-block;
+	height: 28px;
+	padding-right: 4px;
+}
+
+.custom_button span span {
+	background: none repeat scroll 0 0 transparent;
+	padding: 0 10px;
+}
+
+.custom_button:hover {
+	background-color: #BDBDBD;
+}
+
+a:hover {
+	text-decoration: none !important;
+}
+
+.account_settings .form_row .input {
+	height: 32px !important;
+}
+
+.grey_button span span {
+	padding: 4px 2px 0 2px !important;
+}
+
+ul.auto-complete-list {
+	text-align: left;
+	width: 350px !important;
+}
+
+.my_mix .songs_box .large_btn2 {
+  text-align: center;
+  width: 100px;
+}
+
+.songs_box .grey_button {
+  vertical-align: middle;
+}
+
+/* ------------------------- */
 
 div#widget_window {
 	position: fixed;

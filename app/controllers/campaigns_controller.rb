@@ -1,7 +1,7 @@
 class CampaignsController < ApplicationController
   layout "admin"
-  before_filter :do_campaign_auth
-  before_filter :load_campaign, :except => [:index, :new, :create]
+  before_filter :do_campaign_auth, :except => :campaign_key
+  before_filter :load_campaign, :except => [:index, :new, :create, :campaign_key]
   before_filter :load_sites_and_player_information, :only => [:new, :create, :edit, :update]
   CAMPAIGNS_PER_PAGE = 50
   
@@ -17,9 +17,31 @@ class CampaignsController < ApplicationController
   
   def show
     return render :text => 'Campaign not active', :status => 405 unless @campaign.campaign_status.value == 'active'
+    links ={}
+    i = 1
+    @campaign.campaign_links.each do |link|
+      links["link#{i.to_s}-url"] = link.url
+      links["link#{i.to_s}-name"] = link.name
+      i += 1
+    end
+    links.merge!({"header-logo-file-path" => @campaign.header_logo.url, 
+        "index-logo-file-path" => @campaign.index_logo.url, "footer-logo-file-path" => @campaign.footer_logo.url,
+        "editorial-play-icon-file-path" => @campaign.editorial_play_icon.url})
     respond_to do |format|
       format.html { @campaign }
-      format.xml  { render :xml => @campaign.attributes.merge!({"header-logo-file-path" => @campaign.header_logo_path}).to_xml(:root => "campaign") }
+      format.xml  { render :xml => @campaign.attributes.merge!(links).to_xml(:root => "campaign")}
+    end
+  end
+
+  def campaign_key
+    player = Player.find_by_player_key(params[:player]);
+    @campaign = player.active_campaign
+    return render :text => 'Campaign not active', :status => 405 unless @campaign.campaign_status.value == 'active'
+    respond_to do |format|
+      format.xml  { render :xml => @campaign.attributes.merge!({"header-logo-file-path" => @campaign.header_logo.url}).to_xml(:root => "campaign") }
+      format.js { render :text => "var cssobj = #{@campaign.to_json}" }
+      #format.js  { render :text => @campaign.attributes.merge!({"header-logo-file-path" => @campaign.header_logo.url}).map { |s| s } }
+      #format.js  { render :text => @stations.collect{|s| "#{s.station.id}|#{s.name}|#{s.station_queue(:ip_address => remote_ip)}" }.join("\n") }
     end
   end
   
@@ -41,6 +63,7 @@ class CampaignsController < ApplicationController
   end
   
   def update
+    params[:campaign][:existing_link_attributes] ||= {}
     if @campaign.update_attributes(params[:campaign])
       flash[:success] = t('campaigns.updated_success')
       redirect_to campaigns_path

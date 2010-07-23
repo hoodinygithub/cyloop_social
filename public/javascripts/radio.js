@@ -6,7 +6,7 @@ jQuery(document).ready(function($){
     createStation($(this).find('#station_name').attr('value'));
   });
 
-  if(station_obj.type != undefined) setTimeout("start_player()", 2000);
+  if(typeof station_obj != "undefined" && station_obj.type != undefined) setTimeout("start_player()", 2000);
 
 });
 

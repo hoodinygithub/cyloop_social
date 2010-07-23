@@ -177,13 +177,16 @@ Base.radio.set_station_search_details = function(id, queue, play) {
 	if(play || typeof(play)=='undefined') { Base.radio.set_station_details(id, queue, play); }
 };
 
-Base.radio.set_station_details = function(id, queue, play) {
+Base.radio.set_station_details = function(id, queue, play, host) {
   regex = /\d+/;
   playlist_id = regex.exec(queue)[0];
   Base.reviews.load_playlist_reviews_list($("#playlist_reviews"), playlist_id);
+  var HOST;
+  if(host || typeof(host) == 'undefined') HOST = host;
+  else HOST = "";
   $("#station_id").val(id);
   $("#station_queue").val(queue);
-	if(play || typeof(play)=='undefined') { Base.radio.play_station(false, false, null, null); }
+  if(play || typeof(play)=='undefined') { Base.radio.play_station(false, false, null, null, HOST); }
 };
 
 Base.radio.refresh_my_stations = function() {
@@ -197,23 +200,25 @@ Base.radio.refresh_my_stations = function() {
 		  $("div#my_stations_list .songs_box ul li a.launch_station").click(function(e){
 		  	e.preventDefault();
 				var is_station_list_item = $(this).hasClass('launch_station');
+				var show_loading = $(obj).hasClass('show_loading');				
 				var is_create_station_submit = $(this).attr("id") == "create_station_submit";
 				var list;
 				var list_play_button;
-				if(is_station_list_item) {
+				if(show_loading) {
 					var li = $(this).parentsUntil('li');
 					list = this.id.match(/(.*)_list(.*)/)[1];
 					list_play_button = li.find('img.list_play_button');
 					if(list_play_button) { list_play_button.attr('src', "/images/grey_loading.gif"); }
 				}
 				Base.radio.set_station_details($(this).attr('station_id'), $(this).attr('station_queue'), false);
-				Base.radio.play_station(is_station_list_item, is_create_station_submit, list, list_play_button)
+				Base.radio.play_station(is_station_list_item, is_create_station_submit, list, list_play_button, show_loading)
    		});
   	}
 	});
 };
 
-Base.radio.play_station = function(from_list, from_create_station, list, list_play_button ) {
+Base.radio.play_station = function(from_list, from_create_station, list, list_play_button, show_loading) {
+	show_loading = (typeof(show_loading)=='undefined')? false : show_loading;
 	var id =  $("#station_id").val();
 	var queue =  $("#station_queue").val();
 	var is_owner = $("#owner").val() == 'true';
@@ -224,8 +229,10 @@ Base.radio.play_station = function(from_list, from_create_station, list, list_pl
     data: {station_id: id},
     success: function(result) {
 			if(from_list) {
-				if(list_play_button) { list_play_button.attr('src', "/images/icon_play_small.gif"); }
-				toggleButton(list, 0);
+				if (show_loading) {					
+					if(list_play_button) { list_play_button.attr('src', "/images/icon_play_small.gif"); }
+				}
+			toggleButton(list, 0);
 			}
 			if(from_create_station) {
 				$('#collapse_create_new_station').click();
@@ -250,12 +257,15 @@ Base.radio.launch_station_handler = function(obj, e) {
 	var is_station_list_item = $(obj).hasClass('launch_station');
 	var is_create_station_submit = $(obj).attr("id") == "create_station_submit";
 	var list;
-	var list_play_button;
+	var list_play_button, show_loading;
 	if(is_station_list_item) {
-		var li = $(obj).parentsUntil('li');
+		show_loading = $(obj).hasClass('show_loading');
 		list = obj.id.match(/(.*)_list(.*)/)[1];
-		list_play_button = li.find('img.list_play_button');
-		if(list_play_button) { list_play_button.attr('src', "/images/grey_loading.gif"); }
+		if(show_loading) {
+			var li = $(obj).parentsUntil('li');
+			list_play_button = li.find('img.list_play_button');
+			if(list_play_button) { list_play_button.attr('src', "/images/grey_loading.gif"); }
+		}
 	}
 
 /*	if(is_create_station_submit){
@@ -263,7 +273,7 @@ Base.radio.launch_station_handler = function(obj, e) {
 	}
 */
 	Base.radio.set_station_details($(obj).attr('station_id'), $(obj).attr('station_queue'), false);
-	Base.radio.play_station(is_station_list_item, is_create_station_submit, list, list_play_button)
+	Base.radio.play_station(is_station_list_item, is_create_station_submit, list, list_play_button, show_loading)
 
 };
 

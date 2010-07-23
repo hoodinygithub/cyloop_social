@@ -1,0 +1,133 @@
+body.hprocks {
+	background: url(/images/custom_profiles/hp/page_bkgrd.jpg) #000000 top center no-repeat !important;
+}
+
+body.hprocks div#internal_content {
+	background-color: transparent;
+}
+
+body.hprocks div#container {
+	background: none;
+}
+
+#left_column.left_adjust {
+	width: 630px;
+}
+
+h1 {
+	color: #FFFFFF;
+	padding-left: 0px;
+	border: none;
+}
+
+.blue {
+	color: #29568F;	
+}
+
+.custom_color {
+	background-color: #29568F;	
+}
+
+body.hprocks div#main_content a {
+	color: #29568F;	
+}
+
+.follows_count {
+	background:	none repeat scroll 0 0 #29568F;
+	color:	#FFFFFF;
+	float:	right;
+	font-size:	11px;
+	padding:	0 4px;
+	position:	relative;
+	right:	0px;
+	top:	0px;
+}
+
+#action_button  {
+	bottom:0;
+	position:absolute;
+	right:0;
+}
+
+#profile_header {
+	height: 100px;
+	position: relative;
+}
+
+.custom_button {
+	background:url("/images/btn_28_round_left.png") no-repeat scroll left top #29568F;
+	color:#FFFFFF;
+	display:inline-block;
+	font-size:12px;
+	font-weight:bold;
+	height:28px;
+	line-height:28px;
+	overflow:hidden;
+	padding-left:4px;
+	text-align:center;
+	text-transform:uppercase;
+}
+.custom_button span {
+	background:url("/images/btn_28_round_right.png") no-repeat scroll right top transparent;
+	color:#FFFFFF;
+	cursor:pointer;
+	display:inline-block;
+	height:28px;
+	padding-right:4px;
+}
+
+.custom_button span span {
+	background:none repeat scroll 0 0 transparent;
+	padding:0 10px;
+}
+
+.custom_button:hover {
+	background-color:#BDBDBD;
+}
+
+#action_button .custom_button {
+	background:url("/images/btn_28_round_left_black.png") no-repeat scroll left top #29568F;
+	color:#FFFFFF;
+	display:inline-block;
+	font-size:12px;
+	font-weight:bold;
+	height:28px;
+	line-height:28px;
+	overflow:hidden;
+	padding-left:4px;
+	text-align:center;
+	text-transform:uppercase;
+}
+#action_button .custom_button > span {
+	background:url("/images/btn_28_round_right_black.png") no-repeat scroll right top transparent;
+	color:#FFFFFF;
+	cursor:pointer;
+	display:inline-block;
+	height:28px;
+	padding-right:4px;
+}
+
+a:hover {
+	text-decoration:none !important;
+}
+
+.list_play_button {
+	margin-top: 4px;
+}
+
+.list_delete_button {
+	margin-top: 4px;
+	background-color: #CC0000;
+}
+
+.list_delete_button_container {
+	margin-top: -2px;
+}
+
+body.hprocks .small_thumb {
+	margin-right:10px !important;
+}
+
+body.hprocks .gb_small {
+	margin: 0 10px 32px 0 !important;
+}

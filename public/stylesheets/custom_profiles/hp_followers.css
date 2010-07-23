@@ -1,0 +1,6 @@
+/* @override http://localhost:3000/stylesheets/custom_profiles/starburst_followers.css */
+
+#center_column {
+  width: 620px;
+  padding-left: 0;
+}

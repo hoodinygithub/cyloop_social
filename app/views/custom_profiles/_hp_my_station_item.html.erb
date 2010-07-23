@@ -1,0 +1,11 @@
+<li id="hp_my_station_item_<%= hp_my_station_item.station.id %>">
+  <div class="song_name_large">
+    <%= link_to(image_tag("icon_20_play.png", :title => t('actions.play'), :class => 'list_play_button custom_color' ), "#", :station_id => hp_my_station_item.station.id, :station_queue => hp_my_station_item.station_queue, :class => "launch_station", :id => "my_stations_list_play_#{hp_my_station_item.station.id}" ) %>&nbsp;&nbsp;<b><%= link_to(hp_my_station_item.name, "#", :station_id => hp_my_station_item.station.id, :station_queue => hp_my_station_item.station_queue, :id => "my_stations_list_name_#{hp_my_station_item.station.id}", :class => 'launch_station') %></b>
+  </div>
+  <div class="includes"><%= station_contains(hp_my_station_item, 3, false, :target => '_blank')%></div>
+  <div class="large_bnt2">
+    <%= link_to_function(image_tag('icon_20_edit.png', :class => 'list_play_button custom_color', :alt => t('actions.edit') ) , "Base.stations.launch_edit_layer(#{hp_my_station_item.station.id})")%>
+    <%= link_to_function(image_tag('icon_20_delete.png', :alt => t('actions.delete'), :class => 'list_delete_button'), "Base.stations.remove_from_layer(#{hp_my_station_item.station.id})" ) unless hp_my_station_item == @station_obj.playable %>
+  </div>
+  <br class="clearer" />
+</li>
