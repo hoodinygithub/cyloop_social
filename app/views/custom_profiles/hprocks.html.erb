@@ -162,7 +162,7 @@
         <% followings = profile_account.followers.all(:limit => 15) %>
         <% followings.each_with_index do |follow, index| %>
           <div class="small_thumb<%= " last_thumb" if index == 4 or index == 8 %>">
-            <%= link_to avatar_for(follow, :tiny, :class => "spaced_img tiny", :disable_default_css => true, :width => "50px", :height => "50px"), follow, :target => '_blank' %>
+            <%= link_to avatar_for(follow, :small, :class => "spaced_img"), follow, :target => '_blank' %>
             <%= link_to truncate(follow.name,:length => 18), follow, :target => '_blank' %>
           </div>
           <% if index == 4 %>
