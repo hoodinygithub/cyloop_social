@@ -60,7 +60,7 @@ body.hprocks div#main_content a {
 
 
 
-.custom_button, body.hprocks .red_button  {
+.custom_button, body.hprocks .red_button, body.hprocks .blue_button  {
 	background:url("/images/btn_28_round_left.png") no-repeat scroll left top #29568F;
 	color:#FFFFFF;
 	display:inline-block;
@@ -73,7 +73,7 @@ body.hprocks div#main_content a {
 	text-align:center;
 	text-transform:uppercase;
 }
-.custom_button span, body.hprocks .red_button span {
+.custom_button span, body.hprocks .red_button span, body.hprocks .blue_button span {
 	background:url("/images/btn_28_round_right.png") no-repeat scroll right top transparent;
 	color:#FFFFFF;
 	cursor:pointer;
@@ -82,7 +82,7 @@ body.hprocks div#main_content a {
 	padding-right:4px;
 }
 
-.custom_button span span, body.hprocks .red_button span span {
+.custom_button span span, body.hprocks .red_button span span, body.hprocks .blue_button span span {
 	background:none repeat scroll 0 0 transparent;
 	padding:0 10px;
 }
@@ -91,8 +91,8 @@ body.hprocks div#main_content a {
 	background-color:#BDBDBD;
 }
 
-#action_button .custom_button {
-	background:url("/images/btn_28_round_left_black.png") no-repeat scroll left top #29568F;
+#action_button .follower_btn {
+	background:url("/images/btn_28_round_left_black.png") no-repeat scroll left top #29568F !important;
 	color:#FFFFFF;
 	display:inline-block;
 	font-size:12px;
@@ -104,8 +104,8 @@ body.hprocks div#main_content a {
 	text-align:center;
 	text-transform:uppercase;
 }
-#action_button .custom_button > span {
-	background:url("/images/btn_28_round_right_black.png") no-repeat scroll right top transparent;
+#action_button .follower_btn > span {
+	background:url("/images/btn_28_round_right_black.png") no-repeat scroll right top transparent !important;
 	color:#FFFFFF;
 	cursor:pointer;
 	display:inline-block;
