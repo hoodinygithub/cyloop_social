@@ -970,7 +970,7 @@ module ApplicationHelper
      </span>"
   end
 
-  def tag_links(item, active_scope = :mixes, limit=3, include_text=true, link_options={})
+  def tag_links(item, active_scope = :mixes, limit=2, include_text=true, link_options={})
     links = []
     tags = item.tags.all(:limit => limit).map{ |tag| link_to(tag.name, main_search_path(:scope => active_scope.to_s, :q => tag.name), link_options) }
 
