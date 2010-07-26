@@ -4,7 +4,7 @@
   <div id="center_column">
     <%= render :partial => 'latest_mixes', :locals => { :max_stations => 6 } %>
     <%= render :partial => 'latest_stations', :locals => { :max_stations => 6 } %>
-    <%= render :partial => 'users/recent_reviews' %>
+    <%= render :partial => 'users/recent_reviews' if profile_user? %>
     <%
       # 
       # = render :partial => 'activities/all',  :locals => { :with_title => true, :limit => 5, :hide_sorting => !on_dashboard? } 
