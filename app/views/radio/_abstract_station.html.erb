@@ -1,12 +1,15 @@
 <%= render :partial => 'station_details_form' %>
-<%= four_thumbs_to(@station_obj, :class => 'left_side', :clearer => true, :type => :small, :function => "Widget.set_station_details(#{@station_obj.playable.id}, '#{@station_obj.playable.station_queue}', true, '')") %>
+<% if params[:widget] == "true" %>
+  <%= four_thumbs_to(@station_obj, :class => 'left_side', :clearer => true, :type => :small, :function => "Widget.set_station_details(#{@station_obj.playable.id}, '#{@station_obj.playable.station_queue}', true, '')") %>
+<% else %>
+  <%= four_thumbs_to(@station_obj, :class => 'left_side', :clearer => true, :type => :small) %>
+<% end %>
 <div class="album_text2">
   <% if params[:widget] == "true" %>
   <b id='station_title' class='station_title'>&nbsp;</b>
   <%= link_to_function(image_tag('http://staging.widget.hoodiny.com/images/icon_20_edit.png', :class => "custom_color png_fix valign_middle", :alt => t('actions.edit')), "Widget.launch_edit_layer(#{@station_obj.id})"  )%>
-
-    <script>
-      var currentStation = {id: "<%= @station_obj.id %>" , title: "<%= t('modules.edit_station.title')%>", newname: "<%= t('modules.edit_station.new_name')%>", name: "<%= @station_obj.playable.name %>", stationimg: '<%= four_thumbs_to(@station_obj, :class => 'left_side', :clearer => true, :type => :medium) %>', includes: "<%= station_contains(@station_obj.playable, 3, true, {:target => '_blank'}, {:unlinked => true}) %>"};
+    <script> 
+      var currentStation = {id: "<%= @station_obj.id %>" , title: "<%= t('modules.edit_station.title')%>", newname: "<%= t('modules.edit_station.new_name')%>", name: "<%= @station_obj.playable.name %>", stationimg: '<%= four_thumbs_to(@station_obj, :class => 'left_side', :clearer => true, :type => :medium, :unlinked => true) %>', includes: "<%= station_contains(@station_obj.playable, 3, true, {:target => '_blank'}, {:unlinked => true}) %>"};
       var stationList = {};
 
       $(document).ready(function() { swf("swfutils").connect("my_stations"); });
@@ -52,9 +55,9 @@
           }
           else
           {
+            station = data;
             if(!init)
             {
-              station = data;
               swf("swfutils").connect("my_stations", "Widget.reload_list");
               init = true;
             }
@@ -77,7 +80,7 @@
             elem += "<div class='large_btn2'>";
             elem += "<a onclick='Widget.launch_edit_layer(" + data.id + ");return false;' href='#'><img src='http://staging.widget.hoodiny.com/images/icon_20_edit.png' class='custom_color list_button' alt='Editar'></a>";
             elem += "&nbsp;";
-            elem += "<a onclick='Widget.remove_from_layer(" + data.id + "); return false;' href='#'><img src='http://staging.widget.hoodiny.com/images/icon_20_delete.png' class='red list_button' alt='Apagar'></a>";
+            elem += "<a onclick='Widget.remove_from_layer(" + data.id + "); return false;' href='#'><img src='http://staging.widget.hoodiny.com/images/icon_20_delete.png' class='custom_color list_button' alt='Apagar'></a>";
             elem += "</div>";
             elem += "<br class='clearer'>";
             elem += "</li>";
@@ -86,7 +89,7 @@
     </script>
 
   <% else %>
-    <b id='station_name' class='station_name'><%= @station_obj.playable.name %></b>
+    <b id="station_name" class="station_name"><%= @station_obj.playable.name %></b>
     <%= link_to(image_tag(market_image_path('share_button_small.png'), :title => t('actions.share'), :class => 'png_fix valign_middle'), '#', :onclick => "Base.stations.share(#{@station_obj.id}); return false;") %>
   <% end %>
   <br/>

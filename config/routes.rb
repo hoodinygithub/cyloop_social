@@ -235,6 +235,7 @@ ActionController::Routing::Routes.draw do |map|
 
   # Widget
   map.widget 'widget', :controller => 'popups'
+  map.ad_widget 'ad_widget', :controller => 'popups', :action => 'player'
   #map.resources :popups, :collection => {:widget => :any}
   
   # Keep slug routes at the bottom

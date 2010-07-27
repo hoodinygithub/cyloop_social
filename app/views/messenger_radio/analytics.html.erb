@@ -1,5 +1,5 @@
 <%= google_analytics_js_include_tag %>
-<% if gatracker_id || params[:gCode] %>
+<% if params[:gCode] || gatracker_id %>
   <script type="text/javascript">
   try {
   var pageTracker = _gat._getTracker("<%= params.fetch(:gCode, messenger_player_gatracker_id) %>");

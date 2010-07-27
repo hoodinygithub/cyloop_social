@@ -3,6 +3,7 @@
 <% widghost = "http://staging.widget.hoodiny.com" if app_env == 'staging' %>
 <% widghost = "http://widget.cyloop.com" if app_env == 'production' %>
 <% similars = seed_artist.similar(limit).map { |a| a unless a.nil? or a.station.nil? } %>
+
 <% unless similars.empty? %>
   <% cache("#{site_cache_key}/#{seed_artist.slug}/similar_radio_page", :expires_in => EXPIRATION_TIMES['artist_similar_artists']) do %>
     <% similars.compact! %>

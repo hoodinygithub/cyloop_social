@@ -338,7 +338,11 @@ module ApplicationHelper
     elsif options[:type] == :medium
       includes.each_with_index do |artist, index|
         avatar_class = "avatar_four_thumbs_medium avatar_#{index}" 
-        station_images_with_links << link_to(image_tag(AvatarsHelper.avatar_path(artist.album, :small), :class => avatar_class), station_link)
+        if options[:unlinked]
+          station_images_with_links << image_tag(AvatarsHelper.avatar_path(artist.album, :small), :class => avatar_class)
+        else
+          station_images_with_links << link_to(image_tag(AvatarsHelper.avatar_path(artist.album, :small), :class => avatar_class), station_link)
+        end
       end
       station_images_with_links << content_tag(:br, "&nbsp;", :class => 'clearer') if options[:clearer]
       html = content_tag(:div, station_images_with_links, :class => "four_thumbs #{options[:class]}")
@@ -439,6 +443,8 @@ module ApplicationHelper
       "UA-410780-46"
     when "TVN"
       "UA-410780-60"
+    when "Widget"
+      "UA-410780-66"
     end
   end
 

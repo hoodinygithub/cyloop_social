@@ -4,6 +4,7 @@ class Player::PlayerCampaign < Player::Base
   column :start,                 :datetime
   column :end,                   :datetime
   column :hexcolor,              :string
+  column :progressbar_hexcolor,  :string
   column :code,                  :string
   column :campaign_status_id,    :integer
   column :locale,                :string

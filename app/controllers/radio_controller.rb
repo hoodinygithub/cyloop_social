@@ -50,22 +50,27 @@ class RadioController < ApplicationController
       @top_djs = current_site.top_djs.all(:limit => @top_djs_limit)
       @latest_playlists = current_site.playlists.latest
 
-      @top_artists_limit = 5    
+      @top_artists_limit = 5
       @top_artists = current_site.top_artists.all(:limit => @top_artists_limit)
     end
   end
-  
 
   def album_detail
-    if request.xhr? or params[:widget] == "true"
+    if request.xhr? or params[:widget] == 'true'
       @station_obj = Station.find(params[:station_id]) rescue nil
       if @station_obj
         @station_obj = create_user_station(@station_obj)
         @station_obj.playable.track_a_play_for(current_user) if @station_obj.playable
-        unless params[:partial_prefix]
-          render :partial => @station_obj.playable.class.to_s.underscore
-        else
+        if params[:partial_prefix]
           render :partial => "#{partial_prefix}#{@station_obj.playable.class.to_s.underscore}"
+        elsif params[:widget] == 'true'
+          if @station_obj.playable_type == "EditorialStation"
+            render :partial => '/popups/hp_editorial_station'
+          else
+            render :partial => 'abstract_station'
+          end
+        else
+          render :partial => @station_obj.playable.class.to_s.underscore
         end
       end
     else

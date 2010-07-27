@@ -71,8 +71,7 @@
   #links
     = render :partial => 'link', :collection => @campaign.campaign_links
   = add_link "Add a link"
-  
-    
+
 .fieldset
   %h4 Ad/Analytics
   = custom_text_field :form => f, :label => 'Ad Zone ID:', :field => 'ad_zone_id', :model_instance => @campaign, :example => '"123", "205"'

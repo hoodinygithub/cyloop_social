@@ -44,18 +44,32 @@ body {
 }
 
 .album_detail {
-	border-top: 1px solid #CCC;
-	border-bottom: 1px solid #CCC;
-	padding: 10px 8px;
-	position: relative;
+  border-top: 1px solid #CCC;
+  border-bottom: 1px solid #CCC;
+  background-color: #F7F7F7 !important;
+  padding: 10px 8px;
+}
+
+#footer {
+  border: 0px !important;
+  border-top: 1px solid #CCC !important;
+  background: none !important;
+  background-color: #F7F7F7 !important;
+  height: 25px !important;
+  padding: 10px 20px 5px 20px !important;
+  width: inherit !important;
+}
+
+.four_thumbs_small {
+  position: relative;
 }
 
 .album_detail .album_text2 {
-	text-align: left;
+  text-align: left;
 }
 
 .artist_radio_info {
-	border-top: 1px solid #CCC !important;
+  border-top: 1px solid #CCC !important;
 }
 
 #right_column {
@@ -228,9 +242,9 @@ div#widgView div#minViewWrapper div#albumCoverContainer a img {
 /* -- STATION CREATE WRAPPER -- */
 /* HEADER */
 div#widgView div#stationWrapper {
-	display: none;
-	width: 287px;
-	background: #FFF url("/images/widget/widgBackground.png");
+  display: none;
+  width: 287px;
+  background: #FFF url("/images/widget/widgBackground.png");
 }
 
 div#widgView div#stationWrapper div#stationHeader {

@@ -12,7 +12,6 @@ jQuery(document).ready(function($){
 
 var station_obj = {};
 
-
 function swfReady()
 {
   if(station_obj.type != undefined) start_player();
@@ -38,7 +37,7 @@ function playStation(id)
       if(obj.find(mainNode).size() == 0) 
       {
         //TODO: PREPEND DOESN'T SEEM TO BE WORKING. REVIEW!!
-        if ($('#page_wrapper').find("#messages .error").size() > 0) 
+        if ($('#page_wrapper').find("#messages .error").size() > 0)
         {
           $("#messages .error").text(obj);
         }

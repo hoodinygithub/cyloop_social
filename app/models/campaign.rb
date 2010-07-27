@@ -4,9 +4,9 @@ class Campaign < ActiveRecord::Base
 
   belongs_to :player
   belongs_to :campaign_status
-  
+ 
   has_many :campaign_links
-  
+
   validates_presence_of :name, :hexcolor, :player_id, :start, :end
   validate :date_range, :if => Proc.new {|c| c.start and c.end}
   validate :unique_player_id_per_active_campaign

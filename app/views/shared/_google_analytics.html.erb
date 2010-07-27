@@ -1,10 +1,9 @@
-<% if gatracker_id %>
+<% if gtrack = params.fetch(:gCode, gatracker_id) %>
   <%= google_analytics_js_include_tag %>
-
   <% @code = flash[:google_code] unless flash[:google_code].blank? %>
   <script type="text/javascript">
   try {
-  var pageTracker = _gat._getTracker("<%= gatracker_id %>");
+  var pageTracker = _gat._getTracker("<%= gtrack %>");
   pageTracker._trackPageview(<%= "'#{@code}'" if @code %>);
   } catch(err) {}</script>
 <% end %>
