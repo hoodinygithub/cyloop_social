@@ -82,7 +82,7 @@
 
       function searchStation(artist)
       {
-        var req = "http://widget.cyloop.com/stations.js?q=" + artist + "&limit=5";
+        var req = "<%= widghost %>/stations.js?q=" + artist + "&limit=5";
         swf("swfutils").proxyreq(req);
       }
 
@@ -386,7 +386,7 @@
             <% end %>
           </div>
           <div class="footer_right">
-            <img src="/images/cyloop_logo_trans.png" id="trans_logo" alt="cyloop">
+            <img src="<%= widghost %>/images/cyloop_logo_trans.png" id="trans_logo" alt="cyloop">
           </div>
           <br class="clearer" />
         </div>

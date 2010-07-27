@@ -90,7 +90,7 @@
 
   <% else %>
     <b id="station_name" class="station_name"><%= @station_obj.playable.name %></b>
-    <%= link_to(image_tag(market_image_path('share_button_small.png'), :title => t('actions.share'), :class => 'png_fix valign_middle'), '#', :onclick => "Base.stations.share(#{@station_obj.id}); return false;") %>
+    <%= link_to(image_tag(market_image_path('icon_20_share.png'), :title => t('actions.share'), :class => 'png_fix valign_middle custom_color'), '#', :onclick => "Base.stations.share(#{@station_obj.id}); return false;") %>
   <% end %>
   <br/>
   <% if params[:widget] == "true" %>
