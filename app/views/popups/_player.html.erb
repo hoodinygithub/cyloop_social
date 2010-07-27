@@ -83,7 +83,7 @@
       function searchStation(artist)
       {
         var req = "http://widget.cyloop.com/stations.js?q=" + artist + "&limit=5";
-        swf("swfproxy").proxyreq(req);
+        swf("swfutils").proxyreq(req);
       }
 
       var map;
@@ -264,12 +264,6 @@
                 var attrib = { id: "cyloop_radio", name: "cyloop_radio" };
                 swfobject.embedSWF("<%= widghost %>/flash/cyloop_radio.swf", "radio_widget", "628", "196", "9", false, flashvars, params, attrib);
 
-                //SWF PROXY BUILD
-                var flashvars = {};
-                var params    = { wmode: "transparent", allowScriptAccess: "always" };
-                var attrib    = { id: "swfproxy", name: "swfproxy" };
-                swfobject.embedSWF("<%= widghost %>/flash/swfproxy.swf", "swfproxy", "1", "1", "9", false, flashvars, params, attrib);
-
                 var flashvars = {};
                 var params    = { wmode: "transparent", allowScriptAccess: "always" };
                 var attrib    = { id: "swfutils", name: "swfutils" };
@@ -359,7 +353,6 @@
               }
             </script>
           <div id="radio_widget"></div>
-          <div id="swfproxy"></div>
           <div id="swfutils"></div>
           <div class="artist_radio_info radio_row hide"></div>
         </div>

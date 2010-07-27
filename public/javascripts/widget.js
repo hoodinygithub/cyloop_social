@@ -151,7 +151,7 @@ var Widget = {
       $("input[name='search_station_name']").val("").blur();
     }
     swf("cyloop_radio").queueStation(id, queue);
-    swf("swfproxy").proxyreq(req, "album_details");
+    swf("swfutils").proxyreq(req, "album_details");
   },
 
   remove_from_layer: function(station_id)
@@ -159,7 +159,7 @@ var Widget = {
     $("#station_to_delete").attr("value", station_id);
     $.popup(function() {
         url = HOSTURL + "/stations/" + station_id + "/delete_widget_station_confirmation";
-        swf("swfproxy").proxyreq(url, "remove_confirmation");
+        swf("swfutils").proxyreq(url, "remove_confirmation");
     });
   },
 
@@ -196,7 +196,7 @@ var Widget = {
     var urlString  = HOSTURL + "/widget/info/" + station_id + "/" + id;
     if( typeof(cutsomKeys) == "string" ) urlString += "?customize=" + customKeys;
     $('.artist_radio_info').slideUp( function() {
-      if(id) swf('swfproxy').proxyreq(urlString, 'artist_detail');
+      if(id) swf('swfutils').proxyreq(urlString, 'artist_detail');
     });
   },
 
