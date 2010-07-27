@@ -44,10 +44,15 @@ body {
 }
 
 .album_detail {
+  _float: left;
   border-top: 1px solid #CCC;
   border-bottom: 1px solid #CCC;
   background-color: #F7F7F7 !important;
   padding: 10px 8px;
+}
+
+.four_thumbs_small img {
+  float: none !important;
 }
 
 #footer {
@@ -65,7 +70,12 @@ body {
 }
 
 .album_detail .album_text2 {
+  position: relative;
   text-align: left;
+}
+
+.album_actions2 {
+  position: relative;
 }
 
 .artist_radio_info {
