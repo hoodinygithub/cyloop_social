@@ -28,4 +28,27 @@ class PopupsController < ApplicationController
     render :layout => false, :partial => 'player'
   end
 
+  def album_detail
+    if request.xhr? or params[:widget] == 'true'
+      @station_obj = Station.find(params[:station_id]) rescue nil
+      if @station_obj
+        @station_obj = create_user_station(@station_obj)
+        @station_obj.playable.track_a_play_for(current_user) if @station_obj.playable
+        if params[:partial_prefix]
+          render :partial => "#{partial_prefix}#{@station_obj.playable.class.to_s.underscore}"
+        elsif params[:widget] == 'true'
+          if @station_obj.playable_type == "EditorialStation"
+            render :partial => '/popups/hp_editorial_station'
+          else
+            render :partial => 'abstract_station'
+          end
+        else
+          render :partial => @station_obj.playable.class.to_s.underscore
+        end
+      end
+    else
+      redirect_to radio_path(:station_id => params[:station_id])
+    end
+  end
+
 end

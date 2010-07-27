@@ -110,6 +110,8 @@ ActionController::Routing::Routes.draw do |map|
     url.widget_info 'widget/info/:station_id/:artist_id', :action => 'widget_info'
   end
 
+  map.widget_detail 'widget/album_detail', :controller => 'popups', :action => 'album_detail'
+
 #  end
 
   # map.namespace :discover do |discover|

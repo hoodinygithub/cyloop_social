@@ -1,0 +1,92 @@
+<%= render :partial => '/radio/station_details_form' %>
+  <%= four_thumbs_to(@station_obj, :class => 'left_side', :clearer => true, :type => :small, :function => "Widget.set_station_details(#{@station_obj.playable.id}, '#{@station_obj.playable.station_queue}', true, '')") %>
+<div class="album_text2">
+  <b id='station_title' class='station_title'>&nbsp;</b>
+  <%= link_to_function(image_tag('http://staging.widget.hoodiny.com/images/icon_20_edit.png', :class => "custom_color png_fix valign_middle", :alt => t('actions.edit')), "Widget.launch_edit_layer(#{@station_obj.id})"  )%>
+    <script> 
+      var currentStation = {id: "<%= @station_obj.id %>" , title: "<%= t('modules.edit_station.title')%>", newname: "<%= t('modules.edit_station.new_name')%>", name: "<%= @station_obj.playable.name %>", stationimg: '<%= four_thumbs_to(@station_obj, :class => 'left_side', :clearer => true, :type => :medium, :unlinked => true) %>', includes: "<%= station_contains(@station_obj.playable, 3, true, {:target => '_blank'}, {:unlinked => true}) %>"};
+      var stationList = {};
+
+      $(document).ready(function() { swf("swfutils").connect("my_stations"); });
+
+      function connected(data)
+      {
+        if( data[<%= @station_obj.id %>] != undefined )
+        {
+          $("#station_title").html( data[<%= @station_obj.id %>].editobj.name );
+        }
+        else
+        {
+          $("#station_title").html("<%= @station_obj.playable.name %>");
+        }
+
+        var station = {};
+        if(data == undefined)
+        {
+          station[<%= @station_obj.id %>] = {
+            id: <%= @station_obj.id %>,
+            station_name: "<%= @station_obj.name %>",
+            station_queue: "'<%= @station_obj.playable.station_queue %>'",
+            includes: "<%= @station_obj.playable.includes(3).map { |station| station.artist.name }.join(', ') %>",
+            editobj: currentStation
+          };
+          swf("swfutils").store("my_stations", station);
+          swf("swfutils").connect("my_stations", "Widget.reload_list");
+        }
+        else
+        {
+          if( data[<%= @station_obj.id %>] == undefined )
+          {
+            station = data;
+            station[<%= @station_obj.id %>] = {
+              id: <%= @station_obj.id %>,
+              station_name: "<%= @station_obj.name %>",
+              station_queue: "<%= @station_obj.playable.station_queue %>",
+              includes: "<%= @station_obj.playable.includes(3).map { |station| station.artist.name }.join(', ') %>",
+              editobj: currentStation
+            };
+            swf("swfutils").store("my_stations", station);
+            swf("swfutils").connect("my_stations", "Widget.reload_list");
+          }
+          else
+          {
+            station = data;
+            if(!init)
+            {
+              swf("swfutils").connect("my_stations", "Widget.reload_list");
+              init = true;
+            }
+          }
+        }
+        stationList = station;
+      }
+
+      function setElement(data)
+      {
+        var elem  = "<li id='my_station_item_" + data.id + "'>";
+            elem += "<div class='song_name_large'>";
+            elem += "<a id='my_stations_list_play_" + data.id + "' class='launch_station' station_queue=" + data.station_queue + " station_id=" + data.id + " href='#'><img src='http://staging.widget.hoodiny.com/images/icon_20_play.png' title='play' class='list_play_button custom_color list_button'/></a>";
+            elem += "&nbsp;&nbsp;";
+            elem += "<b><a id='my_stations_list_name_" + data.id + "' class='launch_station' station_queue=" + data.station_queue + " station_id=" + data.id + " href='#'>" + data.editobj.name + "</a></b>";
+            elem += "</div>";
+            elem += "<div class='includes'>";
+            elem += data.includes;
+            elem += "</div>";
+            elem += "<div class='large_btn2'>";
+            elem += "<a onclick='Widget.launch_edit_layer(" + data.id + ");return false;' href='#'><img src='http://staging.widget.hoodiny.com/images/icon_20_edit.png' class='custom_color list_button' alt='Editar'></a>";
+            elem += "&nbsp;";
+            elem += "<a onclick='Widget.remove_from_layer(" + data.id + "); return false;' href='#'><img src='http://staging.widget.hoodiny.com/images/icon_20_delete.png' class='custom_color list_button' alt='Apagar'></a>";
+            elem += "</div>";
+            elem += "<br class='clearer'>";
+            elem += "</li>";
+        return elem;
+      }
+    </script>
+
+  <br/>
+    <small><%= station_contains(@station_obj.playable, 3, true, {:target => "_blank"}, {:unlinked => true}) %></small>
+</div><!--/end top_buttons -->
+
+<div class="album_actions2">
+  <%= custom_button(t("radio.create_new_station"), :id => "create_station_button", :class => "create_new_station") %><br/>
+</div>

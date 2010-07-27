@@ -136,7 +136,7 @@ var Widget = {
     var id       = $('#station_id').val();
     var queue    = $('#station_queue').val();
     var is_owner = $('#owner').val() == "true";
-    var req      = HOSTURL + "/radio/album_detail?widget=true&station_id=" + id;
+    var req      = HOSTURL + "/widget/album_detail?widget=true&station_id=" + id;
 
     if(from_list)
     {
