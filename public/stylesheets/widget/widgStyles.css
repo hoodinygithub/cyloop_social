@@ -480,3 +480,7 @@ div#widget_window div.inactive {
 div#widget_window div.active {
 	background:  #000 url("/images/widget/widgHandle_deactivate.png") no-repeat;
 }
+
+#trans_logo {
+  background-color: #00A5F8;
+}
