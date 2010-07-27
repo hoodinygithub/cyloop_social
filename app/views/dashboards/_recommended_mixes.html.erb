@@ -6,7 +6,7 @@
 
     <div class="overlay">
       <div class="hidden">
-        <%= link_to avatar_for(playlist.owner, :tiny), user_path(playlist.owner) %>
+        <%= link_to avatar_for(playlist.owner, :tiny, :class => 'left_side'), user_path(playlist.owner) %>
         <span class="creator_and_date">
           <span class="bold"><%= link_to truncate(playlist.owner.name,15), playlist.owner rescue ""%></span><br/>
           <%= t('basics.overlay_created_at', :when => distance_of_time_in_words_to_now(playlist.updated_at)) %>
