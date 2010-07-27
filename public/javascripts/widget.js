@@ -405,7 +405,7 @@ function album_details(result)
 {
   $('#current_station_info').empty();
   $('#current_station_info').append(result);
-  $('#current_station_info').append("<br class='clearer' />");
+  $('#current_station_info').append("<div class='clearer'></div>");
   initCreateStationButton();
 }
 

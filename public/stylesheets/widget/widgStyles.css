@@ -16,7 +16,6 @@ body {
 }
 
 #widget_container .content {
-	float: left;
 	background-color: #F7F7F7;
 	border-left: 1px solid #D9D9D9;
 	border-right: 1px solid #D9D9D9;
@@ -44,7 +43,6 @@ body {
 }
 
 .album_detail {
-  _float: left;
   border-top: 1px solid #CCC;
   border-bottom: 1px solid #CCC;
   background-color: #F7F7F7 !important;
