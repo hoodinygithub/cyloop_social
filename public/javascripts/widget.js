@@ -195,15 +195,17 @@ var Widget = {
     var station_id = $('#station_id').val();
     var urlString  = HOSTURL + "/widget/info/" + station_id + "/" + id;
     if( typeof(cutsomKeys) == "string" ) urlString += "?customize=" + customKeys;
-    $('.artist_radio_info').slideUp( function() {
-      if(id) swf('swfutils').proxyreq(urlString, 'artist_detail');
-    });
+    //$('.artist_radio_info').slideUp( function() {
+    //  if(id) swf('swfutils').proxyreq(urlString, 'artist_detail');
+    //});
+    $('.artist_radio_info').empty();
+    if(id) swf('swfutils').proxyreq(urlString, 'artist_detail');
   },
 
   reload_list: function(data)
   {
     $("#my_stations_list .songs_box ul").empty();
-    for(item in data)
+    for(var item in data)
     {
       $("#my_stations_list .songs_box ul").append( setElement(data[item]) );
     }
