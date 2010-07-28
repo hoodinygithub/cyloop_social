@@ -28,7 +28,7 @@
           <% end %>
         }
 
-        a, span.includes, div.includes {
+        a, span.includes_text, div.includes {
           color: #<%= @campaign.hexcolor %>
         }
 
@@ -132,58 +132,57 @@
           clearInterval(jq_interval);
           $(document).ready( function() {
 
-          Widget.init_top_buttons();
+            Widget.init_top_buttons();
 
 
 
-        var artistSearch = $("input[name='search_station_name']");
-        var stationID    = $("input[name='search_station_id']");
-        var stationQueue = $("input[name='search_station_queue']");
-        var listenButton = $("#create_station_submit");
+            var artistSearch = $("input[name='search_station_name']");
+            var stationID    = $("input[name='search_station_id']");
+            var stationQueue = $("input[name='search_station_queue']");
+            var listenButton = $("#create_station_submit");
 
-        artistSearch.css("color", "#C0D6E2");
-
-        artistSearch.focus(function() {
-          if(artistSearch.val() == "<%= t('radio.search_hint') %>") artistSearch.attr("value", "");
-          if(artistSearch.attr("touched") != "true")
-          {
-            artistSearch.attr("touched", "true");
-            artistSearch.css("color", "#025D8C");
-            artistSearch.attr("value", "");
-          }
-        });
-
-        artistSearch.blur(function()
-        {
-          if(artistSearch.val() == "")
-          {
-            artistSearch.attr("touched", "false");
             artistSearch.css("color", "#C0D6E2");
-            artistSearch.attr("value", "<%= t('radio.search_hint') %>");
-            listenButton.attr("can_post", 0).removeClass("custom_button").addClass("grey_button_big");
-            stationID.val("");
-            stationQueue.val("");
-          }
-        });
 
-        var delay;
-        artistSearch.keyup(function()
-        {
-          var val = this.value;
-          clearTimeout(delay);
-          if(val) delay = setTimeout(function() { searchStation(val) }, 600);
-        });
+            artistSearch.focus(function() {
+              if(artistSearch.val() == "<%= t('radio.search_hint') %>") artistSearch.attr("value", "");
+              if(artistSearch.attr("touched") != "true")
+              {
+                artistSearch.attr("touched", "true");
+                artistSearch.css("color", "#025D8C");
+                artistSearch.attr("value", "");
+              }
+            });
 
-        listenButton.click(function(e)
-        {
-          if( parseInt( $(this).attr("can_post"), 10 ) )
-          {
-            Widget.launch_station_handler(this, e, "<%= widghost %>");
-            listenButton.attr("can_post", 0);
-          }
-        });
+            artistSearch.blur(function()
+            {
+              if(artistSearch.val() == "")
+              {
+                artistSearch.attr("touched", "false");
+                artistSearch.css("color", "#C0D6E2");
+                artistSearch.attr("value", "<%= t('radio.search_hint') %>");
+                listenButton.attr("can_post", 0).removeClass("custom_button").addClass("grey_button_big");
+                stationID.val("");
+                stationQueue.val("");
+              }
+            });
 
-      });
+            var delay;
+            artistSearch.keyup(function()
+            {
+              var val = this.value;
+              clearTimeout(delay);
+              if(val) delay = setTimeout(function() { searchStation(val) }, 600);
+            });
+
+            listenButton.click(function(e)
+            {
+              if( parseInt( $(this).attr("can_post"), 10 ) )
+              {
+                Widget.launch_station_handler(this, e, "<%= widghost %>");
+                listenButton.attr("can_post", 0);
+              }
+            });
+          });
         }
       }, 50 );
     </script>

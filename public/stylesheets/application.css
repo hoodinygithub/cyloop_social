@@ -1665,6 +1665,8 @@ div.reviews {
 
 .spaced_img {
     margin-bottom: 5px;
+    width: 50px !important;
+    height: 50px !important;
 }
 
 .four_thumbs {

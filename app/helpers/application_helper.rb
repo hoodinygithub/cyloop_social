@@ -275,7 +275,7 @@ module ApplicationHelper
       unless options[:unlinked] == true
         links << link_to(station_artist.artist.name, artist_path(station_artist.artist), link_options) unless station_artist.artist.nil?
       else
-        links << "<span class='includes'>#{station_artist.artist.name}</span>" unless station_artist.artist.nil?
+        links << "<span class='includes_text'>#{station_artist.artist.name}</span>" unless station_artist.artist.nil?
       end
     end
 
