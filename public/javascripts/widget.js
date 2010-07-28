@@ -268,71 +268,17 @@ function edit_station_layer(data)
       elem += "</div>";
       elem += "<br/>";
       elem += "<div class='align_right'>";
-      elem += "<big<a href='#' class='black valign_middle popup_close_action' onclick=\"$(document).trigger('close.facebox');return false;\">Cancel</a></big>";
+      //elem += "<big<a href='#' class='black valign_middle popup_close_action' onclick=\"$(document).trigger('close.facebox');return false;\">Cancel</a></big>";
+      elem += "<big><a href='#' class='black valign_middle close'>Cancel</a></big>&nbsp;&nbsp;";
       elem += "<a href='#' onclick='Widget.edit_from_layer(); return false;' id='save_station_name_button' class='custom_button valign_middle'><span><span>Save</span></span></a>";
       elem += "</div>";
       elem += "</form>";
   return elem;
 }
 
-function edit_station(items)
+function hello()
 {
-  var station_id = $("#layer_station_id").val();
-  var new_station_name = $("#new_station_name").val();
-
-  if(new_station_name == '') { alert("Blank"); return false; }
-
-  items[station_id].editobj.name = new_station_name;
-  var stations = items;
-  swf("swfutils").store("my_stations", stations);
-
-  $("#my_stations_list_name_" + station_id).html(new_station_name);
-
-  if(station_id == currentStation.id) { 
-    $("#station_title").html(new_station_name); 
-  }
-  $(document).trigger("close.facebox");
-}
-
-function delete_object_item(items)
-{
-  delete items[parseInt( $("#station_to_delete").val(), 10 )];
-  var stations = items;
-  swf("swfutils").store("my_stations", stations);
-}
-
-
-function edit_station_layer(data)
-{
-  var elem  = "<form action='' method='post' class='account_settings edit_station_form'>";
-      elem += "<input id='layer_station_id' type='hidden' value='" + data.id + "'/>";
-      elem += "<div class='title' style='float:left'>" + data.title + "</div>";
-      elem += "<div id='edit_loading' style='float:right' class='hide'>";
-      elem += "<img src='/images/loading.gif' />";
-      elem += "</div>";
-      elem += "<br class='clearer'/>";
-      elem += "<div class='form_row'>";
-      elem += data.stationimg;
-      elem += "<div class='popup_mix_text'>";
-      elem += "<big>" + data.name + "</big><br/>";
-      elem += "<small>" + data.includes + "</small>";
-      elem += "</div>";
-      elem += "<div class='clearer'></div>";
-      elem += "<br/>";
-      elem += "</div>";
-      elem += "<div class='form_row'>";
-      elem += "<label><b>" + data.newname + "</b></label>";
-      elem += "<div class='grey_round_box'>";
-      elem += "<input id='new_station_name' type='text' class='input full_width' />";
-      elem += "</div>";
-      elem += "</div>";
-      elem += "<br/>";
-      elem += "<div class='align_right'>";
-      elem += "<big<a href='#' class='black valign_middle popup_close_action' onclick=\"$(document).trigger('close.facebox');return false;\">Cancel</a></big>";
-      elem += "<a href='#' onclick='Widget.edit_from_layer(); return false;' id='save_station_name_button' class='custom_button valign_middle'><span><span>Save</span></span></a>";
-      elem += "</div>";
-      elem += "</form>";
-  return elem;
+  alert("HELLO");
 }
 
 function edit_station(items)
