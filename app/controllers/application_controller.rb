@@ -271,11 +271,7 @@ class ApplicationController < ActionController::Base
   end
 
   def global_url
-    if RAILS_ENV == 'production'
-      "cyloop.com"
-    else
-      host_port
-    end
+    host_port
   end
 
   def current_country
