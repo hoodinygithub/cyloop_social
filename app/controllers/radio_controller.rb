@@ -63,6 +63,7 @@ class RadioController < ApplicationController
         @station_obj.playable.track_a_play_for(current_user) if @station_obj.playable
         if params[:partial_prefix]
           render :partial => "#{partial_prefix}#{@station_obj.playable.class.to_s.underscore}"
+        else
           render :partial => @station_obj.playable.class.to_s.underscore
         end
       end
