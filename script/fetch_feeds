@@ -71,6 +71,6 @@ end
 # Clean old releases (keep only the last 5)
 feeds = `ls -x #{OUTPUT_LOCATION}`
 feeds = feeds.split(/\t|\n/).compact.delete_if{|a| a.to_s.strip.empty? }
-directories = (feeds - feeds.last(5)).map { |feed| File.join(OUTPUT_LOCATION, feed.strip) }.join(" ")
+directories = (feeds - feeds.last(5) - [timestamp]).map { |feed| File.join(OUTPUT_LOCATION, feed.strip) }.join(" ")
 
 system "rm -rf #{directories}"
