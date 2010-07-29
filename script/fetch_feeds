@@ -22,7 +22,7 @@ URL_MAPS = [
   {:url => "http://cm.cyloop.com/feeds/msnlatino/msnlatino_home_promo.xml", :output => "msnlatino_url_promo_cysocial.xml"}
 ]
 
-timestamp = Time.now.strftime("%m%d%Y%I%M%p")
+timestamp = Time.now.strftime("%Y%m%d%I%M%p")
 
 FileUtils.mkdir_p("#{OUTPUT_LOCATION}/#{timestamp}")
 
