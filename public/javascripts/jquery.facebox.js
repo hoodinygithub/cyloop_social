@@ -66,6 +66,8 @@
 
   var templates = {};
 
+  var HOST = typeof(HOSTURL) == "undefined" ? "" : HOSTURL;
+
   templates.popup = '\
       <div class="popup" id="facebox"> \
         <div class="top_shadow"> \
@@ -133,8 +135,8 @@
     settings: {
       opacity      : 0.5,
       overlay      : true,
-      loadingImage : '/images/loading.gif',
-      closeImage   : '/images/popup_close.png',
+      loadingImage : HOST + '/images/loading.gif',
+      closeImage   : HOST + '/images/popup_close.png',
       imageTypes   : [ 'png', 'jpg', 'jpeg', 'gif' ],
       faceboxHtml  : '\
         <div class="popup" id="facebox"> \

@@ -268,7 +268,6 @@ function edit_station_layer(data)
       elem += "</div>";
       elem += "<br/>";
       elem += "<div class='align_right'>";
-      //elem += "<big<a href='#' class='black valign_middle popup_close_action' onclick=\"$(document).trigger('close.facebox');return false;\">Cancel</a></big>";
       elem += "<big><a href='#' class='black valign_middle close'>Cancel</a></big>&nbsp;&nbsp;";
       elem += "<a href='#' onclick='Widget.edit_from_layer(); return false;' id='save_station_name_button' class='custom_button valign_middle'><span><span>Save</span></span></a>";
       elem += "</div>";
