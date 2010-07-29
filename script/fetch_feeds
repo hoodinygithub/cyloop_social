@@ -68,3 +68,9 @@ else
   log "Fetch invalid! valid_fetch false\n\n"
 end
 
+# Clean old releases (keep only the last 5)
+feeds = `ls -x #{OUTPUT_LOCATION}`
+feeds = feeds.split(/\t|\n/).compact.delete_if{|a| a.to_s.empty? }
+directories = (feeds - feeds.last(5)).map { |feed| File.join(OUTPUT_LOCATION, feed) }.join(" ")
+
+system "rm -rf #{directories}"
