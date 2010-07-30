@@ -203,5 +203,9 @@ ul.susbcriptions_list li.mixes_search_item img.follower_image{
   width: 630px;
   float: left;
 }
-
-
+.network_red_msg{
+  padding-left:20px !important;
+}
+.album_detail_area{
+  width: 530px !important;
+}

@@ -327,8 +327,8 @@ function load_station_info(station_id)
           initRadioTabs();
           $('input[type=radio].star').rating();
           if(response.indexOf("<") > -1) {
-						$('.artist_radio_info').slideDown();
-					}
+	    $('.artist_radio_info').show(); //Can't be slideDown IE problem
+	  }
         }
       });
     }
