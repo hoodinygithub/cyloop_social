@@ -53,6 +53,10 @@ body {
   float: none !important;
 }
 
+.four_thumbs img {
+  float: none !important;
+}
+
 #footer {
   border: 0px !important;
   border-top: 1px solid #CCC !important;
