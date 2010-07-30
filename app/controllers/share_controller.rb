@@ -29,9 +29,9 @@ class ShareController < ApplicationController
         end
       else
         if current_user.gender=='Male'
-          sender_avatar = "avatars/missing/male.gif"
+          sender_avatar = "http://#{global_url}/avatars/missing/male.gif"
         else
-          sender_avatar = "avatars/missing/female.gif"
+          sender_avatar = "http://#{global_url}/avatars/missing/female.gif"
         end
       end
     end
