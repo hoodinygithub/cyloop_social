@@ -178,9 +178,12 @@ Base.radio.set_station_search_details = function(id, queue, play) {
 };
 
 Base.radio.set_station_details = function(id, queue, play, host) {
-  regex = /\d+/;
-  playlist_id = regex.exec(queue)[0];
-  Base.reviews.load_playlist_reviews_list($("#playlist_reviews"), playlist_id);
+  if(queue.indexOf("playlists/") != -1)
+  {  
+    regex = /\d+/;
+    playlist_id = regex.exec(queue)[0];
+    Base.reviews.load_playlist_reviews_list($("#playlist_reviews"), playlist_id);
+  }
   var HOST;
   if(host || typeof(host) == 'undefined') HOST = host;
   else HOST = "";
