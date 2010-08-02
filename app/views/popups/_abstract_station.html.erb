@@ -1,5 +1,5 @@
 <%= render :partial => '/radio/station_details_form' %>
-<%= four_thumbs_to(@station_obj, :class => 'left_side', :clearer => true, :type => :small, :function => "Widget.set_station_details(#{@station_obj.playable.id}, '#{@station_obj.playable.station_queue}', true, '')") %>
+<%= four_thumbs_to(@station_obj, :class => 'left_side', :clearer => true, :type => :small, :function => "Widget.set_station_details(#{@station_obj.id}, '#{@station_obj.playable.station_queue}', true, '')") %>
 <div class="album_text2">
   <b id='station_title' class='station_title'>&nbsp;</b>
   <%= link_to_function(image_tag('http://staging.widget.hoodiny.com/images/icon_20_edit.png', :class => "custom_color png_fix valign_middle", :alt => t('actions.edit')), "Widget.launch_edit_layer(#{@station_obj.id})"  )%>
