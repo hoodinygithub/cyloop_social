@@ -1,5 +1,5 @@
 <%= render :partial => 'station_details_form' %>
-<%= four_thumbs_to(@station_obj, :class => 'left_side', :clearer => true, :type => :small) %>
+<%= four_thumbs_to(@station_obj, :class => 'left_side', :clearer => true, :type => :small, :function => "Base.radio.set_station_details(#{@station_obj.id}, '#{@station_obj.playable.station_queue}', true, '')") %>
 <div id="now_playing_user_station" class="album_text2">
   <span id="station_name" class="station_name"><%= @station_obj.playable.name %></span>
   <% if @station_obj.playable.owner_is? current_user %>
