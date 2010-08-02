@@ -496,3 +496,7 @@ div#widget_window div.active {
 #trans_logo {
   background-color: #00A5F8;
 }
+
+.radio_tabs_content {
+  height: 204px !important;
+}
