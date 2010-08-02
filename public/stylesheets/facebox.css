@@ -90,7 +90,7 @@
 
 * html .popup .top_shadow .center_shadow {
     background: none;
-    filter:progid:dximagetransform.microsoft.alphaimageloader(src='/images/popup_top_bg.png', sizingMethod='scale');
+    filter:progid:dximagetransform.microsoft.alphaimageloader(src='http://www.cyloop.com/images/popup_top_bg.png', sizingMethod='scale');
 }
 
 .popup .bottom_shadow .center_shadow {
@@ -101,7 +101,7 @@
 
 * html .popup .bottom_shadow .center_shadow {
     background: none;
-    filter:progid:dximagetransform.microsoft.alphaimageloader(src='/images/popup_bottom_bg.png', sizingMethod='scale');
+    filter:progid:dximagetransform.microsoft.alphaimageloader(src='http://www.cyloop.com/images/popup_bottom_bg.png', sizingMethod='scale');
 }
 
 .popup .corner {
@@ -118,7 +118,7 @@
 
 * html .popup .top_left {
     background: none;
-    filter:progid:dximagetransform.microsoft.alphaimageloader(src='/images/popup_corner_top_left.png', sizingMethod='crop');
+    filter:progid:dximagetransform.microsoft.alphaimageloader(src='http://www.cyloop.com/images/popup_corner_top_left.png', sizingMethod='crop');
 }
 
 .popup .top_right {
@@ -129,7 +129,7 @@
 
 * html .popup .top_right {
     background: none;
-    filter:progid:dximagetransform.microsoft.alphaimageloader(src='images/popup_corner_top_right.png', sizingMethod='crop');
+    filter:progid:dximagetransform.microsoft.alphaimageloader(src='http://www.cyloop.com/images/popup_corner_top_right.png', sizingMethod='crop');
 }
 
 .popup .bottom_left {
@@ -140,7 +140,7 @@
 
 * html .popup .bottom_left {
     background: none;
-    filter:progid:dximagetransform.microsoft.alphaimageloader(src='/images/popup_corner_bottom_left.png', sizingMethod='crop');
+    filter:progid:dximagetransform.microsoft.alphaimageloader(src='http://www.cyloop.com/images/popup_corner_bottom_left.png', sizingMethod='crop');
 }
 
 .popup .bottom_right {
@@ -151,7 +151,7 @@
 
 * html .popup .bottom_right {
     background: none;
-    filter:progid:dximagetransform.microsoft.alphaimageloader(src='/images/popup_corner_bottom_right.png', sizingMethod='crop');
+    filter:progid:dximagetransform.microsoft.alphaimageloader(src='http://www.cyloop.com/images/popup_corner_bottom_right.png', sizingMethod='crop');
 }
 
 .close_image {
@@ -170,7 +170,7 @@
 * html .content {
     background: none;
     zoom: 1;
-    filter:progid:dximagetransform.microsoft.alphaimageloader(src='/images/popup_h_bg.png', sizingMethod='scale');
+    filter:progid:dximagetransform.microsoft.alphaimageloader(src='http://www.cyloop.com/images/popup_h_bg.png', sizingMethod='scale');
 }
 
 .popup .title {
