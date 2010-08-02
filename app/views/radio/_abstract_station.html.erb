@@ -1,5 +1,5 @@
 <%= render :partial => 'station_details_form' %>
-<%= four_thumbs_to(@station_obj, :class => 'left_side', :clearer => true, :type => :small) %>
+<%= four_thumbs_to(@station_obj, :class => 'left_side', :clearer => true, :type => :small, :function => "Base.radio.set_station_details(#{@station_obj.id}, '#{@station_obj.playable.station_queue}', true, '')") %>
 <div class="album_text2">
   <b id="station_name" class="station_name"><%= @station_obj.playable.name %></b>
   <%= link_to(image_tag(market_image_path('icon_20_share.png'), :title => t('actions.share'), :class => 'png_fix valign_middle custom_color'), '#', :onclick => "Base.stations.share(#{@station_obj.id}); return false;") %>
