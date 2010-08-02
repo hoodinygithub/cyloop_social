@@ -81,7 +81,7 @@ class RadioController < ApplicationController
     if request.xhr?
       if logged_in?
         @station_obj = Station.find(params[:station_id]) rescue nil
-        render :partial => 'my_stations'
+        render :partial => 'my_user_stations'
       end
     else
       redirect_to radio_path(:station_id => params[:station_id])
