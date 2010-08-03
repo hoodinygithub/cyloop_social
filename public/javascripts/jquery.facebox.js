@@ -72,7 +72,7 @@
           <div class="top_left corner png_fix"></div> \
           <div class="center_shadow png_fix"></div> \
           <div class="top_right corner png_fix"></div> \
-          <a href="#" class="close"><img src="/images/popup_close.png" class="close_image png_fix" alt="X" title="Close" /></a> \
+          <a href="#" class="close"><img src="http://www.cyloop.com/images/popup_close.png" class="close_image png_fix" alt="X" title="Close" /></a> \
         </div> \
         <div class="content"> \
         </div> \
@@ -142,7 +142,7 @@
             <div class="top_left corner"></div> \
             <div class="center_shadow"></div> \
             <div class="top_right corner"></div> \
-            <a href="#" class="close"><img src="/images/popup_close.png" class="close_image png_fix" alt="X" title="Close" /></a> \
+            <a href="#" class="close"><img src="http://www.cyloop.com/images/popup_close.png" class="close_image png_fix" alt="X" title="Close" /></a> \
           </div> \
           <div class="content"> \
           </div> \
@@ -192,7 +192,7 @@
       $('#facebox').css('left', $(window).width() / 2 - ($("#facebox div.content div:first").width() / 2))
       $(document).trigger('reveal.facebox').trigger('afterReveal.facebox')
       $('#facebox .close').click($.facebox.close);
-      $('.png_fix').supersleight({shim: '/images/blank.gif'});
+      $('.png_fix').supersleight({shim: 'http://www.cyloop.com/images/blank.gif'});
     },
 
     close: function() {
