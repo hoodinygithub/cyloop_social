@@ -19,7 +19,7 @@ production:
   consumer_secret: SGwfowbiNdPTEIUl5Qv84IeEondGRE7wjGIzE7eDAI
   token: 76096687-WLjgZb7bXVTZFd1Jv82Z9puGeI9m0KOtw0C7wtAqh
   secret: FbsHuYsfvQpzscLfa2sraD9FrG0z2bhpyxY9Gjit3U
-  ttserver_host: 10.6.64.128
+  ttserver_host: 10.122.200.134
   ttserver_port: 1980
 
 ec2_production:
