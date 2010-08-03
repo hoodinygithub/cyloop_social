@@ -500,4 +500,6 @@ div#widget_window div.active {
 
 .radio_tabs_content {
   height: 204px !important;
+  _height: 210px !important;
+  overflow: hidden !important;
 }
