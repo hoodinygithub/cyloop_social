@@ -114,13 +114,15 @@ class User < Account
       all(:include => :station, :conditions => 'playlists.locked_at IS NULL', :order => 'playlists.updated_at DESC', :limit => limit)
     end
 
-    def locked(limit = 6)
-      all(:include => :station, :conditions => 'playlists.locked_at IS NOT NULL', :order => 'playlists.updated_at DESC', :limit => limit)
+    def locked(args = {})
+      opts = { :include => :station, :conditions => 'playlists.locked_at IS NOT NULL' }
+      opts.merge!(args) unless args.empty?
+      all(opts)
     end
 
     def unlocked(args = {})
-      opts = { :include => :station, :conditions => 'playlists.locked_at IS NULL', :order => 'playlists.updated_at DESC' }
-      opts.merge!(args) unless opts.empty?
+      opts = { :include => :station, :conditions => 'playlists.locked_at IS NULL' }
+      opts.merge!(args) unless args.empty?
       all(opts)
     end
   end
