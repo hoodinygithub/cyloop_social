@@ -32,28 +32,6 @@ class CampaignsController < ApplicationController
       format.xml  { render :xml => @campaign.attributes.merge!(links).to_xml(:root => "campaign")}
     end
   end
-
-  def campaign_key
-    player = Player.find_by_player_key(params[:player]);
-    @campaign = player.active_campaign
-    return render :text => 'Campaign not active', :status => 405 unless @campaign.campaign_status.value == 'active'
-    respond_to do |format|
-      format.xml  { render :xml => @campaign.attributes.merge!({"header-logo-file-path" => @campaign.header_logo.url}).to_xml(:root => "campaign") }
-      format.js { render :json => @campaign }
-    end
-  end
-
-  def campaign_key
-    player = Player.find_by_player_key(params[:player]);
-    @campaign = player.active_campaign
-    return render :text => 'Campaign not active', :status => 405 unless @campaign.campaign_status.value == 'active'
-    respond_to do |format|
-      format.xml  { render :xml => @campaign.attributes.merge!({"header-logo-file-path" => @campaign.header_logo.url}).to_xml(:root => "campaign") }
-      format.js { render :text => "var cssobj = #{@campaign.to_json}" }
-      #format.js  { render :text => @campaign.attributes.merge!({"header-logo-file-path" => @campaign.header_logo.url}).map { |s| s } }
-      #format.js  { render :text => @stations.collect{|s| "#{s.station.id}|#{s.name}|#{s.station_queue(:ip_address => remote_ip)}" }.join("\n") }
-    end
-  end
   
   def new
     @campaign = Campaign.new

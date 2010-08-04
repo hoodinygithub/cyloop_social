@@ -131,12 +131,28 @@ div#radio_label h1 {
 	background: url("/images/btn_28_round_left.png") no-repeat scroll left top #00A5F8;
 	color: #FFF;
 	display: inline-block;
-	font-size: 12px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
 	font-weight: bold;
 	height: 28px;
 	line-height: 28px;
 	overflow: hidden;
 	padding-left: 4px;
+	text-align: center;
+}
+
+.submit_custom_button {
+	text-transform: uppercase;
+	background: url("/images/btn_28_round_left_black.png") no-repeat scroll left top #00A5F8;
+	color: #FFF;
+	display: inline-block;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: bold;
+	height: 28px;
+	line-height: 28px;
+	overflow: hidden;
+	padding-left: 2px;
 	text-align: center;
 }
 
@@ -149,12 +165,22 @@ div#radio_label h1 {
 	padding-right: 4px;
 }
 
-.custom_button span span {
+.submit_custom_button span {
+  background: none;
+  background: url("/images/btn_28_round_right_black.png") no-repeat scroll right top transparent;
+	color: #FFF;
+	cursor: pointer;
+	display: inline-block;
+	height: 28px;
+	padding-right: 4px;
+}
+
+.custom_button span span, .submit_custom_button span span {
 	background: none repeat scroll 0 0 transparent;
 	padding: 0 10px;
 }
 
-.custom_button:hover {
+.custom_button:hover, .submit_custom_button:hover {
 	background-color: #BDBDBD;
 }
 
@@ -314,7 +340,7 @@ div#widgView div#stationWrapper div#stationBody form input.search {
 	color: #999;
 }
 
-div#widgView div#stationWrapper div#stationBody form button
+div#submit_button
 {
 	position: absolute;
 	cursor: pointer;
@@ -322,7 +348,14 @@ div#widgView div#stationWrapper div#stationBody form button
 	top: 7px;
 	left: 195px;
 	width: 85px;
-	height: 26px;
+}
+
+div#widgView div#submit_button span span {
+  padding: 0 5px !important;
+}
+
+div#widgView div#submit_button .class span {
+  padding-right: none !important;
 }
 
 div#widgView div#stationWrapper div#stationBody form button.active {

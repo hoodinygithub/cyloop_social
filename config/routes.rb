@@ -157,7 +157,6 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :mixes, :controller => 'playlists', :has_many => [:reviews]
 
-  map.campaign_key '/campaign_key/:player.:format', :controller => 'campaigns', :action => 'campaign_key'
   map.resources :campaigns, :member => {:activate => :post, :deactivate => :post}
 
   profile_routes = lambda do |profile|

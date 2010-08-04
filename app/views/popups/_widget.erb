@@ -1,5 +1,6 @@
 // init variables
 var ENV = "<%= ENV['RAILS_ENV'] %>";
+<% campaign = Player.find_by_player_key(params[:player_key]).active_campaign %>
 
 var WIDGHOST;
 if      (ENV == "development") { WIDGHOST = ""; }
@@ -64,7 +65,6 @@ function swf(objname)
     $.noConflict();
     importJS(WIDGHOST + "/javascripts/jquery.metadata.js");
     importJS(WIDGHOST + "/javascripts/jquery.auto-complete.js");
-    //importJS(WIDGHOST + "/campaign_key/widget_player.js");
     importJS(WIDGHOST + "/javascripts/swfobject.js", "swfobject", function() { READY = true; } );
   });
 })();
@@ -83,42 +83,13 @@ function checkLoaded()
   if(READY) 
   {
     clearInterval(intID);
-    //setProxyCtl(opt.elementId);
     return new Cyloop.Widget(opt);
   }
-}
-
-function setProxyCtl(elem)
-{
-  var element = jQuery("#" + elem);
-  element.append("<div id='swfutils'></div>");
-  var flashvars = {};
-  var params = { wmode: "transparent", allowScriptAccess: "always" };
-  var attrib = { id: "swfutils", name: "swfutils" };
-  swfobject.embedSWF( WIDGHOST + "/flash/swfutils.swf" , "swfutils", "1", "1", "9", false, flashvars, params, attrib );
-  
-  var interval = setInterval( function() {
-    if( typeof( swf("swfutils") ) != "undefined" )
-    {
-      clearInterval(interval);
-      proxyReady();
-    }
-  }, 50 );
-  
 }
 
 function proxyReady()
 {
   swf("swfutils").proxyreq(WIDGHOST + "/campaign_key/widget_player.js", "cssObject");
-}
-
-var cssobj;
-function cssObject(data)
-{
-  console.log( typeof(data) );
-  //cssobj = new Object(data);
-  //console.log(cssobj.c);
-  //new Cyloop.Widget(opt);
 }
 
 // widget object
@@ -132,16 +103,12 @@ Cyloop.Widget = function(options)
   // widget ui
   this.element = jQuery("#" + this.options.elementId);
   
-  /*
   var css  = "<style type='text/css'>";
-      css += "div#widgView div#controlsWrapper div#controlsHeader span.create, div#songInfo div#info h1, div#info span, div#widgView div#stationWrapper div#stationHeader h1 { color: #" + cssobj.campaign.hexcolor + "} !important;";
+      css += "div#widgView div#initialWrapper div#initialBody a, .submit_custom_button { background-color: #<%= campaign.hexcolor %> !important };";
+      css += ".create, #info h1, .artist { color: #<%= campaign.hexcolor %> !important };";
       css += "</style>";
-      
-    this.element.append(css);
-  */
+  this.element.append(css);
   
-  
-
   // widget content wrapper
   this.element.append("<div id='widgView'></div>");
   var content = jQuery("#widgView");
@@ -197,8 +164,15 @@ Cyloop.Widget = function(options)
   // station form
   stationBody.append("<form id='artistSearch' name='artistSearch'></form>");
   form = jQuery("form#artistSearch");
+  form.append("<input type='text' id='station_name' name='station_name' class='search'/>");
+  form.append("<div id='submit_button'><a class='submit_custom_button'><span><span>Crear&nbsp;Radio</span></span></a></div>");
+  //stationBody.append("<a class='custom_button'><span><span>Crear Radio</span></span></a>");
+  /*
+  stationBody.append("<form id='artistSearch' name='artistSearch'></form>");
+  form = jQuery("form#artistSearch");
   form.append("<input type='text' id='station_name' name='station_name' class='search'/> <button name='submit' class='inactive' type='submit'/>");
   submitActive(false);
+  */
   this.stationWrapper.append("<div id='widgFooter'><span class='poweredBy'></span></div>");
 
   // controls wrapper
@@ -558,16 +532,16 @@ function proxyrsp(obj)
 
 function submitActive(active)
 {
-  jQuery("form#artistSearch").unbind("submit");
-  var elem = jQuery("div#widgView div#stationWrapper div#stationBody form button");
-  active ? elem.attr("class", "active") : elem.attr("class", "inactive"); 
-  jQuery("form#artistSearch").submit( function(e) {
-    e.preventDefault();
-    if(active)
+  jQuery("submit_button a").unbind("click");
+  //var elem = jQuery("div#widgView div#stationWrapper div#stationBody form button");
+  //active ? elem.attr("class", "active") : elem.attr("class", "inactive");
+  jQuery("#submit_button a").click( function(e) {
+    if(active) 
     {
       if( !window.cyloopWidget.popup ) window.cyloopWidget.openPopup();
-      var sn = jQuery(this).find('#station_name').attr('value').toLowerCase();
+      var sn = jQuery("#station_name").attr("value").toLowerCase();
       window.cyloopWidget.createStation({name: sn, req: map[sn]});
     }
+    return false;
   });
 }
