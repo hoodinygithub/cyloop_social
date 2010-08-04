@@ -17,7 +17,7 @@ class ListenMetal
       options = Hash.new
       options.merge!(params)
       options[:remote_ip] = env.has_key?('HTTP_TRUE_CLIENT_IP') ? env['HTTP_TRUE_CLIENT_IP'] : remote_ip
-      options[:user_id] = session[:coke_user_id] || nil
+      options[:user_id] = session[:user_id] || nil
       options[:timestamp] = Time.now.to_i
       options[:site_id] = env['HTTP_HOST']
 
