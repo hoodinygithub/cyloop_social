@@ -68,7 +68,7 @@ class PlaylistsController < ApplicationController
         @playlist_item_ids = Song.find_all_by_id(@songs_in_order).to_a rescue []
         #@playlist_item_ids = Song.find_all_by_id(params[:item_ids].split(',')).to_a rescue []
         unless @playlist_item_ids.empty?
-          attributes = { :name => params[:name], :site_id => current_site.id }
+          attributes = { :name => params[:name].strip, :site_id => current_site.id }
           attributes[:avatar] = params[:avatar] if params[:avatar]
 
           ActiveRecord::Base.transaction do
@@ -118,7 +118,7 @@ class PlaylistsController < ApplicationController
               @playlist.items.create(:song => song, :artist_id => song.artist_id, :position => index + 1) if song
             end
             @playlist.update_tags(params[:playlist][:tags].split(',')) if params[:playlist][:tags]
-            attributes = { :name => params[:playlist][:name], :site_id => current_site.id, :locked_at => nil }
+            attributes = { :name => params[:playlist][:name].strip, :site_id => current_site.id, :locked_at => nil }
             @playlist.update_attributes!(attributes)
           end
           render :text => 'updated'
