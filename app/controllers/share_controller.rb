@@ -42,7 +42,8 @@ class ShareController < ApplicationController
     unless params[:item_id].blank?
       if params[:media] == "song"
         @song = Song.find( params[:item_id] )
-        share_link = "http://www.cyloop.com#{queue_song_path(:slug => @song.artist.slug, :id => @song.album, :song_id => @song)}"
+        station= AbstractStation.find_by_artist_id(@song.artist_id).station
+        share_link = "http://#{global_url}/radio?station_id=#{station.id}"
         params[:item_title] ||= @song.title
         params[:item_author] ||= @song.artist.name
       elsif params[:media] == "station"
@@ -76,7 +77,7 @@ class ShareController < ApplicationController
           :sender_name => sender_name,
           :sender_avatar => sender_avatar,
           :sender_slug => sender_slug,
-          :share_link => params[:share_link],
+          :share_link => share_link,
           :item_author => params[:item_author],
           :item_title => params[:item_title],
           :message => params[:message],
