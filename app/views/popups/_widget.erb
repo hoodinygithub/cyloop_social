@@ -104,8 +104,8 @@ Cyloop.Widget = function(options)
   this.element = jQuery("#" + this.options.elementId);
   
   var css  = "<style type='text/css'>";
-      css += "div#widgView div#initialWrapper div#initialBody a, .submit_custom_button { background-color: #<%= campaign.hexcolor %> !important };";
-      css += ".create, #info h1, .artist { color: #<%= campaign.hexcolor %> !important };";
+      css += "div#widgView div#initialWrapper div#initialBody a, .submit_custom_button, div#widgView div#widgFooter span.poweredBy { background-color: #<%= campaign.hexcolor %> !important; }";
+      css += ".create, #info h1, .artist, ul.auto-complete-list li { color: #<%= campaign.hexcolor %> !important; }";
       css += "</style>";
   this.element.append(css);
   
