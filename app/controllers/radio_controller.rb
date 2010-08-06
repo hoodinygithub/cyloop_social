@@ -200,9 +200,7 @@ class RadioController < ApplicationController
         format.xml { render :xml => Player::Error.new(:error => not_found_message, :code => 404) }
         format.rss do
           feed_site = site_code.match(/^msnca.*/) ? "msncanada" : site_code
-          if @station.nil?
-            redirect_to "http://cm.cyloop.com/feeds/#{feed_site}/feed_top_stations_#{site_code}.xml"
-          end
+          redirect_to "http://cm.cyloop.com/feeds/#{feed_site}/feed_top_stations_#{site_code}.xml" if @station.nil?
         end
       end
 
