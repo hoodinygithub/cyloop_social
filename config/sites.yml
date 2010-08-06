@@ -3,11 +3,10 @@ MSN Mexico:
   deploy_name: mexico
   code: msnmx
   domains:
-    - ms.msn.cyloop.com
-    - production.ms.hoodiny.com
+    - mm.msn.cyloop.com
+    - production.mx.hoodiny.com
     - prodigy.msn.cyloop.com
     - staging.mx.hoodiny.com
-    - staging.cyloopsocial.mx.hoodiny.com
 
 MSN Brazil:
   name: MSN Brazil
