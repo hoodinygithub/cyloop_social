@@ -87,11 +87,6 @@ function checkLoaded()
   }
 }
 
-function proxyReady()
-{
-  swf("swfutils").proxyreq(WIDGHOST + "/campaign_key/widget_player.js", "cssObject");
-}
-
 // widget object
 Cyloop = {};
 Cyloop.Widget = function(options)
@@ -230,7 +225,7 @@ Cyloop.Widget = function(options)
 
   function searchStation(q)
   {
-    var req = "http://widget.cyloop.com/stations.js?q=" + q + "&limit=5";
+    var req = WIDGHOST + "/stations.js?q=" + q + "&limit=5";
     swf("swfutils").proxyreq(req);
   }
   
