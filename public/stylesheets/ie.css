@@ -211,3 +211,12 @@ ul.susbcriptions_list li.mixes_search_item img.follower_image{
 .mix_tags{
   float: left;
 }
+
+.followers_list .follower_actions.w_settings .blue_button.settings_button img,
+.followers_list .follower_actions.w_settings .yellow_button.settings_button img,
+.followers_list .follower_actions.w_settings .green_button.settings_button img,
+.followers_list .follower_actions.w_settings .black_button.settings_button img {
+    position: relative;
+    vertical-align: top;
+    top: 0px !important;
+}
