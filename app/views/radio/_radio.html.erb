@@ -68,7 +68,7 @@
   </div><!--/end mix_box -->
 
   <% if @station_obj.playable.is_a?(Playlist) %>
-    <% if (@station_obj.playable.reviews_count > 0 and !logged_in?) or logged_in? %>
+    <% if (@station_obj.playable.comments.size > 0 and !logged_in?) or logged_in? %>
       <br/><br/><br/>
       <%= render 'reviews' %>
     <% end%>
