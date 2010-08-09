@@ -208,3 +208,6 @@ ul.susbcriptions_list li.mixes_search_item img.follower_image{
 .album_detail_area{
   width: 530px !important;
 }
+.mix_tags{
+  float: left;
+}
