@@ -141,7 +141,7 @@ div#radio_label h1 {
 	text-align: center;
 }
 
-.submit_custom_button {
+#submit_custom_button {
 	text-transform: uppercase;
 	background: url("/images/btn_28_round_left_black.png") no-repeat scroll left top #00A5F8;
 	color: #FFF;
@@ -156,6 +156,10 @@ div#radio_label h1 {
 	text-align: center;
 }
 
+#submit_custom_button.inactive {
+  background-color: #BDBDBD !important;
+}
+
 .custom_button span {
 	background: url("/images/btn_28_round_right.png") no-repeat scroll right top transparent;
 	color: #FFF;
@@ -165,7 +169,7 @@ div#radio_label h1 {
 	padding-right: 4px;
 }
 
-.submit_custom_button span {
+#submit_custom_button span {
   background: none;
   background: url("/images/btn_28_round_right_black.png") no-repeat scroll right top transparent;
 	color: #FFF;
@@ -175,13 +179,13 @@ div#radio_label h1 {
 	padding-right: 4px;
 }
 
-.custom_button span span, .submit_custom_button span span {
+.custom_button span span, #submit_custom_button span span {
 	background: none repeat scroll 0 0 transparent;
 	padding: 0 10px;
 }
 
-.custom_button:hover, .submit_custom_button:hover {
-	background-color: #BDBDBD;
+.custom_button:hover, #submit_custom_button:hover {
+	background-color: #BDBDBD !important;
 }
 
 a:hover {

@@ -99,7 +99,7 @@ Cyloop.Widget = function(options)
   this.element = jQuery("#" + this.options.elementId);
   
   var css  = "<style type='text/css'>";
-      css += "div#widgView div#initialWrapper div#initialBody a, .submit_custom_button, div#widgView div#widgFooter span.poweredBy { background-color: #<%= campaign.hexcolor %> !important; }";
+      css += "div#widgView div#initialWrapper div#initialBody a, #submit_custom_button.active, div#widgView div#widgFooter span.poweredBy { background-color: #<%= campaign.hexcolor %>; }";
       css += ".create, #info h1, .artist, ul.auto-complete-list li { color: #<%= campaign.hexcolor %> !important; }";
       css += "</style>";
   this.element.append(css);
@@ -160,7 +160,7 @@ Cyloop.Widget = function(options)
   stationBody.append("<form id='artistSearch' name='artistSearch'></form>");
   form = jQuery("form#artistSearch");
   form.append("<input type='text' id='station_name' name='station_name' class='search'/>");
-  form.append("<div id='submit_button'><a class='submit_custom_button'><span><span>Crear&nbsp;Radio</span></span></a></div>");
+  form.append("<div id='submit_button'><a id='submit_custom_button' class='inactive'><span><span>Crear&nbsp;Radio</span></span></a></div>");
   //stationBody.append("<a class='custom_button'><span><span>Crear Radio</span></span></a>");
   /*
   stationBody.append("<form id='artistSearch' name='artistSearch'></form>");
@@ -527,9 +527,10 @@ function proxyrsp(obj)
 
 function submitActive(active)
 {
-  jQuery("submit_button a").unbind("click");
-  //var elem = jQuery("div#widgView div#stationWrapper div#stationBody form button");
-  //active ? elem.attr("class", "active") : elem.attr("class", "inactive");
+  //<div id='submit_button'><a class='submit_custom_button'>
+  var elem = jQuery("#submit_button a");
+  elem.unbind("click");
+  active ? elem.attr("class", "active") : elem.attr("class", "inactive");
   jQuery("#submit_button a").click( function(e) {
     if(active) 
     {
