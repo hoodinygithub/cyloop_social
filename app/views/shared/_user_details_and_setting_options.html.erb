@@ -16,11 +16,11 @@
 </div>
 
   <div class="follower_actions w_settings" style="width:170px">
+    <% if profile_account != item and current_user != item %>
       <% if logged_in? && item.is_a?(User) %>
         <%= blue_button(image_tag('settings_button.png'), :href => '#', :class => 'settings_button png_fix', :style => "float:left") %>
 
         <ul class="actions_settings" style="z-index:9">
-          <% if profile_account != item and current_user != item %>
             <% if current_user.blocks?(item) %>
               <li>
                 <a href="#" onclick="Base.community.unblock('<%= item.slug %>', this); return false;">
@@ -34,7 +34,6 @@
                 </a>
               </li>
             <% end %>
-          <% end %>
         </ul>
       <% end %>
       <%= follow_button(:account => item) %>
@@ -46,4 +45,5 @@
           <% end %>
         </div>
       <% end %>
+    <% end %>
   </div>
