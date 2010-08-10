@@ -22,6 +22,7 @@ class Playlist < ActiveRecord::Base
   acts_as_rateable(:class => 'Comment', :as => 'commentable')
 
   before_save :update_cached_artist_list, :update_item_timestamps
+  before_validation :strip_attributes
   before_create :increment_owner_total_playlists
   
   belongs_to :site
@@ -203,4 +204,10 @@ class Playlist < ActiveRecord::Base
   def to_s
     self.name
   end    
+  
+  def strip_attributes
+    @attributes.each do |attr, value|
+      self[attr] = value.strip if attr == 'name'
+    end
+  end
 end
