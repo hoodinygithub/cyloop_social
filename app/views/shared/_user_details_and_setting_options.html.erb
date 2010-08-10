@@ -20,18 +20,20 @@
         <%= blue_button(image_tag('settings_button.png'), :href => '#', :class => 'settings_button png_fix', :style => "float:left") %>
 
         <ul class="actions_settings" style="z-index:9">
-          <% if current_user.blocks?(item) %>
-            <li>
-              <a href="#" onclick="Base.community.unblock('<%= item.slug %>', this); return false;">
-                <%= t('actions.unblock') %>
-              </a>
-            </li>
-          <% else %>
-            <li>
-              <a href="#" onclick="Base.community.block('<%= item.slug %>', this); return false;">
-                <%= t('actions.block') %>
-              </a>
-            </li>
+          <% if profile_account != item and current_user != item %>
+            <% if current_user.blocks?(item) %>
+              <li>
+                <a href="#" onclick="Base.community.unblock('<%= item.slug %>', this); return false;">
+                  <%= t('actions.unblock') %>
+                </a>
+              </li>
+            <% else %>
+              <li>
+                <a href="#" onclick="Base.community.block('<%= item.slug %>', this); return false;">
+                  <%= t('actions.block') %>
+                </a>
+              </li>
+            <% end %>
           <% end %>
         </ul>
       <% end %>
