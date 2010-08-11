@@ -27,6 +27,7 @@
     </div>
 
     <% attr = {:account => artist, :full_width => true} %>
+    <% attr = {:return_to_ajax => params[:return_to], :account => artist, :full_width => true} unless params[:return_to].nil? %>
     <% attr.merge!(@custom) unless @custom.nil? %>
     <%= follow_button(attr) %>
   </div>

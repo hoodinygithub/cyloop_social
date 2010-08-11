@@ -286,6 +286,9 @@ function load_artist_info(artist_id) {
   station_id = $('#station_id').val() 
   var urlString = "/radio/info/" + station_id + "/" + artist_id;
   if( typeof(customKeys) == "string" ) urlString += "?customize=" + customKeys;
+  if(window.location.pathname == "/hprocks"){
+   urlString += "&return_to=/hprocks";
+  }
   $('.artist_radio_info').slideUp(function(){
     if(artist_id){
       $.ajax({
