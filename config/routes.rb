@@ -53,6 +53,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :search
   map.content_local_search '/search/content_local/:scope/:q', :controller => 'searches', :action => 'content', :local => true
   map.content_search '/search/content/:scope/:q', :controller => 'searches', :action => 'content'
+  map.market_main_search '/search/:market_locale/:scope/:q', :controller => 'searches', :action => 'show'
   map.main_search '/search/:scope/:q', :controller => 'searches', :action => 'show'
   map.empty_search '/search/:scope', :controller => 'searches', :action => 'show'
 
