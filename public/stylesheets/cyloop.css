@@ -1516,6 +1516,8 @@ div.mix_sorting_pad {
 
 .mix_tags {
   width: 150px;
+  text-align: center;
+  overflow: hidden;
 }
 
 .mix_tags a{
