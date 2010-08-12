@@ -997,13 +997,7 @@ module ApplicationHelper
     end
     <<-EOF
     <div class="mix_tags">
-      <table width="100%">
-        <tr>
-          <td align="center">
-            #{inner_tag_links.compact.join('&nbsp;&nbsp;')}
-          </td>
-        </tr>
-      </table>
+      #{inner_tag_links.compact.join('&nbsp;&nbsp;')}
     </div>
     EOF
   end

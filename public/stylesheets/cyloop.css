@@ -1514,6 +1514,10 @@ div.mix_sorting_pad {
 .tag_css4 { font-size: 22px !important; }
 .tag_css5 { font-size: 26px !important; }
 
+.mix_tags {
+  width: 150px;
+}
+
 .mix_tags a{
   display: inline-block;
   text-decoration: none;
