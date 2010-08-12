@@ -1,6 +1,9 @@
 class SearchesController < ApplicationController
   before_filter :msn_codes
 
+  disable_sanitize_params
+  strip_tags_from_params
+
   def show
     @query = CGI::unescape(params[:q]) rescue nil
     @search_types ||= [:artists , :stations, :mixes, :users]    
