@@ -9,13 +9,12 @@
     </div>
     <div class="text">
       <%= playlist_review_item.comment %>
-      <% if playlist_review_item.user == current_user %>
-        <div class="align_right">
-          <a href="#" onclick="Base.reviews.edit(<%= playlist_review_item.id %>);return false;"><%= t('actions.edit') %></a>
-        </div>
-      <% end %>
     </div>
-
+    <% if playlist_review_item.user == current_user %>
+      <div class="align_right">
+        <a href="#" onclick="Base.reviews.edit(<%= playlist_review_item.id %>);return false;"><%= t('actions.edit') %></a>
+      </div>
+    <% end %>
     <div class="clearer"></div>
 
     <% if (playlist_review_item.user == current_user) or @playlist.owner == current_user %>

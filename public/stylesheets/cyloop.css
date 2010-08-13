@@ -2080,8 +2080,9 @@ div.mix_sorting_pad {
 
 .playlist_reviews li .text {
 	color:#333333;
-	float:right;
-	width:410px;
+	padding-left:20px;
+	float:left;
+	width:390px;
 }
 
 .playlist_reviews li .close_btn {
