@@ -23,7 +23,7 @@
     <% end %>
     <% if comments.size > 2 %>
     <div class="view_all">
-      <b><%= link_to t('actions.view_all'), radio_path(:station_id => playlist.station.id) %></b>
+      <b><%= link_to t('actions.view_more'), radio_path(:station_id => playlist.station.id) %></b>
     </div>
     <% end %>
   <% end %>
