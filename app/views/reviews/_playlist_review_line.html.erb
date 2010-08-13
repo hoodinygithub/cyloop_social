@@ -14,8 +14,8 @@
       <%= rating(playlist_review_line) %>
   </div>
   <div class="review_text">
-    <p><%= truncate(playlist_review_line.comment, 45, "...") %></p>
-    <% if playlist_review_line.comment.size > 45 %>
+    <p><%= truncate(playlist_review_line.comment, 40, "...") %></p>
+    <% if playlist_review_line.comment.size > 40 %>
     <p><a href="#" onclick="Base.reviews.show(<%= playlist_review_line.id %>); return false;"><%= t('actions.view_more')%></a></p>
     <% end %>
   </div>

@@ -3296,3 +3296,8 @@ ul.error {
 .custom_color {
   background-color: #00A5F8
 }
+
+.review_link {
+	margin-top:-35px;
+	text-align:right;
+}

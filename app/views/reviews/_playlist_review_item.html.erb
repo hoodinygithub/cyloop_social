@@ -10,13 +10,12 @@
     <div class="text">
       <%= playlist_review_item.comment %>
     </div>
+    <div class="clearer"></div>
     <% if playlist_review_item.user == current_user %>
-      <div class="align_right">
+      <div class="review_link">
         <a href="#" onclick="Base.reviews.edit(<%= playlist_review_item.id %>);return false;"><%= t('actions.edit') %></a>
       </div>
     <% end %>
-    <div class="clearer"></div>
-
     <% if (playlist_review_item.user == current_user) or @playlist.owner == current_user %>
       <a href="#" onclick="Base.reviews.confirm_remove(<%= playlist_review_item.id %>);return false;" class="close_btn">
         <%= t('action.close') %>
