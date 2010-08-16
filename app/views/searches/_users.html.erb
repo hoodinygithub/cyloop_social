@@ -10,7 +10,7 @@
   <% @results[:users].each do |user| %>
   <% is_self = (current_user and current_user == user) %>
     <li>
-        <div id="logo"><a href="#"><%= link_to(avatar_for(user, : small, {:alt => "", :class =>"follower_image"}), user) %></a></div>
+        <div id="logo"><a href="#"><%= link_to(avatar_for(user, :small, {:alt => "", :class =>"follower_image"}), user) %></a></div>
         <div class="follower_text">
             <b><%= link_to user.name, user %></b><br/>
             <% unless user.country.nil? %>
