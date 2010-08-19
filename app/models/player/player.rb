@@ -6,6 +6,8 @@ class Player::Player < Player::Base
   column :max_plays,  :integer
   column :site_id,    :integer
   column :partner_id, :integer
+  column :max_skips,  :integer
+  column :skip_duration, :integer
 
   attr_accessor :active_campaign
 

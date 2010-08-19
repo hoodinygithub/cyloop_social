@@ -4,5 +4,7 @@ xml.configs do
     xml.player_key @configs.player_key
     xml.license    @configs.license
     xml.max_plays  @configs.max_plays
+    xml.max_skips  @configs.max_skips
+    xml.skip_duration @configs.skip_duration
   end
 end
