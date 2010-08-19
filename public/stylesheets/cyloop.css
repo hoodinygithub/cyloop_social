@@ -1506,6 +1506,8 @@ div.mix_sorting_pad {
 	float:left;
 	margin-right:20px;
 	width:150px;
+	height:450px;
+	overflow: hidden;
 }
 
 .tag_css1 { font-size: 12px !important; }
