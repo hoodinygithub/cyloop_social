@@ -75,6 +75,13 @@
     	}
     
   });
+
+  // Flash max skips callback
+  function max_skips_message() {
+    $('#max_skips_popup').fadeIn('slow');
+    // block weird default click handler for the facebox
+    $('#max_skips_popup').unbind('click');
+  }
 </script>
 
 <div id="main_content">
@@ -194,4 +201,29 @@
     <div><%= image_tag 'custom_profiles/hp/la_computadora_tag.jpg' %></div>
   </div>
   <div class="clearer" />
+
+  <!-- Max Skips Popup -->
+  <div class="popup" id="max_skips_popup">
+      <div class="top_shadow">
+          <div class="top_left corner"></div>
+          <div class="center_shadow"></div>
+          <div class="top_right corner"></div>
+          <a href="#" onclick="$('#max_skips_popup').fadeOut('fast'); return false;"><img src="/images/popup_close.png" class="popup_close png_fix" alt="X" title="Close" /></a>
+      </div>
+      <div class="popup_content">
+          <div class="title"><%= t('player.max_skip_message.header') %></div>
+          <div class="form_row">
+              <div class="auto_fill_text">
+                  <%= t('player.max_skip_message.body') %>
+              </div>
+              <br/>
+          </div>
+      </div>
+      <div class="bottom_shadow">
+          <div class="bottom_left corner"></div>
+          <div class="center_shadow"></div>
+          <div class="bottom_right corner"></div>
+      </div>
+  </div><!--/end popup -->
+	
 </div>
