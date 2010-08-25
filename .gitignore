@@ -12,3 +12,4 @@ db/tyrant
 vendor/cyqueue
 db/sphinx
 coverage
+.project
