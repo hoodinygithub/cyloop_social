@@ -259,7 +259,8 @@ class PlaylistsController < ApplicationController
 
     attributes = {
       :site_id => current_site.id,
-      :songs_count => orig_playlist.songs_count,
+      # playlist_item has a counter_cache
+      #:songs_count => orig_playlist.songs_count,
       :total_time => orig_playlist.total_time,
       :cached_artist_list => orig_playlist.cached_artist_list,
     }
