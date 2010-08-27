@@ -329,8 +329,7 @@ after "deploy:symlink_configs", "hoodiny_custom"
 def campfire_notification( message )
   begin
     unless @room
-      @campfire = Tinder::Campfire.new 'hoodiny1', :ssl => true
-      @campfire.login '3aa7fc18eaa511bfeb21fdae602e3ec175ecab2c', 'x'
+      @campfire = Tinder::Campfire.new 'hoodiny1', :ssl => true, :token => '3aa7fc18eaa511bfeb21fdae602e3ec175ecab2c'
       @room = @campfire.find_room_by_name 'Team'
     end
     @room.speak message
