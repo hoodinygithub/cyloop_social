@@ -16,7 +16,7 @@ table, caption, tbody, tfoot, thead, tr, th, td {
     background: transparent;
 }
 
-body.msn div#container, body.msnlatam div#container, #internal_content {
+body.msn.radio div#container, body.msnlatam.radio div#container, .radio #internal_content {
   background: transparent !important;
 }
 
