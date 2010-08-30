@@ -303,6 +303,7 @@ Base.radio.initialize = function() {
   var regex = new RegExp(/v_folder=|v_songgenre=|v_songlabel=/g);
   BANNERS.top   = {elem: $("#top_banner"), src: String( $("#top_banner").attr("src") ).cleanupURL(regex, "")};
   BANNERS.right = {elem: $("#square_banner"), src: String( $("#square_banner").attr("src") ).cleanupURL(regex, "")};
+  BANNERS.right_only = {elem: $("#square_banner_only"), src: String( $("#square_banner_only").attr("src") ).cleanupURL(regex, "")};
 };
 
 Base.radio.refreshBanner = function(attr)
@@ -641,7 +642,7 @@ Base.community.follow = function(user_slug, button, remove_div, layer_path) {
 
     if (status == 'success') {
       $button_label.html("");
-      $button.removeClass("blue_button");
+      $button.removeClass("custom_button");
       if (response.status == 'following') {
         $button_label.html(Base.locale.t('actions.unfollow'));
         $button.addClass("green_button");
@@ -670,7 +671,7 @@ Base.community.unfollow = function(user_slug, button, remove_div) {
   jQuery.post('/users/unfollow', params, function(response, status) {
     if (status == 'success') {
       $button.removeClass("green_button");
-      $button.addClass("blue_button");
+      $button.addClass("custom_button");
       $button_label.html(Base.locale.t('actions.follow'));
       //if (remove_div) {
       //  $button.parent().parent().slideUp();

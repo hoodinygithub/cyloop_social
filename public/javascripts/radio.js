@@ -188,11 +188,11 @@ function toggleCreateStation(show) {
 function toggleButton(button, show, callback) {
 	if(show) {
 		$('#' + button + '_toggle').attr('value', "1");      
-		$('#' + button + '_button').removeClass('blue_button').addClass('grey_button_big');
+		$('#' + button + '_button').removeClass('custom_button').addClass('grey_button_big');
 		$('#' + button + '_list').removeClass('hide');
 	} else {
 		$('#' + button + '_toggle').attr('value', "0");      
-		$('#' + button + '_button').removeClass('grey_button_big').addClass('blue_button');
+		$('#' + button + '_button').removeClass('grey_button_big').addClass('custom_button');
 		$('#' + button + '_list').addClass('hide');
 	}
 	if (typeof(callback)=="function") {		
@@ -210,12 +210,12 @@ function initTopButtons() {
 			if(msn_value) { toggleButton('msn_stations', 0, null); }
 			if(create_station_value) { toggleButton('create_station', 0); }
 			toggleButton('my_stations', 0);
-			$('#now_playing_button').removeClass('blue_button').addClass('grey_button_big');			
+			$('#now_playing_button').removeClass('custom_button').addClass('grey_button_big');			
 		} else {
 			if(msn_value) { toggleButton('msn_stations', 0, null); }
 			if(create_station_value) { toggleButton('create_station', 0); }
 			toggleButton('my_stations', 1);
-			$('#now_playing_button').removeClass('grey_button_big').addClass('blue_button');			
+			$('#now_playing_button').removeClass('grey_button_big').addClass('custom_button');			
 		}			
     return false;
   });	
@@ -229,19 +229,19 @@ function initTopButtons() {
 			if(my_value) { toggleButton('my_stations', 0, null);}
 			if(create_station_value) { toggleButton('create_station', 0, null); }
 			toggleButton('msn_stations', 0);
-			$('#now_playing_button').removeClass('blue_button').addClass('grey_button_big');			
+			$('#now_playing_button').removeClass('custom_button').addClass('grey_button_big');			
 		} else {
 			if(my_value) { toggleButton('my_stations', 0, null); }
 			if(create_station_value) { toggleButton('create_station', 0, null); }
 			toggleButton('msn_stations', 1);
-			$('#now_playing_button').removeClass('grey_button_big').addClass('blue_button');			
+			$('#now_playing_button').removeClass('grey_button_big').addClass('custom_button');			
 		}			
     return false;
   });	
 	
   $("#collapse_create_new_station").click(function() {
 		toggleButton('create_station', 0, toggleCreateStation);
-		$('#now_playing_button').removeClass('blue_button').addClass('grey_button_big');			
+		$('#now_playing_button').removeClass('custom_button').addClass('grey_button_big');			
     return false;
   });	
 
@@ -254,7 +254,7 @@ function initTopButtons() {
 		if(msn_value || my_value) {
 			toggleButton('msn_stations', 0);
 			toggleButton('my_stations', 0);			
-			$('#now_playing_button').removeClass('blue_button').addClass('grey_button_big');			
+			$('#now_playing_button').removeClass('custom_button').addClass('grey_button_big');			
 		}
     return false;
     });	
@@ -271,12 +271,12 @@ function initCreateStationButton() {
 			if(my_value) { toggleButton('my_stations', 0);}
 			if(msn_value) { toggleButton('msn_stations', 0); }
 			toggleButton('create_station', 0, toggleCreateStation);
-			$('#now_playing_button').removeClass('blue_button').addClass('grey_button_big');			
+			$('#now_playing_button').removeClass('custom_button').addClass('grey_button_big');			
 		} else {
 			if(my_value) { toggleButton('my_stations', 0); }
 			if(msn_value) { toggleButton('msn_stations', 0); }
 			toggleButton('create_station', 1, toggleCreateStation);
-			$('#now_playing_button').removeClass('grey_button_big').addClass('blue_button');			
+			$('#now_playing_button').removeClass('grey_button_big').addClass('custom_button');
 		}			
     return false;
 	});
@@ -289,27 +289,28 @@ function load_artist_info(artist_id) {
   if(window.location.pathname == "/hprocks"){
    urlString += "&return_to=/hprocks";
   }
-  $('.artist_radio_info').slideUp(function(){
-    if(artist_id){
-      $.ajax({
-        type: "GET",
-        url: urlString,
-        error: function() 
-        {
-          alert("error!");
-        },
-        success: function(response, status) 
-        {
-          $('.artist_radio_info').html(response);
-					initRadioTabs();
-          if(response.indexOf("<") > -1){
-            //$('.artist_radio_info').slideDown();
-            $('.artist_radio_info').show();
-          } 
-        }
-      });
-    }
-  });
+
+  $('.artist_radio_info').hide();
+  if(artist_id)
+  {
+    $.ajax({
+      type: "GET",
+      url: urlString,
+      error: function()
+      {
+        alert("error!");
+      },
+      success: function(response, status)
+      {
+        $('.artist_radio_info').html(response);
+        initRadioTabs();
+        if(response.indexOf("<") > -1){
+          $('.artist_radio_info').show();
+        } 
+      }
+    });
+  }
+
 }
 
 function load_station_info(station_id)

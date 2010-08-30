@@ -39,7 +39,7 @@ set :shared_path,         "#{deploy_to}/shared"
 set :sites,               [
                               "mexico_cs", "brazil_cs", "canada_fr_cs", "canada_en_cs", 
                               "cyloop_cs", "cyloopes_cs", "latino_cs", "latam_cs", "tvn_cs", 
-                              "brazil_cs", "argentina_cs"
+                              "argentina_cs"
                           ]
 
 

@@ -18,15 +18,14 @@ class CampaignsController < ApplicationController
   def show
     return render :text => 'Campaign not active', :status => 405 unless @campaign.campaign_status.value == 'active'
     links ={}
-    i = 1
-    @campaign.campaign_links.each do |link|
-      links["link#{i.to_s}-url"] = link.url
-      links["link#{i.to_s}-name"] = link.name
-      i += 1
+    @campaign.campaign_links.each_with_index do |link, index|
+      links["link#{(index).to_s}-url"] = link.url
+      links["link#{(index).to_s}-name"] = link.name
     end
-    links.merge!({"header-logo-file-path" => @campaign.header_logo.url, 
-        "index-logo-file-path" => @campaign.index_logo.url, "footer-logo-file-path" => @campaign.footer_logo.url,
-        "editorial-play-icon-file-path" => @campaign.editorial_play_icon.url})
+    links.merge!({"header-logo-file-path" => @campaign.header_logo.url,
+                  "index-logo-file-path" => @campaign.index_logo.url, 
+                  "footer-logo-file-path" => @campaign.footer_logo.url,
+                  "editorial-play-icon-file-path" => @campaign.editorial_play_icon.url})
     respond_to do |format|
       format.html { @campaign }
       format.xml  { render :xml => @campaign.attributes.merge!(links).to_xml(:root => "campaign")}

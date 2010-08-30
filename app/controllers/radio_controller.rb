@@ -15,6 +15,10 @@ class RadioController < ApplicationController
         @station_obj = create_user_station(@station_obj)
         @station_queue = @station_obj.playable.station_queue(:ip_address => remote_ip)
         @station_obj.playable.track_a_play_for(current_user) if @station_obj.playable
+        player = Player.find_by_player_key('radio_' + current_site.code)
+        @campaign = if !player.nil?
+          player.active_campaign
+        end
     else
       @recommended_stations_limit = 12
       @recommended_stations = transformed_recommended_stations(@recommended_stations_limit, 24)
@@ -214,7 +218,6 @@ class RadioController < ApplicationController
     else
       @tabs = [:similar_artists, :recent_listeners] #others are coming.
       @station_obj = Station.find(params[:station_id]) rescue nil
-      @custom = hash_string_vkpair(params[:customize]) if params[:customize]
 
       render :partial => "radio/artist_info"
     end
