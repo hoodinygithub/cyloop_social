@@ -158,7 +158,7 @@ module ApplicationHelper
     else
       action       = 'follow'
       key          = 'follow'
-      button_color = 'blue'
+      button_color = 'custom'
     end
 
     # button_color = attrs[:color] if attrs.has_key?(:color)
