@@ -2,56 +2,52 @@
   <%= javascript_include_tag "AC_OETags", "swf_utils", "radio", "htmlcomponent" %>
 
   <!-- CAMPAIGN STYLE OVERRIDE -->
-  <% if @campaign %>
+  <% if params[:station_id] %>
     <style>
-
-      body {
-        background: url('<%= @campaign.campaign_background.url %>') no-repeat scroll center top #000 !important;
+      body.msn.radio div#container, body.msnlatam.radio div#container, .radio #internal_content {
+        background: transparent;
       }
 
-      .custom_color, .custom_button {
-        background-color: #<%= @campaign.hexcolor %>;
+      .radio .mix_box {
+          background: none;
+          border: 0;
+          -moz-border-radius: 0;
+          -webkit-border-radius: 0;
       }
 
-      .side_user_box .overlay big {
-        color: #<%= @campaign.artistinfo_name_hexcolor %>;
+      .radio .mix_box.grey_accents .top_buttons {
+          background: none;
       }
 
-      a, span.includes_text, div.includes, .radio_tabs a {
-        color: #<%= @campaign.hexcolor %>
+      .radio .mix_box.grey_accents .album_detail {
+          background: none;
       }
 
-      div#radio_label h1, div#top_stations h1 {
-        border-left: 5px solid #<%= @campaign.hexcolor %>;
+      .radio #right_column {
+        height: 600px;
       }
 
-    </style>
-  <% else %>
-    <% if params[:station_id] %>
-      <style>
-        body.msn.radio div#container, body.msnlatam.radio div#container, .radio #internal_content {
-          background: transparent !important;
+      <% if @campaign %>
+        body {
+          background: url('<%= @campaign.campaign_background.url %>') no-repeat scroll center top #000 !important;
         }
 
-        .radio .mix_box {
-            background: none;
-            border: 0;
-            -moz-border-radius: 0;
-            -webkit-border-radius: 0;
+        .custom_color, .custom_button {
+          background-color: #<%= @campaign.hexcolor %>;
         }
 
-        .radio .mix_box.grey_accents .top_buttons {
-            background: none;
+        .side_user_box .overlay big {
+          color: #<%= @campaign.artistinfo_name_hexcolor %>;
         }
 
-        .radio .mix_box.grey_accents .album_detail {
-            background: none;
+        a, span.includes_text, div.includes, .radio_tabs a {
+          color: #<%= @campaign.hexcolor %>
         }
 
-        .radio #right_column {
-          height: 600px;
+        div#radio_label h1, div#top_stations h1 {
+          border-left: 5px solid #<%= @campaign.hexcolor %>;
         }
-
+      <% else %>
         body.msnlatino.radio.index {
           background: url('/images/background_latino_default.jpg') no-repeat scroll center top #FFF !important;
         }
@@ -59,9 +55,9 @@
         body.msncafr.radio.index, body.msncaen.radio.index {
           background: url('/images/background_canada_default.jpg') no-repeat scroll center top #FFF !important;
         }
+      <% end %>
 
-      </style>
-    <% end %>
+    </style>
   <% end %>
   <!-- END -->
 
