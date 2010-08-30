@@ -642,7 +642,7 @@ Base.community.follow = function(user_slug, button, remove_div, layer_path) {
 
     if (status == 'success') {
       $button_label.html("");
-      $button.removeClass("blue_button");
+      $button.removeClass("custom_button");
       if (response.status == 'following') {
         $button_label.html(Base.locale.t('actions.unfollow'));
         $button.addClass("green_button");
@@ -671,7 +671,7 @@ Base.community.unfollow = function(user_slug, button, remove_div) {
   jQuery.post('/users/unfollow', params, function(response, status) {
     if (status == 'success') {
       $button.removeClass("green_button");
-      $button.addClass("blue_button");
+      $button.addClass("custom_button");
       $button_label.html(Base.locale.t('actions.follow'));
       //if (remove_div) {
       //  $button.parent().parent().slideUp();
