@@ -749,6 +749,10 @@ h1 {
     float: right;
 }
 
+.radio #right_column {
+  height: 600px;
+}
+
 .black_boxes {
     margin-bottom: 7px;
 }

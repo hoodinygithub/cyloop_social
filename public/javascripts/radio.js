@@ -289,27 +289,28 @@ function load_artist_info(artist_id) {
   if(window.location.pathname == "/hprocks"){
    urlString += "&return_to=/hprocks";
   }
-  $('.artist_radio_info').slideUp(function(){
-    if(artist_id){
-      $.ajax({
-        type: "GET",
-        url: urlString,
-        error: function() 
-        {
-          alert("error!");
-        },
-        success: function(response, status) 
-        {
-          $('.artist_radio_info').html(response);
-					initRadioTabs();
-          if(response.indexOf("<") > -1){
-            //$('.artist_radio_info').slideDown();
-            $('.artist_radio_info').show();
-          } 
-        }
-      });
-    }
-  });
+
+  $('.artist_radio_info').hide();
+  if(artist_id)
+  {
+    $.ajax({
+      type: "GET",
+      url: urlString,
+      error: function()
+      {
+        alert("error!");
+      },
+      success: function(response, status)
+      {
+        $('.artist_radio_info').html(response);
+        initRadioTabs();
+        if(response.indexOf("<") > -1){
+          $('.artist_radio_info').show();
+        } 
+      }
+    });
+  }
+
 }
 
 function load_station_info(station_id)
