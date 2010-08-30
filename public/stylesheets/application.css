@@ -2296,15 +2296,19 @@ div.reviews {
     color: #999;
 }
 
-/* COMMENTED OUT FOR THE PURPOSES OF RADIO CUSTOMIZATIONS */
-/*
 .mix_box {
     background: #f9f9f9 url("../images/mix_box_bg.gif") repeat-x left bottom;
     border: solid 1px #d9d9d9;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
 }
-*/
+
+.radio .mix_box {
+    background: none;
+    border: 0;
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+}
 
 .top_buttons {
     background: #fff;
@@ -3102,11 +3106,11 @@ a.radio_left_side {
     background-position: left bottom;
 }
 
-.mix_box.grey_accents .top_buttons {
+.radio .mix_box.grey_accents .top_buttons {
     background: none;
 }
 
-.mix_box.grey_accents .album_detail {
+.radio .mix_box.grey_accents .album_detail {
     background: none;
 }
 
