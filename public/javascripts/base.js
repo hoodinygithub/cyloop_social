@@ -303,6 +303,7 @@ Base.radio.initialize = function() {
   var regex = new RegExp(/v_folder=|v_songgenre=|v_songlabel=/g);
   BANNERS.top   = {elem: $("#top_banner"), src: String( $("#top_banner").attr("src") ).cleanupURL(regex, "")};
   BANNERS.right = {elem: $("#square_banner"), src: String( $("#square_banner").attr("src") ).cleanupURL(regex, "")};
+  BANNERS.right_only = {elem: $("#square_banner_only"), src: String( $("#square_banner_only").attr("src") ).cleanupURL(regex, "")};
 };
 
 Base.radio.refreshBanner = function(attr)

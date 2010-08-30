@@ -1021,6 +1021,46 @@ module ApplicationHelper
     current_user.blocks?(item) ? 'unblock' : 'block'
   end
 
+  def custom_right_column(options={})
+
+    banner_type = if options.has_key?(:campaign) && !options[:campaign].nil?
+                    case options[:campaign].ad_size
+                    when '300x250'
+                      "square_banner"
+                    when '300x250_only'
+                      "square_banner_only"
+                    when 'none'
+                      "none"
+                    when 'hotspot'
+                      "hotspot"
+                    end
+                  else
+                    "square_banner"
+                  end
+
+    unless banner_type == 'none'
+      if banner_type == 'square_banner' || banner_type == 'square_banner_only'
+        content = "<div class='ad_box'>#{banner_ad(banner_type)}</div>"
+        unless banner_type == 'square_banner_only'
+          dom  = "<div class='grey_box'>"
+          dom += "<div class='box_content' id='top_stations'>"
+          dom += "<h1>#{t('modules.top_stations.title')}</h1>"
+          cache( "#{site_cache_key}/top_abstract_stations/#{options[:top_station_limit]}", :expires_in => EXPIRATION_TIMES['radio_top_abstract_stations'] ) do
+            render :partial => 'radio/abstract_station_simple', :collection => options[:top_abstract_stations]
+          end
+          dom += "</div>"
+          dom += "</div>"
+          content << dom
+        end
+      end
+
+      if banner_type == 'hotspot'
+        content = "<a href='#{options[:campaign].hotspot_url}' target='_blank'><div class='hotspot_column_300x600'></div></a>"
+      end
+    end
+
+    content
+
+  end
 
 end
-

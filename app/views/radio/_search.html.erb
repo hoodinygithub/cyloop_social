@@ -32,7 +32,7 @@
     }).result(function(event, item) {
       Base.radio.set_station_search_details(item[0], item[2], false);
       listenButton.attr('can_post', 1);
-      listenButton.removeClass('grey_button_big').addClass('blue_button');
+      listenButton.removeClass('grey_button_big').addClass('custom_button');
     });
 
     artistSearch.css('color', '#c0d6e2');
@@ -52,7 +52,7 @@
         artistSearch.attr("touched", 'false');
         artistSearch.css('color', '#c0d6e2');
         artistSearch.attr('value', "<%= t('radio.search_hint') %>")
-        listenButton.attr('can_post', 0).removeClass('blue_button').addClass('grey_button_big');
+        listenButton.attr('can_post', 0).removeClass('custom_button').addClass('grey_button_big');
         stationID.val("");
         stationQueue.val("");
       }

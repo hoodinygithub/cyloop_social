@@ -26,7 +26,7 @@
         $(this).attr("touched", 'false');
         $(this).css('color', '<%= market_search_radio_edit_color("off") %>');
         $(this).attr('value', "<%= t('search.content_search_hint') %>")
-        mixButton.attr('can_post', 0).removeClass('blue_button').addClass('grey_button_big');
+        mixButton.attr('can_post', 0).removeClass('custom_button').addClass('grey_button_big');
       }
     });    
   });  
@@ -45,7 +45,7 @@
             :autocomplete => :off } %>
         </span>            
         <span class="btn_placeholder">
-          <%= blue_button( t("home.create_mix"), :id => "create_playlist_btn", 
+          <%= custom_button( t("home.create_mix"), :id => "create_playlist_btn", 
              :href => logged_in? ? playlist_create_path : nil , 
              :onclick => logged_in? ? nil : "Base.utils.showRegistrationLayer('#{playlist_create_path}')" ) %>
         </span>

@@ -27,7 +27,7 @@
     }).result(function(event, item) {
       Base.radio.set_station_search_details(item[0], item[2], false);
       listenButton.attr('can_post', 1);
-      listenButton.removeClass('grey_button_big').addClass('blue_button');
+      listenButton.removeClass('grey_button_big').addClass('custom_button');
     });
 
     artistSearch.css('color', '#c0d6e2');
@@ -47,7 +47,7 @@
         artistSearch.attr("touched", 'false');
         artistSearch.css('color', '#c0d6e2');
         artistSearch.attr('value', "<%= t('radio.search_hint') %>")
-        listenButton.attr('can_post', 0).removeClass('blue_button').addClass('grey_button_big');
+        listenButton.attr('can_post', 0).removeClass('custom_button').addClass('grey_button_big');
         stationID.val("");
         stationQueue.val("");
       }
@@ -65,8 +65,8 @@
       </div>
 
       <div class="top_padd left_side">
-        <%= grey_button( t("radio.create_new_station"), :id => "create_station_submit", :can_post => 0) %>
-        <a href="#" id="collapse_create_new_station" class="grey_button left_side"><span><span><img src="/images/close_red.gif" alt="<%= t('actions.close') %>" /></span></span></a>
+        <%= custom_button( t("radio.create_new_station"), :id => "create_station_submit", :can_post => 0) %>
+        <a href="#" id="collapse_create_new_station" class="left_side"><img src="/images/icon_20_delete.png" class="custom_color list_delete_button" alt="<%= t('actions.close') %>" /></a>
       </div>
 
       <br class="clearer" />

@@ -1,6 +1,6 @@
 <li id="msn_station_item_<%= editorial_station_item.station.id %>">
   <div class="song_name_large">
-    <%= link_to("<span><span>" + image_tag("icon_play_small.gif", :title => t('actions.play'), :class => 'list_play_button' ) + "</span></span>", "#", :station_id => editorial_station_item.station.id, :station_queue => editorial_station_item.station_queue, :class => "grey_button launch_station", :id => "msn_stations_list_play_#{editorial_station_item.station.id}")%>&nbsp;&nbsp;<b><%= link_to editorial_station_item.name, "#", :station_id => editorial_station_item.station.id, :station_queue => editorial_station_item.station_queue, :id => "msn_stations_list_name_#{editorial_station_item.station.id}", :class => 'launch_station' %></b>
+    <%= link_to(image_tag("icon_20_play.png", :title => t('actions.play'), :class => 'list_play_button custom_color' ), "#", :station_id => editorial_station_item.station.id, :station_queue => editorial_station_item.station_queue, :class => "launch_station", :id => "msn_stations_list_play_#{editorial_station_item.station.id}")%>&nbsp;&nbsp;<b><%= link_to editorial_station_item.name, "#", :station_id => editorial_station_item.station.id, :station_queue => editorial_station_item.station_queue, :id => "msn_stations_list_name_#{editorial_station_item.station.id}", :class => 'launch_station' %></b>
   </div>
   <div class="includes"><%= station_contains(editorial_station_item, 3, false,{:target=>"_blank"})%></div>
   <div class="large_bnt2">&nbsp;</div>

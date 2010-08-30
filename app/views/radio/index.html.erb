@@ -1,23 +1,58 @@
 <% content_for :head do %>
   <%= javascript_include_tag "AC_OETags", "swf_utils", "radio", "htmlcomponent" %>
+
+  <!-- CAMPAIGN STYLE OVERRIDE -->
+  <% if @campaign %>
+    <style>
+
+      body {
+        background: url('<%= @campaign.campaign_background.url %>') no-repeat scroll center top #000 !important;
+      }
+
+      .custom_color, .custom_button {
+        background-color: #<%= @campaign.hexcolor %>;
+      }
+
+      .side_user_box .overlay big {
+        color: #<%= @campaign.artistinfo_name_hexcolor %>;
+      }
+
+      a, span.includes_text, div.includes, .radio_tabs a {
+        color: #<%= @campaign.hexcolor %>
+      }
+
+      div#radio_label h1, div#top_stations h1 {
+        border-left: 5px solid #<%= @campaign.hexcolor %>;
+      }
+
+    </style>
+  <% else %>
+    <% if params[:station_id] %>
+      <style>
+        body.msnlatino.radio.index {
+          background: url('/images/background_latino_default.jpg') no-repeat scroll center top #FFF !important;
+        }
+
+        body.msncafr.radio.index, body.msncaen.radio.index {
+          background: url('/images/background_canada_default.jpg') no-repeat scroll center top #FFF !important;
+        }
+
+      </style>
+    <% end %>
+  <% end %>
+  <!-- END -->
+
 <% end %>
 <div id="main_content">
   <div>
     <%= render @station_obj.nil? && 'search' || 'radio' %>
   </div>
+
+  <!-- right_column -->
   <div id="right_column">
-    <div class="ad_box">
-      <%= banner_ad("square_banner") %>
-    </div>
-    <div class="grey_box">
-      <div class="box_content" id="top_stations">
-        <h1><%= t('modules.top_stations.title') %></h1>
-        <% cache("#{site_cache_key}/top_abstract_stations/#{@top_station_limit}", :expires_in => EXPIRATION_TIMES['radio_top_abstract_stations'] ) do %>
-          <%= render :partial => 'abstract_station_simple', :collection => @top_abstract_stations %>
-        <% end %>
-      </div>
-    </div>
-  </div><!--/end right_column -->
+    <%= custom_right_column(:campaign => @campaign, :top_abstract_stations => @top_abstract_stations, :top_station_limit => @top_station_limit) %>
+  </div>
+  <!--/end right_column -->
 
   <div class="clearer"></div>
 </div>

@@ -16,6 +16,10 @@ table, caption, tbody, tfoot, thead, tr, th, td {
     background: transparent;
 }
 
+body.msn div#container, body.msnlatam div#container, #internal_content {
+  background: transparent !important;
+}
+
 body {
     font-size: 12px;
     font-family: Arial, Helvetica, sans-serif;
@@ -764,12 +768,12 @@ h1 {
     font-weight: bold;
 }
 
-.yellow_button.full_width, .yellow_button.full_width span, .blue_button.full_width, .blue_button.full_width span, .green_button.full_width, .green_button.full_width span {
+.yellow_button.full_width, .custom_button.full_width, .yellow_button.full_width span, .blue_button.full_width, .blue_button.full_width span, .green_button.full_width, .green_button.full_width span, .custom_button.full_width span {
     display: block;
     margin-bottom: 7px;
 }
 
-.blue_button.full_width span span, .yellow_button.full_width span span {
+.blue_button.full_width span span, .yellow_button.full_width span span, .custom_button.full_width span span {
     padding: 0px;
 }
 
@@ -2292,12 +2296,15 @@ div.reviews {
     color: #999;
 }
 
+/* COMMENTED OUT FOR THE PURPOSES OF RADIO CUSTOMIZATIONS */
+/*
 .mix_box {
     background: #f9f9f9 url("../images/mix_box_bg.gif") repeat-x left bottom;
     border: solid 1px #d9d9d9;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
 }
+*/
 
 .top_buttons {
     background: #fff;
@@ -3300,4 +3307,87 @@ ul.error {
 .review_link {
 	margin-top:-35px;
 	text-align:right;
+}
+
+.custom_button {
+	text-transform: uppercase;
+	background: url("/images/btn_28_round_left.png") no-repeat scroll left top #00A5F8;
+	color: #FFF;
+	display: inline-block;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	height: 28px;
+	line-height: 28px;
+	overflow: hidden;
+	padding-left: 4px;
+	text-align: center;
+}
+
+#submit_custom_button {
+	text-transform: uppercase;
+	background: url("/images/btn_28_round_left_black.png") no-repeat scroll left top #00A5F8;
+	color: #FFF;
+	display: inline-block;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: bold;
+	height: 28px;
+	line-height: 28px;
+	overflow: hidden;
+	padding-left: 2px;
+	text-align: center;
+}
+
+#submit_custom_button.inactive {
+  background-color: #BDBDBD !important;
+}
+
+.custom_button span {
+	background: url("/images/btn_28_round_right.png") no-repeat scroll right top transparent;
+	color: #FFF;
+	cursor: pointer;
+	display: inline-block;
+	height: 28px;
+	padding-right: 4px;
+}
+
+#submit_custom_button span {
+  background: none;
+  background: url("/images/btn_28_round_right_black.png") no-repeat scroll right top transparent;
+	color: #FFF;
+	cursor: pointer;
+	display: inline-block;
+	height: 28px;
+	padding-right: 4px;
+}
+
+.custom_button span span, #submit_custom_button span span {
+	background: none repeat scroll 0 0 transparent;
+	padding: 0 10px;
+}
+
+.custom_button:hover, #submit_custom_button:hover {
+	background-color: #BDBDBD !important;
+}
+a:hover {
+	text-decoration: none !important;
+}
+
+.list_play_button {
+  margin-top: 4px;
+}
+
+.list_delete_button {
+  background-color: #CC0000;
+  margin-top: 4px;
+}
+
+#create_station_submit {
+  margin-right: 4px;
+}
+
+.hotspot_column_300x600 {
+  width: 300px;
+  height: 600px;
 }

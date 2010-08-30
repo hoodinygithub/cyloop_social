@@ -28,7 +28,7 @@
   = custom_image_field :form => f, :label => 'Index Logo:', :field => 'index_logo', :model_instance => @campaign
   = custom_image_field :form => f, :label => 'Footer Logo:', :field => 'footer_logo', :model_instance => @campaign
   = custom_image_field :form => f, :label => 'Editorial Play Icon:', :field => 'editorial_play_icon', :model_instance => @campaign
-  = custom_image_field :form => f, :label => 'Page Background:', :field => 'page_background', :model_instance => @campaign
+  = custom_image_field :form => f, :label => 'Background Image:', :field => 'campaign_background', :model_instance => @campaign
   
   %br
   
@@ -82,10 +82,12 @@
   = custom_text_field :form => f, :label => 'Google Profile ID:', :field => 'google_profile_id', :model_instance => @campaign, :example => 'UA-410780-40'
 
   %p
-    Ad Size:
-    = f.select :ad_size, ['300x250', '300x600', 'none', 'hotspot']
+    Ad Size:&nbsp;&nbsp;
+    = f.select :ad_size, ['none', 'hotspot', '300x250', '300x250_only', '300x600']
+    &nbsp;&nbsp;Hotspot URL:&nbsp;&nbsp; 
+    = f.text_field :hotspot_url
 
-  = custom_text_field :form => f, :label => 'Hotspot URL:', :field => 'hotspot_url', :model_instance => @campaign, :example => '"http://www.cyloop.com"'
+  %p
 
 .fieldset
   %h4 Campaigns Status/Dates
