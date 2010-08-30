@@ -16,9 +16,6 @@ table, caption, tbody, tfoot, thead, tr, th, td {
     background: transparent;
 }
 
-body.msn.radio div#container, body.msnlatam.radio div#container, .radio #internal_content {
-  background: transparent !important;
-}
 
 body {
     font-size: 12px;
@@ -749,9 +746,6 @@ h1 {
     float: right;
 }
 
-.radio #right_column {
-  height: 600px;
-}
 
 .black_boxes {
     margin-bottom: 7px;
@@ -2307,13 +2301,6 @@ div.reviews {
     -webkit-border-radius: 5px;
 }
 
-.radio .mix_box {
-    background: none;
-    border: 0;
-    -moz-border-radius: 0;
-    -webkit-border-radius: 0;
-}
-
 .top_buttons {
     background: #fff;
     padding: 8px;
@@ -3108,14 +3095,6 @@ a.radio_left_side {
 
 .mix_box.grey_accents {
     background-position: left bottom;
-}
-
-.radio .mix_box.grey_accents .top_buttons {
-    background: none;
-}
-
-.radio .mix_box.grey_accents .album_detail {
-    background: none;
 }
 
 .radio_row .overlay_content {

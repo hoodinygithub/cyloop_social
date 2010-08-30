@@ -29,6 +29,29 @@
   <% else %>
     <% if params[:station_id] %>
       <style>
+        body.msn.radio div#container, body.msnlatam.radio div#container, .radio #internal_content {
+          background: transparent !important;
+        }
+
+        .radio .mix_box {
+            background: none;
+            border: 0;
+            -moz-border-radius: 0;
+            -webkit-border-radius: 0;
+        }
+
+        .radio .mix_box.grey_accents .top_buttons {
+            background: none;
+        }
+
+        .radio .mix_box.grey_accents .album_detail {
+            background: none;
+        }
+
+        .radio #right_column {
+          height: 600px;
+        }
+
         body.msnlatino.radio.index {
           background: url('/images/background_latino_default.jpg') no-repeat scroll center top #FFF !important;
         }
