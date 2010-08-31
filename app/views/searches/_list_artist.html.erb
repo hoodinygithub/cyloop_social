@@ -3,7 +3,7 @@
     <a href="#" onclick='get_song_list(<%=list_artist.id %>,"<%=list_artist.class.to_s.downcase %>"); return false;'>
   <% else %>
     <% url = @content_search.nil? ? user_path(list_artist) : playlist_create_path(:item_id => list_artist.id, :scope => list_artist.class.to_s.downcase) %>     
-    <a href="<%= url %>" onclick="<%= logged_in? ? nil : "Base.utils.showRegistrationLayer('#{url}');return false;"%>">
+    <a href="<%= url %>">
   <% end %>
     <%= avatar_for(list_artist, :search, {:alt => " #{list_artist.name}"}) %>
     <b> <%= list_artist.name %> </b><br/>
