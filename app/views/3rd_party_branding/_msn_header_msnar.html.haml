@@ -1,4 +1,4 @@
-#msn_header.clearfix
+#msn_header.clearfix.msnlatam
   .wrapper
     .msn_main
       %ul.msn_navigation
@@ -9,8 +9,9 @@
         %li= link_to "MSN Venezuela", "http://ve.msn.com"
         %li= link_to "MSN Latinoamérica", "http://latam.msn.com"
       %ul.msn_sisters
-        %li= link_to "Messenger", "http://www.nuevomessenger2009.com/"
+        %li= link_to "Ir a MSN Latinoamérica", "http://latam.msn.com/"
         %li= link_to "Hotmail", "http://mail.live.com/"
+        %li= link_to "Messenger", "http://www.descubrewindowslive.com/messenger/"
         - if logged_in?
           %li.last= link_to t("sessions.destroy.sign_out"), site_logout_url        
         - else
@@ -32,19 +33,50 @@
         %li= link_to "Noticias", "http://noticias.latam.msn.com/"
         %li= link_to "Salud", "http://salud.latam.msn.com/"
         
-    .sub
-      %ul.msn_navigation
-        %li.active= link_to "Principal", "/"
-        %li= link_to "Discos", "http://events.latam.msn.com/discos", {:onclick => "$('#msn_nav_extension').hide();"}
-        %li= link_to "Videos de música", "http://video.msn.com/?mkt=es-xl&tab=s1206272649002", {:onclick => "$('#msn_nav_extension').hide();"}
-        %li= link_to "Conciertos", "http://msninconcert.msn.com/music/archive/es-la/archive.aspx", {:onclick => "$('#msn_nav_extension').hide();"}
-        %li.last= link_to "Entretenimiento", "#", {:onclick => "$('#msn_nav_extension').show();"} 
-        
-        
-#msn_nav_extension{:style => "display:none"}               
-  %ul
+    = render :partial => '/3rd_party_branding/msnlatam_bing_search'
+.sub.msnlatam{:style => "border-top: 1px #fff solid;border-bottom: 1px solid #ccc;" }
+  %ul.msn_navigation.msnlatam
+    %li.first
+      %a{ :href => "http://entretenimiento.latam.msn.com/" }
+        Entretenimiento
+    %li.pretab{:style => "height:16px;border-right:1px #ccc solid;" }
+      %a{ :href => "http://entretenimiento.latam.msn.com/xl/cine/" }
+        Cine
+    %li.expanded.notselected{:style => "padding:0px;height:14px;background:#fff;" }
+      %a{ :href => "http://entretenimiento.latam.msn.com/xl/musica/", :style => "padding: 0 9px;background:#fff;border:none;line-height:14px" }
+        Música
     %li
-      %strong= link_to "Entretenimiento Latam", "http://entretenimiento.latam.msn.com"
-    %li= link_to "Entretenimiento Argentina", "http://entretenimiento.latam.msn.com/ar"
-    %li= link_to "Entretenimiento Chile", "http://entretenimiento.latam.msn.com/cl"
-    %li= link_to "Entretenimiento Colombia", "http://entretenimiento.latam.msn.com/co"
+      %a{ :href => "http://entretenimiento.latam.msn.com/xl/personajes/" }
+        Personajes
+    %li
+      %a{ :href => "http://entretenimiento.latam.msn.com/xl/fotogalerias/" }
+        Fotogalerías
+    %li
+      %a{ :href => "http://entretenimiento.latam.msn.com/xl/video/" }
+        Videos
+    %li
+      %a{ :href => "http://entretenimiento.latam.msn.com/xl/batallas/" }
+        Batallas
+    %li
+      %a{ :href => "http://especiales.latam.msn.com/" }
+        Especiales
+    %li
+      %a{ :href => "http://latam.msn.novebox.com/" }
+        TV
+    %li.last
+      %a{ :href => "http://juegos.latam.msn.com/" }
+        Juegos
+.sub{:style => "margin-top:0px;background:#fff"}
+  %ul.msn_navigation.msnlatam
+    %li.first.selected
+      %a{ :href => "http://entretenimiento.latam.msn.com/xl/musica/", :style => "border:none;"}
+        Portada
+    %li
+      %a{ :href => "http://entretenimiento.latam.msn.com/xl/musica/discos/" }
+        Discos
+    %li
+      %a{ :href => "http://latam.msn.cyloop.com" }
+        %strong Radios en línea
+    %li.last
+      %a{ :href => "http://entretenimiento.latam.msn.com/xl/musica/el-parlante-amarillo/" }
+        El Parlante Amarillo
