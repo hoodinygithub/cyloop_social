@@ -172,7 +172,8 @@
 
       $('#facebox').css({
         top:	top_position,
-        left:	385.5
+        // etoro: added this to center the loading graphic, previously hardcoded
+        left:	$(window).width() / 2 - ($("#facebox div.content div:first").width() / 2)
       }).show()
 
       $(document).bind('keydown.facebox', function(e) {
@@ -189,7 +190,8 @@
       $('#facebox .content').append(data)
       $('#facebox .loading').remove()
       $('#facebox .content').children().fadeIn('normal')
-      $('#facebox').css('left', $(window).width() / 2 - ($("#facebox div.content div:first").width() / 2))
+      // etoro: commented this out because the calculated center was incorrect for some reason.  using the loading graphic center
+      //$('#facebox').css('left', $(window).width() / 2 - ($("#facebox div.content div:first").width() / 2))
       $(document).trigger('reveal.facebox').trigger('afterReveal.facebox')
       $('#facebox .close').click($.facebox.close);
       $('.png_fix').supersleight({shim: 'http://www.cyloop.com/images/blank.gif'});
