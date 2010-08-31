@@ -203,7 +203,9 @@ Base.radio.refresh_my_stations = function() {
 		  $("div#my_stations_list .songs_box ul li a.launch_station").click(function(e){
 		  	e.preventDefault();
 				var is_station_list_item = $(this).hasClass('launch_station');
-				var show_loading = $(obj).hasClass('show_loading');				
+				//var show_loading = $(obj).hasClass('show_loading');				
+                                // FORCED BOOLEAN TEMPORARY MUST REFACTOR
+                                var show_loading = false;
 				var is_create_station_submit = $(this).attr("id") == "create_station_submit";
 				var list;
 				var list_play_button;
