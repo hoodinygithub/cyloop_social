@@ -189,6 +189,10 @@
       if (klass) $('#facebox .content').addClass(klass)
       $('#facebox .content').append(data)
       $('#facebox .loading').remove()
+	  
+	  // etoro: IE7 bg image bug 
+      $('#facebox .top_shadow').css('z-index', 100);
+	  
       $('#facebox .content').children().fadeIn('normal')
       // etoro: commented this out because the calculated center was incorrect for some reason.  using the loading graphic center
       //$('#facebox').css('left', $(window).width() / 2 - ($("#facebox div.content div:first").width() / 2))
