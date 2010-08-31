@@ -1045,8 +1045,8 @@ module ApplicationHelper
           dom  = "<div class='grey_box'>"
           dom += "<div class='box_content' id='top_stations'>"
           dom += "<h1>#{t('modules.top_stations.title')}</h1>"
-          cache( "#{site_cache_key}/top_abstract_stations/#{options[:top_station_limit]}", :expires_in => EXPIRATION_TIMES['radio_top_abstract_stations'] ) do
-            dom += render :partial => 'radio/abstract_station_simple', :collection => options[:top_abstract_stations]
+          dom += cache( "#{site_cache_key}/top_abstract_stations/#{options[:top_station_limit]}", :expires_in => EXPIRATION_TIMES['radio_top_abstract_stations'] ) do
+            render :partial => 'radio/abstract_station_simple', :collection => options[:top_abstract_stations]
           end
           dom += "</div>"
           dom += "</div>"
