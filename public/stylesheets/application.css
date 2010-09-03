@@ -772,7 +772,7 @@ h1 {
 }
 
 .blue_button.full_width span span, .yellow_button.full_width span span, .custom_button.full_width span span {
-    padding: 0px;
+    padding: 0 10px;
 }
 
 #center_column h1 {
