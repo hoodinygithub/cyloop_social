@@ -22,8 +22,8 @@
 
 </div><!--/end popup -->
 
-<div class="popup" id="save_mix_popup">
-    <div class="top_shadow">
+<div id="save_mix_popup" style="display:none;">
+    <!-- div class="top_shadow">
         <div class="top_left corner"></div>
         <div class="center_shadow"></div>
         <div class="top_right corner"></div>
@@ -31,7 +31,7 @@
     </div>
 
     
-    <div class="popup_content">
+    <div class="popup_content" -->
         <%= form_tag playlist_create_path, :class => "account_settings", :id => "save_playlist_form", :method => :post, :multipart => true %>
             <input type="hidden" name="item_ids" value="">
             <div class="title"><%= t('playlists.save_your_playlist') %></div>
@@ -77,7 +77,7 @@
             <br/>
             
             <div class="align_right">
-                <big><a href="#" onclick="$('#save_mix_popup').fadeOut('fast'); return false;" class="not_underlined black valign_middle popup_close_action"><%= t('actions.cancel') %></a></big>
+                <big><a href="#" onclick="$(document).trigger('close.facebox'); return false;" class="not_underlined black valign_middle popup_close_action"><%= t('actions.cancel') %></a></big>
                 <a href="#" class="blue_button valign_middle btn_blue_loading" 
                   onclick="submit_save_form(); return false;">
                 <span><span class="blue_loading" loading_message="<%= t('actions.saving') %>">
@@ -85,19 +85,19 @@
                 </span></span></a>
             </div>
         </form>
-    </div>
+    <!-- /div>
 
     
     <div class="bottom_shadow">
         <div class="bottom_left corner"></div>
         <div class="center_shadow"></div>
         <div class="bottom_right corner"></div>
-    </div>
+    </div -->
 </div><!--/end popup -->
 
 
-<div class="popup" id="unable_popup">
-    <div class="top_shadow">
+<div id="unable_popup" style="display:none;">
+    <!-- div class="top_shadow">
         <div class="top_left corner"></div>
         <div class="center_shadow"></div>
 
@@ -105,19 +105,19 @@
         <a href="#" onclick="$('#unable_popup').fadeOut('fast'); return false;"><img src="/images/popup_close.png" class="popup_close png_fix" alt="X" title="Close" /></a>
     </div>
     
-    <div class="popup_content">
+    <div class="popup_content" -->
         <div class="title"><%= t('playlists.unable_save') %></div>
         
         <div class="auto_fill_text">
             <%= t('playlists.unable_save_text') %>
         </div>
-    </div>
+    <!-- /div>
 
     <div class="bottom_shadow">
         <div class="bottom_left corner"></div>
         <div class="center_shadow"></div>
         <div class="bottom_right corner"></div>
-    </div>
+    </div -->
 </div><!--/end popup -->
 
 <div class="popup" id="cancel_popup">
@@ -160,8 +160,8 @@
 </div><!--/end popup -->
 
 
-<div class="popup" id="edit_conf_popup">
-    <div class="top_shadow">
+<div id="edit_conf_popup" style="display:none;">
+    <!--div class="top_shadow">
 
         <div class="top_left corner"></div>
         <div class="center_shadow"></div>
@@ -169,7 +169,7 @@
         <a href="#" onclick="$('#edit_conf_popup').fadeOut('fast'); return false;"><img src="/images/popup_close.png" class="popup_close png_fix" alt="X" title="Close" /></a>
     </div>
     
-    <div class="popup_content">
+    <div class="popup_content"-->
         <form action="" method="post" class="account_settings">
             <div class="title"><%= t('playlists.save_confirmation') %></div>
 
@@ -186,15 +186,15 @@
             <div class="align_right">
                 <big><a href="<%= my_mixes_path %>" class="not_underlined black valign_middle popup_close_action"><%= t('playlists.no_thanks') %></a></big>
                 
-                <a href="#" onclick="$('#edit_conf_popup').fadeOut('fast'); return false;" class="blue_button valign_middle"><span><span><%= t('playlists.continue') %></span></span></a>
+                <a href="#" onclick="$(document).trigger('close.facebox'); return false;" class="blue_button valign_middle"><span><span><%= t('playlists.continue') %></span></span></a>
             </div>
         </form>
-    </div>
+    <!-- /div>
     
     <div class="bottom_shadow">
         <div class="bottom_left corner"></div>
         <div class="center_shadow"></div>
 
         <div class="bottom_right corner"></div>
-    </div>
+    </div -->
 </div><!--/end popup -->
