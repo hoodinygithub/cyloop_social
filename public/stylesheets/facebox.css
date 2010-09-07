@@ -162,7 +162,7 @@
 
 .popup .content {
     background: url("/images/popup_h_bg.png") repeat-y left top;
-	position: relative; /* IE7 bg image bug */
+    position: relative; /* IE7 bg image bug */
     padding: 35px 45px;
     text-align: left;
     color: #1b1b1b;
