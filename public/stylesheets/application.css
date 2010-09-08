@@ -326,6 +326,10 @@ h1 {
     padding-left:5px;
 }
 
+.search_results_header h1 {
+  color: #000;
+}
+
 .artist_box {
     width: 150px;
     height: 150px;
