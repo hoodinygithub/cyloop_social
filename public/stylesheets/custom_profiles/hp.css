@@ -62,7 +62,6 @@ body.hprocks div#main_content a {
 .custom_button, body.hprocks .red_button, body.hprocks .blue_button, body.hprocks .green_button  {
 	background:url("/images/btn_28_round_left.png") no-repeat scroll left top #29568F;
 	color:#FFFFFF;
-	display:inline-block;
 	font-size:12px;
 	font-weight:bold;
 	height:28px;
@@ -76,7 +75,6 @@ body.hprocks div#main_content a {
 	background:url("/images/btn_28_round_right.png") no-repeat scroll right top transparent;
 	color:#FFFFFF;
 	cursor:pointer;
-	display:inline-block;
 	height:28px;
 	padding-right:4px;
 }
