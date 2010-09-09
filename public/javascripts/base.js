@@ -649,9 +649,9 @@ Base.community.follow = function(user_slug, button, remove_div, layer_path) {
         $button_label.html(Base.locale.t('actions.unfollow'));
         //
         // REFACTORING NEEDED WITH THIS LOGIC
+        $button.addClass("green_button");
         //
-        // $button.addClass("green_button");
-        $button.addClass('custom_button');
+        //$button.addClass('custom_button');
       } else if (response.status == 'pending') {
         $button_label.html(Base.locale.t('actions.pending'));
         $button.addClass("yellow_button");
