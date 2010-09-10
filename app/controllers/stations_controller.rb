@@ -4,7 +4,7 @@ class StationsController < ApplicationController
   # TODO: Let's keep this as a reminder of the refactoring we *must* do  
   
   def index
-    @stations = AbstractStation.search(params[:q], :per_page => params[:limit] || 15, :page => 1)
+    @stations = AbstractStation.search(params[:q], :per_page => params[:limit] || 15, :page => 1, :star => true, :retry_stale => true)
     respond_to do |format|
       format.txt  { render :text => @stations.join("\n") }
       format.xml  { render :xml => @stations.to_xml(:only => [:id, :name], :skip_types => true) }
