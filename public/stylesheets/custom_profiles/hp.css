@@ -108,6 +108,7 @@ body.hprocks div#main_content a {
 	display:inline-block;
 	height:28px;
 	padding-right:4px;
+        width: 100px;
 }
 
 a:hover {
