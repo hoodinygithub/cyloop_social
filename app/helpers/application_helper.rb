@@ -1047,7 +1047,7 @@ module ApplicationHelper
           dom += "<h1>#{t('modules.top_stations.title')}</h1>"
           dom += Rails.cache.fetch( "#{site_cache_key}/top_abstract_stations/#{options[:top_station_limit]}", :expires_in => EXPIRATION_TIMES['radio_top_abstract_stations'] ) do
             render :partial => 'radio/abstract_station_simple', :collection => options[:top_abstract_stations]
-          end
+          end rescue nil # When there are no top stations and render returns nil, which can't be appended
           dom += "</div>"
           dom += "</div>"
           content << dom
