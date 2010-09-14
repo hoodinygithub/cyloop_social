@@ -130,6 +130,7 @@ a:hover {
 
 body.hprocks .small_thumb {
 	margin-right:10px !important;
+	height: 80px;
 }
 
 body.hprocks .gb_small {
