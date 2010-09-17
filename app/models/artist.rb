@@ -159,21 +159,21 @@ class Artist < Account
   # 
 
   def playlists(opts={})
-    Rails.cache.fetch("#{slug_cache_key}/mixes/#{opts.to_cache_key}", :expires_delta => EXPIRATION_TIMES['profile_mixes']) do    
-      pi_args = { :select => 'playlist_items.playlist_id',
-                  :group => 'playlist_items.playlist_id', 
-                  :joins => ["INNER JOIN playlists ON playlist_items.playlist_id = playlists.id", "INNER JOIN accounts ON playlists.owner_id = accounts.id" ],
-                  :conditions => ['playlist_items.artist_id = ? AND playlists.deleted_at IS NULL and playlists.locked_at IS NULL AND accounts.deleted_at IS NULL and accounts.network_id = 1', self.id],
-                  :order => "playlist_items.playlist_id DESC, playlist_items.updated_at DESC", 
-                  :limit => 200 }
-
-      p_args = {}
+    Rails.cache.fetch("#{slug_cache_key}/mixes/#{opts.to_cache_key}", :expires_delta => EXPIRATION_TIMES['profile_mixes']) do
+      p_args = { :select => 'playlists.*',
+        :joins => ['INNER JOIN playlist_items ON playlist_items.playlist_id = playlists.id', 
+        'INNER JOIN accounts ON playlists.owner_id = accounts.id',
+        'INNER JOIN songs ON songs.id = playlist_items.song_id'],
+        :conditions => ['playlist_items.artist_id = ? AND playlists.deleted_at IS NULL AND playlists.locked_at IS NULL AND accounts.deleted_at IS NULL AND accounts.network_id = 1 AND songs.deleted_at IS NULL', self.id],
+        :group => 'playlist_items.playlist_id',
+        :order => 'playlists.updated_at DESC',
+        :limit => 20
+      }
+      
       p_args.merge!(:order => opts[:order]) unless opts[:order].nil?
       p_args.merge!(:limit => opts[:limit]) unless opts[:limit].nil?
-
-      ids = PlaylistItem.all(pi_args).map(&:playlist_id)
-    
-      Playlist.find_all_by_id(ids, p_args)
+      
+      Playlist.all(p_args)
     end      
   end
 
