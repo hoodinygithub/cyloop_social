@@ -21,7 +21,7 @@ class PlaylistsController < ApplicationController
     @page = params[:page] || 1
     
     if profile_account.is_a?(Artist)
-      @collection = profile_account.playlists(:order => sort_types[@sort_type], :sort_type => @sort_type).paginate(:per_page => 6, :page => @page, :total_entries => 200)      
+      @collection = profile_account.playlists(:order => sort_types[@sort_type], :sort_type => @sort_type).paginate(:per_page => 6, :page => @page)      
     else
       if profile_owner? and on_dashboard?
         @collection = profile_account.playlists.paginate :page => @page, :per_page => 6, :order => sort_types[@sort_type], :total_entries => profile_account.total_playlists
