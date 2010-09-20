@@ -73,6 +73,7 @@ namespace :db do
             INNER JOIN playlists p ON pi.playlist_id = p.id 
             INNER JOIN accounts a ON p.owner_id = a.id 
             INNER JOIN stations ss ON p.id = ss.playable_id AND ss.playable_type = 'Playlist' 
+            INNER JOIN songs s ON s.id = pi.song_id AND s.deleted_at IS NULL
             WHERE p.deleted_at IS NULL AND p.locked_at IS NULL 
             AND a.deleted_at IS NULL AND a.network_id = 1
             GROUP BY 1
