@@ -122,7 +122,10 @@ class UserStationsController < ApplicationController
   
   def msn_codes
     @msn_properties={}
-    if profile_account.artist?
+    if profile_account.nil?
+      # anon user trying to access my/stations
+      redirect_to new_session_path
+    elsif profile_account.artist?
       @msn_properties[:page_name] = '\'Artist Profile\''
       @msn_properties[:prop3] = "\'Cyloop - Artist Profile \'"
       @msn_properties[:prop4] = "\'Artist Profile - #{profile_account.name}\'"
