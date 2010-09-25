@@ -112,7 +112,14 @@ protected
   end
 
   def load_records
-    @playlist = Playlist.find(params[:playlist_id]) if params[:playlist_id]    
+    @playlist = Playlist.find(params[:playlist_id]) if params[:playlist_id] 
+
+    # Logged out user attempting to view "my/reviews".
+    if profile_account.nil?
+       redirect_to new_session_path
+       return false
+    end
+
     scope = request.request_uri.match(/mixes/) ? @playlist : profile_account
     @records = scope.comments.valid(:order => @sort_data)
   end
