@@ -24,8 +24,10 @@ class PlaylistsController < ApplicationController
       @collection = profile_account.playlists(:order => sort_types[@sort_type], :sort_type => @sort_type).paginate(:per_page => 6, :page => @page)      
     else
       if profile_owner? and on_dashboard?
-        @collection = profile_account.playlists.paginate :page => @page, :per_page => 6, :order => sort_types[@sort_type], :total_entries => profile_account.total_playlists
+        # Can't use account.total_playlists b/c that doesn't include locked mixes which need to appear in private view.
+        @collection = profile_account.playlists.paginate :page => @page, :per_page => 6, :order => sort_types[@sort_type]
       else
+        # Using account.total_playlists here saves a count query when looking for unlocked, undeleted mixes.
         @collection = profile_account.playlists.unlocked(:order => sort_types[@sort_type]).paginate :page => @page, :per_page => 6, :total_entries => profile_account.total_playlists
       end        
     end
