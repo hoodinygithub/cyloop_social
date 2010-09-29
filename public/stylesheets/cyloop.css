@@ -174,6 +174,10 @@ h1 {
   background-position: -2px -3px;
 }
 
+#msn_header .portal .msn_sisters li.messenger a {
+  background-image: url("http://col.stb.s-msn.com/i/DE/73EA3A497EB807310219A1C4D1E9E.gif");
+}
+
 #msn_header .portal .msn_sisters li.hotmail a {
   background-image: url("http://tk2.stb00.s-msn.com/i/F6/528E19AA57C59BD28F9241C1469F1.gif");
 }
@@ -184,7 +188,7 @@ h1 {
 }
 
 .msncaen #msn_header .portal .msn_sisters li.hotmail a {
-  background-image: url("http://colstb.msn.com/i/B6/32E46DE281A68B9C33FC582D2569D.gif");
+  background-image: url("http://col.stb.s-msn.com/i/F6/528E19AA57C59BD28F9241C1469F1.gif");
 }
 
 #msn_header .portal .msn_sisters li.repertoire a {
@@ -203,6 +207,16 @@ h1 {
   background-image: url("http://tk2.stb01.s-msn.com/i/62/4CDB82E7A6B07B3897D5D2436D73.gif");
   background-position: -2px 0px;
 }
+
+#msn_header .portal .msn_sisters li.cellular a {
+  background-image: url("http://col.stb.s-msn.com/i/B5/9D11E6BA6F390349C14A411D84A5A.jpg");
+}
+
+#msn_header .portal .msn_sisters li.video a {
+  background-image: url("http://col.stb.s-msn.com/i/7F/79C8BB91FEA4B86CBB1627F6C8A447.png");
+}
+
+
 
 #msn_header .portal .msn_sections {
   margin: 3px 0px;
