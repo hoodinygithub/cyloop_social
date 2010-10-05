@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
 
   sanitize_params
 
-  before_filter :do_basic_http_authentication
+  # before_filter :do_basic_http_authentication
   before_filter :confirm_registration_code
 
   filter_parameter_logging :password, :password_confirmation
