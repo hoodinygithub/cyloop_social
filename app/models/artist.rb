@@ -164,7 +164,7 @@ class Artist < Account
         :joins => ['INNER JOIN playlist_items ON playlist_items.playlist_id = playlists.id', 
         'INNER JOIN accounts ON playlists.owner_id = accounts.id',
         'INNER JOIN songs ON songs.id = playlist_items.song_id'],
-        :conditions => ['playlist_items.artist_id = ? AND playlists.deleted_at IS NULL AND playlists.locked_at IS NULL AND accounts.deleted_at IS NULL AND accounts.network_id = 1 AND songs.deleted_at IS NULL', self.id],
+        :conditions => ['songs.artist_id = ? AND playlists.deleted_at IS NULL AND playlists.locked_at IS NULL AND accounts.deleted_at IS NULL AND accounts.network_id = 1 AND songs.deleted_at IS NULL', self.id],
         :group => 'playlist_items.playlist_id',
         :order => 'playlists.updated_at DESC',
         :limit => 200
