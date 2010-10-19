@@ -21,7 +21,7 @@ class UserStationsController < ApplicationController
     respond_to do |format|
       block = Proc.new do
         @user_stations = profile_account.stations(profile_account.is_a?(Artist) ? 50 : nil)
-        render :xml => Player::Station.from(@user_stations, :ip => remote_ip, :user_id => logged_in? ? current_user.id : nil).to_xml(:root => 'user_stations')
+        render :xml => Player::Station.from(@user_stations, :ip => remote_ip, :user_id => logged_in? ? current_user.id : nil).to_xml(:root => 'user_stations') unless @user_stations.nil?
       end
 
       format.html do
