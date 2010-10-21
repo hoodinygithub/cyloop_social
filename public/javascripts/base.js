@@ -1492,6 +1492,7 @@ jQuery(document).ready(function() {
   if (has_edited) {
     $.popup({ div: '#edit_conf_popup' });
   }
+
   //MSN header behaviors
   $('#msn_header .portal').hide();
   $('#msn_header li.more a').click(function() {
