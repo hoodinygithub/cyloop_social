@@ -68,10 +68,6 @@
 
   <div id="stream_connector">
     <script type="text/javascript" charset="utf-8">
-    <% if @edited %>
-      $('#edit_conf_popup').fadeIn('fast');
-    <% end %>
-
     var flashvars = "playerId=<%= @player_id %>";
     AC_FL_RunContent(
       "src", "/flash/stream_connect",
@@ -88,6 +84,11 @@
       "pluginspage", "http://www.adobe.com/go/getflashplayer",
       "flashVars", flashvars
     );
+    <% if @edited %>
+    var edited = true;
+    <% end %>
     </script>
+
+
   </div>
 </div>

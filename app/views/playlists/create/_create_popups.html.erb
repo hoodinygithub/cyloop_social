@@ -32,7 +32,7 @@
 
     
     <div class="popup_content" -->
-        <%= form_tag playlist_create_path, :class => "account_settings", :id => "save_playlist_form", :method => :post, :multipart => true %>
+        <%= form_tag playlist_create_path, :class => "save_playlist_form account_settings", :method => :post, :multipart => true %>
             <input type="hidden" name="item_ids" value="">
             <div class="title"><%= t('playlists.save_your_playlist') %></div>
             

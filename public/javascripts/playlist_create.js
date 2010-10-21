@@ -493,7 +493,7 @@ function open_save_popup() {
 }
 
 function submit_save_form() {
-  var form = $('.account_settings:visible');
+  var form = $('.save_playlist_form:visible');
   
   if(_pv.valid) {
     var name = form.find("input[name='name']");
