@@ -515,7 +515,7 @@ es_AR:
     sony_disclaimer: El logo y s&#237;mbolo de Walkman&#8482; son marcas registrados de Sony Corporation.
   messenger_player: 
     station: 
-      name: "Nombre de la estaci\xC3\xB3n de radio"
+      name: Nombre de la Radio
       edit: "Cambiar nombre de la estaci\xC3\xB3n de radio"
       delete: "Borrar estaci\xC3\xB3n de radio"
       would_delete: "\xC2\xBFQuer\xC3\xA9s borrar esta estaci\xC3\xB3n de radio?"

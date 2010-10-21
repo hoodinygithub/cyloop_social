@@ -520,7 +520,7 @@ es_US:
       friend: Email de tu amigo
       email: Tu Email
     station: 
-      name: "Nombre de la Estaci\xC3\xB3n de Radio"
+      name: Nombre de la Radio
       edit: "Cambiar Nombre de la Estaci\xC3\xB3n de Radio"
       delete: "Borrar Estaci\xC3\xB3n de Radio"
       would_delete: "Quieres borrar esta estaci\xC3\xB3n de radio?"
