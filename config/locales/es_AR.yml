@@ -91,6 +91,7 @@ es_AR:
         invalid_chars: "S\xC3\xADmbolos inv\xC3\xA1lidos"
     friend_email: Email/s de tu/s amigo/s
     message: Mensaje
+    email: Tu Email
     song: 
       submit: "Compartir Canci\xC3\xB3n"
       subject: "{{user}} quiere compartir esta canci\xC3\xB3n contigo."
@@ -102,7 +103,6 @@ es_AR:
         Microsoft Corporation, One Microsoft Way, Redmond, WA 98052-6399, USA \\xC2\\xA9; 2008 Microsoft Corporation.\r\n\
         Todos los derechos reservados."
       message: "Creo que esta canci\xC3\xB3n te va a gustar."
-    email: Tu Email
     multiple_emails: "(si ingresas varios emails, sep\xC3\xA1ralos usando una coma entre cada uno)"
   dashboards: 
     pending: 
@@ -129,12 +129,12 @@ es_AR:
       title: Siguiendo
   buylink: 
     no_buylinks: No se encuentra disponible para la compra
-    select_store: "Seleccion\xC3\xA1 tu tienda"
     song: "Comprar esta canci\xC3\xB3n"
+    select_store: "Seleccion\xC3\xA1 tu tienda"
   actions: 
+    skip: ""
     rate_it: PONLE TU RATING
     login: Login
-    skip: ""
     approve: Aprobar
     save: Guardar
     unfollow: Siguiendo
@@ -232,19 +232,19 @@ es_AR:
   possessives: 
     third_person: 
       latest_mixes: "\xC3\x9Altimos Mixes de {{subject}}"
-      top_mixes: Mixes Top de {{subject}}
       stations: Radios de {{subject}}
+      top_mixes: Mixes Top de {{subject}}
       network_activity: Actividad de {{subject}} en la red
       followers: "Gente que est\xC3\xA1 siguiendo a {{subject}}"
-      recent_reviews: "\xC3\x9Altimos reviews de {{subject}}"
       playlists: Mixes de {{subject}}
+      recent_reviews: "\xC3\x9Altimos reviews de {{subject}}"
       has_not_reviews: "{{subject}} no ha escrito ningn\xC3\xBAn review aun."
       albums: "Albumes de {{subject}} "
       has_not_playlists: "{{subject}} no tiene mixes."
       has_not_stations: "{{subject}} no tiene radios."
       latest_stations: "\xC3\x9Altimas Radios de {{subject}}"
-      has_not_followers: "{{subject}} no tiene seguidores."
       followees: "Gente que  {{subject}} est\xC3\xA1 siguiendo"
+      has_not_followers: "{{subject}} no tiene seguidores."
       reviews: Reviews de {{subject}}
       is_not_following: "{{subject}} no est\xC3\xA1 siguiendo a nadie."
       follow_requests: Pedidos de Gente a Seguir de {{subject}}
@@ -252,19 +252,19 @@ es_AR:
       charts: Listas de {{subject}}
     first_person: 
       latest_mixes: "Mis \xC3\x9Altimos Mixes"
-      top_mixes: Mis Mixes Top
       stations: Mis Radios
+      top_mixes: Mis Mixes Top
       network_activity: Mi actividad de red
       followers: Gente que me esta siguiendo
-      recent_reviews: "Mis \xC3\x9Altimos Reviews"
       playlists: Mis Mixes
+      recent_reviews: "Mis \xC3\x9Altimos Reviews"
       has_not_reviews: "No has dejado ning\xC3\xBAn review aun."
       albums: Mis Albumes
       has_not_playlists: No tienes mixes.
       has_not_stations: No tienes radios.
       latest_stations: "Mis \xC3\x9Altimas Radios"
-      has_not_followers: No tienes seguidores.
       followees: "Gente que estoy siguiendo "
+      has_not_followers: No tienes seguidores.
       reviews: Mis Reviews
       is_not_following: "No est\xC3\xA1s siguiendo a nadie."
       follow_requests: Mis Pedidos de Gente a Seguir
@@ -326,8 +326,8 @@ es_AR:
               cannot_start_with_punctuation: "no puede empezar con un signo de puntuaci\xC3\xB3n"
               taken: ya ha sido tomado
             current_password: 
-              incorrect: es incorrecto
               is_incorrect: ""
+              incorrect: es incorrecto
             negative_captcha: 
               must_be_blank: "debe quedar vac\xC3\xADo"
             base: 
@@ -398,13 +398,13 @@ es_AR:
       customize_page: "Personalizar la P\xC3\xA1gina"
     navigation: 
       myfollowers: Seguidores
-      all: Todo
       songs: Canciones
+      all: Todo
       artists: Artistas
       stations: Radios
       subscriptions: Subscripciones
-      dashboard: Dashboard
       profile_followers: Seguidores
+      dashboard: Dashboard
       followers: Seguidores
       playlists: Mixes
       activity: Actividad
@@ -482,12 +482,12 @@ es_AR:
     listened_to: "Escuch\xC3\xB3 '{{song}}' de '{{artist}}'"
     user_others: "{{user}} + Otros"
     push_notification_refresh: Recargar
+    twitter_you_following: "Tweets de artistas que vos est\xC3\xA1s siguiendo"
     filters: 
-      all: TODOS
       songs: CANCIONES
+      all: TODOS
       stations: RADIOS
       playlists: MIXES
-    twitter_you_following: "Tweets de artistas que vos est\xC3\xA1s siguiendo"
     no_more_activity: "No hay m\xC3\xA1s actividad"
     push_notification: "Ten\xC3\xA9s {{count}} actualizaciones nuevas. {{link}} la actividad en tu Dashboard para verlas."
     push_notification_more_than: "Ten\xC3\xA9s m\xC3\xA1s de {{count}} actualizaciones nuevas. {{link}} la actividad en tu Dashboard para verlas."
@@ -504,11 +504,11 @@ es_AR:
   albums: 
     label: "Sello discogr\xC3\xA1fico"
     song_count: Canciones
+    show: 
+      about_this_album: "Acerca de este \xC3\xA1lbum"
     year: !binary |
       QcOxbw==
 
-    show: 
-      about_this_album: "Acerca de este \xC3\xA1lbum"
     release_date: Fecha de lanzamiento
     total_plays: Reproducciones totales
   custom_profiles: 
@@ -527,8 +527,8 @@ es_AR:
     sign_in: "ingres\xC3\xA1 con tu Live ID de Windows"
     edit_station: "Para editar esta radio, "
     buylink: 
-      select_store: Selecciona tu tienda
       song: "Comprar esta canci\xC3\xB3n"
+      select_store: Selecciona tu tienda
     click_here: "clic aqu\xC3\xAD"
     we_hope_you_enjoyed: "Esperamos que te hayan gustado las canciones que se tocaron. Para escuchar m\xC3\xA1s, "
     record_not_found: El material que buscas no pudo encontrarse
@@ -810,7 +810,7 @@ es_AR:
     following: Siguiendo
   widget: 
     station: 
-      name: "Nombre de la estaci\xC3\xB3n de radio"
+      name: Nombre de la radio
       edit: "Cambiar nombre de la estaci\xC3\xB3n de radio"
       delete: "Borrar estaci\xC3\xB3n de radio"
       would_delete: "\xC2\xBFQuer\xC3\xA9s borrar esta estaci\xC3\xB3n de radio?"
@@ -822,14 +822,14 @@ es_AR:
     sign_in: "ingres\xC3\xA1 con tu Live ID de Windows"
     edit_station: Para modificar esta radio,
     buylink: 
-      select_store: Selecciona tu tienda
       song: "Comprar esta canci\xC3\xB3n"
+      select_store: Selecciona tu tienda
     click_here: "clic aqu\xC3\xAD"
     actions: 
       edit: Modificar
-      submit: Enviar
-      close: Cerrar
       delete: Eliminar
+      close: Cerrar
+      submit: Enviar
       save: Guardar
     we_hope_you_enjoyed: "Esperamos que te hayan gustado las canciones que escuchaste. Para escuchar m\xC3\xA1s canciones,"
     record_not_found: "No se pudo encontrar ning\xC3\xBAn resultado"
@@ -921,10 +921,10 @@ es_AR:
       category_business: "Informaci\xC3\xB3n sobre Negocios Generales o Relaciones P\xC3\xBAblicas"
       category: "Categor\xC3\xADa"
       submit: Enviar mensaje
+      welcome: "Bienvenido a la secci\xC3\xB3n de Soporte T\xC3\xA9cnico de Cyloop"
       country: !binary |
         UGHDrXM=
 
-      welcome: "Bienvenido a la secci\xC3\xB3n de Soporte T\xC3\xA9cnico de Cyloop"
       support_form: "Formulario de Soporte T\xC3\xA9cnico"
       category_account: Mi Cuenta
       business_inquires: "Informaci\xC3\xB3n sobre Negocios Generales?"
@@ -973,6 +973,8 @@ es_AR:
   settings: 
     page_title: Controla tu Cyloop
     background_not_saved_image_too_large: "Las im\xC3\xA1genes de fondo no pueden superar el tama\xC3\xB1o de 1MB"
+    private_profile: 
+      description: "Descripci\xC3\xB3n de qu\xC3\xA9 hace la funci\xC3\xB3n \"Mantener Perfil Privado?\""
     customizations: 
       header_background: Fondo del Encabezado
       main_background_color: Color del Fondo Principal
@@ -983,8 +985,6 @@ es_AR:
       restore_defaults: Volver al original
       colors: Colores
       browse: Navegar...
-    private_profile: 
-      description: "Descripci\xC3\xB3n de qu\xC3\xA9 hace la funci\xC3\xB3n \"Mantener Perfil Privado?\""
     cancel_my_account: Cancelar Mi Cuenta
     not_saved: "Tus par\xC3\xA1metros no fueron guardados correctamente."
     notifications: ""
@@ -1020,8 +1020,8 @@ es_AR:
     terms_and_conditions: "T\xC3\xA9rminos y condiciones"
     support: Soporte
     profile_not_available: Perfil No Disponible
-    feedback: Feedback
     about_cyloop: Sobre Cyloop
+    feedback: Feedback
     safety_tips: Consejos de Seguridad
     about_hoodiny: Sobre Hoodiny
     profile_not_available_sorry: "Lamentablemente este perfil no est\xC3\xA1 disponible en tu pa\xC3\xADs"
@@ -1113,10 +1113,10 @@ es_AR:
     "no": "No"
   feedback: 
     submit: "Env\xC3\xADa Tu Sugerencias"
+    title: Sugerencias
     country: !binary |
       UGHDrXM=
 
-    title: Sugerencias
     os: Sistema Operativo
     feedback: Sugerencias
     browser: Navegador
@@ -1132,8 +1132,8 @@ es_AR:
     terms_and_conditions: "T\xC3\xA9rminos y Condiciones"
     support: Soporte
     about_us: Sobre Nosotros
-    feedback: Sugerencias
     about_cyloop: Sobre Cyloop
+    feedback: Sugerencias
     safety_tips: Consejos de Seguridad
     about_hoodiny: Sobre Hoodiny
     privacy_policy: "Pol\xC3\xADtica de Privacidad"
