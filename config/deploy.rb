@@ -66,8 +66,8 @@ task :production do
   role :app, "72.46.233.77:7010", :no_release => true, :no_symlink => true
   role :app, "72.46.233.77:7011", :no_release => true, :no_symlink => true
   role :app, "72.46.233.77:7000", :no_release => true, :no_symlink => true
-  role :app, "72.46.233.77:7016", :no_release => true, :no_symlink => true
-  role :app, "72.46.233.77:7017", :no_release => true, :no_symlink => true
+  role :app, "72.46.233.77:7001", :no_release => true, :no_symlink => true
+  role :app, "72.46.233.77:7003", :no_release => true, :no_symlink => true
 
   set :branch, "release-20100505"
   set :rails_env, "production"
@@ -150,10 +150,10 @@ end
 
 #EY06 Canada
 task :canada do
-  role :web, "72.46.233.77:7016"
-  role :app, "72.46.233.77:7016", :memcached => true, :sphinx => true
-  role :db , "72.46.233.77:7016", :primary => true
-  role :app, "72.46.233.77:7017", :memcached => true, :sphinx => true
+  role :web, "72.46.233.77:7001"
+  role :app, "72.46.233.77:7001", :memcached => true, :sphinx => true
+  role :db , "72.46.233.77:7001", :primary => true
+  role :app, "72.46.233.77:7003", :memcached => true, :sphinx => true
 
   set :rails_env, "production"
   set :environment_database, defer { production_database }
@@ -162,10 +162,10 @@ end
 
 #EY06 TVN
 task :tvn do
-  role :web, "72.46.233.77:7016"
-  role :app, "72.46.233.77:7016", :memcached => true, :sphinx => true
-  role :db , "72.46.233.77:7016", :primary => true
-  role :app, "72.46.233.77:7017", :memcached => true, :sphinx => true
+  role :web, "72.46.233.77:7001"
+  role :app, "72.46.233.77:7001", :memcached => true, :sphinx => true
+  role :db , "72.46.233.77:7001", :primary => true
+  role :app, "72.46.233.77:7003", :memcached => true, :sphinx => true
 
   set :rails_env, "production"
   set :environment_database, defer { production_database }
@@ -174,10 +174,10 @@ end
 
 #EY06 Widget
 task :widget do
-  role :web, "72.46.233.77:7016"
-  role :app, "72.46.233.77:7016", :memcached => true, :sphinx => true
-  role :db , "72.46.233.77:7016", :primary => true
-  role :app, "72.46.233.77:7017", :memcached => true, :sphinx => true
+  role :web, "72.46.233.77:7001"
+  role :app, "72.46.233.77:7001", :memcached => true, :sphinx => true
+  role :db , "72.46.233.77:7001", :primary => true
+  role :app, "72.46.233.77:7003", :memcached => true, :sphinx => true
 
   set :rails_env, "production"
   set :environment_database, defer { production_database }
@@ -186,10 +186,10 @@ end
 
 #EY06 Cyloop ES
 task :cyloopes do
-  role :web, "72.46.233.77:7016"
-  role :app, "72.46.233.77:7016", :memcached => true, :sphinx => true
-  role :db , "72.46.233.77:7016", :primary => true
-  role :app, "72.46.233.77:7017", :memcached => true, :sphinx => true
+  role :web, "72.46.233.77:7001"
+  role :app, "72.46.233.77:7001", :memcached => true, :sphinx => true
+  role :db , "72.46.233.77:7001", :primary => true
+  role :app, "72.46.233.77:7003", :memcached => true, :sphinx => true
 
   set :rails_env, "production"
   set :environment_database, defer { production_database }
