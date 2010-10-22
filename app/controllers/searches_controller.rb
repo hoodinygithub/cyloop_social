@@ -14,8 +14,8 @@ class SearchesController < ApplicationController
                     :relevance => nil, \
                     :highest_rated => { :playlists => 'rating_cache DESC', :users => nil, :artists => nil, :stations => 'rating_cache DESC' }, \
                     :top => { :mixes => 'playlist_total_plays DESC', :users => nil, :artists => nil, :stations => 'user_station_total_plays DESC' }  
-                  }
-    
+    }
+
     @sort_type = get_sort_by_param(@sort_types.keys, :relevance) #params.fetch(:sort_by, nil).to_sym rescue :relevance
 
     @active_scope = params[:scope].nil? ? @search_types[0] : params[:scope].to_sym
@@ -23,7 +23,7 @@ class SearchesController < ApplicationController
 
     @counts = {}
     @results = {}
-    
+
     if request.xhr?
       if @active_scope == :all
         search_results(@search_types, 4)
@@ -31,7 +31,7 @@ class SearchesController < ApplicationController
       else 
         search_results(@active_scope.to_a)
       end
-      
+
       if params.has_key? :result_only
         render :partial => "searches/#{@active_scope.to_s}"
       else
@@ -52,7 +52,7 @@ class SearchesController < ApplicationController
         end      
       end      
     end
-    
+
     # if request.xhr?
     #   @active_scope == :all ? search_all_types(4) : search_only_active_type(20)
     #   
@@ -66,14 +66,14 @@ class SearchesController < ApplicationController
     #     @active_scope == :all ? search_all_types : search_only_active_type
     #   end
     # end
-    
+
   end
 
   def content
     @query = params[:q]    
     @content_search ||= true
     @search_types ||= [:artists, :songs, :albums]    
-    @internal_search_types = []    
+    @internal_search_types = []
     @sort_type = :relevance
     @sort_types = { :relevance => nil }
 
@@ -83,9 +83,38 @@ class SearchesController < ApplicationController
     @results = {}
 
     @active_scope == :all ? search_results(@search_types, 4) : search_results(@active_scope.to_a)
-    
+
     @local = true if params[:local]
     render :partial => 'searches/content_list'#, :layout => false
+  end
+
+  def twitstation
+    @query = CGI::unescape(params[:q]) rescue nil
+    
+    if @query.nil?
+      render :xml => {:error => { :message => "No query."}}
+    else
+      #@search_type = :artists
+      @search_types = [:artists]
+      @internal_search_types = []
+      #@sort_type = :relevance
+      @sort_types = { :relevance => nil }
+      @results = {}
+      @counts = {}
+      search_results(@search_types)
+      
+      if @results[:artists] && @results[:artists][0]
+        artist = @results[:artists][0]
+        playlist = artist.playlists(:order => 'playlists.total_plays DESC', :network_id => 2).first;
+        if playlist.nil?
+          render :xml => {:error => { :message => "No playlists for artist: #{artist.name}", :name => artist.name, :amg_id => CGI::escape(artist.amg_id)}}
+        else
+          render :xml => {:playlist => playlist.station.id, :name => playlist.name, :artist => artist.name, :includes => playlist.cached_artist_list }
+        end
+      else 
+        render :xml => {:error => { :message => "Artist not found: #{@query}"}}        
+      end
+    end
   end
 
   private  
@@ -100,7 +129,7 @@ class SearchesController < ApplicationController
     def sort_users_by_alpha(*args)
       args.first.sort!{ |a, b| a[1].name <=> b[1].name rescue 0 }
     end
-    
+
     def search_results (types=[], per_page = 12)
       opts = { :page => @page, :per_page => per_page, :star => true, :retry_stale => true }
 
@@ -109,7 +138,7 @@ class SearchesController < ApplicationController
         obj_scope = @internal_search_types.fetch(scope, scope)
         obj = obj_scope.to_s.classify.constantize
         opts.delete(:order)
-        
+
         if types.include? scope
           #default_sort_type scope == @active_scope
           sort_instruction = nil
@@ -135,7 +164,7 @@ class SearchesController < ApplicationController
         @counts.store(scope, obj.search_count(@query, opts))
       end
     end
-  
+
     # 
     # def search_only_active_type (per_page = 20)
     #   opts = { :page => params[:page], :per_page => per_page, :star => true }
@@ -163,7 +192,7 @@ class SearchesController < ApplicationController
     #   end
     #   default_active_scope
     # end
-    
+
     def msn_codes
       @msn_properties={}
       @msn_properties[:page_name] = '\'Search\''
@@ -171,4 +200,3 @@ class SearchesController < ApplicationController
       @msn_properties[:prop4] = "\'Search\'"
     end
 end
-

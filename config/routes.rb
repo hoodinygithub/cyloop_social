@@ -50,7 +50,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :artists, :only => :index, :member => {:similar_artists => :get}  
   map.resources :players, :only => :show
 
-  map.resource :search
+  map.resource :search, :collection => {:twitstation => :get}
   map.content_local_search '/search/content_local/:scope/:q', :controller => 'searches', :action => 'content', :local => true
   map.content_search '/search/content/:scope/:q', :controller => 'searches', :action => 'content'
   map.market_main_search '/search/:market_locale/:scope/:q', :controller => 'searches', :action => 'show'
