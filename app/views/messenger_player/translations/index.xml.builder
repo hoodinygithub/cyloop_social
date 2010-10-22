@@ -84,7 +84,9 @@ xml.translations( :locale => I18n.locale ) do
 
     'user.male',
     'user.female',
-    'user.born_on'
+    'user.born_on',
+
+    'player.max_skip_message.body'
   ]
   basic.each do |item|
     options = {}

@@ -1,0 +1,62 @@
+<html>
+<body>
+
+<script language="JavaScript" type="text/JavaScript">
+//try{document.domain=document.domain.toString().replace(/(.)*?\./,"");}catch(_){} // set document.domain
+function ADM_getArgs(){
+ var args=new Object(),query=location.search.substring(1),pairs=query.split("&");
+ for(var i=0;i<pairs.length;i++){
+  var pos=pairs[i].indexOf("=");
+  if(pos==-1)continue;
+  var argname=pairs[i].substring(0,pos),value=pairs[i].substring(pos+1);
+  args[argname]=unescape(value)
+ }
+ return args
+};
+var args=ADM_getArgs();
+var ADM_webcode = args.w;
+delete args.w;
+for(var prop in args)
+	self[prop]=args[prop];
+
+var findWindow = function(winObject, winCollection)
+{
+	for(var i=0; i<winCollection.length; i++)
+	{
+		if(winCollection[i]==winObject || arguments.callee(winObject, winCollection[i]) != -1)
+			return i;
+	}
+	return -1;
+}
+var getTopIFrameElement = function()
+{
+	var iframeIndex = findWindow(window, top);
+	if(iframeIndex == -1)
+		return null;
+	var iframes = top.document.getElementsByTagName("iframe");
+	return iframes.length > iframeIndex? iframes[iframeIndex]: null;
+}
+new function()
+{
+	var I,f,id,d=document;
+	if(self==top)
+	{
+		id='adm_'+Math.round(Math.random()*999999999999);
+		d.write('<div id="'+id+'"></div>');
+	}
+	I=setInterval(function()
+	{
+		if(f=top.__adm__add_position)
+		{
+			try{
+				f(id?d.getElementById(id):getTopIFrameElement(),'showcase',id);
+			}catch(_){};
+			clearInterval(I);
+		}
+	}, 50);
+}
+
+</script>
+
+</body>
+</html>
