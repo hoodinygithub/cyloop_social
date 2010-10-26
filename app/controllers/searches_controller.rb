@@ -107,7 +107,7 @@ class SearchesController < ApplicationController
         artist = @results[:artists][0]
         playlist = artist.playlists(:order => 'playlists.total_plays DESC', :network_id => 2).first;
         if playlist.nil?
-          render :xml => {:error => { :message => "No playlists for artist: #{artist.name}", :name => artist.name, :amg_id => CGI::escape(artist.amg_id)}}
+          render :xml => {:error => { :message => "No playlists for artist: #{artist.name}", :name => artist.name, :amg_id => (CGI::escape(artist.amg_id) rescue nil)}}
         else
           render :xml => {:playlist => playlist.station.id, :name => playlist.name, :artist => artist.name, :includes => playlist.cached_artist_list }
         end
