@@ -2,6 +2,7 @@ class PlaylistsController < ApplicationController
   current_tab :playlists
   current_filter :all
 
+  before_filter :geo_check, :only => :show
   before_filter :xhr_login_required, :only => [:copy]
   before_filter :login_required, :except => [:index, :widget, :avatar_update, :show, :copy]
   before_filter :profile_ownership_required, :only => [:index, :avatar_update], :if => :profile_owner?
@@ -285,6 +286,12 @@ class PlaylistsController < ApplicationController
   end
 
   private
+
+  def geo_check
+    unless current_country.enable_radio
+      render :xml => "<player error='NO_RADIO'></player>"
+    end
+  end
 
   def xhr_login_required
     unless current_user
