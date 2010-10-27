@@ -1,0 +1,241 @@
+--- 
+actions: 
+  rate_it: RATE IT
+dashboards: 
+  pending: 
+    title: Pendings
+  followers: 
+    user_followers: "{{user_name}}'S FOLLOWERS"
+    my_followers: MY FOLLOWERS
+  latest_tweet: LATEST TWEET
+  follows: "{{user_name}} FOLLOWS"
+  artist_latest_albums: LATEST ALBUMS BY {{name}}
+  user_latest_stations: "{{name}}'S LATEST STATIONS"
+  top_stations: "{{user_name}}'S TOP STATIONS"
+  artist_latest_stations: LATEST STATIONS FEATURING {{name}}
+  recent_activity: RECENT ACTIVITY
+buylink: 
+  no_buylinks: Not available to buy
+  song: Buy this song
+  select_store: Select your store
+modules: 
+  popular_mixes: 
+    title: Popular Mixes
+artist: 
+  be_the_first_to_create_mix: Be the first to create a mix with songs by {{user_name}}
+share: 
+  errors: 
+    message: 
+      invalid_chars: Invalid chars
+activerecord: 
+  attributes: 
+    user: 
+      playlist_confirmation: Your Playlist has been created, continue searching!
+blocks: 
+  blocked: Blocked
+possessives: 
+  third_person: 
+    charts: "{{subject}}'s Charts"
+  first_person: 
+    charts: My Charts
+playlist_items: 
+  delete_text: Are you sure you want to delete this song?
+  delete_title: Delete Song
+  create: 
+    errors: 
+      click_checkbox_first: In order to add this song, you must click on a checkbox beside the playlist you wish to add it to
+player: 
+  max_skip_message: 
+    body: Unfortunately our music licenses force us to limit the number of songs you may skip each hour. If you want to hear something else, try creating another station with a different artist.
+    header: We're sorry...
+chat: 
+  moderator: 
+    title: Moderator Module
+profile: 
+  navigation: 
+    charts: Charts
+stations: 
+  deleted: Your station has been deleted.
+playlists: 
+  please_remove: please remove
+messenger_player: 
+  share: 
+    title: Share with a friend
+    message: Message
+    email: Your Email
+    friend: Friend's email
+  we_hope_you_enjoyed: We hope you enjoyed the songs that you've heard. To hear more songs,
+  sign_in: sign in with Windows Live ID
+  station: 
+    name: Station Name
+    edit: Edit Station Name
+    delete: Delete Station
+    would_delete: Would you like to delete this station?
+  click_here: click here
+  buylink: 
+    song: Buy this song
+    select_store: Select your store
+  edit_station: To edit this station,
+  record_not_found: The item you are looking for could not be found
+  checkout_today_polular_stations: Checkout Today's Popular Stations
+  recengineerror_UNKNOWN: Unknown error
+  msn_stations: MSN Stations
+  take_a_moment: Take a moment to activate your MSN Music account
+  registration: 
+    success: Great Success! You are now registered.
+    email: Your E-mail Address
+  to_login: to login
+  album: 
+    released: Released
+  internal_error: We could not execute your request due to an internal error.  We've been notified about this issue and we'll take a look at it shortly.
+  authentication_required: You need to be logged in to do that
+  buy: Buy
+  activate_your_account: Activate your account on MSN Music
+  msn_music_is_free: MSN Music is free,
+  now_playing: Now Playing
+  recengineerror_NO_PLAYLIST: No playlist could be found
+  station_edit_success: Station name successfully updated
+  view_your_stations: To view your stations,
+  still_dont_have: Still don't have your MSN Music account?
+  continue: Continue
+  recengineerror_NO_RADIO: No radio could be found
+activity: 
+  created_playlist: Created Playlist '{{playlist}}'
+  filters: 
+    playlists: PLAYLISTS
+campaigns: 
+  destroyed_success: Campaign successfully destroyed
+  created_success: Campaign successfully created
+  deactivated_success: Campaign successfully deactivated
+  activated_success: Campaign successfully activated
+  start_date_gt_end_date: Start date must be less than end date
+  updated_success: Campaign successfully updated
+radio: 
+  search_hint: Enter the name of an artist
+  select_recommended_stations_below: "Or if you can\xE2\x80\x99t think of any, select a recommended station from below"
+  getting_started: To get started simply enter an artist name
+registration: 
+  sidebar: 
+    playlist_title: create your playlist of songs
+    playlist_text: if you have aspirations of becoming a DJ, create your own mixes adding songs you like to your playlists.
+account_settings: 
+  email_me_reviews_mixes: Send me an email when someone reviews/rates one of my mixes
+widget: 
+  share: 
+    title: Share with a friend
+    message: Message
+    email: Your Email
+    friend: Friend's email
+  we_hope_you_enjoyed: We hope you enjoyed the songs that you've heard. To hear more songs,
+  sign_in: sign in with Windows Live ID
+  station: 
+    name: Station Name
+    edit: Edit Station Name
+    delete: Delete Station
+    would_delete: Would you like to delete this station?
+  record_not_found: The item you are looking for could not be found
+  missing_api_key: You did not provide an API key or your API key is invalid/disabled
+  recengineerror_UNKNOWN: Unknown error
+  msn_stations: MSN Stations
+  take_a_moment: Take a moment to activate your MSN Music account
+  registration: 
+    share: Share
+    you_are: You are...
+    discover_text: more than {{count}} artists, all free
+    your_name: Your name
+    terms_and_conditions: Terms and conditions
+    your_profile_name: Your profile name
+    share_text: songs, mixes, and radios with your friends
+    listen_text: over {{count}} songs, all free
+    listen: Listen
+    privacy_policy: Privacy policy
+    discover: Discover
+    your_password: Your password
+    confirm_your_password: Confirm Your password
+    terms_and_privacy: By checking the box, you confirm that you know Cylooop.com is a website operated by Hoodiny Entertainment Group in the U.S., and you consent to the transfer of your personal data to the U.S. , where your personal data will be subject to U.S. law and where the level of data protection is different compared to your country. You also agree to the Cylooop {{terms_link}} and {{privacy_link}} which describe how your personal data will be used.
+  to_login: to login
+  internal_error: We could not execute your request due to an internal error.  We've been notified about this issue and we'll take a look at it shortly.
+  msn_music_is_free: MSN Music is free,
+  now_playing: Now Playing
+  recengineerror_NO_PLAYLIST: No playlist could be found
+  station_edit_success: Station name successfully updated
+  view_your_stations: To view your stations,
+  home: 
+    create_your_own_personalized_radio_station: Create Your Own Personalized Radio Station
+    recommended_stations: STATIONS RECOMMENDED BY CYLOOP
+    network_update: NETWORK UPDATE
+    type_artist_name: Type Artist Name
+    recommended_mixes: MIXES RECOMMENDED BY CYLOOP
+    top_stations: Top Stations
+    top_songs: Top Songs
+    recommended_artists: Recommended Artists
+  still_dont_have: Still don't have your MSN Music account?
+  my_stations: My Stations
+  recengineerror_NO_RADIO: No radio could be found
+support: 
+  select: 
+    prompt: Please select
+basics: 
+  charts_for: Charts for
+  charts: Charts
+  chart: Chart
+cancellation: 
+  confirmation: 
+    irreversible_note: This action is irreversible
+playlist: 
+  review: REVIEW THIS MIX
+  doesnt_have_any_reviews: This mix does not<br/> have any reviews
+reviews: 
+  duplicate_warning_title: Oops...
+  reviewed_by: Reviewed by
+  delete_review_text: Deleting a review is a permenant action.  Are you sure you still want to delete this review?
+  edit_your_review: Edit your review
+  duplicate_warning_text: You have already posted a review for this playlist. If you post a new review it will overwrite your previous review.
+  post_your_review: POST YOUR REVIEW
+  delete_review_title: Delete this review
+sort: 
+  highest_rated: HIGHEST RATED
+home: 
+  text_about_mix: Text About Mix
+datetime: 
+  distance_in_words: 
+    less_than_x_minutes: 
+      one: less than a minute
+      other: less than {{count}} minutes
+    x_days: 
+      one: 1 day
+      other: "{{count}} days"
+    almost_x_years: 
+      one: almost 1 year
+      other: almost {{count}} years
+    x_seconds: 
+      one: 1 second
+      other: "{{count}} seconds"
+    x_minutes: 
+      one: 1 minute
+      other: "{{count}} minutes"
+    x_months: 
+      one: 1 month
+      other: "{{count}} months"
+    less_than_x_seconds: 
+      one: less than 1 second
+      other: less than {{count}} seconds
+    about_x_hours: 
+      one: about 1 hour
+      other: about {{count}} hours
+    about_x_months: 
+      one: about 1 month
+      other: about {{count}} months
+    about_x_years: 
+      one: about 1 year
+      other: about {{count}} years
+    over_x_years: 
+      one: over 1 year
+      other: over {{count}} years
+    half_a_minute: half a minute
+navigation: 
+  mixes: Homepage
+user: 
+  hasnt_create_any_mixes: "{{user_name}} hasn't created any mixes"
+search: 
+  search_results: Search Results

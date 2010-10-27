@@ -1,0 +1,190 @@
+--- 
+actions: 
+  view_more: View More
+dashboards: 
+  latest_tweet: LATEST TWEET
+  artist_latest_albums: LATEST ALBUMS BY {{name}}
+  user_latest_stations: "{{name}}'S LATEST STATIONS"
+  artist_latest_stations: LATEST STATIONS FEATURING {{name}}
+buylink: 
+  no_buylinks: Not available to buy
+  song: Buy this song
+  select_store: Select your store
+modules: 
+  reviews: 
+    title: Reviews
+share: 
+  errors: 
+    message: 
+      invalid_chars: Invalid chars
+artist: 
+  latest_mixes_featuring_artist: Latest Mixes Featuring {{artist_name}}
+  latest_stations_featuring_artist: Latest Stations Featuring {{artist_name}}
+activerecord: 
+  attributes: 
+    user: 
+      playlist_confirmation: Your Playlist has been created, continue searching!
+blocks: 
+  blocked: Blocked
+possessives: 
+  third_person: 
+    recent_reviews: "{{subject}}'s Recent Reviews"
+    reviews: "{{subject}}'s Reviews"
+  first_person: 
+    recent_reviews: My Recent Reviews
+    reviews: My Reviews
+playlist_items: 
+  create: 
+    errors: 
+      click_checkbox_first: In order to add this song, you must click on a checkbox beside the playlist you wish to add it to
+player: 
+  max_skip_message: 
+    body: Unfortunately our music licenses force us to limit the number of songs you may skip each hour. If you want to hear something else, try creating another station with a different artist.
+    header: We're sorry...
+profile: 
+  navigation: 
+    reviews: Reviews
+chat: 
+  moderator: 
+    title: Moderator Module
+stations: 
+  last_station_created_at: Last station created {{when}} ago
+playlists: 
+  select_your_songs_text: Song search results will show up here<br />drag the songs you like the container to<br />the right to create your playlist
+  select_your_songs: Select Your Songs
+activity: 
+  created_playlist: Created Playlist '{{playlist}}'
+  filters: 
+    playlists: PLAYLISTS
+messenger_player: 
+  recengineerror_NO_PLAYLIST: No playlist could be found
+albums: 
+  show: 
+    about_this_album: About this album
+account_settings: 
+  email_me_reviews_mixes: Send me an email when someone reviews/rates one of my mixes
+registration: 
+  confirmation: 
+    email: 
+      info: |-
+        As a Cyloop member, make sure you check out these cool features:
+        
+        - Start collecting songs and creating your own music playlists to listen to and share anytime
+        
+        - Create your own personalized radio stations just by entering the name of your favorite artists and share them with friends
+        
+        - Get music recommendations picked just for you
+        
+        - Start following your friends and let yourself be followed by others
+        
+        - The more you use Cyloop logged in, the better Cyloop learns what music matters to you the most
+        
+        - Connect to your favorite artists, their tours and latest news
+        
+        - Connect with friends and fans from around the world
+        
+        - Invite your friends to join the fun!
+  layers: 
+    add_song: To add this song to your playlist, {{link}} to login.
+  sidebar: 
+    playlist_title: create your playlist of songs
+    playlist_text: if you have aspirations of becoming a DJ, create your own mixes adding songs you like to your playlists.
+campaigns: 
+  destroyed_success: Campaign successfully destroyed
+  created_success: Campaign successfully created
+  deactivated_success: Campaign successfully deactivated
+  activated_success: Campaign successfully activated
+  start_date_gt_end_date: Start date must be less than end date
+  updated_success: Campaign successfully updated
+titles: 
+  unfollow: Click here to stop following this user
+radio: 
+  getting_started: To get started simply enter an artist name
+meta: 
+  description: Discover new music and videos from largest online library for free, follow what you friends listen to, and create and share playlists and personalized radio stations from your favorite artists.
+  keywords: Discover music, discover new music, discover videos, listen to music, listen to free music, free music, fee videos, music artists, discover artists, discover music artists, online music library, largest online music library, free online music, free online music library, follow friends, following friends, follower friends, create playlists, share playlists, create music playlists, share music playlists, personalized radio stations, favorite artists
+widget: 
+  recengineerror_NO_PLAYLIST: No playlist could be found
+support: 
+  select: 
+    prompt: Please select
+followings: 
+  awaiting_approval: You are awaiting approval from this user.
+  has_blocked_you: You are being blocked by this user, so you cannot follow!
+  create_success: You are now following {{name}}
+  followers: Followers
+  create_error: 
+    blocked_by_user: You are being blocked by this user, so you cannot follow!
+  delete_success: You are no longer following {{name}}
+  follow_requests: Follow Requests
+  awaiting_approval_from: You are awaiting approval from {{name}}.
+  email: 
+    welcome: Hi, {{followee}}
+    subject: "{{follower}} is now following your updates on Cyloop!"
+    sig: |-
+      Your friends from,
+      
+      Cyloop
+    message: |-
+      {{follower}} is now following your updates on Cyloop.
+      
+      Check out {{follower}}'s profile here:
+      {{link}}
+  following: Following
+settings: 
+  tabs: 
+    password: Password
+main: 
+  navigation: 
+    stations: Stations
+    home: Home
+    mixes: Mixes
+basics: 
+  playlists: Playlists
+  playlists_created_by: Playlists Created by
+cancellation: 
+  feedback: 
+    label: Feedback
+site: 
+  sample_flag_description: Unfortunately this content is restricted for this territory and can't play in full. You should be able to listen to full songs from this artist and others similar in the Radio section.
+footer: 
+  about_us: About Us
+  about_cyloop: About Cyloop
+  about_hoodiny: About Hoodiny
+playlist: 
+  click_to_unlock: To unlock this mix, click {{unlock_link}} and correct the errors listed in red.
+  this_mix_is_locked: This mix is locked
+reviews: 
+  duplicate_warning_text: You have already posted a review for this playlist. If you post a new review it will overwrite your previous review.
+sort: 
+  highest_rated: HIGHEST RATED
+sessions: 
+  new: 
+    listener_account: Listener Account
+user: 
+  hasnt_create_any_station: "{{user_name}} hasn't created any stations"
+  hasnt_create_any_mixes: "{{user_name}} hasn't created any mixes"
+navigation: 
+  mixes: Homepage
+home: 
+  explaing_what_is_and_why_create_a_new_radio: Type the name of your favorite artist. Cyloop will generate personalized radio station with your favorite music from your favorite artists
+  explaing_what_is_and_why_create_a_new_mix: Type the name of your favorite artist. Cyloop will help you start creating a new mix with your favorite music from your favorite artists
+datetime: 
+  distance_in_words: 
+    about_x_hours: 
+      one: 1 hour
+      other: "{{count}} hours"
+    about_x_months: 
+      one: 1 month
+      other: "{{count}} months"
+    about_x_years: 
+      one: 1 year
+      other: "{{count}} years"
+search: 
+  content_search_hint: Enter the name of an artist, album or song
+following: 
+  approval: "{{name}} will now receive your updates"
+  denial: "{{name}} will not be allowed to receive your updates"
+biography: 
+  management: 
+    label: Label
