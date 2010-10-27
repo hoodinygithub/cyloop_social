@@ -100,15 +100,15 @@
   function artist_text_wrapper(num, name, item_count, max_artist)
   {
     // This is overriding the function in playlist_create.js to include translations
-    text = '<li>'
-          + '<span class="number red">' + num + '</span> '
-          + '<%= t('playlists.you_have') %>'
-          + ' <b class="red">' + item_count + '</b> '
-          + ((parseInt(item_count,10)== 1)? '<%= t('playlists.song_from') %>' : '<%= t('playlists.songs_from') %>' )
-          + ' <b class="red">' + name + '</b>. '
-          + '<%= t('playlists.please_remove') %>'
-          + ' ' + (item_count - max_artist) + ' '
-          + ((parseInt(item_count - max_artist, 10)== 1)? '<%= t('playlists.song_from_mix') %>.' : '<%= t('playlists.songs_from_mix') %>.' )
+    text = "<li>"
+          + "<span class='number red'>" + num + "</span> "
+          + "<%= t('playlists.you_have') %>"
+          + " <b class='red'>" + item_count + "</b> "
+          + ((parseInt(item_count,10)== 1)? "<%= t('playlists.song_from') %>" : "<%= t('playlists.songs_from') %>" )
+          + " <b class='red'>" + name + "</b>. "
+          + "<%= t('playlists.please_remove') %>"
+          + " " + (item_count - max_artist) + " "
+          + ((parseInt(item_count - max_artist, 10)== 1)? "<%= t('playlists.song_from_mix') %>." : "<%= t('playlists.songs_from_mix') %>." )
           + '</li>';
     return text;
   }
@@ -116,16 +116,16 @@
   function album_text_wrapper(num, name, item_count, max_album)
   {
     // This is overriding the function in playlist_create.js to include translations
-    text = '<li>'
-          + '<span class="number red">' + num + '</span> '
-          + '<%= t('playlists.you_have') %>'
-          + ' <b class="red">' + item_count + '</b> '
-          + ((parseInt(item_count,10)== 1)? '<%= t('playlists.song_from_album') %>' : '<%= t('playlists.songs_from_album') %>' )
-          + ' <b class="red">' + name + '</b>. '
-          +  '<%= t('playlists.please_remove') %>'
-          + ' ' + (item_count - max_album) + ' '
-          + ((parseInt(item_count - max_album, 10) == 1)? '<%= t('playlists.song_from_mix') %>.' : '<%= t('playlists.songs_from_mix') %>.' )
-          + '</li>';
+    text = "<li>"
+          + "<span class='number red'>" + num + "</span> "
+          + "<%= t('playlists.you_have') %>"
+          + " <b class='red'>" + item_count + "</b> "
+          + ((parseInt(item_count,10)== 1)? "<%= t('playlists.song_from_album') %>" : "<%= t('playlists.songs_from_album') %>" )
+          + " <b class='red'>" + name + "</b>. "
+          + "<%= t('playlists.please_remove') %>"
+          + " " + (item_count - max_album) + " "
+          + ((parseInt(item_count - max_album, 10) == 1)? "<%= t('playlists.song_from_mix') %>." : "<%= t('playlists.songs_from_mix') %>." )
+          + "</li>";
     return text;
   }
   
