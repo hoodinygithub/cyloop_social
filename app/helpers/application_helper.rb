@@ -165,7 +165,10 @@ module ApplicationHelper
 
     locale_key = "actions.#{key}"
     return_to = request.request_uri
-    return_to = radio_path(:station_id => return_to.split('/').fourth) if return_to =~ /\/radio\/info\/([0-9]+)/
+    # request_uri returns the URL to the partial :(
+    # On Coke, rewrite /playlists/info (that's all there is).
+    # Here, rewrite /mixes/info or /radio/info.
+    return_to = radio_path(:station_id => return_to.split('/')[3]) if return_to =~ /\/\w+\/info\/([0-9]+)/
     return_to = attrs[:return_to_ajax] if attrs.has_key?(:return_to_ajax)
     layer_path = send("follow_#{account.class.name.downcase}_registration_layers_path",
                       :return_to => return_to,
