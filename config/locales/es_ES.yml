@@ -1304,11 +1304,11 @@ es_ES:
     station: Radio
     latest_news: "Escribe el nombre de tu artista favorito. Cyloop te ayudar\xC3\xA1 a crear un mix con m\xC3\xBAsica de tus artistas favoritos."
     start_listening: CREAR RADIO
-    create_your_own_personalized_radio_station: Crea Tu Propia Radio Personalizada
     text_about_radio: Radios Inteligentes
-    text_about_mix: Text About Mix
-    create_radio: Crear Radio
+    create_your_own_personalized_radio_station: Crea Tu Propia Radio Personalizada
+    text_about_mix: Tus Propios Mixes
     top_radios: TOP RADIOS
+    create_radio: Crear Radio
     explaing_what_is_and_why_create_a_new_radio: "Ingresa el nombre de tu artista favorito. Cyloop generar\xC3\xA1 una radio personalizada con m\xC3\xBAsica de ese y otros artistas que elegir\xC3\xA1 para ti.\r\n"
     recommended_stations: RADIOS RECOMENDADAS POR CYLOOP
     latest_stations: RADIOS MAS RECIENTES
@@ -1319,8 +1319,8 @@ es_ES:
     recommended_mixes: MIXES RECOMENDADOS PARA TI
     type_artist_name: Escribe el nombre de un artista
     radios_recomended_for_you: RADIOS RECOMENDADAS PARA TI
-    top_songs: Top Canciones
     create_your_own_station_now: "\xC2\xA1Crea tu propia radio ahora!"
+    top_songs: Top Canciones
     top_stations: Top Radios
     recommended_artists: Artistas Recomendados
     cyloop_recommends: CYLOOP RECOMIENDA

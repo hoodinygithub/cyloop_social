@@ -1340,11 +1340,11 @@ es_US:
     station: "Estaci\xC3\xB3n"
     latest_news: ULTIMAS NOTICIAS
     start_listening: CREAR RADIO
-    text_about_radio: Radios Inteligentes
     create_your_own_personalized_radio_station: Crea Tu Propia Radio Personalizada
-    text_about_mix: Text About Mix
-    top_radios: TOP RADIOS
+    text_about_radio: Radios Inteligentes
+    text_about_mix: Tus Propios Mixes
     create_radio: Crear Radio
+    top_radios: TOP RADIOS
     user_latest_stations: RADIOS MAS RECIENTES
     explaing_what_is_and_why_create_a_new_radio: "Ingresa el nombre de tu artista favorito. Cyloop generar\xC3\xA1 una radio personalizada con m\xC3\xBAsica de ese y otros artistas que elegir\xC3\xA1 para ti.\r\n"
     recommended_stations: RADIOS RECOMENDADAS POR CYLOOP
@@ -1356,8 +1356,8 @@ es_US:
     recommended_mixes: MIXES RECOMENDADOS POR CYLOOP
     type_artist_name: Escribe el nombre de un artista
     radios_recomended_for_you: RADIOS RECOMENDADAS PARA TI
-    create_your_own_station_now: "\xC2\xA1Crea tu propia radio ahora!"
     top_songs: Top Canciones
+    create_your_own_station_now: "\xC2\xA1Crea tu propia radio ahora!"
     top_stations: Top Radios
     recommended_artists: Artistas Recomendados
     cyloop_recommends: CYLOOP RECOMIENDA
