@@ -114,7 +114,7 @@ class PlaylistsController < ApplicationController
         @playlist_item_ids = Song.find_all_by_id(@songs_in_order).to_a rescue []
         unless @playlist_item_ids.empty?
           ActiveRecord::Base.transaction do
-            PlaylistItem.delete_all("playlist_id = #{@playlist.id}")
+            PlaylistItem.destroy_all("playlist_id = #{@playlist.id}")
             song = nil
             @songs_in_order.each_with_index do |item, index|
               song = @playlist_item_ids.select{ |s| s && s.id.equal?(item.to_i) }.first rescue nil

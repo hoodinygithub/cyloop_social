@@ -1340,7 +1340,7 @@ es_AR:
     start_listening: CREAR RADIO
     text_about_radio: Radios Inteligentes
     create_your_own_personalized_radio_station: "Cre\xC3\xA1 tu propia radio personalizada"
-    text_about_mix: Text About Mix
+    text_about_mix: Tus Propios Mixes
     create_radio: Crear radio
     top_radios: TOP RADIOS
     user_latest_stations: RADIOS MAS RECIENTES DE {{name}}
