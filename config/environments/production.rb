@@ -29,7 +29,7 @@ config.action_mailer.smtp_settings = {
 }
 config.action_mailer.delivery_method = :activerecord
 
-config.log_level = :debug
+config.log_level = :warn
 ActionController::Base.session = {
   :domain => ".cyloop.com"
 }
