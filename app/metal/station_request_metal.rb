@@ -17,7 +17,9 @@ class StationRequestMetal
       options[:remote_ip] = env.has_key?('HTTP_TRUE_CLIENT_IP') ? env['HTTP_TRUE_CLIENT_IP'] : remote_ip
       options[:user_id] = session[:user_id] || nil
       options[:timestamp] = Time.now.to_i
-      options[:site_id] = env['HTTP_HOST']
+      # Hostname is not reliable enough.
+      # options[:site_id] = env['HTTP_HOST']
+      options[:site_id] = ENV['SITE']
 
       options.merge!({:station_id => $1, :player_id => $2, :song_count => $3, :source => request_uri})
 
