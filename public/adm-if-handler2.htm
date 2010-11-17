@@ -1,3 +1,4 @@
+<!-- ADMOTION - Iframe Handler v1r1 -->
 <html>
 <body>
 
@@ -49,7 +50,7 @@ new function()
 		if(f=top.__adm__add_position)
 		{
 			try{
-				f(id?d.getElementById(id):getTopIFrameElement(),'showcase',id);
+				f(id?d.getElementById(id):getTopIFrameElement(),'showcase',id, window);
 			}catch(_){};
 			clearInterval(I);
 		}
