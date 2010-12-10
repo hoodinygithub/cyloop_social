@@ -137,7 +137,8 @@ class SearchesController < ApplicationController
         dataset = []
         obj_scope = @internal_search_types.fetch(scope, scope)
         obj = obj_scope.to_s.classify.constantize
-        opts.delete(:order, :sql_order)
+        opts.delete(:order)
+        opts.delete(:sql_order)
 
         if types.include? scope
           #default_sort_type scope == @active_scope
