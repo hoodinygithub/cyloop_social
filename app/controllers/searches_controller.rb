@@ -97,7 +97,7 @@ class SearchesController < ApplicationController
       #@search_type = :artists
       @search_types = [:artists]
       @internal_search_types = []
-      #@sort_type = :relevance
+      @sort_type = :relevance
       @sort_types = { :relevance => nil }
       @results = {}
       @counts = {}
@@ -150,6 +150,9 @@ class SearchesController < ApplicationController
               custom_sort = true if sort_instruction.is_a?(Symbol)
               opts.merge!(:order => @sort_types[@sort_type][obj_scope]) unless custom_sort
             end
+          elsif @sort_type == :relevance and obj.name == "Artist"
+            # Ordering by relevance isn't working.  All weights coming back as 1.  Using popularity as artist relevance.
+            opts.merge!(:sql_order => "total_listen_count DESC")
           else
             sort_instruction = @sort_types[@sort_type]
             unless sort_instruction.nil?
