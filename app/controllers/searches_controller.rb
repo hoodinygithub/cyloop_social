@@ -152,8 +152,18 @@ class SearchesController < ApplicationController
               opts.merge!(:order => @sort_types[@sort_type][obj_scope]) unless custom_sort
             end
           elsif @sort_type == :relevance and obj.name == "Artist"
-            # Ordering by relevance isn't working.  All weights coming back as 1.  Using popularity as artist relevance.
+            # Ordering by relevance isn't working.  All weights coming back as 1.
+            # Our version of Sphinx doesn't weigh exact matches higher.  Using popularity for artist relevance.
             opts.merge!(:sql_order => "total_listen_count DESC")
+
+            # If popularity doesn't work out, use the trick from http://www.sphinxsearch.com/forum/view.html?id=1923
+            # Artist.search("^beyonce$|'beyonce'|(beyonce)", {:retry_stale=>true, :star=>true, :match_mode=>:extended2}).each_with_weighting { | result, weight|
+            #   puts result.id.to_s + ":" + result.name; puts weight.inspect
+            # }
+            # Sphinx 0.9.9-release (r2117)
+
+            # Fixed in Sphinx 1.10-beta
+            # http://www.sphinxsearch.com/docs/current.html#api-func-setrankingmode
           else
             sort_instruction = @sort_types[@sort_type]
             unless sort_instruction.nil?
