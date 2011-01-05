@@ -12,7 +12,7 @@ require 'tinder'
 # the URL of the repository you want this recipe to correspond to. The :deploy_to variable must be
 # the root of the application.
 
-set :keep_releases,       10
+set :keep_releases,       5
 set :application,         ENV['DEPLOY_SITE'] || ARGV[0]
 set :deploy_base,         "/data"
 set :shared_base,         "/shared"
