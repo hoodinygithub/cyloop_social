@@ -10,7 +10,7 @@ namespace :db do
 
       Site.all.each do |site|
         feeds.each do |feed|
-          timebox "XML File Created..." do
+          timebox "..." do
             `if [ -d #{output_path}/#{site.code} ]; then echo ''; else mkdir #{output_path}/#{site.code}; fi`
             write_rss_feed(feed, site, output_path)
           end
@@ -27,10 +27,14 @@ namespace :db do
       when /top_stations/ then items = site.top_abstract_stations(10)
       end
 
-      return if items.empty?
+      if items.empty?
+        puts "No #{feed} for #{site.name}"
+        return
+      end
 
 
       file = File.open("#{path}/#{site.code}/feed_#{feed}_#{site.code}.xml", 'w')
+      puts file.path
 
       top_song = nil
       xml = Builder::XmlMarkup.new(:target => file, :indent => 2)
