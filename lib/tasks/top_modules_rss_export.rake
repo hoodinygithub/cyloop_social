@@ -24,7 +24,7 @@ namespace :db do
       case feed
       when /top_songs/ then items = site.summary_top_songs.limited_to(10)
       when /top_artists/ then items = site.summary_top_artists.limited_to(10)
-      when /top_stations/ then items = site.top_abstract_stations.limited_to(10)
+      when /top_stations/ then items = site.top_abstract_stations(10)
       end
 
       return if items.empty?
@@ -49,9 +49,10 @@ namespace :db do
 
             case feed
             when /top_songs/ then
+              next if s.song.artist.nil?
               title = "#{s.song.artist} - #{s.song.title}"
               link = "http://#{site.domain}/#{s.song.artist.slug}/albums/#{s.song.album.to_param}/#{s.song.to_param}"
-              img = s.song.album.avatar_file_name.nil? ? "http://assets.cyloop.com/storage?fileName=/.elhood.com-2/usr/#{s.song.artist_id}/image/thumbnail/x46b.jpg" : s.song.album.avatar_file_name.sub(/hires/,'thumbnail')
+              img = (s.song.album.nil? || s.song.album.avatar_file_name.nil?) ? "http://assets.cyloop.com/storage?fileName=/.elhood.com-2/usr/#{s.song.artist_id}/image/thumbnail/x46b.jpg" : s.song.album.avatar_file_name.sub(/hires/,'thumbnail')
             when /top_artists/ then
               title = "#{s.artist.name}"
               link = "http://#{site.domain}/#{s.artist.slug}"
@@ -81,3 +82,4 @@ namespace :db do
     end
   end
 end
+
