@@ -44,7 +44,7 @@ class Site < ActiveRecord::Base
   
   has_many :summary_top_abstract_stations, :order => 'station_count DESC', :class_name => 'TopAbstractStation', :include => { :abstract_station => [:station, :artist ] }, :conditions => "abstract_stations.deleted_at IS NULL"
   #has_many :top_abstract_stations, :through => :summary_top_abstract_stations, :class_name => 'AbstractStation', :foreign_key => 'abstract_station_id', :source => :abstract_station, :order => 'top_abstract_stations.station_count DESC'
-  has_many :summary_top_user_stations, :order => 'total_requests DESC', :class_name => 'TopUserStation', :include => { :user_station => :station }
+  has_many :summary_top_user_stations, :order => 'total_requests DESC', :class_name => 'TopUserStation', :include => { :user_station => :owner }
   #has_many :top_user_stations, :through => :summary_top_user_stations, :class_name => 'UserStation', :foreign_key => 'user_station_id', :source => :user_station, :order => 'top_user_stations.total_requests DESC', :group => 'user_stations.abstract_station_id'
 
   has_many :summary_top_djs, :order => 'total_requests DESC', :class_name => 'TopDj', :include => :dj
@@ -120,7 +120,7 @@ class Site < ActiveRecord::Base
   end
 
   def top_user_stations(limit=6)
-    summary_top_user_stations.all(:limit => limit, :group => 'user_stations.abstract_station_id', :include => { :user_station => :owner }, :conditions => 'accounts.network_id = 1').map(&:user_station)
+    summary_top_user_stations.all(:limit => limit, :group => 'user_stations.abstract_station_id', :conditions => 'accounts.network_id = 1 AND user_stations.deleted_at IS NULL').map(&:user_station)
   end
 
   def top_playlists(limit=8)
