@@ -46,17 +46,18 @@ class Player::Station < Player::Base
 
   def to_xml(options = {})
     options[:root] = 'user-station' unless options[:root]
-    options[:include] = :artist
+    # options[:include] = :artist  causes SQL errors when artist is deleted
     options[:except] = :artist_id
     super(options) do |xml|
       unless self.includes.blank?
         xml << Player::Artist.from( self.includes ).to_xml( :skip_instruct => true, :root => 'related-artists', :skip_types => true )
       end
-      unless self.artist
-        xml.artist do
-          xml.method_missing( 'avatar-file-name', '/avatars/missing/artist.gif' )
-        end
-      end
+      # Don't include artist.
+      #unless self.artist
+      #  xml.artist do
+      #    xml.method_missing( 'avatar-file-name', '/avatars/missing/artist.gif' )
+      #  end
+      #end
     end
   end
 
@@ -66,7 +67,7 @@ class Player::Station < Player::Base
       options[:amg_id] = object.abstract_station.amg_id if object.kind_of?(UserStation)
       returning( super(object, options) ) do |station|
         station.includes = object.includes(4)
-        station.artist = Player::Artist.from( object.artist ) unless object.artist_id.nil?
+        station.artist = Player::Artist.from( object.artist ) unless object.artist.nil?
         station.station_count = object.top_station.station_count if object.top_station
         station.station_id = object.station.id
       end
