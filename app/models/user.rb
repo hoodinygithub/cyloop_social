@@ -87,8 +87,8 @@ class User < Account
            :foreign_key => :owner_id,
            :select => "user_stations.*",
            :class_name => "UserStation",
-           :include => [{:abstract_station => :artist}, :station],
-           :conditions => 'abstract_stations.deleted_at IS NULL AND user_stations.deleted_at IS NULL AND accounts.deleted_at IS NULL' do
+           :include => [:abstract_station, :station],
+           :conditions => 'abstract_stations.deleted_at IS NULL AND user_stations.deleted_at IS NULL' do
     def top(limit)
       all(:order => 'user_stations.total_plays DESC', :limit => limit)
     end
