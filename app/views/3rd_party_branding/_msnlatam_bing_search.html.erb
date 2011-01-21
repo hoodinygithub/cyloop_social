@@ -2,7 +2,11 @@
 
 <div class="gtl_01" id="brand">
   <div id="logo">
-    <%= link_to "<img width='118' height='35' alt='Ir a MSN Latinoamérica' src='http://estc.msn.com/br/intl/spec/es-xl/channels/logos/1/msnlogo_latinoamerica_black.gif'>", "http://latam.msn.com/" %>
+    <% if site_code == "msnar" %>
+      <%= link_to "<img width='118' height='35' alt='Ir a MSN Argentina' src='http://blstc.msn.com/br/intl/spec/ola/msn14/channels/logos/msn-Argentina_h_rgb_118x35_r.png'>", "http://ar.msn.com/" %>
+    <% else %>
+      <%= link_to "<img width='118' height='35' alt='Ir a MSN Latinoamérica' src='http://blstc.msn.com/br/intl/spec/ola/msn14/channels/logos/msn-Latinoamerica_h_rgb_118x35_r.png'>", "http://latam.msn.com/" %>
+    <% end %>
     <%= link_to "Música", root_path, :class => "name" %>
   </div>
   <form onsubmit="return Msn.Report.TrackForm(this)" method="get" action="http://search.bing.com/results.aspx"
