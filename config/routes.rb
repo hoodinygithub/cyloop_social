@@ -51,10 +51,10 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :players, :only => :show
 
   map.resource :search, :collection => {:twitstation => :get}
-  map.content_local_search '/search/content_local/:scope/:q', :controller => 'searches', :action => 'content', :local => true
-  map.content_search '/search/content/:scope/:q', :controller => 'searches', :action => 'content'
-  map.market_main_search '/search/:market_locale/:scope/:q', :controller => 'searches', :action => 'show'
-  map.main_search '/search/:scope/:q', :controller => 'searches', :action => 'show'
+  map.content_local_search '/search/content_local/:scope/:q', :controller => 'searches', :action => 'content', :local => true, :requirements => { :q => /.*/ }
+  map.content_search '/search/content/:scope/:q', :controller => 'searches', :action => 'content', :requirements => { :q => /.*/ }
+  map.market_main_search '/search/:market_locale/:scope/:q', :controller => 'searches', :action => 'show', :requirements => { :q => /.*/ }
+  map.main_search '/search/:scope/:q', :controller => 'searches', :action => 'show', :requirements => { :q => /.*/ }
   map.empty_search '/search/:scope', :controller => 'searches', :action => 'show'
 
   map.resources :stations, :collection => {:top => :get, :top_station_html => :get}
