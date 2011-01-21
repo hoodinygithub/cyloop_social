@@ -891,8 +891,8 @@ module ApplicationHelper
   end
 
   def market_logo
-    # image = image_tag(cyloop_logo_path(false), :id => 'logo', :class => 'png_fix')
-    image = image_tag('/images/cyloop_logo.png', :id => 'logo', :class => 'png_fix') # if site_code.to_s == "msnlatam"
+    image = image_tag(cyloop_logo_path(false), :id => 'logo', :class => 'png_fix')
+    image = image_tag('/images/cyloop_logo.png', :id => 'logo', :class => 'png_fix') if (site_code.to_s == "msnlatam" || site_code.to_s == "msnar")
     link_to(image, msn_home_page_link_path)
   end
 
