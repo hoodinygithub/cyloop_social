@@ -15,9 +15,9 @@
         %li= link_to "Messenger", "http://download.live.com/?sku=messenger&mkt=es-us"
 
         - if logged_in?
-          %li.last= link_to t("sessions.destroy.sign_out"), site_logout_url        
+          %li.last= link_to t("sessions.destroy.sign_out"), site_logout_url
         - else
-          %li.last= link_to "Iniciar sesión", site_login_url
+          %li.last= %wl:signin.signInControl{:signedintext=>'Logout', :signedouttext=>'Login', :onsignin="onWinConnectLogin"}
     .portal.clearfix{:style => 'display: none; padding-top:5px'}
       %ul.msn_sisters
         %li.hotmail= link_to "Hotmail", "http://www.hotmail.com/?mkt=es-us"

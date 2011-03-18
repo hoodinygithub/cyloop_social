@@ -329,6 +329,24 @@ class User < Account
     followings.update_all(:follower_name => self.name)
     followings_as_followee.update_all(:followee_name => self.name)
   end
-    
+
+  def self.find_with_exclusive_scope( *args )
+    with_exclusive_scope do
+      find(*args)
+    end
+  end
+
+  # Don't use this directly.  Use find_by_email_with_exclusive_scope to find across all sites.
+  named_scope :with_email, lambda { |email|
+    { :conditions => ["deleted_at IS NULL AND (email = ? OR encrypted_email = ?)", email, User.encrypt_email(email)] }
+  }
+  # Find by email, ignoring default scopes.  Supports additional find options.
+  def self.find_by_email_with_exclusive_scope(email, *args)
+    args = [ :all ] if args.size == 0
+
+    with_exclusive_scope {
+      with_email(email).find(*args)
+    }
+  end
 end
 

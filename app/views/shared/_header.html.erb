@@ -4,6 +4,7 @@
     <%= banner_ad("top_banner") %>
   </div>
   <div id="msn_header">
+    <%= render "shared/social/social", { :page => :header } %>
     <%= render "3rd_party_branding/msn_header_#{site_code}" %>
   </div>
 <% end %>

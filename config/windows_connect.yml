@@ -1,0 +1,15 @@
+defaults: &defaults
+  client_id: 0000000044018ADD
+  secret: Zgz2AOyvRUVPhcRk4WnixgvDhZPjkzHP
+
+development:
+  <<: *defaults
+
+staging:
+  <<: *defaults
+  client_id: 
+  secret: 
+
+production:
+  <<: *defaults
+

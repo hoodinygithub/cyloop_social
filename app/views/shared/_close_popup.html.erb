@@ -1,0 +1,15 @@
+<html>
+  <body onload="onLoad()">
+    <% javascript_tag do %>
+      var windowClose = window.close;
+      window.close = function () {
+      window.open("", "_self");
+      windowClose();
+      }
+      function onLoad() {
+      window.close();
+      }
+    <% end %>
+  </body>
+</html>
+

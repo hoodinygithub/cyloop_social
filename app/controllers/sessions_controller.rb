@@ -4,32 +4,50 @@ class SessionsController < ApplicationController
 
   # GET /session/new
   def new
-    if wlid_web_login?
-      token = params[:stoken] || nil
-      wll.setDebug(true) if Rails.env.development?
+    #if wlid_web_login?
+    #  token = params[:stoken] || nil
+    #  wll.setDebug(true) if Rails.env.development?
 
-      if(token)
-        msn_live_id = wll.processLogin(params) || nil
+    #  if(token)
+    #    msn_live_id = wll.processLogin(params) || nil
 
-        if msn_live_id
-          session[:msn_live_id] = msn_live_id
-          account = Account.find_by_msn_live_id_and_deleted_at(msn_live_id, nil)
-          if account
-            do_login(account, 1, false)
-          elsif session[:return_to] == '/messenger_player'
-            redirect_to( session.delete(:return_to) )
-          else
-            redirect_to(new_user_path)
-          end
-        else
-          flash[:error] = t("registration.msn_login_error")
-          redirect_to "/"
-        end
-      else
-        redirect_to msn_login_url
-      end
-    else # Cyloop Login
-      render :new
+    #    if msn_live_id
+    #      session[:msn_live_id] = msn_live_id
+    #      account = Account.find_by_msn_live_id_and_deleted_at(msn_live_id, nil)
+    #      if account
+    #        do_login(account, 1, false)
+    #      elsif session[:return_to] == '/messenger_player'
+    #        redirect_to( session.delete(:return_to) )
+    #      else
+    #        redirect_to(new_user_path)
+    #      end
+    #    else
+    #      flash[:error] = t("registration.msn_login_error")
+    #      redirect_to "/"
+    #    end
+    #  else
+    #    redirect_to msn_login_url
+    #  end
+    if params[:wrap_verification_code]
+      # Windows Connect through popup login
+      user = WindowsConnect.parse_verification_code(params[:wrap_verification_code], current_site_url + new_session_path, cookies, params[:wrap_client_state], params[:exp])
+
+      handle_windows_sso_user(user)
+
+      # Close the Windows Connect login popup.
+      render 'shared/_close_popup.html.erb', :layout => false 
+    elsif cookies[:wl_internalState]
+      # Clear the Windows Connect session on login page load
+      # This might cause trouble in the future if we decide to use WindowsConnect widgets on the page.
+      # Right now, this is the only way to cancel a bad, currently logged-in WC session.
+      #Rails.logger.info cookies
+      #Rails.logger.info session
+      #
+      #TODO: application level filter?
+      WindowsConnect.clear_cookie_session(cookies)
+    else
+      # Cyloop Login
+      # render :new
     end
   end
 
@@ -49,11 +67,11 @@ class SessionsController < ApplicationController
     cookies.delete(:auth_token) if cookies.include?(:auth_token)
     reset_session
 
-    if wlid_web_login?
-      redirect_to(msn_logout_url)
-    else
-      redirect_back_or_default('/')
-    end
+    #if wlid_web_login?
+    #  redirect_to(msn_logout_url)
+    #else
+    redirect_back_or_default('/')
+    #end
   end
 
 private
@@ -62,39 +80,88 @@ private
     session[:registered_from] || request.host
   end
 
-  def do_login(account, remember_me, save_wlid=false)
-    flash.discard(:error)    
-    if account.kind_of?(Artist)
+  #
+  # Login
+  # 
+  def do_login(account, remember_me, p_render=true)
+    if account.nil?
+      flash[:error] = t("registration.login_failed")
+      redirect_to login_path
+      false
+    elsif account.kind_of?(Artist)
       flash[:error] = t("registration.artist_login_denied")
       redirect_to(new_user_path)
-    elsif account
-      if account.part_of_network?
-        self.current_user = account      
-        AccountLogin.create!( :account_id => account.id, :site_id => current_site.id )
+      false
+    elsif account.part_of_network?
+      self.current_user = account      
+      AccountLogin.create!( :account_id => account.id, :site_id => current_site.id )
 
-        if remember_me == "1" || !wlid_web_login?
-          current_user.remember_me unless current_user.remember_token?
-          cookies[:auth_token] = { :value => self.current_user.remember_token , :expires => self.current_user.remember_token_expires_at }
-        end
-
-        if save_wlid && wlid_web_login?
-          account.update_attribute(:msn_live_id, session[:msn_live_id].to_s)
-          session[:msn_live_id] = nil
-        end
-        session[:registered_from] = nil
-        flash[:google_code] = 'loginOK'
-        redirect_back_or_default(my_dashboard_path(:host => corrected_registration_host))
-      else
-        flash[:error] = t("registration.login_failed")
-        render :action => 'new'
-        return false
+      if remember_me == "1"
+        current_user.remember_me unless current_user.remember_token?
+        cookies[:auth_token] = { :value => self.current_user.remember_token , :expires => self.current_user.remember_token_expires_at }
       end
-    elsif !wlid_web_login?
+
+      # Attach current WindowsConnect session to upcoming user session.
+      sso_windows_id = (session[:sso_user] and session[:sso_user]['sso_windows']) ? session[:sso_user]['sso_windows'] : nil
+      account.update_attribute(:sso_windows, sso_windows_id) if sso_windows_id
+
+      session[:sso_user] = nil
+      session[:sso_type] = nil
+
+      session[:registered_from] = nil
+      flash[:google_code] = 'loginOK'
+      redirect_back_or_default(my_dashboard_path(:host => corrected_registration_host)) if p_render
+      true
+    else
+      # TODO: cross network logi
       flash[:error] = t("registration.login_failed")
-      render :action => 'new'
-      return false
+      render :new if p_render
+      false
     end
-    flash.discard(:error)
-    true
   end
+
+  # 
+  # Windows SSO login
+  #
+  def handle_windows_sso_user(p_user)
+    return nil if p_user.nil?
+
+    # AccountUni search
+    ## db enforces uniqueness of sso_windows, deleted_at, so pick first
+    same_sso_user = User.find_with_exclusive_scope(:first, :conditions => { :sso_windows => p_user.sso_windows, :deleted_at => nil })
+    unless same_sso_user.nil?
+      do_login(same_sso_user, nil, false)
+      return
+    end
+
+    # AccountUni search
+    ## db doesn't enforce uniqueness of msn_live_id, deleted_at, so just pick the most recent one
+    ## This case isn't going to work because the appid doesn't match.
+    same_wlid_user = User.find_with_exclusive_scope(:first, :conditions => { :msn_live_id => p_user.msn_live_id, :deleted_at => nil }, :order => "created_at DESC")    
+    unless same_wlid_user.nil?
+      # Upgrade LiveID user to ConnectID user
+      same_wlid_user.update_attribute(:sso_windows, p_user.sso_windows)
+      do_login(same_wlid_user, nil, false)
+      return
+    end
+
+    # AccountUni search
+    ## Rails validation enforces global email uniqueness
+    same_email_user = User.find_by_email_with_exclusive_scope(p_user.email, :first, :select => "slug, gender, encrypted_gender, email, encrypted_email, name, encrypted_name, born_on, encrypted_born_on_string")
+    unless same_email_user.nil?
+      # logger.info "Found same email user."
+      same_email_user.sso_windows = p_user.sso_windows
+      unless same_email_user.part_of_network?
+        same_email_user.transfer_encrypted_demographics
+      end
+      session[:sso_user] = same_email_user
+      session[:sso_type] = "Windows"
+      return
+    end
+
+    session[:sso_user] = p_user
+    session[:sso_type] = 'Windows'
+  end
+
 end
+

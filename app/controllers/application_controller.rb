@@ -10,6 +10,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :do_basic_http_authentication
   before_filter :confirm_registration_code
+  before_filter :clear_windows_cookies
 
   filter_parameter_logging :password, :password_confirmation
 
@@ -60,6 +61,19 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  def current_site_url
+    if request.ssl?
+      "https://#{current_site.ssl_domain}"
+    elsif request.host =~ /localhost/
+      "http://#{request.host}:#{request.port}"
+    elsif RAILS_ENV =~ /development/
+      'http://login.cyloop.com:3000'
+    else
+      "http://#{current_site.domain}"
+    end
+  end
+  helper_method :current_site_url
+
   def rescue_action_in_public(exception)
     if params[:format] == 'xml' || request.path.ends_with?( '.xml' )
       # unless hoptoad_ignore_user_agent?
@@ -103,6 +117,10 @@ class ApplicationController < ActionController::Base
         username == "hoodiny" && password == "3057227000"
       end
     end
+  end
+
+  def clear_windows_cookies
+    WindowsConnect.clear_cookie_session(cookies) if cookies[:wl_internalState] and !logged_in?
   end
 
   def argentina_auth
