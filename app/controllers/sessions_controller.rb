@@ -1,6 +1,6 @@
-require 'cgi'
 class SessionsController < ApplicationController
   before_filter :set_return_to, :only => :new
+  before_filter :go_home_if_logged_in, :except => :destroy
 
   # GET /session/new
   def new
@@ -163,5 +163,13 @@ private
     session[:sso_type] = 'Windows'
   end
 
+  # Skip login page if logged in.
+  def go_home_if_logged_in
+    if logged_in?
+      redirect_to(my_dashboard_path)
+      false
+    end
+  end
+  
 end
 
