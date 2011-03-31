@@ -7,8 +7,8 @@ development:
 
 staging:
   <<: *defaults
-  client_id: 
-  secret: 
+  client_id: 0000000048046D5E
+  secret: CZ3siPiOlJlkblO5ilEe2fdH1EvFtZlp
 
 production:
   <<: *defaults
