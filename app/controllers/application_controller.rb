@@ -67,7 +67,7 @@ class ApplicationController < ActionController::Base
     elsif request.host =~ /localhost/
       "http://#{request.host}:#{request.port}"
     elsif RAILS_ENV =~ /development/
-      'http://login.cyloop.com:3000'
+      'http://www.cyloop.com:3000'
     else
       "http://#{current_site.domain}"
     end
