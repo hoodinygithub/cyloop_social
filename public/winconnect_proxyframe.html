@@ -1,0 +1,15 @@
+<html>
+	<head>
+		<script type="text/javascript">
+			function onLoad() {
+				console.dir(parent.parent);
+				if (parent && parent.parent) {
+					parent.parent.onWinConnectLoginSuccess();
+				}
+			};
+		</script>
+	</head>
+	<body onload="onLoad();">
+	</body>
+</html>
+
