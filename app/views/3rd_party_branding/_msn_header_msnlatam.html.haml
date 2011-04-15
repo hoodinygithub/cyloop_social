@@ -16,7 +16,7 @@
           %li.last= link_to t("sessions.destroy.sign_out"), site_logout_url        
         - else
           %li.last
-            %wl:signin#signInControl{:signedintext=>'Logout', :signedouttext=>'Login', :onsignin=>'onWinConnectLogin'}
+            %iframe{:src=>"http://login.cyloop.com:8081/winconnect_button?host=#{current_site_url}", :frameborder=>"0", :scrolling=>"no", :width=>"75", :height=>"30"} 
     .portal.clearfix{:style => 'display: none'}
       %ul.msn_sections{:style => 'padding: 5px 10px'}
         %li= link_to "Amor y Amistad", "http://match.latam.msn.com/channel/index.aspx?trackingid=202694"

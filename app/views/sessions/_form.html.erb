@@ -1,9 +1,10 @@
 <div id="registration_form">
+  <h3><%= t('sessions.new.site_credentials') if session[:sso_user].nil? %></h3><br />
   <% form_tag session_path, :class => "account_settings" do %>
     <div class="form_row">
       <label for="email"><b><%= t("user.email") %></b></label>
       <div class="grey_round_box left_side">
-        <%= text_field_tag 'email', params[:email], :class => 'input half_width3' %>
+        <%= text_field_tag 'email', params[:email], :class => 'input half_width3', :value => "#{session[:sso_user].email if session[:sso_user] and session[:sso_user].email and !session[:sso_user].new_record?}" %>
       </div>
       <br class="clearer" />
     </div><!--/end form_row -->

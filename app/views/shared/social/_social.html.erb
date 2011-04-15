@@ -1,2 +1,11 @@
-<%= render "/shared/social/winconnect", { :page => page } %>
+<% content_for :head do %>
+  <!-- To demonstrate how this content_for doesn't work, I'm going to keep this code here. -->
+  <%= javascript_tag "alert('content_for bug')" %>
+<% end %>
+<%- javascript_tag do -%>
+  function onWinConnectLoginSuccess() {
+    document.location = current_url_site + '/login?' + document.location.search
+      + '&page=<%= page if defined? page %>';
+  };
+<%- end -%>
 

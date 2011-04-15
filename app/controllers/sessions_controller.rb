@@ -95,7 +95,7 @@ private
       redirect_to(new_user_path)
       false
     elsif account.part_of_network?
-      self.current_user = account      
+      self.current_user = account
       AccountLogin.create!( :account_id => account.id, :site_id => current_site.id )
 
       if remember_me == "1"
@@ -115,7 +115,7 @@ private
       redirect_back_or_default(my_dashboard_path(:host => corrected_registration_host)) if p_render
       true
     else
-      # TODO: cross network logi
+      # TODO: cross network login
       flash[:error] = t("registration.login_failed")
       render :new if p_render
       false

@@ -53,6 +53,7 @@ Rails::Initializer.run do |config|
   config.gem "block_helpers",           :source => "http://gemcutter.org"
   config.gem 'redis-namespace',         :lib => 'redis/namespace'
   config.gem 'resque', :version => '1.2.3'
+  config.gem 'attr_encrypted',          :version => '1.1.2'
     
   
   # config.gem "methodmissing-scrooge", :lib => 'scrooge', :source => 'http://gems.github.com'

@@ -5,6 +5,15 @@
 <h2 class="page_title"><%= t('sessions.new.sign_in')%></h2>
 
 <div id="content">
+  <% if session.has_key? :sso_user %>
+    <div id="social">
+      <div class="container">
+        <span class="title"><%= t('sessions.new.almost_done') %></span><br /><br />
+        <b><%= t('sessions.new.link_acct', :provider => session[:sso_type].to_s) %></b><br /><br />
+        <%= "<b>#{t('sessions.new.account')} #{link_to t('sessions.new.join'), new_user_path(:return_to => my_dashboard_path)}</b>" %>
+      </div>
+    </div>
+  <% end %>
   <div id="main_content" class="registration">
     <%= render 'form' %>
   </div>

@@ -1058,6 +1058,13 @@ en:
       not_registered: Not Registered?
       sign_up_tag_line: Follow all your favorite artists and discover new music through friends.
       recover_cyloop_password: Recover Cyloop Password
+      site_credentials: Or enter your site credentials
+      almost_done: Almost Done!
+      link_acct: Just sign-in to connect your {{provider}} and Cyloop accounts.
+      account: "Don't have a new Cyloop account?"
+      join: Join now
+      create_link_acct: We just need a bit more information to finish creating your profile and connect it to {{provider}}.
+      already_own: Already have a Cyloop account?
     destroy:
       sign_out: Log out
   artist:
