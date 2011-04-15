@@ -393,7 +393,7 @@ module ApplicationHelper
     attrs = if is_msn_messenger_enabled? && current_site.is_msn?
       html_attrs.merge( 'xmlns:msgr' => 'http://messenger.live.com/2009/ui-tags', 'xml:lang' => current_site.default_locale.to_s.downcase.split('_').join('-') )
     else
-      html_attrs.merge ('xmlns:wl' => 'http://apis.live.net/js/2010' )
+      html_attrs.merge('xmlns:wl' => 'http://apis.live.net/js/2010')
     end
     attrs.map{|k,v| "#{k}='#{v}'"}.join(" ")
   end
