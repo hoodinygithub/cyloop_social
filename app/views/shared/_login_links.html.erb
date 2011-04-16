@@ -1,15 +1,20 @@
 <% logged_out = false  unless local_assigns[:logged_out] %>
 
-  <% if !logged_in? || logged_out %>
-    <div id="login_links">
-    <% if @follow_profile %>
-      <%= link_to t("sessions.new.sign_in"), site_login_url(:return_to => nav_aux_login_url, :follow_profile => @follow_profile) %>
-      <span class="spacer">|</span> 
-      <%= registered_link_to t("registration.sign_up"), :return_to => my_dashboard_path, :follow_profile => @follow_profile %>  
-    <% else %>
-      <%= link_to t("sessions.new.sign_in"), site_login_url(:return_to => nav_aux_login_url) %>
-      <span class="spacer">|</span> 
-      <%= registered_link_to t("registration.sign_up"),  :return_to => my_dashboard_path %>
+<% if !logged_in? || logged_out %>
+  <div id="login_links">
+    <%= content_tag(:iframe, nil, :src=>"http://login.cyloop.com:8081/winconnect_button?host=#{current_site_url}", :frameborder=>"0", :scrolling=>"no", :width=>"75", :height=>"30") %>
+
+    <% if false # commenting this block out %>
+      <% if @follow_profile %>
+        <%= link_to t("sessions.new.sign_in"), site_login_url(:return_to => nav_aux_login_url, :follow_profile => @follow_profile) %>
+        <span class="spacer">|</span> 
+        <%= registered_link_to t("registration.sign_up"), :return_to => my_dashboard_path, :follow_profile => @follow_profile %>  
+      <% else %>
+        <%= link_to t("sessions.new.sign_in"), site_login_url(:return_to => nav_aux_login_url) %>
+        <span class="spacer">|</span> 
+        <%= registered_link_to t("registration.sign_up"),  :return_to => my_dashboard_path %>
+      <% end %>
     <% end %>
-    </div>
-  <% end %>
+
+  </div>
+<% end %>
