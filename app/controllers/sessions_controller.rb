@@ -32,7 +32,8 @@ class SessionsController < ApplicationController
       # Windows Connect through popup login
 
       # The return URL in the app settings.  Should match the Enzo login button URL.
-      callback_url = RAILS_ENV =~ /staging/ ? 'http://hoodiny.com/session/new' : 'http://login.cyloop.com:8081/session/new'
+      callback_url = RAILS_ENV =~ /staging/ ? 'http://hoodiny.com/' : 'http://login.cyloop.com:8081/'
+      callback_url += new_session_path
       user = WindowsConnect.parse_verification_code(params[:wrap_verification_code], callback_url, cookies, params[:wrap_client_state], params[:exp])
       handle_windows_sso_user(user)
 
