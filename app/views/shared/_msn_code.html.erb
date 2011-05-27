@@ -38,13 +38,29 @@
     </div>
   <% end %>
 <% elsif site_includes(:msnbr) %>
-  <div id="reporting"><img id="ctag" alt="" height="1" src="http://c.br.msn.com/c.gif?di=14265&pi=9566&ps=34584&tp=&rf=" width="1" />
-  <div id="omni" xmlns:cp.request="urn:CP.Request">
-  <script type="text/javascript">var s_account='msnportalbrmsnmusicacyloop';</script>
-  <script src="http://blstj.msn.com/br/om/js/s_code.js"; type="text/javascript"></script>
-  <script type="text/javascript">s.linkInternalFilters='javascript:,Music';s.pageName='MSN Music' + document.location.pathname;s.server='music.msn.com.br';s.prop1='Music';s.prop2='pt-br';s.channel='Music';s.prop22='';s.prop25='20:11:1976';s.prop26='m';s.prop11='standard';s.prop50=escape(document.URL);s.prop49="music.msn.com.br";s.charSet="UTF-8";s.eVar1=s.getQueryParam('cp-documentid');var s_code=s.t();if(s_code)document.write(s_code);</script>
-  <script type="text/javascript"><!--if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')//--></script>
-  <noscript><div><img alt="" height="1" src="http://msnportalbrmsnmusic.112.2O7.net/b/ss/msnportalbrmsnmusic/1/H.1--NS/0" width="1"  /></div></noscript></div></div>
+  <div id="reporting">
+	  <div id="udc">
+		  <script src="http://blstj.msn.com/br/chan/udc/js/udctrack.2011.03.23.js" type="text/javascript"></script>
+		  <script type="text/javascript">var cURL = "http://c.msn.com/c.gif?";$.track({trackInfoOpts:{sitePage:{lang:'pt-br',siteDI:'14265',sitePI:'9566',sitePS:'34584', pagename:'mainpage',dept:'',sdept:'',pgGrpId:'',cntType:'',srchQ:''},userStatic: { signedIn:'false', age:'', gender: ''}},spinTimeout: 150}).register(new $.track.genericTracking({ base: 'http://udc.msn.com/c.gif?',linkTrack:1,samplingRate:99,commonMap:{event: {evt:'type'}, userDynamic:{rid:'requestId',cts:'timeStamp'},client:{clid:'clientId'}},impr:{param:{evt:'impr'},paramMap:{client:{rf:'referrer',cu:'pageUrl',bh:'height',bw: 'width',sl:'silverlightEnabled',slv:'silverlightVersion',scr:'screenResolution',sd: 'colorDepth'},userDynamic:{hp:'isHomePage'},userStatic:{pp:'signedIn',bd:'age',gnd: 'gender'},sitePage:{mk:'lang',di:'siteDI',pi:'sitePI',ps:'sitePS',pn:'pagename',pid: 'pageId','st.dpt':'dept','st.sdpt':'sdept','dv.pgGrpId':'pgGrpId','dv.contnTp':'cntType', mv:'pgVer', q:'srchQ'}}},click:{paramMap:{report:{hl:'headline',ce:'contentElement',cm:'contentModule',du: 'destinationUrl'}} },unload: {}}), new $.track.genericTracking({base:cURL,linkTrack:0,impr:{param:{udc:"true"},paramMap:{ client:{rf:"referrer",tp:'pageUrl'},sitePage:{di:"siteDI",pi:"sitePI",ps:"sitePS"}, userDynamic:{rid:"requestId",cts:"timeStamp"}}}}));jQuery.track.trackPage();
+      </script>
+	  </div>
+	  <noscript>
+	  <div>
+	  <img alt="image beacon" src="http://udc.msn.com/c.gif?js=0&evt=impr&di=14265&pi=9566&ps=34584&mk=pt-br" />
+	  </div>
+	  </noscript>
+	  <div id="omni" xmlns:cp.request="urn:CP.Request">
+		  <script type="text/javascript">var s_account='msnportalbrmsnmusicacyloop';</script>
+		  <script src="http://blstj.msn.com/br/chan/om/js/s_code.2010.12.13.js" type="text/javascript"></script>
+		  <script type="text/javascript">s.linkInternalFilters = 'javascript:,Music'; s.pageName = 'MSN Music' + document.location.pathname; s.server = 'music.msn.com.br'; s.prop1 = 'Music'; s.prop2 = 'pt-br'; s.channel = 'Music'; s.prop22 = ''; s.prop25 = ''; s.prop26 = ''; s.prop3 = ''; s.prop11 = 'standard'; s.prop50 = escape(document.URL); s.prop49 = 'music.msn.com.br'; s.prop4 = ''; s.prop5 = ''; s.prop6 = ''; s.prop7 = '';s.prop8 = ''; s.eVar1 = s.getQueryParam('cp-documentid'); var s_code = s.t(); if (s_code) document.write(s_code);</script>
+		  <script type="text/javascript"><!--if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')//--></script>
+		  <noscript>
+		  <div>
+		   <img alt="" height="1" src="http://msnportalbrmsnmusicacyloop.112.2O7.net/b/ss/msnportalbrmsnmusicacyloop/1/H.1--NS/0" width="1" />
+		  </div>
+		  </noscript>
+    </div>
+  </div>
 <% elsif site_includes(:msnlatam) %>
   <div id="reporting">
     <img id="ctag" width="1" height="1" alt="" src="http://c.msn.com/c.gif?di=14343&amp;pi=9565&amp;ps=34584&amp;tp=http://entretenimiento.latam.msn.com/channelizer/musica/latam.aspx&amp;rf=" />
@@ -72,7 +88,7 @@
       <noscript><div><img src="http://msnportallatino.112.2O7.net/b/ss/msnportallatino/1/H.1--NS/0" height="1" width="1" alt="" /></div></noscript>
     <div>
     <script type="text/javascript" src="http://blstj.msn.com/br/gbl/js/5/linktracking.js"></script>
-  <div>    
+  <div>
 <% elsif site_includes(:msncaen) %>
 
   <% if params[:controller] == "radio" %>
