@@ -84,7 +84,21 @@
   </div>
 <% elsif site_includes(:msnlatino) %>
   <div id="reporting">
-    <img id="ctag" width="1" height="1" alt="" src="http://c.msn.com/c.gif?di=2585&amp;pi=70709&amp;ps=97089&amp;tp=http://musica.latino.msn.com/header.aspx&amp;rf=http://bedrockblu/editor/InContextEditorMain.aspx?command=open&amp;documentid=21022521&amp;documentTypeID=2067" />
+    <div id="udc">
+      <script src="http://blstj.msn.com/br/chan/udc/js/udctrack.2011.05.06.js" type="text/javascript"></script>
+      <script type="text/javascript">var cURL = "http://c.msn.com/c.gif?";$.track({trackInfoOpts:{
+        sitePage:{
+          lang:'es-us',siteDI:'16532',
+          pagename:<%= @msn_properties.nil?? '\'\'' : @msn_properties[:page_name] %>,
+          dept:'',sdept:'',pgGrpId:'',cntType:'',srchQ:''
+        },userStatic: { signedIn:'false', age:'', gender: ''}},spinTimeout: 150}).register(new $.track.genericTracking({ base: 'http://udc.msn.com/c.gif?',linkTrack:1,samplingRate:99,commonMap:{event: {evt:'type'}, userDynamic:{rid:'requestId',cts:'timeStamp'},client:{clid:'clientId'}},impr:{param:{evt:'impr'},paramMap:{client:{rf:'referrer',cu:'pageUrl',bh:'height',bw: 'width',sl:'silverlightEnabled',slv:'silverlightVersion',scr:'screenResolution',sd: 'colorDepth'},userDynamic:{hp:'isHomePage'},userStatic:{pp:'signedIn',bd:'age',gnd: 'gender'},sitePage:{mk:'lang',di:'siteDI',pi:'sitePI',ps:'sitePS',pn:'pagename',pid: 'pageId','st.dpt':'dept','st.sdpt':'sdept','dv.pgGrpId':'pgGrpId','dv.contnTp':'cntType', mv:'pgVer', q:'srchQ'}}},click:{paramMap:{report:{hl:'headline',ce:'contentElement',cm:'contentModule',du: 'destinationUrl'}} },unload: {/**/}}),new $.track.genericTracking({base:cURL,linkTrack:0,impr:{param:{udc:"true"},paramMap:{ client:{rf:"referrer",tp:'pageUrl'},sitePage:{di:"siteDI",pi:"sitePI",ps:"sitePS"}, userDynamic:{rid:"requestId",cts:"timeStamp"}}}}));jQuery.track.trackPage();
+      </script>
+    </div>
+    <noscript>
+    <div>
+    <img src="http://udc.msn.com/c.gif?js=0&evt=impr&di=16532&pi=0&ps=0&mk=es-us" alt="image beacon" />
+    </div>
+    </noscript>
     <div id="omni">
       <script type="text/javascript">var s_account='msnportallatino';</script>
       <script type="text/javascript" src="http://blstj.msn.com/br/om/js/s_code.js"></script>
