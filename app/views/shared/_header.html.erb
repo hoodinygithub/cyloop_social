@@ -1,4 +1,7 @@
 <% logged_out = false unless local_assigns[:logged_out] %>
+<% if current_site.is_msn? %>
+  <%= render "shared/msn_code" %>
+<% end %>
 <% if site_includes(:msnmx, :msnbr, :msnlatam, :msnlatino, :msnar, :msncaen, :msncafr) %>
   <div id="top_banner_container">
     <%= banner_ad("top_banner") %>
@@ -20,3 +23,4 @@
     </div>
   </div>
 </div>
+
