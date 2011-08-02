@@ -1,6 +1,6 @@
 <% unless profile_user.stations.empty? %>
   <div class="box_content">
-    <h1><%= possessive :top_stations %></h1>
+    <h5><%= possessive :top_stations %></h5>
     <% most_played_stations = profile_user.most_played_stations(6) %>
     <%= render :partial => 'shared/mini_station', :collection => most_played_stations %>
 
@@ -25,3 +25,4 @@
     <% end %>
   </div>
 <% end %>
+

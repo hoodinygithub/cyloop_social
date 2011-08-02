@@ -48,7 +48,7 @@ $(document).ready(function() {
             + "<div class='toolTipMid'>"
             + "<img src=" + $(this).parent().find("img").attr("src") + " width='60' height='60'/>"
             + "<span>"
-            + "<h1>" + tip.attr("artist_name") + "</h1>"
+            + "<h5>" + tip.attr("artist_name") + "</h5>"
             + "<div>" + tip.attr("album_name") + "</div>"
             + "<div>" + tip.attr("album_year") + "</div>"
             + "<div>" + tip.attr("artist_label") + "</div>"

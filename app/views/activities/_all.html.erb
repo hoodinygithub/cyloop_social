@@ -2,13 +2,13 @@
   options = {}
   options[:limit] = limit if defined?(limit) && limit.to_i > 0
   options[:skip_auto_load] = true if defined?(skip_auto_load) && skip_auto_load
-  options[:skip_filters] = true if defined?(skip_filters) && skip_filters  
+  options[:skip_filters] = true if defined?(skip_filters) && skip_filters
   options[:hide_sorting] = true if defined?(hide_sorting) && hide_sorting
 %>
 <%= render :partial => 'activities/xhr', :locals => options %>
 
 <% if defined? with_title && with_title %>
-  <h1 class="activity"><%= t('home.network_update', :user_name => artist_or_user_name(profile_account)) %></h1>
+  <h5 class="activity"><%= t('home.network_update', :user_name => artist_or_user_name(profile_account)) %></h5>
   <div class="view_more_activity">
     <b>
       <%= link_to t('actions.view_more'), activities_path %>
@@ -19,6 +19,7 @@
   <div class="align_center"><span class="last loading"></span></div>
 <% end %>
 <%= render 'activities/type_filters' %>
-<%= render :partial => 'activities/sorting', :locals => {:hide_sorting => options[:hide_sorting]} %>    
+<%= render :partial => 'activities/sorting', :locals => {:hide_sorting => options[:hide_sorting]} %>
 <%= render 'activities/type_filters' %>
 <%= render 'activities/activity' %>
+

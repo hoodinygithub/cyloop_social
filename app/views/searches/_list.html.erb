@@ -1,12 +1,12 @@
 <div class="oveflow_list">
   <% @search_types.each_with_index do |type, index| %>
-  <div class="search_results_header"><h1><%= t("basics.#{type}")%> (<%= @counts[type] %>) </h1></div>
+  <div class="search_results_header"><h5><%= t("basics.#{type}")%> (<%= @counts[type] %>) </h5></div>
   <% if index < 1 %>
   <div class="search_results_ajax"><%= image_tag "/images/ajax_activity_indicators_download_animated_icon_animated_busy.gif" %></div>
   <% end %>
   <div class="clearer"></div>
   <ul id="<%= "#{type.to_s}_list" %>" class="search_list">
-    <%= render :partial => "searches/list_#{type.to_s.singularize}", :collection => @results[type] unless @results[type].empty? %> 
+    <%= render :partial => "searches/list_#{type.to_s.singularize}", :collection => @results[type] unless @results[type].empty? %>
   </ul>
   <div class="grey_spacer"></div>
   <% end %>
@@ -14,3 +14,4 @@
 <div class="search_term">
   <%= link_to("search for #{@query}", "#", :onclick => "javascript: return Base.header_search.buildSearchUrl();") %>
 </div>
+

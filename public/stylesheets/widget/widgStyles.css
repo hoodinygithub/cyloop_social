@@ -121,7 +121,7 @@ div#top_stations {
 	line-height: 20px;
 }
 
-div#radio_label h1 {
+div#radio_label h1, div#radio_label h5 {
 	text-align: left;
 	margin-bottom: 10px !important;
 }
@@ -294,7 +294,8 @@ div#widgView div#stationWrapper div#stationHeader {
 	height: 24px;
 }
 
-div#widgView div#stationWrapper div#stationHeader h1 {
+div#widgView div#stationWrapper div#stationHeader h1,
+div#widgView div#stationWrapper div#stationHeader h5 {
 	float: left;
 	margin: 0;
 	font: bold 12px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
@@ -436,7 +437,7 @@ div#songInfo div#info {
 	margin-left: 10px;
 }
 
-div#songInfo div#info h1
+div#songInfo div#info h1, div#songInfo div#info h5
 {
 	margin-top: 3px;
 	margin-bottom: 2px;
@@ -540,3 +541,4 @@ div#widget_window div.active {
   _height: 210px !important;
   overflow: hidden !important;
 }
+

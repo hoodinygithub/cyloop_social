@@ -315,18 +315,18 @@ a:hover {
     float: left;
 }
 
-h1 {
-    border-left:5px solid #00A5F8;
-    font-size:14px;
-    font-weight:bold;
-    height:12px;
-    line-height:12px;
-    margin-bottom:18px;
-    overflow:hidden;
-    padding-left:5px;
+h1, h5 {
+  border-left: 5px solid #00A5F8;
+  font-size: 14px;
+  font-weight: bold;
+  height: 12px;
+  line-height: 12px;
+  margin-bottom: 18px;
+  overflow: hidden;
+  padding-left: 5px;
 }
 
-.search_results_header h1 {
+.search_results_header h1, .search_results_header h5 {
   color: #000;
 }
 
@@ -668,7 +668,7 @@ h1 {
     margin-top:-14px;
 }
 
-.search_results_box h1 {
+.search_results_box h1, .search_results_box h5 {
     margin-left: 15px;
     margin-bottom:10px;
 }
@@ -779,7 +779,7 @@ h1 {
     padding: 0 10px;
 }
 
-#center_column h1 {
+#center_column h1, #center_column h5 {
     margin-bottom: 10px;
 }
 
@@ -978,7 +978,7 @@ h1 {
     zoom: 1;
 }
 
-#right_column h1 {
+#right_column h1, #right_column h5 {
     margin-bottom: 10px;
 }
 
@@ -1821,7 +1821,7 @@ div.reviews {
     width: 320px;
 }
 
-.white_box h1, .white_box .sorting {
+.white_box h1, .white_box h5, .white_box .sorting {
     margin-left: 20px;
 }
 
@@ -2024,7 +2024,7 @@ div.reviews {
     float: right;
 }
 
-.settings_column h1 {
+.settings_column h1, .settings_column h5 {
     margin-bottom: 0px;
 }
 
@@ -2445,7 +2445,7 @@ div.reviews {
     padding: 10px 15px;
 }
 
-.padd h1 {
+.padd h1, .padd h5 {
     margin-bottom: 5px;
 }
 
@@ -3387,3 +3387,4 @@ a:hover {
   width: 300px;
   height: 600px;
 }
+

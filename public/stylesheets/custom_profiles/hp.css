@@ -18,21 +18,21 @@ body.hprocks div#container {
 	width: 630px;
 }
 
-h1 {
+h1, h5 {
 	color: #FFFFFF;
 	border-color: #29568F;
 }
 
 .blue {
-	color: #29568F;	
+	color: #29568F;
 }
 
 .custom_color {
-	background-color: #29568F;	
+	background-color: #29568F;
 }
 
 body.hprocks div#main_content a {
-	color: #29568F;	
+	color: #29568F;
 }
 
 .follows_count {
@@ -136,3 +136,4 @@ body.hprocks .small_thumb {
 body.hprocks .gb_small {
 	margin: 0 10px 32px 0 !important;
 }
+

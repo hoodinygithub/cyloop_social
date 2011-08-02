@@ -55,13 +55,13 @@ function swf(objname)
     return window[objname];
   else
     return document[objname];
-    
+
 }
 
 (function() {
   importCSS(WIDGHOST + "/stylesheets/widget/widgStyles.css");
   importCSS(WIDGHOST + "/stylesheets/jquery.auto-complete.css");
-  importJS("http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js", "jQuery", function() {  
+  importJS("http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js", "jQuery", function() {
     $.noConflict();
     importJS(WIDGHOST + "/javascripts/jquery.metadata.js");
     importJS(WIDGHOST + "/javascripts/jquery.auto-complete.js");
@@ -80,7 +80,7 @@ function loadWidget(klass)
 // check for loaded dependencies
 function checkLoaded()
 {
-  if(READY) 
+  if(READY)
   {
     clearInterval(intID);
     return new Cyloop.Widget(opt);
@@ -90,26 +90,26 @@ function checkLoaded()
 // widget object
 Cyloop = {};
 Cyloop.Widget = function(options)
-{ 
+{
   // widget options
   this.options = options;
   this.mini = false;
 
   // widget ui
   this.element = jQuery("#" + this.options.elementId);
-  
+
   var css  = "<style type='text/css'>";
       css += "div#widgView div#initialWrapper div#initialBody a, #submit_custom_button.active, div#widgView div#widgFooter span.poweredBy { background-color: #<%= campaign.hexcolor %>; }";
       css += ".create, #info h1, .artist, ul.auto-complete-list li { color: #<%= campaign.hexcolor %> !important; }";
       css += "</style>";
   this.element.append(css);
-  
+
   // widget content wrapper
   this.element.append("<div id='widgView'></div>");
   var content = jQuery("#widgView");
   this.element.append("<div id='widgHandle' class='inactive' hasLayout='true'> </div>");
   jQuery("#widgHandle").click( function() { window.cyloopWidget.setState("createStation"); } );
-  
+
   // swf proxy for crossdomain requests
   this.element.append("<div id='swfutils'></div>");
   var flashvars = {};
@@ -135,11 +135,11 @@ Cyloop.Widget = function(options)
   a.click( function() { window.cyloopWidget.setState("createStation") } );
 
   this.initialWrapper.append("<div id='widgFooter'><span class='poweredBy'></span></div>");
-  
+
   ///////////////////////////////
-  
+
   content.append("<div id='minViewWrapper' elemWidth='77'></div>");
-  
+
   this.minViewWrapper = jQuery("div#minViewWrapper");
   this.minViewWrapper.append("<div id='albumCoverContainer'><a></a></div>");
   this.minViewWrapper.append("<div id='widgFooter'><span class='poweredBy'></span></div>");
@@ -148,9 +148,9 @@ Cyloop.Widget = function(options)
   // station wrapper
   content.append("<div id='stationWrapper' elemWidth='287'></div>");
   this.stationWrapper = jQuery("#stationWrapper");
-  
+
   // station header
-  this.stationWrapper.append("<div id='stationHeader'><h1>Crea un radio personalizada</h1></div>");
+  this.stationWrapper.append("<div id='stationHeader'><h5>Crea un radio personalizada</h5></div>");
 
   // station body
   this.stationWrapper.append("<div id='stationBody'></div>");
@@ -176,7 +176,7 @@ Cyloop.Widget = function(options)
 
   // advertisement
   //this.controlsWrapper.append("<div id='adserv'></div>");
-  
+
   // CONTROLS HEADER
   this.controlsWrapper.append("<div id='controlsHeader'><span class='title'>Madonna</span><span class='create'>Crear una radio</span></div>");
   jQuery("#controlsHeader .create").click( function() { window.cyloopWidget.setState("createStation"); } );
@@ -200,19 +200,19 @@ Cyloop.Widget = function(options)
 
   // FORM LOGIC
   var artistSearch = jQuery("input[name='station_name']");
-  
+
   // DEACTIVATE ENTER KEY
   artistSearch.keypress( function(e) {
     if(e.keyCode == 13) return false;
   });
-  
+
   artistSearch.click(function(){
     submitActive(false);
     jQuery(this).attr("value", "");
   });
-  
+
   var delay;
-  artistSearch.keyup( function() { 
+  artistSearch.keyup( function() {
     submitActive(false);
     clearTimeout(delay);
     var val = this.value;
@@ -220,7 +220,7 @@ Cyloop.Widget = function(options)
     {
       delay = setTimeout(function() { searchStation(val) }, 600);
     }
-    //setTimeout(searchStation(this.value), 2000); 
+    //setTimeout(searchStation(this.value), 2000);
   } );
 
   function searchStation(q)
@@ -228,7 +228,7 @@ Cyloop.Widget = function(options)
     var req = WIDGHOST + "/stations.js?q=" + q + "&limit=5";
     swf("swfutils").proxyreq(req);
   }
-  
+
   // FORM LOGIC
 
   // INIT ACTION
@@ -247,7 +247,7 @@ Cyloop.Widget = function(options)
     // window.focus();
   };
 
-  this.setPlayer = function ( player ) 
+  this.setPlayer = function ( player )
   {
     if(arguments[1])
     {
@@ -282,12 +282,12 @@ Cyloop.Widget = function(options)
     else
       this.player.createStation(s);
   };
-  
+
   this.playPause = function()
   {
     this.player.playPause();
   }
-  
+
   this.widgetStatus = function(state)
   {
     if(state == "paused")
@@ -295,7 +295,7 @@ Cyloop.Widget = function(options)
     else
       jQuery("#playpause").attr("class", "pause");
   }
-  
+
   this.next = function()
   {
     this.player.next();
@@ -309,7 +309,7 @@ Cyloop.Widget = function(options)
       jQuery("#stationWrapper").hide();
       jQuery("#controlsWrapper").show();
     }
-    
+
     var title = jQuery("#controlsHeader span.title");
     title.empty();
     title.append(this.station);
@@ -318,17 +318,17 @@ Cyloop.Widget = function(options)
     songInfo.append("<img src=" + song.artist.picture.url + "></img>");
     songInfo.append("<div id='info'></div>");
     var info = jQuery("#info");
-    info.append("<h1>" + this.concat(song.name, 30) + "</h1>");
+    info.append("<h5>" + this.concat(song.name, 30) + "</h5>");
     info.append("<span class='artist'><b>By: </b>" + song.artist.name + "</span>");
     jQuery("#albumCoverContainer a").empty();
     jQuery("#albumCoverContainer a").append("<img src=" + song.artist.picture.url + "></img>");
   };
-  
+
   this.stationName = function(title)
   {
     this.station = title;
   }
-  
+
   this.setAdvertisement = function(url)
   {
     if(!this.mini)
@@ -342,7 +342,7 @@ Cyloop.Widget = function(options)
       this.adURL = url;
     }
   }
-  
+
   this.concat = function(str, limit)
   {
     if(str.length > limit)
@@ -350,7 +350,7 @@ Cyloop.Widget = function(options)
     else
       return str;
   }
-  
+
   this.setState = function(state)
   {
     switch(state)
@@ -361,11 +361,11 @@ Cyloop.Widget = function(options)
         jQuery("#widgHandle").attr("class", "active");
         jQuery("#widgHandle").unbind("click");
         jQuery("#widgHandle").click( function() { window.cyloopWidget.setState("init"); } );
-        this.animOut( this.element, 
+        this.animOut( this.element,
                       this.activeView.attr("elemWidth"),
                       this.stationWrapper,
                       null );
-        
+
       break;
       case "playing":
         if(this.creatingStation || this.init)
@@ -380,17 +380,17 @@ Cyloop.Widget = function(options)
           this.playing = true;
           if(!this.returnEnabled)
           {
-            jQuery("#stationHeader").append("<a id='return'></a>").click( function() { 
+            jQuery("#stationHeader").append("<a id='return'></a>").click( function() {
               window.cyloopWidget.setState("return"); } );
             this.returnEnabled = true;
           }
-          this.animOut( this.element, 
+          this.animOut( this.element,
                         this.activeView.attr("elemWidth"),
                         this.controlsWrapper,
                         {id: "playing", song: {info: arguments[1]}} );
           this.song = {};
           this.song = arguments[1];
-                         
+
         }
         else
         {
@@ -424,7 +424,7 @@ Cyloop.Widget = function(options)
         {
           jQuery("#widgHandle").click( function() {
             window.cyloopWidget.mini = false;
-            window.cyloopWidget.setState("return"); 
+            window.cyloopWidget.setState("return");
           } );
           this.animOut( this.element,
                         this.activeView.attr("elemWidth"),
@@ -443,7 +443,7 @@ Cyloop.Widget = function(options)
     }
     this.init = false;
   };
-  
+
   this.deactivate = function()
   {
     this.playing = false;
@@ -453,14 +453,14 @@ Cyloop.Widget = function(options)
     jQuery("#stationHeader a").remove();
     window.cyloopWidget.popup = null;
   }
-  
+
   this.animOut = function(elem, dist, activate, options)
   {
     elem.animate(
     {
       left: String("-=" + dist)
     }, 500,
-    function() 
+    function()
     {
       if(options)
       {
@@ -469,7 +469,7 @@ Cyloop.Widget = function(options)
           case "playing":
             window.cyloopWidget.songInfo(options.song.info);
           break;
-        } 
+        }
       }
       window.cyloopWidget.activeView.hide();
       activate.show();
@@ -477,41 +477,41 @@ Cyloop.Widget = function(options)
       window.cyloopWidget.animIn(elem, activate);
     });
   };
-  
+
   this.animIn = function(elem, active)
   {
     elem.animate(
     {
       left: String("+=" + active.attr("elemWidth"))
     }, 500,
-    function() 
+    function()
     {
       window.cyloopWidget.activeView = active;
     });
   };
 
   window.cyloopWidget = this;
-  
+
 };
 
 // autocomplete logic
 var map;
 function proxyrsp(obj)
-{ 
+{
   var parse = obj.split("\n");
   var data = [];
   var search = [];
   map = {};
-  for(var i = 0; i < parse.length; i++) 
-  { 
+  for(var i = 0; i < parse.length; i++)
+  {
     var item = parse[i].split("|");
     data.push( item[1] );
     search.push( item[1].toLowerCase() );
     map[item[1].toLowerCase()] = {id: item[0], url: item[2]};
   }
-  
+
   submitActive( jQuery.inArray(jQuery("input[name='station_name']").attr("value").toLowerCase(), search) != -1 );
-  
+
   var ac = jQuery("input[name='station_name']");
   ac.autoComplete("disable");
   ac.autoComplete("flush", true);
@@ -532,7 +532,7 @@ function submitActive(active)
   elem.unbind("click");
   active ? elem.attr("class", "active") : elem.attr("class", "inactive");
   jQuery("#submit_button a").click( function(e) {
-    if(active) 
+    if(active)
     {
       if( !window.cyloopWidget.popup ) window.cyloopWidget.openPopup();
       var sn = jQuery("#station_name").attr("value").toLowerCase();
@@ -541,3 +541,4 @@ function submitActive(active)
     return false;
   });
 }
+

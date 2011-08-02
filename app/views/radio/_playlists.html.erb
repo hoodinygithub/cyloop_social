@@ -9,7 +9,7 @@
     var mixButton = $("#create_playlist_btn");
 
     textField.css('color', '<%= market_search_radio_edit_color("off") %>');
-    textField.focus(function() {      
+    textField.focus(function() {
       if(contentSearch.val() == "<%= t('search.content_search_hint') %>") {
         contentSearch.attr('value', '')
       }
@@ -28,8 +28,8 @@
         $(this).attr('value', "<%= t('search.content_search_hint') %>")
         mixButton.attr('can_post', 0).removeClass('custom_button').addClass('grey_button_big');
       }
-    });    
-  });  
+    });
+  });
   </script>
   <div class="search_box light_grey">
     <% form_for(:station, :html => { :onsubmit => 'return Base.content_search.buildSearchUrl();', :method => :get, :id => :content_search_form }, :url => search_path) do %>
@@ -40,13 +40,13 @@
         <span class="text_input_placeholder">
           <%= text_field_tag :q, t('search.content_search_hint', :default => ''),  {
             :id => :content_search_query, :class => "text_input",
-            # :onfocus => " clearInput(content_msg, this);", 
-            # :onblur => "if (!$.browser.msie) { restoreInput(content_msg, this); setTimeout(function() {$('.create_box').hide();}, 300); }", 
+            # :onfocus => " clearInput(content_msg, this);",
+            # :onblur => "if (!$.browser.msie) { restoreInput(content_msg, this); setTimeout(function() {$('.create_box').hide();}, 300); }",
             :autocomplete => :off } %>
-        </span>            
+        </span>
         <span class="btn_placeholder">
-          <%= custom_button( t("home.create_mix"), :id => "create_playlist_btn", 
-             :href => logged_in? ? playlist_create_path : nil , 
+          <%= custom_button( t("home.create_mix"), :id => "create_playlist_btn",
+             :href => logged_in? ? playlist_create_path : nil ,
              :onclick => logged_in? ? nil : "Base.utils.showRegistrationLayer('#{playlist_create_path}')" ) %>
         </span>
         <br/><br/>
@@ -54,7 +54,7 @@
   </div><!--/end search_box -->
   <div id="content_search_results" class="create_box"></div><!--/end create_box -->
 
-  <h1><%= t("modules.top_playlists.title").upcase %></h1>
+  <h5><%= t("modules.top_playlists.title").upcase %></h5>
 
   <div class="playlist_items">
 
@@ -82,7 +82,7 @@
   <% end %>
 
   <div class="top_playlists_column">
-    <h1><%= t("modules.top_artists.title").upcase %></h1>
+    <h5><%= t("modules.top_artists.title").upcase %></h5>
 
     <% cache("#{site_cache_key}/modules/playlists/top_artists", :expires_in => EXPIRATION_TIMES['top_modules_artists']) do %>
       <ul class="list_items">
@@ -105,9 +105,10 @@
 
   <div class="grey_box">
     <div class="box_content">
-      <h1><%= t("modules.latest_playlists.title").upcase%></h1>
+      <h5><%= t("modules.latest_playlists.title").upcase%></h5>
       <%= render :partial => 'playlist_simple', :collection => @latest_playlists %>
     </div>
   </div>
 </div><!--/end latest_badges_column -->
 <div class="clearer"></div>
+

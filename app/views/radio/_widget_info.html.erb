@@ -17,7 +17,7 @@
 
   <div class="radio_right_side">
     <div class="radio_tabs">
-      <h1><%= t('modules.similar_artists.title') %></h1>
+      <h5><%= t('modules.similar_artists.title') %></h5>
     </div>
     <div id="similar_artists_content" class="radio_tabs_content">
       <%= render :partial => "similar_widget_artists", :locals => { :seed_artist => artist, :limit => 12, :columns => 6 } %>
@@ -26,3 +26,4 @@
 
   <div class="clearer"></div>
 </div>
+

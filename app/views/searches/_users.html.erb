@@ -1,7 +1,7 @@
-<h1><%= t('basics.users')%></h1>
+<h5><%= t('basics.users')%></h5>
 
 <div class="sorting">
-  <%= sort_link_to :relevance %> / 
+  <%= sort_link_to :relevance %> /
   <%= sort_link_to :alphabetical %>
 </div>
 
@@ -18,7 +18,7 @@
             <% end %>
             <%= link_to number_with_delimiter(user.total_user_stations), is_self ? my_stations_path : user_stations_path(user) %> <%= t('basics.stations') %> / <%= link_to number_with_delimiter(user.follower_count), is_self ? my_followers_path : user_followers_path(user) %> <%= t('users.stats.followers') %>
         </div>
-        <div class="follower_actions w_settings">            
+        <div class="follower_actions w_settings">
             <%= follow_button(:account => user, :remove_div => false) unless is_self %>
             <div class="blocked">
               <% if current_user && current_user.blocks?(user) %>

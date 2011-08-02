@@ -81,11 +81,11 @@ a:hover {
 	margin-bottom: 7px;
 }
 
-.red_button, h1 {
+.red_button, h1, h5 {
 	text-transform: uppercase;
 }
 
-h1 {
+h1, h5 {
 	border-left-color: #F93A30;
 }
 
@@ -113,3 +113,4 @@ div.small_thumb a {
 div.box_content div.align_right a {
 	color: #F93A30;
 }
+

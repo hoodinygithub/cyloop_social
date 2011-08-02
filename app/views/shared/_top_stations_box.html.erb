@@ -1,6 +1,6 @@
 <% if profile_user and profile_user.stations %>
   <div class="box_content">
-    <h1><%= t("dashboards.top_stations", :user_name => profile_user.first_name.upcase) %></h1>
+    <h5><%= t("dashboards.top_stations", :user_name => profile_user.first_name.upcase) %></h5>
     <% most_played_stations = profile_user.most_played_stations %>
     <%= render :partial => 'shared/mini_station', :collection => most_played_stations %>
 
@@ -21,3 +21,4 @@
     <% end %>
   </div>
 <% end %>
+

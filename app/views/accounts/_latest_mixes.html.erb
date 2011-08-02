@@ -4,10 +4,10 @@
   </b>
 <% end %>
 
-<h1>
+<h5>
   <%= possessive :latest_mixes if profile_user? %>
   <%= t('artist.latest_mixes_featuring_artist', :artist_name => profile_account.name) if profile_artist? %>
-</h1>
+</h5>
 
 <% if @latest_mixes.empty? %>
   <div class="big_round_box png_fix">
@@ -40,12 +40,12 @@
 
       <div class="visible">
         <%= link_to image_tag('play_button.png', :class=> "play_button png_fix"), mix_radio_path(:station_id => playlist.station.id) %>
-        <%= link_to truncate(playlist.name, 15, '...'), mix_radio_path(:station_id => playlist.station.id), :alt => playlist.name, :class => 'white' %><br />       
+        <%= link_to truncate(playlist.name, 15, '...'), mix_radio_path(:station_id => playlist.station.id), :alt => playlist.name, :class => 'white' %><br />
         <%= rating(playlist) %>
       </div>
     </div><!--/end overlay -->
   </div><!--/end artist_box -->
-  
+
   <% if (index+1) % 3 == 0 %>
     <br class="clearer" />
   <% end %>
@@ -61,4 +61,5 @@
   <% end %>
 <% end %>
 <% end %>
-<br /><br /> 
+<br /><br />
+

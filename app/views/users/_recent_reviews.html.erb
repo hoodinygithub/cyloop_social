@@ -1,5 +1,5 @@
 <br/><br/>
-<h1><%= possessive :recent_reviews %></h1>
+<h5><%= possessive :recent_reviews %></h5>
 <% unless @recent_reviews.empty? %>
   <% @recent_reviews.each_with_index do |review, index| %>
     <div class="albums_item">
@@ -27,20 +27,20 @@
                       <% end %>
                     </div>
                 </div>
-          
+
                 <div class="visible">
-                  <%= link_to image_tag('play_button.png', :class => "png_fix play_button"), mix_radio_path(:station_id => review.commentable.station.id) %>                
-                  <%= link_to truncate(review.commentable.name, 15, '...'), 
+                  <%= link_to image_tag('play_button.png', :class => "png_fix play_button"), mix_radio_path(:station_id => review.commentable.station.id) %>
+                  <%= link_to truncate(review.commentable.name, 15, '...'),
                               mix_radio_path(:station_id => review.commentable.station.id),
                               :alt => review.commentable.name %><br/>
                   <%= rating(review.commentable, false, "rating_#{review.commentable.id}_#{review.id}_bottom") %>
                 </div>
             </div><!--/end overlay -->
         </div><!--/end artist_box -->
-  
+
         <div class="reviews">
             <b><%= t('reviews.reviewed_by') %>: <%= link_to review.user, user_path(review.user) %></b><br/>
-      
+
             <span class="grey"><%= nice_elapsed_time(review.updated_at) %> <%= t('basics.ago') %></span><br/>
             <span class="review_creator_stars2">
             <%= rating(review.commentable)%>
@@ -50,7 +50,7 @@
 
             <div class="review_text">
               <small><%= review.comment %></small>
-            </div>        
+            </div>
             <div class="review_item">
                 <%= avatar_for(review.commentable.owner, :small, :class => 'review_icon')%>
                 <div class="review_creator">
@@ -61,13 +61,13 @@
                 <br class="clearer" />
             </div><!--/end review_item -->
         </div><!--/end reviews -->
-  
+
         <div class="clearer"></div>
     </div><!--/end albums_item -->
-  <% end %>  
-<% else %>  
+  <% end %>
+<% else %>
 <div class="big_round_box png_fix">
   <%= possessive :has_not_reviews %>
-</div>  
-<% end %>  
+</div>
+<% end %>
 

@@ -7,7 +7,7 @@ require File.join(File.dirname(__FILE__), 'boot')
 
 # Be sure to restart your server when you modify this file
 # Top of config/environment.rb
-if File.exists?("#{File.dirname(__FILE__)}/passenger_cluster.yml")                      
+if File.exists?("#{File.dirname(__FILE__)}/passenger_cluster.yml")
   ENV["SITE"] = YAML.load_file("#{File.dirname(__FILE__)}/passenger_cluster.yml")["SITE"]
 end
 
@@ -16,7 +16,8 @@ end
 # Uncomment below to force Rails into production mode when
 # you don't control web/app server and can't set it the proper way
 ENV['SITE'] ||= 'MSN Brazil' if ENV['RAILS_ENV'] =~ /production|staging|ec2_production/
-ENV['SITE'] ||= 'MSN Latam' if ENV['RAILS_ENV'] =~ /development/
+#elgalu ENV['SITE'] ||= 'MSN Latam' if ENV['RAILS_ENV'] =~ /development/
+ENV['SITE'] ||= 'MSN Latino' if ENV['RAILS_ENV'] =~ /development/
 ENV['RAILS_ASSET_ID'] = '' if ENV['RAILS_ENV'] =~ /development/
 
 Rails::Initializer.run do |config|
@@ -32,7 +33,7 @@ Rails::Initializer.run do |config|
   # Specify gems that this application depends on.
   # They can then be installed with "rake gems:install" on new installations.
   # You have to specify the :lib option for libraries, where the Gem name (sqlite3-ruby) differs from the file itself (sqlite3)
-  
+
   #active_support loads this for you, rails dependency handling is completely fucked up
   config.gem "json"
   config.gem 'memcache-client', :lib => 'memcache'
@@ -53,8 +54,8 @@ Rails::Initializer.run do |config|
   config.gem "block_helpers",           :source => "http://gemcutter.org"
   config.gem 'redis-namespace',         :lib => 'redis/namespace'
   config.gem 'resque', :version => '1.2.3'
-    
-  
+
+
   # config.gem "methodmissing-scrooge", :lib => 'scrooge', :source => 'http://gems.github.com'
   # Only load the plugins named here, in the order given. By default, all
   # plugins in vendor/plugins are loaded in alphabetical order.
@@ -83,7 +84,7 @@ Rails::Initializer.run do |config|
   # All files from config/locales/*.rb,yml are added automatically.
   # config.i18n.load_path << Dir[File.join(RAILS_ROOT, 'my', 'locales', '*.{rb,yml}')]
   # config.i18n.default_locale = :de
-  
+
 
   # Your secret key for verifying cookie session data integrity.
   # If you change this key, all old sessions will become invalid!
@@ -101,3 +102,4 @@ Rails::Initializer.run do |config|
     require 'iconv'
   end
 end
+

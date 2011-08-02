@@ -1,7 +1,7 @@
-#main_content { 
+#main_content {
   background-color: transparent;
-  border: 0; 
-} 
+  border: 0;
+}
 
 * {
 margin: 0;
@@ -31,13 +31,13 @@ body.twitstation {
 	margin-left: 10px;
 }
 
-.twitstation .logo h1 {
+.twitstation .logo h1, .twitstation .logo h5 {
 	position: relative;
 	top: 30px;
 	left: 160px;
 }
 
-.twitstation .logo h1 a {
+.twitstation .logo h1 a, .twitstation .logo h5 a {
 	display: block;
 	height: 59px;
 	width: 390px;
@@ -56,3 +56,4 @@ div.artist_radio_info div.tabs ul {
 div.artist_radio_info div#radio_label {
   margin-bottom: 0;
 }
+

@@ -5,9 +5,9 @@
   <%= render on_dashboard? ? 'dashboards/left_column' : 'accounts/left_column' %>
 
   <div id="center_column">
-    <h1>
+    <h5>
       <%= yield :title %>
-    </h1>
+    </h5>
     <div class = "ajax_pagination">
       <div id="content_list">
 
@@ -18,7 +18,7 @@
 
         <% if @collection.respond_to? :total_pages %>
           <%= will_paginate @collection, pagination_args %>
-        <% end %>      
+        <% end %>
       </div>
     </div>
   </div><!--/end center_column -->
@@ -27,3 +27,4 @@
 
 <div class="clearer"></div>
 </div>
+

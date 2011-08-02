@@ -7,6 +7,12 @@ require 'rake'
 require 'rake/testtask'
 require 'rake/rdoctask'
 
+#fix1 for rubygems >= 1.6
+require "thread"
+require "rubygems"
+#end fix1
+
 require 'tasks/rails'
 
 #require 'metric_fu'
+

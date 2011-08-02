@@ -1,8 +1,9 @@
 <div class="top_djs_column">
-  <h1><%= t("modules.top_djs.title").upcase %></h1>  
+  <h5><%= t("modules.top_djs.title").upcase %></h5>
   <%# cache("#{site_cache_key}/modules/shared/top_djs/#{@top_djs.size}", :expires_in => EXPIRATION_TIMES["top_modules_djs"]) do %>
     <ul class="list_items">
       <%= render :partial => 'shared/top_dj_item', :collection => @top_djs %>
     </ul>
   <%# end %>
 </div>
+

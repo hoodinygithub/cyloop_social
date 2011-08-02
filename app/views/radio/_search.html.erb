@@ -1,5 +1,5 @@
 
-<!-- 
+<!--
 - cache("#{site_cache_key}/radio/default_artist_info", :expires_in => EXPIRATION_TIMES['radio_default_artist_info']) do
   .artist_radio_info
     = render :partial => "default_artist_info"
@@ -25,10 +25,10 @@
     artistSearch.autocomplete("/stations.js", {
       formatItem: function(item) {
         return item[1];
-      },        
+      },
       formatResult: function(item) {
         return item[1];
-      }        
+      }
     }).result(function(event, item) {
       Base.radio.set_station_search_details(item[0], item[2], false);
       listenButton.attr('can_post', 1);
@@ -46,7 +46,7 @@
         artistSearch.attr('value', '')
       }
     });
-    
+
     artistSearch.blur(function() {
       if(artistSearch.val() == "") {
         artistSearch.attr("touched", 'false');
@@ -71,17 +71,18 @@
           <%= hidden_field_tag :search_station_id %>
           <span class="text_input_placeholder">
               <input type="text" name="search_station_name" value="<%= t('radio.search_hint') %>">
-          </span>            
+          </span>
           <span class="btn_placeholder">
               <%= grey_button(t('actions.listen').upcase, :id => 'create_station_submit', :can_post => 0) %>
           </span>
           <br/><br/>
           <div class="medium_text grey2">
-            <%= t('radio.select_recommended_stations_below') %>                
+            <%= t('radio.select_recommended_stations_below') %>
           </div>
       <% end %>
     </div><!--/end search_box -->
-    <h1><%= t('modules.recommended_stations.title') %></h1>
-    <%= render :partial => 'shared/abstract_station', :collection => @recommended_stations, :locals => { :columns => 4 } %>    
+    <h5><%= t('modules.recommended_stations.title') %></h5>
+    <%= render :partial => 'shared/abstract_station', :collection => @recommended_stations, :locals => { :columns => 4 } %>
     <br class="clearer" />
 </div><!--/end two_columns -->
+

@@ -194,12 +194,12 @@ background-color:#FF0000;
 }
 
 .songs_list .headers div.large_bnt {
-	border-right:medium none !important; 
+	border-right:medium none !important;
 	width:64px;
 }
 
 .songs_box ul li div.large_bnt {
-	border-right:medium none !important; 
+	border-right:medium none !important;
 	width:65px;
 }
 
@@ -397,7 +397,7 @@ body li.ui-draggable-dragging .song_name a {
 	font-size:14px;
 	margin-bottom:4px;
 }
- 
+
 label.label_holder {
 	cursor:pointer;
 	display:block;
@@ -440,10 +440,10 @@ img.avatar.playlist {
 
 .btn_blue_loading {
   margin-top: 5px;
-  margin-right: 5px;   
+  margin-right: 5px;
 }
 
-.error_field { 
+.error_field {
 	background-color: #FF0000;
 }
 
@@ -470,7 +470,7 @@ img.avatar.playlist {
 	position:relative;
 }
 
-#playlist_search_results h1 {
+#playlist_search_results h1, #playlist_search_results h5 {
 	margin-left: 10px;
 }
 
@@ -558,3 +558,4 @@ label.label_holder {
 #edit_conf_popup{
 	top: 375px;
 }
+

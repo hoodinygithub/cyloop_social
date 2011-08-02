@@ -1,5 +1,5 @@
 <% if defined? with_title and with_title %>
-  <h1><%= t('home.network_update', :user_name => artist_or_user_name(profile_account)) %></h1>
+  <h5><%= t('home.network_update', :user_name => artist_or_user_name(profile_account)) %></h5>
 <% end %>
 
 <ul class="comments_list" id="network_comment_list">
@@ -10,3 +10,4 @@
     <%= blue_button(t('actions.show_more'), :onclick => "Base.network.show_more(this)", :width => "120px") %>
   <% end %>
 </div>
+

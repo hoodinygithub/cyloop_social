@@ -1,5 +1,5 @@
 <div class="popular_mixes_column">
-  <h1><%= t('modules.popular_mixes.title') %></h1>
+  <h5><%= t('modules.popular_mixes.title') %></h5>
 
   <% @top_playlists.each_with_index do |playlist, index| %>
     <div class="artist_box png_fix <%= "last_box" if (index+1) % 4 == 0 %>">
@@ -25,7 +25,7 @@
 
         <div class="visible">
           <%= link_to image_tag('play_button.png', :class=> "play_button png_fix"), mix_radio_path(:station_id => playlist.station.id) %>
-          <%= link_to truncate(playlist.name, 15, '...'), mix_radio_path(:station_id => playlist.station.id), :alt => playlist.name, :class => 'white' %><br />       
+          <%= link_to truncate(playlist.name, 15, '...'), mix_radio_path(:station_id => playlist.station.id), :alt => playlist.name, :class => 'white' %><br />
           <%= rating(playlist) %>
           <!-- <div class="rating_stars">
             <a href="#"><img src="images/star_blue.png" alt="" /></a> <a href="#"><img src="images/star_blue.png" alt="" /></a> <a href="#"><img src="images/star_blue.png" alt="" /></a> <a href="#"><img src="images/star_blue.png" alt="" /></a> <a href="#"><img src="images/star_white.png" alt="" /></a>
@@ -33,9 +33,10 @@
         </div>
       </div><!--/end overlay -->
     </div><!--/end artist_box -->
-    
+
     <% if (index+1) % 4 == 0 %>
       <br class="clearer" />
     <% end %>
   <% end %>
 </div><!--/end popular_mixes_column -->
+

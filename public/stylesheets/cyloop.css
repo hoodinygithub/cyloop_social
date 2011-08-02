@@ -7,7 +7,7 @@
 .green_button,
 .black_button,
 .grey_button_big,
-h1 {
+h1, h5 {
   text-transform: uppercase;
 }
 
@@ -436,7 +436,7 @@ img.artist_icon_box.tiny {
 	height: 35px;
 }
 
-.search_results h1 {
+.search_results h1, .search_results h5 {
 	text-transform: uppercase;
 }
 
@@ -703,7 +703,7 @@ label.label_holder{
 	font-size: 14px;
 }
 
-#top_stations h1 {
+#top_stations h1, #top_stations h5 {
 	margin-bottom: 21px;
 }
 
@@ -722,9 +722,9 @@ background: #333333 !important;
 }
 
 li.scope_toggle .mini_loader{
-	width: 18px; 
-	height: 18px; 
-	margin-left: 10px; 
+	width: 18px;
+	height: 18px;
+	margin-left: 10px;
 	margin-top: 3px;
 }
 
@@ -733,7 +733,7 @@ li.scope_toggle .mini_loader{
 	margin-left: 10px;
 }
 
-.edit_station_form .four_thumbs {	 	
+.edit_station_form .four_thumbs {
   float: left;
 }
 
@@ -777,7 +777,7 @@ div#top_stations {
 }
 
 div#now_playing_user_station {
-	width: 350px;	
+	width: 350px;
 }
 
 #top_stations .station {
@@ -871,11 +871,11 @@ div#now_playing_user_station {
 	color: #fff !important;
 }
 .overlay_avatar{
-	float:left; 
+	float:left;
 	width:35px;
 }
 .overlay_description{
-	float:left; 
+	float:left;
 	width:95px;
 }
 
@@ -1050,7 +1050,7 @@ top:6px;
 .sub ul.msn_navigation.msnlatam li.expanded.notselected {
   font-weight: bold;
 }
-.sub ul.msn_navigation.msnlatam li.selected a, 
+.sub ul.msn_navigation.msnlatam li.selected a,
 .sub ul.msn_navigation.msnlatam li.notselected a {
   background-image:none;
   border:1px solid;
@@ -1357,7 +1357,7 @@ div.albums_item div.reviews {
     margin-right: 0px;
 }
 
-.playlist_item .artist_box.empty_item { 
+.playlist_item .artist_box.empty_item {
     background: none repeat scroll 0 0 #D8D8D8;
     height: 150px;
     width: 201px;
@@ -1435,7 +1435,7 @@ div.mix_sorting_pad {
 	float:none;
 	left:241px;
 	position:relative;
-	top:-95px;	
+	top:-95px;
 }
 
 .album_text2 {
@@ -1667,7 +1667,8 @@ div.mix_sorting_pad {
     color: #333;
 }
 
-.top_djs_column h1, .top_playlists_column h1 {
+.top_djs_column h1, .top_djs_column h5,
+.top_playlists_column h1, .top_playlists_column h5 {
 	margin-bottom: 5px;
 }
 
@@ -1965,7 +1966,7 @@ div.albums_item div.reviews {
     margin-right: 0px;
 }
 
-.playlist_item .artist_box.empty_item { 
+.playlist_item .artist_box.empty_item {
     background: none repeat scroll 0 0 #D8D8D8;
     height: 150px;
     width: 201px;
@@ -2171,7 +2172,7 @@ textarea.network_red_msg  {
 }
 
 .review_text {
-	height: 43px; 
+	height: 43px;
 	overflow:hidden;
 }
 
@@ -2188,7 +2189,7 @@ textarea.network_red_msg  {
 }
 
 span.review_elapsed {
-  margin-bottom: -8px;   
+  margin-bottom: -8px;
   display:block;
 }
 
@@ -2200,17 +2201,17 @@ div.small_loading {
   height: 25px;
   width: 25px;
   float: right;
-  background: url("../images/ajax_activity_indicators_download_animated_icon_animated_busy.gif") no-repeat left;    
-  overflow: auto;  
+  background: url("../images/ajax_activity_indicators_download_animated_icon_animated_busy.gif") no-repeat left;
+  overflow: auto;
   margin-top: -25px;
 }
 
-h1 div.small_loading {
+h1 div.small_loading, h5 div.small_loading {
   margin-top: 0px !important;
 }
 
 .at_sorting {
-  margin-top: -5px !important;   
+  margin-top: -5px !important;
 }
 
 .albums_item.reviews_list  {
@@ -2218,8 +2219,8 @@ h1 div.small_loading {
 }
 
 .creator_and_date {
-	display: block; 
-	float: left; 
+	display: block;
+	float: left;
 	margin-left: 10px;
 }
 
@@ -2267,3 +2268,4 @@ textarea.edit_review_red_msg {
 div.reviews.mixes div.title {
 	text-transform: uppercase;
 }
+

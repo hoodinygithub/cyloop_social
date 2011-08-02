@@ -1,5 +1,5 @@
 <div class="mixes_recomended_column">
-  <h1>MIXES RECOMENDED FOR YOU</h1>
+  <h5>MIXES RECOMENDED FOR YOU</h5>
 
   <% (1..3).to_a.each_with_index do | mix, index| %>
     <div class="artist_box png_fix <%= "last_box" if (index+1) % 3 == 0 %>">
@@ -31,3 +31,4 @@
 
   <div class="clearer"></div>
 </div><!--/end mixes_recomended_column -->
+

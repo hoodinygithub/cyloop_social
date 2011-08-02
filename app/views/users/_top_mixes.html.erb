@@ -1,7 +1,7 @@
 <% top_mixes = profile_user.playlists.top(2) %>
 <% unless top_mixes.empty? %>
   <div class="box_content">
-    <h1><%= possessive :top_mixes %></h1>
+    <h5><%= possessive :top_mixes %></h5>
     <%= render :partial => 'radio/playlist_simple', :collection => top_mixes %>
 
     <% if false %>
@@ -27,3 +27,4 @@
     <% end %>
   </div>
 <% end %>
+
