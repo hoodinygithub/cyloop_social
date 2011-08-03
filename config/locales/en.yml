@@ -755,7 +755,7 @@ en:
   meta:
     title: Cyloop | What do you want to listen to?
     description: Discover new music and videos from largest online library for free, follow what you friends listen to, and create and share playlists and personalized radio stations from your favorite artists.
-    keywords: Discover music, discover new music, discover videos, listen to music, listen to free music, free music, fee videos, music artists, discover artists, discover music artists, online music library, largest online music library, free online music, free online music library, follow friends, following friends, follower friends, create playlists, share playlists, create music playlists, share music playlists, personalized radio stations, favorite artists
+    keywords: Discover music, discover videos, listen to free music, largest online music library, free online music, create mixes, share mixes
   support:
     array:
       words_connector: ", "
@@ -1343,3 +1343,4 @@ en:
     max_skip_message:
       header: We're sorry...
       body:  Unfortunately our music licenses force us to limit the number of songs you may skip each hour. If you want to hear something else, try creating another station with a different artist.
+
