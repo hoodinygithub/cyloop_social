@@ -1,5 +1,5 @@
 <% form_for :search, :url => search_path, :html => { :onsubmit => 'return Base.main_search.buildSearchUrl();', :method => :get, :id => :main_search_form } do |f| %>
-  <div class="title"><%= t('actions.search_text') %></div>
+  <div class="title"><h1><%= t('actions.search_text') %></h1></div>
 
   <span class="text_input_placeholder">
       <%= text_field_tag :q, @query.nil? ? t('search.search_hint') : @query ,  {:id => :search_query, :class => "search_input", :onfocus => "clearInput('#{t('search.search_hint')}', this);", :onblur => "restoreInput('#{t('search.search_hint')}', this);"} %>
@@ -18,3 +18,4 @@
       <% end %>
   </div>
 <% end %>
+

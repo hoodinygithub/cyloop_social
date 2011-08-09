@@ -1980,11 +1980,20 @@ div.reviews {
     -webkit-border-radius: 3px;
 }
 
-.search_box .title {
+.search_box .title, div.search_box div.title h1 {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 5px;
     text-align: center;
+}
+
+div.search_box div.title h1 {
+  text-transform: inherit;
+  border-left: inherit;
+  height: inherit;
+  line-height: inherit;
+  overflow: inherit;
+  padding-left: inherit;
 }
 
 .search_box .text_input_placeholder {

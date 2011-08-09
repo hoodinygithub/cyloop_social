@@ -71,7 +71,7 @@ en_US:
     recent_activity: 
       title: RECENT ACTIVITY
   artist: 
-    latest_mixes_featuring_artist: "Mixes \xC3\x9Altimos Que Incluyen a {{artist_name}}"
+    latest_mixes_featuring_artist: "Latest mixes featuring artist {{artist_name}}"
     be_the_first_to_create_mix: Be the first to create a mix with songs by {{user_name}}
     latest_stations_featuring_artist: Radios Que Incluyen a {{artist_name}}
     stations_featuring_artist: Radios Que Incluyen a {{artist_name}}

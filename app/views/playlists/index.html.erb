@@ -3,8 +3,10 @@
 </form>
 
 <% content_for :title do %>
-  <%= possessive :playlists if profile_account.is_a? User %>  
-  <%= t('artist.mixes_featuring_artist', :artist_name => profile_account.name) if profile_account.is_a? Artist %>
+  <h1>
+    <%= possessive :playlists if profile_account.is_a? User %>
+    <%= t('artist.mixes_featuring_artist', :artist_name => profile_account.name) if profile_account.is_a? Artist %>
+  </h1>
 <% end %>
 
 <% content_for :sorting do %>
@@ -19,3 +21,4 @@
 <% end %>
 
 <%= render 'shared/list' %>
+

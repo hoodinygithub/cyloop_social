@@ -4,10 +4,10 @@
   </b>
 <% end %>
 
-<h5>
+<h1>
   <%= possessive :latest_mixes if profile_user? %>
   <%= t('artist.latest_mixes_featuring_artist', :artist_name => profile_account.name) if profile_artist? %>
-</h5>
+</h1>
 
 <% if @latest_mixes.empty? %>
   <div class="big_round_box png_fix">

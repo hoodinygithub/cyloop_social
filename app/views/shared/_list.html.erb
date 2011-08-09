@@ -5,9 +5,7 @@
   <%= render on_dashboard? ? 'dashboards/left_column' : 'accounts/left_column' %>
 
   <div id="center_column">
-    <h5>
-      <%= yield :title %>
-    </h5>
+    <%= yield :title %>
     <div class = "ajax_pagination">
       <div id="content_list">
 
