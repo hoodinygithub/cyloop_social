@@ -5,15 +5,16 @@ class SearchesController < ApplicationController
   strip_tags_from_params
 
   def show
+    @title = t 'site.search'
     @query = CGI::unescape(params[:q]) rescue nil
-    @search_types ||= [:artists , :stations, :mixes, :users]    
+    @search_types ||= [:artists , :stations, :mixes, :users]
     @internal_search_types ||=  { :stations => :abstract_stations, :mixes => :playlists }
 
     @sort_types = { :latest => { :artists => nil, :stations => 'updated_at DESC', :playlists => 'updated_at DESC', :users => nil}, \
                     :alphabetical => 'normalized_name ASC', \
                     :relevance => nil, \
                     :highest_rated => { :playlists => 'rating_cache DESC', :users => nil, :artists => nil, :stations => 'rating_cache DESC' }, \
-                    :top => { :mixes => 'playlist_total_plays DESC', :users => nil, :artists => nil, :stations => 'user_station_total_plays DESC' }  
+                    :top => { :mixes => 'playlist_total_plays DESC', :users => nil, :artists => nil, :stations => 'user_station_total_plays DESC' }
     }
 
     @sort_type = get_sort_by_param(@sort_types.keys, :relevance) #params.fetch(:sort_by, nil).to_sym rescue :relevance
@@ -27,8 +28,8 @@ class SearchesController < ApplicationController
     if request.xhr?
       if @active_scope == :all
         search_results(@search_types, 4)
-        default_active_scope 
-      else 
+        default_active_scope
+      else
         search_results(@active_scope.to_a)
       end
 
@@ -36,31 +37,31 @@ class SearchesController < ApplicationController
         render :partial => "searches/#{@active_scope.to_s}"
       else
         render :partial => 'searches/list'
-      end      
+      end
     else
       unless @query.nil?
         if @active_scope == :all
-          search_results(@search_types) 
+          search_results(@search_types)
           default_active_scope
         else
           search_results(@active_scope.to_a)
         end
       else
-        @search_types.each do |t| 
+        @search_types.each do |t|
           @results.store(t, [])
           @counts.store(t, 0)
-        end      
-      end      
+        end
+      end
     end
 
     # if request.xhr?
     #   @active_scope == :all ? search_all_types(4) : search_only_active_type(20)
-    #   
+    #
     #   if params.has_key? :result_only
     #     render :partial => "searches/#{@active_scope.to_s}"
     #   else
     #     render :partial => 'searches/list'
-    #   end      
+    #   end
     # else
     #   unless @query.nil?
     #     @active_scope == :all ? search_all_types : search_only_active_type
@@ -70,9 +71,9 @@ class SearchesController < ApplicationController
   end
 
   def content
-    @query = params[:q]    
+    @query = params[:q]
     @content_search ||= true
-    @search_types ||= [:artists, :songs, :albums]    
+    @search_types ||= [:artists, :songs, :albums]
     @internal_search_types = []
     @sort_type = :relevance
     @sort_types = { :relevance => nil }
@@ -90,7 +91,7 @@ class SearchesController < ApplicationController
 
   def twitstation
     @query = CGI::unescape(params[:q]) rescue nil
-    
+
     if @query.nil?
       render :xml => {:error => { :message => "No query."}}
     else
@@ -102,7 +103,7 @@ class SearchesController < ApplicationController
       @results = {}
       @counts = {}
       search_results(@search_types)
-      
+
       if @results[:artists] && @results[:artists][0]
         artist = @results[:artists][0]
         playlist = artist.playlists(:order => 'playlists.total_plays DESC', :network_id => 2).first;
@@ -111,13 +112,13 @@ class SearchesController < ApplicationController
         else
           render :xml => {:playlist => playlist.station.id, :name => playlist.name, :artist => artist.name, :includes => playlist.cached_artist_list }
         end
-      else 
-        render :xml => {:error => { :message => "Artist not found: #{@query}"}}        
+      else
+        render :xml => {:error => { :message => "Artist not found: #{@query}"}}
       end
     end
   end
 
-  private  
+  private
     def default_active_scope
       @active_scope = @counts.sort{ |a, b| b[1] <=> a[1] }.first[0] unless @search_types.include? @active_scope
     end
@@ -171,7 +172,7 @@ class SearchesController < ApplicationController
               opts.merge!(:order => @sort_types[@sort_type]) unless custom_sort
             end
           end
-          dataset = obj.search(@query, opts) if types.include? scope          
+          dataset = obj.search(@query, opts) if types.include? scope
           send(sort_instruction, dataset) if custom_sort
         end
         @results.store(scope, dataset)
@@ -179,28 +180,28 @@ class SearchesController < ApplicationController
       end
     end
 
-    # 
+    #
     # def search_only_active_type (per_page = 20)
     #   opts = { :page => params[:page], :per_page => per_page, :star => true }
     #   opts.merge!(:order => @sort_types[@sort_type]) unless @sort_types[@sort_type].nil?
-    # 
+    #
     #   @search_types.each do |scope|
     #     obj_scope = scope == :stations ? :abstract_stations : scope
     #     obj = obj_scope.to_s.classify.constantize
-    # 
+    #
     #     @results.store(scope, (scope == @active_scope) ? obj.search(@query, opts) : [])
     #     @counts.store(scope, obj.search_count("#{@query}*"))
     #   end
     # end
-    #   
+    #
     # def search_all_types (per_page = 20)
     #   opts = { :page => params[:page], :per_page => per_page, :star => true }
     #   opts.merge!(:order => @sort_types[@sort_type]) unless @sort_types[@sort_type].nil?
-    # 
+    #
     #   @search_types.each do |scope|
     #     obj_scope = scope == :stations ? :abstract_stations : scope
     #     obj = obj_scope.to_s.classify.constantize
-    # 
+    #
     #     @results.store(scope, obj.search(@query, opts))
     #     @counts.store(scope, obj.search_count("#{@query}*"))
     #   end
@@ -214,3 +215,4 @@ class SearchesController < ApplicationController
       @msn_properties[:prop4] = "\'Search\'"
     end
 end
+

@@ -8,6 +8,7 @@ class PlaylistsController < ApplicationController
   before_filter :profile_ownership_required, :only => [:index, :avatar_update], :if => :profile_owner?
 
   def index
+    @title = t 'site.account_mixes', :subject => profile_account.name
     @dashboard_menu = :mixes
     if profile_owner?
       params[:controller] = 'my'
@@ -20,7 +21,7 @@ class PlaylistsController < ApplicationController
 
     @sort_type = get_sort_by_param(sort_types.keys, :latest) #params.fetch(:sort_by, nil).to_sym rescue :latest
     @page = params[:page] || 1
-    
+
     if profile_account.is_a?(Artist)
       @collection = profile_account.playlists(:order => sort_types[@sort_type], :sort_type => @sort_type).paginate(:per_page => 6, :page => @page)      
     else
@@ -30,9 +31,9 @@ class PlaylistsController < ApplicationController
       else
         # Using account.total_playlists here saves a count query when looking for unlocked, undeleted mixes.
         @collection = profile_account.playlists.unlocked(:order => sort_types[@sort_type]).paginate :page => @page, :per_page => 6, :total_entries => profile_account.total_playlists
-      end        
+      end
     end
-    
+
     if request.xhr?
       render :partial => 'ajax_list'
     else
@@ -480,3 +481,4 @@ def create_page_vars
 @playlist_items ||= @playlist_item_ids.empty? ? [] : @playlist.items
 end
 end
+

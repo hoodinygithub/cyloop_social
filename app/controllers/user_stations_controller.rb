@@ -15,9 +15,9 @@ class UserStationsController < ApplicationController
   end
 
   def index
-
+    @title = t 'site.account_stations', :subject => profile_account.name
     @dashboard_menu = :stations
-    
+
     respond_to do |format|
       block = Proc.new do
         @user_stations = profile_account.stations(profile_account.is_a?(Artist) ? 50 : nil)
@@ -29,11 +29,11 @@ class UserStationsController < ApplicationController
         @sort_type = params.fetch(:sort_by, nil).to_sym rescue :latest
         page = params[:page] || 1
         per_page = 10
-        
+
         begin
-          @collection = profile_account.stations.paginate :page => page, 
-                                                          :per_page => per_page, 
-                                                          :order => @sort_types[@sort_type], 
+          @collection = profile_account.stations.paginate :page => page,
+                                                          :per_page => per_page,
+                                                          :order => @sort_types[@sort_type],
                                                           :total_entries => profile_account.total_user_stations
           if profile_account.is_a?(Artist)
             @includes = @collection.empty? ? nil : @collection.first.includes(10)
@@ -119,7 +119,7 @@ class UserStationsController < ApplicationController
   def user_station_cache_key_url
     "#{CURRENT_SITE.cache_key}/#{profile_user.cache_key}/station/#{params[:id]}"
   end
-  
+
   def msn_codes
     @msn_properties={}
     if profile_account.nil?
@@ -134,6 +134,6 @@ class UserStationsController < ApplicationController
       @msn_properties[:prop3] = "\'Cyloop - User Profile \'"
       @msn_properties[:prop4] = "\'User Profile - #{profile_account.name}\'"
     end
-  end 
+  end
 end
 

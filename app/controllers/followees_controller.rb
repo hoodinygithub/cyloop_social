@@ -6,6 +6,7 @@ class FolloweesController < ApplicationController
   current_filter :following
   
   def index
+    @title = t('site.account_following', :subject => profile_account.name) unless profile_account.nil?
     @dashboard_menu = :following
     @sort_type = params.fetch(:sort_by, nil).to_sym rescue :latest
 
@@ -74,3 +75,4 @@ class FolloweesController < ApplicationController
     end
   end
 end
+

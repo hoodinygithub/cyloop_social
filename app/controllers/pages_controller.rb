@@ -1,13 +1,14 @@
 class PagesController < ApplicationController
   caches_page :home
   caches_page :about, :faq, :feedback, :privacy_policy, :safety_tips, :terms_and_conditions
-  
+
   before_filter :authenticate, :only => [:x46b]
   layout "logged_out"
 
   def home
     respond_to do |format|
       format.html do
+        @title = t 'site.home'
         #@latest_stations       = current_site.user_stations.latest
         @top_abstract_stations = current_site.top_abstract_stations(6)
         #@top_user_stations     = current_site.top_user_stations(15).uniq_by(&:abstract_station_id)[0..5] rescue []
@@ -48,7 +49,7 @@ class PagesController < ApplicationController
   def home_recommended_stations
     @recommended_stations = transformed_recommended_stations(6, 12)
     render :partial => 'shared/abstract_station', :collection => @recommended_stations, :locals => { :columns => 6 }
-  end  
+  end
 
   def flash_callback
     respond_to do |format|

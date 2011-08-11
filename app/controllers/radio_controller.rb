@@ -5,6 +5,7 @@ class RadioController < ApplicationController
   #caches_action :artist_info, :expires_in => EXPIRATION_TIMES['radio_artist_info'], :cache_path => :radio_artist_info_cache_key_url
 
   def index
+    @title = t 'site.radio'
     @station_obj = if params[:station_id]
       Station.find(params[:station_id]) rescue nil
     elsif params[:artist_name]
@@ -37,6 +38,7 @@ class RadioController < ApplicationController
   end
 
   def mix_index
+    @title = t 'site.mixes'
     @station_obj = nil
 
     station = Station.find_by_id_and_playable_type(params[:station_id], 'Playlist') rescue nil
@@ -193,7 +195,7 @@ class RadioController < ApplicationController
       params[:search_station_name] = params[:station_name] if params.has_key?(:station_name) #this is for backwards compatibility
 
       @station = AbstractStation.find_by_name(params[:search_station_name]) rescue nil
-      
+
       not_found_message = t('stations.could_not_find_artist', :artist => params[:search_station_name])
       respond_to do |format|
         format.html do

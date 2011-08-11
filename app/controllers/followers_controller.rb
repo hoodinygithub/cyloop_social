@@ -6,6 +6,7 @@ class FollowersController < ApplicationController
   current_filter :followers
 
   def index
+    @title = t('site.account_followers', :subject => profile_account.name) unless profile_account.nil?
     @dashboard_menu = :followers
     @sort_type = params.fetch(:sort_by, nil).to_sym rescue :latest
 
@@ -29,7 +30,7 @@ class FollowersController < ApplicationController
       render :template => "custom_profiles/#{profile_account.slug}_followers"
     end
   end
-  
+
   private
   def msn_codes
     @msn_properties={}

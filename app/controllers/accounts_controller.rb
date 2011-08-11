@@ -13,16 +13,18 @@ class AccountsController < ApplicationController
 
     @recent_reviews = []
     if profile_account.is_a? User
-      @top_stations = profile_account.top_stations(6) 
+      @title = t 'site.account_profile', :subject => profile_account.name
+      @top_stations = profile_account.top_stations(6)
       @recent_reviews = profile_account.comments.latest(3)
       @latest_mixes = profile_account.playlists.latest(6)
     else
-      @latest_mixes = profile_account.playlists(:order => 'playlists.updated_at DESC', :limit => 6)      
+      @title = t 'site.account_artist', :subject => profile_account.name
+      @latest_mixes = profile_account.playlists(:order => 'playlists.updated_at DESC', :limit => 6)
     end
-    
+
     @followers = profile_account.followers.all(:limit => 4)
     @latest_stations = profile_account.latest_stations(6)
-    
+
     @msn_properties={}
     if profile_account.artist?
       @msn_properties[:page_name] = '\'Artist Profile\''

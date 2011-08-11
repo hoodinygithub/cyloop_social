@@ -5,6 +5,7 @@ class ReviewsController < ApplicationController
   before_filter :load_sort_data, :load_records, :only => [:list, :index, :items]
 
   def index
+    @title = t('site.account_reviews', :subject => profile_account.name) unless profile_account.nil?
     @dashboard_menu = :reviews
     if on_dashboard?
       params[:controller] = 'my'
@@ -30,13 +31,13 @@ class ReviewsController < ApplicationController
   def destroy
     @review = Comment.find(params[:id])
     if @review.user == current_user or @review.commentable.owner == current_user
-          
-      ActiveRecord::Base.transaction do  
+
+      ActiveRecord::Base.transaction do
         commentable = @review.commentable
         @review.destroy
         commentable.update_attribute(:rating_cache, commentable.rating)
       end
-      
+
       render :json => { :success => true, :id => params[:id], :count => records_count }
     else
       render :json => { :success => false }
@@ -108,11 +109,11 @@ protected
     sort_by    = get_sort_by_param(sort_types.keys, :latest)
     @sort_data = sort_types[sort_by]
     @page      = params[:page].blank? ? 1 : params[:page]
-    @sort_type = sort_by 
+    @sort_type = sort_by
   end
 
   def load_records
-    @playlist = Playlist.find(params[:playlist_id]) if params[:playlist_id] 
+    @playlist = Playlist.find(params[:playlist_id]) if params[:playlist_id]
 
     # Logged out user attempting to view "my/reviews".
     # if profile_account.nil?
@@ -125,3 +126,4 @@ protected
   end
 
 end
+

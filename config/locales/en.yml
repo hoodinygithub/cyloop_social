@@ -787,6 +787,17 @@ en:
   block:
     blockee_id: User
   site:
+    home: "Cyloop | What do you want to listen to?"
+    mixes: "Top Artists Mixes | Cyloop"
+    radio: "Listen to Radio Stations | Cyloop"
+    search: "Search Music on Cyloop"
+    account_profile: "{{subject}}'s Latest Mixes | Cyloop"
+    account_artist: "Latest Mixes featuring artist {{subject}} | Cyloop"
+    account_mixes: "{{subject}}'s Mixes | Cyloop"
+    account_stations: "{{subject}}'s Stations | Cyloop"
+    account_reviews: "{{subject}}'s Reviews | Cyloop"
+    account_followers: "People that are following {{subject}} | Cyloop"
+    account_following: "People that {{subject}} is following | Cyloop"
     profile_not_found: Profile Not Found
     faq: Frequently asked questions
     terms_and_conditions: Terms and conditions
