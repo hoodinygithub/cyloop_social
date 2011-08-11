@@ -464,8 +464,14 @@ img.artist_icon_box.tiny {
   margin: 5px 0px 0px 0px;
 }
 
-#pages_internal h4, #pages_internal h2 {
+#pages_internal h4, #pages_internal h2, #pages_internal h1.alternate {
   margin: 20px 0px 0px 0px;
+}
+
+#pages_internal h1.alternate {
+  padding: 30px 40px;
+  color: #191919;
+  height: inherit;
 }
 
 #pages_internal h4 {
@@ -484,7 +490,7 @@ img.artist_icon_box.tiny {
 }
 
 
-#pages_internal h2 {
+#pages_internal h2, #pages_internal h1.alternate {
   border-left:5px solid #00A5F8;
   font-size: 19px;
   font-weight:bold;
