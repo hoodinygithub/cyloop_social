@@ -8,7 +8,9 @@ class PagesController < ApplicationController
   def home
     respond_to do |format|
       format.html do
-        @title = t 'site.home'
+        @title = t 'meta.title.home'
+        @meta_keywords = t "meta.keywords.home"
+        @meta_description = t "meta.description.home"
         #@latest_stations       = current_site.user_stations.latest
         @top_abstract_stations = current_site.top_abstract_stations(6)
         #@top_user_stations     = current_site.top_user_stations(15).uniq_by(&:abstract_station_id)[0..5] rescue []
@@ -27,17 +29,17 @@ class PagesController < ApplicationController
         end
         url_featured    = "/shared/feeds/current/tvn_url_featured_cysocial.xml" if site_includes(:tvn)
         @feed_featured  = drupal_feed(url_featured, 5)
-        
+
         @feed_news = ""
         @feed_promo = ""
         if site_includes(:msnlatino)
           url_news   = "/shared/feeds/current/msnlatino_url_news_cysocial.xml"
           @feed_news = single_msn_feed(url_news, 8)
-                    
+
           url_promo   = "/shared/feeds/current/msnlatino_url_promo_cysocial.xml"
           @feed_promo = drupal_feed(url_promo, 1).first
         end
-        
+
         @msn_properties={}
         @msn_properties[:page_name] = '\'MSN Latino Música\''
         @msn_properties[:prop3] = '\'Cyloop - Inicio\''
@@ -45,7 +47,7 @@ class PagesController < ApplicationController
       end
     end
   end
-  
+
   def home_recommended_stations
     @recommended_stations = transformed_recommended_stations(6, 12)
     render :partial => 'shared/abstract_station', :collection => @recommended_stations, :locals => { :columns => 6 }
@@ -143,10 +145,10 @@ class PagesController < ApplicationController
   end
 
   def error_pages
-    @search_types ||= [:artists, :stations, :users]    
+    @search_types ||= [:artists, :stations, :users]
     render '/error_pages/errors', :layout => "logged_out"
   end
-  
+
   private
     def authenticate
       authenticate_or_request_with_http_basic do |username, password|

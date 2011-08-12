@@ -8,7 +8,9 @@ class PlaylistsController < ApplicationController
   before_filter :profile_ownership_required, :only => [:index, :avatar_update], :if => :profile_owner?
 
   def index
-    @title = t 'site.account_mixes', :subject => profile_account.name
+    @title = t 'meta.title.account_mixes', :subject => profile_account.name
+    @meta_keywords = t "meta.keywords.account_mixes"
+    @meta_description = t "meta.description.account_mixes"
     @dashboard_menu = :mixes
     if profile_owner?
       params[:controller] = 'my'

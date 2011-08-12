@@ -1,7 +1,7 @@
 !!!
 %html{application_html_attrs}
   %head
-    %title= h(@title || t("meta.title"))  
+    %title= h(@title || t("meta.title.home"))
     = main_stylesheets_link_tag
     / [if IE 6]
       = stylesheet_link_tag 'ie'
@@ -20,3 +20,4 @@
         = yield
         #emergency_button
           turn off
+

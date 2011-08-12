@@ -5,7 +5,9 @@ class SearchesController < ApplicationController
   strip_tags_from_params
 
   def show
-    @title = t 'site.search'
+    @title = t 'meta.title.search'
+    @meta_keywords = t "meta.keywords.search"
+    @meta_description = t "meta.description.search"
     @query = CGI::unescape(params[:q]) rescue nil
     @search_types ||= [:artists , :stations, :mixes, :users]
     @internal_search_types ||=  { :stations => :abstract_stations, :mixes => :playlists }

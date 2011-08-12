@@ -5,7 +5,9 @@ class ReviewsController < ApplicationController
   before_filter :load_sort_data, :load_records, :only => [:list, :index, :items]
 
   def index
-    @title = t('site.account_reviews', :subject => profile_account.name) unless profile_account.nil?
+    @title = t('meta.title.account_reviews', :subject => profile_account.name) unless profile_account.nil?
+    @meta_keywords = t "meta.keywords.account_reviews"
+    @meta_description = t "meta.description.account_reviews"
     @dashboard_menu = :reviews
     if on_dashboard?
       params[:controller] = 'my'

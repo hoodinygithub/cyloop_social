@@ -753,9 +753,42 @@ en:
       song: Buy this song
       select_store: Select your store
   meta:
-    title: Cyloop | What do you want to listen to?
-    description: Discover new music and videos from largest online library for free, follow what you friends listen to, and create and share playlists and personalized radio stations from your favorite artists.
-    keywords: Discover music, discover videos, listen to free music, largest online music library, free online music, create mixes, share mixes
+    title:
+      home: "Cyloop | What do you want to listen to?"
+      mixes: "Top Artists Mixes | Cyloop"
+      radio: "Listen to Radio Stations | Cyloop"
+      search: "Search Music on Cyloop"
+      account_profile: "{{subject}}'s Latest Mixes | Cyloop"
+      account_artist: "Latest Mixes featuring artist {{subject}} | Cyloop"
+      account_mixes: "{{subject}}'s Mixes | Cyloop"
+      account_stations: "{{subject}}'s Stations | Cyloop"
+      account_reviews: "{{subject}}'s Reviews | Cyloop"
+      account_followers: "People that are following {{subject}} | Cyloop"
+      account_following: "People that {{subject}} is following | Cyloop"
+    description:
+      home: "Discover new music and videos from largest online library for free, follow what you friends listen to, and create and share playlists and personalized radio stations from your favorite artists."
+      mixes: "Discover new music and videos from largest online library for free, follow what you friends listen to, and create and share playlists and personalized radio stations from your favorite artists."
+      radio: "Discover new music and videos from largest online library for free, follow what you friends listen to, and create and share playlists and personalized radio stations from your favorite artists."
+      search: "Discover new music and videos from largest online library for free, follow what you friends listen to, and create and share playlists and personalized radio stations from your favorite artists."
+      account_profile: "Discover new music and videos from largest online library for free, follow what you friends listen to, and create and share playlists and personalized radio stations from your favorite artists."
+      account_artist: "Discover new music and videos from largest online library for free, follow what you friends listen to, and create and share playlists and personalized radio stations from your favorite artists."
+      account_mixes: "Discover new music and videos from largest online library for free, follow what you friends listen to, and create and share playlists and personalized radio stations from your favorite artists."
+      account_stations: "Discover new music and videos from largest online library for free, follow what you friends listen to, and create and share playlists and personalized radio stations from your favorite artists."
+      account_reviews: "Discover new music and videos from largest online library for free, follow what you friends listen to, and create and share playlists and personalized radio stations from your favorite artists."
+      account_followers: "Discover new music and videos from largest online library for free, follow what you friends listen to, and create and share playlists and personalized radio stations from your favorite artists."
+      account_following: "Discover new music and videos from largest online library for free, follow what you friends listen to, and create and share playlists and personalized radio stations from your favorite artists."
+    keywords:
+      home: "Discover music, discover videos, listen to free music, largest online music library, free online music, create mixes, share mixes"
+      mixes: "Discover music, discover videos, listen to free music, largest online music library, free online music, create mixes, share mixes"
+      radio: "Discover music, discover videos, listen to free music, largest online music library, free online music, create mixes, share mixes"
+      search: "Discover music, discover videos, listen to free music, largest online music library, free online music, create mixes, share mixes"
+      account_profile: "Discover music, discover videos, listen to free music, largest online music library, free online music, create mixes, share mixes"
+      account_artist: "Discover music, discover videos, listen to free music, largest online music library, free online music, create mixes, share mixes"
+      account_mixes: "Discover music, discover videos, listen to free music, largest online music library, free online music, create mixes, share mixes"
+      account_stations: "Discover music, discover videos, listen to free music, largest online music library, free online music, create mixes, share mixes"
+      account_reviews: "Discover music, discover videos, listen to free music, largest online music library, free online music, create mixes, share mixes"
+      account_followers: "Discover music, discover videos, listen to free music, largest online music library, free online music, create mixes, share mixes"
+      account_following: "Discover music, discover videos, listen to free music, largest online music library, free online music, create mixes, share mixes"
   support:
     array:
       words_connector: ", "
@@ -787,17 +820,6 @@ en:
   block:
     blockee_id: User
   site:
-    home: "Cyloop | What do you want to listen to?"
-    mixes: "Top Artists Mixes | Cyloop"
-    radio: "Listen to Radio Stations | Cyloop"
-    search: "Search Music on Cyloop"
-    account_profile: "{{subject}}'s Latest Mixes | Cyloop"
-    account_artist: "Latest Mixes featuring artist {{subject}} | Cyloop"
-    account_mixes: "{{subject}}'s Mixes | Cyloop"
-    account_stations: "{{subject}}'s Stations | Cyloop"
-    account_reviews: "{{subject}}'s Reviews | Cyloop"
-    account_followers: "People that are following {{subject}} | Cyloop"
-    account_following: "People that {{subject}} is following | Cyloop"
     profile_not_found: Profile Not Found
     faq: Frequently asked questions
     terms_and_conditions: Terms and conditions

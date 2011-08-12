@@ -5,7 +5,9 @@ class RadioController < ApplicationController
   #caches_action :artist_info, :expires_in => EXPIRATION_TIMES['radio_artist_info'], :cache_path => :radio_artist_info_cache_key_url
 
   def index
-    @title = t 'site.radio'
+    @title = t 'meta.title.radio'
+    @meta_keywords = t "meta.keywords.radio"
+    @meta_description = t "meta.description.radio"
     @station_obj = if params[:station_id]
       Station.find(params[:station_id]) rescue nil
     elsif params[:artist_name]
@@ -38,7 +40,9 @@ class RadioController < ApplicationController
   end
 
   def mix_index
-    @title = t 'site.mixes'
+    @title = t 'meta.title.mixes'
+    @meta_keywords = t "meta.keywords.mixes"
+    @meta_description = t "meta.description.mixes"
     @station_obj = nil
 
     station = Station.find_by_id_and_playable_type(params[:station_id], 'Playlist') rescue nil

@@ -1,7 +1,7 @@
 !!!
 %html{application_html_attrs}
   %head
-    %title= h(@title || t("meta.title"))  
+    %title= h(@title || t("meta.title.home"))
     = main_stylesheets_link_tag
     / [if IE 6]
       = stylesheet_link_tag 'ie'
@@ -13,9 +13,9 @@
     = stylesheet_link_tag 'admin', 'facebox'
     = javascript_include_tag 'jquery', 'jquery.ui.js', 'jrails', 'jquery.autocomplete', 'jquery.livequery', 'jquery-ui-i18n.min.js', 'jquery.timers', 'jquery.facebox', 'admin'
 
-    - if yield :append_to_head 
+    - if yield :append_to_head
       = yield :append_to_head
-          
+
   %body{:class => body_classes}
     = render_messenger_app
     #main_content
@@ -25,4 +25,5 @@
         = yield
 
       %span#calendar_locale.hide
-        = current_site.calendar_locale 
+        = current_site.calendar_locale
+

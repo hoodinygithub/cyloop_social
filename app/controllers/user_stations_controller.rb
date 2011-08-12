@@ -15,7 +15,9 @@ class UserStationsController < ApplicationController
   end
 
   def index
-    @title = t 'site.account_stations', :subject => profile_account.name
+    @title = t 'meta.title.account_stations', :subject => profile_account.name
+    @meta_keywords = t "meta.keywords.account_stations"
+    @meta_description = t "meta.description.account_stations"
     @dashboard_menu = :stations
 
     respond_to do |format|

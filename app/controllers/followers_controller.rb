@@ -6,7 +6,9 @@ class FollowersController < ApplicationController
   current_filter :followers
 
   def index
-    @title = t('site.account_followers', :subject => profile_account.name) unless profile_account.nil?
+    @title = t('meta.title.account_followers', :subject => profile_account.name) unless profile_account.nil?
+    @meta_keywords = t "meta.keywords.account_followers"
+    @meta_description = t "meta.description.account_followers"
     @dashboard_menu = :followers
     @sort_type = params.fetch(:sort_by, nil).to_sym rescue :latest
 

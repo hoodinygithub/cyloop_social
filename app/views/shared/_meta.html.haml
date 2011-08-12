@@ -1,12 +1,13 @@
 %meta{"http-equiv" => 'Content-Type', :content => 'text/html;charset=utf-8'}
 %meta{"http-equiv" => 'Content-Script-Type', :content => 'text/javascript'}
-%title= h(@title || t("meta.title"))
-%meta{'name' => 'keywords', :content => t("meta.keywords") }
-%meta{'name' => 'description', :content => t("meta.description") }
+%title= h(@title || t("meta.title.home"))
+%meta{'name' => 'keywords', :content => h(@meta_keywords || t("meta.keywords.home")) }
+%meta{'name' => 'description', :content => h(@meta_description || t("meta.description.home")) }
 %meta{'name' => 'robots', :content => "ALL"}
 %meta{'name' => 'site', :content => current_site.id}
 %meta{'name' => 'created', :content => Time.now }
-%link{:rel=>"shortcut icon", :href=>"/#{cyloop_favico}"} 
+%link{:rel=>"shortcut icon", :href=>"/#{cyloop_favico}"}
 
 - if protect_against_forgery?
   %meta{:name => 'authenticity_token', :content => form_authenticity_token}
+
