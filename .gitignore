@@ -13,3 +13,4 @@ vendor/cyqueue
 db/sphinx
 coverage
 .project
+config/locales/log
