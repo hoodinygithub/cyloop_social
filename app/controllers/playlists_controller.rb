@@ -9,8 +9,8 @@ class PlaylistsController < ApplicationController
 
   def index
     @title = t 'meta.title.account_mixes', :subject => profile_account.name
-    @meta_keywords = t "meta.keywords.account_mixes"
-    @meta_description = t "meta.description.account_mixes"
+    @meta_keywords = t "meta.keywords.account_mixes", :subject => profile_account.name
+    @meta_description = t "meta.description.account_mixes", :subject => profile_account.name
     @dashboard_menu = :mixes
     if profile_owner?
       params[:controller] = 'my'

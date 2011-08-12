@@ -7,8 +7,8 @@ class FolloweesController < ApplicationController
   
   def index
     @title = t('meta.title.account_following', :subject => profile_account.name) unless profile_account.nil?
-    @meta_keywords = t "meta.keywords.account_following"
-    @meta_description = t "meta.description.account_following"
+    @meta_keywords = t "meta.keywords.account_following", :subject => profile_account.name) unless profile_account.nil?
+    @meta_description = t "meta.description.account_following", :subject => profile_account.name) unless profile_account.nil?
     @dashboard_menu = :following
     @sort_type = params.fetch(:sort_by, nil).to_sym rescue :latest
 

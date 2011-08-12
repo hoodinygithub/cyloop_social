@@ -6,8 +6,8 @@ class ReviewsController < ApplicationController
 
   def index
     @title = t('meta.title.account_reviews', :subject => profile_account.name) unless profile_account.nil?
-    @meta_keywords = t "meta.keywords.account_reviews"
-    @meta_description = t "meta.description.account_reviews"
+    @meta_keywords = t "meta.keywords.account_reviews", :subject => profile_account.name) unless profile_account.nil?
+    @meta_description = t "meta.description.account_reviews", :subject => profile_account.name) unless profile_account.nil?
     @dashboard_menu = :reviews
     if on_dashboard?
       params[:controller] = 'my'
