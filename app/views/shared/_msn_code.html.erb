@@ -1,38 +1,91 @@
 <% if site_includes(:msnmx) %>
   <% if params[:controller] == "radio" %>
     <div id="reporting">
-      <img id="ctag" width="1" height="1" alt="" src="http://c.prodigy.msn.com/c.gif?di=2514&amp;pi=9564&amp;ps=10128&amp;tp= http://prodigy.msn.cyloop.com/"; />
+	    <div id="udc">
+		    <script type="text/javascript" src="http://blstj.msn.com/br/chan/udc/js/udctrack.2011.03.23.js"></script>
+		    <script type="text/javascript">var cURL = "http://c.msn.com/c.gif?";$.track({trackInfoOpts:{
+		      sitePage:{
+		        lang:'es-mx',siteDI:'2514',sitePI:'9564',sitePS:'10128', 
+		        pagename:'radio',
+		        dept:'',sdept:'',pgGrpId:'',cntType:'',srchQ:''
+		      },userStatic: { signedIn:'false', age:'', gender: ''}},spinTimeout: 150}).register(new $.track.genericTracking({ base: 'http://udc.msn.com/c.gif?',linkTrack:1,samplingRate:99,commonMap:{event: {evt:'type'}, userDynamic:{rid:'requestId',cts:'timeStamp'},client:{clid:'clientId'}},impr:{param:{evt:'impr'},paramMap:{client:{rf:'referrer',cu:'pageUrl',bh:'height',bw: 'width',sl:'silverlightEnabled',slv:'silverlightVersion',scr:'screenResolution',sd: 'colorDepth'},userDynamic:{hp:'isHomePage'},userStatic:{pp:'signedIn',bd:'age',gnd: 'gender'},sitePage:{mk:'lang',di:'siteDI',pi:'sitePI',ps:'sitePS',pn:'pagename',pid: 'pageId','st.dpt':'dept','st.sdpt':'sdept','dv.pgGrpId':'pgGrpId','dv.contnTp':'cntType', mv:'pgVer', q:'srchQ'}}},click:{paramMap:{report:{hl:'headline',ce:'contentElement',cm:'contentModule',du: 'destinationUrl'}} },unload: {/**/}}), new $.track.genericTracking({base:cURL,linkTrack:0,impr:{param:{udc:"true"},paramMap:{ client:{rf:"referrer",tp:'pageUrl'},sitePage:{di:"siteDI",pi:"sitePI",ps:"sitePS"}, userDynamic:{rid:"requestId",cts:"timeStamp"}}}}));jQuery.track.trackPage();
+        </script>
+	    </div>
+      <noscript>
+        <div>
+          <img src="http://udc.msn.com/c.gif?js=0&evt=impr&di=2514&pi=9564&ps=10128&mk=es-mx" alt="image beacon" />
+        </div>
+      </noscript>
       <div id="omni">
         <script type="text/javascript">var s_account='msnportalprodigyent';</script>
-        <script type="text/javascript" src="http://blstj.msn.com/br/om/js/s_code.js"></script>
-        <script type="text/javascript">s.charSet='UTF-8';s.linkInternalFilters='javascript:,entretenimiento.prodigy.msn.com,*cine.prodigy.msn.com*,msn.levelup.com.mx,*juegos.prodigymsn.com*,emoticons.prodigymsn.com,*prodigy.msn.cyloop.com*, peliculas.prodigy.msn.com, videojuegos.prodigy.msn.com, entretenimiento.prodigymsn.com,*cine.prodigymsn.com*, peliculas.prodigymsn.com, videojuegos.prodigymsn.com';s.pageName='Entretenimiento sgt; Musica sgt; Channelizer sgt; Cyloop sgt; radio';s.server='entretenimiento.prodigy.msn.com';s.prop1='Entretenimiento';s.prop2='es-mx';s.channel='Musica';s.prop22='False';s.prop25='31:01:1978';s.prop26='m';s.prop5='radio';s.prop49='';s.prop50=escape(document.URL);s.eVar1=s.getQueryParam('cp-documentid');var s_code=s.t();if(s_code)document.write(s_code);</script>
+        <script type="text/javascript" src="http://blstj.msn.com/br/chan/om/js/s_code.2010.12.13.js" "></script>
+        <script type="text/javascript">s.charSet='UTF-8';s.linkInternalFilters='javascript:,entretenimiento.prodigy.msn.com,*cine.prodigy.msn.com*,msn.levelup.com.mx,*juegos.prodigymsn.com*,emoticons.prodigymsn.com,*prodigy.msn.cyloop.com*, peliculas.prodigy.msn.com, videojuegos.prodigy.msn.com, entretenimiento.prodigymsn.com,*cine.prodigymsn.com*, peliculas.prodigymsn.com, videojuegos.prodigymsn.com'; s.pageName='Entretenimiento sgt; Musica sgt; Channelizer sgt; Cyloop sgt; inicio'; s.server='entretenimiento.prodigy.msn.com';s.prop1='Entretenimiento';s.prop2='es-mx';s.channel='Musica';s.prop22='False';s.prop25='31:01:1978';s.prop26='m';s.prop5='inicio';s.prop49='';s.prop50=escape(document.URL);s.eVar1=s.getQueryParam('cp-documentid');var s_code=s.t();if(s_code)document.write(s_code);</script>
         <script type="text/javascript"><!--if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')//--></script>
-        <noscript><div><img src="http://msnportalprodigyent.112.2O7.net/b/ss/msnportalprodigyent/1/H.1--NS/0"; height="1" width="1" alt="" /></div></noscript>
+        <noscript>
+          <div>
+            <img src="http://msnportalprodigyent.112.2O7.net/b/ss/msnportalprodigyent/1/H.1--NS/0"; height="1" width="1" alt="" />
+          </div>
+        </noscript>
       </div>
       <script type="text/javascript" src="http://stj.msn.com/br/om/js/lt/lt.js"></script>
     </div>
   <% elsif params[:controller] == "pages" && params[:action] == "home" %>
     <div id="reporting">
-      <img id="ctag" width="1" height="1" alt="" src="http://c.prodigy.msn.com/c.gif?di=2514&amp;pi=9564&amp;ps=10128&amp;tp= http://prodigy.msn.cyloop.com/"; />
+	    <div id="udc">
+		    <script type="text/javascript" src="http://blstj.msn.com/br/chan/udc/js/udctrack.2011.03.23.js"></script>
+		    <script type="text/javascript">var cURL = "http://c.msn.com/c.gif?";$.track({trackInfoOpts:{
+		      sitePage:{
+		        lang:'es-mx',siteDI:'2514',sitePI:'9564',sitePS:'10128', 
+		        pagename:'mainpage',
+		        dept:'',sdept:'',pgGrpId:'',cntType:'',srchQ:''
+		      },userStatic: { signedIn:'false', age:'', gender: ''}},spinTimeout: 150}).register(new $.track.genericTracking({ base: 'http://udc.msn.com/c.gif?',linkTrack:1,samplingRate:99,commonMap:{event: {evt:'type'}, userDynamic:{rid:'requestId',cts:'timeStamp'},client:{clid:'clientId'}},impr:{param:{evt:'impr'},paramMap:{client:{rf:'referrer',cu:'pageUrl',bh:'height',bw: 'width',sl:'silverlightEnabled',slv:'silverlightVersion',scr:'screenResolution',sd: 'colorDepth'},userDynamic:{hp:'isHomePage'},userStatic:{pp:'signedIn',bd:'age',gnd: 'gender'},sitePage:{mk:'lang',di:'siteDI',pi:'sitePI',ps:'sitePS',pn:'pagename',pid: 'pageId','st.dpt':'dept','st.sdpt':'sdept','dv.pgGrpId':'pgGrpId','dv.contnTp':'cntType', mv:'pgVer', q:'srchQ'}}},click:{paramMap:{report:{hl:'headline',ce:'contentElement',cm:'contentModule',du: 'destinationUrl'}} },unload: {/**/}}), new $.track.genericTracking({base:cURL,linkTrack:0,impr:{param:{udc:"true"},paramMap:{ client:{rf:"referrer",tp:'pageUrl'},sitePage:{di:"siteDI",pi:"sitePI",ps:"sitePS"}, userDynamic:{rid:"requestId",cts:"timeStamp"}}}}));jQuery.track.trackPage();
+        </script>
+	    </div>
+      <noscript>
+        <div>
+          <img src="http://udc.msn.com/c.gif?js=0&evt=impr&di=2514&pi=9564&ps=10128&mk=es-mx" alt="image beacon" />
+        </div>
+      </noscript>
       <div id="omni">
         <script type="text/javascript">var s_account='msnportalprodigyent';</script>
-        <script type="text/javascript" src="http://blstj.msn.com/br/om/js/s_code.js"></script>
+        <script type="text/javascript" src="http://blstj.msn.com/br/chan/om/js/s_code.2010.12.13.js" "></script>
         <script type="text/javascript">s.charSet='UTF-8';s.linkInternalFilters='javascript:,entretenimiento.prodigy.msn.com,*cine.prodigy.msn.com*,msn.levelup.com.mx,*juegos.prodigymsn.com*,emoticons.prodigymsn.com,*prodigy.msn.cyloop.com*, peliculas.prodigy.msn.com, videojuegos.prodigy.msn.com, entretenimiento.prodigymsn.com,*cine.prodigymsn.com*, peliculas.prodigymsn.com, videojuegos.prodigymsn.com'; s.pageName='Entretenimiento sgt; Musica sgt; Channelizer sgt; Cyloop sgt; inicio'; s.server='entretenimiento.prodigy.msn.com';s.prop1='Entretenimiento';s.prop2='es-mx';s.channel='Musica';s.prop22='False';s.prop25='31:01:1978';s.prop26='m';s.prop5='inicio';s.prop49='';s.prop50=escape(document.URL);s.eVar1=s.getQueryParam('cp-documentid');var s_code=s.t();if(s_code)document.write(s_code);</script>
         <script type="text/javascript"><!--if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')//--></script>
-        <noscript><div><img src="http://msnportalprodigyent.112.2O7.net/b/ss/msnportalprodigyent/1/H.1--NS/0"; height="1" width="1" alt="" /></div></noscript>
+        <noscript>
+          <div>
+            <img src="http://msnportalprodigyent.112.2O7.net/b/ss/msnportalprodigyent/1/H.1--NS/0"; height="1" width="1" alt="" />
+          </div>
+        </noscript>
       </div>
       <script type="text/javascript" src="http://stj.msn.com/br/om/js/lt/lt.js"></script>
     </div>
   <% else %>
     <div id="reporting">
-      <img id="ctag" width="1" height="1" alt="" src="http://c.prodigy.msn.com/c.gif?di=2514&amp;pi=9564&amp;ps=10132&amp;tp=http://entretenimiento.prodigy.msn.com/musica&amp;rf="; />
+	    <div id="udc">
+		    <script type="text/javascript" src="http://blstj.msn.com/br/chan/udc/js/udctrack.2011.03.23.js"></script>
+		    <script type="text/javascript">var cURL = "http://c.msn.com/c.gif?";$.track({trackInfoOpts:{
+		      sitePage:{
+		        lang:'es-mx',siteDI:'2514',sitePI:'9564',sitePS:'10128', 
+		        pagename:'mainpage',
+		        dept:'',sdept:'',pgGrpId:'',cntType:'',srchQ:''
+		      },userStatic: { signedIn:'false', age:'', gender: ''}},spinTimeout: 150}).register(new $.track.genericTracking({ base: 'http://udc.msn.com/c.gif?',linkTrack:1,samplingRate:99,commonMap:{event: {evt:'type'}, userDynamic:{rid:'requestId',cts:'timeStamp'},client:{clid:'clientId'}},impr:{param:{evt:'impr'},paramMap:{client:{rf:'referrer',cu:'pageUrl',bh:'height',bw: 'width',sl:'silverlightEnabled',slv:'silverlightVersion',scr:'screenResolution',sd: 'colorDepth'},userDynamic:{hp:'isHomePage'},userStatic:{pp:'signedIn',bd:'age',gnd: 'gender'},sitePage:{mk:'lang',di:'siteDI',pi:'sitePI',ps:'sitePS',pn:'pagename',pid: 'pageId','st.dpt':'dept','st.sdpt':'sdept','dv.pgGrpId':'pgGrpId','dv.contnTp':'cntType', mv:'pgVer', q:'srchQ'}}},click:{paramMap:{report:{hl:'headline',ce:'contentElement',cm:'contentModule',du: 'destinationUrl'}} },unload: {/**/}}), new $.track.genericTracking({base:cURL,linkTrack:0,impr:{param:{udc:"true"},paramMap:{ client:{rf:"referrer",tp:'pageUrl'},sitePage:{di:"siteDI",pi:"sitePI",ps:"sitePS"}, userDynamic:{rid:"requestId",cts:"timeStamp"}}}}));jQuery.track.trackPage();
+        </script>
+	    </div>
+      <noscript>
+        <div>
+          <img src="http://udc.msn.com/c.gif?js=0&evt=impr&di=2514&pi=9564&ps=10128&mk=es-mx" alt="image beacon" />
+        </div>
+      </noscript>
       <div id="omni">
         <script type="text/javascript">var s_account='msnportalprodigyent';</script>
-        <script type="text/javascript" src="http://blstj.msn.com/br/om/js/s_code.js"></script>
-        <script type="text/javascript">s.charSet='UTF-8';s.linkInternalFilters='javascript:,entretenimiento.prodigy.msn.com,*cine.prodigy.msn.com*,msn.levelup.com.mx,*juegos.prodigymsn.com*,emoticons.prodigymsn.com,*prodigy.msn.cyloop.com*, peliculas.prodigy.msn.com, videojuegos.prodigy.msn.com, entretenimiento.prodigymsn.com,*cine.prodigymsn.com*, peliculas.prodigymsn.com, videojuegos.prodigymsn.com, *juegos.prodigy.msn.c'; s.pageName='Entretenimiento sgt; Musica sgt; Channelizer sgt; Cyloop'; s.server='entretenimiento.prodigy.msn.com'; s.prop1='Entretenimiento'; s.prop2='es-mx'; s.channel='Musica'; s.prop22='False'; s.prop25=''; s.prop26='U'; s.prop3='Channelizer'; s.prop4='Cyloop'; s.prop5=''; s.prop49=''; s.prop50=escape(document.URL); s.eVar1=s.getQueryParam('cp-documentid'); s.prop11='';
-    s.prop37=''; var s_code=s.t();if(s_code)document.write(s_code);</script>
+        <script type="text/javascript" src="http://blstj.msn.com/br/chan/om/js/s_code.2010.12.13.js" "></script>
+        <script type="text/javascript">s.charSet='UTF-8';s.linkInternalFilters='javascript:,entretenimiento.prodigy.msn.com,*cine.prodigy.msn.com*,msn.levelup.com.mx,*juegos.prodigymsn.com*,emoticons.prodigymsn.com,*prodigy.msn.cyloop.com*, peliculas.prodigy.msn.com, videojuegos.prodigy.msn.com, entretenimiento.prodigymsn.com,*cine.prodigymsn.com*, peliculas.prodigymsn.com, videojuegos.prodigymsn.com'; s.pageName='Entretenimiento sgt; Musica sgt; Channelizer sgt; Cyloop sgt; inicio'; s.server='entretenimiento.prodigy.msn.com';s.prop1='Entretenimiento';s.prop2='es-mx';s.channel='Musica';s.prop22='False';s.prop25='31:01:1978';s.prop26='m';s.prop5='inicio';s.prop49='';s.prop50=escape(document.URL);s.eVar1=s.getQueryParam('cp-documentid');var s_code=s.t();if(s_code)document.write(s_code);</script>
         <script type="text/javascript"><!--if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')//--></script>
-        <noscript><div><img src="http://msnportalprodigyent.112.2O7.net/b/ss/msnportalprodigyent/1/H.1--NS/0"; height="1" width="1" alt="" /></div></noscript>
+        <noscript>
+          <div>
+            <img src="http://msnportalprodigyent.112.2O7.net/b/ss/msnportalprodigyent/1/H.1--NS/0"; height="1" width="1" alt="" />
+          </div>
+        </noscript>
       </div>
       <script type="text/javascript" src="http://stj.msn.com/br/om/js/lt/lt.js"></script>
     </div>
