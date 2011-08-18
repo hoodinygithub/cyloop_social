@@ -177,6 +177,19 @@ class Account < ActiveRecord::Base
     bio = self.bios.find_by_locale("--- :" + locale.to_s)
     bio.long.gsub(/\n/, "<br/>") rescue nil
   end
+  
+  def meta_description(locale = :en)
+    bio = self.bios.find_by_locale("--- :" + locale.to_s)
+    bio = bio.long.gsub(/\n|\r/, "") rescue nil
+    bio[0..800] rescue nil
+  end
+  
+  def meta_keywords(locale = :en)
+    bio = self.bios.find_by_locale("--- :" + locale.to_s)
+    bio = bio.long.gsub(/\n|\r/, "") rescue nil
+    bio = bio.split(/,|\./)[0] rescue nil
+    bio.nil? ? "" : bio + ", "
+  end
 
   belongs_to :city
   belongs_to :country

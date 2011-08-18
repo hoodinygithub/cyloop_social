@@ -21,8 +21,8 @@ class AccountsController < ApplicationController
       @latest_mixes = profile_account.playlists.latest(6)
     else
       @title = t 'meta.title.account_artist', :subject => profile_account.name
-      @meta_keywords = t "meta.keywords.account_artist", :subject => profile_account.name
-      @meta_description = t "meta.description.account_artist", :subject => profile_account.name
+      @meta_keywords = profile_account.meta_keywords(current_site.bio_locale) + t("meta.keywords.account_artist", :subject => profile_account.name)
+      @meta_description = profile_account.meta_description(current_site.bio_locale) || t("meta.description.account_artist", :subject => profile_account.name)
       @latest_mixes = profile_account.playlists(:order => 'playlists.updated_at DESC', :limit => 6)
     end
 
